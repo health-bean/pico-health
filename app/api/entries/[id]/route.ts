@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { log } from "@/lib/logger";
 import { getSessionFromCookies } from "@/lib/auth/session";
-import { deleteEntry, updateEntry } from "@/lib/db/queries/entries";
+import { deleteEntry, updateEntry, getFoodForUser } from "@/lib/db/queries/entries";
 import { insightsCache } from "@/lib/cache/insights";
 
 type RouteContext = { params: Promise<{ id: string }> };
@@ -48,6 +48,7 @@ const patchEntrySchema = z
       .nullable()
       .optional(),
     mealType: z.enum(["breakfast", "lunch", "dinner", "snack"]).nullable().optional(),
+    foodId: z.string().uuid().nullable().optional(),
   })
   .strict()
   .refine((data) => Object.keys(data).length > 0, {
@@ -71,7 +72,21 @@ export async function PATCH(request: Request, { params }: RouteContext) {
     }
 
     const { id } = await params;
-    const updated = await updateEntry(session.userId, id, parsed.data);
+
+    // When linking to a food, verify it exists (curated, or the user's own
+    // custom food) and default the entry name to its canonical display name.
+    const patch = { ...parsed.data };
+    if (typeof patch.foodId === "string") {
+      const food = await getFoodForUser(session.userId, patch.foodId);
+      if (!food) {
+        return NextResponse.json({ error: "Food not found" }, { status: 400 });
+      }
+      if (patch.name === undefined) {
+        patch.name = food.displayName;
+      }
+    }
+
+    const updated = await updateEntry(session.userId, id, patch);
 
     if (!updated) {
       return NextResponse.json({ error: "Entry not found" }, { status: 404 });

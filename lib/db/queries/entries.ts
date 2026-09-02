@@ -1,7 +1,7 @@
 import { and, eq, sql } from "drizzle-orm";
 import type { PgUpdateSetSource } from "drizzle-orm/pg-core";
 import { db } from "@/lib/db";
-import { timelineEntries } from "@/lib/db/schema";
+import { timelineEntries, foods, customFoods } from "@/lib/db/schema";
 
 /**
  * Fields a user may edit on an existing timeline entry.
@@ -14,6 +14,7 @@ export interface EntryPatch {
   entryDate?: string;
   entryTime?: string | null;
   mealType?: string | null;
+  foodId?: string | null;
 }
 
 /**
@@ -41,6 +42,7 @@ export async function updateEntry(userId: string, entryId: string, patch: EntryP
   if (patch.entryDate !== undefined) values.entryDate = patch.entryDate;
   if (patch.entryTime !== undefined) values.entryTime = patch.entryTime;
   if (patch.mealType !== undefined) values.mealType = patch.mealType;
+  if (patch.foodId !== undefined) values.foodId = patch.foodId;
 
   if (patch.notes !== undefined) {
     // Merge into the JSONB blob without clobbering other structured fields.
@@ -57,4 +59,36 @@ export async function updateEntry(userId: string, entryId: string, patch: EntryP
     .returning();
 
   return updated ?? null;
+}
+
+/**
+ * Resolve a food the user may reference from an entry: a curated/USDA food,
+ * or one of the user's own (non-archived) custom foods.
+ * Returns { id, displayName } or null when not found / not owned.
+ */
+export async function getFoodForUser(
+  userId: string,
+  foodId: string
+): Promise<{ id: string; displayName: string } | null> {
+  const [curated] = await db
+    .select({ id: foods.id, displayName: foods.displayName })
+    .from(foods)
+    .where(eq(foods.id, foodId))
+    .limit(1);
+
+  if (curated) return curated;
+
+  const [custom] = await db
+    .select({ id: customFoods.id, displayName: customFoods.displayName })
+    .from(customFoods)
+    .where(
+      and(
+        eq(customFoods.id, foodId),
+        eq(customFoods.userId, userId),
+        eq(customFoods.isArchived, false)
+      )
+    )
+    .limit(1);
+
+  return custom ?? null;
 }

@@ -41,6 +41,17 @@ export const tools: Anthropic.Tool[] = [
                 description:
                   "Additional details like cooking method, dosage, duration, preparation notes, oil used, etc.",
               },
+              meal_type: {
+                type: "string",
+                enum: ["breakfast", "lunch", "dinner", "snack"],
+                description:
+                  "Meal this food belongs to. Food entries only.",
+              },
+              portion: {
+                type: "string",
+                description:
+                  "Portion size as stated by the user (e.g., '2 eggs', '1 cup', 'small bowl'). Optional.",
+              },
               entry_date: {
                 type: "string",
                 description:

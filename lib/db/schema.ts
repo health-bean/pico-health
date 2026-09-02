@@ -184,6 +184,9 @@ export const profiles = pgTable("profiles", {
   onboardingStep: varchar("onboarding_step", { length: 50 }).default("welcome"),
   timezone: varchar("timezone", { length: 50 }).default("America/New_York"),
   healthGoals: text("health_goals").array(),
+  // Capture-loop tracking goal ("Day 12 of 30" mandate strip)
+  trackingGoalDays: integer("tracking_goal_days"),
+  trackingGoalStartDate: date("tracking_goal_start_date"),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });

@@ -16,6 +16,13 @@ function escapeLikeWildcards(str: string): string {
   return str.replace(/[%_]/g, "\\$&");
 }
 
+/**
+ * Minimum pg_trgm similarity for a fuzzy food match to be considered
+ * "clearly good". Matches the threshold used by
+ * lib/db/queries/foods.ts::searchFoods.
+ */
+const FOOD_MATCH_SIMILARITY = 0.3;
+
 interface LogEntry {
   entry_type: "food" | "symptom" | "supplement" | "medication" | "detox" | "exposure";
   name: string;
@@ -23,6 +30,8 @@ interface LogEntry {
   details?: string;
   entry_date?: string;
   entry_time?: string;
+  meal_type?: "breakfast" | "lunch" | "dinner" | "snack";
+  portion?: string;
 }
 
 interface LogEntriesInput {
@@ -53,7 +62,7 @@ interface LogExerciseInput {
   notes?: string;
 }
 
-interface CreatedEntry {
+export interface CreatedEntry {
   id: string;
   entryType: string;
   name: string;
@@ -61,13 +70,16 @@ interface CreatedEntry {
   details: Record<string, unknown> | string | null;
   entryDate: string;
   entryTime: string | null;
+  mealType: string | null;
+  foodId: string | null;
+  protocolViolations: string[];
 }
 
 export async function processToolCall(
   toolName: string,
   toolInput: unknown,
   userId: string,
-  messageId: string
+  messageId: string | null
 ): Promise<{ result: unknown; entries?: CreatedEntry[] }> {
   switch (toolName) {
     case "log_entries":
@@ -83,17 +95,96 @@ export async function processToolCall(
   }
 }
 
+/**
+ * Find a matching food in the local curated database.
+ * Exact (case-insensitive) match first, then a pg_trgm fuzzy match —
+ * top hit only, and only when clearly good. Never calls USDA.
+ */
+async function matchFood(
+  name: string
+): Promise<{ id: string; displayName: string } | null> {
+  const [exact] = await db
+    .select({ id: foods.id, displayName: foods.displayName })
+    .from(foods)
+    .where(sql`LOWER(${foods.displayName}) = LOWER(${name})`)
+    .limit(1);
+
+  if (exact) return exact;
+
+  try {
+    const [fuzzy] = await db
+      .select({ id: foods.id, displayName: foods.displayName })
+      .from(foods)
+      .where(sql`similarity(${foods.displayName}, ${name}) > ${FOOD_MATCH_SIMILARITY}`)
+      .orderBy(sql`similarity(${foods.displayName}, ${name}) DESC`)
+      .limit(1);
+
+    return fuzzy ?? null;
+  } catch {
+    // pg_trgm unavailable or query failed — no fuzzy match.
+    return null;
+  }
+}
+
+/**
+ * Load the user's active protocol + current phase (once per tool call).
+ * Returns null when the user has no active protocol or loading fails.
+ */
+async function loadProtocolState(
+  userId: string
+): Promise<{ protocolId: string; phaseId: string | null } | null> {
+  try {
+    const [user] = await db
+      .select({ currentProtocolId: profiles.currentProtocolId })
+      .from(profiles)
+      .where(eq(profiles.id, userId))
+      .limit(1);
+
+    if (!user?.currentProtocolId) return null;
+
+    let phaseId: string | null = null;
+    try {
+      const [state] = await db
+        .select({ currentPhaseId: userProtocolState.currentPhaseId })
+        .from(userProtocolState)
+        .where(
+          and(
+            eq(userProtocolState.userId, userId),
+            eq(userProtocolState.protocolId, user.currentProtocolId)
+          )
+        )
+        .limit(1);
+      phaseId = state?.currentPhaseId ?? null;
+    } catch {
+      phaseId = null;
+    }
+
+    return { protocolId: user.currentProtocolId, phaseId };
+  } catch {
+    return null;
+  }
+}
+
 async function handleLogEntries(
   input: LogEntriesInput,
   userId: string,
-  messageId: string
+  messageId: string | null
 ): Promise<{ result: unknown; entries: CreatedEntry[] }> {
   const today = new Date().toISOString().split("T")[0];
   const created: CreatedEntry[] = [];
 
+  // Lazily loaded once per call; undefined = not loaded yet.
+  let protocolState:
+    | { protocolId: string; phaseId: string | null }
+    | null
+    | undefined;
+
   for (const entry of input.entries) {
     const entryDate = entry.entry_date || today;
     const entryTime = entry.entry_time || null;
+    const isFood = entry.entry_type === "food";
+    const mealType = isFood ? entry.meal_type ?? null : null;
+    const portion = isFood ? entry.portion ?? null : null;
 
     const structuredContent: Record<string, unknown> = {};
     if (entry.details) {
@@ -105,17 +196,32 @@ async function handleLogEntries(
 
     // For food entries, try to find matching food in database
     let foodId: string | null = null;
-    if (entry.entry_type === "food") {
-      const [matchedFood] = await db
-        .select({ id: foods.id, displayName: foods.displayName })
-        .from(foods)
-        .where(sql`LOWER(${foods.displayName}) = LOWER(${entry.name})`)
-        .limit(1);
-
+    if (isFood) {
+      const matchedFood = await matchFood(entry.name);
       if (matchedFood) {
         foodId = matchedFood.id;
         // Use the canonical display name from database
         entry.name = matchedFood.displayName;
+      }
+    }
+
+    // Protocol compliance — only for matched foods with an active protocol.
+    let protocolViolations: string[] = [];
+    if (foodId) {
+      try {
+        if (protocolState === undefined) {
+          protocolState = await loadProtocolState(userId);
+        }
+        if (protocolState) {
+          const compliance = await checkFoodCompliance(
+            foodId,
+            protocolState.protocolId,
+            protocolState.phaseId
+          );
+          protocolViolations = compliance.violations ?? [];
+        }
+      } catch {
+        protocolViolations = [];
       }
     }
 
@@ -128,6 +234,8 @@ async function handleLogEntries(
         name: entry.name,
         severity: entry.severity ?? null,
         foodId: foodId,
+        mealType: mealType,
+        portion: portion,
         structuredContent:
           Object.keys(structuredContent).length > 0 ? structuredContent : null,
         entryDate: entryDate,
@@ -140,6 +248,7 @@ async function handleLogEntries(
         severity: timelineEntries.severity,
         entryDate: timelineEntries.entryDate,
         entryTime: timelineEntries.entryTime,
+        mealType: timelineEntries.mealType,
       });
 
     created.push({
@@ -150,6 +259,9 @@ async function handleLogEntries(
       details: entry.details || null,
       entryDate: inserted.entryDate,
       entryTime: inserted.entryTime,
+      mealType: inserted.mealType ?? null,
+      foodId: foodId,
+      protocolViolations,
     });
   }
 
@@ -236,9 +348,9 @@ async function handleSearchFoods(
           user.currentProtocolId,
           phaseId
         );
-        
+
         if (complianceResult.violations.length > 0) {
-          compliance[food.displayName] = 
+          compliance[food.displayName] =
             `${complianceResult.status} - ${complianceResult.violations.join(", ")}`;
         } else {
           compliance[food.displayName] = complianceResult.status;
@@ -335,7 +447,7 @@ async function handleLogJournalScores(
 async function handleLogExercise(
   input: LogExerciseInput,
   userId: string,
-  messageId: string
+  messageId: string | null
 ): Promise<{ result: unknown; entries: CreatedEntry[] }> {
   const today = new Date().toISOString().split("T")[0];
   const now = new Date();
@@ -389,6 +501,9 @@ async function handleLogExercise(
       },
       entryDate: exerciseEntry.entryDate,
       entryTime: exerciseEntry.entryTime,
+      mealType: null,
+      foodId: null,
+      protocolViolations: [],
     },
   ];
 
@@ -424,6 +539,9 @@ async function handleLogExercise(
       },
       entryDate: energyEntry.entryDate,
       entryTime: energyEntry.entryTime,
+      mealType: null,
+      foodId: null,
+      protocolViolations: [],
     });
   }
 

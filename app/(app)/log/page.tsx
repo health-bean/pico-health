@@ -10,15 +10,19 @@ import {
   Droplets,
   Zap,
   ShieldAlert,
-  Plus,
   Activity,
   AlertTriangle,
+  NotebookPen,
 } from "lucide-react";
 import { Badge, Spinner, EmptyState, useToast } from "@/components/ui";
 import { QuickAddSheet } from "@/components/quick-log/quick-add-sheet";
 import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard";
 import { FoodTimelineCard } from "@/components/timeline/FoodTimelineCard";
 import { EntryActions } from "@/components/timeline/EntryActions";
+import { CaptureBar } from "@/components/capture/CaptureBar";
+import { PendingCaptureCard } from "@/components/capture/PendingCaptureCard";
+import { ProgressStrip } from "@/components/capture/ProgressStrip";
+import { useCapture } from "@/hooks/use-capture";
 import { cn } from "@/lib/utils";
 import type { TimelineEntry, EntryType, ExerciseType, IntensityLevel } from "@/types";
 
@@ -38,7 +42,10 @@ const entryConfig: Record<
 };
 
 function formatDate(date: Date): string {
-  return date.toISOString().split("T")[0];
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
 }
 
 function displayDate(dateStr: string): string {
@@ -68,6 +75,10 @@ function formatTime(time: string | null): string {
   } catch {
     return time;
   }
+}
+
+function localTimeString(d: Date): string {
+  return `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}`;
 }
 
 /**
@@ -132,6 +143,47 @@ export default function TimelinePage() {
     fetchEntries(date);
   }, [date, fetchEntries]);
 
+  const {
+    sessions,
+    submitText,
+    submitImage,
+    undoSession,
+    dismissSession,
+    removeEntry,
+    patchEntry,
+  } = useCapture({
+    entryDate: date,
+    onSettled: () => fetchEntries(dateRef.current),
+  });
+
+  const logShortcut = useCallback(
+    async (items: { entryType: string; name: string; foodId?: string; mealType?: string }[]) => {
+      const now = new Date();
+      try {
+        const res = await fetch("/api/entries/batch", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            entries: items.map((item) => ({
+              entryType: item.entryType,
+              name: item.name,
+              entryDate: dateRef.current,
+              entryTime: localTimeString(now),
+              foodId: item.foodId,
+              mealType: item.mealType,
+            })),
+          }),
+        });
+        if (!res.ok) throw new Error(`Batch failed (${res.status})`);
+        toast(`Logged ${items.length} ${items.length === 1 ? "item" : "items"}`, "success");
+        fetchEntries(dateRef.current);
+      } catch {
+        toast("Couldn't log that — try typing it instead", "error");
+      }
+    },
+    [fetchEntries, toast]
+  );
+
   const restoreEntry = useCallback(
     async (entry: TimelineEntry) => {
       try {
@@ -184,16 +236,21 @@ export default function TimelinePage() {
   }
 
   const isToday = date === formatDate(new Date());
+  const hasEnergyEntries = entries.some((e) => e.energyLevel != null);
 
   // Filter entries by energy level if enabled
   const filteredEntries = showEnergyOnly
     ? entries.filter((entry) => entry.energyLevel != null)
     : entries;
 
+  const hasPending = sessions.length > 0;
+
   return (
-    <div className="mx-auto max-w-2xl px-4 py-6 animate-fade-in-up">
+    <div className="mx-auto max-w-2xl px-4 py-6 pb-36 md:pb-28 animate-fade-in-up">
+      <ProgressStrip />
+
       {/* Date nav */}
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-4 flex items-center justify-between">
         <button
           onClick={() => shiftDate(-1)}
           className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--color-text-muted)] hover:bg-teal-50 hover:text-teal-600 transition-all duration-200"
@@ -211,9 +268,7 @@ export default function TimelinePage() {
           disabled={isToday}
           className={cn(
             "flex h-10 w-10 items-center justify-center rounded-lg text-[var(--color-text-muted)] transition-all duration-200",
-            isToday
-              ? "opacity-30"
-              : "hover:bg-teal-50 hover:text-teal-600"
+            isToday ? "opacity-30" : "hover:bg-teal-50 hover:text-teal-600"
           )}
           aria-label="Next day"
         >
@@ -221,36 +276,60 @@ export default function TimelinePage() {
         </button>
       </div>
 
-      {/* Energy filter toggle */}
-      <div className="mb-4 flex items-center justify-end">
-        <button
-          onClick={() => setShowEnergyOnly(!showEnergyOnly)}
-          className={cn(
-            "flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-all duration-200",
-            showEnergyOnly
-              ? "bg-teal-100 text-teal-700"
-              : "bg-[var(--color-surface-overlay)] text-[var(--color-text-secondary)] hover:bg-teal-50"
-          )}
-        >
-          <Zap className="h-3.5 w-3.5" />
-          {showEnergyOnly ? "Showing energy entries" : "Show energy entries only"}
-        </button>
-      </div>
+      {/* Energy filter — only offered when the day actually has energy data */}
+      {hasEnergyEntries && (
+        <div className="mb-4 flex items-center justify-end">
+          <button
+            onClick={() => setShowEnergyOnly(!showEnergyOnly)}
+            className={cn(
+              "flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-all duration-200",
+              showEnergyOnly
+                ? "bg-teal-100 text-teal-700"
+                : "bg-[var(--color-surface-overlay)] text-[var(--color-text-secondary)] hover:bg-teal-50"
+            )}
+          >
+            <Zap className="h-3.5 w-3.5" />
+            {showEnergyOnly ? "Showing energy entries" : "Energy only"}
+          </button>
+        </div>
+      )}
+
+      {/* In-flight captures land at the top of the day */}
+      {hasPending && (
+        <div className="mb-4 flex flex-col gap-3">
+          {sessions.map((session) => (
+            <PendingCaptureCard
+              key={session.id}
+              session={session}
+              onUndo={() => void undoSession(session.id)}
+              onDismiss={() => dismissSession(session.id)}
+              onRemoveEntry={(entryId) => void removeEntry(session.id, entryId)}
+              onPatchEntry={(entryId, patch) => patchEntry(session.id, entryId, patch)}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Entries */}
       {loading ? (
         <div className="flex items-center justify-center py-20">
           <Spinner />
         </div>
-      ) : filteredEntries.length === 0 ? (
+      ) : filteredEntries.length === 0 && !hasPending ? (
         <EmptyState
-          icon={<Zap className="h-6 w-6" />}
+          icon={<NotebookPen className="h-6 w-6" />}
           title={
             showEnergyOnly
               ? "No entries with energy levels for this day."
-              : "No entries for this day."
+              : isToday
+                ? "Nothing logged yet today."
+                : "Nothing logged this day."
           }
-          description="Go to Chat to log food, symptoms, and more."
+          description={
+            showEnergyOnly
+              ? undefined
+              : "Type it below — “salmon and rice for lunch” is enough. Or snap a photo of your plate."
+          }
           className="py-20"
         />
       ) : (
@@ -333,16 +412,15 @@ export default function TimelinePage() {
         </div>
       )}
 
-      {/* Floating Action Button */}
-      <button
-        onClick={() => setSheetOpen(true)}
-        className="fixed bottom-24 right-4 z-40 flex h-14 w-14 items-center justify-center rounded-full bg-teal-600 text-white shadow-[var(--shadow-float)] hover:bg-teal-700 active:scale-95 transition-all duration-200 ease-[var(--ease-out-expo)] md:bottom-8 md:right-8"
-        aria-label="Quick add"
-      >
-        <Plus className="h-6 w-6" />
-      </button>
+      {/* The pen is always out */}
+      <CaptureBar
+        onSubmitText={(text) => void submitText(text)}
+        onSubmitImage={(input) => void submitImage(input)}
+        onBrowse={() => setSheetOpen(true)}
+        onShortcut={(items) => void logShortcut(items)}
+      />
 
-      {/* Quick-add bottom sheet */}
+      {/* Quick-add bottom sheet (structured fallback) */}
       <QuickAddSheet
         open={sheetOpen}
         onClose={() => setSheetOpen(false)}

@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach, vi } from "vitest";
 import { DELETE, PATCH } from "./route";
 import { getSessionFromCookies } from "@/lib/auth/session";
-import { deleteEntry, updateEntry } from "@/lib/db/queries/entries";
+import { deleteEntry, updateEntry, getFoodForUser } from "@/lib/db/queries/entries";
 
 vi.mock("@/lib/auth/session");
 vi.mock("@/lib/db/queries/entries");
@@ -114,5 +114,69 @@ describe("PATCH /api/entries/[id]", () => {
       entryTime: "13:30",
       mealType: "lunch",
     });
+  });
+});
+
+describe("PATCH /api/entries/[id] — foodId", () => {
+  const foodId = "33333333-3333-4333-8333-333333333333";
+
+  const patchReq = (body: unknown) =>
+    new Request("http://localhost/api/entries/entry-1", {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockSession(ownerId);
+  });
+
+  it("returns 400 for a non-uuid foodId", async () => {
+    const res = await PATCH(patchReq({ foodId: "not-a-uuid" }), ctx);
+    expect(res.status).toBe(400);
+    expect(updateEntry).not.toHaveBeenCalled();
+  });
+
+  it("verifies the food and fills name from its displayName when name not sent", async () => {
+    vi.mocked(getFoodForUser).mockResolvedValue({ id: foodId, displayName: "Wild Salmon" });
+    vi.mocked(updateEntry).mockResolvedValue({ ...sampleEntry, name: "Wild Salmon" } as never);
+
+    const res = await PATCH(patchReq({ foodId }), ctx);
+    expect(res.status).toBe(200);
+    expect(getFoodForUser).toHaveBeenCalledWith(ownerId, foodId);
+    expect(updateEntry).toHaveBeenCalledWith(ownerId, entryId, {
+      foodId,
+      name: "Wild Salmon",
+    });
+  });
+
+  it("keeps a caller-provided name when foodId is set", async () => {
+    vi.mocked(getFoodForUser).mockResolvedValue({ id: foodId, displayName: "Wild Salmon" });
+    vi.mocked(updateEntry).mockResolvedValue(sampleEntry as never);
+
+    const res = await PATCH(patchReq({ foodId, name: "My Salmon Bowl" }), ctx);
+    expect(res.status).toBe(200);
+    expect(updateEntry).toHaveBeenCalledWith(ownerId, entryId, {
+      foodId,
+      name: "My Salmon Bowl",
+    });
+  });
+
+  it("returns 400 when the food does not exist for this user", async () => {
+    vi.mocked(getFoodForUser).mockResolvedValue(null);
+
+    const res = await PATCH(patchReq({ foodId }), ctx);
+    expect(res.status).toBe(400);
+    expect(updateEntry).not.toHaveBeenCalled();
+  });
+
+  it("clears foodId with null without a lookup", async () => {
+    vi.mocked(updateEntry).mockResolvedValue(sampleEntry as never);
+
+    const res = await PATCH(patchReq({ foodId: null }), ctx);
+    expect(res.status).toBe(200);
+    expect(getFoodForUser).not.toHaveBeenCalled();
+    expect(updateEntry).toHaveBeenCalledWith(ownerId, entryId, { foodId: null });
   });
 });

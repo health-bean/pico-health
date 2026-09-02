@@ -1,22 +1,17 @@
 import { NextResponse } from "next/server";
-import { eq, and, asc, desc } from "drizzle-orm";
+import { eq, and, desc } from "drizzle-orm";
 
 /** Only the most recent N messages are sent to the model, so long-lived daily conversations stay fast and bounded. */
 const CHAT_HISTORY_WINDOW = 40;
 import { z } from "zod";
 import { db } from "@/lib/db";
-import {
-  conversations,
-  messages,
-  profiles,
-  protocols,
-  protocolRules,
-} from "@/lib/db/schema";
+import { conversations, messages } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getProvider, runConversationLoop, toNeutralTools } from "@/lib/ai/client";
 import { buildSystemPrompt } from "@/lib/ai/system-prompt";
 import { tools } from "@/lib/ai/tools";
 import { processToolCall } from "@/lib/ai/extract";
+import { loadUserProtocolInfo } from "@/lib/ai/user-protocol";
 import { buildCoachingContext } from "@/lib/coaching/context";
 import type { AIMessage } from "@/lib/ai/providers/types";
 import { rateLimit, getClientIp, CHAT_RATE_LIMIT } from "@/lib/rate-limit";
@@ -113,63 +108,9 @@ export async function POST(request: Request) {
       .then((rows) => rows.reverse());
 
     // ── Build system prompt with user's protocol ─────────────────────
-    const [user] = await db
-      .select({
-        currentProtocolId: profiles.currentProtocolId,
-        firstName: profiles.firstName,
-      })
-      .from(profiles)
-      .where(eq(profiles.id, session.userId))
-      .limit(1);
-
-    let protocolName: string | undefined;
-    let protocolRulesText: string | undefined;
-
-    if (user?.currentProtocolId) {
-      const [protocol] = await db
-        .select({
-          name: protocols.name,
-          description: protocols.description,
-        })
-        .from(protocols)
-        .where(eq(protocols.id, user.currentProtocolId))
-        .limit(1);
-
-      if (protocol) {
-        protocolName = protocol.name;
-
-        const rules = await db
-          .select({
-            ruleType: protocolRules.ruleType,
-            propertyName: protocolRules.propertyName,
-            propertyValues: protocolRules.propertyValues,
-            status: protocolRules.status,
-            notes: protocolRules.notes,
-          })
-          .from(protocolRules)
-          .where(eq(protocolRules.protocolId, user.currentProtocolId))
-          .orderBy(asc(protocolRules.ruleOrder));
-
-        if (rules.length > 0) {
-          protocolRulesText = rules
-            .map((r) => {
-              let line = `- ${r.status.toUpperCase()}: ${r.ruleType}`;
-              if (r.propertyName) line += ` (${r.propertyName})`;
-              if (r.propertyValues && r.propertyValues.length > 0) {
-                line += `: ${r.propertyValues.join(", ")}`;
-              }
-              if (r.notes) line += ` -- ${r.notes}`;
-              return line;
-            })
-            .join("\n");
-        }
-
-        if (protocol.description) {
-          protocolRulesText =
-            `${protocol.description}\n\n${protocolRulesText || ""}`;
-        }
-      }
-    }
+    const { protocolName, protocolRulesText } = await loadUserProtocolInfo(
+      session.userId
+    );
 
     // Build coaching context from user data
     let coachingContext: string | undefined;

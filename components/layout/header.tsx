@@ -7,8 +7,8 @@ import { useSession } from "@/hooks/use-session";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { label: "Chat", href: "/chat" },
   { label: "Log", href: "/log" },
+  { label: "Chat", href: "/chat" },
   { label: "Reflect", href: "/reflect" },
   { label: "Insights", href: "/insights" },
   { label: "Settings", href: "/settings" },
