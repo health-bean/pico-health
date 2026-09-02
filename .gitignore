@@ -211,3 +211,4 @@ android/local.properties
 
 # Capacitor fallback page (generated)
 out/
+.vercel

@@ -3,7 +3,7 @@ import {
   dayComposites, timelineEntries, journalEntries,
   foodTriggerProperties, profiles,
 } from '@/lib/db/schema';
-import { eq, and, gte, lte, inArray, sql, notInArray } from 'drizzle-orm';
+import { eq, and, gte, lte, inArray } from 'drizzle-orm';
 import { buildDayComposite } from './day-composite';
 import { loadProtocolContext, checkComplianceSync } from '@/lib/protocols/compliance';
 import type { DayComposite, FoodProperty } from './types';

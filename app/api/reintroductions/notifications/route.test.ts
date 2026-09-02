@@ -6,6 +6,9 @@ import { describe, it, expect, beforeEach, vi } from "vitest";
 import { GET } from "./route";
 import { NextRequest } from "next/server";
 import * as notificationModule from "@/lib/notifications/reintroduction";
+import { getSessionFromCookies } from "@/lib/auth/session";
+
+vi.mock("@/lib/auth/session");
 
 // Mock the notification module
 vi.mock("@/lib/notifications/reintroduction", () => ({
@@ -17,6 +20,10 @@ vi.mock("@/lib/notifications/reintroduction", () => ({
 describe("GET /api/reintroductions/notifications", () => {
   beforeEach(() => {
     vi.clearAllMocks();
+    vi.mocked(getSessionFromCookies).mockResolvedValue({
+      userId: "user-123",
+      isAdmin: false,
+    } as unknown as Awaited<ReturnType<typeof getSessionFromCookies>>);
   });
 
   it("should return notifications for authenticated user", async () => {
@@ -71,6 +78,9 @@ describe("GET /api/reintroductions/notifications", () => {
   });
 
   it("should return 401 if user is not authenticated", async () => {
+    vi.mocked(getSessionFromCookies).mockResolvedValue({
+      userId: null,
+    } as unknown as Awaited<ReturnType<typeof getSessionFromCookies>>);
     const request = new NextRequest("http://localhost:3000/api/reintroductions/notifications");
 
     const response = await GET(request);

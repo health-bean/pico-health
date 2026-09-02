@@ -4,38 +4,77 @@ import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Spinner } from "@/components/ui";
 
+const SESSION_KEY = "pico:onboarded";
+
+function readCached(): boolean {
+  try {
+    return sessionStorage.getItem(SESSION_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function writeCached() {
+  try {
+    sessionStorage.setItem(SESSION_KEY, "1");
+  } catch {
+    // sessionStorage unavailable (private mode, native webview quirks) — fall back to per-load check
+  }
+}
+
+/**
+ * Redirects users who haven't finished onboarding.
+ *
+ * The check hits /api/onboarding once per browser session and caches the
+ * result, so tab switches don't flash a full-screen loader.
+ */
 export function OnboardingCheck({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
-  const [isChecking, setIsChecking] = useState(true);
-  const [isOnboarded, setIsOnboarded] = useState(false);
+  const isOnboardingRoute = pathname === "/onboarding";
+  const [isOnboarded, setIsOnboarded] = useState<boolean>(() => isOnboardingRoute || readCached());
+  const [isChecking, setIsChecking] = useState<boolean>(() => !(isOnboardingRoute || readCached()));
 
   useEffect(() => {
-    // Skip check for onboarding page itself
-    if (pathname === "/onboarding") {
-      setIsChecking(false);
+    if (isOnboardingRoute) {
+      // Leaving onboarding after completing it should re-check once.
+      try {
+        sessionStorage.removeItem(SESSION_KEY);
+      } catch {
+        // ignore
+      }
+      return;
+    }
+    if (readCached()) {
       setIsOnboarded(true);
+      setIsChecking(false);
       return;
     }
 
-    // Check onboarding status
+    let cancelled = false;
     fetch("/api/onboarding")
       .then((res) => res.json())
       .then((data) => {
+        if (cancelled) return;
         if (!data.completed) {
           router.push("/onboarding");
         } else {
+          writeCached();
           setIsOnboarded(true);
         }
       })
       .catch(() => {
         // On error, allow access (fail open)
-        setIsOnboarded(true);
+        if (!cancelled) setIsOnboarded(true);
       })
       .finally(() => {
-        setIsChecking(false);
+        if (!cancelled) setIsChecking(false);
       });
-  }, [pathname, router]);
+
+    return () => {
+      cancelled = true;
+    };
+  }, [isOnboardingRoute, router]);
 
   if (isChecking) {
     return (

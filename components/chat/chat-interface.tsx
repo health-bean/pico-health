@@ -1,14 +1,59 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useChat } from "@/hooks/use-chat";
 import { MessageBubble } from "./message-bubble";
 import { MessageInput } from "./message-input";
-import { Spinner, EmptyState } from "@/components/ui";
+import { Spinner, EmptyState, useToast } from "@/components/ui";
 import { MessageSquare } from "lucide-react";
+import type { ExtractedEntry } from "@/types";
 
 export function ChatInterface() {
-  const { messages, loading, sendMessage, loadHistory } = useChat();
+  const { toast } = useToast();
+  const removeRef = useRef<(ids: string[]) => void>(() => {});
+
+  const undoSavedEntries = useCallback(
+    async (ids: string[]) => {
+      const results = await Promise.allSettled(
+        ids.map((id) => fetch(`/api/entries/${id}`, { method: "DELETE" }))
+      );
+      const removed = ids.filter((_, i) => {
+        const r = results[i];
+        return r.status === "fulfilled" && (r.value.ok || r.value.status === 404);
+      });
+      removeRef.current(removed);
+      if (removed.length === ids.length) {
+        toast(`Removed ${removed.length} ${removed.length === 1 ? "entry" : "entries"}`, "info");
+      } else {
+        toast("Couldn't remove some entries. Check the Log tab.", "error");
+      }
+    },
+    [toast]
+  );
+
+  const handleEntriesSaved = useCallback(
+    (entries: ExtractedEntry[]) => {
+      const ids = entries.map((e) => e.id).filter((id): id is string => Boolean(id));
+      const n = entries.length;
+      const message = `Saved ${n} ${n === 1 ? "entry" : "entries"}`;
+      if (ids.length === 0) {
+        toast(message, "success");
+        return;
+      }
+      toast(message, "success", {
+        action: { label: "Undo", onClick: () => void undoSavedEntries(ids) },
+      });
+    },
+    [toast, undoSavedEntries]
+  );
+
+  const { messages, loading, sendMessage, loadHistory, removeExtractedEntries } = useChat({
+    onEntriesSaved: handleEntriesSaved,
+  });
+  useEffect(() => {
+    removeRef.current = removeExtractedEntries;
+  }, [removeExtractedEntries]);
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const hasLoaded = useRef(false);
 

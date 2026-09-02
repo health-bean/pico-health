@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Check, X, Loader2, Apple, Frown, Activity } from "lucide-react";
+import { Check, X, Loader2, Apple, Frown, Activity, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui";
 import { useQuickLog } from "@/hooks/use-quick-log";
 import { RecentItems } from "./recent-items";
@@ -9,6 +9,7 @@ import { ProtocolFoods } from "./protocol-foods";
 import { SymptomPicker } from "./symptom-picker";
 import { ExerciseQuickAdd } from "./ExerciseQuickAdd";
 import { FoodSearchInput } from "./FoodSearchInput";
+import { MealTypeChips, WhenChips } from "./log-context-chips";
 import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
 import { ProtocolComplianceWarning } from "@/components/foods/ProtocolComplianceWarning";
 import { CustomFoodForm } from "@/components/foods/CustomFoodForm";
@@ -16,12 +17,32 @@ import type { EntryType, Food, Protocol } from "@/types";
 
 type TabType = "food" | "symptom" | "exercise";
 
-export function QuickLogPanel() {
+/** /api/foods/search spreads `isCustom` / `source` onto each result. */
+type SearchFood = Food & { isCustom?: boolean; source?: string };
+
+interface QuickLogPanelProps {
+  /** Called after a batch is saved successfully. */
+  onSaved?: () => void;
+  /** Reports whether there are unsaved selected items. */
+  onItemsChange?: (hasItems: boolean) => void;
+}
+
+/** Split a search result into the id fields the hook expects. */
+function foodIds(food: SearchFood): { foodId?: string; customFoodId?: string } {
+  const isCustom = food.isCustom === true || food.source === "custom";
+  return isCustom ? { customFoodId: food.id } : { foodId: food.id };
+}
+
+export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
   const {
     items,
     addItem,
     removeItem,
     updateSeverity,
+    mealType,
+    setMealType,
+    when,
+    setWhen,
     submitAll,
     submitting,
     clear,
@@ -29,11 +50,17 @@ export function QuickLogPanel() {
   const [protocolId, setProtocolId] = useState<string | null>(null);
   const [protocol, setProtocol] = useState<Protocol | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [saveError, setSaveError] = useState(false);
   const [activeTab, setActiveTab] = useState<TabType>("food");
   const [selectedFood, setSelectedFood] = useState<Food | null>(null);
   const [showComplianceWarning, setShowComplianceWarning] = useState(false);
   const [showCustomFoodForm, setShowCustomFoodForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+
+  // Let the parent (sheet) know whether there is unsaved work
+  useEffect(() => {
+    onItemsChange?.(items.length > 0);
+  }, [items.length, onItemsChange]);
 
   // Fetch user's current protocol
   useEffect(() => {
@@ -44,7 +71,7 @@ export function QuickLogPanel() {
           const data = await res.json();
           const currentProtocolId = data.user?.currentProtocolId ?? null;
           setProtocolId(currentProtocolId);
-          
+
           // Fetch protocol details if available
           if (currentProtocolId) {
             const protocolRes = await fetch(`/api/protocols/${currentProtocolId}`);
@@ -74,7 +101,7 @@ export function QuickLogPanel() {
     }
   }
 
-  function handleSelect(entryType: EntryType, name: string) {
+  function handleSelect(entryType: EntryType, name: string, foodId?: string) {
     const key = `${entryType}:${name}`;
     if (selectedNames.has(key)) {
       const item = items.find(
@@ -82,9 +109,10 @@ export function QuickLogPanel() {
       );
       if (item) removeItem(item.id);
     } else {
-      addItem(entryType, name);
+      addItem(entryType, name, foodId ? { foodId } : undefined);
     }
     setSubmitted(false);
+    setSaveError(false);
   }
 
   function handleSeverityChange(name: string, severity: number) {
@@ -97,7 +125,7 @@ export function QuickLogPanel() {
   // Handle food selection from search
   function handleFoodSelect(food: Food) {
     setSearchQuery("");
-    
+
     // Check protocol compliance
     if (protocolId && food.protocolStatus === "avoid") {
       setSelectedFood(food);
@@ -107,8 +135,9 @@ export function QuickLogPanel() {
 
     // Show food property card and add to items
     setSelectedFood(food);
-    addItem("food", food.displayName);
+    addItem("food", food.displayName, foodIds(food));
     setSubmitted(false);
+    setSaveError(false);
   }
 
   // Calculate protocol violations for warning
@@ -129,8 +158,9 @@ export function QuickLogPanel() {
   // Handle proceeding with non-compliant food
   function handleProceedWithFood() {
     if (selectedFood) {
-      addItem("food", selectedFood.displayName);
+      addItem("food", selectedFood.displayName, foodIds(selectedFood));
       setSubmitted(false);
+      setSaveError(false);
     }
     setShowComplianceWarning(false);
     setSelectedFood(null);
@@ -143,15 +173,22 @@ export function QuickLogPanel() {
   }
 
   // Handle custom food creation
-  async function handleCustomFoodCreate(customFood: { displayName: string }) {
-    addItem("food", customFood.displayName);
+  async function handleCustomFoodCreate(customFood: { id: string; displayName: string }) {
+    addItem("food", customFood.displayName, { customFoodId: customFood.id });
     setShowCustomFoodForm(false);
     setSubmitted(false);
+    setSaveError(false);
   }
 
   async function handleSubmit() {
+    setSaveError(false);
     const ok = await submitAll();
-    if (ok) setSubmitted(true);
+    if (ok) {
+      setSubmitted(true);
+      onSaved?.();
+    } else {
+      setSaveError(true);
+    }
   }
 
   const tabs: { id: TabType; label: string; icon: typeof Apple }[] = [
@@ -241,10 +278,11 @@ export function QuickLogPanel() {
                 </h3>
                 <FoodSearchInput
                   onSelect={handleFoodSelect}
+                  onQueryChange={setSearchQuery}
                   protocolId={protocolId ?? undefined}
                   placeholder="Search for a food..."
                 />
-                
+
                 {/* Show custom food form option when no results */}
                 {searchQuery.length >= 2 && (
                   <button
@@ -255,6 +293,10 @@ export function QuickLogPanel() {
                   </button>
                 )}
               </div>
+
+              {/* Meal type + when */}
+              <MealTypeChips value={mealType} onChange={setMealType} />
+              <WhenChips value={when} onChange={setWhen} />
 
               {/* Selected Food Property Card */}
               {selectedFood && !showComplianceWarning && (
@@ -306,12 +348,15 @@ export function QuickLogPanel() {
           )}
 
           {activeTab === "symptom" && (
-            <SymptomPicker
-              onSelect={handleSelect}
-              selectedNames={selectedNames}
-              onSeverityChange={handleSeverityChange}
-              severities={severities}
-            />
+            <>
+              <WhenChips value={when} onChange={setWhen} />
+              <SymptomPicker
+                onSelect={handleSelect}
+                selectedNames={selectedNames}
+                onSeverityChange={handleSeverityChange}
+                severities={severities}
+              />
+            </>
           )}
 
           {activeTab === "exercise" && (
@@ -324,6 +369,15 @@ export function QuickLogPanel() {
       {items.length > 0 && activeTab !== "exercise" && (
         <div className="sticky bottom-0 border-t border-warm-200 bg-[var(--color-surface-card)] px-4 py-3">
           <div className="mx-auto max-w-2xl">
+            {saveError && (
+              <div
+                role="alert"
+                className="mb-2 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+              >
+                <AlertCircle className="h-4 w-4 shrink-0" />
+                Couldn&apos;t save. Try again.
+              </div>
+            )}
             <Button
               onClick={handleSubmit}
               loading={submitting}

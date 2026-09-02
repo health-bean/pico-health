@@ -39,7 +39,7 @@ function getTitle(result: SingleFactorResult | MultiFactorResult): string {
   return (result as SingleFactorResult).factor.label;
 }
 
-function getFoods(result: SingleFactorResult | MultiFactorResult): string[] {
+function getFoods(_result: SingleFactorResult | MultiFactorResult): string[] {
   // For food property patterns, we could list contributing foods
   // For now, return empty — the engine would need to track this
   return [];

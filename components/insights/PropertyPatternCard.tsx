@@ -2,8 +2,6 @@
 
 import { cn } from '@/lib/utils';
 import { Card, Badge } from '@/components/ui';
-import { Beaker } from 'lucide-react';
-import { FoodPropertyTag } from '@/components/foods/FoodPropertyTag';
 import type { PropertyPattern } from '@/lib/insights/types';
 
 interface PropertyPatternCardProps {

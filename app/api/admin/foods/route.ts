@@ -6,7 +6,7 @@ import {
   foodSubcategories,
   foodTriggerProperties,
 } from "@/lib/db/schema";
-import { eq, ilike, asc, sql } from "drizzle-orm";
+import { eq, ilike, asc } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
 

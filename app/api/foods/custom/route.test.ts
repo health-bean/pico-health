@@ -8,7 +8,7 @@ import {
 } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
-describe("Custom Food API Routes", () => {
+describe.skipIf(!process.env.RUN_DB_TESTS)("Custom Food API Routes", () => {
   let testUserId: string;
   let testCustomFoodId: string;
 

@@ -1,7 +1,12 @@
 "use client";
 
-import { useState, useCallback, useRef } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import type { Message, ExtractedEntry, ChatStreamEvent } from "@/types";
+
+interface UseChatOptions {
+  /** Fired once per assistant turn, after the server has persisted extracted entries. */
+  onEntriesSaved?: (entries: ExtractedEntry[]) => void;
+}
 
 interface UseChatReturn {
   messages: Message[];
@@ -9,9 +14,16 @@ interface UseChatReturn {
   sendMessage: (content: string) => Promise<void>;
   loadHistory: (conversationId?: string) => Promise<void>;
   conversationId: string | null;
+  /** Drop extracted-entry cards by timeline id (e.g. after an undo). */
+  removeExtractedEntries: (ids: string[]) => void;
 }
 
-export function useChat(): UseChatReturn {
+export function useChat(options: UseChatOptions = {}): UseChatReturn {
+  const onEntriesSavedRef = useRef(options.onEntriesSaved);
+  useEffect(() => {
+    onEntriesSavedRef.current = options.onEntriesSaved;
+  }, [options.onEntriesSaved]);
+
   const [messages, setMessages] = useState<Message[]>([]);
   const [loading, setLoading] = useState(false);
   const [conversationId, setConversationId] = useState<string | null>(null);
@@ -160,6 +172,9 @@ export function useChat(): UseChatReturn {
                 if (doneEvent.conversationId) {
                   setConversationId(doneEvent.conversationId);
                 }
+                if (accumulatedEntries.length > 0) {
+                  onEntriesSavedRef.current?.(accumulatedEntries);
+                }
                 // Replace temp IDs with real ones
                 if (doneEvent.messageId) {
                   setMessages((prev) =>
@@ -215,5 +230,24 @@ export function useChat(): UseChatReturn {
     [conversationId, loading]
   );
 
-  return { messages, loading, sendMessage, loadHistory, conversationId };
+  const removeExtractedEntries = useCallback((ids: string[]) => {
+    if (ids.length === 0) return;
+    const idSet = new Set(ids);
+    setMessages((prev) =>
+      prev.map((m) => {
+        if (!m.extractedData?.some((e) => e.id && idSet.has(e.id))) return m;
+        const remaining = m.extractedData.filter((e) => !e.id || !idSet.has(e.id));
+        return { ...m, extractedData: remaining.length > 0 ? remaining : null };
+      })
+    );
+  }, []);
+
+  return {
+    messages,
+    loading,
+    sendMessage,
+    loadHistory,
+    conversationId,
+    removeExtractedEntries,
+  };
 }

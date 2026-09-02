@@ -28,12 +28,9 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-[var(--color-border-light)] bg-[var(--color-surface-card)]/95 backdrop-blur-md">
       <div className="flex h-14 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/chat" className="flex items-center gap-0.5 group">
+        <Link href="/log" className="flex items-center group">
           <span className="font-[family-name:var(--font-display)] text-xl font-bold tracking-tight text-teal-800 group-hover:text-teal-900 transition-colors">
-            Chew
-          </span>
-          <span className="font-[family-name:var(--font-display)] text-xl font-bold italic tracking-tight text-teal-500 group-hover:text-teal-600 transition-colors">
-            IQ
+            Pico Health
           </span>
         </Link>
 

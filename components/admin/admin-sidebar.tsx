@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Apple, Shield, Pill, Activity, FlaskConical, BookOpen, Users } from "lucide-react";
+import { Apple, Shield, BookOpen, Users } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [

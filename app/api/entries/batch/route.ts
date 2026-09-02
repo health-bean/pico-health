@@ -3,6 +3,7 @@ import { z } from "zod";
 import { db } from "@/lib/db";
 import { timelineEntries } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
+import { insightsCache } from "@/lib/cache/insights";
 import { log } from "@/lib/logger";
 
 const entrySchema = z.object({
@@ -22,6 +23,11 @@ const entrySchema = z.object({
     .string()
     .regex(/^\d{2}:\d{2}(:\d{2})?$/)
     .optional(),
+  timezone: z.string().max(50).optional(),
+  // Food-specific fields (mirrors POST /api/entries)
+  foodId: z.string().uuid().optional(),
+  portion: z.string().max(100).optional(),
+  mealType: z.enum(["breakfast", "lunch", "dinner", "snack"]).optional(),
 });
 
 const batchSchema = z.object({
@@ -29,7 +35,7 @@ const batchSchema = z.object({
 });
 
 // ── POST /api/entries/batch ──────────────────────────────────────────
-// Insert multiple timeline entries in a single transaction
+// Insert multiple timeline entries in a single statement
 
 export async function POST(request: Request) {
   try {
@@ -48,6 +54,17 @@ export async function POST(request: Request) {
       );
     }
 
+    const hasFoodFieldsOnNonFood = parsed.data.entries.some(
+      (e) =>
+        e.entryType !== "food" && (e.foodId || e.portion || e.mealType)
+    );
+    if (hasFoodFieldsOnNonFood) {
+      return NextResponse.json(
+        { error: "Food fields can only be provided for food entries" },
+        { status: 400 }
+      );
+    }
+
     const rows = parsed.data.entries.map((e) => ({
       userId: session.userId,
       entryType: e.entryType,
@@ -56,12 +73,19 @@ export async function POST(request: Request) {
       structuredContent: e.structuredContent ?? null,
       entryDate: e.entryDate,
       entryTime: e.entryTime ?? null,
+      timezone: e.timezone ?? session.timezone ?? null,
+      foodId: e.entryType === "food" ? e.foodId ?? null : null,
+      portion:
+        e.entryType === "food" ? e.portion ?? "1 serving" : null,
+      mealType: e.entryType === "food" ? e.mealType ?? null : null,
     }));
 
     const inserted = await db
       .insert(timelineEntries)
       .values(rows)
       .returning();
+
+    insightsCache.invalidatePattern(`^${session.userId}:insights:`);
 
     return NextResponse.json(
       { entries: inserted, count: inserted.length },

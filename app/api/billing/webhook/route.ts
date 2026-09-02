@@ -26,7 +26,7 @@ function tierFromPriceId(priceId: string): "basic" | "premium" {
 function getPeriodDates(sub: Stripe.Subscription) {
   const item = sub.items.data[0];
   return {
-    start: item ? new Date(item.current_period_end * 1000) : null,
+    start: item ? new Date(item.current_period_start * 1000) : null,
     end: item ? new Date(item.current_period_end * 1000) : null,
   };
 }

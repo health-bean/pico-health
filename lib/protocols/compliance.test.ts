@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { protocols, protocolRules, protocolFoodOverrides, foods, foodSubcategories, foodCategories, foodTriggerProperties } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
-describe("checkCompliance", () => {
+describe.skipIf(!process.env.RUN_DB_TESTS)("checkCompliance", () => {
   let testProtocolId: string;
   let testFoodId: string;
 

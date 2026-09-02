@@ -4,7 +4,6 @@ import { useState, useCallback } from 'react';
 import { DayHeader } from './DayHeader';
 import { JournalSummary } from './JournalSummary';
 import { LogSummary } from './LogSummary';
-import { Card } from '@/components/ui';
 import type { DayComposite } from '@/lib/insights/types';
 
 interface DayViewProps {

@@ -237,6 +237,7 @@ const createEntrySchema = z.object({
     "exposure",
     "detox",
     "exercise",
+    "energy",
     "off_protocol",
   ]),
   name: z.string().min(1).max(255),

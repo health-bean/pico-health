@@ -14,14 +14,28 @@ import { cn } from "@/lib/utils";
 
 type ToastVariant = "success" | "error" | "info";
 
+interface ToastAction {
+  label: string;
+  onClick: () => void;
+}
+
+interface ToastOptions {
+  /** Optional inline action (e.g. "Undo"). Clicking it dismisses the toast. */
+  action?: ToastAction;
+  /** Auto-dismiss delay in ms. Defaults to 4000, or 6000 when an action is present. */
+  duration?: number;
+}
+
 interface Toast {
   id: string;
   message: string;
   variant: ToastVariant;
+  action?: ToastAction;
+  duration: number;
 }
 
 interface ToastContextValue {
-  toast: (message: string, variant?: ToastVariant) => void;
+  toast: (message: string, variant?: ToastVariant, options?: ToastOptions) => void;
 }
 
 const ToastContext = createContext<ToastContextValue | null>(null);
@@ -40,12 +54,12 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
   useEffect(() => {
     timerRef.current = setTimeout(() => {
       onDismiss(t.id);
-    }, 4000);
+    }, t.duration);
 
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [t.id, onDismiss]);
+  }, [t.id, t.duration, onDismiss]);
 
   return (
     <div
@@ -57,6 +71,17 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
       )}
     >
       <span className="flex-1">{t.message}</span>
+      {t.action && (
+        <button
+          onClick={() => {
+            t.action?.onClick();
+            onDismiss(t.id);
+          }}
+          className="shrink-0 -my-1 min-h-[36px] rounded-lg bg-white/15 px-3 text-sm font-semibold hover:bg-white/25 transition-colors cursor-pointer"
+        >
+          {t.action.label}
+        </button>
+      )}
       <button
         onClick={() => onDismiss(t.id)}
         className="shrink-0 rounded-lg p-0.5 opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
@@ -75,17 +100,21 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
-  const addToast = useCallback((message: string, variant: ToastVariant = "info") => {
-    const id = `toast-${++toastCounter}`;
-    setToasts((prev) => [...prev, { id, message, variant }]);
-  }, []);
+  const addToast = useCallback(
+    (message: string, variant: ToastVariant = "info", options?: ToastOptions) => {
+      const id = `toast-${++toastCounter}`;
+      const duration = options?.duration ?? (options?.action ? 6000 : 4000);
+      setToasts((prev) => [...prev, { id, message, variant, action: options?.action, duration }]);
+    },
+    []
+  );
 
   return (
     <ToastContext.Provider value={{ toast: addToast }}>
       {children}
 
       {toasts.length > 0 && (
-        <div className="fixed top-4 right-4 z-50 flex flex-col gap-2 w-80">
+        <div className="fixed bottom-24 left-4 right-4 z-50 flex flex-col gap-2 md:bottom-auto md:left-auto md:top-4 md:w-80">
           {toasts.map((t) => (
             <ToastItem key={t.id} toast={t} onDismiss={dismiss} />
           ))}

@@ -127,9 +127,9 @@ export function ExerciseQuickAdd({ onSuccess, onCancel }: ExerciseQuickAddProps)
       // If energyAfter is provided, create a separate energy level entry
       if (formData.energyAfter) {
         const energyPayload = {
-          entryType: "supplement", // Using supplement as a placeholder for energy tracking
+          entryType: "energy",
           name: "Energy Level",
-          severity: parseInt(formData.energyAfter, 10),
+          energyLevel: parseInt(formData.energyAfter, 10),
           entryDate,
           entryTime,
           structuredContent: { 

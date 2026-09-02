@@ -68,12 +68,11 @@ export function SymptomPicker({
             <div key={s.id} className="flex items-center gap-1">
               <button
                 onClick={() => onSelect("symptom", s.name)}
-                className={`flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                className={`flex min-h-9 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
                   isSelected
                     ? "border-red-300 bg-red-50 text-red-700"
                     : "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50"
                 }`}
-                style={{ minHeight: "36px" }}
               >
                 <Frown className="h-3.5 w-3.5" />
                 {s.name}

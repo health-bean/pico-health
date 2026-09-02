@@ -12,7 +12,7 @@ import {
 } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
-describe("searchFoods", () => {
+describe.skipIf(!process.env.RUN_DB_TESTS)("searchFoods", () => {
   let testUserId: string;
   let testFoodId: string;
   let testCustomFoodId: string;

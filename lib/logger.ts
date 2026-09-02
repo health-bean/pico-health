@@ -41,7 +41,7 @@ function serialize(entry: LogEntry): string {
     return JSON.stringify(entry);
   }
   // Dev: human-readable
-  const { level, msg, ts, ...rest } = entry;
+  const { level, msg, ...rest } = entry;
   const meta = Object.keys(rest).length > 0 ? ` ${JSON.stringify(rest)}` : "";
   return `[${level.toUpperCase()}] ${msg}${meta}`;
 }

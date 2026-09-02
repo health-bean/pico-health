@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { protocols, protocolRules } from "@/lib/db/schema";
-import { eq, asc, and, sql } from "drizzle-orm";
+import { eq, asc, sql } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
 

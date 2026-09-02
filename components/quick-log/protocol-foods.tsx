@@ -14,9 +14,25 @@ interface ProtocolFood {
 
 interface ProtocolFoodsProps {
   protocolId: string | null;
-  onSelect: (entryType: EntryType, name: string) => void;
+  onSelect: (entryType: EntryType, name: string, foodId?: string) => void;
   selectedNames: Set<string>;
 }
+
+// /api/foods/search is a trigram similarity search (min 2 chars, max 10
+// results, no wildcard), so we seed it with a handful of staple queries and
+// merge the results to build a "common foods" list.
+const STAPLE_QUERIES = [
+  "chicken",
+  "salmon",
+  "beef",
+  "egg",
+  "rice",
+  "spinach",
+  "broccoli",
+  "carrot",
+  "apple",
+  "banana",
+];
 
 export function ProtocolFoods({
   protocolId,
@@ -35,18 +51,32 @@ export function ProtocolFoods({
     async function load() {
       try {
         // Get common foods with protocol status
-        const res = await fetch(
-          `/api/foods/search?q=%&protocol=${protocolId}`
+        const responses = await Promise.all(
+          STAPLE_QUERIES.map((q) => {
+            const params = new URLSearchParams({
+              query: q,
+              limit: "5",
+              protocolId: protocolId as string,
+            });
+            return fetch(`/api/foods/search?${params.toString()}`)
+              .then((res) => (res.ok ? res.json() : { foods: [] }))
+              .catch(() => ({ foods: [] }));
+          })
         );
-        if (res.ok) {
-          const data = await res.json();
-          // Filter to allowed foods only
-          const allowed = (data.foods ?? []).filter(
-            (f: ProtocolFood) =>
-              f.protocolStatus === "allowed" || f.protocolStatus === null
-          );
-          setFoods(allowed);
+
+        // Merge, dedupe by id, filter to allowed foods only
+        const seen = new Set<string>();
+        const allowed: ProtocolFood[] = [];
+        for (const data of responses) {
+          for (const f of (data.foods ?? []) as ProtocolFood[]) {
+            if (seen.has(f.id)) continue;
+            seen.add(f.id);
+            if (f.protocolStatus === "allowed" || f.protocolStatus === null) {
+              allowed.push(f);
+            }
+          }
         }
+        setFoods(allowed);
       } catch {
         // ignore
       } finally {
@@ -88,13 +118,12 @@ export function ProtocolFoods({
                 return (
                   <button
                     key={food.id}
-                    onClick={() => onSelect("food", food.displayName)}
-                    className={`flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                    onClick={() => onSelect("food", food.displayName, food.id)}
+                    className={`flex min-h-9 shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
                       isSelected
                         ? "border-emerald-300 bg-emerald-50 text-emerald-700"
                         : "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50"
                     }`}
-                    style={{ minHeight: "36px" }}
                   >
                     {isSelected ? (
                       <Check className="h-3.5 w-3.5" />

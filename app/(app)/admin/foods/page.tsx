@@ -67,9 +67,10 @@ export default function AdminFoodsPage() {
       if (categoryFilter) params.set("category", categoryFilter);
 
       const res = await fetch(`/api/admin/foods?${params}`);
+      if (!res.ok) return;
       const data = await res.json();
-      setFoods(data.foods);
-      setCategories(data.categories);
+      setFoods(data.foods ?? []);
+      setCategories(data.categories ?? []);
     } catch (err) {
       console.error("Failed to fetch foods:", err);
     } finally {
@@ -118,7 +119,7 @@ export default function AdminFoodsPage() {
       {/* Filters */}
       <div className="mb-4 flex items-center gap-3">
         <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -tranwarm-y-1/2 text-warm-400" />
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-warm-400" />
           <input
             type="text"
             value={search}
@@ -128,7 +129,7 @@ export default function AdminFoodsPage() {
           />
         </div>
         <div className="relative">
-          <Filter className="absolute left-3 top-1/2 h-4 w-4 -tranwarm-y-1/2 text-warm-400" />
+          <Filter className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-warm-400" />
           <select
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}

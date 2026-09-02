@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -14,10 +14,11 @@ import {
   Activity,
   AlertTriangle,
 } from "lucide-react";
-import { Badge, Spinner, EmptyState } from "@/components/ui";
+import { Badge, Spinner, EmptyState, useToast } from "@/components/ui";
 import { QuickAddSheet } from "@/components/quick-log/quick-add-sheet";
 import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard";
 import { FoodTimelineCard } from "@/components/timeline/FoodTimelineCard";
+import { EntryActions } from "@/components/timeline/EntryActions";
 import { cn } from "@/lib/utils";
 import type { TimelineEntry, EntryType, ExerciseType, IntensityLevel } from "@/types";
 
@@ -69,12 +70,48 @@ function formatTime(time: string | null): string {
   }
 }
 
+/**
+ * Rebuild a POST /api/entries payload from a deleted entry so Undo can
+ * re-create it. Only includes fields the create route accepts for the type.
+ */
+function toCreatePayload(entry: TimelineEntry): Record<string, unknown> {
+  const payload: Record<string, unknown> = {
+    entryType: entry.entryType,
+    name: entry.name,
+    entryDate: entry.entryDate,
+  };
+  if (entry.severity != null) payload.severity = entry.severity;
+  if (entry.structuredContent) payload.structuredContent = entry.structuredContent;
+  if (entry.entryTime) payload.entryTime = entry.entryTime;
+  if (entry.energyLevel != null) payload.energyLevel = entry.energyLevel;
+
+  if (entry.entryType === "exercise") {
+    if (entry.exerciseType) payload.exerciseType = entry.exerciseType;
+    if (entry.durationMinutes != null) payload.durationMinutes = entry.durationMinutes;
+    if (entry.intensityLevel) payload.intensityLevel = entry.intensityLevel;
+  }
+  if (entry.entryType === "food") {
+    if (entry.foodId) payload.foodId = entry.foodId;
+    if (entry.portion) payload.portion = entry.portion;
+    if (entry.mealType) payload.mealType = entry.mealType;
+  }
+  if (entry.entryType === "off_protocol" && entry.mealType) {
+    payload.mealType = entry.mealType;
+  }
+  return payload;
+}
+
 export default function TimelinePage() {
+  const { toast } = useToast();
   const [date, setDate] = useState(() => formatDate(new Date()));
   const [entries, setEntries] = useState<TimelineEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [showEnergyOnly, setShowEnergyOnly] = useState(false);
+  const dateRef = useRef(date);
+  useEffect(() => {
+    dateRef.current = date;
+  }, [date]);
 
   const fetchEntries = useCallback(async (d: string) => {
     setLoading(true);
@@ -94,6 +131,51 @@ export default function TimelinePage() {
   useEffect(() => {
     fetchEntries(date);
   }, [date, fetchEntries]);
+
+  const restoreEntry = useCallback(
+    async (entry: TimelineEntry) => {
+      try {
+        const res = await fetch("/api/entries", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(toCreatePayload(entry)),
+        });
+        if (!res.ok) throw new Error(`Restore failed (${res.status})`);
+        toast("Entry restored", "success");
+        // Refetch so the restored entry shows with its new id.
+        fetchEntries(dateRef.current);
+      } catch (err) {
+        console.error("Failed to restore entry:", err);
+        toast("Couldn't restore entry", "error");
+      }
+    },
+    [fetchEntries, toast]
+  );
+
+  const deleteEntry = useCallback(
+    async (entry: TimelineEntry) => {
+      // Optimistic remove
+      setEntries((prev) => prev.filter((e) => e.id !== entry.id));
+
+      try {
+        const res = await fetch(`/api/entries/${entry.id}`, { method: "DELETE" });
+        if (!res.ok && res.status !== 404) {
+          throw new Error(`Delete failed (${res.status})`);
+        }
+        toast("Deleted", "info", {
+          action: { label: "Undo", onClick: () => void restoreEntry(entry) },
+        });
+      } catch (err) {
+        console.error("Failed to delete entry:", err);
+        // Roll back the optimistic removal
+        setEntries((prev) =>
+          prev.some((e) => e.id === entry.id) ? prev : [...prev, entry]
+        );
+        toast("Couldn't delete entry", "error");
+      }
+    },
+    [restoreEntry, toast]
+  );
 
   function shiftDate(days: number) {
     const d = new Date(date + "T12:00:00");
@@ -190,6 +272,7 @@ export default function TimelinePage() {
                       : null
                   }
                   entryTime={entry.entryTime}
+                  onDelete={() => deleteEntry(entry)}
                 />
               );
             }
@@ -205,6 +288,7 @@ export default function TimelinePage() {
                   entryTime={entry.entryTime}
                   food={entry.food}
                   protocolViolations={entry.protocolViolations}
+                  onDelete={() => deleteEntry(entry)}
                 />
               );
             }
@@ -241,6 +325,8 @@ export default function TimelinePage() {
                     {entry.severity}/10
                   </span>
                 )}
+
+                <EntryActions name={entry.name} onDelete={() => deleteEntry(entry)} />
               </div>
             );
           })}
@@ -257,7 +343,11 @@ export default function TimelinePage() {
       </button>
 
       {/* Quick-add bottom sheet */}
-      <QuickAddSheet open={sheetOpen} onClose={() => setSheetOpen(false)} />
+      <QuickAddSheet
+        open={sheetOpen}
+        onClose={() => setSheetOpen(false)}
+        onSaved={() => fetchEntries(dateRef.current)}
+      />
     </div>
   );
 }

@@ -4,7 +4,6 @@ import type {
   AIMessage,
   AITool,
   AIResponse,
-  AIContentPart,
   AIToolCall,
 } from "./types";
 

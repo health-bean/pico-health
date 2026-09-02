@@ -8,6 +8,30 @@ import type {
   AITextPart,
 } from "./providers/types";
 
+const RETRYABLE_STATUS = new Set([408, 409, 429, 500, 502, 503, 504, 529]);
+const RETRY_DELAYS_MS = [500, 1500];
+
+function isRetryable(err: unknown): boolean {
+  const e = err as { status?: number; message?: string } | null;
+  if (e?.status && RETRYABLE_STATUS.has(e.status)) return true;
+  return /overloaded|rate limit|429|529|ECONNRESET|fetch failed/i.test(e?.message ?? "");
+}
+
+/** Retry transient provider failures (429/5xx/overloaded) with a short backoff. */
+async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
+  let lastErr: unknown;
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      lastErr = err;
+      if (attempt === RETRY_DELAYS_MS.length || !isRetryable(err)) throw err;
+      await new Promise((r) => setTimeout(r, RETRY_DELAYS_MS[attempt]));
+    }
+  }
+  throw lastErr;
+}
+
 interface ToolExecutorResult {
   result: unknown;
   entries?: unknown[];
@@ -60,13 +84,15 @@ export async function runConversationLoop(
   let finalText = "";
 
   for (let round = 0; round < maxRounds; round++) {
-    const response = await provider.chat({
-      model,
-      systemPrompt,
-      messages: currentMessages,
-      tools,
-      maxTokens,
-    });
+    const response = await withRetry(() =>
+      provider.chat({
+        model,
+        systemPrompt,
+        messages: currentMessages,
+        tools,
+        maxTokens,
+      })
+    );
 
     // Accumulate text
     if (response.text) {

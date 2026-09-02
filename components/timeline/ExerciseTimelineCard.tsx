@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui";
 import { cn } from "@/lib/utils";
+import { EntryActions } from "./EntryActions";
 import type { ExerciseType, IntensityLevel } from "@/types";
 
 interface ExerciseTimelineCardProps {
@@ -21,6 +22,8 @@ interface ExerciseTimelineCardProps {
   energyAfter?: number | null;
   notes?: string | null;
   entryTime?: string | null;
+  /** When provided, renders a trailing actions button with Delete. */
+  onDelete?: () => void;
 }
 
 const EXERCISE_ICONS: Record<ExerciseType, typeof Activity> = {
@@ -89,6 +92,7 @@ export function ExerciseTimelineCard({
   energyAfter,
   notes,
   entryTime,
+  onDelete,
 }: ExerciseTimelineCardProps) {
   const Icon = EXERCISE_ICONS[exerciseType] || Activity;
   const exerciseLabel = EXERCISE_LABELS[exerciseType] || "Exercise";
@@ -185,6 +189,8 @@ export function ExerciseTimelineCard({
           <p className="mt-2 text-xs text-warm-500 line-clamp-2">{notes}</p>
         )}
       </div>
+
+      {onDelete && <EntryActions name={exerciseLabel} onDelete={onDelete} />}
     </div>
   );
 }

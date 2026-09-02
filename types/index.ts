@@ -69,6 +69,8 @@ export interface Message {
 }
 
 export interface ExtractedEntry {
+  /** Timeline entry id once persisted (present for entries saved from chat). */
+  id?: string;
   entryType: EntryType;
   name: string;
   severity?: number;

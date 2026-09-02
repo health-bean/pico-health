@@ -51,7 +51,7 @@ export function TriggerCell({ value, property, options, onChange }: TriggerCellP
   if (editing) {
     return (
       <div ref={ref} className="relative">
-        <div className="absolute left-1/2 top-0 z-20 -tranwarm-x-1/2 rounded-md border border-warm-200 bg-[var(--color-surface-card)] shadow-lg">
+        <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 rounded-md border border-warm-200 bg-[var(--color-surface-card)] shadow-lg">
           {options.map((opt) => {
             const optColor = LEVEL_COLORS[opt] ?? "";
             const optLabel = DISPLAY_LABELS[opt] ?? opt;

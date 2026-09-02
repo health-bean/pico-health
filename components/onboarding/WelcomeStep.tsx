@@ -14,9 +14,7 @@ export function WelcomeStep({ onNext }: WelcomeStepProps) {
       </div>
 
       <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-text-primary)] mb-2">
-        Welcome to{" "}
-        <span className="text-teal-800">Chew</span>
-        <span className="text-teal-500 italic">IQ</span>
+        Welcome to <span className="text-teal-800">Pico Health</span>
       </h1>
 
       <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed max-w-xs mb-8">

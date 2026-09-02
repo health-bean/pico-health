@@ -6,6 +6,8 @@ import type { Food } from "@/types";
 
 interface FoodSearchInputProps {
   onSelect: (food: Food) => void;
+  /** Called whenever the typed query changes (including resets to ""). */
+  onQueryChange?: (query: string) => void;
   protocolId?: string;
   placeholder?: string;
   autoFocus?: boolean;
@@ -13,11 +15,22 @@ interface FoodSearchInputProps {
 
 export function FoodSearchInput({
   onSelect,
+  onQueryChange,
   protocolId,
   placeholder = "Search for a food...",
   autoFocus = false,
 }: FoodSearchInputProps) {
   const [query, setQuery] = useState("");
+
+  // Mirror query to the parent without making the effect depend on an
+  // inline callback identity.
+  const onQueryChangeRef = useRef(onQueryChange);
+  useEffect(() => {
+    onQueryChangeRef.current = onQueryChange;
+  }, [onQueryChange]);
+  useEffect(() => {
+    onQueryChangeRef.current?.(query);
+  }, [query]);
   const [results, setResults] = useState<Food[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);

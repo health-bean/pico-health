@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button, Card, Select, Spinner, Progress } from "@/components/ui";
 import { useSession } from "@/hooks/use-session";
-import { ChevronRight, CreditCard } from "lucide-react";
+import Link from "next/link";
+import { ChevronRight, CreditCard, FlaskConical } from "lucide-react";
 import type { Protocol } from "@/types";
 
 interface SubscriptionInfo {
@@ -306,6 +307,23 @@ export default function SettingsPage() {
         ) : (
           <p className="text-sm text-warm-500">Not signed in</p>
         )}
+      </Card>
+
+      {/* Reintroductions */}
+      <Card className="mb-4">
+        <Link
+          href="/reintroductions"
+          className="flex min-h-11 items-center justify-between gap-3 -m-1 p-1 rounded-md transition-colors hover:bg-[var(--color-surface)]"
+        >
+          <span className="flex items-center gap-3">
+            <FlaskConical className="h-5 w-5 text-teal-600" />
+            <span>
+              <span className="block text-sm font-medium text-warm-900">Reintroductions</span>
+              <span className="block text-xs text-warm-500">Test foods back in and record how you react</span>
+            </span>
+          </span>
+          <ChevronRight className="h-4 w-4 text-warm-400" />
+        </Link>
       </Card>
 
       {/* Billing */}

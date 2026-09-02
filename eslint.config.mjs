@@ -1,29 +1,24 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+export default defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  globalIgnores([".next/**", "out/**", "ios/**", "android/**", "node_modules/**", ".impeccable/**"]),
   {
-    ignores: [
-      "**/*.test.ts",
-      "**/*.test.tsx",
-      "**/*.example.tsx",
-      "**/*.example.ts",
-      "lib/correlations/test-*.ts",
-      "lib/correlations/verify-*.ts",
-      "archive/**",
-      ".next/**",
-      "node_modules/**",
-    ],
+    // React Compiler rules (new in eslint-plugin-react-hooks 6+). Real cleanups, but a
+    // cross-cutting refactor; surface them as warnings until that pass is scheduled.
+    rules: {
+      "react-hooks/set-state-in-effect": "warn",
+      "react-hooks/refs": "warn",
+      "react-hooks/immutability": "warn",
+      "react-hooks/purity": "warn",
+    },
   },
-];
-
-export default eslintConfig;
+  {
+    // Test doubles and one-off maintenance scripts legitimately reach for `any`.
+    files: ["**/*.test.ts", "**/*.test.tsx", "scripts/**"],
+    rules: { "@typescript-eslint/no-explicit-any": "off" },
+  },
+]);

@@ -3,7 +3,7 @@ import { analyzeSingleFactors } from './single-factor';
 import { analyzeMultiFactors } from './n-factor';
 import { computeProgress } from './progress';
 import { detectNewAlerts } from './alerts';
-import type { InsightsOutput, SingleFactorResult, MultiFactorResult, PropertyPattern } from './types';
+import type { InsightsOutput, SingleFactorResult, PropertyPattern } from './types';
 import { insightKey } from './types';
 import { db } from '@/lib/db';
 import { insightSnapshots, insightAlerts } from '@/lib/db/schema';

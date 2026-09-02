@@ -3,6 +3,7 @@
 import { Apple, AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui";
 import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
+import { EntryActions } from "./EntryActions";
 import { useState } from "react";
 import type { FoodTriggerProperties } from "@/types";
 
@@ -19,6 +20,8 @@ interface FoodTimelineCardProps {
     isCustom: boolean;
   };
   protocolViolations?: string[];
+  /** When provided, renders a trailing actions button with Delete. */
+  onDelete?: () => void;
 }
 
 function formatTime(time: string | null | undefined): string {
@@ -48,6 +51,7 @@ export function FoodTimelineCard({
   entryTime,
   food,
   protocolViolations = [],
+  onDelete,
 }: FoodTimelineCardProps) {
   const [showProperties, setShowProperties] = useState(false);
   
@@ -133,6 +137,8 @@ export function FoodTimelineCard({
             </button>
           )}
         </div>
+
+        {onDelete && <EntryActions name={displayName} onDelete={onDelete} />}
       </div>
 
       {/* Expandable properties section */}

@@ -3,7 +3,7 @@ import { db } from "@/lib/db";
 import { timelineEntries, profiles } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 
-describe("Food Logging with Database References", () => {
+describe.skipIf(!process.env.RUN_DB_TESTS)("Food Logging with Database References", () => {
   let testUserId: string;
 
   beforeAll(async () => {
@@ -144,7 +144,7 @@ describe("Food Logging with Database References", () => {
   });
 });
 
-describe("Reintroduction Tracking Integration", () => {
+describe.skipIf(!process.env.RUN_DB_TESTS)("Reintroduction Tracking Integration", () => {
   let testUserId: string;
   let testProtocolId: string;
   let testFoodId: string;

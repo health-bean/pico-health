@@ -33,7 +33,7 @@ export default function LoginPage() {
         return;
       }
 
-      router.push(data.user.isAdmin ? "/admin" : "/chat");
+      router.push(data.user.isAdmin ? "/admin" : "/log");
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -158,7 +158,7 @@ export default function LoginPage() {
         </Card>
 
         <p className="mt-8 text-center text-sm text-[var(--color-text-muted)]">
-          Have an invite code?{" "}
+          New here?{" "}
           <Link
             href="/signup"
             className="text-teal-600 hover:text-teal-700 font-medium transition-colors"

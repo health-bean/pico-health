@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
-import { eq, and, asc } from "drizzle-orm";
+import { eq, and, asc, desc } from "drizzle-orm";
+
+/** Only the most recent N messages are sent to the model, so long-lived daily conversations stay fast and bounded. */
+const CHAT_HISTORY_WINDOW = 40;
 import { z } from "zod";
 import { db } from "@/lib/db";
 import {
@@ -105,7 +108,9 @@ export async function POST(request: Request) {
       })
       .from(messages)
       .where(eq(messages.conversationId, conversationId))
-      .orderBy(asc(messages.createdAt));
+      .orderBy(desc(messages.createdAt))
+      .limit(CHAT_HISTORY_WINDOW)
+      .then((rows) => rows.reverse());
 
     // ── Build system prompt with user's protocol ─────────────────────
     const [user] = await db
