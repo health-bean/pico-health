@@ -270,7 +270,9 @@ export default function TimelinePage() {
   const hasPending = sessions.length > 0;
 
   return (
-    <div className="mx-auto max-w-2xl px-4 py-6 pb-36 md:pb-28 animate-fade-in-up">
+    // Opacity-only entrance: a transform on this root would break `position:
+    // fixed` for the capture bar, the Quick Add sheet, and entry menus inside.
+    <div className="mx-auto max-w-2xl px-4 py-6 pb-36 md:pb-28 animate-fade-in">
       <ProgressStrip />
 
       {/* Date nav */}

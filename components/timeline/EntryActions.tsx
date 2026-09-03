@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useLayoutEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { MoreHorizontal, Trash2, type LucideIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -18,24 +19,63 @@ interface EntryActionsProps {
   onDelete: () => void;
 }
 
+/** Approximate menu height: 44px per item + separator + padding. Used only to decide flip direction. */
+const ITEM_H = 44;
+const GAP = 4;
+/** Keep clear of the docked capture bar / tab bar at the bottom of the viewport. */
+const BOTTOM_RESERVED = 120;
+
+type Placement = { top?: number; bottom?: number; right: number };
+
 /**
- * Trailing "..." button on a timeline card. Opens a compact menu anchored
- * to the button (not a modal) with the card's edit actions and Delete.
- * Deletion is undoable via toast, so there is no confirm step.
+ * Trailing "..." button on a timeline card. Opens a compact menu anchored to
+ * the button with the card's edit actions and Delete. The menu is rendered
+ * in a portal with fixed positioning so it is never clipped by card stacking
+ * contexts or covered by the docked capture bar, and it flips upward when
+ * there is no room below. Deletion is undoable via toast, so no confirm step.
  */
 export function EntryActions({ name, actions = [], onDelete }: EntryActionsProps) {
   const [open, setOpen] = useState(false);
-  const rootRef = useRef<HTMLDivElement>(null);
+  const [placement, setPlacement] = useState<Placement | null>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const menuId = useId();
 
-  // Close on outside pointer-down or Escape; focus the first item on open.
+  // Position relative to the button; flip above if the menu would run into
+  // the bottom chrome. Re-measured on scroll/resize while open.
+  useLayoutEffect(() => {
+    if (!open) return;
+
+    function measure() {
+      const rect = buttonRef.current?.getBoundingClientRect();
+      if (!rect) return;
+      const estimatedHeight = (actions.length + 1) * ITEM_H + (actions.length > 0 ? 9 : 0) + 8;
+      const spaceBelow = window.innerHeight - BOTTOM_RESERVED - rect.bottom;
+      const right = Math.max(8, window.innerWidth - rect.right);
+      if (spaceBelow >= estimatedHeight || rect.top < estimatedHeight) {
+        setPlacement({ top: rect.bottom + GAP, right });
+      } else {
+        setPlacement({ bottom: window.innerHeight - rect.top + GAP, right });
+      }
+    }
+
+    measure();
+    window.addEventListener("scroll", measure, true);
+    window.addEventListener("resize", measure);
+    return () => {
+      window.removeEventListener("scroll", measure, true);
+      window.removeEventListener("resize", measure);
+    };
+  }, [open, actions.length]);
+
+  // Close on outside pointer-down or Escape; arrow keys move between items.
   useEffect(() => {
     if (!open) return;
 
     function onPointerDown(e: PointerEvent) {
-      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+      const t = e.target as Node;
+      if (menuRef.current?.contains(t) || buttonRef.current?.contains(t)) return;
+      setOpen(false);
     }
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape") {
@@ -79,13 +119,13 @@ export function EntryActions({ name, actions = [], onDelete }: EntryActionsProps
     "flex min-h-11 w-full items-center gap-2.5 px-3 text-left text-sm transition-colors focus-visible:outline-none focus-visible:bg-teal-50";
 
   return (
-    <div ref={rootRef} className="relative -mr-2 -my-1 shrink-0">
+    <>
       <button
         ref={buttonRef}
         type="button"
         onClick={() => setOpen((v) => !v)}
         className={cn(
-          "flex h-11 w-11 items-center justify-center rounded-lg text-[var(--color-text-muted)] transition-all duration-200 cursor-pointer hover:bg-teal-50 hover:text-teal-600",
+          "-mr-2 -my-1 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-[var(--color-text-muted)] transition-all duration-200 cursor-pointer hover:bg-teal-50 hover:text-teal-600",
           open && "bg-teal-50 text-teal-600"
         )}
         aria-label={`Actions for ${name}`}
@@ -96,47 +136,51 @@ export function EntryActions({ name, actions = [], onDelete }: EntryActionsProps
         <MoreHorizontal className="h-5 w-5" />
       </button>
 
-      {open && (
-        <div
-          ref={menuRef}
-          id={menuId}
-          role="menu"
-          aria-label={`Actions for ${name}`}
-          className={cn(
-            "absolute right-0 top-full z-20 mt-1 min-w-44 overflow-hidden rounded-xl py-1",
-            "border border-[var(--color-border-light)] bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]",
-            "animate-in fade-in zoom-in-95 duration-150"
-          )}
-        >
-          {actions.map((action) => {
-            const Icon = action.icon;
-            return (
-              <button
-                key={action.label}
-                type="button"
-                role="menuitem"
-                onClick={() => pick(action.onSelect)}
-                className={cn(itemClass, "text-[var(--color-text-primary)] hover:bg-teal-50")}
-              >
-                <Icon className="h-4 w-4 text-[var(--color-text-muted)]" aria-hidden />
-                {action.label}
-              </button>
-            );
-          })}
-          {actions.length > 0 && (
-            <div className="my-1 border-t border-[var(--color-border-light)]" role="separator" />
-          )}
-          <button
-            type="button"
-            role="menuitem"
-            onClick={() => pick(onDelete)}
-            className={cn(itemClass, "text-[var(--color-danger)] hover:bg-red-50")}
+      {open &&
+        placement &&
+        createPortal(
+          <div
+            ref={menuRef}
+            id={menuId}
+            role="menu"
+            aria-label={`Actions for ${name}`}
+            style={placement}
+            className={cn(
+              "fixed z-[60] min-w-44 overflow-hidden rounded-xl py-1",
+              "border border-[var(--color-border-light)] bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]",
+              "animate-in fade-in zoom-in-95 duration-150"
+            )}
           >
-            <Trash2 className="h-4 w-4" aria-hidden />
-            Delete
-          </button>
-        </div>
-      )}
-    </div>
+            {actions.map((action) => {
+              const Icon = action.icon;
+              return (
+                <button
+                  key={action.label}
+                  type="button"
+                  role="menuitem"
+                  onClick={() => pick(action.onSelect)}
+                  className={cn(itemClass, "text-[var(--color-text-primary)] hover:bg-teal-50")}
+                >
+                  <Icon className="h-4 w-4 text-[var(--color-text-muted)]" aria-hidden />
+                  {action.label}
+                </button>
+              );
+            })}
+            {actions.length > 0 && (
+              <div className="my-1 border-t border-[var(--color-border-light)]" role="separator" />
+            )}
+            <button
+              type="button"
+              role="menuitem"
+              onClick={() => pick(onDelete)}
+              className={cn(itemClass, "text-[var(--color-danger)] hover:bg-red-50")}
+            >
+              <Trash2 className="h-4 w-4" aria-hidden />
+              Delete
+            </button>
+          </div>,
+          document.body
+        )}
+    </>
   );
 }
