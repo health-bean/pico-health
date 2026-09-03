@@ -56,10 +56,13 @@ export default function PrivacyPage() {
       <h2>3. AI processing</h2>
       <p>
         When you use capture or chat, the content you submit (text, and photos of meals) is
-        sent to our AI providers — currently Anthropic and Google — to be turned into
-        structured entries or assistant responses. These providers process the content to
-        provide the feature under agreements that restrict their use of it. Don&rsquo;t
-        include information in chat or photos that you don&rsquo;t want processed this way.
+        sent to our AI provider — Anthropic — to be turned into structured entries or
+        assistant responses. Under Anthropic&rsquo;s commercial API terms, that content is{" "}
+        <strong>not used to train their models</strong>; it may be retained briefly for
+        trust-and-safety monitoring and is then deleted. We send only the content itself —
+        never your name, email, or account identity alongside it. Even so, don&rsquo;t
+        include things in chat or meal photos that you wouldn&rsquo;t want processed (for
+        example, other people&rsquo;s faces or documents in the background of a photo).
       </p>
 
       <h2>4. Who processes data on our behalf</h2>
@@ -67,7 +70,7 @@ export default function PrivacyPage() {
       <ul>
         <li><strong>Vercel</strong> — application hosting</li>
         <li><strong>Supabase</strong> — database and authentication</li>
-        <li><strong>Anthropic and Google</strong> — AI processing (Section 3)</li>
+        <li><strong>Anthropic</strong> — AI processing (Section 3)</li>
         <li><strong>Stripe</strong> — payments</li>
         <li><strong>Upstash</strong> — rate limiting (technical identifiers only)</li>
       </ul>

@@ -105,7 +105,7 @@ export class AnthropicProvider implements AIProvider {
 
   constructor(apiKey?: string, defaultModel?: string) {
     this.client = new Anthropic({ apiKey });
-    this.defaultModel = defaultModel ?? "claude-sonnet-4-20250514";
+    this.defaultModel = defaultModel ?? process.env.ANTHROPIC_MODEL ?? "claude-opus-5";
   }
 
   async chat(params: {

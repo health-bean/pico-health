@@ -9,9 +9,11 @@ import { getProviderById, isProviderAvailable } from "./providers/registry";
  *   AI_ROUTER_DAILY_CHAT=anthropic
  *   AI_ROUTER_HEALTH_INSIGHTS=gemini
  */
+// All tasks route to Anthropic (decision 2026-09-03: single AI provider,
+// single privacy story). Gemini remains env-switchable per task if ever needed.
 const DEFAULT_ROUTING: Record<AITask, string> = {
-  "daily-chat":          "gemini",
-  "food-photo-parse":    "gemini",
+  "daily-chat":          "anthropic",
+  "food-photo-parse":    "anthropic",
   "admin-chat":          "anthropic",
   "health-insights":     "anthropic",
   "protocol-reasoning":  "anthropic",
@@ -55,6 +57,6 @@ export function getProvider(task: AITask): AIProvider {
   }
 
   throw new Error(
-    `No AI provider available for task "${task}". Set ANTHROPIC_API_KEY or GOOGLE_AI_API_KEY.`
+    `No AI provider available for task "${task}". Set ANTHROPIC_API_KEY.`
   );
 }
