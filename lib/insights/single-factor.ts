@@ -6,6 +6,16 @@ const MAX_FACTOR_FREQUENCY = 0.70; // Skip factors present on >70% of days — t
 const MIN_WITHOUT_DAYS = 5; // Need at least 5 days WITHOUT the factor for a meaningful base rate
 const MAX_RATE_MULTIPLIER = 5; // Cap to avoid infinite/huge multipliers from tiny base rates
 
+/** Labels for clarifier 'additions' values (see lib/clarifiers/rules.ts). */
+const ADDITION_LABELS: Record<string, string> = {
+  paprika_chili: 'Paprika / chili',
+  black_pepper: 'Black pepper',
+  cumin_coriander: 'Cumin / coriander',
+  seed_oil: 'Seed oil',
+  onion: 'Onion',
+  garlic: 'Garlic',
+};
+
 export function extractFactorsFromDay(day: DayComposite): Factor[] {
   const factors: Factor[] = [];
 
@@ -23,6 +33,22 @@ export function extractFactorsFromDay(day: DayComposite): Factor[] {
         category: 'preparation',
         key: `preparation:${prep}`,
         label: `${capitalize(prep)} food`,
+      });
+    }
+    // Clarifier answers. 'usual' quantity is the baseline, not a signal.
+    if (food.quantity && food.quantity !== 'usual') {
+      factors.push({
+        category: 'quantity',
+        key: `quantity:${food.quantity}`,
+        label: food.quantity === 'more' ? 'Larger portion than usual' : 'Smaller portion than usual',
+      });
+    }
+    for (const add of food.additions ?? []) {
+      if (add === 'plain' || add === 'neither') continue;
+      factors.push({
+        category: 'addition',
+        key: `addition:${add}`,
+        label: ADDITION_LABELS[add] ?? capitalize(add.replace(/_/g, ' ')),
       });
     }
   }

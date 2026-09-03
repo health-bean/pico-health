@@ -13,7 +13,24 @@ export type EntryPatch = {
   mealType?: string;
   entryTime?: string;
   severity?: number;
+  /** Clarifier fields (food only) — merged into structuredContent server-side. */
+  preparation?: string[];
+  quantity?: string;
 };
+
+const PREPARATION_OPTIONS = [
+  { value: "fresh", label: "Fresh" },
+  { value: "leftover", label: "Leftover" },
+  { value: "fermented", label: "Fermented" },
+  { value: "aged", label: "Aged / cured" },
+  { value: "canned", label: "Canned" },
+] as const;
+
+const QUANTITY_OPTIONS = [
+  { value: "less", label: "A little" },
+  { value: "usual", label: "Usual" },
+  { value: "more", label: "A lot" },
+] as const;
 
 export type EntryEditorMode = "food" | "details";
 
@@ -24,6 +41,9 @@ interface EntryEditorProps {
   mealType?: string | null;
   entryTime?: string | null;
   severity?: number | null;
+  /** Current clarifier values (food only). */
+  preparation?: string[] | null;
+  quantity?: string | null;
   protocolId?: string;
   /** Resolves true when the server accepted the change. */
   onPatch: (patch: EntryPatch) => Promise<boolean>;
@@ -49,6 +69,8 @@ export function EntryEditor({
   mealType,
   entryTime,
   severity,
+  preparation,
+  quantity,
   protocolId,
   onPatch,
   onClose,
@@ -98,6 +120,43 @@ export function EntryEditor({
                   className={chip(mealType === meal)}
                 >
                   {mealLabel(meal)}
+                </button>
+              ))}
+            </div>
+          )}
+
+          {entryType === "food" && (
+            <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Preparation">
+              <span className="mr-1 text-xs text-warm-500">Prep</span>
+              {PREPARATION_OPTIONS.map((o) => {
+                const active = (preparation ?? []).includes(o.value);
+                return (
+                  <button
+                    key={o.value}
+                    type="button"
+                    onClick={() => void save("preparation", { preparation: [o.value] })}
+                    aria-pressed={active}
+                    className={chip(active)}
+                  >
+                    {o.label}
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {entryType === "food" && (
+            <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Amount">
+              <span className="mr-1 text-xs text-warm-500">Amount</span>
+              {QUANTITY_OPTIONS.map((o) => (
+                <button
+                  key={o.value}
+                  type="button"
+                  onClick={() => void save("quantity", { quantity: o.value })}
+                  aria-pressed={quantity === o.value}
+                  className={chip(quantity === o.value)}
+                >
+                  {o.label}
                 </button>
               ))}
             </div>

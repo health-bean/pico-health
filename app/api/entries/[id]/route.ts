@@ -49,6 +49,13 @@ const patchEntrySchema = z
       .optional(),
     mealType: z.enum(["breakfast", "lunch", "dinner", "snack"]).nullable().optional(),
     foodId: z.string().uuid().nullable().optional(),
+    // Clarifier fields, stored inside structuredContent (see lib/clarifiers).
+    preparation: z
+      .array(z.enum(["fresh", "leftover", "fermented", "aged", "cured", "canned", "smoked", "dried", "raw"]))
+      .max(4)
+      .optional(),
+    quantity: z.enum(["less", "usual", "more"]).optional(),
+    additions: z.array(z.string().min(1).max(40)).max(6).optional(),
   })
   .strict()
   .refine((data) => Object.keys(data).length > 0, {

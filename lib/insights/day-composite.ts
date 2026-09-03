@@ -31,10 +31,22 @@ interface ProtocolContext {
   checkCompliance: (foodId: string | null, properties: FoodProperty[]) => { status: string; violations: string[] };
 }
 
-function extractPreparation(structuredContent: Record<string, unknown> | null | undefined): string[] {
-  const raw = structuredContent?.preparation;
+function extractStringList(
+  structuredContent: Record<string, unknown> | null | undefined,
+  key: string,
+): string[] {
+  const raw = structuredContent?.[key];
   if (!Array.isArray(raw)) return [];
   return raw.filter((p): p is string => typeof p === 'string');
+}
+
+function extractPreparation(structuredContent: Record<string, unknown> | null | undefined): string[] {
+  return extractStringList(structuredContent, 'preparation');
+}
+
+function extractQuantity(structuredContent: Record<string, unknown> | null | undefined): string | undefined {
+  const raw = structuredContent?.quantity;
+  return typeof raw === 'string' && raw.length > 0 ? raw : undefined;
 }
 
 export function isFlareDay(symptoms: SymptomEntry[]): boolean {
@@ -89,6 +101,8 @@ export function buildDayComposite(
           time: entry.entryTime,
           protocolStatus,
           preparation: extractPreparation(entry.structuredContent),
+          quantity: extractQuantity(entry.structuredContent),
+          additions: extractStringList(entry.structuredContent, 'additions'),
         });
         break;
       }

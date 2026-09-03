@@ -9,6 +9,10 @@ export interface FoodEntry {
   protocolStatus: 'allowed' | 'avoid' | 'moderation' | 'reintroduction' | 'unknown' | null;
   /** Preparation states, e.g. ['leftover', 'fermented']. Optional: absent on rows persisted before this field existed. */
   preparation?: string[];
+  /** Coarse dose from a clarifier: 'less' | 'usual' | 'more'. */
+  quantity?: string;
+  /** Additions from a clarifier, e.g. ['garlic', 'paprika_chili']. */
+  additions?: string[];
 }
 
 export interface FoodProperty {
@@ -82,7 +86,7 @@ export interface DayComposite {
 // --- Factors ---
 
 export type FactorCategory =
-  | 'food' | 'food_property' | 'preparation' | 'supplement' | 'medication'
+  | 'food' | 'food_property' | 'preparation' | 'quantity' | 'addition' | 'supplement' | 'medication'
   | 'exposure' | 'exercise' | 'sleep' | 'stress' | 'energy'
   | 'mood' | 'pain' | 'timing' | 'compliance';
 

@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { Button, Card, Spinner } from "@/components/ui";
 import { ScoreSlider } from "@/components/journal/score-slider";
+import { ClarifierFillIns } from "@/components/clarifiers/ClarifierFillIns";
 import { cn } from "@/lib/utils";
 import type { JournalEntry, JournalScores } from "@/types";
 
@@ -334,6 +335,9 @@ export default function ReflectPage() {
               )}
             </div>
           </div>
+
+          {/* Open clarifier questions for the day (hidden when none) */}
+          <ClarifierFillIns date={date} />
 
           {/* Score cards */}
           {scoreConfig.map((cfg) => {

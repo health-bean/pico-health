@@ -229,6 +229,15 @@ export default function TimelinePage() {
                 ...(patch.mealType !== undefined ? { mealType: patch.mealType } : {}),
                 ...(patch.entryTime !== undefined ? { entryTime: patch.entryTime } : {}),
                 ...(patch.severity !== undefined ? { severity: patch.severity } : {}),
+                ...(patch.preparation !== undefined || patch.quantity !== undefined
+                  ? {
+                      structuredContent: {
+                        ...(e.structuredContent ?? {}),
+                        ...(patch.preparation !== undefined ? { preparation: patch.preparation } : {}),
+                        ...(patch.quantity !== undefined ? { quantity: patch.quantity } : {}),
+                      },
+                    }
+                  : {}),
               }
             : e
         )
@@ -394,6 +403,7 @@ export default function TimelinePage() {
                   entryTime={entry.entryTime}
                   food={entry.food}
                   protocolViolations={entry.protocolViolations}
+                  structuredContent={entry.structuredContent}
                   onDelete={() => deleteEntry(entry)}
                   onPatch={(patch) => patchTimelineEntry(entry, patch)}
                 />

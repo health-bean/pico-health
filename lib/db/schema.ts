@@ -614,3 +614,36 @@ export const insightAlerts = pgTable("insight_alerts", {
   createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
   dismissedAt: timestamp("dismissed_at", { withTimezone: true }),
 });
+
+// ─── Clarifiers ──────────────────────────────────────────────────────────
+// One row per (user, food, dimension): what they answered, how often they
+// skipped. Drives "don't ask twice", skip suppression, and per-dimension
+// defaults. See docs/superpowers/specs/2026-09-03-clarifiers-design.md.
+
+export const clarifierResponses = pgTable(
+  "clarifier_responses",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    foodId: uuid("food_id")
+      .notNull()
+      .references(() => foods.id, { onDelete: "cascade" }),
+    dimension: varchar("dimension", { length: 20 }).notNull(), // preparation | quantity | additions
+    /** Last non-skip answer; comma-joined for multi-select dimensions. */
+    answer: varchar("answer", { length: 200 }),
+    answerCount: integer("answer_count").notNull().default(0),
+    skipCount: integer("skip_count").notNull().default(0),
+    lastAt: timestamp("last_at", { withTimezone: true }).notNull().defaultNow(),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    uniqueIndex("clarifier_responses_user_food_dimension_idx").on(
+      table.userId,
+      table.foodId,
+      table.dimension
+    ),
+    index("clarifier_responses_user_last_at_idx").on(table.userId, table.lastAt),
+  ]
+);

@@ -6,7 +6,26 @@ import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
 import { EntryActions } from "./EntryActions";
 import { EntryEditor, type EntryEditorMode, type EntryPatch } from "./EntryEditor";
 import { useState } from "react";
+import { ANSWER_LABELS } from "@/lib/clarifiers/rules";
 import type { FoodTriggerProperties } from "@/types";
+
+/** Human-readable clarifier answers stored on the entry, for the detail line. */
+function clarifierLabels(sc: Record<string, unknown> | null | undefined): string[] {
+  if (!sc) return [];
+  const out: string[] = [];
+  const prep = Array.isArray(sc.preparation) ? (sc.preparation as unknown[]) : [];
+  for (const p of prep) {
+    if (typeof p === "string") out.push(ANSWER_LABELS[p] ?? p.charAt(0).toUpperCase() + p.slice(1));
+  }
+  if (typeof sc.quantity === "string" && sc.quantity !== "usual") {
+    out.push(sc.quantity === "more" ? "Large portion" : "Small portion");
+  }
+  const adds = Array.isArray(sc.additions) ? (sc.additions as unknown[]) : [];
+  for (const a of adds) {
+    if (typeof a === "string" && a !== "plain" && a !== "neither") out.push(ANSWER_LABELS[a] ?? a);
+  }
+  return out;
+}
 
 interface FoodTimelineCardProps {
   name: string;
@@ -21,6 +40,8 @@ interface FoodTimelineCardProps {
     isCustom: boolean;
   };
   protocolViolations?: string[];
+  /** Entry's structured content — clarifier answers are shown from it. */
+  structuredContent?: Record<string, unknown> | null;
   /** When provided, renders a trailing actions menu with Delete. */
   onDelete?: () => void;
   /** When provided alongside onDelete, the menu also offers food/meal/time edits. */
@@ -55,12 +76,14 @@ export function FoodTimelineCard({
   entryTime,
   food,
   protocolViolations = [],
+  structuredContent,
   onDelete,
   onPatch,
   protocolId,
 }: FoodTimelineCardProps) {
   const [showProperties, setShowProperties] = useState(false);
   const [editing, setEditing] = useState<EntryEditorMode | null>(null);
+  const detailTags = clarifierLabels(structuredContent);
 
   const displayName = food?.displayName || name;
   const hasViolations = protocolViolations.length > 0;
@@ -102,6 +125,12 @@ export function FoodTimelineCard({
                 <span className="text-warm-300">•</span>
               </>
             )}
+            {detailTags.map((tag) => (
+              <span key={tag} className="contents">
+                <span className="text-teal-700">{tag}</span>
+                <span className="text-warm-300">•</span>
+              </span>
+            ))}
             {food?.category && (
               <>
                 <span className="text-warm-500">{food.category}</span>
@@ -168,6 +197,12 @@ export function FoodTimelineCard({
           name={displayName}
           mealType={mealType}
           entryTime={entryTime}
+          preparation={
+            Array.isArray(structuredContent?.preparation)
+              ? (structuredContent.preparation as string[])
+              : null
+          }
+          quantity={typeof structuredContent?.quantity === "string" ? structuredContent.quantity : null}
           protocolId={protocolId}
           onPatch={onPatch}
           onClose={() => setEditing(null)}

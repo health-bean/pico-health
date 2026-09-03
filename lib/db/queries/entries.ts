@@ -15,6 +15,10 @@ export interface EntryPatch {
   entryTime?: string | null;
   mealType?: string | null;
   foodId?: string | null;
+  /** Clarifier fields — merged into `structuredContent`. */
+  preparation?: string[];
+  quantity?: string;
+  additions?: string[];
 }
 
 /**
@@ -44,12 +48,17 @@ export async function updateEntry(userId: string, entryId: string, patch: EntryP
   if (patch.mealType !== undefined) values.mealType = patch.mealType;
   if (patch.foodId !== undefined) values.foodId = patch.foodId;
 
-  if (patch.notes !== undefined) {
-    // Merge into the JSONB blob without clobbering other structured fields.
-    values.structuredContent =
-      patch.notes === null
-        ? sql`COALESCE(${timelineEntries.structuredContent}, '{}'::jsonb) - 'notes'`
-        : sql`COALESCE(${timelineEntries.structuredContent}, '{}'::jsonb) || ${JSON.stringify({ notes: patch.notes })}::jsonb`;
+  // Merge into the JSONB blob without clobbering other structured fields.
+  const merge: Record<string, unknown> = {};
+  if (patch.notes !== undefined && patch.notes !== null) merge.notes = patch.notes;
+  if (patch.preparation !== undefined) merge.preparation = patch.preparation;
+  if (patch.quantity !== undefined) merge.quantity = patch.quantity;
+  if (patch.additions !== undefined) merge.additions = patch.additions;
+
+  if (patch.notes === null) {
+    values.structuredContent = sql`COALESCE(${timelineEntries.structuredContent}, '{}'::jsonb) - 'notes'`;
+  } else if (Object.keys(merge).length > 0) {
+    values.structuredContent = sql`COALESCE(${timelineEntries.structuredContent}, '{}'::jsonb) || ${JSON.stringify(merge)}::jsonb`;
   }
 
   const [updated] = await db

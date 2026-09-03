@@ -1,11 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { X, Check, RotateCcw, Pencil } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FoodSearchInput } from "@/components/quick-log/FoodSearchInput";
+import { ClarifierRow } from "@/components/clarifiers/ClarifierRow";
 import { MEAL_TYPES } from "@/types/capture";
 import type { CaptureSession, CapturedEntry } from "@/types/capture";
+import type { Clarifier } from "@/lib/clarifiers/types";
 import type { Food } from "@/types";
 
 interface PendingCaptureCardProps {
@@ -143,8 +145,34 @@ export function PendingCaptureCard({
   protocolId,
 }: PendingCaptureCardProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
+  const [clarifier, setClarifier] = useState<Clarifier | null>(null);
   const first = session.entries[0];
   const foodEntries = session.entries.filter((e) => e.entryType === "food");
+
+  // Once saved, ask the rules engine for the one follow-up worth asking.
+  // Deterministic and cheap; the card never waits on it.
+  const savedFoodIds = session.status === "saved" ? foodEntries.map((e) => e.id).join(",") : "";
+  useEffect(() => {
+    if (!savedFoodIds) return;
+    let cancelled = false;
+    fetch(`/api/clarifiers?entryIds=${savedFoodIds}`)
+      .then((r) => (r.ok ? r.json() : { clarifiers: [] }))
+      .then((data: { clarifiers?: Clarifier[] }) => {
+        if (!cancelled) setClarifier(data.clarifiers?.[0] ?? null);
+      })
+      .catch(() => {
+        /* optional — stay silent */
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [savedFoodIds]);
+
+  // If the user removed or swapped the entry the question was about, drop it.
+  const activeClarifier =
+    clarifier && session.entries.some((e) => e.id === clarifier.entryId && e.foodId === clarifier.foodId)
+      ? clarifier
+      : null;
   const contextBits = [
     foodEntries.length > 0 && first?.mealType ? mealLabel(first.mealType) : null,
     first?.entryTime ? formatTime(first.entryTime) : null,
@@ -239,6 +267,12 @@ export function PendingCaptureCard({
 
       {session.note && session.status === "saved" && (
         <p className="mt-2 text-xs text-warm-500">{session.note}</p>
+      )}
+
+      {activeClarifier && (
+        <div className="mt-2">
+          <ClarifierRow compact clarifier={activeClarifier} onDone={() => setClarifier(null)} />
+        </div>
       )}
 
       {session.status === "saved" && foodEntries.length > 0 && (

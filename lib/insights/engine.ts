@@ -29,7 +29,7 @@ export async function runInsightsEngine(userId: string, days: number = 90): Prom
 
   const singleResults = analyzeSingleFactors(composites);
 
-  const triggerCategories = new Set(['food', 'food_property', 'preparation', 'medication', 'exposure', 'stress', 'timing']);
+  const triggerCategories = new Set(['food', 'food_property', 'preparation', 'quantity', 'addition', 'medication', 'exposure', 'stress', 'timing']);
   const singleTriggers = singleResults.filter(r => triggerCategories.has(r.factor.category));
   const singleHelpers = singleResults.filter(r => !triggerCategories.has(r.factor.category));
 
