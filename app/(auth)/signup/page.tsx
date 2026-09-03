@@ -149,6 +149,18 @@ export default function SignupPage() {
               <Button type="submit" loading={loading} className="mt-2 w-full">
                 Create Account
               </Button>
+
+              <p className="mt-3 text-center text-xs text-warm-500">
+                By creating an account, you agree to the{" "}
+                <Link href="/terms" className="text-teal-600 hover:text-teal-700 underline underline-offset-2">
+                  Terms of Service
+                </Link>{" "}
+                and{" "}
+                <Link href="/privacy" className="text-teal-600 hover:text-teal-700 underline underline-offset-2">
+                  Privacy Policy
+                </Link>
+                .
+              </p>
             </form>
           </div>
         </Card>

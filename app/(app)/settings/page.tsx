@@ -364,6 +364,21 @@ export default function SettingsPage() {
         </div>
       </Card>
 
+      {/* Legal */}
+      <Card header="About" className="mb-4">
+        <div className="flex flex-col gap-2 text-sm">
+          <Link href="/terms" className="text-teal-700 hover:text-teal-800">
+            Terms of Service
+          </Link>
+          <Link href="/privacy" className="text-teal-700 hover:text-teal-800">
+            Privacy Policy
+          </Link>
+          <a href="mailto:support@picohealth.app" className="text-teal-700 hover:text-teal-800">
+            Contact support
+          </a>
+        </div>
+      </Card>
+
       {/* Logout */}
       <Button variant="danger" onClick={handleLogout} className="w-full">
         Log Out

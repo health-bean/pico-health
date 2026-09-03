@@ -166,6 +166,12 @@ export default function LoginPage() {
             Create an account
           </Link>
         </p>
+
+        <p className="mt-3 text-center text-xs text-warm-400">
+          <Link href="/terms" className="hover:text-teal-600">Terms</Link>
+          {" · "}
+          <Link href="/privacy" className="hover:text-teal-600">Privacy</Link>
+        </p>
       </div>
     </div>
   );
