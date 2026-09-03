@@ -1,8 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import {
   Activity,
   Bike,
+  Clock,
   Dumbbell,
   Footprints,
   Waves,
@@ -12,6 +14,7 @@ import {
 import { Badge } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { EntryActions } from "./EntryActions";
+import { EntryEditor, type EntryPatch } from "./EntryEditor";
 import type { ExerciseType, IntensityLevel } from "@/types";
 
 interface ExerciseTimelineCardProps {
@@ -22,8 +25,10 @@ interface ExerciseTimelineCardProps {
   energyAfter?: number | null;
   notes?: string | null;
   entryTime?: string | null;
-  /** When provided, renders a trailing actions button with Delete. */
+  /** When provided, renders a trailing actions menu with Delete. */
   onDelete?: () => void;
+  /** When provided alongside onDelete, the menu also offers a time edit. */
+  onPatch?: (patch: EntryPatch) => Promise<boolean>;
 }
 
 const EXERCISE_ICONS: Record<ExerciseType, typeof Activity> = {
@@ -93,7 +98,9 @@ export function ExerciseTimelineCard({
   notes,
   entryTime,
   onDelete,
+  onPatch,
 }: ExerciseTimelineCardProps) {
+  const [editing, setEditing] = useState(false);
   const Icon = EXERCISE_ICONS[exerciseType] || Activity;
   const exerciseLabel = EXERCISE_LABELS[exerciseType] || "Exercise";
   const intensityConfig = INTENSITY_CONFIG[intensityLevel];
@@ -105,7 +112,8 @@ export function ExerciseTimelineCard({
       : null;
 
   return (
-    <div className="flex items-start gap-3 rounded-xl border border-warm-200 bg-[var(--color-surface-card)] px-4 py-3">
+    <div className="flex flex-col rounded-xl border border-warm-200 bg-[var(--color-surface-card)]">
+    <div className="flex items-start gap-3 px-4 py-3">
       {/* Icon */}
       <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-600">
         <Icon className="h-4 w-4" />
@@ -190,7 +198,27 @@ export function ExerciseTimelineCard({
         )}
       </div>
 
-      {onDelete && <EntryActions name={exerciseLabel} onDelete={onDelete} />}
+      {onDelete && (
+        <EntryActions
+          name={exerciseLabel}
+          onDelete={onDelete}
+          actions={
+            onPatch ? [{ label: "Change time", icon: Clock, onSelect: () => setEditing(true) }] : []
+          }
+        />
+      )}
+    </div>
+
+      {editing && onPatch && (
+        <EntryEditor
+          mode="details"
+          entryType="exercise"
+          name={exerciseLabel}
+          entryTime={entryTime}
+          onPatch={onPatch}
+          onClose={() => setEditing(false)}
+        />
+      )}
     </div>
   );
 }

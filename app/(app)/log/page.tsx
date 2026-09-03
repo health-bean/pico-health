@@ -14,11 +14,12 @@ import {
   AlertTriangle,
   NotebookPen,
 } from "lucide-react";
-import { Badge, Spinner, EmptyState, useToast } from "@/components/ui";
+import { Spinner, EmptyState, useToast } from "@/components/ui";
 import { QuickAddSheet } from "@/components/quick-log/quick-add-sheet";
 import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard";
 import { FoodTimelineCard } from "@/components/timeline/FoodTimelineCard";
-import { EntryActions } from "@/components/timeline/EntryActions";
+import { GenericTimelineCard } from "@/components/timeline/GenericTimelineCard";
+import type { EntryPatch } from "@/components/timeline/EntryEditor";
 import { CaptureBar } from "@/components/capture/CaptureBar";
 import { PendingCaptureCard } from "@/components/capture/PendingCaptureCard";
 import { ProgressStrip } from "@/components/capture/ProgressStrip";
@@ -62,19 +63,6 @@ function displayDate(dateStr: string): string {
     month: "short",
     day: "numeric",
   });
-}
-
-function formatTime(time: string | null): string {
-  if (!time) return "";
-  try {
-    const [h, m] = time.split(":");
-    const hour = parseInt(h, 10);
-    const ampm = hour >= 12 ? "PM" : "AM";
-    const displayHour = hour % 12 || 12;
-    return `${displayHour}:${m} ${ampm}`;
-  } catch {
-    return time;
-  }
 }
 
 function localTimeString(d: Date): string {
@@ -229,6 +217,42 @@ export default function TimelinePage() {
     [restoreEntry, toast]
   );
 
+  const patchTimelineEntry = useCallback(
+    async (entry: TimelineEntry, patch: EntryPatch): Promise<boolean> => {
+      // Optimistic local update for the fields we can apply without a join.
+      setEntries((prev) =>
+        prev.map((e) =>
+          e.id === entry.id
+            ? {
+                ...e,
+                ...(patch.name !== undefined ? { name: patch.name } : {}),
+                ...(patch.mealType !== undefined ? { mealType: patch.mealType } : {}),
+                ...(patch.entryTime !== undefined ? { entryTime: patch.entryTime } : {}),
+                ...(patch.severity !== undefined ? { severity: patch.severity } : {}),
+              }
+            : e
+        )
+      );
+      try {
+        const res = await fetch(`/api/entries/${entry.id}`, {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(patch),
+        });
+        if (!res.ok) throw new Error(`Patch failed (${res.status})`);
+        // Refetch so food swaps pick up the joined food + properties.
+        if (patch.foodId !== undefined) fetchEntries(dateRef.current);
+        return true;
+      } catch (err) {
+        console.error("Failed to update entry:", err);
+        setEntries((prev) => prev.map((e) => (e.id === entry.id ? entry : e)));
+        toast("Couldn't save that change", "error");
+        return false;
+      }
+    },
+    [fetchEntries, toast]
+  );
+
   function shiftDate(days: number) {
     const d = new Date(date + "T12:00:00");
     d.setDate(d.getDate() + days);
@@ -352,6 +376,7 @@ export default function TimelinePage() {
                   }
                   entryTime={entry.entryTime}
                   onDelete={() => deleteEntry(entry)}
+                  onPatch={(patch) => patchTimelineEntry(entry, patch)}
                 />
               );
             }
@@ -368,45 +393,27 @@ export default function TimelinePage() {
                   food={entry.food}
                   protocolViolations={entry.protocolViolations}
                   onDelete={() => deleteEntry(entry)}
+                  onPatch={(patch) => patchTimelineEntry(entry, patch)}
                 />
               );
             }
 
             // Render other entry types with default card
             const config = entryConfig[entry.entryType] ?? entryConfig.food;
-            const Icon = config.icon;
 
             return (
-              <div
+              <GenericTimelineCard
                 key={entry.id}
-                className="flex items-center gap-3 rounded-xl bg-[var(--color-surface-card)] px-4 py-3 shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-elevated)]"
-              >
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-600">
-                  <Icon className="h-4 w-4" />
-                </div>
-
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2">
-                    <span className="truncate text-sm font-medium text-[var(--color-text-primary)]">
-                      {entry.name}
-                    </span>
-                    <Badge variant={config.variant}>{config.label}</Badge>
-                  </div>
-                  {entry.entryTime && (
-                    <p className="text-xs text-[var(--color-text-muted)]">
-                      {formatTime(entry.entryTime)}
-                    </p>
-                  )}
-                </div>
-
-                {entry.severity != null && (
-                  <span className="shrink-0 text-xs font-medium text-[var(--color-text-secondary)]">
-                    {entry.severity}/10
-                  </span>
-                )}
-
-                <EntryActions name={entry.name} onDelete={() => deleteEntry(entry)} />
-              </div>
+                entryType={entry.entryType}
+                name={entry.name}
+                icon={config.icon}
+                label={config.label}
+                variant={config.variant}
+                entryTime={entry.entryTime}
+                severity={entry.severity}
+                onDelete={() => deleteEntry(entry)}
+                onPatch={(patch) => patchTimelineEntry(entry, patch)}
+              />
             );
           })}
         </div>

@@ -71,14 +71,17 @@ export function QuickAddSheet({ open, onClose, onSaved }: QuickAddSheetProps) {
         role="dialog"
         aria-modal="true"
         aria-label="Quick Add"
-        className="relative z-10 flex w-full max-w-lg flex-col rounded-t-2xl bg-[var(--color-surface-card)] shadow-xl max-h-[85dvh]"
+        // Fixed height (not max-height) so the sheet's top edge stays put when
+        // switching between Food / Symptom / Exercise instead of jumping with
+        // each tab's content length.
+        className="relative z-10 flex h-[85dvh] w-full max-w-lg flex-col rounded-t-2xl bg-[var(--color-surface-card)] shadow-xl"
       >
         {/* Handle + close */}
         <div className="flex items-center justify-between px-4 pt-3 pb-1">
           <div className="mx-auto h-1 w-10 rounded-full bg-warm-300" />
         </div>
         <div className="flex items-center justify-between px-4 pb-2">
-          <h2 className="text-sm font-semibold text-warm-900">Quick Add</h2>
+          <h2 className="text-sm font-semibold text-warm-900">Find something to log</h2>
           <button
             onClick={close}
             className="flex h-8 w-8 items-center justify-center rounded-lg text-warm-400 hover:bg-warm-100"
@@ -88,8 +91,8 @@ export function QuickAddSheet({ open, onClose, onSaved }: QuickAddSheetProps) {
           </button>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto">
+        {/* Content — min-h-0 lets this flex child shrink and actually scroll */}
+        <div className="min-h-0 flex-1 overflow-y-auto">
           <QuickLogPanel onSaved={handleSaved} onItemsChange={setHasItems} />
         </div>
       </div>

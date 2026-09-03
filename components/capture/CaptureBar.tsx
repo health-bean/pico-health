@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Camera, ArrowUp, LayoutGrid } from "lucide-react";
+import { Camera, ArrowUp, Search } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ShortcutRow } from "./ShortcutRow";
 
@@ -115,10 +115,10 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
             type="button"
             onClick={onBrowse}
             className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-warm-500 transition-colors hover:bg-teal-50 hover:text-teal-600 focus-visible:outline-2 focus-visible:outline-teal-500"
-            aria-label="Browse foods and symptoms"
-            title="Browse"
+            aria-label="Search foods and symptoms"
+            title="Search foods and symptoms"
           >
-            <LayoutGrid className="h-5 w-5" />
+            <Search className="h-5 w-5" />
           </button>
 
           <input

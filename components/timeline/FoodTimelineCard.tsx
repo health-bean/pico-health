@@ -1,9 +1,10 @@
 "use client";
 
-import { Apple, AlertTriangle } from "lucide-react";
+import { Apple, AlertTriangle, Replace, Clock } from "lucide-react";
 import { Badge } from "@/components/ui";
 import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
 import { EntryActions } from "./EntryActions";
+import { EntryEditor, type EntryEditorMode, type EntryPatch } from "./EntryEditor";
 import { useState } from "react";
 import type { FoodTriggerProperties } from "@/types";
 
@@ -20,8 +21,11 @@ interface FoodTimelineCardProps {
     isCustom: boolean;
   };
   protocolViolations?: string[];
-  /** When provided, renders a trailing actions button with Delete. */
+  /** When provided, renders a trailing actions menu with Delete. */
   onDelete?: () => void;
+  /** When provided alongside onDelete, the menu also offers food/meal/time edits. */
+  onPatch?: (patch: EntryPatch) => Promise<boolean>;
+  protocolId?: string;
 }
 
 function formatTime(time: string | null | undefined): string {
@@ -52,9 +56,12 @@ export function FoodTimelineCard({
   food,
   protocolViolations = [],
   onDelete,
+  onPatch,
+  protocolId,
 }: FoodTimelineCardProps) {
   const [showProperties, setShowProperties] = useState(false);
-  
+  const [editing, setEditing] = useState<EntryEditorMode | null>(null);
+
   const displayName = food?.displayName || name;
   const hasViolations = protocolViolations.length > 0;
   const hasProperties = food?.properties && Object.keys(food.properties).length > 0;
@@ -138,8 +145,34 @@ export function FoodTimelineCard({
           )}
         </div>
 
-        {onDelete && <EntryActions name={displayName} onDelete={onDelete} />}
+        {onDelete && (
+          <EntryActions
+            name={displayName}
+            onDelete={onDelete}
+            actions={
+              onPatch
+                ? [
+                    { label: "Change food", icon: Replace, onSelect: () => setEditing("food") },
+                    { label: "Meal or time", icon: Clock, onSelect: () => setEditing("details") },
+                  ]
+                : []
+            }
+          />
+        )}
       </div>
+
+      {editing && onPatch && (
+        <EntryEditor
+          mode={editing}
+          entryType="food"
+          name={displayName}
+          mealType={mealType}
+          entryTime={entryTime}
+          protocolId={protocolId}
+          onPatch={onPatch}
+          onClose={() => setEditing(null)}
+        />
+      )}
 
       {/* Expandable properties section */}
       {showProperties && hasProperties && food?.properties && (

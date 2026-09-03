@@ -198,7 +198,7 @@ export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
   ];
 
   return (
-    <div className="flex flex-1 flex-col overflow-y-auto">
+    <div className="flex flex-col">
       <div className="mx-auto w-full max-w-2xl px-4 py-4">
         {/* Tabs */}
         <div className="mb-4 flex gap-2 border-b border-warm-200">
