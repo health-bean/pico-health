@@ -18,7 +18,8 @@
     "cap:open:ios": "npx cap open ios",
     "cap:open:android": "npx cap open android",
     "cap:run:ios": "npx cap run ios",
-    "cap:run:android": "npx cap run android"
+    "cap:run:android": "npx cap run android",
+    "eval:capture": "npx tsx scripts/eval-capture.ts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.39.0",

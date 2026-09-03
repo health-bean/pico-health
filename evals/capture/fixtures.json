@@ -1,0 +1,818 @@
+[
+  {
+    "id": "simple-meal-salmon-rice",
+    "category": "simple-meal",
+    "input": "salmon and rice for lunch",
+    "at": "12:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "salmon", "alsoAccept": ["salmon fillet", "baked salmon"] },
+        { "entryType": "food", "name": "rice", "alsoAccept": ["white rice", "brown rice"] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": []
+    },
+    "notes": "Baseline: the sentence from the placeholder text."
+  },
+  {
+    "id": "simple-meal-eggs-avocado",
+    "category": "simple-meal",
+    "input": "two eggs and half an avocado",
+    "at": "08:10",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "eggs", "alsoAccept": ["egg"] },
+        { "entryType": "food", "name": "avocado", "alsoAccept": [] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Quantities in the text must not become separate entries or leak into names."
+  },
+  {
+    "id": "simple-meal-bone-broth",
+    "category": "simple-meal",
+    "input": "just bone broth for dinner",
+    "at": "18:45",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "bone broth", "alsoAccept": ["broth"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Single-item meal; 'just' must not suppress the one real entry."
+  },
+  {
+    "id": "simple-meal-chicken-soup",
+    "category": "simple-meal",
+    "input": "had a bowl of chicken soup for lunch",
+    "at": "13:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "chicken soup", "alsoAccept": ["chicken", "soup"] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": []
+    },
+    "notes": "Composite dish should stay one entry rather than being decomposed into invented ingredients."
+  },
+  {
+    "id": "simple-meal-apple-almond-butter",
+    "category": "simple-meal",
+    "input": "apple with almond butter as a snack",
+    "at": "15:40",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "apple", "alsoAccept": [] },
+        { "entryType": "food", "name": "almond butter", "alsoAccept": ["almond"] }
+      ],
+      "mealType": "snack",
+      "forbidNames": []
+    },
+    "notes": "Explicit 'snack' agrees with the time window."
+  },
+  {
+    "id": "simple-meal-lamb-zucchini",
+    "category": "simple-meal",
+    "input": "lamb chops and zucchini for dinner",
+    "at": "19:20",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "lamb", "alsoAccept": ["lamb chops"] },
+        { "entryType": "food", "name": "zucchini", "alsoAccept": ["courgette"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Common AIP-friendly protein plus vegetable."
+  },
+  {
+    "id": "simple-meal-oatmeal-blueberries",
+    "category": "simple-meal",
+    "input": "oatmeal with blueberries this morning",
+    "at": "07:45",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "oatmeal", "alsoAccept": ["oats"] },
+        { "entryType": "food", "name": "blueberries", "alsoAccept": ["blueberry"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Meal comes from 'this morning' and the time, with no meal word."
+  },
+  {
+    "id": "simple-meal-turkey-lettuce-wraps",
+    "category": "simple-meal",
+    "input": "turkey lettuce wraps for lunch",
+    "at": "12:15",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "turkey", "alsoAccept": ["ground turkey"] },
+        { "entryType": "food", "name": "lettuce", "alsoAccept": ["lettuce wraps"] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": []
+    },
+    "notes": "Two foods fused into one dish name; either split or a single wrap entry is reasonable."
+  },
+  {
+    "id": "multi-item-chicken-broccoli-sweet-potato",
+    "category": "multi-item",
+    "input": "chicken thighs, roasted broccoli and sweet potato in olive oil",
+    "at": "18:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "chicken thighs", "alsoAccept": ["chicken"] },
+        { "entryType": "food", "name": "broccoli", "alsoAccept": ["roasted broccoli"] },
+        { "entryType": "food", "name": "sweet potato", "alsoAccept": [] },
+        { "entryType": "food", "name": "olive oil", "alsoAccept": ["olive"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Cooking fat must be captured as its own entry; oils matter for reintroduction tracking."
+  },
+  {
+    "id": "multi-item-breakfast-hash",
+    "category": "multi-item",
+    "input": "sweet potato hash with ground beef, kale and coconut oil",
+    "at": "08:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "sweet potato", "alsoAccept": ["sweet potato hash"] },
+        { "entryType": "food", "name": "ground beef", "alsoAccept": ["beef"] },
+        { "entryType": "food", "name": "kale", "alsoAccept": [] },
+        { "entryType": "food", "name": "coconut oil", "alsoAccept": ["coconut"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Four items where one is the dish name and one is a fat."
+  },
+  {
+    "id": "multi-item-big-salad",
+    "category": "multi-item",
+    "input": "big salad - arugula, cucumber, carrots, pumpkin seeds, olive oil and lemon",
+    "at": "12:45",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "arugula", "alsoAccept": ["rocket"] },
+        { "entryType": "food", "name": "cucumber", "alsoAccept": [] },
+        { "entryType": "food", "name": "carrots", "alsoAccept": ["carrot"] },
+        { "entryType": "food", "name": "pumpkin seeds", "alsoAccept": ["pepitas"] },
+        { "entryType": "food", "name": "olive oil", "alsoAccept": [] },
+        { "entryType": "food", "name": "lemon", "alsoAccept": ["lemon juice"] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": ["salad"]
+    },
+    "notes": "Six items; the umbrella word 'salad' must not become a seventh entry alongside its own ingredients."
+  },
+  {
+    "id": "multi-item-cod-asparagus-ghee",
+    "category": "multi-item",
+    "input": "baked cod with asparagus and white rice, cooked in ghee",
+    "at": "19:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "cod", "alsoAccept": ["baked cod"] },
+        { "entryType": "food", "name": "asparagus", "alsoAccept": [] },
+        { "entryType": "food", "name": "rice", "alsoAccept": ["white rice"] },
+        { "entryType": "food", "name": "ghee", "alsoAccept": ["clarified butter"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Ghee is a dairy-adjacent fat that elimination protocols track separately."
+  },
+  {
+    "id": "multi-item-beef-stir-fry",
+    "category": "multi-item",
+    "input": "beef stir fry with bok choy, carrots and ginger over rice",
+    "at": "18:15",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "beef", "alsoAccept": ["beef stir fry"] },
+        { "entryType": "food", "name": "bok choy", "alsoAccept": ["pak choi"] },
+        { "entryType": "food", "name": "carrots", "alsoAccept": ["carrot"] },
+        { "entryType": "food", "name": "ginger", "alsoAccept": [] },
+        { "entryType": "food", "name": "rice", "alsoAccept": [] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": ["soy sauce"]
+    },
+    "notes": "Stir fry must not summon an unmentioned soy sauce; spices count as loggable items."
+  },
+  {
+    "id": "multi-item-snack-plate",
+    "category": "multi-item",
+    "input": "snack plate: olives, carrot sticks, and a handful of walnuts",
+    "at": "16:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "olives", "alsoAccept": ["olive"] },
+        { "entryType": "food", "name": "carrot", "alsoAccept": ["carrots", "carrot sticks"] },
+        { "entryType": "food", "name": "walnuts", "alsoAccept": ["walnut"] }
+      ],
+      "mealType": "snack",
+      "forbidNames": []
+    },
+    "notes": "Colon-delimited list at snack time."
+  },
+  {
+    "id": "multi-item-smoothie",
+    "category": "multi-item",
+    "input": "smoothie with banana, spinach, coconut milk and a scoop of collagen",
+    "at": "09:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "banana", "alsoAccept": [] },
+        { "entryType": "food", "name": "spinach", "alsoAccept": [] },
+        { "entryType": "food", "name": "coconut milk", "alsoAccept": ["coconut"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Collagen is genuinely ambiguous between food and supplement, so it is deliberately not scored either way."
+  },
+  {
+    "id": "multi-item-homemade-soup",
+    "category": "multi-item",
+    "input": "made a soup with chicken, celery, onion, garlic and turmeric",
+    "at": "17:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "chicken", "alsoAccept": [] },
+        { "entryType": "food", "name": "celery", "alsoAccept": [] },
+        { "entryType": "food", "name": "onion", "alsoAccept": ["onions"] },
+        { "entryType": "food", "name": "garlic", "alsoAccept": [] },
+        { "entryType": "food", "name": "turmeric", "alsoAccept": [] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Ingredient-level listing; alliums and spices are FODMAP-relevant and must survive."
+  },
+  {
+    "id": "symptom-headache-since-3pm",
+    "category": "symptom",
+    "input": "headache since 3pm",
+    "at": "17:10",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "headache", "alsoAccept": [] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Symptom only, no food, so no meal type; the time reference must not become an entry."
+  },
+  {
+    "id": "symptom-bloated-after-breakfast",
+    "category": "symptom",
+    "input": "bloated after breakfast, maybe a 6",
+    "at": "10:15",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "bloating", "severity": 6, "alsoAccept": ["bloated"] }
+      ],
+      "forbidNames": ["breakfast"]
+    },
+    "notes": "Severity from a bare number; 'breakfast' is a time anchor, not a food to invent."
+  },
+  {
+    "id": "symptom-joint-pain-hands",
+    "category": "symptom",
+    "input": "joint pain in my hands, worse than yesterday",
+    "at": "09:30",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "joint pain", "alsoAccept": ["hand pain", "joint"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Comparative wording is not a severity number; no severity should be invented."
+  },
+  {
+    "id": "symptom-brain-fog-fatigue",
+    "category": "symptom",
+    "input": "brain fog and fatigue all afternoon",
+    "at": "16:20",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "brain fog", "alsoAccept": ["fog"] },
+        { "entryType": "symptom", "name": "fatigue", "alsoAccept": ["tired", "tiredness"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Two distinct symptoms in one clause must not collapse into one entry."
+  },
+  {
+    "id": "symptom-migraine-eight",
+    "category": "symptom",
+    "input": "migraine, easily an 8 out of 10",
+    "at": "20:00",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "migraine", "severity": 8, "alsoAccept": [] }
+      ],
+      "forbidNames": ["headache"]
+    },
+    "notes": "Explicit x-out-of-10 severity; migraine should not be downgraded to a generic headache."
+  },
+  {
+    "id": "symptom-hives-mild",
+    "category": "symptom",
+    "input": "a few hives on my forearms, pretty mild",
+    "at": "14:00",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "hives", "alsoAccept": ["rash", "urticaria"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "'Pretty mild' is qualitative; a numeric severity is acceptable but not required, so none is scored."
+  },
+  {
+    "id": "symptom-nausea-after-pills",
+    "category": "symptom",
+    "input": "nauseous about 20 minutes after my morning pills",
+    "at": "08:40",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "nausea", "alsoAccept": ["nauseous"] }
+      ],
+      "forbidNames": ["magnesium", "vitamin d", "multivitamin"]
+    },
+    "notes": "Unnamed 'pills' must not be turned into a specific invented supplement."
+  },
+  {
+    "id": "mixed-breakfast-magnesium-fog",
+    "category": "mixed",
+    "input": "eggs and avocado for breakfast, took magnesium, mild brain fog",
+    "at": "08:20",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "eggs", "alsoAccept": ["egg"] },
+        { "entryType": "food", "name": "avocado", "alsoAccept": [] },
+        { "entryType": "supplement", "name": "magnesium", "alsoAccept": ["magnesium glycinate"] },
+        { "entryType": "symptom", "name": "brain fog", "alsoAccept": ["fog"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Three entry types in one sentence; meal type applies only to the food entries."
+  },
+  {
+    "id": "mixed-lunch-then-bloating",
+    "category": "mixed",
+    "input": "salmon salad for lunch, felt bloated an hour later, like a 5",
+    "at": "13:15",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "salmon", "alsoAccept": ["salmon salad"] },
+        { "entryType": "symptom", "name": "bloating", "severity": 5, "alsoAccept": ["bloated"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Severity attaches to the symptom, never to the food entry."
+  },
+  {
+    "id": "mixed-dinner-enzymes",
+    "category": "mixed",
+    "input": "grass fed burger patty and roasted carrots for dinner, plus my digestive enzymes",
+    "at": "19:10",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "burger patty", "alsoAccept": ["beef", "ground beef"] },
+        { "entryType": "food", "name": "carrots", "alsoAccept": ["carrot"] },
+        { "entryType": "supplement", "name": "digestive enzymes", "alsoAccept": ["enzymes"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": ["bun", "bread"]
+    },
+    "notes": "A burger patty implies no bun; the extractor must not add one."
+  },
+  {
+    "id": "mixed-headache-ibuprofen-broth",
+    "category": "mixed",
+    "input": "bad headache around a 7, took ibuprofen, only had bone broth since",
+    "at": "21:00",
+    "expect": {
+      "entries": [
+        { "entryType": "symptom", "name": "headache", "severity": 7, "alsoAccept": [] },
+        { "entryType": "medication", "name": "ibuprofen", "alsoAccept": ["advil"] },
+        { "entryType": "food", "name": "bone broth", "alsoAccept": ["broth"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Ibuprofen is a medication, not a supplement; late food still maps to dinner."
+  },
+  {
+    "id": "mixed-macadamias-gurgling",
+    "category": "mixed",
+    "input": "handful of macadamia nuts this afternoon and my stomach's been gurgling since",
+    "at": "15:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "macadamia nuts", "alsoAccept": ["macadamia"] },
+        { "entryType": "symptom", "name": "stomach gurgling", "alsoAccept": ["gurgling", "digestive", "stomach"] }
+      ],
+      "mealType": "snack",
+      "forbidNames": []
+    },
+    "notes": "Colloquial symptom wording with no clinical term; snack window inferred from time."
+  },
+  {
+    "id": "mixed-morning-routine",
+    "category": "mixed",
+    "input": "morning: warm lemon water, vitamin d3, and a poached egg. energy feels low",
+    "at": "07:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "lemon water", "alsoAccept": ["lemon"] },
+        { "entryType": "supplement", "name": "vitamin d3", "alsoAccept": ["vitamin d"] },
+        { "entryType": "food", "name": "egg", "alsoAccept": ["poached egg", "eggs"] },
+        { "entryType": "symptom", "name": "low energy", "alsoAccept": ["fatigue", "tired"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Multi-sentence input with a symptom stated as a feeling rather than a named condition."
+  },
+  {
+    "id": "mixed-epsom-bath-detox",
+    "category": "mixed",
+    "input": "epsom salt bath tonight, mild headache before it, chamomile tea after",
+    "at": "21:30",
+    "expect": {
+      "entries": [
+        { "entryType": "detox", "name": "epsom salt bath", "alsoAccept": ["epsom", "bath"] },
+        { "entryType": "symptom", "name": "headache", "alsoAccept": [] },
+        { "entryType": "food", "name": "chamomile tea", "alsoAccept": ["chamomile"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Exercises the detox entry type; the tea is food, and its meal type is low-stakes."
+  },
+  {
+    "id": "prep-leftover-chicken",
+    "category": "preparation",
+    "input": "last night's chicken with some steamed green beans",
+    "at": "12:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "chicken", "preparation": ["leftover"], "alsoAccept": [] },
+        { "entryType": "food", "name": "green beans", "alsoAccept": ["green bean"] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": []
+    },
+    "notes": "'Last night's' means leftover, which matters for histamine; the tag must not spread to the beans."
+  },
+  {
+    "id": "prep-sauerkraut-with-eggs",
+    "category": "preparation",
+    "input": "forkful of sauerkraut with my eggs",
+    "at": "08:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "sauerkraut", "preparation": ["fermented"], "alsoAccept": ["kraut"] },
+        { "entryType": "food", "name": "eggs", "alsoAccept": ["egg"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Fermented is intrinsic to sauerkraut even though the word 'fermented' never appears."
+  },
+  {
+    "id": "prep-canned-sardines",
+    "category": "preparation",
+    "input": "canned sardines on cucumber slices",
+    "at": "12:50",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "sardines", "preparation": ["canned"], "alsoAccept": ["sardine"] },
+        { "entryType": "food", "name": "cucumber", "alsoAccept": [] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": []
+    },
+    "notes": "Explicitly stated canned; raw cucumber is not tagged because 'raw' was not stated."
+  },
+  {
+    "id": "prep-prosciutto-parmesan-apricots",
+    "category": "preparation",
+    "input": "prosciutto, aged parmesan and a few dried apricots",
+    "at": "16:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "prosciutto", "preparation": ["cured"], "alsoAccept": [] },
+        { "entryType": "food", "name": "parmesan", "preparation": ["aged"], "alsoAccept": ["parmigiano"] },
+        { "entryType": "food", "name": "apricots", "preparation": ["dried"], "alsoAccept": ["apricot"] }
+      ],
+      "mealType": "snack",
+      "forbidNames": []
+    },
+    "notes": "Three different preparation tags in one line, each bound to the right item."
+  },
+  {
+    "id": "prep-smoked-salmon-capers",
+    "category": "preparation",
+    "input": "smoked salmon with capers for breakfast",
+    "at": "08:45",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "salmon", "preparation": ["smoked"], "alsoAccept": ["smoked salmon"] },
+        { "entryType": "food", "name": "capers", "alsoAccept": ["caper"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Smoked is a top histamine trigger and must be tagged, not folded silently into the name."
+  },
+  {
+    "id": "prep-leftover-curry-kimchi",
+    "category": "preparation",
+    "input": "reheated leftover lamb curry with a side of kimchi",
+    "at": "18:50",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "lamb curry", "preparation": ["leftover"], "alsoAccept": ["lamb", "curry"] },
+        { "entryType": "food", "name": "kimchi", "preparation": ["fermented"], "alsoAccept": [] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "One stated tag and one intrinsic tag in the same input."
+  },
+  {
+    "id": "meal-inference-boundary-early",
+    "category": "meal-inference",
+    "input": "scrambled eggs and spinach",
+    "at": "10:25",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "eggs", "alsoAccept": ["scrambled eggs", "egg"] },
+        { "entryType": "food", "name": "spinach", "alsoAccept": [] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Five minutes before the 10:30 boundary; identical input to the next fixture."
+  },
+  {
+    "id": "meal-inference-boundary-late",
+    "category": "meal-inference",
+    "input": "scrambled eggs and spinach",
+    "at": "10:35",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "eggs", "alsoAccept": ["scrambled eggs", "egg"] },
+        { "entryType": "food", "name": "spinach", "alsoAccept": [] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": []
+    },
+    "notes": "Same words five minutes after the boundary must flip to lunch, proving time drives meal type, not food semantics."
+  },
+  {
+    "id": "meal-inference-late-night",
+    "category": "meal-inference",
+    "input": "chicken and rice",
+    "at": "22:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "chicken", "alsoAccept": [] },
+        { "entryType": "food", "name": "rice", "alsoAccept": [] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Late-night eating still maps to dinner; there is no midnight-snack category."
+  },
+  {
+    "id": "meal-inference-afternoon-snack",
+    "category": "meal-inference",
+    "input": "a pear and some cashews",
+    "at": "15:45",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "pear", "alsoAccept": [] },
+        { "entryType": "food", "name": "cashews", "alsoAccept": ["cashew"] }
+      ],
+      "mealType": "snack",
+      "forbidNames": []
+    },
+    "notes": "Mid-afternoon window resolves to snack with no meal word present."
+  },
+  {
+    "id": "meal-inference-dinner-boundary",
+    "category": "meal-inference",
+    "input": "roast chicken with green beans",
+    "at": "17:05",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "chicken", "alsoAccept": ["roast chicken"] },
+        { "entryType": "food", "name": "green beans", "alsoAccept": ["green bean"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Just past the 17:00 snack/dinner boundary."
+  },
+  {
+    "id": "supp-magnesium-glycinate",
+    "category": "supplement-medication",
+    "input": "took my magnesium glycinate 400mg",
+    "at": "21:15",
+    "expect": {
+      "entries": [
+        { "entryType": "supplement", "name": "magnesium glycinate", "alsoAccept": ["magnesium"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Dose text must not become part of the name or a separate entry; no meal type for a supplement-only log."
+  },
+  {
+    "id": "supp-ibuprofen-for-headache",
+    "category": "supplement-medication",
+    "input": "ibuprofen for the headache",
+    "at": "14:20",
+    "expect": {
+      "entries": [
+        { "entryType": "medication", "name": "ibuprofen", "alsoAccept": ["advil"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Classified as medication, not supplement; also logging the referenced headache is acceptable but not required."
+  },
+  {
+    "id": "supp-morning-stack",
+    "category": "supplement-medication",
+    "input": "morning stack: vitamin d3, omega 3, and a probiotic",
+    "at": "07:20",
+    "expect": {
+      "entries": [
+        { "entryType": "supplement", "name": "vitamin d3", "alsoAccept": ["vitamin d"] },
+        { "entryType": "supplement", "name": "omega 3", "alsoAccept": ["fish oil", "omega-3"] },
+        { "entryType": "supplement", "name": "probiotic", "alsoAccept": ["probiotics"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Three supplements at breakfast time with no food, so meal type must be omitted entirely."
+  },
+  {
+    "id": "supp-ldn-before-bed",
+    "category": "supplement-medication",
+    "input": "low dose naltrexone before bed as usual",
+    "at": "22:30",
+    "expect": {
+      "entries": [
+        { "entryType": "medication", "name": "naltrexone", "alsoAccept": ["low dose naltrexone", "ldn"] }
+      ],
+      "forbidNames": []
+    },
+    "notes": "Prescription medication common in chronic illness; 'as usual' is habit language, not a second event."
+  },
+  {
+    "id": "trap-skipped-breakfast",
+    "category": "negation-and-traps",
+    "input": "skipped breakfast today",
+    "at": "09:00",
+    "expect": {
+      "entries": [],
+      "forbidNames": ["breakfast", "eggs", "oatmeal", "coffee", "toast"]
+    },
+    "notes": "Hallucination guard: an omission must produce zero entries, not a generic breakfast."
+  },
+  {
+    "id": "trap-no-dairy-or-gluten",
+    "category": "negation-and-traps",
+    "input": "no dairy or gluten today, sticking to the protocol",
+    "at": "20:00",
+    "expect": {
+      "entries": [],
+      "forbidNames": ["dairy", "gluten", "milk", "cheese", "bread", "wheat"]
+    },
+    "notes": "Explicit negation: the named categories are exactly what must not be logged."
+  },
+  {
+    "id": "trap-intent-not-consumption",
+    "category": "negation-and-traps",
+    "input": "thinking about having salmon later",
+    "at": "16:00",
+    "expect": {
+      "entries": [],
+      "forbidNames": ["salmon", "rice"]
+    },
+    "notes": "Future intent is not consumption; nothing has been eaten yet."
+  },
+  {
+    "id": "trap-doctor-advice",
+    "category": "negation-and-traps",
+    "input": "my doctor said to avoid nightshades",
+    "at": "11:00",
+    "expect": {
+      "entries": [],
+      "forbidNames": ["nightshades", "tomato", "pepper", "potato", "eggplant"]
+    },
+    "notes": "Reported advice is not a log entry, and the named category must not be expanded into example foods."
+  },
+  {
+    "id": "trap-usually-eggs-had-oatmeal",
+    "category": "negation-and-traps",
+    "input": "I usually have eggs but had oatmeal instead",
+    "at": "08:15",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "oatmeal", "alsoAccept": ["oats"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": ["eggs", "egg"]
+    },
+    "notes": "Contrastive 'instead' — only the second food was eaten; the habitual one is a distractor."
+  },
+  {
+    "id": "trap-cooked-for-someone-else",
+    "category": "negation-and-traps",
+    "input": "made pancakes for the kids, I just had bone broth",
+    "at": "09:15",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "bone broth", "alsoAccept": ["broth"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": ["pancakes", "pancake", "flour", "syrup"]
+    },
+    "notes": "Food prepared for another person must not enter the user's log."
+  },
+  {
+    "id": "messy-chix-n-rice",
+    "category": "messy-real-world",
+    "input": "chix n rice + some kinda squash lunch ish",
+    "at": "12:40",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "chicken", "alsoAccept": ["chix"] },
+        { "entryType": "food", "name": "rice", "alsoAccept": [] },
+        { "entryType": "food", "name": "squash", "alsoAccept": ["butternut squash"] }
+      ],
+      "mealType": "lunch",
+      "forbidNames": []
+    },
+    "notes": "Slang, plus signs and hedging filler; 'some kinda' and 'ish' are noise, not items."
+  },
+  {
+    "id": "messy-run-on-breakfast",
+    "category": "messy-real-world",
+    "input": "ok so breakfast was 2 eggs some sauerkraut n black coffee then like an hour later stomach ache maybe 4",
+    "at": "08:30",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "eggs", "alsoAccept": ["egg"] },
+        { "entryType": "food", "name": "sauerkraut", "preparation": ["fermented"], "alsoAccept": ["kraut"] },
+        { "entryType": "food", "name": "coffee", "alsoAccept": ["black coffee"] },
+        { "entryType": "symptom", "name": "stomach ache", "severity": 4, "alsoAccept": ["stomach pain", "abdominal pain"] }
+      ],
+      "mealType": "breakfast",
+      "forbidNames": []
+    },
+    "notes": "Unpunctuated run-on with a trailing bare severity number and an intrinsic fermented tag."
+  },
+  {
+    "id": "messy-typos-no-oil",
+    "category": "messy-real-world",
+    "input": "dinner: grond beef w/ zuchinni and swt potato, no oil",
+    "at": "19:00",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "ground beef", "alsoAccept": ["beef"] },
+        { "entryType": "food", "name": "zucchini", "alsoAccept": ["courgette"] },
+        { "entryType": "food", "name": "sweet potato", "alsoAccept": [] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": ["oil", "olive oil"]
+    },
+    "notes": "Typos and abbreviations must be normalized while the trailing negation still suppresses the oil."
+  },
+  {
+    "id": "messy-abbrev-before-bed",
+    "category": "messy-real-world",
+    "input": "avo n bone broth b4 bed + mag glycinate",
+    "at": "22:10",
+    "expect": {
+      "entries": [
+        { "entryType": "food", "name": "avocado", "alsoAccept": ["avo"] },
+        { "entryType": "food", "name": "bone broth", "alsoAccept": ["broth"] },
+        { "entryType": "supplement", "name": "magnesium glycinate", "alsoAccept": ["magnesium", "mag glycinate"] }
+      ],
+      "mealType": "dinner",
+      "forbidNames": []
+    },
+    "notes": "Texting shorthand across two entry types; 'b4 bed' is timing, not an item."
+  }
+]

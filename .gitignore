@@ -212,3 +212,6 @@ android/local.properties
 # Capacitor fallback page (generated)
 out/
 .vercel
+
+# Eval reports (real API runs, keep local)
+evals/*/results/
