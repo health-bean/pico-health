@@ -17,7 +17,9 @@ export const CLARIFIER_RULES: readonly ClarifierRule[] = [
     id: "histamine-preparation",
     dimension: "preparation",
     axes: ["histamine", "amines", "tyramine"],
-    minLevel: "high",
+    // `moderate` is exactly the "depends on freshness" class (SIGHI: fresh
+    // fish is fine, day-old fish is not), so age is the question to ask there.
+    minLevel: "moderate",
     question: "{food} — fresh or leftover?",
     why: "matters for histamine",
     options: [

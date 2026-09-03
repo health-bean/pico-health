@@ -19,6 +19,8 @@ interface PendingCaptureCardProps {
     entryId: string,
     patch: { foodId?: string | null; name?: string; mealType?: string; entryTime?: string }
   ) => Promise<boolean>;
+  /** A clarifier was answered or skipped — the timeline should refetch. */
+  onClarified?: () => void;
   protocolId?: string;
 }
 
@@ -142,6 +144,7 @@ export function PendingCaptureCard({
   onDismiss,
   onRemoveEntry,
   onPatchEntry,
+  onClarified,
   protocolId,
 }: PendingCaptureCardProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -271,7 +274,14 @@ export function PendingCaptureCard({
 
       {activeClarifier && (
         <div className="mt-2">
-          <ClarifierRow compact clarifier={activeClarifier} onDone={() => setClarifier(null)} />
+          <ClarifierRow
+            compact
+            clarifier={activeClarifier}
+            onDone={() => {
+              setClarifier(null);
+              onClarified?.();
+            }}
+          />
         </div>
       )}
 

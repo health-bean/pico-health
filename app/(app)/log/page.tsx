@@ -340,6 +340,7 @@ export default function TimelinePage() {
               onDismiss={() => dismissSession(session.id)}
               onRemoveEntry={(entryId) => void removeEntry(session.id, entryId)}
               onPatchEntry={(entryId, patch) => patchEntry(session.id, entryId, patch)}
+              onClarified={() => fetchEntries(dateRef.current)}
             />
           ))}
         </div>
