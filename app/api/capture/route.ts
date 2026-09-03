@@ -125,7 +125,7 @@ export async function POST(request: Request) {
     const aiMessages: AIMessage[] = [{ role: "user", content }];
 
     // ── Provider and tools ────────────────────────────────────────────
-    const task = imageBase64 !== undefined ? ("food-photo-parse" as const) : ("daily-chat" as const);
+    const task = imageBase64 !== undefined ? ("food-photo-parse" as const) : ("capture-extract" as const);
     const provider = getProvider(task);
     const model = getTaskModel(task);
     const neutralTools = toNeutralTools(

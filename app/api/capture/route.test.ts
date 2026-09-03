@@ -195,10 +195,10 @@ describe("POST /api/capture", () => {
 
   // ── Loop wiring ───────────────────────────────────────────────────
 
-  it("uses the daily-chat provider, capture tools only, maxRounds 3 and maxTokens 512 for text", async () => {
+  it("uses the capture-extract provider, capture tools only, maxRounds 3 and maxTokens 512 for text", async () => {
     await readEvents(await post({ text: "salmon" }));
 
-    expect(getProvider).toHaveBeenCalledWith("daily-chat");
+    expect(getProvider).toHaveBeenCalledWith("capture-extract");
     expect(loopParams?.maxRounds).toBe(3);
     expect(loopParams?.maxTokens).toBe(512);
     expect(loopParams?.messages).toEqual([{ role: "user", content: "salmon" }]);

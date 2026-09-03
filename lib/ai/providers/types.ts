@@ -8,8 +8,9 @@
 // ── Task identifiers ────────────────────────────────────────────────────
 
 export type AITask =
-  | "daily-chat"          // Conversational tracking, food parsing from text
-  | "food-photo-parse"    // Vision: parse food from a photo
+  | "daily-chat"          // Chat tab: conversational coaching and tracking
+  | "capture-extract"     // Capture bar: text -> structured entries (speed-critical)
+  | "food-photo-parse"    // Vision: parse food from a photo (speed-critical)
   | "admin-chat"          // Admin data management chat
   | "health-insights"     // Deep pattern analysis, insight reports
   | "protocol-reasoning"; // Complex reasoning about protocol compliance

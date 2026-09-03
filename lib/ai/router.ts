@@ -13,6 +13,7 @@ import { getProviderById, isProviderAvailable } from "./providers/registry";
 // single privacy story). Gemini remains env-switchable per task if ever needed.
 const DEFAULT_ROUTING: Record<AITask, string> = {
   "daily-chat":          "anthropic",
+  "capture-extract":     "anthropic",
   "food-photo-parse":    "anthropic",
   "admin-chat":          "anthropic",
   "health-insights":     "anthropic",
@@ -22,18 +23,21 @@ const DEFAULT_ROUTING: Record<AITask, string> = {
 const FALLBACK_PROVIDER = "anthropic";
 
 /**
- * Per-task model tiering (Anthropic pricing per MTok in/out as of 2026-09):
- *   claude-haiku-4-5  $1/$5   — high-volume constrained extraction
- *   claude-sonnet-5   $2/$10  — quality-sensitive reasoning
- * Override any task via env: AI_MODEL_DAILY_CHAT=claude-sonnet-5
+ * Strongest-model-per-task (decision 2026-09-04). "Strongest" includes speed
+ * where the UX is latency-critical: capture must stream chips in ~2s, so it
+ * runs Sonnet 5 (strong + fast); everything where judgment matters runs Opus 5.
+ * Pricing per MTok in/out as of 2026-09: opus-5 $5/$25 · sonnet-5 $2/$10 ·
+ * haiku-4-5 $1/$5 (the cost step-down if unit economics ever demand it).
+ * Override any task via env: AI_MODEL_CAPTURE_EXTRACT=claude-opus-5.
  * Global override (all tasks): ANTHROPIC_MODEL.
  */
 const DEFAULT_MODELS: Record<AITask, string> = {
-  "daily-chat":          "claude-haiku-4-5",
-  "food-photo-parse":    "claude-haiku-4-5",
-  "admin-chat":          "claude-sonnet-5",
-  "health-insights":     "claude-sonnet-5",
-  "protocol-reasoning":  "claude-sonnet-5",
+  "daily-chat":          "claude-opus-5",
+  "capture-extract":     "claude-sonnet-5",
+  "food-photo-parse":    "claude-sonnet-5",
+  "admin-chat":          "claude-opus-5",
+  "health-insights":     "claude-opus-5",
+  "protocol-reasoning":  "claude-opus-5",
 };
 
 function modelEnvKeyForTask(task: AITask): string {
