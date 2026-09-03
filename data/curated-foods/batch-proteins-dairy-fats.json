@@ -1,0 +1,4006 @@
+[
+  {
+    "displayName": "Beef",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh beef low histamine; dry-aged steaks and leftovers substantially higher."
+  },
+  {
+    "displayName": "Ground Beef",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Minced/ground meat flagged — large surface area accelerates histamine formation"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Grind increases surface area; buy freshly ground, cook same day."
+  },
+  {
+    "displayName": "Lamb",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh and promptly cooked: low histamine. Leftovers and slow thawing raise histamine."
+  },
+  {
+    "displayName": "Pork",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh pork generally rated 0-1 by SIGHI; some histamine-sensitive individuals report reactions. Cured pork products are a different (very high) category."
+  },
+  {
+    "displayName": "Bison",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Thin direct data; ratings extrapolated from beef (comparable composition)."
+  },
+  {
+    "displayName": "Venison",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Game is typically hung/aged before sale — aging raises histamine vs fresh slaughter"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Commercial venison is usually aged (hung), raising histamine vs truly fresh meat."
+  },
+  {
+    "displayName": "Elk",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Game is typically hung/aged before sale — aging raises histamine vs fresh slaughter"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Like venison: often aged before sale; thin direct framework data."
+  },
+  {
+    "displayName": "Rabbit",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Little direct framework data; rated as generic fresh lean meat."
+  },
+  {
+    "displayName": "Goat",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Little direct framework data; rated as generic fresh red meat."
+  },
+  {
+    "displayName": "Beef Liver",
+    "category": "Proteins",
+    "subcategory": "Organ Meats",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Innards flagged — organ meats spoil quickly and accumulate amines fast"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Liver among highest-purine foods (>300 mg/100g) — classic gout exclusion"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Very fresh or frozen-immediately liver is best tolerated; purines make it a gout trigger."
+  },
+  {
+    "displayName": "Chicken Liver",
+    "category": "Proteins",
+    "subcategory": "Organ Meats",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Innards flagged — organ meats spoil quickly and accumulate amines fast"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Liver among highest-purine foods — classic gout exclusion"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Same profile as beef liver; buy fresh, cook promptly."
+  },
+  {
+    "displayName": "Beef Heart",
+    "category": "Proteins",
+    "subcategory": "Organ Meats",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Heart high purine (~170-250 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Muscle-like organ; better histamine profile than liver/kidney if fresh."
+  },
+  {
+    "displayName": "Beef Kidney",
+    "category": "Proteins",
+    "subcategory": "Organ Meats",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Innards flagged — organ meats spoil quickly and accumulate amines fast"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Kidney very high purine — classic gout exclusion"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "High purine; freshness critical for histamine tolerance."
+  },
+  {
+    "displayName": "Bone Broth",
+    "category": "Proteins",
+    "subcategory": "Organ Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Long-simmered broths/stocks rated 1-2 — extended cooking time accumulates histamine"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Long-simmered stocks develop substantial free glutamate"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Long simmer = histamine + free glutamate accumulation. Short-cooked meat stock is lower. FODMAP rating assumes no onion/garlic in the pot."
+  },
+  {
+    "displayName": "Bone Marrow",
+    "category": "Proteins",
+    "subcategory": "Organ Meats",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Marrow is predominantly fat — purine content low, unlike other organ foods"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Mostly fat; roasted fresh marrow has a benign profile. Thin direct framework data."
+  },
+  {
+    "displayName": "Chicken Breast",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Poultry moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh and promptly cooked: low histamine. Leftovers and slow thawing raise histamine."
+  },
+  {
+    "displayName": "Chicken Thigh",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Poultry moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh and promptly cooked: low histamine. Leftovers and slow thawing raise histamine."
+  },
+  {
+    "displayName": "Turkey",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Poultry moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh roast turkey low histamine — but leftovers held for days are a classic histamine trap."
+  },
+  {
+    "displayName": "Duck",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fresh meat rated 0 (well tolerated); histamine rises with storage, reheating, and mincing"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Poultry moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fatty poultry; fresh is low histamine like other fresh meats."
+  },
+  {
+    "displayName": "Eggs (chicken)",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Raw/soft egg white flagged as histamine liberator (1); yolk rated 0"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Eggs are purine-free — safe for gout protocols"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Egg white is a histamine liberator per SIGHI, especially undercooked; yolks usually well tolerated. Also a top-9 IgE allergen (tracked separately from these properties)."
+  },
+  {
+    "displayName": "Eggs (duck)",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Egg white liberator rating extrapolated from chicken egg"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Eggs are purine-free"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Rated by extrapolation from chicken eggs; some chicken-egg-allergic people tolerate duck eggs, some cross-react."
+  },
+  {
+    "displayName": "Salmon (fresh)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Salmon moderate-high purine (~150-250 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Flash-frozen-at-sea then cooked from frozen is the low-histamine way to eat salmon."
+  },
+  {
+    "displayName": "Salmon (canned)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — canned/preserved fish rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Salmon moderate-high purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Canning = storage; histamine substantially higher than fresh."
+  },
+  {
+    "displayName": "Sardines (fresh)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Sardines among highest-purine foods (>300 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Small oily fish spoil fast; even fresh carries histamine risk. Purines very high regardless of freshness."
+  },
+  {
+    "displayName": "Sardines (canned)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — canned/preserved fish rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Sardines among highest-purine foods"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Canned = aged; histamine rises sharply vs fresh. Also a top gout trigger."
+  },
+  {
+    "displayName": "Mackerel (fresh)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Scombroid family — histidine-rich flesh forms histamine rapidly even with mild temperature abuse"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Mackerel high purine (~150-250 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Scombroid fish: the classic histamine-poisoning species. Only very fresh or frozen-at-sea."
+  },
+  {
+    "displayName": "Mackerel (canned)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — canned/preserved fish rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Mackerel high purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Scombroid + canned: among the highest-histamine foods available."
+  },
+  {
+    "displayName": "Tuna (fresh)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Scombroid family — histidine-rich flesh forms histamine rapidly even with mild temperature abuse"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Tuna high purine (~150-250 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Scombroid; sushi-grade freshness or frozen-at-sea reduces but doesn't eliminate risk."
+  },
+  {
+    "displayName": "Tuna (canned)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — canned/preserved fish rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Tuna high purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Scombroid + canned; a frequent hidden trigger for histamine-sensitive users."
+  },
+  {
+    "displayName": "Cod",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "White fish moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Lean white fish; among the better-tolerated fish when fresh or cooked from frozen."
+  },
+  {
+    "displayName": "Halibut",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "White fish moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh and promptly cooked: low histamine. Leftovers and slow thawing raise histamine."
+  },
+  {
+    "displayName": "Trout",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Trout moderate-high purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Often available very fresh (farmed); good salmon alternative for histamine-sensitive users."
+  },
+  {
+    "displayName": "Tilapia",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "White fish moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Lean farmed white fish; generally well tolerated when fresh."
+  },
+  {
+    "displayName": "Snapper",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "White fish moderate purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh and promptly cooked: low histamine. Leftovers and slow thawing raise histamine."
+  },
+  {
+    "displayName": "Anchovies (canned)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — canned/preserved fish rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Anchovies among highest-purine foods (>300 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Cured anchovy is a concentrated natural-glutamate (umami) food"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Salt-cured + canned: extreme on histamine, amines, glutamate, and purines simultaneously."
+  },
+  {
+    "displayName": "Herring (fresh)",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — fish rated 0-1 only if very fresh or flash-frozen; histamine forms rapidly post-catch"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Herring very high purine"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh herring rated here; pickled herring is a classic very-high tyramine/histamine food and should be logged separately."
+  },
+  {
+    "displayName": "Shrimp",
+    "category": "Proteins",
+    "subcategory": "Shellfish",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "moderate",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Shellfish rated 1-2 — spoil rapidly; tolerated by some when impeccably fresh"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Shellfish high purine (~150-300 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Shellfish naturally rich in free glutamate (umami)"
+      },
+      "sulfites": {
+        "source": "RPAH",
+        "ref": "Sodium metabisulfite routinely applied to raw shrimp/prawns to prevent melanosis"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Commonly sulfite-treated at harvest — relevant for sulfite-sensitive users. Freshness critical."
+  },
+  {
+    "displayName": "Crab",
+    "category": "Proteins",
+    "subcategory": "Shellfish",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Shellfish rated 1-2 — spoil rapidly; tolerated by some when impeccably fresh"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Shellfish high purine (~150-300 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Shellfish naturally rich in free glutamate (umami)"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness is everything; also a top-9 IgE allergen class (tracked separately)."
+  },
+  {
+    "displayName": "Lobster",
+    "category": "Proteins",
+    "subcategory": "Shellfish",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Shellfish rated 1-2 — spoil rapidly; tolerated by some when impeccably fresh"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Shellfish high purine (~150-300 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Shellfish naturally rich in free glutamate (umami)"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness is everything; also a top-9 IgE allergen class (tracked separately)."
+  },
+  {
+    "displayName": "Oysters",
+    "category": "Proteins",
+    "subcategory": "Shellfish",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Shellfish rated 1-2 — spoil rapidly; tolerated by some when impeccably fresh"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Shellfish high purine (~150-300 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Shellfish naturally rich in free glutamate (umami)"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness is everything; also a top-9 IgE allergen class (tracked separately)."
+  },
+  {
+    "displayName": "Mussels",
+    "category": "Proteins",
+    "subcategory": "Shellfish",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "very_high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Shellfish rated 1-2 — spoil rapidly; tolerated by some when impeccably fresh"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Mussels very high purine — classic gout exclusion"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Shellfish naturally rich in free glutamate (umami)"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness is everything; also a top-9 IgE allergen class (tracked separately)."
+  },
+  {
+    "displayName": "Scallops",
+    "category": "Proteins",
+    "subcategory": "Shellfish",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Shellfish rated 1-2 — spoil rapidly; tolerated by some when impeccably fresh"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Scallops high purine — commonly excluded on gout diets"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Shellfish naturally rich in free glutamate (umami)"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness is everything; also a top-9 IgE allergen class (tracked separately)."
+  },
+  {
+    "displayName": "Clams",
+    "category": "Proteins",
+    "subcategory": "Shellfish",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Shellfish rated 1-2 — spoil rapidly; tolerated by some when impeccably fresh"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Shellfish high purine (~150-300 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Shellfish naturally rich in free glutamate (umami)"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness is everything; also a top-9 IgE allergen class (tracked separately)."
+  },
+  {
+    "displayName": "Bacon",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Cured and smoked but not aged like salami — high rather than extreme. Nitrite-cured (nitrites tracked outside these 14 properties)."
+  },
+  {
+    "displayName": "Ham (cured)",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Wet-cured ham lower on the amine scale than dry-aged prosciutto, still a histamine food."
+  },
+  {
+    "displayName": "Prosciutto",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Dry-aged 12+ months: very high histamine/amines and concentrated free glutamate."
+  },
+  {
+    "displayName": "Salami",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "very_high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fermented AND dry-aged — the worst case: very high histamine, tyramine, and other amines."
+  },
+  {
+    "displayName": "Pepperoni",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "very_high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fermented dry sausage like salami: very high across all amine classes."
+  },
+  {
+    "displayName": "Deli Turkey",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "moderate",
+      "sulfites": "moderate",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      },
+      "sulfites": {
+        "source": "RPAH",
+        "ref": "Processed/preserved meats commonly contain preservatives incl. sulfiting agents; varies by brand"
+      }
+    },
+    "confidence": "low",
+    "notes": "Sliced, stored, preservative-treated meat; profile varies widely by brand — check labels."
+  },
+  {
+    "displayName": "Smoked Salmon",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "high",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Cold-smoked and stored: very high histamine; a frequent unrecognized trigger."
+  },
+  {
+    "displayName": "Hot Dogs",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "low",
+    "notes": "Cooked emulsified sausage — lower amines than fermented salami but still a processed-meat histamine load; formulations vary widely."
+  },
+  {
+    "displayName": "Corned Beef",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "moderate",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      }
+    },
+    "confidence": "low",
+    "notes": "Brine-cured over days; high but below dry-aged/fermented meats. Framework data thin."
+  },
+  {
+    "displayName": "Pork Sausage (fresh)",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "moderate",
+      "goitrogens": "low",
+      "purines": "moderate",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Histamine compatibility list — cured/smoked/fermented meats rated 2-3 (incompatible)"
+      },
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH elimination diet — fresh meat, fish, eggs, and dairy negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Animal foods negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Plain animal proteins contain no fermentable carbohydrates"
+      },
+      "purines": {
+        "source": "Clinical purine tables",
+        "ref": "Muscle meats moderate purine (~100-150 mg/100g)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      },
+      "sulfites": {
+        "source": "RPAH",
+        "ref": "Fresh sausages frequently preserved with sulfites (esp. AU/UK markets); varies by producer"
+      }
+    },
+    "confidence": "low",
+    "notes": "Uncured fresh sausage: ground (histamine risk) and often sulfite-preserved — varies by producer."
+  },
+  {
+    "displayName": "Whole Milk",
+    "category": "Dairy",
+    "subcategory": "Milk & Cream",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "high",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fresh (unfermented) dairy rated 0"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Lactose-containing dairy is high-FODMAP (lactose = disaccharide D)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Lactose makes milk high-FODMAP; lactose-free milk is the low-FODMAP swap. Fresh milk itself is low histamine."
+  },
+  {
+    "displayName": "Heavy Cream",
+    "category": "Dairy",
+    "subcategory": "Milk & Cream",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fresh (unfermented) dairy rated 0"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Cream is mostly fat — lactose present but much lower per serving than milk"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Moderate lactose; small amounts often tolerated on low-FODMAP."
+  },
+  {
+    "displayName": "Butter",
+    "category": "Dairy",
+    "subcategory": "Butter & Ghee",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fresh (unfermented) dairy rated 0"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Butter is nearly pure fat — trace lactose, rated low FODMAP"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Essentially fat; low FODMAP and low histamine. Trace casein/lactose remains (matters for dairy allergy, not FODMAP)."
+  },
+  {
+    "displayName": "Ghee",
+    "category": "Dairy",
+    "subcategory": "Butter & Ghee",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fresh (unfermented) dairy rated 0"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Clarified butter — milk solids removed; effectively lactose-free"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Milk solids (casein, lactose) removed — the AIP-permitted dairy fat. Well tolerated across most protocols."
+  },
+  {
+    "displayName": "Yogurt (plain)",
+    "category": "Dairy",
+    "subcategory": "Fermented Dairy",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "high",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fermented dairy rated 1 — bacterial cultures produce some histamine"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Lactose-containing dairy is high-FODMAP (lactose = disaccharide D)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fermented but young: moderate amines. Regular yogurt is high-FODMAP for lactose; Greek/lactose-free is lower."
+  },
+  {
+    "displayName": "Greek Yogurt",
+    "category": "Dairy",
+    "subcategory": "Fermented Dairy",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fermented dairy rated 1 — bacterial cultures produce some histamine"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Straining removes much of the lactose — moderate rather than high"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Straining removes whey/lactose; better FODMAP profile than regular yogurt."
+  },
+  {
+    "displayName": "Kefir",
+    "category": "Dairy",
+    "subcategory": "Fermented Dairy",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Long-fermented cultured milk rated 1-2 — more extensive fermentation than yogurt"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Extended fermentation consumes much of the lactose"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Longer, wilder ferment than yogurt: higher histamine, but fermentation also lowers lactose."
+  },
+  {
+    "displayName": "Sour Cream",
+    "category": "Dairy",
+    "subcategory": "Fermented Dairy",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Cultured dairy rated 1"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Lactose-containing dairy is high-FODMAP (lactose = disaccharide D)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Cultured cream: mild fermentation, moderate lactose."
+  },
+  {
+    "displayName": "Cheddar (aged)",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "very_high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Hard/aged cheeses rated 2 — amines accumulate with ripening time"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Aged/hard cheeses have negligible lactose — low FODMAP"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "RPAH glutamates column — aged/cured/long-cooked foods develop free glutamate"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Aging trades lactose (drops to nil) for amines (climb steadily). Older = more tyramine."
+  },
+  {
+    "displayName": "Parmesan",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "very_high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "very_high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Hard/aged cheeses rated 2 — amines accumulate with ripening time"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Aged/hard cheeses have negligible lactose — low FODMAP"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "glutamates": {
+        "source": "RPAH",
+        "ref": "Parmesan is among the highest natural free-glutamate foods (~1.2 g/100g)"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "24+ month aging: extreme free glutamate and very high tyramine; zero lactose."
+  },
+  {
+    "displayName": "Swiss Cheese (aged)",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "high",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "very_high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Hard/aged cheeses rated 2"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Aged/hard cheeses have negligible lactose — low FODMAP"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Swiss/Emmental repeatedly cited among highest-tyramine cheeses"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Propionibacteria fermentation; a textbook high-tyramine cheese."
+  },
+  {
+    "displayName": "Blue Cheese",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "very_high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "very_high",
+      "glutamates": "high",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "very_high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Mold-ripened cheeses rated 3 (incompatible)"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Aged/hard cheeses have negligible lactose — low FODMAP"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      },
+      "amines": {
+        "source": "SIGHI",
+        "ref": "Other biogenic amines column"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Mold-ripened: the most amine-loaded cheese class."
+  },
+  {
+    "displayName": "Mozzarella (fresh)",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Young/fresh unripened cheeses rated 0-1 — minimal aging, minimal amines"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Fresh mozzarella retains some lactose — moderate"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Unripened cheese: the low-amine cheese choice. Eat fresh; amines rise with fridge time."
+  },
+  {
+    "displayName": "Ricotta",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fresh whey cheese, unripened — rated 0-1"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Fresh whey cheese retains lactose — moderate"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh unripened; low amines but real lactose content."
+  },
+  {
+    "displayName": "Cottage Cheese",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fresh unripened cheese rated 0-1"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Fresh cheese retains lactose — moderate"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh curd cheese: low amines, moderate lactose."
+  },
+  {
+    "displayName": "Cream Cheese",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "moderate",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Fresh unripened cheese rated 0-1"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Lactose-containing dairy is high-FODMAP (lactose = disaccharide D)"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh unripened; moderate lactose."
+  },
+  {
+    "displayName": "Goat Cheese (fresh)",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "moderate",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "moderate"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Soft ripened goat cheeses rated 1 — brief ripening"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Chèvre commonly listed low-FODMAP at typical servings"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh chèvre moderate; aged goat cheeses climb like other aged cheeses."
+  },
+  {
+    "displayName": "Feta",
+    "category": "Dairy",
+    "subcategory": "Cheese",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "high",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "high"
+    },
+    "sources": {
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Brined/ripened cheeses rated 1-2"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Feta low lactose — commonly listed low-FODMAP"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: dairy contains no lectins, phytates, goitrogens, phytoestrogens, oxalate, or salicylate; purines negligible"
+      },
+      "tyramine": {
+        "source": "Clinical MAOI diet lists",
+        "ref": "Aged/fermented foods are the classic high-tyramine group"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Brine-aged for weeks-months: meaningful amine load despite soft texture."
+  },
+  {
+    "displayName": "Olive Oil (extra virgin)",
+    "category": "Fats & Oils",
+    "subcategory": "Plant Oils",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "moderate",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH rates olive oil moderate salicylate (unrefined oils carry the fruit's phenolics)"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: rendered/refined fats carry negligible lectins, phytates, oxalate, FODMAPs, purines, or goitrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "EVOO carries olive phenolics/salicylates; refined 'light' olive oil is lower."
+  },
+  {
+    "displayName": "Coconut Oil",
+    "category": "Fats & Oils",
+    "subcategory": "Plant Oils",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH — refined oils and rendered animal fats negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: rendered/refined fats carry negligible lectins, phytates, oxalate, FODMAPs, purines, or goitrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Refined or virgin, negligible on all 14 properties; a common elimination-diet staple fat."
+  },
+  {
+    "displayName": "Avocado Oil",
+    "category": "Fats & Oils",
+    "subcategory": "Plant Oils",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "moderate",
+      "amines": "moderate",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "Avocado fruit rated high salicylate/amines; refined oil retains an uncertain fraction — rated conservatively"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: rendered/refined fats carry negligible lectins, phytates, oxalate, FODMAPs, purines, or goitrogens"
+      },
+      "amines": {
+        "source": "RPAH",
+        "ref": "Avocado is an amine-containing fruit; carryover into oil is poorly characterized"
+      }
+    },
+    "confidence": "low",
+    "notes": "Frameworks rate the fruit, not the oil; refined oil is likely lower than rated here. Data thin."
+  },
+  {
+    "displayName": "Sesame Oil",
+    "category": "Fats & Oils",
+    "subcategory": "Plant Oils",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "moderate",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "moderate",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "Sesame rated moderate salicylate; toasted unrefined oil retains seed compounds"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: rendered/refined fats carry negligible lectins, phytates, oxalate, FODMAPs, purines, or goitrogens"
+      },
+      "phytoestrogens": {
+        "source": "Published lignan analyses",
+        "ref": "Sesame lignans (sesamin/sesamolin) partially carry into unrefined oil"
+      }
+    },
+    "confidence": "low",
+    "notes": "Unrefined/toasted oil retains seed lignans and phenolics. Also a growing IgE allergen (tracked separately)."
+  },
+  {
+    "displayName": "Flaxseed Oil",
+    "category": "Fats & Oils",
+    "subcategory": "Plant Oils",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "moderate",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH — refined oils and rendered animal fats negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: rendered/refined fats carry negligible lectins, phytates, oxalate, FODMAPs, purines, or goitrogens"
+      },
+      "phytoestrogens": {
+        "source": "Published lignan analyses",
+        "ref": "Flax is the richest dietary lignan source; most lignans stay in the meal, but cold-pressed and 'high-lignan' oils carry some"
+      }
+    },
+    "confidence": "low",
+    "notes": "Oxidizes fast — rancid oil is its own tolerance problem; refrigerate, never heat."
+  },
+  {
+    "displayName": "MCT Oil",
+    "category": "Fats & Oils",
+    "subcategory": "Plant Oils",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH — refined oils and rendered animal fats negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: rendered/refined fats carry negligible lectins, phytates, oxalate, FODMAPs, purines, or goitrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Highly refined coconut/palm-kernel fraction; negligible on all properties. GI upset at high doses is osmotic, not FODMAP."
+  },
+  {
+    "displayName": "Tallow",
+    "category": "Fats & Oils",
+    "subcategory": "Animal Fats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH — refined oils and rendered animal fats negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Rendered beef fat; negligible on all 14 properties. AIP-compatible cooking fat."
+  },
+  {
+    "displayName": "Lard",
+    "category": "Fats & Oils",
+    "subcategory": "Animal Fats",
+    "isCommon": true,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH — refined oils and rendered animal fats negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "moderate",
+    "notes": "Rendered pork fat; negligible on all properties. Some histamine-sensitive users prefer freshly rendered over shelf-stable."
+  },
+  {
+    "displayName": "Duck Fat",
+    "category": "Fats & Oils",
+    "subcategory": "Animal Fats",
+    "isCommon": false,
+    "properties": {
+      "oxalate": "low",
+      "histamine": "low",
+      "lectin": "low",
+      "nightshade": false,
+      "fodmap": "low",
+      "salicylate": "low",
+      "amines": "low",
+      "glutamates": "low",
+      "sulfites": "low",
+      "goitrogens": "low",
+      "purines": "low",
+      "phytoestrogens": "low",
+      "phytates": "low",
+      "tyramine": "low"
+    },
+    "sources": {
+      "salicylate": {
+        "source": "RPAH",
+        "ref": "RPAH — refined oils and rendered animal fats negligible salicylate"
+      },
+      "oxalate": {
+        "source": "Harvard/TLO",
+        "ref": "Fats and oils contain negligible oxalate"
+      },
+      "fodmap": {
+        "source": "Published FODMAP lists",
+        "ref": "Pure fats/oils contain no fermentable carbohydrates"
+      },
+      "histamine": {
+        "source": "SIGHI",
+        "ref": "Pure fats/oils rated 0 — no protein substrate for amine formation"
+      },
+      "default": {
+        "source": "Botanical/compositional",
+        "ref": "Category-level: animal foods contain no lectins, phytates, goitrogens, or phytoestrogens"
+      }
+    },
+    "confidence": "low",
+    "notes": "Rendered poultry fat; rated by extrapolation from other rendered animal fats."
+  }
+]

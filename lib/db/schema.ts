@@ -65,6 +65,13 @@ export const foodTriggerProperties = pgTable(
     phytoestrogens: varchar("phytoestrogens", { length: 20 }).default("unknown"),
     phytates: varchar("phytates", { length: 20 }).default("unknown"),
     tyramine: varchar("tyramine", { length: 20 }).default("unknown"),
+    /** Per-property citations: { histamine: { source: "SIGHI", ref: "..." }, ... } */
+    sources: jsonb("sources").$type<Record<string, { source: string; ref?: string; note?: string }>>(),
+    /** unreviewed | ai_proposed | founder_set | practitioner_reviewed */
+    reviewStatus: varchar("review_status", { length: 20 }).notNull().default("unreviewed"),
+    reviewedBy: varchar("reviewed_by", { length: 120 }),
+    reviewedAt: timestamp("reviewed_at", { withTimezone: true }),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
     createdAt: timestamp("created_at").defaultNow(),
   },
   (table) => [uniqueIndex("food_trigger_food_id_idx").on(table.foodId)]

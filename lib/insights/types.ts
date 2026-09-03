@@ -7,6 +7,8 @@ export interface FoodEntry {
   mealType: string | null;
   time: string | null;
   protocolStatus: 'allowed' | 'avoid' | 'moderation' | 'reintroduction' | 'unknown' | null;
+  /** Preparation states, e.g. ['leftover', 'fermented']. Optional: absent on rows persisted before this field existed. */
+  preparation?: string[];
 }
 
 export interface FoodProperty {
@@ -80,7 +82,7 @@ export interface DayComposite {
 // --- Factors ---
 
 export type FactorCategory =
-  | 'food' | 'food_property' | 'supplement' | 'medication'
+  | 'food' | 'food_property' | 'preparation' | 'supplement' | 'medication'
   | 'exposure' | 'exercise' | 'sleep' | 'stress' | 'energy'
   | 'mood' | 'pain' | 'timing' | 'compliance';
 

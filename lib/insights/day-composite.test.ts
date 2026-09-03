@@ -74,6 +74,30 @@ describe('buildDayComposite', () => {
     expect(composite.hasJournal).toBe(false);
   });
 
+  it('carries preparation states from structuredContent into food entries', () => {
+    const entries = [
+      { entryType: 'food', name: 'Chicken', severity: null, entryTime: '19:00', foodId: null, mealType: 'dinner', portion: null, exerciseType: null, durationMinutes: null, intensityLevel: null, energyLevel: null, structuredContent: { preparation: ['leftover'] } },
+      { entryType: 'food', name: 'Sauerkraut', severity: null, entryTime: '19:00', foodId: null, mealType: 'dinner', portion: null, exerciseType: null, durationMinutes: null, intensityLevel: null, energyLevel: null, structuredContent: { details: 'small serving', preparation: ['fermented'] } },
+      { entryType: 'food', name: 'Apple', severity: null, entryTime: '10:00', foodId: null, mealType: 'snack', portion: null, exerciseType: null, durationMinutes: null, intensityLevel: null, energyLevel: null },
+    ];
+
+    const composite = buildDayComposite('user1', '2026-09-01', entries, null, new Map(), null);
+    expect(composite.foods[0].preparation).toEqual(['leftover']);
+    expect(composite.foods[1].preparation).toEqual(['fermented']);
+    expect(composite.foods[2].preparation).toEqual([]);
+  });
+
+  it('ignores malformed preparation values in structuredContent', () => {
+    const entries = [
+      { entryType: 'food', name: 'Soup', severity: null, entryTime: null, foodId: null, mealType: null, portion: null, exerciseType: null, durationMinutes: null, intensityLevel: null, energyLevel: null, structuredContent: { preparation: 'leftover' } },
+      { entryType: 'food', name: 'Stew', severity: null, entryTime: null, foodId: null, mealType: null, portion: null, exerciseType: null, durationMinutes: null, intensityLevel: null, energyLevel: null, structuredContent: { preparation: ['leftover', 42, null] } },
+    ];
+
+    const composite = buildDayComposite('user1', '2026-09-01', entries, null, new Map(), null);
+    expect(composite.foods[0].preparation).toEqual([]);
+    expect(composite.foods[1].preparation).toEqual(['leftover']);
+  });
+
   it('handles exercise entries', () => {
     const entries = [
       { entryType: 'exercise', name: 'Running', severity: null, entryTime: '07:00', foodId: null, mealType: null, portion: null, exerciseType: 'cardio', durationMinutes: 30, intensityLevel: 'moderate', energyLevel: 7 },

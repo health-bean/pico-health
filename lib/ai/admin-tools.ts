@@ -38,7 +38,7 @@ export const adminTools: Anthropic.Tool[] = [
   {
     name: "update_food_triggers",
     description:
-      "Update one or more trigger properties for an existing food. Only the properties included in `updates` will be changed; others are left untouched.",
+      "Update one or more trigger properties for an existing food. Only the properties included in `updates` will be changed; others are left untouched. Every call MUST include `sources` citing the framework used for each updated property (e.g. SIGHI, RPAH/FAILSAFE, Harvard/TLO oxalate lists, published FODMAP lists, botanical/compositional classification). Never invent a citation. Updates are stored as review_status 'ai_proposed' pending practitioner review.",
     input_schema: {
       type: "object" as const,
       properties: {
@@ -105,14 +105,33 @@ export const adminTools: Anthropic.Tool[] = [
             },
           },
         },
+        sources: {
+          type: "object",
+          description:
+            "REQUIRED citations for the property values being set. Keys are property names from `updates` (e.g. 'histamine'); a 'default' key may cover any property without its own entry. Each value is { source, ref? } naming the framework actually consulted (e.g. SIGHI, RPAH/FAILSAFE, Harvard or Trying Low Oxalates lists, published FODMAP lists, botanical/compositional classification). Never invent a citation.",
+          additionalProperties: {
+            type: "object",
+            properties: {
+              source: {
+                type: "string",
+                description: "Framework or reference used (e.g. 'SIGHI')",
+              },
+              ref: {
+                type: "string",
+                description: "Specific list, edition, URL, or entry (optional)",
+              },
+            },
+            required: ["source"],
+          },
+        },
       },
-      required: ["food_name", "updates"],
+      required: ["food_name", "updates", "sources"],
     },
   },
   {
     name: "add_food",
     description:
-      "Add a new food to the database with its subcategory and trigger properties.",
+      "Add a new food to the database with its subcategory and trigger properties. Every call MUST include `sources` citing the framework used for each trigger property you set (a 'default' entry may cover several). Never invent a citation. New trigger rows are stored as review_status 'ai_proposed' pending practitioner review.",
     input_schema: {
       type: "object" as const,
       properties: {
@@ -188,8 +207,27 @@ export const adminTools: Anthropic.Tool[] = [
             },
           },
         },
+        sources: {
+          type: "object",
+          description:
+            "REQUIRED citations for the trigger values being set. Keys are property names from `triggers`; a 'default' key may cover any property without its own entry. Each value is { source, ref? } naming the framework actually consulted. Never invent a citation.",
+          additionalProperties: {
+            type: "object",
+            properties: {
+              source: {
+                type: "string",
+                description: "Framework or reference used (e.g. 'SIGHI')",
+              },
+              ref: {
+                type: "string",
+                description: "Specific list, edition, URL, or entry (optional)",
+              },
+            },
+            required: ["source"],
+          },
+        },
       },
-      required: ["name", "subcategory", "is_common", "triggers"],
+      required: ["name", "subcategory", "is_common", "triggers", "sources"],
     },
   },
   {

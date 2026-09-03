@@ -7,6 +7,8 @@ interface TriggerCellProps {
   property: string;
   options: string[];
   onChange: (value: string) => void;
+  /** Citation for this property's value (from food_trigger_properties.sources). */
+  source?: string | null;
 }
 
 const LEVEL_COLORS: Record<string, string> = {
@@ -29,7 +31,7 @@ const DISPLAY_LABELS: Record<string, string> = {
   false: "No",
 };
 
-export function TriggerCell({ value, property, options, onChange }: TriggerCellProps) {
+export function TriggerCell({ value, property, options, onChange, source }: TriggerCellProps) {
   const [editing, setEditing] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -90,7 +92,11 @@ export function TriggerCell({ value, property, options, onChange }: TriggerCellP
     <button
       onClick={() => setEditing(true)}
       className={`block w-full cursor-pointer rounded px-1.5 py-1 text-center text-xs transition-all hover:ring-2 hover:ring-teal-300 ${colorClass}`}
-      title={`${property}: ${displayValue} (click to edit)`}
+      title={
+        source
+          ? `${property}: ${displayValue} — ${source}`
+          : `${property}: ${displayValue} (click to edit)`
+      }
     >
       {label}
     </button>

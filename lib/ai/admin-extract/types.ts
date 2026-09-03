@@ -1,3 +1,12 @@
+/** A citation for one (or several, via a "default" key) property values. */
+export interface SourceCitation {
+  source: string;
+  ref?: string;
+}
+
+/** Keyed by property name; a "default" entry may cover several properties. */
+export type SourcesInput = Record<string, SourceCitation>;
+
 export interface TriggerUpdates {
   oxalate?: string;
   histamine?: string;
@@ -27,6 +36,8 @@ export interface GetFoodDetailsInput {
 export interface UpdateFoodTriggersInput {
   food_name: string;
   updates: TriggerUpdates;
+  /** Required by the tool contract; the executor rejects updates without citations. */
+  sources?: SourcesInput;
 }
 
 export interface AddFoodInput {
@@ -34,6 +45,8 @@ export interface AddFoodInput {
   subcategory: string;
   is_common: boolean;
   triggers: TriggerUpdates;
+  /** Required by the tool contract; the executor rejects trigger values without citations. */
+  sources?: SourcesInput;
 }
 
 export interface DeleteFoodInput {

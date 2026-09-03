@@ -67,6 +67,7 @@ export async function computeAndStoreDayComposite(userId: string, date: string):
     durationMinutes: e.durationMinutes,
     intensityLevel: e.intensityLevel,
     energyLevel: e.energyLevel,
+    structuredContent: e.structuredContent as Record<string, unknown> | null,
   }));
 
   const composite = buildDayComposite(

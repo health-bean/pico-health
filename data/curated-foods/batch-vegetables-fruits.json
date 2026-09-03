@@ -1,0 +1,1397 @@
+[
+  {
+    "displayName": "Spinach",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": true,
+    "properties": { "oxalate": "very_high", "histamine": "high", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "moderate", "glutamates": "moderate", "sulfites": "low", "goitrogens": "moderate", "purines": "moderate", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Canonical very-high-oxalate food (~600-750mg/100g cooked)" },
+      "histamine": { "source": "SIGHI", "ref": "Rated 2 — histamine content plus liberator" },
+      "salicylate": { "source": "RPAH", "ref": "Moderate salicylate vegetable" },
+      "purines": { "source": "Clinical purine tables", "ref": "Moderate-purine vegetable" },
+      "default": { "source": "Botanical/compositional", "ref": "Category-level ratings for remaining properties" }
+    },
+    "confidence": "moderate",
+    "notes": "The single most important high-oxalate food to get right; boiling and discarding water cuts oxalate ~30-50%."
+  },
+  {
+    "displayName": "Swiss Chard",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": true,
+    "properties": { "oxalate": "very_high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Chard grouped with spinach/beet greens as very high oxalate" },
+      "salicylate": { "source": "RPAH", "ref": "Moderate salicylate leafy green" },
+      "default": { "source": "Botanical/compositional", "ref": "Amaranthaceae leafy green defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Boiling and discarding water cuts oxalate ~30-50%."
+  },
+  {
+    "displayName": "Kale",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Kale is the classic low-oxalate green swap for spinach" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — glucosinolates high when raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer leafy defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Cooking substantially reduces goitrogenic glucosinolates."
+  },
+  {
+    "displayName": "Collard Greens",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Collards moderate — far below spinach/chard" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica green, high raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer leafy defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Traditional long-cooking reduces goitrogens and some oxalate."
+  },
+  {
+    "displayName": "Arugula",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "moderate", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Low-oxalate salad green" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassicaceae, typically eaten raw in small amounts" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer salad-green defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Romaine Lettuce",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Lettuce is a low-salicylate baseline vegetable" },
+      "default": { "source": "Botanical/compositional", "ref": "Lettuce defaults — benign across frameworks" }
+    },
+    "confidence": "moderate",
+    "notes": "One of the safest vegetables across all elimination protocols."
+  },
+  {
+    "displayName": "Butter Lettuce",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Lettuce low salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Lettuce defaults — benign across frameworks" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Watercress",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Watercress listed among higher-salicylate greens" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassicaceae, eaten raw — glucosinolates intact" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer leafy defaults" }
+    },
+    "confidence": "low",
+    "notes": "Salicylate data thin; goitrogen concern only relevant at large raw intakes."
+  },
+  {
+    "displayName": "Beet Greens",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "isCommon": false,
+    "properties": { "oxalate": "very_high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Beet greens in the spinach/chard very-high tier" },
+      "default": { "source": "Botanical/compositional", "ref": "Amaranthaceae leafy defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Boiling and discarding water cuts oxalate ~30-50%."
+  },
+  {
+    "displayName": "Broccoli",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "high", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Crucifers mostly low oxalate" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Broccoli heads categorically low" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — high raw, reduced by cooking" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Cooking substantially reduces goitrogens; stalks carry more fructans than florets."
+  },
+  {
+    "displayName": "Cauliflower",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Canonical high-mannitol vegetable" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — high raw" },
+      "purines": { "source": "Clinical purine tables", "ref": "Moderate-purine vegetable" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Cooking reduces goitrogens but not FODMAPs."
+  },
+  {
+    "displayName": "Brussels Sprouts",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "high", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — moderate, portion-sensitive" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — high raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Cooking reduces goitrogens."
+  },
+  {
+    "displayName": "Cabbage (Green)",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Cabbage is a famous RPAH low-salicylate baseline food" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Common green cabbage categorically low" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — high raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh cabbage only — sauerkraut is a different (very high histamine) food."
+  },
+  {
+    "displayName": "Cabbage (Red)",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Cabbage low salicylate; red slightly above green but still low tier" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — high raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Bok Choy",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Bok choy categorically low" },
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — high raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Cooking reduces goitrogens."
+  },
+  {
+    "displayName": "Radish",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "moderate", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica root — moderate, small typical portions" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer root defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Turnip",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Turnip among the classic goitrogenic Brassica roots" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Turnip categorically low at typical serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer root defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Cooking reduces goitrogens."
+  },
+  {
+    "displayName": "Kohlrabi",
+    "category": "Vegetables",
+    "subcategory": "Crucifers",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica — high raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer defaults" }
+    },
+    "confidence": "low",
+    "notes": "Thin framework coverage; rated from crucifer category norms."
+  },
+  {
+    "displayName": "Tomato",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "high", "lectin": "moderate", "nightshade": true, "fodmap": "moderate", "salicylate": "very_high", "amines": "high", "glutamates": "high", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "moderate" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Rated 2 — high histamine plus liberator; a top histamine-diet exclusion" },
+      "salicylate": { "source": "RPAH", "ref": "Tomato is a canonical very-high salicylate/amine food" },
+      "glutamates": { "source": "Compositional", "ref": "Among the highest free-glutamate fresh foods" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructose — moderate; large serves and paste flagged in recent lists" },
+      "default": { "source": "Botanical/compositional", "ref": "Solanaceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Ripeness, cooking, and concentration (paste, sundried) all push histamine/glutamate ratings higher."
+  },
+  {
+    "displayName": "Cherry Tomatoes",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "high", "lectin": "moderate", "nightshade": true, "fodmap": "moderate", "salicylate": "very_high", "amines": "high", "glutamates": "high", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "moderate" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Tomato rated 2 — histamine plus liberator" },
+      "salicylate": { "source": "RPAH", "ref": "Tomato very high salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "As tomato" }
+    },
+    "confidence": "moderate",
+    "notes": "Slightly sweeter/higher fructose per gram than large tomatoes."
+  },
+  {
+    "displayName": "Bell Pepper",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "moderate", "nightshade": true, "fodmap": "moderate", "salicylate": "very_high", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Capsicum is a canonical very-high salicylate vegetable" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Green low; red/orange carry excess fructose at larger serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Solanaceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Green bell pepper is lower FODMAP than red."
+  },
+  {
+    "displayName": "Jalapeño",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "moderate", "nightshade": true, "fodmap": "low", "salicylate": "very_high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Hot capsicums very high salicylate" },
+      "histamine": { "source": "SIGHI", "ref": "Chilis flagged as liberators/irritants on histamine protocols" },
+      "default": { "source": "Botanical/compositional", "ref": "Solanaceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Capsaicin itself is a common gut/mast-cell irritant independent of these properties."
+  },
+  {
+    "displayName": "Eggplant",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "high", "lectin": "moderate", "nightshade": true, "fodmap": "low", "salicylate": "high", "amines": "high", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "moderate" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "One of the few vegetables with measurable histamine content — rated 2" },
+      "amines": { "source": "RPAH", "ref": "Eggplant flagged for both amines and salicylates" },
+      "default": { "source": "Botanical/compositional", "ref": "Solanaceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Peeling reduces salicylates somewhat; histamine rises with storage."
+  },
+  {
+    "displayName": "White Potato",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": true,
+    "properties": { "oxalate": "high", "histamine": "low", "lectin": "moderate", "nightshade": true, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Potato (esp. with skin) rated high oxalate" },
+      "salicylate": { "source": "RPAH", "ref": "Peeled white potato is an RPAH elimination-diet baseline food" },
+      "lectin": { "source": "Lectin/glycoalkaloid literature", "ref": "Skin and greened areas carry solanine/lectins" },
+      "default": { "source": "Botanical/compositional", "ref": "Solanaceae tuber defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Peeling lowers oxalate, lectin, and salicylate ratings; AIP excludes it as a nightshade regardless."
+  },
+  {
+    "displayName": "Fresh Chili (Paprika Pepper)",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "moderate", "nightshade": true, "fodmap": "low", "salicylate": "very_high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "All capsicums very high salicylate; dried paprika powder even higher" },
+      "default": { "source": "Botanical/compositional", "ref": "Solanaceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Rating is for fresh pepper; dried/ground paprika concentrates salicylates and can carry mold amines."
+  },
+  {
+    "displayName": "Tomatillo",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "moderate", "nightshade": true, "fodmap": "low", "salicylate": "high", "amines": "moderate", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "nightshade": { "source": "Botanical", "ref": "Physalis — true Solanaceae" },
+      "default": { "source": "Botanical/compositional", "ref": "Rated from tomato-adjacent Solanaceae norms; little direct framework data" }
+    },
+    "confidence": "low",
+    "notes": "Direct salicylate/histamine measurements are scarce; ratings inferred from tomato family."
+  },
+  {
+    "displayName": "Goji Berries",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "moderate", "nightshade": true, "fodmap": "moderate", "salicylate": "high", "amines": "moderate", "glutamates": "low", "sulfites": "moderate", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "nightshade": { "source": "Botanical", "ref": "Lycium — true Solanaceae, often missed on nightshade lists" },
+      "sulfites": { "source": "Dried-fruit processing", "ref": "Sold dried; some lots sulfured" },
+      "default": { "source": "Botanical/compositional", "ref": "Dried Solanaceae berry norms" }
+    },
+    "confidence": "low",
+    "notes": "Almost always eaten dried — drying raises histamine/amine and FODMAP load per gram."
+  },
+  {
+    "displayName": "Onion",
+    "category": "Vegetables",
+    "subcategory": "Alliums",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Onion is the canonical high-fructan food" },
+      "salicylate": { "source": "RPAH", "ref": "Onion low salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Allium defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Fructans are water-soluble but not destroyed by cooking; onion-infused oil is FODMAP-free."
+  },
+  {
+    "displayName": "Garlic",
+    "category": "Vegetables",
+    "subcategory": "Alliums",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Garlic — highest fructan concentration of common foods" },
+      "salicylate": { "source": "RPAH", "ref": "Moderate salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Allium defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Garlic-infused oil delivers flavor with negligible FODMAPs."
+  },
+  {
+    "displayName": "Leek",
+    "category": "Vegetables",
+    "subcategory": "Alliums",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Leek bulb high fructan; green tops categorically low" },
+      "default": { "source": "Botanical/compositional", "ref": "Allium defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Rating is for the white bulb — the green leaves are a standard low-FODMAP allium substitute."
+  },
+  {
+    "displayName": "Shallot",
+    "category": "Vegetables",
+    "subcategory": "Alliums",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Shallot fructan-dense like garlic/onion" },
+      "default": { "source": "Botanical/compositional", "ref": "Allium defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Green Onion",
+    "category": "Vegetables",
+    "subcategory": "Alliums",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "White bulb high fructan; green tops low — whole plant averages moderate" },
+      "default": { "source": "Botanical/compositional", "ref": "Allium defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Green tops only are low-FODMAP; the white base is not."
+  },
+  {
+    "displayName": "Chives",
+    "category": "Vegetables",
+    "subcategory": "Alliums",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Chives are the low-FODMAP allium" },
+      "default": { "source": "Botanical/compositional", "ref": "Allium leaf defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Standard onion/garlic flavor substitute on low-FODMAP protocols."
+  },
+  {
+    "displayName": "Sweet Potato",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": true,
+    "properties": { "oxalate": "high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Sweet potato consistently high oxalate" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Mannitol — moderate above small serves" },
+      "nightshade": { "source": "Botanical", "ref": "Convolvulaceae — NOT a nightshade despite the name" },
+      "default": { "source": "Botanical/compositional", "ref": "Root/tuber defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Not a nightshade (AIP-allowed); boiling reduces oxalate modestly."
+  },
+  {
+    "displayName": "Carrot",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Carrot is a staple low-FODMAP vegetable" },
+      "salicylate": { "source": "RPAH", "ref": "Moderate salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Root defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Beet",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": true,
+    "properties": { "oxalate": "very_high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Beetroot in the top oxalate tier with spinach/chard" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — moderate, portion-sensitive" },
+      "default": { "source": "Botanical/compositional", "ref": "Root defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Boiling and discarding water cuts oxalate ~30-50%; pickled beets add histamine."
+  },
+  {
+    "displayName": "Parsnip",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Parsnip categorically low" },
+      "salicylate": { "source": "RPAH", "ref": "Low salicylate root" },
+      "default": { "source": "Botanical/compositional", "ref": "Apiaceae root defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Celeriac",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": false,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "default": { "source": "Botanical/compositional", "ref": "Celery-family root; rated from celery/parsnip norms — thin direct data" }
+    },
+    "confidence": "low",
+    "notes": "Celery-family — relevant for celery-allergic users (EU major allergen)."
+  },
+  {
+    "displayName": "Jicama",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Contains inulin-type fructans — moderate at larger serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Legume-family tuber; edible root has negligible pod lectins" }
+    },
+    "confidence": "low",
+    "notes": "Sparse framework data; fructan content is the main flag."
+  },
+  {
+    "displayName": "Cassava (Yuca)",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": false,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Cyanogenic glycosides — a classic non-crucifer goitrogen" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Boiled cassava low" },
+      "default": { "source": "Botanical/compositional", "ref": "Starchy tuber defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Must be peeled and thoroughly cooked; processing removes most cyanogens."
+  },
+  {
+    "displayName": "Taro",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": false,
+    "properties": { "oxalate": "high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Taro high oxalate — raw corms contain calcium-oxalate raphides" },
+      "default": { "source": "Botanical/compositional", "ref": "Aroid tuber defaults" }
+    },
+    "confidence": "low",
+    "notes": "Never eaten raw; thorough cooking degrades the irritant oxalate crystals but total oxalate stays high."
+  },
+  {
+    "displayName": "Rutabaga",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "high", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Swede/rutabaga among the classic goitrogenic Brassica roots" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer root defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Cooking reduces goitrogens."
+  },
+  {
+    "displayName": "Daikon",
+    "category": "Vegetables",
+    "subcategory": "Roots & Tubers",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "moderate", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "goitrogens": { "source": "Clinical goitrogen lists", "ref": "Brassica radish — moderate" },
+      "default": { "source": "Botanical/compositional", "ref": "Crucifer root defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh daikon only — pickled/fermented daikon is high histamine."
+  },
+  {
+    "displayName": "Zucchini",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Zucchini among the higher-salicylate vegetables" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — moderate above small serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Cucurbit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Yellow Squash",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "default": { "source": "Botanical/compositional", "ref": "Summer-squash norms; less directly tested than zucchini" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Butternut Squash",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "GOS/fructans — moderate, portion-sensitive" },
+      "default": { "source": "Botanical/compositional", "ref": "Winter-squash defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Acorn Squash",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "default": { "source": "Botanical/compositional", "ref": "Winter-squash norms; limited direct testing" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Spaghetti Squash",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Spaghetti squash categorically low" },
+      "default": { "source": "Botanical/compositional", "ref": "Winter-squash defaults" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Pumpkin",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Varies by variety — Japanese/kent low, canned puree moderate (GOS)" },
+      "default": { "source": "Botanical/compositional", "ref": "Winter-squash defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "FODMAP rating depends heavily on variety and canned vs fresh."
+  },
+  {
+    "displayName": "Cucumber",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Cucumber (with peel) rated high salicylate — a surprise on this list" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Categorically low" },
+      "default": { "source": "Botanical/compositional", "ref": "Cucurbit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Peeling reduces salicylates; pickles are a different (high-histamine) food."
+  },
+  {
+    "displayName": "Delicata Squash",
+    "category": "Vegetables",
+    "subcategory": "Squashes",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "default": { "source": "Botanical/compositional", "ref": "Winter-squash norms; essentially untested in the major frameworks" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Celery",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Celery is a famous RPAH negligible-salicylate baseline food" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Mannitol — moderate beyond a small portion" },
+      "default": { "source": "Botanical/compositional", "ref": "Apiaceae stalk defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "A major allergen in Europe (celery allergy) despite benign chemistry ratings."
+  },
+  {
+    "displayName": "Asparagus",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "high", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Excess fructose + fructans — high" },
+      "purines": { "source": "Clinical purine tables", "ref": "One of the classic higher-purine vegetables (gout lists)" },
+      "default": { "source": "Botanical/compositional", "ref": "Stalk-vegetable defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Fennel",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "moderate", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Bulb fructans — moderate, portion-sensitive" },
+      "phytoestrogens": { "source": "Phytochemical literature", "ref": "Anethole has mild estrogenic activity" },
+      "default": { "source": "Botanical/compositional", "ref": "Apiaceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Artichoke",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Globe artichoke — canonical high-fructan vegetable" },
+      "default": { "source": "Botanical/compositional", "ref": "Asteraceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Marinated/jarred artichokes add sulfites and histamine from brine."
+  },
+  {
+    "displayName": "Green Beans",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "moderate", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "lectin": { "source": "Lectin literature", "ref": "Raw legume pods contain phytohaemagglutinin — destroyed by cooking" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Green beans categorically low at normal serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Legume-pod defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Lectin rating applies to raw/undercooked beans; fully cooked is effectively low."
+  },
+  {
+    "displayName": "Snap Peas",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "moderate", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sugar snap peas high (fructans/GOS)" },
+      "lectin": { "source": "Lectin literature", "ref": "Legume pod — moderate raw" },
+      "default": { "source": "Botanical/compositional", "ref": "Legume-pod defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Okra",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": false,
+    "properties": { "oxalate": "high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Okra rated high oxalate" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Low at typical serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Malvaceae pod defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Mushrooms (White)",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "moderate", "glutamates": "high", "sulfites": "low", "goitrogens": "low", "purines": "high", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Mushrooms — canonical high-mannitol food" },
+      "glutamates": { "source": "Compositional", "ref": "High free glutamate (umami)" },
+      "purines": { "source": "Clinical purine tables", "ref": "Fungi high purine" },
+      "histamine": { "source": "SIGHI", "ref": "Fungi flagged moderate on histamine protocols" },
+      "default": { "source": "Botanical/compositional", "ref": "Fungi defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Canned mushrooms are lower FODMAP (mannitol leaches into brine)."
+  },
+  {
+    "displayName": "Mushrooms (Shiitake)",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "moderate", "glutamates": "very_high", "sulfites": "low", "goitrogens": "low", "purines": "high", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "glutamates": { "source": "Compositional", "ref": "Shiitake among the richest natural glutamate sources (guanylate synergist)" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "High mannitol" },
+      "purines": { "source": "Clinical purine tables", "ref": "High-purine fungus" },
+      "default": { "source": "Botanical/compositional", "ref": "Fungi defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Dried shiitake concentrates glutamates and amines well beyond fresh."
+  },
+  {
+    "displayName": "Seaweed (Nori)",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "moderate", "glutamates": "very_high", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "glutamates": { "source": "Compositional", "ref": "Seaweed is the original umami source — free glutamate very high" },
+      "histamine": { "source": "SIGHI", "ref": "Dried marine products flagged moderate" },
+      "default": { "source": "Botanical/compositional", "ref": "Marine algae defaults" }
+    },
+    "confidence": "low",
+    "notes": "Very high iodine — relevant for thyroid users in the opposite direction from goitrogens."
+  },
+  {
+    "displayName": "Avocado",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "high", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "high", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "high" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Rated 2 — one of the highest-amine plant foods" },
+      "amines": { "source": "RPAH", "ref": "Avocado a canonical high-amine food, rising with ripeness" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sorbitol — moderate, portion-sensitive" },
+      "default": { "source": "Botanical/compositional", "ref": "Lauraceae fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Amines/tyramine climb steeply with ripeness — rate reflects ripe eating-stage fruit."
+  },
+  {
+    "displayName": "Olives",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "high", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "high", "glutamates": "moderate", "sulfites": "moderate", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "moderate" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Table olives are brine-fermented — flagged on histamine protocols" },
+      "salicylate": { "source": "RPAH", "ref": "Olives high salicylate" },
+      "sulfites": { "source": "Processing", "ref": "Some commercial olives sulfited" },
+      "default": { "source": "Botanical/compositional", "ref": "Cured-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Ratings are for cured table olives — the only form eaten; fermentation drives the amine load."
+  },
+  {
+    "displayName": "Plantain",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Green plantain low — a staple AIP/low-FODMAP starch" },
+      "default": { "source": "Botanical/compositional", "ref": "Musa defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Ratings are for green/cooked plantain; very ripe plantain trends toward ripe banana (amines up)."
+  },
+  {
+    "displayName": "Corn (Sweet)",
+    "category": "Vegetables",
+    "subcategory": "Stalks & Others",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "moderate", "nightshade": false, "fodmap": "moderate", "salicylate": "low", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sweet corn sorbitol/fructans — moderate, portion-sensitive" },
+      "lectin": { "source": "Lectin literature", "ref": "Grain lectins — corn flagged on lectin-avoidance protocols" },
+      "default": { "source": "Botanical/compositional", "ref": "Grain/vegetable hybrid defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "A common individual trigger/allergen independent of these ratings; AIP excludes it as a grain."
+  },
+  {
+    "displayName": "Blueberries",
+    "category": "Fruits",
+    "subcategory": "Berries",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Berries broadly high salicylate" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Blueberries low at typical serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Berry defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Strawberries",
+    "category": "Fruits",
+    "subcategory": "Berries",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "high", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Classic histamine liberator — flagged despite low histamine content" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate berry" },
+      "default": { "source": "Botanical/compositional", "ref": "Berry defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Liberator effect, not histamine content — reactions are idiosyncratic."
+  },
+  {
+    "displayName": "Raspberries",
+    "category": "Fruits",
+    "subcategory": "Berries",
+    "isCommon": true,
+    "properties": { "oxalate": "high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "very_high", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Raspberries the standout high-oxalate berry" },
+      "salicylate": { "source": "RPAH", "ref": "Raspberries in the very-high salicylate tier" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — moderate at larger serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Berry defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Blackberries",
+    "category": "Fruits",
+    "subcategory": "Berries",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sorbitol — the high-FODMAP berry" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate berry" },
+      "default": { "source": "Botanical/compositional", "ref": "Berry defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Cranberries",
+    "category": "Fruits",
+    "subcategory": "Berries",
+    "isCommon": false,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "High salicylate berry" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh berry defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Ratings are for fresh; dried sweetened cranberries add sulfites and concentrated sugars/FODMAPs."
+  },
+  {
+    "displayName": "Cherries",
+    "category": "Fruits",
+    "subcategory": "Berries",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sorbitol + fructose — high" },
+      "histamine": { "source": "SIGHI", "ref": "Flagged 1 — mild liberator" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Stone-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Orange",
+    "category": "Fruits",
+    "subcategory": "Citrus",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Citrus flagged as histamine liberators" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Orange categorically low" },
+      "salicylate": { "source": "RPAH", "ref": "Moderate salicylate citrus" },
+      "default": { "source": "Botanical/compositional", "ref": "Citrus defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Lemon",
+    "category": "Fruits",
+    "subcategory": "Citrus",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Citrus liberator — flagged despite negligible histamine content" },
+      "default": { "source": "Botanical/compositional", "ref": "Citrus defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Typical intake (juice/zest) is small, so real-world load is usually minor."
+  },
+  {
+    "displayName": "Lime",
+    "category": "Fruits",
+    "subcategory": "Citrus",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Citrus liberator" },
+      "default": { "source": "Botanical/compositional", "ref": "Citrus defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Grapefruit",
+    "category": "Fruits",
+    "subcategory": "Citrus",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "high", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Grapefruit at the high end of citrus salicylates" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — moderate at whole-fruit serves" },
+      "histamine": { "source": "SIGHI", "ref": "Citrus liberator" },
+      "default": { "source": "Botanical/compositional", "ref": "Citrus defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Also a well-known CYP3A4 drug-interaction food — worth surfacing to medicated users."
+  },
+  {
+    "displayName": "Mandarin",
+    "category": "Fruits",
+    "subcategory": "Citrus",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Mandarin categorically low" },
+      "histamine": { "source": "SIGHI", "ref": "Citrus liberator" },
+      "default": { "source": "Botanical/compositional", "ref": "Citrus defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Peach",
+    "category": "Fruits",
+    "subcategory": "Stone Fruit",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sorbitol — stone fruit are categorically high" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate, concentrated in skin" },
+      "default": { "source": "Botanical/compositional", "ref": "Stone-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Plum",
+    "category": "Fruits",
+    "subcategory": "Stone Fruit",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sorbitol — high" },
+      "amines": { "source": "RPAH", "ref": "Plums flagged for amines as well as salicylates" },
+      "default": { "source": "Botanical/compositional", "ref": "Stone-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Prunes (dried plums) are higher across FODMAP, amines, and sulfites."
+  },
+  {
+    "displayName": "Apricot",
+    "category": "Fruits",
+    "subcategory": "Stone Fruit",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sorbitol — high" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Stone-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Ratings are for fresh; dried apricots are a canonical high-sulfite food."
+  },
+  {
+    "displayName": "Nectarine",
+    "category": "Fruits",
+    "subcategory": "Stone Fruit",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Sorbitol — high" },
+      "default": { "source": "Botanical/compositional", "ref": "Stone-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Mango",
+    "category": "Fruits",
+    "subcategory": "Stone Fruit",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Excess fructose — canonical high-FODMAP fruit" },
+      "default": { "source": "Botanical/compositional", "ref": "Tropical drupe defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Skin contains urushiol — a contact allergen for poison-ivy-sensitive users."
+  },
+  {
+    "displayName": "Apple",
+    "category": "Fruits",
+    "subcategory": "Pome Fruit",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructose + sorbitol — the canonical high-FODMAP fruit" },
+      "salicylate": { "source": "RPAH", "ref": "Most varieties high (in the skin); peeled Golden Delicious is the low-sal exception" },
+      "default": { "source": "Botanical/compositional", "ref": "Pome defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Peeled Golden/Red Delicious drop to low salicylate; FODMAP load is in the flesh and stays."
+  },
+  {
+    "displayName": "Pear",
+    "category": "Fruits",
+    "subcategory": "Pome Fruit",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Peeled pear is THE RPAH elimination-diet baseline fruit — negligible salicylate" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructose + sorbitol — high" },
+      "default": { "source": "Botanical/compositional", "ref": "Pome defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "The great protocol split: safest fruit on RPAH, one of the worst on low-FODMAP."
+  },
+  {
+    "displayName": "Quince",
+    "category": "Fruits",
+    "subcategory": "Pome Fruit",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "default": { "source": "Botanical/compositional", "ref": "Pome norms; almost no direct framework testing" }
+    },
+    "confidence": "low",
+    "notes": "Always eaten cooked; commercial quince paste adds sugar and sometimes sulfites."
+  },
+  {
+    "displayName": "Banana",
+    "category": "Fruits",
+    "subcategory": "Tropical",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "moderate" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Liberator — flagged 1; load rises sharply with ripeness" },
+      "salicylate": { "source": "RPAH", "ref": "Banana is a low-salicylate baseline fruit" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Firm banana low; ripe banana moderate (fructans develop)" },
+      "default": { "source": "Botanical/compositional", "ref": "Musa defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Rated for firm/just-ripe fruit — overripe banana climbs on histamine, amines, tyramine, and FODMAPs."
+  },
+  {
+    "displayName": "Pineapple",
+    "category": "Fruits",
+    "subcategory": "Tropical",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "high", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "moderate" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Rated 2 — liberator; bromelain adds direct mast-cell relevance" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Bromeliad defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Papaya",
+    "category": "Fruits",
+    "subcategory": "Tropical",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Flagged 1 — mild liberator (papain)" },
+      "salicylate": { "source": "RPAH", "ref": "Pawpaw/papaya low salicylate" },
+      "default": { "source": "Botanical/compositional", "ref": "Tropical fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Kiwi",
+    "category": "Fruits",
+    "subcategory": "Tropical",
+    "isCommon": true,
+    "properties": { "oxalate": "moderate", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Flagged 1 — liberator" },
+      "oxalate": { "source": "Harvard/TLO", "ref": "Moderate — contains oxalate raphides (mouth tingling)" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Kiwi categorically low" },
+      "default": { "source": "Botanical/compositional", "ref": "Tropical fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "A true IgE allergen for some users (actinidin) — distinct from these chemistries."
+  },
+  {
+    "displayName": "Coconut (Flesh)",
+    "category": "Fruits",
+    "subcategory": "Tropical",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "moderate", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fresh flesh low at small serves; dried/desiccated moderate (sorbitol concentrates)" },
+      "default": { "source": "Botanical/compositional", "ref": "Palm-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh flesh rated; desiccated coconut and coconut flour concentrate FODMAPs and phytates."
+  },
+  {
+    "displayName": "Dragon Fruit",
+    "category": "Fruits",
+    "subcategory": "Tropical",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Dragon fruit tested low" },
+      "default": { "source": "Botanical/compositional", "ref": "Cactus-fruit norms; thin data elsewhere" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Passion Fruit",
+    "category": "Fruits",
+    "subcategory": "Tropical",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Passion fruit among the higher-salicylate fruits" },
+      "default": { "source": "Botanical/compositional", "ref": "Tropical fruit norms; thin data" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Watermelon",
+    "category": "Fruits",
+    "subcategory": "Melons",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructose + mannitol + fructans — canonical high-FODMAP fruit" },
+      "default": { "source": "Botanical/compositional", "ref": "Melon defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Cantaloupe",
+    "category": "Fruits",
+    "subcategory": "Melons",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Cantaloupe/rockmelon categorically low at typical serves" },
+      "default": { "source": "Botanical/compositional", "ref": "Melon defaults" }
+    },
+    "confidence": "moderate",
+    "notes": ""
+  },
+  {
+    "displayName": "Honeydew",
+    "category": "Fruits",
+    "subcategory": "Melons",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Excess fructose at larger serves — moderate" },
+      "default": { "source": "Botanical/compositional", "ref": "Melon defaults" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Grapes",
+    "category": "Fruits",
+    "subcategory": "Other Fruits",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "high", "amines": "low", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "salicylate": { "source": "RPAH", "ref": "Grapes high salicylate" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Recent retesting flags fructose at larger serves — moderate" },
+      "default": { "source": "Botanical/compositional", "ref": "Vine-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh grapes rated; wine and raisins are entirely different profiles."
+  },
+  {
+    "displayName": "Figs",
+    "category": "Fruits",
+    "subcategory": "Other Fruits",
+    "isCommon": false,
+    "properties": { "oxalate": "moderate", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fresh figs high (excess fructose)" },
+      "default": { "source": "Botanical/compositional", "ref": "Ficus defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh figs rated; dried figs concentrate FODMAPs and often carry sulfites."
+  },
+  {
+    "displayName": "Dates",
+    "category": "Fruits",
+    "subcategory": "Other Fruits",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "high", "amines": "moderate", "glutamates": "low", "sulfites": "moderate", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — dates high" },
+      "histamine": { "source": "SIGHI", "ref": "Dried fruit flagged 1" },
+      "salicylate": { "source": "RPAH", "ref": "Dried fruit high salicylate" },
+      "sulfites": { "source": "Processing", "ref": "Some commercial dates sulfured; whole medjool usually not" },
+      "default": { "source": "Botanical/compositional", "ref": "Dried palm-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Always consumed dried — all ratings reflect the dried fruit."
+  },
+  {
+    "displayName": "Raisins",
+    "category": "Fruits",
+    "subcategory": "Other Fruits",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "high", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "very_high", "amines": "high", "glutamates": "moderate", "sulfites": "high", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "moderate" },
+    "sources": {
+      "sulfites": { "source": "Processing", "ref": "Dried fruit is the canonical dietary sulfite source (esp. golden raisins)" },
+      "salicylate": { "source": "RPAH", "ref": "Dried grapes very high salicylate" },
+      "histamine": { "source": "SIGHI", "ref": "Dried fruit flagged — drying/storage builds amines" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans concentrate on drying — high" },
+      "default": { "source": "Botanical/compositional", "ref": "Dried-fruit defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Unsulfured organic raisins drop the sulfite rating but keep the rest."
+  },
+  {
+    "displayName": "Pomegranate",
+    "category": "Fruits",
+    "subcategory": "Other Fruits",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "high", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "moderate", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — moderate above small serves" },
+      "phytoestrogens": { "source": "Phytochemical literature", "ref": "Contains estrogenic ellagitannins/compounds — modest evidence" },
+      "default": { "source": "Botanical/compositional", "ref": "Fruit defaults" }
+    },
+    "confidence": "low",
+    "notes": ""
+  },
+  {
+    "displayName": "Persimmon",
+    "category": "Fruits",
+    "subcategory": "Other Fruits",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Fructans — moderate" },
+      "default": { "source": "Botanical/compositional", "ref": "Fruit norms; thin framework data" }
+    },
+    "confidence": "low",
+    "notes": "High tannins in astringent varieties can cause GI upset unrelated to these properties."
+  },
+  {
+    "displayName": "Rhubarb",
+    "category": "Fruits",
+    "subcategory": "Other Fruits",
+    "isCommon": false,
+    "properties": { "oxalate": "very_high", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "oxalate": { "source": "Harvard/TLO", "ref": "Rhubarb tops the oxalate tables alongside spinach" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Rhubarb stalk low" },
+      "default": { "source": "Botanical/compositional", "ref": "Polygonaceae defaults" }
+    },
+    "confidence": "moderate",
+    "notes": "Stalks only — leaves are toxic (oxalate/anthraquinones); stewing does not remove much oxalate."
+  }
+]

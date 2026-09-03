@@ -15,7 +15,45 @@ import type {
   AddFoodInput,
   DeleteFoodInput,
   BulkUpdateCategoryInput,
+  SourceCitation,
 } from "./types";
+
+type ResolvedCitations =
+  | { citations: Record<string, SourceCitation> }
+  | { missing: string[] };
+
+/**
+ * Every AI-proposed property value must carry a citation. A "default" key
+ * may cover any property that lacks its own entry.
+ */
+function resolveCitations(
+  sources: Record<string, SourceCitation> | undefined,
+  properties: string[]
+): ResolvedCitations {
+  const missing: string[] = [];
+  const citations: Record<string, SourceCitation> = {};
+  for (const prop of properties) {
+    const entry = sources?.[prop] ?? sources?.default;
+    if (!entry || typeof entry.source !== "string" || entry.source.trim().length === 0) {
+      missing.push(prop);
+    } else {
+      citations[prop] = { source: entry.source, ...(entry.ref ? { ref: entry.ref } : {}) };
+    }
+  }
+  return missing.length > 0 ? { missing } : { citations };
+}
+
+function citationError(missing: string[]) {
+  return {
+    error:
+      `Missing source citations for: ${missing.join(", ")}. ` +
+      'Include a "sources" object with one entry per updated property (or a "default" entry covering all of them), ' +
+      "each shaped { source, ref? } and naming the framework you actually consulted - e.g. SIGHI for histamine/amines, " +
+      "RPAH/FAILSAFE for salicylates/amines/glutamates, Harvard or Trying Low Oxalates lists for oxalate, published " +
+      "FODMAP lists, or botanical/compositional classification. Never invent a citation - if you have no real source, " +
+      "say so instead of writing the value.",
+  };
+}
 
 export async function handleSearchFoods(input: SearchFoodsInput) {
   const limit = input.limit ?? 20;
@@ -180,6 +218,23 @@ export async function handleUpdateFoodTriggers(input: UpdateFoodTriggersInput) {
     .where(eq(foodTriggerProperties.foodId, food.id))
     .limit(1);
 
+  const propertyKeys = Object.keys(input.updates);
+  if (propertyKeys.length === 0) {
+    return { error: "No updates provided." };
+  }
+
+  const resolved = resolveCitations(input.sources, propertyKeys);
+  if ("missing" in resolved) {
+    return citationError(resolved.missing);
+  }
+
+  const mergedSources: Record<string, SourceCitation> = {
+    ...(currentTriggers?.sources ?? {}),
+    ...resolved.citations,
+  };
+  const wasPractitionerReviewed =
+    currentTriggers?.reviewStatus === "practitioner_reviewed";
+
   const before: Record<string, unknown> = {};
   const after: Record<string, unknown> = {};
 
@@ -192,7 +247,12 @@ export async function handleUpdateFoodTriggers(input: UpdateFoodTriggersInput) {
 
     await db
       .update(foodTriggerProperties)
-      .set(input.updates)
+      .set({
+        ...input.updates,
+        sources: mergedSources,
+        reviewStatus: "ai_proposed",
+        updatedAt: new Date(),
+      })
       .where(eq(foodTriggerProperties.foodId, food.id));
   } else {
     for (const [key, newValue] of Object.entries(input.updates)) {
@@ -203,10 +263,23 @@ export async function handleUpdateFoodTriggers(input: UpdateFoodTriggersInput) {
     await db.insert(foodTriggerProperties).values({
       foodId: food.id,
       ...input.updates,
+      sources: mergedSources,
+      reviewStatus: "ai_proposed",
     });
   }
 
-  return { success: true, food: food.displayName, before, after };
+  return {
+    success: true,
+    food: food.displayName,
+    before,
+    after,
+    reviewStatus: "ai_proposed",
+    ...(wasPractitionerReviewed
+      ? {
+          note: "This food was practitioner_reviewed; your edit reset it to ai_proposed pending re-review.",
+        }
+      : {}),
+  };
 }
 
 export async function handleAddFood(input: AddFoodInput) {
@@ -228,6 +301,11 @@ export async function handleAddFood(input: AddFoodInput) {
 
   if (existing) {
     return { error: `Food "${input.name}" already exists in the database.` };
+  }
+
+  const resolved = resolveCitations(input.sources, Object.keys(input.triggers));
+  if ("missing" in resolved) {
+    return citationError(resolved.missing);
   }
 
   const [newFood] = await db
@@ -255,6 +333,8 @@ export async function handleAddFood(input: AddFoodInput) {
     phytoestrogens: input.triggers.phytoestrogens ?? "unknown",
     phytates: input.triggers.phytates ?? "unknown",
     tyramine: input.triggers.tyramine ?? "unknown",
+    sources: resolved.citations,
+    reviewStatus: "ai_proposed",
   });
 
   return {
@@ -360,12 +440,17 @@ export async function handleBulkUpdateCategory(input: BulkUpdateCategoryInput) {
     if (existing) {
       await db
         .update(foodTriggerProperties)
-        .set({ [input.property]: updateValue })
+        .set({
+          [input.property]: updateValue,
+          reviewStatus: "ai_proposed",
+          updatedAt: new Date(),
+        })
         .where(eq(foodTriggerProperties.foodId, foodId));
     } else {
       await db.insert(foodTriggerProperties).values({
         foodId,
         [input.property]: updateValue,
+        reviewStatus: "ai_proposed",
       });
     }
 

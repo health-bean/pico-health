@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { z } from "zod";
 import { db } from "@/lib/db";
 import {
   foods,
@@ -17,7 +18,7 @@ async function requireAdmin() {
   return { session };
 }
 
-// GET /api/admin/foods - List all foods with trigger properties
+// GET /api/admin/foods - List all foods with trigger properties + provenance
 export async function GET(request: Request) {
   try {
     const auth = await requireAdmin();
@@ -51,6 +52,9 @@ export async function GET(request: Request) {
         phytoestrogens: foodTriggerProperties.phytoestrogens,
         phytates: foodTriggerProperties.phytates,
         tyramine: foodTriggerProperties.tyramine,
+        sources: foodTriggerProperties.sources,
+        reviewStatus: foodTriggerProperties.reviewStatus,
+        reviewedBy: foodTriggerProperties.reviewedBy,
       })
       .from(foods)
       .innerJoin(foodSubcategories, eq(foods.subcategoryId, foodSubcategories.id))
@@ -86,7 +90,32 @@ export async function GET(request: Request) {
   }
 }
 
-// PATCH /api/admin/foods - Update a food's trigger property
+const citationSchema = z.object({
+  source: z.string().min(1).max(200),
+  ref: z.string().max(500).optional(),
+});
+
+const patchFoodSchema = z.object({
+  foodId: z.string().uuid(),
+  property: z.enum([
+    "oxalate", "histamine", "lectin", "nightshade", "fodmap",
+    "salicylate", "amines", "glutamates", "sulfites", "goitrogens",
+    "purines", "phytoestrogens", "phytates", "tyramine",
+  ]),
+  value: z.union([z.string(), z.boolean()]),
+  // Optional here ONLY: manual admin-console edits default to the founder
+  // source below. The AI agent path (lib/ai/admin-extract) requires real
+  // citations and marks rows ai_proposed instead.
+  sources: z.record(z.string(), citationSchema).optional(),
+});
+
+const DEFAULT_FOUNDER_SOURCE = {
+  source: "Founder/manual",
+  ref: "admin console edit",
+};
+
+// PATCH /api/admin/foods - Update a food's trigger property (manual console
+// edit: review_status becomes founder_set, source defaults to Founder/manual)
 export async function PATCH(request: Request) {
   try {
     const auth = await requireAdmin();
@@ -94,36 +123,26 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: auth.error }, { status: auth.status });
     }
 
-    const ALLOWED_PROPERTIES = new Set([
-      "oxalate", "histamine", "lectin", "nightshade", "fodmap",
-      "salicylate", "amines", "glutamates", "sulfites", "goitrogens",
-      "purines", "phytoestrogens", "phytates", "tyramine",
-    ]);
-
     const body = await request.json();
-    const { foodId, property, value } = body as {
-      foodId: string;
-      property: string;
-      value: string | boolean;
-    };
-
-    if (!foodId || !property) {
+    const parsed = patchFoodSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        { error: "foodId and property are required" },
+        { error: "Validation failed", details: parsed.error.flatten() },
         { status: 400 }
       );
     }
 
-    if (!ALLOWED_PROPERTIES.has(property)) {
-      return NextResponse.json(
-        { error: `Invalid property: ${property}` },
-        { status: 400 }
-      );
-    }
+    const { foodId, property, value, sources } = parsed.data;
+
+    const citation =
+      sources?.[property] ?? sources?.default ?? DEFAULT_FOUNDER_SOURCE;
 
     // Check if trigger row exists
     const [existing] = await db
-      .select({ id: foodTriggerProperties.id })
+      .select({
+        id: foodTriggerProperties.id,
+        sources: foodTriggerProperties.sources,
+      })
       .from(foodTriggerProperties)
       .where(eq(foodTriggerProperties.foodId, foodId))
       .limit(1);
@@ -131,16 +150,23 @@ export async function PATCH(request: Request) {
     if (existing) {
       await db
         .update(foodTriggerProperties)
-        .set({ [property]: value })
+        .set({
+          [property]: value,
+          sources: { ...(existing.sources ?? {}), [property]: citation },
+          reviewStatus: "founder_set",
+          updatedAt: new Date(),
+        })
         .where(eq(foodTriggerProperties.foodId, foodId));
     } else {
       await db.insert(foodTriggerProperties).values({
         foodId,
         [property]: value,
+        sources: { [property]: citation },
+        reviewStatus: "founder_set",
       });
     }
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, reviewStatus: "founder_set" });
   } catch (error) {
     log.error("PATCH /api/admin/foods error", { error: error as Error });
     return NextResponse.json(

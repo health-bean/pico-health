@@ -15,6 +15,7 @@ interface RawEntry {
   durationMinutes: number | null;
   intensityLevel: string | null;
   energyLevel: number | null;
+  structuredContent?: Record<string, unknown> | null;
 }
 
 interface RawJournal {
@@ -28,6 +29,12 @@ interface RawJournal {
 interface ProtocolContext {
   protocolId: string;
   checkCompliance: (foodId: string | null, properties: FoodProperty[]) => { status: string; violations: string[] };
+}
+
+function extractPreparation(structuredContent: Record<string, unknown> | null | undefined): string[] {
+  const raw = structuredContent?.preparation;
+  if (!Array.isArray(raw)) return [];
+  return raw.filter((p): p is string => typeof p === 'string');
 }
 
 export function isFlareDay(symptoms: SymptomEntry[]): boolean {
@@ -81,6 +88,7 @@ export function buildDayComposite(
           mealType: entry.mealType,
           time: entry.entryTime,
           protocolStatus,
+          preparation: extractPreparation(entry.structuredContent),
         });
         break;
       }

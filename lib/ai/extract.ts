@@ -32,6 +32,7 @@ interface LogEntry {
   entry_time?: string;
   meal_type?: "breakfast" | "lunch" | "dinner" | "snack";
   portion?: string;
+  preparation?: string[];
 }
 
 interface LogEntriesInput {
@@ -73,6 +74,7 @@ export interface CreatedEntry {
   mealType: string | null;
   foodId: string | null;
   protocolViolations: string[];
+  preparation: string[];
 }
 
 export async function processToolCall(
@@ -185,10 +187,16 @@ async function handleLogEntries(
     const isFood = entry.entry_type === "food";
     const mealType = isFood ? entry.meal_type ?? null : null;
     const portion = isFood ? entry.portion ?? null : null;
+    const preparation = isFood && Array.isArray(entry.preparation)
+      ? entry.preparation.filter((p): p is string => typeof p === "string")
+      : [];
 
     const structuredContent: Record<string, unknown> = {};
     if (entry.details) {
       structuredContent.details = entry.details;
+    }
+    if (preparation.length > 0) {
+      structuredContent.preparation = preparation;
     }
     if (entry.severity !== undefined) {
       structuredContent.severity = entry.severity;
@@ -262,6 +270,7 @@ async function handleLogEntries(
       mealType: inserted.mealType ?? null,
       foodId: foodId,
       protocolViolations,
+      preparation,
     });
   }
 
@@ -504,6 +513,7 @@ async function handleLogExercise(
       mealType: null,
       foodId: null,
       protocolViolations: [],
+      preparation: [],
     },
   ];
 
@@ -542,6 +552,7 @@ async function handleLogExercise(
       mealType: null,
       foodId: null,
       protocolViolations: [],
+      preparation: [],
     });
   }
 

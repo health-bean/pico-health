@@ -52,6 +52,24 @@ export const tools: Anthropic.Tool[] = [
                 description:
                   "Portion size as stated by the user (e.g., '2 eggs', '1 cup', 'small bowl'). Optional.",
               },
+              preparation: {
+                type: "array",
+                items: {
+                  type: "string",
+                  enum: [
+                    "leftover",
+                    "fermented",
+                    "aged",
+                    "cured",
+                    "canned",
+                    "smoked",
+                    "dried",
+                    "raw",
+                  ],
+                },
+                description:
+                  "Preparation states of the food. Food entries only. Include ONLY states explicitly stated by the user or intrinsic to the food itself (sauerkraut \u2192 fermented; 'last night's chicken' \u2192 leftover; salami \u2192 cured). Never guess 'raw'.",
+              },
               entry_date: {
                 type: "string",
                 description:
