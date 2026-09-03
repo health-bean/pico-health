@@ -90,6 +90,8 @@ function parseAnthropicResponse(
     usage: {
       inputTokens: response.usage.input_tokens,
       outputTokens: response.usage.output_tokens,
+      cacheReadInputTokens: response.usage.cache_read_input_tokens ?? 0,
+      cacheCreationInputTokens: response.usage.cache_creation_input_tokens ?? 0,
     },
   };
 }
@@ -119,7 +121,15 @@ export class AnthropicProvider implements AIProvider {
     const response = await this.client.messages.create({
       model: params.model ?? this.defaultModel,
       max_tokens: params.maxTokens ?? 1024,
-      system: params.systemPrompt,
+      // System prompts here are stable per user (persona + protocol rules), so a
+      // cache breakpoint saves ~90% on the repeated prefix across turns.
+      system: [
+        {
+          type: "text" as const,
+          text: params.systemPrompt,
+          cache_control: { type: "ephemeral" as const },
+        },
+      ],
       messages: toAnthropicMessages(params.messages),
       ...(params.tools && params.tools.length > 0
         ? { tools: toAnthropicTools(params.tools) }

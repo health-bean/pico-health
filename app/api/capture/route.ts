@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getProvider, runConversationLoop, toNeutralTools } from "@/lib/ai/client";
+import { getTaskModel } from "@/lib/ai/router";
+import { recordUsage } from "@/lib/ai/usage";
 import { tools } from "@/lib/ai/tools";
 import { processToolCall } from "@/lib/ai/extract";
 import { buildCapturePrompt } from "@/lib/ai/capture-prompt";
@@ -123,7 +125,9 @@ export async function POST(request: Request) {
     const aiMessages: AIMessage[] = [{ role: "user", content }];
 
     // ── Provider and tools ────────────────────────────────────────────
-    const provider = getProvider(imageBase64 !== undefined ? "food-photo-parse" : "daily-chat");
+    const task = imageBase64 !== undefined ? ("food-photo-parse" as const) : ("daily-chat" as const);
+    const provider = getProvider(task);
+    const model = getTaskModel(task);
     const neutralTools = toNeutralTools(
       tools.filter((t) => CAPTURE_TOOL_NAMES.has(t.name))
     );
@@ -137,8 +141,9 @@ export async function POST(request: Request) {
         };
 
         try {
-          const { text: finalText, extractedEntries } = await runConversationLoop({
+          const { text: finalText, extractedEntries, usage } = await runConversationLoop({
             provider,
+            model,
             systemPrompt,
             messages: aiMessages,
             tools: neutralTools,
@@ -159,6 +164,8 @@ export async function POST(request: Request) {
 
           send({ type: "done", entryCount: extractedEntries.length });
           controller.close();
+
+          void recordUsage({ userId: session.userId, task, provider: "anthropic", model, usage });
         } catch (error) {
           log.error("capture AI error", { error: error as Error });
           send({

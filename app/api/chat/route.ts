@@ -8,6 +8,8 @@ import { db } from "@/lib/db";
 import { conversations, messages } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getProvider, runConversationLoop, toNeutralTools } from "@/lib/ai/client";
+import { getTaskModel } from "@/lib/ai/router";
+import { recordUsage } from "@/lib/ai/usage";
 import { buildSystemPrompt } from "@/lib/ai/system-prompt";
 import { tools } from "@/lib/ai/tools";
 import { processToolCall } from "@/lib/ai/extract";
@@ -131,6 +133,7 @@ export async function POST(request: Request) {
 
     // ── Get provider and neutral tools ───────────────────────────────
     const provider = getProvider("daily-chat");
+    const chatModel = getTaskModel("daily-chat");
     const neutralTools = toNeutralTools(tools);
 
     // ── Stream response ──────────────────────────────────────────────
@@ -142,8 +145,9 @@ export async function POST(request: Request) {
         };
 
         try {
-          const { text: finalText, extractedEntries } = await runConversationLoop({
+          const { text: finalText, extractedEntries, usage } = await runConversationLoop({
             provider,
+            model: chatModel,
             systemPrompt,
             messages: aiMessages,
             tools: neutralTools,
@@ -188,6 +192,8 @@ export async function POST(request: Request) {
           });
 
           controller.close();
+
+          void recordUsage({ userId: session.userId, task: "daily-chat", provider: "anthropic", model: chatModel, usage });
         } catch (error) {
           log.error("AI API error", { error: error as Error });
           send({

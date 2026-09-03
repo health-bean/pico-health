@@ -5,6 +5,8 @@ import { db } from "@/lib/db";
 import { conversations, messages } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getProvider, runConversationLoop, toNeutralTools } from "@/lib/ai/client";
+import { getTaskModel } from "@/lib/ai/router";
+import { recordUsage } from "@/lib/ai/usage";
 import { buildAdminSystemPrompt } from "@/lib/ai/admin-system-prompt";
 import { adminTools } from "@/lib/ai/admin-tools";
 import { processAdminToolCall } from "@/lib/ai/admin-extract";
@@ -114,6 +116,7 @@ export async function POST(request: Request) {
 
     // ── Get provider and neutral tools ───────────────────────────────
     const provider = getProvider("admin-chat");
+    const adminModel = getTaskModel("admin-chat");
     const neutralTools = toNeutralTools(adminTools);
 
     // ── Stream response ──────────────────────────────────────────────
@@ -125,8 +128,9 @@ export async function POST(request: Request) {
         };
 
         try {
-          const { text: finalText } = await runConversationLoop({
+          const { text: finalText, usage } = await runConversationLoop({
             provider,
+            model: adminModel,
             systemPrompt,
             messages: aiMessages,
             tools: neutralTools,
@@ -178,6 +182,8 @@ export async function POST(request: Request) {
           });
 
           controller.close();
+
+          void recordUsage({ userId: session.userId, task: "admin-chat", provider: "anthropic", model: adminModel, usage });
         } catch (error) {
           log.error("admin AI API error", { error: error as Error });
           send({

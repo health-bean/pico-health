@@ -199,6 +199,29 @@ export const profiles = pgTable("profiles", {
 });
 
 
+/** Per-request AI usage accounting — cost per user is measured, not estimated. */
+export const usageLog = pgTable(
+  "usage_log",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    task: varchar("task", { length: 40 }).notNull(),
+    provider: varchar("provider", { length: 20 }).notNull(),
+    model: varchar("model", { length: 60 }).notNull(),
+    inputTokens: integer("input_tokens").notNull().default(0),
+    outputTokens: integer("output_tokens").notNull().default(0),
+    cacheReadInputTokens: integer("cache_read_input_tokens").notNull().default(0),
+    cacheCreationInputTokens: integer("cache_creation_input_tokens").notNull().default(0),
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+  },
+  (table) => [
+    index("usage_log_user_created_idx").on(table.userId, table.createdAt),
+    index("usage_log_created_idx").on(table.createdAt),
+  ]
+);
+
 export const conversations = pgTable(
   "conversations",
   {

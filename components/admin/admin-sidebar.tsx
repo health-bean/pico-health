@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Apple, Shield, BookOpen, Users } from "lucide-react";
+import { Apple, Shield, BookOpen, Users, Gauge } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -10,6 +10,7 @@ const navItems = [
   { label: "Protocols", href: "/admin/protocols", icon: Shield },
   { label: "Reference Data", href: "/admin/reference", icon: BookOpen },
   { label: "Users", href: "/admin/users", icon: Users },
+  { label: "Usage", href: "/admin/usage", icon: Gauge },
 ] as const;
 
 export function AdminSidebar() {

@@ -55,6 +55,13 @@ interface ConversationLoopParams {
 interface ConversationLoopResult {
   text: string;
   extractedEntries: unknown[];
+  /** Token totals summed across every round of the loop. */
+  usage: {
+    inputTokens: number;
+    outputTokens: number;
+    cacheReadInputTokens: number;
+    cacheCreationInputTokens: number;
+  };
 }
 
 /**
@@ -82,6 +89,12 @@ export async function runConversationLoop(
   const currentMessages: AIMessage[] = [...params.messages];
   const allExtractedEntries: unknown[] = [];
   let finalText = "";
+  const usage = {
+    inputTokens: 0,
+    outputTokens: 0,
+    cacheReadInputTokens: 0,
+    cacheCreationInputTokens: 0,
+  };
 
   for (let round = 0; round < maxRounds; round++) {
     const response = await withRetry(() =>
@@ -93,6 +106,13 @@ export async function runConversationLoop(
         maxTokens,
       })
     );
+
+    if (response.usage) {
+      usage.inputTokens += response.usage.inputTokens;
+      usage.outputTokens += response.usage.outputTokens;
+      usage.cacheReadInputTokens += response.usage.cacheReadInputTokens ?? 0;
+      usage.cacheCreationInputTokens += response.usage.cacheCreationInputTokens ?? 0;
+    }
 
     // Accumulate text
     if (response.text) {
@@ -142,5 +162,5 @@ export async function runConversationLoop(
     currentMessages.push({ role: "user", content: toolResultParts });
   }
 
-  return { text: finalText, extractedEntries: allExtractedEntries };
+  return { text: finalText, extractedEntries: allExtractedEntries, usage };
 }

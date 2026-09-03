@@ -21,6 +21,34 @@ const DEFAULT_ROUTING: Record<AITask, string> = {
 
 const FALLBACK_PROVIDER = "anthropic";
 
+/**
+ * Per-task model tiering (Anthropic pricing per MTok in/out as of 2026-09):
+ *   claude-haiku-4-5  $1/$5   — high-volume constrained extraction
+ *   claude-sonnet-5   $2/$10  — quality-sensitive reasoning
+ * Override any task via env: AI_MODEL_DAILY_CHAT=claude-sonnet-5
+ * Global override (all tasks): ANTHROPIC_MODEL.
+ */
+const DEFAULT_MODELS: Record<AITask, string> = {
+  "daily-chat":          "claude-haiku-4-5",
+  "food-photo-parse":    "claude-haiku-4-5",
+  "admin-chat":          "claude-sonnet-5",
+  "health-insights":     "claude-sonnet-5",
+  "protocol-reasoning":  "claude-sonnet-5",
+};
+
+function modelEnvKeyForTask(task: AITask): string {
+  return `AI_MODEL_${task.toUpperCase().replace(/-/g, "_")}`;
+}
+
+/** The model a task should run on (env override > global override > tier default). */
+export function getTaskModel(task: AITask): string {
+  return (
+    process.env[modelEnvKeyForTask(task)] ??
+    process.env.ANTHROPIC_MODEL ??
+    DEFAULT_MODELS[task]
+  );
+}
+
 function envKeyForTask(task: AITask): string {
   return `AI_ROUTER_${task.toUpperCase().replace(/-/g, "_")}`;
 }
