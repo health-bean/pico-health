@@ -143,25 +143,27 @@ html {
   50% { opacity: 0.5; }
 }
 
-/* fill-mode `backwards` (not `both`): once the animation ends the element
-   returns to its natural styles instead of keeping transform: translateY(0),
-   which would leave a permanent stacking context. That matters for anchored
-   menus/popovers inside cards — with a lingering transform, the next sibling
-   card paints over them. */
+/* Entrance animations use fill-mode `backwards`, never `both`/`forwards`.
+   With a forwards fill the animation stays "applied" after it ends: a kept
+   transform breaks position:fixed for every descendant (the Log capture bar
+   and Quick Add sheet were positioned against the page, not the viewport),
+   and Chrome keeps a compositing layer / stacking context even for a finished
+   opacity animation, so a z-50 overlay inside the page painted *under* the
+   z-40 sticky header. `backwards` gives the same visual and then lets go. */
 .animate-fade-in-up {
   animation: fade-in-up 0.4s var(--ease-out-expo) backwards;
 }
 
 .animate-fade-in {
-  animation: fade-in 0.3s var(--ease-out-expo) both;
+  animation: fade-in 0.3s var(--ease-out-expo) backwards;
 }
 
 .animate-slide-in-right {
-  animation: slide-in-right 0.3s var(--ease-out-expo) both;
+  animation: slide-in-right 0.3s var(--ease-out-expo) backwards;
 }
 
 .animate-slide-in-up {
-  animation: slide-in-up 0.4s var(--ease-out-expo) both;
+  animation: slide-in-up 0.4s var(--ease-out-expo) backwards;
 }
 
 .animate-pulse-warm {
