@@ -12,7 +12,7 @@ export default function TermsPage() {
       <p>
         These Terms of Service (&ldquo;Terms&rdquo;) govern your use of Pico Health — the
         website at picohealth.app and the Pico Health mobile applications (together, the
-        &ldquo;Service&rdquo;), operated by Pico Health (&ldquo;we,&rdquo; &ldquo;us&rdquo;).
+        &ldquo;Service&rdquo;), operated by Health Bean LLC (&ldquo;we,&rdquo; &ldquo;us&rdquo;).
         By creating an account or using the Service, you agree to these Terms. If you do not
         agree, do not use the Service.
       </p>
@@ -94,7 +94,7 @@ export default function TermsPage() {
       <h2>7. Intellectual property</h2>
       <p>
         The Service — including its software, design, curated food and protocol databases, and
-        content other than your own data — belongs to Pico Health or its licensors. We grant
+        content other than your own data — belongs to Health Bean LLC or its licensors. We grant
         you a personal, non-transferable, revocable license to use the Service for your own
         health tracking. Feedback you send us may be used to improve the Service without
         obligation to you.
@@ -112,9 +112,9 @@ export default function TermsPage() {
       <p>
         The Service is provided &ldquo;as is&rdquo; and &ldquo;as available,&rdquo; without
         warranties of any kind, express or implied, including fitness for a particular purpose
-        and accuracy of information. To the maximum extent permitted by law, Pico Health will
+        and accuracy of information. To the maximum extent permitted by law, Health Bean LLC will
         not be liable for indirect, incidental, special, consequential, or exemplary damages,
-        or for decisions you make based on information in the Service; our total liability for
+        or for decisions you make based on information in the Service; Health Bean LLC&rsquo;s total liability for
         any claim relating to the Service is limited to the greater of $50 or the amount you
         paid us in the twelve months before the claim. Some jurisdictions do not allow certain
         limitations, so parts of this section may not apply to you.

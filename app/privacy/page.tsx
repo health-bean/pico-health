@@ -124,7 +124,7 @@ export default function PrivacyPage() {
 
       <h2>10. Contact</h2>
       <p>
-        Privacy questions or requests:{" "}
+        Pico Health is operated by Health Bean LLC. Privacy questions or requests:{" "}
         <a href="mailto:support@picohealth.app">support@picohealth.app</a>.
       </p>
     </LegalShell>
