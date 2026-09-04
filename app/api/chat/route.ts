@@ -21,7 +21,9 @@ import { log } from "@/lib/logger";
 
 const chatSchema = z.object({
   message: z.string().min(1).max(10_000),
-  conversationId: z.string().uuid().optional(),
+  // nullish, not optional: the client's initial state is null and a fresh
+  // conversation must not 400.
+  conversationId: z.string().uuid().nullish(),
 });
 
 export async function POST(request: Request) {

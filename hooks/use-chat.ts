@@ -98,7 +98,7 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
         const res = await fetch("/api/chat", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message: content, conversationId }),
+          body: JSON.stringify({ message: content, conversationId: conversationId ?? undefined }),
           signal: controller.signal,
         });
 
@@ -211,6 +211,7 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
         }
       } catch (err) {
         if ((err as Error).name === "AbortError") return;
+        console.error("Chat request failed:", err);
 
         setMessages((prev) =>
           prev.map((m) =>
