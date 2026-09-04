@@ -366,6 +366,9 @@ export default function TimelinePage() {
               ? undefined
               : "Type it below — “salmon and rice for lunch” is enough. Or snap a photo of your plate."
           }
+          action={
+            showEnergyOnly ? undefined : { label: "Or pick from a list", onClick: () => setSheetOpen(true) }
+          }
           className="py-20"
         />
       ) : (

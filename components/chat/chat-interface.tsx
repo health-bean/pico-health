@@ -8,6 +8,19 @@ import { Spinner, EmptyState, useToast } from "@/components/ui";
 import { MessageSquare } from "lucide-react";
 import type { ExtractedEntry } from "@/types";
 
+/**
+ * Questions a newly diagnosed person actually asks. Chat's job is answering
+ * these within the frameworks this audience uses — logging lives on the Log
+ * tab. Each is one tap to send.
+ */
+const STARTERS = [
+  "What is histamine intolerance, in plain language?",
+  "How does an elimination and reintroduction diet actually work?",
+  "Why do leftovers matter for some people?",
+  "Is there anything high-histamine in what I ate today?",
+  "Why might I have felt off after dinner last night?",
+];
+
 export function ChatInterface() {
   const { toast } = useToast();
   const removeRef = useRef<(ids: string[]) => void>(() => {});
@@ -80,12 +93,25 @@ export function ChatInterface() {
       >
         <div className="mx-auto max-w-2xl">
           {messages.length === 0 && !loading ? (
-            <div className="pt-20">
+            <div className="pt-12">
               <EmptyState
                 icon={<MessageSquare className="h-6 w-6" />}
-                title="Start a conversation"
-                description="Tell me what you ate, how you feel, or ask about your protocol. I'll track everything for you."
+                title="Ask about your food, your symptoms, or your protocol"
+                description="New to all this? Start anywhere. Logging happens on the Log tab — this is the place to understand what it means."
               />
+              <div className="mx-auto mt-2 flex max-w-md flex-col gap-2">
+                {STARTERS.map((q) => (
+                  <button
+                    key={q}
+                    type="button"
+                    onClick={() => sendMessage(q)}
+                    disabled={loading}
+                    className="min-h-11 rounded-xl border border-[var(--color-border-light)] bg-[var(--color-surface-card)] px-4 py-2.5 text-left text-sm text-[var(--color-text-primary)] transition-colors hover:border-teal-300 hover:bg-teal-50 focus-visible:outline-2 focus-visible:outline-teal-500 disabled:opacity-50"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
             </div>
           ) : (
             <div className="flex flex-col gap-3">

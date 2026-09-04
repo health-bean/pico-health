@@ -5,6 +5,7 @@ import {
   foods,
   foodCategories,
   foodSubcategories,
+  foodTriggerProperties,
   profiles,
   userProtocolState,
 } from "@/lib/db/schema";
@@ -289,6 +290,9 @@ async function handleSearchFoods(
   userId: string
 ): Promise<{ result: unknown }> {
   // Search for matching foods
+  // Properties AND their citations come back so the model can ground any
+  // claim about a food in the curated database and name the source
+  // (see the grounding rules in system-prompt.ts).
   const matchingFoods = await db
     .select({
       id: foods.id,
@@ -296,6 +300,18 @@ async function handleSearchFoods(
       categoryName: foodCategories.name,
       subcategoryName: foodSubcategories.name,
       isCommon: foods.isCommon,
+      histamine: foodTriggerProperties.histamine,
+      amines: foodTriggerProperties.amines,
+      tyramine: foodTriggerProperties.tyramine,
+      fodmap: foodTriggerProperties.fodmap,
+      oxalate: foodTriggerProperties.oxalate,
+      salicylate: foodTriggerProperties.salicylate,
+      lectin: foodTriggerProperties.lectin,
+      glutamates: foodTriggerProperties.glutamates,
+      sulfites: foodTriggerProperties.sulfites,
+      nightshade: foodTriggerProperties.nightshade,
+      sources: foodTriggerProperties.sources,
+      reviewStatus: foodTriggerProperties.reviewStatus,
     })
     .from(foods)
     .innerJoin(foodSubcategories, eq(foods.subcategoryId, foodSubcategories.id))
@@ -303,6 +319,7 @@ async function handleSearchFoods(
       foodCategories,
       eq(foodSubcategories.categoryId, foodCategories.id)
     )
+    .leftJoin(foodTriggerProperties, eq(foodTriggerProperties.foodId, foods.id))
     .where(ilike(foods.displayName, `%${escapeLikeWildcards(input.query)}%`))
     .limit(10);
 
@@ -383,11 +400,22 @@ async function handleSearchFoods(
   return {
     result: {
       found: true,
-      foods: matchingFoods.map((f) => ({
-        name: f.displayName,
-        category: f.categoryName,
-        subcategory: f.subcategoryName,
-      })),
+      foods: matchingFoods.map((f) => {
+        const levels: Record<string, string | boolean> = {};
+        for (const key of ["histamine", "amines", "tyramine", "fodmap", "oxalate", "salicylate", "lectin", "glutamates", "sulfites"] as const) {
+          const v = f[key];
+          if (v && v !== "unknown") levels[key] = v;
+        }
+        if (f.nightshade) levels.nightshade = true;
+        return {
+          name: f.displayName,
+          category: f.categoryName,
+          subcategory: f.subcategoryName,
+          ...(Object.keys(levels).length > 0 ? { properties: levels } : { properties: null, note: "No trigger properties recorded for this food yet." }),
+          ...(f.sources ? { sources: f.sources } : {}),
+          ...(f.reviewStatus ? { reviewStatus: f.reviewStatus } : {}),
+        };
+      }),
       ...(protocolInfo && { protocol: protocolInfo }),
     },
   };

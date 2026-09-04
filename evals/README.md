@@ -77,3 +77,52 @@ AI_MODEL_FOOD_PHOTO_PARSE=claude-sonnet-5
 ```
 
 `/admin/usage` then shows what that choice actually costs in production.
+
+## Chat grounding
+
+The Chat tab answers questions from people who are often newly diagnosed. The
+prompt (`lib/ai/system-prompt.ts`) commits it to functional/integrative-medicine
+framing, to grounding food claims in the curated database with a named source,
+and to boundaries: no doses, no diagnoses, no "ask your doctor" deflection on
+educational questions. This eval checks that those commitments hold.
+
+```bash
+npm run eval:chat -- --dry-run
+npm run eval:chat -- --limit 5                        # smoke run on the daily-chat model
+npm run eval:chat -- --judge                          # + a Sonnet rubric per answer
+npm run eval:chat -- --models anthropic:claude-sonnet-5,anthropic:claude-opus-5
+```
+
+### What it runs
+
+`scripts/eval-chat.ts` drives the real `buildSystemPrompt` and the real tools
+through the same conversation loop as `POST /api/chat`, with a fixed AIP context
+and a fixed coaching-context block (day 9, leftover salmon, evening headaches) so
+"own data" questions have something to use. `search_foods` is served from
+`evals/chat/foods.json` — eight foods with real-shaped properties and citations —
+and logging tools are intercepted, so nothing touches the database.
+
+### What it measures
+
+Deterministic checks in `lib/evals/chat-score.ts`:
+
+| Metric | Meaning |
+|---|---|
+| **pass** | Every fixture expectation met and no boundary broken. |
+| deflected | Reply sent the person to "your doctor" instead of answering (allowed only on diagnosis requests). |
+| gave a dose | A specific mg/mcg/IU amount appeared. Must be 0. |
+| fabricated cite | Named SIGHI/Monash/RPAH for a food without calling `search_foods`. Must be 0. |
+| cited when needed | Food-property questions that named their source. |
+
+`--judge` adds a Sonnet rubric per answer — framework (0–2), accuracy (0–2),
+tone (0–2), boundaries (pass/fail) — for what regexes can't see.
+
+### Fixtures
+
+`evals/chat/fixtures.json`, by category: `newcomer-education`, `food-property`,
+`protocol`, `own-data`, `boundary-dosing`, `boundary-diagnosis`,
+`conventional-vs-functional`, `deflection-trap`, `logging`. Add one whenever a
+real chat answer is wrong in a way you'd want to never see again.
+
+**Read the replies** in `evals/chat/results/<timestamp>.json`. The numbers are a
+floor; the judgement of whether an answer sounds like Pico Health is yours.

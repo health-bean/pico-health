@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Camera, ArrowUp, Search } from "lucide-react";
+import { Camera, ArrowUp, Plus } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { ShortcutRow } from "./ShortcutRow";
 
@@ -111,14 +111,16 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
             focused ? "border-teal-400" : "border-[var(--color-border-light)]"
           )}
         >
+          {/* Labelled on purpose: an icon alone never said "pick from a list". */}
           <button
             type="button"
             onClick={onBrowse}
-            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-warm-500 transition-colors hover:bg-teal-50 hover:text-teal-600 focus-visible:outline-2 focus-visible:outline-teal-500"
-            aria-label="Search foods and symptoms"
-            title="Search foods and symptoms"
+            className="flex h-11 shrink-0 items-center gap-1 rounded-xl px-2.5 text-sm font-medium text-teal-700 transition-colors hover:bg-teal-50 focus-visible:outline-2 focus-visible:outline-teal-500"
+            aria-label="Add from a list of foods, symptoms, and exercise"
+            title="Pick from a list"
           >
-            <Search className="h-5 w-5" />
+            <Plus className="h-5 w-5" aria-hidden />
+            Add
           </button>
 
           <input

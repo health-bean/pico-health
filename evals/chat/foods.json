@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Salmon",
+    "category": "Fish & Seafood",
+    "subcategory": "Saltwater Fish",
+    "properties": { "histamine": "moderate", "amines": "moderate", "tyramine": "low", "fodmap": "low", "oxalate": "low", "salicylate": "low", "lectin": "low", "nightshade": false },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh salmon tolerable; canned/smoked rated 2-3" },
+      "_notes": "Fresh is manageable; canned or smoked salmon jumps to high on amines."
+    },
+    "reviewStatus": "ai_proposed"
+  },
+  {
+    "name": "Sauerkraut",
+    "category": "Vegetables",
+    "subcategory": "Fermented Vegetables",
+    "properties": { "histamine": "very_high", "amines": "very_high", "tyramine": "very_high", "fodmap": "moderate", "oxalate": "low", "salicylate": "moderate", "lectin": "low", "nightshade": false },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fermented cabbage rated 3 (very high)" },
+      "fodmap": { "source": "Monash", "ref": "Moderate at 1/2 cup; low at 1 tbsp" }
+    },
+    "reviewStatus": "ai_proposed"
+  },
+  {
+    "name": "Spinach",
+    "category": "Vegetables",
+    "subcategory": "Leafy Greens",
+    "properties": { "histamine": "high", "amines": "high", "tyramine": "low", "fodmap": "low", "oxalate": "very_high", "salicylate": "moderate", "lectin": "low", "nightshade": false },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Spinach rated 2 (histamine liberator)" },
+      "oxalate": { "source": "Harvard-TLO", "ref": "Among the highest-oxalate common foods" }
+    },
+    "reviewStatus": "ai_proposed"
+  },
+  {
+    "name": "Avocado",
+    "category": "Fruits",
+    "subcategory": "Fatty Fruits",
+    "properties": { "histamine": "high", "amines": "high", "tyramine": "high", "fodmap": "moderate", "oxalate": "low", "salicylate": "high", "lectin": "low", "nightshade": false },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Avocado rated 2; amines rise with ripeness" },
+      "fodmap": { "source": "Monash", "ref": "Low at 1/8 (30 g); moderate at 1/4; high at 1/2" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate" }
+    },
+    "reviewStatus": "ai_proposed"
+  },
+  {
+    "name": "Tomato",
+    "category": "Vegetables",
+    "subcategory": "Nightshades",
+    "properties": { "histamine": "high", "amines": "high", "tyramine": "low", "fodmap": "low", "oxalate": "low", "salicylate": "very_high", "lectin": "high", "nightshade": true },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Tomato rated 2; histamine liberator" },
+      "salicylate": { "source": "RPAH", "ref": "Very high salicylate" },
+      "nightshade": { "source": "AIP (Ballantyne)", "ref": "Excluded in elimination phase" }
+    },
+    "reviewStatus": "ai_proposed"
+  },
+  {
+    "name": "White Rice",
+    "category": "Grains & Starches",
+    "subcategory": "Refined Grains",
+    "properties": { "histamine": "low", "amines": "low", "tyramine": "low", "fodmap": "low", "oxalate": "low", "salicylate": "low", "lectin": "low", "nightshade": false },
+    "sources": { "default": { "source": "SIGHI", "ref": "Rice rated 0" } },
+    "reviewStatus": "ai_proposed"
+  },
+  {
+    "name": "Aged Cheddar",
+    "category": "Dairy",
+    "subcategory": "Aged Cheese",
+    "properties": { "histamine": "very_high", "amines": "very_high", "tyramine": "very_high", "fodmap": "low", "oxalate": "low", "salicylate": "low", "lectin": "low", "nightshade": false },
+    "sources": { "histamine": { "source": "SIGHI", "ref": "Long-aged hard cheeses rated 3" } },
+    "reviewStatus": "ai_proposed"
+  },
+  {
+    "name": "Garlic",
+    "category": "Vegetables",
+    "subcategory": "Alliums",
+    "properties": { "histamine": "low", "amines": "low", "tyramine": "low", "fodmap": "very_high", "oxalate": "low", "salicylate": "high", "lectin": "low", "nightshade": false },
+    "sources": {
+      "fodmap": { "source": "Monash", "ref": "High in fructans even at small servings" },
+      "salicylate": { "source": "RPAH", "ref": "High salicylate" }
+    },
+    "reviewStatus": "ai_proposed"
+  }
+]

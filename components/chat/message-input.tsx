@@ -51,7 +51,7 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
           adjustHeight();
         }}
         onKeyDown={handleKeyDown}
-        placeholder="Tell me what you ate or how you feel..."
+        placeholder="Ask anything about your food, symptoms, or protocol…"
         disabled={disabled}
         rows={1}
         className={cn(
