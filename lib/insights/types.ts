@@ -109,16 +109,32 @@ export interface Outcome {
 
 // --- Correlations ---
 
+/**
+ * Which way the factor moves the outcome. `increases` → a trigger;
+ * `decreases` → a helper. Decided by the numbers, never by the factor's category.
+ */
+export type Direction = 'increases' | 'decreases';
+
+/** How much evidence sits behind a result. Shown to the user; drives ranking. */
+export type Confidence = 'early' | 'moderate' | 'strong';
+
 export interface SingleFactorResult {
   factor: Factor;
   outcome: Outcome;
+  /** Days with both the factor and the outcome. */
   frequency: number;
+  /** Days with the factor. */
   totalOpportunities: number;
+  /** Outcome rate on days WITHOUT the factor (raw, unsmoothed). */
   baseRate: number;
+  /** Outcome rate on days WITH the factor (raw, unsmoothed). */
   conditionalRate: number;
+  /** Smoothed conditional/base ratio, capped. <1 means protective. */
   rateMultiplier: number;
   recencyDays: number;
   impactScore: number;
+  direction: Direction;
+  confidence: Confidence;
   description: string;
 }
 
@@ -130,6 +146,8 @@ export interface MultiFactorResult {
   coOccurrences: number;
   conditionalRate: number;
   bestSubRate: number;
+  direction: Direction;
+  confidence: Confidence;
   rateMultiplier: number;
   recencyDays: number;
   impactScore: number;

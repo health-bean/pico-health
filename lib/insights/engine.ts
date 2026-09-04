@@ -29,13 +29,14 @@ export async function runInsightsEngine(userId: string, days: number = 90): Prom
 
   const singleResults = analyzeSingleFactors(composites);
 
-  const triggerCategories = new Set(['food', 'food_property', 'preparation', 'quantity', 'addition', 'medication', 'exposure', 'stress', 'timing']);
-  const singleTriggers = singleResults.filter(r => triggerCategories.has(r.factor.category));
-  const singleHelpers = singleResults.filter(r => !triggerCategories.has(r.factor.category));
+  // Direction, not category, decides which list a result belongs in: a
+  // trigger makes the outcome MORE likely, a helper makes it LESS likely.
+  const singleTriggers = singleResults.filter(r => r.direction === 'increases');
+  const singleHelpers = singleResults.filter(r => r.direction === 'decreases');
 
-  const multiResults = analyzeMultiFactors(composites, singleResults);
-  const multiTriggers = multiResults.filter(r => r.factors.some(f => triggerCategories.has(f.category)));
-  const multiHelpers = multiResults.filter(r => !r.factors.some(f => triggerCategories.has(f.category)));
+  // Combinations are only sought among triggers — "A and B together" is a
+  // trigger story; helpers stand on their own.
+  const multiResults = analyzeMultiFactors(composites, singleTriggers);
 
   const absorbedKeys = new Set<string>();
   for (const mr of multiResults) {
@@ -43,14 +44,17 @@ export async function runInsightsEngine(userId: string, days: number = 90): Prom
   }
 
   const filteredSingleTriggers = singleTriggers.filter(r => !absorbedKeys.has(insightKey([r.factor], r.outcome)));
-  const filteredSingleHelpers = singleHelpers.filter(r => !absorbedKeys.has(insightKey([r.factor], r.outcome)));
 
-  const propertyPatterns = extractPropertyPatterns(singleResults);
+  const propertyPatterns = extractPropertyPatterns(singleTriggers);
   const progress = computeProgress(composites, today);
 
+  // Property-level results get their own section ("Patterns to Watch");
+  // the Triggers list is for concrete things a person can point at.
+  const concreteTriggers = filteredSingleTriggers.filter(r => r.factor.category !== 'food_property');
+
   const output: InsightsOutput = {
-    triggers: [...multiTriggers, ...filteredSingleTriggers].sort((a, b) => b.impactScore - a.impactScore),
-    helpers: [...multiHelpers, ...filteredSingleHelpers].sort((a, b) => b.impactScore - a.impactScore),
+    triggers: [...multiResults, ...concreteTriggers].sort((a, b) => b.impactScore - a.impactScore),
+    helpers: singleHelpers.sort((a, b) => b.impactScore - a.impactScore),
     propertyPatterns,
     progress,
     dataStatus: {
@@ -105,24 +109,35 @@ async function saveSnapshotAndAlerts(userId: string, output: InsightsOutput, day
   }
 }
 
+const SEVERITY_SUFFIXES = ['very_high', 'high', 'moderate', 'low'] as const;
+
+/** `food_property:oxalate_very_high` → { property: 'oxalate', severity: 'very_high' }. */
+export function parsePropertyKey(key: string): { property: string; severity: string } {
+  const body = key.replace('food_property:', '');
+  for (const sev of SEVERITY_SUFFIXES) {
+    if (body.endsWith(`_${sev}`)) return { property: body.slice(0, -(sev.length + 1)), severity: sev };
+  }
+  const idx = body.lastIndexOf('_');
+  return idx > 0 ? { property: body.slice(0, idx), severity: body.slice(idx + 1) } : { property: body, severity: 'high' };
+}
+
 function extractPropertyPatterns(singleResults: SingleFactorResult[]): PropertyPattern[] {
-  const byPropertyOutcome = new Map<string, { property: string; severity: string; outcome: SingleFactorResult['outcome']; frequency: number; impact: number }>();
+  const byPropertyOutcome = new Map<string, { property: string; severity: string; outcome: SingleFactorResult['outcome']; frequency: number; impact: number; total: number; rate: number; base: number }>();
 
   for (const r of singleResults) {
     if (r.factor.category !== 'food_property') continue;
     const compositeKey = `${r.factor.key}→${r.outcome.key}`;
 
     if (!byPropertyOutcome.has(compositeKey)) {
-      const parts = r.factor.key.replace('food_property:', '').split('_');
-      const severity = parts.pop() ?? 'high';
-      const property = parts.join('_');
-      byPropertyOutcome.set(compositeKey, { property, severity, outcome: r.outcome, frequency: r.frequency, impact: r.impactScore });
+      const { property, severity } = parsePropertyKey(r.factor.key);
+      byPropertyOutcome.set(compositeKey, { property, severity, outcome: r.outcome, frequency: r.frequency, impact: r.impactScore, total: r.totalOpportunities, rate: r.conditionalRate, base: r.baseRate });
     }
   }
 
   const patterns: PropertyPattern[] = [];
   for (const [, data] of byPropertyOutcome) {
     if (data.frequency < 3) continue;
+    const sev = data.severity.replace('_', ' ');
     patterns.push({
       property: data.property,
       severity: data.severity,
@@ -130,11 +145,11 @@ function extractPropertyPatterns(singleResults: SingleFactorResult[]): PropertyP
       outcome: data.outcome,
       frequency: data.frequency,
       impactScore: data.impact,
-      description: `${capitalize(data.severity)} ${data.property} foods → ${data.outcome.label.toLowerCase()} (seen ${data.frequency} times)`,
+      description: `${data.outcome.label} on ${data.frequency} of ${data.total} days with ${sev}-${data.property} foods (${Math.round(data.rate * 100)}%), vs ${Math.round(data.base * 100)}% of other days.`,
     });
   }
 
-  return patterns;
+  return patterns.sort((a, b) => b.impactScore - a.impactScore);
 }
 
 function emptyOutput(tracked: number, analyzed: number): InsightsOutput {

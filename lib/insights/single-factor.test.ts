@@ -137,7 +137,7 @@ describe('analyzeSingleFactors', () => {
     expect(eggHeadache).toBeUndefined();
   });
 
-  it('detects supplement as helper', () => {
+  it('a supplement present on every headache day is NOT a helper', () => {
     const days = [
       makeDay({ date: '2026-04-01', supplements: [{ name: 'Magnesium', time: null }], symptoms: [{ name: 'Headache', severity: 5, time: null }], supplementCount: 1, symptomCount: 1 }),
       makeDay({ date: '2026-04-02', supplements: [{ name: 'Magnesium', time: null }], symptoms: [{ name: 'Headache', severity: 4, time: null }], supplementCount: 1, symptomCount: 1 }),
@@ -145,13 +145,12 @@ describe('analyzeSingleFactors', () => {
       makeDay({ date: '2026-04-04', supplements: [], symptoms: [{ name: 'Headache', severity: 6, time: null }], supplementCount: 0, symptomCount: 1 }),
       makeDay({ date: '2026-04-05', supplements: [], symptoms: [{ name: 'Headache', severity: 7, time: null }], supplementCount: 0, symptomCount: 1 }),
       makeDay({ date: '2026-04-06', supplements: [], symptoms: [{ name: 'Headache', severity: 5, time: null }], supplementCount: 0, symptomCount: 1 }),
+      makeDay({ date: '2026-04-07', supplements: [], symptoms: [{ name: 'Headache', severity: 5, time: null }], supplementCount: 0, symptomCount: 1 }),
+      makeDay({ date: '2026-04-08', supplements: [], symptoms: [{ name: 'Headache', severity: 5, time: null }], supplementCount: 0, symptomCount: 1 }),
     ];
 
     const results = analyzeSingleFactors(days);
-    const magHeadache = results.find(r => r.factor.key === 'supplement:magnesium');
-    // Magnesium + headache co-occurs 3 times, but headache happens WITHOUT magnesium too
-    // So the rate multiplier may not be > 1 since headache happens 100% of the time in both groups
-    // This tests the engine handles it correctly either way
-    expect(results).toBeDefined();
+    // Headache happens 100% of the time with and without magnesium — no direction, no result.
+    expect(results.find(r => r.factor.key === 'supplement:magnesium')).toBeUndefined();
   });
 });

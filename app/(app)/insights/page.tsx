@@ -180,6 +180,7 @@ export default function InsightsPage() {
                   percentage={getPercentage(r)}
                   foods={getFoods(r)}
                   isCompound={isMultiFactor(r)}
+                  confidence={r.confidence}
                 />
               ))}
             </InsightSection>
@@ -199,7 +200,7 @@ export default function InsightsPage() {
                 <InsightRow
                   key={`p-${i}`}
                   icon={PROPERTY_ICONS[p.property] ?? '🔬'}
-                  title={`${p.severity !== 'high' ? p.severity + ' ' : ''}${p.property} sensitivity`}
+                  title={`${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property} sensitivity`}
                   description={p.description}
                   percentage={Math.round((p.frequency / (daysTracked || 1)) * 100)}
                   foods={p.foods.length > 0 ? p.foods : undefined}
@@ -225,6 +226,7 @@ export default function InsightsPage() {
                   title={getTitle(r)}
                   description={r.description}
                   percentage={getPercentage(r)}
+                  confidence={r.confidence}
                 />
               ))}
             </InsightSection>

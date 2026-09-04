@@ -1,13 +1,16 @@
 'use client';
 
+import { ConfidenceTag, type Confidence } from './ConfidenceTag';
+
 interface HelperRowProps {
   icon: string;
   title: string;
   description: string;
   percentage: number;
+  confidence?: Confidence;
 }
 
-export function HelperRow({ icon, title, description, percentage }: HelperRowProps) {
+export function HelperRow({ icon, title, description, percentage, confidence }: HelperRowProps) {
   return (
     <div className="p-3 rounded-lg bg-warm-50">
       <div className="flex items-start justify-between">
@@ -15,6 +18,7 @@ export function HelperRow({ icon, title, description, percentage }: HelperRowPro
           <div className="flex items-center gap-1.5 mb-1">
             <span className="text-sm">{icon}</span>
             <span className="text-[13px] font-bold text-warm-900">{title}</span>
+            {confidence && <ConfidenceTag confidence={confidence} />}
           </div>
           <p className="text-[13px] text-warm-600 leading-snug">{description}</p>
         </div>

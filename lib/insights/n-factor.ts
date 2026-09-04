@@ -1,6 +1,8 @@
 import type { DayComposite, Factor, Outcome, SingleFactorResult, MultiFactorResult } from './types';
-import { extractFactorsFromDay, extractOutcomesFromDay } from './single-factor';
+import { extractFactorsFromDay, extractOutcomesFromDay, computeConfidence } from './single-factor';
 import { insightKey } from './types';
+
+const pct = (n: number) => `${Math.round(n * 100)}%`;
 
 const MIN_2_FACTOR = 5;
 const MIN_3_FACTOR = 7;
@@ -85,7 +87,9 @@ export function analyzeMultiFactors(
           rateMultiplier,
           recencyDays,
           impactScore,
-          description: `${outcome.label} appeared on most days you had ${fA.label.toLowerCase()} and ${fB.label.toLowerCase()}.`,
+          direction: 'increases',
+          confidence: computeConfidence(rateMultiplier, coOccurrences),
+          description: `${outcome.label} on ${coOccurrences} of ${bothFactorDays} days you had both ${fA.label.toLowerCase()} and ${fB.label.toLowerCase()} (${pct(conditionalRate)}) — more than either alone (${pct(bestSubRate)}).`,
           absorbed,
         });
       }
@@ -146,7 +150,9 @@ export function analyzeMultiFactors(
         rateMultiplier,
         recencyDays,
         impactScore,
-        description: `${twoF.outcome.label} appeared on most days you had ${allFactors.map(f => f.label.toLowerCase()).join(', ')}.`,
+        direction: 'increases',
+        confidence: computeConfidence(rateMultiplier, coOccurrences),
+        description: `${twoF.outcome.label} on ${coOccurrences} of ${allThreeDays} days you had ${allFactors.map(f => f.label.toLowerCase()).join(', ')} together (${pct(conditionalRate)}).`,
         absorbed,
       });
     }

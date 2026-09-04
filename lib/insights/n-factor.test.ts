@@ -24,6 +24,8 @@ const makeSingle = (factorKey: string, factorLabel: string, factorCategory: stri
   rateMultiplier: conditionalRate / 0.1,
   recencyDays: 0,
   impactScore: 0.8,
+  direction: 'increases',
+  confidence: 'moderate',
   description: 'test',
 });
 
