@@ -44,19 +44,15 @@ describe('computeProgress', () => {
     expect(headache!.previousPeriod.count).toBe(6);
   });
 
-  it('detects flare-free streak', () => {
+  it('never reports a flare-free streak (gamification is an anti-goal)', () => {
     const days = [
       makeDay('2026-04-01', { isFlareDay: true }),
       ...Array.from({ length: 10 }, (_, i) => makeDay(`2026-04-${String(i + 2).padStart(2, '0')}`)),
-      // Need more days for the 14-day minimum
       ...Array.from({ length: 20 }, (_, i) => makeDay(`2026-03-${String(i + 1).padStart(2, '0')}`)),
     ];
-    // Sort by date
     days.sort((a, b) => a.date.localeCompare(b.date));
 
     const progress = computeProgress(days, '2026-04-11');
-    const streak = progress.find(p => p.metric === 'flare_free_streak');
-    expect(streak).toBeDefined();
-    expect(streak!.observation).toContain('10');
+    expect(progress.find(p => p.metric === 'flare_free_streak')).toBeUndefined();
   });
 });

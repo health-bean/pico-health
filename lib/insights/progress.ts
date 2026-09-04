@@ -35,26 +35,14 @@ export function computeProgress(days: DayComposite[], today: string): ProgressOb
       label: `${name} frequency`,
       currentPeriod: { count: current, days: currentDays.length, label: currentLabel },
       previousPeriod: { count: previous, days: previousDays.length, label: previousLabel },
-      observation: `${name} frequency: ${previous} in ${previousLabel}, ${current} in ${currentLabel} (${currentDays.length} days in)`,
+      observation: `${name}: ${previous} of ${previousDays.length} days in ${previousLabel} → ${current} of ${currentDays.length} days so far in ${currentLabel}.`,
     });
   }
 
-  let streak = 0;
-  for (let i = days.length - 1; i >= 0; i--) {
-    if (days[i].isFlareDay) break;
-    streak++;
-  }
-
-  if (streak >= 3) {
-    observations.push({
-      metric: 'flare_free_streak',
-      label: 'Flare-free days',
-      currentPeriod: { count: streak, days: streak, label: 'current' },
-      previousPeriod: { count: 0, days: 0, label: '' },
-      observation: `Flare-free streak: ${streak} days`,
-    });
-  }
-
+  // No streaks. A "flare-free streak" is a gamification mechanic (an explicit
+  // anti-goal) and, for a chronic condition, a number that resets to zero on
+  // a bad day is a small cruelty. The month-over-month counts above are the
+  // honest version of "how is it going".
   return observations;
 }
 

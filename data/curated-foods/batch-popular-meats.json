@@ -1,0 +1,307 @@
+[
+  {
+    "displayName": "Chicken",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh poultry rated 0; rises with storage time and reheating" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh poultry: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Generic entry so 'chicken' matches without guessing a cut. Same freshness caution as all poultry."
+  },
+  {
+    "displayName": "Ground Chicken",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Minced meat flagged: grinding multiplies surface area, histamine forms faster than in whole cuts" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, minced meat" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh poultry: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Cook the day it is ground; pre-packaged mince has usually been ground days earlier."
+  },
+  {
+    "displayName": "Ground Turkey",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Minced meat flagged: grinding multiplies surface area, histamine forms faster than in whole cuts" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, minced meat" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh poultry: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Very common AIP staple. Same minced-meat caution as ground beef."
+  },
+  {
+    "displayName": "Turkey Breast",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh poultry rated 0; deli/sliced turkey is a different food (cured)" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh poultry: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh roast breast. Deli Turkey is listed separately under cured meats."
+  },
+  {
+    "displayName": "Chicken Wings",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh poultry rated 0" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh poultry: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "The meat is plain; the sauce usually is not (cayenne, paprika, garlic, sugar). Log the sauce as an addition."
+  },
+  {
+    "displayName": "Chicken Drumsticks",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh poultry rated 0" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh poultry: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Dark meat, bone-in. Same freshness caution as all poultry."
+  },
+  {
+    "displayName": "Rotisserie Chicken",
+    "category": "Proteins",
+    "subcategory": "Poultry & Eggs",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "moderate", "amines": "moderate", "glutamates": "moderate", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Cooked meat held warm for hours behaves like leftovers; histamine climbs with holding time" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines rise with holding time" },
+      "salicylate": { "source": "RPAH", "ref": "Store seasoning rubs (paprika, spices) carry salicylates" },
+      "glutamates": { "source": "RPAH", "ref": "Commercial seasoning often includes yeast extract / MSG" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates; rubs may add garlic/onion powder" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Poultry: no plant compounds; seasoning is the variable" }
+    },
+    "confidence": "low",
+    "notes": "Rated for the typical supermarket bird: held warm, seasoned with paprika/garlic/onion powder. Nightshade is in the rub, not the meat — logged as an addition."
+  },
+  {
+    "displayName": "Ground Pork",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Minced meat flagged: grinding multiplies surface area" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, minced meat" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Pork muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh pork: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Plain mince. Sausage meat (seasoned, often sulfite-preserved) is a different entry."
+  },
+  {
+    "displayName": "Pork Chop",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh pork rated 0 when fresh; leftovers climb" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Pork muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh pork: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Fresh whole cut. Some AIP practitioners limit pork; not a property issue."
+  },
+  {
+    "displayName": "Pork Tenderloin",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh pork rated 0 when fresh" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Pork muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh pork: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Lean whole cut; pre-marinated supermarket tenderloins often carry garlic, sugar and sulfites."
+  },
+  {
+    "displayName": "Steak",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh beef rated 0; dry-aged beef rated 2-3 (aging builds histamine)" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Beef muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh beef: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Rated for a fresh (wet-aged) steak. Dry-aged is a different animal for histamine — mark preparation 'aged'."
+  },
+  {
+    "displayName": "Ground Lamb",
+    "category": "Proteins",
+    "subcategory": "Red Meat & Game",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Minced meat flagged: grinding multiplies surface area" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, minced meat" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain animal proteins contain no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Lamb muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fresh lamb: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Same minced-meat caution as ground beef."
+  },
+  {
+    "displayName": "Chicken Sausage (fresh)",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "moderate", "glutamates": "moderate", "sulfites": "moderate", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh (uncured) sausage: minced meat risk; cured/aged sausages rate 3" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, sausages" },
+      "fodmap": { "source": "Monash", "ref": "Commercial sausages frequently contain onion/garlic and wheat binders" },
+      "salicylate": { "source": "RPAH", "ref": "Spice blends in sausage meat" },
+      "glutamates": { "source": "RPAH", "ref": "Processed meats: added flavour enhancers common" },
+      "sulfites": { "source": "Preservative labelling", "ref": "Sulfite preservatives permitted in fresh sausage in many markets" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Poultry base; additives are the variable" }
+    },
+    "confidence": "low",
+    "notes": "Varies enormously by producer. Nightshade (paprika) is common in the seasoning — log it as an addition when known."
+  },
+  {
+    "displayName": "Turkey Sausage (fresh)",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": true,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "moderate", "glutamates": "moderate", "sulfites": "moderate", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh (uncured) sausage: minced meat risk; cured/aged sausages rate 3" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, sausages" },
+      "fodmap": { "source": "Monash", "ref": "Commercial sausages frequently contain onion/garlic and wheat binders" },
+      "salicylate": { "source": "RPAH", "ref": "Spice blends in sausage meat" },
+      "glutamates": { "source": "RPAH", "ref": "Processed meats: added flavour enhancers common" },
+      "sulfites": { "source": "Preservative labelling", "ref": "Sulfite preservatives permitted in fresh sausage in many markets" },
+      "purines": { "source": "Published purine tables", "ref": "Poultry muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Poultry base; additives are the variable" }
+    },
+    "confidence": "low",
+    "notes": "Same caveats as chicken sausage."
+  },
+  {
+    "displayName": "Bratwurst",
+    "category": "Proteins",
+    "subcategory": "Cured & Processed Meats",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "moderate", "salicylate": "moderate", "amines": "moderate", "glutamates": "moderate", "sulfites": "moderate", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh (uncured) sausage: minced meat risk; smoked/cured variants rate higher" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, sausages" },
+      "fodmap": { "source": "Monash", "ref": "Commercial sausages frequently contain onion/garlic and wheat binders" },
+      "salicylate": { "source": "RPAH", "ref": "Spice blends in sausage meat" },
+      "glutamates": { "source": "RPAH", "ref": "Processed meats: added flavour enhancers common" },
+      "sulfites": { "source": "Preservative labelling", "ref": "Sulfite preservatives permitted in fresh sausage in many markets" },
+      "purines": { "source": "Published purine tables", "ref": "Pork/veal muscle meat moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Pork/veal base; additives are the variable" }
+    },
+    "confidence": "low",
+    "notes": "Fresh (white) bratwurst. Smoked bratwurst should be logged with preparation 'smoked'."
+  },
+  {
+    "displayName": "Haddock",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh/frozen-at-sea white fish tolerable; smoked haddock rates 2-3" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain fish contains no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "White fish moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Lean white fish: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness rules: eat the day it is thawed. Smoked haddock is a different food."
+  },
+  {
+    "displayName": "Sea Bass",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh white fish tolerable when very fresh" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain fish contains no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "White fish moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Lean white fish: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Freshness rules."
+  },
+  {
+    "displayName": "Mahi Mahi",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "moderate", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "moderate", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Mahi-mahi is among the scombroid-poisoning fish: histamine forms rapidly if not kept cold" },
+      "amines": { "source": "SIGHI", "ref": "Other biogenic amines column, high-histidine fish" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain fish contains no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Fish moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Fish: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Like tuna and mackerel, a high-histidine fish — rated moderate even when fresh because cold-chain lapses are common."
+  },
+  {
+    "displayName": "Catfish",
+    "category": "Proteins",
+    "subcategory": "Fish & Seafood",
+    "isCommon": false,
+    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "low", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "moderate", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
+    "sources": {
+      "histamine": { "source": "SIGHI", "ref": "Fresh freshwater fish tolerable when fresh" },
+      "fodmap": { "source": "Published FODMAP lists", "ref": "Plain fish contains no fermentable carbohydrates" },
+      "purines": { "source": "Published purine tables", "ref": "Fish moderate purine" },
+      "default": { "source": "Botanical/compositional", "ref": "Lean fish: no plant compounds" }
+    },
+    "confidence": "moderate",
+    "notes": "Usually served breaded and fried — the coating (wheat, cornmeal, seasoning) is where the properties come from."
+  }
+]

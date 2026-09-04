@@ -236,13 +236,16 @@ export default function InsightsPage() {
           {progress.length > 0 && (
             <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-warm-200 p-4">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-base">📈</span>
-                <h3 className="text-[15px] font-bold text-warm-900">Your Progress</h3>
+                <span className="text-base">🗓️</span>
+                <h3 className="text-[15px] font-bold text-warm-900">This month vs. last</h3>
               </div>
+              <p className="mb-3 text-[12px] text-warm-500">
+                Symptom days, side by side. Chronic conditions move in waves — this is a comparison, not a scorecard.
+              </p>
               <div className="space-y-2">
                 {progress.map((o, i) => (
-                  <div key={i} className="p-2.5 bg-emerald-50 rounded-lg">
-                    <p className="text-[13px] text-emerald-800">{o.observation}</p>
+                  <div key={i} className="p-2.5 bg-warm-50 rounded-lg">
+                    <p className="text-[13px] text-warm-700">{o.observation}</p>
                   </div>
                 ))}
               </div>
