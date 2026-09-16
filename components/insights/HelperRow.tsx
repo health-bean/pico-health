@@ -27,7 +27,7 @@ export function HelperRow({ icon, title, description, percentage, confidence, is
         </div>
         <div className="text-right ml-3 shrink-0">
           <div className="text-xl font-bold text-emerald-600">{percentage}%</div>
-          <div className="text-[10px] text-warm-400">of the time</div>
+          <div className="text-[10px] text-warm-500">of the time</div>
         </div>
       </div>
     </div>

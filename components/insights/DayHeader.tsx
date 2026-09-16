@@ -19,7 +19,7 @@ export function DayHeader({ date, onPrevious, onNext, isToday }: DayHeaderProps)
         <ChevronLeft className="w-5 h-5 text-warm-500" />
       </button>
       <div className="flex items-center gap-2">
-        <Calendar className="w-4 h-4 text-warm-400" />
+        <Calendar className="w-4 h-4 text-warm-500" />
         <span className="font-display text-lg text-warm-900">{isToday ? 'Today' : formatted}</span>
       </div>
       <button onClick={onNext} disabled={isToday} className="p-2 rounded-lg hover:bg-warm-100 active:scale-[0.98] transition-all disabled:opacity-30" aria-label="Next day">

@@ -96,12 +96,12 @@ function EntryChip({
             {TYPE_LABEL[entry.entryType] ?? entry.entryType}
             {entry.severity != null && ` · ${entry.severity}/10`}
           </span>
-          {isFood && <Pencil className="h-3 w-3 shrink-0 text-warm-400" aria-hidden />}
+          {isFood && <Pencil className="h-3 w-3 shrink-0 text-warm-500" aria-hidden />}
         </button>
         <button
           type="button"
           onClick={onRemove}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-warm-400 transition-colors hover:bg-warm-100 hover:text-warm-600 focus-visible:outline-2 focus-visible:outline-teal-500"
+          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-warm-500 transition-colors hover:bg-warm-100 hover:text-warm-600 focus-visible:outline-2 focus-visible:outline-teal-500"
           aria-label={`Remove ${entry.name}`}
         >
           <X className="h-4 w-4" />

@@ -48,7 +48,7 @@ export function RecentItems({ onSelect, selectedNames }: RecentItemsProps) {
 
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-400">
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
         Recent (7 days)
       </h3>
       <div className="flex flex-wrap gap-2">
@@ -69,7 +69,7 @@ export function RecentItems({ onSelect, selectedNames }: RecentItemsProps) {
             >
               <Icon className="h-3.5 w-3.5" />
               <span>{item.name}</span>
-              <span className="text-xs text-warm-400">{item.count}x</span>
+              <span className="text-xs text-warm-500">{item.count}x</span>
             </button>
           );
         })}

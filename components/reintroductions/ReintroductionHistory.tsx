@@ -164,7 +164,7 @@ export function ReintroductionHistory({
     return (
       <div className="rounded-xl border border-warm-200 bg-warm-50 p-8 text-center">
         <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-warm-100">
-          <Calendar className="h-6 w-6 text-warm-400" />
+          <Calendar className="h-6 w-6 text-warm-500" />
         </div>
         <h3 className="text-base font-semibold text-warm-900">No Reintroductions Yet</h3>
         <p className="mt-2 text-sm text-warm-600">

@@ -144,7 +144,7 @@ export function FoodTimelineCard({
               </>
             )}
             {entryTime && (
-              <span className="text-warm-400">{formatTime(entryTime)}</span>
+              <span className="text-warm-500">{formatTime(entryTime)}</span>
             )}
           </div>
 

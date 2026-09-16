@@ -24,7 +24,7 @@ interface MealTypeChipsProps {
 export function MealTypeChips({ value, onChange }: MealTypeChipsProps) {
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-400">
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
         Meal
       </h3>
       <div
@@ -62,13 +62,21 @@ const WHEN: { id: WhenMode; label: string }[] = [
 interface WhenChipsProps {
   value: QuickLogWhen;
   onChange: (when: QuickLogWhen) => void;
+  /** Display label of a past day being backfilled, e.g. "Fri, Apr 24". */
+  dayLabel?: string;
 }
 
-export function WhenChips({ value, onChange }: WhenChipsProps) {
-  const showTime = value.mode !== "now";
+export function WhenChips({ value, onChange, dayLabel }: WhenChipsProps) {
+  const backfilling = !!dayLabel;
+  const showTime = backfilling || value.mode !== "now";
+  const options = backfilling
+    ? WHEN.filter((w) => w.id !== "earlier").map((w) =>
+        w.id === "now" ? { ...w, label: dayLabel } : { ...w, label: "The day before" }
+      )
+    : WHEN;
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-400">
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
         When
       </h3>
       <div
@@ -76,7 +84,7 @@ export function WhenChips({ value, onChange }: WhenChipsProps) {
         role="group"
         aria-label="When"
       >
-        {WHEN.map((w) => {
+        {options.map((w) => {
           const isOn = value.mode === w.id;
           return (
             <button
@@ -86,7 +94,7 @@ export function WhenChips({ value, onChange }: WhenChipsProps) {
               onClick={() => onChange({ ...value, mode: w.id })}
               className={`${chipBase} ${isOn ? chipOn : chipOff}`}
             >
-              {w.id === "now" && <Clock className="h-3.5 w-3.5" />}
+              {w.id === "now" && !backfilling && <Clock className="h-3.5 w-3.5" />}
               {w.label}
             </button>
           );

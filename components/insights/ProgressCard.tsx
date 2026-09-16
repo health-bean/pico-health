@@ -31,10 +31,10 @@ export function ProgressCard({ observation }: ProgressCardProps) {
             <div className="flex items-center gap-2 mt-1.5">
               <div className="flex items-baseline gap-1">
                 <span className="text-lg font-display text-warm-900">{curr}</span>
-                <span className="text-xs text-warm-400">← {prev}</span>
+                <span className="text-xs text-warm-500">← {prev}</span>
               </div>
               {prev > 0 && (
-                <span className={`text-xs font-medium ${isImproved ? 'text-emerald-600' : isWorse ? 'text-amber-600' : 'text-warm-400'}`}>
+                <span className={`text-xs font-medium ${isImproved ? 'text-emerald-600' : isWorse ? 'text-amber-600' : 'text-warm-500'}`}>
                   {isImproved ? `↓${Math.round(((prev - curr) / prev) * 100)}%` : isWorse ? `↑${Math.round(((curr - prev) / prev) * 100)}%` : 'no change'}
                 </span>
               )}

@@ -145,7 +145,7 @@ export function ExerciseTimelineCard({
           {entryTime && (
             <>
               <span className="text-warm-300">•</span>
-              <span className="text-warm-400">{formatTime(entryTime)}</span>
+              <span className="text-warm-500">{formatTime(entryTime)}</span>
             </>
           )}
         </div>
@@ -162,7 +162,7 @@ export function ExerciseTimelineCard({
               )}
               {energyBefore != null && energyAfter != null && (
                 <>
-                  <ArrowRight className="h-3 w-3 text-warm-400" />
+                  <ArrowRight className="h-3 w-3 text-warm-500" />
                   <span className="font-medium text-warm-700">
                     {energyAfter}/10
                   </span>

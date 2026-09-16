@@ -155,7 +155,7 @@ export function StartReintroductionModal({
             type="button"
             onClick={handleClose}
             disabled={isSubmitting}
-            className="rounded-lg p-1 text-warm-400 hover:bg-warm-100 hover:text-warm-600 disabled:cursor-not-allowed disabled:opacity-50"
+            className="rounded-lg p-1 text-warm-500 hover:bg-warm-100 hover:text-warm-600 disabled:cursor-not-allowed disabled:opacity-50"
             aria-label="Close modal"
           >
             <X className="h-5 w-5" />

@@ -43,17 +43,17 @@ export function AllPatterns({ output, onBack }: AllPatternsProps) {
         {tab === 'progress' && output.progress.map((o, i) => <ProgressCard key={i} observation={o} />)}
 
         {tab === 'triggers' && output.triggers.length === 0 && (
-          <p className="text-sm text-warm-400 text-center py-6">No trigger patterns found yet. Keep logging.</p>
+          <p className="text-sm text-warm-500 text-center py-6">No trigger patterns found yet. Keep logging.</p>
         )}
         {tab === 'helpers' && output.helpers.length === 0 && (
-          <p className="text-sm text-warm-400 text-center py-6">No helper patterns found yet. Keep logging.</p>
+          <p className="text-sm text-warm-500 text-center py-6">No helper patterns found yet. Keep logging.</p>
         )}
         {tab === 'progress' && output.progress.length === 0 && (
-          <p className="text-sm text-warm-400 text-center py-6">Need at least 2 weeks of data for progress observations.</p>
+          <p className="text-sm text-warm-500 text-center py-6">Need at least 2 weeks of data for progress observations.</p>
         )}
       </div>
 
-      <div className="text-xs text-warm-400 text-center pt-2">
+      <div className="text-xs text-warm-500 text-center pt-2">
         {output.dataStatus.daysTracked} days tracked · {output.dataStatus.singleFactors} single-factor · {output.dataStatus.twoFactorPatterns} two-factor · {output.dataStatus.threeFactorPatterns} three-factor
       </div>
     </div>

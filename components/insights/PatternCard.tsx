@@ -73,10 +73,10 @@ export function PatternCard({ result, variant: variantOverride }: PatternCardPro
 
           <div className="flex items-center gap-3 mt-2">
             <ImpactBar score={result.impactScore} />
-            <span className="text-[11px] text-warm-400">
+            <span className="text-[11px] text-warm-500">
               {result.frequency} time{result.frequency !== 1 ? 's' : ''}
             </span>
-            <span className="text-[11px] text-warm-400">
+            <span className="text-[11px] text-warm-500">
               {result.recencyDays === 0 ? 'today' : result.recencyDays <= 7 ? `${result.recencyDays}d ago` : `${Math.round(result.recencyDays / 7)}w ago`}
             </span>
             {factorCount >= 2 && (

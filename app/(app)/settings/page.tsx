@@ -322,7 +322,7 @@ export default function SettingsPage() {
               <span className="block text-xs text-warm-500">Test foods back in and record how you react</span>
             </span>
           </span>
-          <ChevronRight className="h-4 w-4 text-warm-400" />
+          <ChevronRight className="h-4 w-4 text-warm-500" />
         </Link>
       </Card>
 

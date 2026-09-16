@@ -48,7 +48,7 @@ export function DayView({ initialDate, initialComposite }: DayViewProps) {
       <DayHeader date={date} onPrevious={prevDay} onNext={nextDay} isToday={date === today} />
 
       {loading ? (
-        <div className="py-8 text-center text-warm-400 animate-pulse">Loading...</div>
+        <div className="py-8 text-center text-warm-500 animate-pulse">Loading...</div>
       ) : composite ? (
         <div className="space-y-3">
           {composite.hasJournal && (
@@ -57,7 +57,7 @@ export function DayView({ initialDate, initialComposite }: DayViewProps) {
 
           <LogSummary composite={composite} />
 
-          <div className="flex items-center justify-between text-xs text-warm-400 pt-1">
+          <div className="flex items-center justify-between text-xs text-warm-500 pt-1">
             <span>{composite.entryCount} entries logged</span>
             {composite.compliancePct !== null && (
               <span>{Math.round(composite.compliancePct)}% protocol compliant</span>
@@ -65,7 +65,7 @@ export function DayView({ initialDate, initialComposite }: DayViewProps) {
           </div>
         </div>
       ) : (
-        <div className="py-8 text-center text-warm-400">
+        <div className="py-8 text-center text-warm-500">
           <p className="text-sm">No data for this day.</p>
           <p className="text-xs mt-1">Swipe to browse other days.</p>
         </div>

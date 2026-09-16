@@ -180,7 +180,7 @@ export default function AdminProtocolsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center py-20">
-        <Loader2 className="h-6 w-6 animate-spin text-warm-400" />
+        <Loader2 className="h-6 w-6 animate-spin text-warm-500" />
       </div>
     );
   }
@@ -241,7 +241,7 @@ export default function AdminProtocolsPage() {
               {/* Header */}
               <div className="flex items-center gap-3 px-4 py-3">
                 <button onClick={() => toggleExpanded(protocol.id)}>
-                  {isOpen ? <ChevronDown className="h-4 w-4 text-warm-400" /> : <ChevronRight className="h-4 w-4 text-warm-400" />}
+                  {isOpen ? <ChevronDown className="h-4 w-4 text-warm-500" /> : <ChevronRight className="h-4 w-4 text-warm-500" />}
                 </button>
 
                 {isEditingThis ? (
@@ -258,7 +258,7 @@ export default function AdminProtocolsPage() {
                       className="flex-1 rounded border border-warm-200 px-2 py-1 text-sm"
                     />
                     <button onClick={() => handleUpdateProtocol(protocol.id)} className="rounded p-1 text-emerald-600 hover:bg-emerald-50"><Check className="h-4 w-4" /></button>
-                    <button onClick={() => setEditingProtocol(null)} className="rounded p-1 text-warm-400 hover:bg-warm-50"><X className="h-4 w-4" /></button>
+                    <button onClick={() => setEditingProtocol(null)} className="rounded p-1 text-warm-500 hover:bg-warm-50"><X className="h-4 w-4" /></button>
                   </div>
                 ) : (
                   <>
@@ -268,19 +268,19 @@ export default function AdminProtocolsPage() {
                         <span className="ml-2 rounded bg-warm-100 px-2 py-0.5 text-xs text-warm-500">{protocol.category}</span>
                       )}
                     </button>
-                    <span className="text-sm text-warm-400">{protocol.rules.length} rules</span>
+                    <span className="text-sm text-warm-500">{protocol.rules.length} rules</span>
                     <button
                       onClick={() => {
                         setEditingProtocol(protocol.id);
                         setEditProtocolData({ name: protocol.name, description: protocol.description || "", category: protocol.category || "" });
                       }}
-                      className="rounded p-1 text-warm-400 hover:bg-warm-50 hover:text-warm-600"
+                      className="rounded p-1 text-warm-500 hover:bg-warm-50 hover:text-warm-600"
                     >
                       <Pencil className="h-3.5 w-3.5" />
                     </button>
                     <button
                       onClick={() => handleDeleteProtocol(protocol.id, protocol.name)}
-                      className="rounded p-1 text-warm-400 hover:bg-red-50 hover:text-red-600"
+                      className="rounded p-1 text-warm-500 hover:bg-red-50 hover:text-red-600"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -296,7 +296,7 @@ export default function AdminProtocolsPage() {
                   )}
 
                   {protocol.rules.length === 0 ? (
-                    <p className="mb-3 text-sm italic text-warm-400">No rules defined</p>
+                    <p className="mb-3 text-sm italic text-warm-500">No rules defined</p>
                   ) : (
                     <table className="mb-3 w-full text-sm">
                       <thead>
@@ -331,7 +331,7 @@ export default function AdminProtocolsPage() {
                                       <button
                                         key={v}
                                         onClick={() => setEditRuleData((r) => ({ ...r, propertyValues: toggleValue(r.propertyValues, v) }))}
-                                        className={`rounded px-1.5 py-0.5 text-xs ${editRuleData.propertyValues.includes(v) ? "bg-teal-100 text-teal-800 font-medium" : "bg-warm-100 text-warm-400"}`}
+                                        className={`rounded px-1.5 py-0.5 text-xs ${editRuleData.propertyValues.includes(v) ? "bg-teal-100 text-teal-800 font-medium" : "bg-warm-100 text-warm-500"}`}
                                       >
                                         {v}
                                       </button>
@@ -349,7 +349,7 @@ export default function AdminProtocolsPage() {
                                 <td className="py-2">
                                   <div className="flex gap-1">
                                     <button onClick={() => handleUpdateRule(rule.id)} className="rounded p-1 text-emerald-600 hover:bg-emerald-50"><Check className="h-3.5 w-3.5" /></button>
-                                    <button onClick={() => setEditingRule(null)} className="rounded p-1 text-warm-400 hover:bg-warm-50"><X className="h-3.5 w-3.5" /></button>
+                                    <button onClick={() => setEditingRule(null)} className="rounded p-1 text-warm-500 hover:bg-warm-50"><X className="h-3.5 w-3.5" /></button>
                                   </div>
                                 </td>
                               </tr>
@@ -384,13 +384,13 @@ export default function AdminProtocolsPage() {
                                         notes: rule.notes || "",
                                       });
                                     }}
-                                    className="rounded p-1 text-warm-400 hover:bg-warm-50 hover:text-warm-600"
+                                    className="rounded p-1 text-warm-500 hover:bg-warm-50 hover:text-warm-600"
                                   >
                                     <Pencil className="h-3 w-3" />
                                   </button>
                                   <button
                                     onClick={() => handleDeleteRule(rule.id)}
-                                    className="rounded p-1 text-warm-400 hover:bg-red-50 hover:text-red-600"
+                                    className="rounded p-1 text-warm-500 hover:bg-red-50 hover:text-red-600"
                                   >
                                     <Trash2 className="h-3 w-3" />
                                   </button>

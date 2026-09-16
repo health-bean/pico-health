@@ -111,7 +111,7 @@ export default function AdminUsagePage() {
 
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-6 w-6 animate-spin text-warm-400" />
+          <Loader2 className="h-6 w-6 animate-spin text-warm-500" />
         </div>
       ) : error || !data ? (
         <div className="rounded-lg border border-warm-200 bg-warm-50 px-4 py-10 text-center text-sm text-warm-600">

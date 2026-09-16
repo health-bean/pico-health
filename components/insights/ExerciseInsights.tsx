@@ -81,7 +81,7 @@ function ExerciseInsightCard({ data }: { data: ExerciseInsightData }) {
                 {avgEnergyChange > 0 ? "+" : ""}
                 {avgEnergyChange.toFixed(1)} points
               </p>
-              <p className="text-xs text-warm-400">avg energy change</p>
+              <p className="text-xs text-warm-500">avg energy change</p>
             </div>
           </div>
 
@@ -102,7 +102,7 @@ function ExerciseInsightCard({ data }: { data: ExerciseInsightData }) {
               {isPositive ? "Energy Boost" : "Energy Drain"}
             </Badge>
             <Badge variant="moderation">{confidence}% confidence</Badge>
-            <span className="text-xs text-warm-400">
+            <span className="text-xs text-warm-500">
               {sampleSize} occurrence{sampleSize !== 1 ? "s" : ""}
             </span>
           </div>
@@ -148,7 +148,7 @@ export function ExerciseInsights({ insights }: ExerciseInsightsProps) {
     <div>
       <div className="mb-3 flex items-center gap-2">
         <Zap className="h-4 w-4 text-amber-500" />
-        <h2 className="text-sm font-semibold uppercase tracking-wide text-warm-400">
+        <h2 className="text-sm font-semibold uppercase tracking-wide text-warm-500">
           Exercise & Energy
         </h2>
       </div>

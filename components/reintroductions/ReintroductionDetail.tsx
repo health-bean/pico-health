@@ -143,7 +143,7 @@ export function ReintroductionDetail({
           {onClose && (
             <button
               onClick={onClose}
-              className="rounded-lg p-2 text-warm-400 hover:bg-warm-100 hover:text-warm-600"
+              className="rounded-lg p-2 text-warm-500 hover:bg-warm-100 hover:text-warm-600"
               aria-label="Close"
             >
               <X className="h-5 w-5" />
@@ -157,13 +157,13 @@ export function ReintroductionDetail({
         <h3 className="mb-4 text-base font-semibold text-warm-900">Timeline</h3>
         <div className="space-y-3">
           <div className="flex items-center gap-3 text-sm">
-            <Calendar className="h-4 w-4 text-warm-400" />
+            <Calendar className="h-4 w-4 text-warm-500" />
             <span className="text-warm-600">Started:</span>
             <span className="font-medium text-warm-900">{formatDate(data.startDate)}</span>
           </div>
           {data.endDate && (
             <div className="flex items-center gap-3 text-sm">
-              <Calendar className="h-4 w-4 text-warm-400" />
+              <Calendar className="h-4 w-4 text-warm-500" />
               <span className="text-warm-600">Ended:</span>
               <span className="font-medium text-warm-900">{formatDate(data.endDate)}</span>
             </div>

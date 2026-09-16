@@ -16,9 +16,9 @@ const LEVEL_COLORS: Record<string, string> = {
   moderate: "bg-amber-100 text-amber-800",
   high: "bg-red-100 text-red-800",
   very_high: "bg-red-200 text-red-900 font-semibold",
-  unknown: "bg-warm-100 text-warm-400",
+  unknown: "bg-warm-100 text-warm-500",
   true: "bg-red-100 text-red-800",
-  false: "bg-warm-100 text-warm-400",
+  false: "bg-warm-100 text-warm-500",
 };
 
 const DISPLAY_LABELS: Record<string, string> = {

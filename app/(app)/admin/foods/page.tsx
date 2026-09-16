@@ -328,7 +328,7 @@ export default function AdminFoodsPage() {
           {/* Filters */}
           <div className="mb-4 flex flex-wrap items-center gap-3">
             <div className="relative max-w-sm flex-1">
-              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-warm-400" />
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-warm-500" />
               <input
                 type="text"
                 value={search}
@@ -338,7 +338,7 @@ export default function AdminFoodsPage() {
               />
             </div>
             <div className="relative">
-              <Filter className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-warm-400" />
+              <Filter className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-warm-500" />
               <select
                 value={categoryFilter}
                 onChange={(e) => setCategoryFilter(e.target.value)}
@@ -367,7 +367,7 @@ export default function AdminFoodsPage() {
           {/* Table */}
           {loading ? (
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="h-6 w-6 animate-spin text-warm-400" />
+              <Loader2 className="h-6 w-6 animate-spin text-warm-500" />
             </div>
           ) : (
             <div className="overflow-x-auto rounded-lg border border-warm-200">
@@ -467,7 +467,7 @@ export default function AdminFoodsPage() {
         <div>
           {queueLoading ? (
             <div className="flex items-center justify-center py-20">
-              <Loader2 className="h-6 w-6 animate-spin text-warm-400" />
+              <Loader2 className="h-6 w-6 animate-spin text-warm-500" />
             </div>
           ) : queueError || !queue ? (
             <EmptyState

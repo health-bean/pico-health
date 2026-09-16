@@ -40,7 +40,7 @@ export function JournalCheckIn({ onSave, onDismiss }: JournalCheckInProps) {
         </h3>
         <button
           onClick={onDismiss}
-          className="flex h-8 w-8 items-center justify-center rounded-lg text-warm-400 hover:bg-warm-100 hover:text-warm-600"
+          className="flex h-8 w-8 items-center justify-center rounded-lg text-warm-500 hover:bg-warm-100 hover:text-warm-600"
           aria-label="Dismiss"
         >
           <X className="h-4 w-4" />

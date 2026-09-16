@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import {
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   Apple,
@@ -19,6 +20,7 @@ import { QuickAddSheet } from "@/components/quick-log/quick-add-sheet";
 import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard";
 import { FoodTimelineCard } from "@/components/timeline/FoodTimelineCard";
 import { GenericTimelineCard } from "@/components/timeline/GenericTimelineCard";
+import { DayStrip } from "@/components/timeline/DayStrip";
 import type { EntryPatch } from "@/components/timeline/EntryEditor";
 import { CaptureBar } from "@/components/capture/CaptureBar";
 import { PendingCaptureCard } from "@/components/capture/PendingCaptureCard";
@@ -107,23 +109,37 @@ export default function TimelinePage() {
   const [loading, setLoading] = useState(true);
   const [sheetOpen, setSheetOpen] = useState(false);
   const [showEnergyOnly, setShowEnergyOnly] = useState(false);
+  const [stripOpen, setStripOpen] = useState(false);
   const dateRef = useRef(date);
   useEffect(() => {
     dateRef.current = date;
   }, [date]);
 
+  // Only the latest day fetch may write to state. Tapping back through a
+  // week fires several requests; without this, a slow response for an
+  // earlier day could land after the current one and show a logged day as
+  // empty. Superseded requests are also aborted so they stop costing anything.
+  const fetchSeq = useRef(0);
+  const fetchAbort = useRef<AbortController | null>(null);
   const fetchEntries = useCallback(async (d: string) => {
+    fetchAbort.current?.abort();
+    const controller = new AbortController();
+    fetchAbort.current = controller;
+    const seq = ++fetchSeq.current;
     setLoading(true);
     try {
-      const res = await fetch(`/api/entries?date=${d}`);
+      const res = await fetch(`/api/entries?date=${d}`, { signal: controller.signal });
+      if (seq !== fetchSeq.current) return;
       if (res.ok) {
         const data = await res.json();
+        if (seq !== fetchSeq.current) return;
         setEntries(data.entries ?? []);
       }
     } catch (err) {
+      if ((err as { name?: string })?.name === "AbortError") return;
       console.error("Failed to fetch entries:", err);
     } finally {
-      setLoading(false);
+      if (seq === fetchSeq.current) setLoading(false);
     }
   }, []);
 
@@ -268,7 +284,8 @@ export default function TimelinePage() {
     setDate(formatDate(d));
   }
 
-  const isToday = date === formatDate(new Date());
+  const today = formatDate(new Date());
+  const isToday = date === today;
   const hasEnergyEntries = entries.some((e) => e.energyLevel != null);
 
   // Filter entries by energy level if enabled
@@ -284,31 +301,49 @@ export default function TimelinePage() {
     <div className="mx-auto max-w-2xl px-4 py-6 pb-36 md:pb-28 animate-fade-in">
       <ProgressStrip />
 
-      {/* Date nav */}
-      <div className="mb-4 flex items-center justify-between">
+      {/* Date nav: the heading opens a week strip for jumping straight to a day */}
+      <div className="mb-2 flex items-center justify-between">
         <button
+          type="button"
           onClick={() => shiftDate(-1)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-[var(--color-text-muted)] hover:bg-teal-50 hover:text-teal-600 transition-all duration-200"
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-[var(--color-text-muted)] hover:bg-teal-50 hover:text-teal-600 transition-colors duration-200"
           aria-label="Previous day"
         >
           <ChevronLeft className="h-5 w-5" />
         </button>
 
         <h1 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-text-primary)]">
-          {displayDate(date)}
+          <button
+            type="button"
+            onClick={() => setStripOpen((v) => !v)}
+            aria-expanded={stripOpen}
+            aria-controls="log-day-strip"
+            className="flex min-h-11 items-center gap-1.5 rounded-lg px-3 hover:bg-teal-50 hover:text-teal-700 transition-colors duration-200"
+          >
+            {displayDate(date)}
+            <ChevronDown
+              className={cn("h-4 w-4 text-[var(--color-text-muted)] transition-transform duration-200", stripOpen && "rotate-180")}
+              aria-hidden="true"
+            />
+          </button>
         </h1>
 
         <button
+          type="button"
           onClick={() => shiftDate(1)}
           disabled={isToday}
           className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-lg text-[var(--color-text-muted)] transition-all duration-200",
+            "flex h-11 w-11 items-center justify-center rounded-lg text-[var(--color-text-muted)] transition-colors duration-200",
             isToday ? "opacity-30" : "hover:bg-teal-50 hover:text-teal-600"
           )}
           aria-label="Next day"
         >
           <ChevronRight className="h-5 w-5" />
         </button>
+      </div>
+
+      <div id="log-day-strip">
+        {stripOpen && <DayStrip selected={date} today={today} onSelect={setDate} />}
       </div>
 
       {/* Energy filter — only offered when the day actually has energy data */}
@@ -448,6 +483,8 @@ export default function TimelinePage() {
         open={sheetOpen}
         onClose={() => setSheetOpen(false)}
         onSaved={() => fetchEntries(dateRef.current)}
+        entryDate={date}
+        dayLabel={isToday ? undefined : displayDate(date)}
       />
     </div>
   );

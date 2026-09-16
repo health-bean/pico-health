@@ -71,7 +71,7 @@ export default function AdminReferencePage() {
 
       {loading ? (
         <div className="flex items-center justify-center py-20">
-          <Loader2 className="h-6 w-6 animate-spin text-warm-400" />
+          <Loader2 className="h-6 w-6 animate-spin text-warm-500" />
         </div>
       ) : (
         <div className="space-y-6">

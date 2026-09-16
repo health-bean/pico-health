@@ -279,7 +279,7 @@ export default function InsightsPage() {
       <div className="mt-8 pt-6 border-t border-warm-200">
         <div className="flex items-center gap-2 mb-2">
           <span className="text-base">📅</span>
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-warm-400">Your Day</h2>
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-warm-500">Your Day</h2>
         </div>
         <DayView initialDate={today} initialComposite={composite} />
       </div>

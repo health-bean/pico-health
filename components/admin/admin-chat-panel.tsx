@@ -87,7 +87,7 @@ export function AdminChatPanel() {
       {/* Messages */}
       <div ref={scrollRef} className="flex-1 overflow-auto px-4 py-2 space-y-2">
         {messages.length === 0 && (
-          <p className="py-4 text-center text-xs text-warm-400">
+          <p className="py-4 text-center text-xs text-warm-500">
             Ask me to update data in bulk, check properties, or answer questions about the database.
           </p>
         )}

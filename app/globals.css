@@ -38,7 +38,7 @@ html {
   --color-warm-200: oklch(0.93 0.01 80);
   --color-warm-300: oklch(0.88 0.015 80);
   --color-warm-400: oklch(0.70 0.02 80);
-  --color-warm-500: oklch(0.55 0.02 80);
+  --color-warm-500: oklch(0.54 0.02 80);
   --color-warm-600: oklch(0.45 0.02 80);
   --color-warm-700: oklch(0.35 0.02 80);
   --color-warm-800: oklch(0.27 0.02 80);
@@ -62,8 +62,9 @@ html {
 
   /* ── Text ─────────────────────────────────────────────────────── */
   --color-text-primary: oklch(0.22 0.015 80);
-  --color-text-secondary: oklch(0.50 0.02 80);
-  --color-text-muted: oklch(0.65 0.015 80);
+  --color-text-secondary: oklch(0.47 0.02 80);
+  /* 4.7:1 on --color-surface, 4.5:1 on warm-100: the floor for 12–13px labels. */
+  --color-text-muted: oklch(0.54 0.015 80);
 
   /* ── Typography ───────────────────────────────────────────────── */
   --font-display: "Fraunces", Georgia, serif;
@@ -96,6 +97,19 @@ html {
 
 ::selection {
   background: oklch(0.85 0.06 195 / 0.4);
+}
+
+/* One focus ring for every keyboard user, drawn from the brand hue. Inputs
+   that opt out with focus:outline-none carry their own ring utilities. */
+:focus-visible {
+  outline: 2px solid var(--color-teal-500);
+  outline-offset: 2px;
+}
+
+input,
+textarea,
+select {
+  caret-color: var(--color-teal-600);
 }
 
 /* ── Animations ──────────────────────────────────────────────────── */
@@ -168,6 +182,23 @@ html {
 
 .animate-pulse-warm {
   animation: pulse-warm 1.8s ease-in-out infinite;
+}
+
+/* Reduced motion: entrances land instantly in their final state. Loading
+   pulses become a steady dim, so "still working" is still visible. Color
+   transitions are left alone; they are feedback, not motion. */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in-up,
+  .animate-fade-in,
+  .animate-slide-in-right,
+  .animate-slide-in-up,
+  .stagger-children > * {
+    animation: none;
+  }
+  .animate-pulse-warm {
+    animation: none;
+    opacity: 0.6;
+  }
 }
 
 /* Staggered children */

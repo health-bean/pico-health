@@ -24,7 +24,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <span className="text-sm font-medium text-warm-700">AI Assistant</span>
               <button
                 onClick={() => setChatOpen(false)}
-                className="rounded p-1 text-warm-400 hover:bg-warm-100 hover:text-warm-600"
+                className="rounded p-1 text-warm-500 hover:bg-warm-100 hover:text-warm-600"
               >
                 <X className="h-4 w-4" />
               </button>

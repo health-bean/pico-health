@@ -151,7 +151,7 @@ export function ReintroductionNotifications() {
             </div>
             <button
               onClick={() => dismissNotification(notification.reintroductionId)}
-              className="text-warm-400 hover:text-warm-600 ml-2"
+              className="text-warm-500 hover:text-warm-600 ml-2"
               aria-label="Dismiss notification"
             >
               ✕

@@ -58,21 +58,37 @@ export function localTimeString(d: Date): string {
   return `${pad(d.getHours())}:${pad(d.getMinutes())}`;
 }
 
-/** Resolve the "when" chip selection into an entryDate + entryTime pair. */
+/**
+ * Resolve the "when" chip selection into an entryDate + entryTime pair.
+ *
+ * `entryDate` is the day the user is looking at on Log. When it is a past
+ * day, every mode is relative to that day, not to the wall clock: "now"
+ * means that day at the current time of day, "yesterday" means the day
+ * before it. Backfilling Tuesday must never quietly land on today.
+ */
 export function resolveWhen(
   when: QuickLogWhen,
-  now: Date = new Date()
+  now: Date = new Date(),
+  entryDate?: string
 ): { entryDate: string; entryTime: string } {
-  if (when.mode === "now") {
-    return { entryDate: localDateString(now), entryTime: localTimeString(now) };
+  const today = localDateString(now);
+  const base = entryDate && entryDate !== today ? new Date(entryDate + "T12:00:00") : new Date(now);
+  const viewingPastDay = localDateString(base) !== today;
+
+  if (when.mode === "now" && !viewingPastDay) {
+    return { entryDate: today, entryTime: localTimeString(now) };
   }
-  const date = new Date(now);
-  if (when.mode === "yesterday") date.setDate(date.getDate() - 1);
+  if (when.mode === "yesterday") base.setDate(base.getDate() - 1);
   const time = /^\d{2}:\d{2}$/.test(when.time) ? when.time : localTimeString(now);
-  return { entryDate: localDateString(date), entryTime: time };
+  return { entryDate: localDateString(base), entryTime: time };
 }
 
-export function useQuickLog(): UseQuickLogReturn {
+interface UseQuickLogOptions {
+  /** YYYY-MM-DD of the day being viewed; defaults to today. */
+  entryDate?: string;
+}
+
+export function useQuickLog({ entryDate }: UseQuickLogOptions = {}): UseQuickLogReturn {
   const [items, setItems] = useState<QuickLogItem[]>([]);
   const [submitting, setSubmitting] = useState(false);
   const [mealType, setMealType] = useState<MealType | null>(null);
@@ -125,7 +141,7 @@ export function useQuickLog(): UseQuickLogReturn {
     setSubmitting(true);
 
     try {
-      const { entryDate, entryTime } = resolveWhen(when);
+      const { entryDate: resolvedDate, entryTime } = resolveWhen(when, new Date(), entryDate);
       let timezone: string | undefined;
       try {
         timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -139,7 +155,7 @@ export function useQuickLog(): UseQuickLogReturn {
           entryType: item.entryType,
           name: item.name,
           severity: item.severity,
-          entryDate,
+          entryDate: resolvedDate,
           entryTime,
           timezone,
           foodId: isFood ? item.foodId : undefined,
@@ -168,7 +184,7 @@ export function useQuickLog(): UseQuickLogReturn {
     } finally {
       setSubmitting(false);
     }
-  }, [items, mealType, when]);
+  }, [items, mealType, when, entryDate]);
 
   return {
     items,

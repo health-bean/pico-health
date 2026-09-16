@@ -222,7 +222,7 @@ export function FoodSearchInput({
       {/* Search Input */}
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <Search className="h-4 w-4 text-warm-400" />
+          <Search className="h-4 w-4 text-warm-500" />
         </div>
         <input
           ref={inputRef}
@@ -241,7 +241,7 @@ export function FoodSearchInput({
         />
         {loading && (
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-            <Loader2 className="h-4 w-4 animate-spin text-warm-400" />
+            <Loader2 className="h-4 w-4 animate-spin text-warm-500" />
           </div>
         )}
         {query && !loading && (
@@ -253,7 +253,7 @@ export function FoodSearchInput({
               setIsOpen(false);
               inputRef.current?.focus();
             }}
-            className="absolute inset-y-0 right-0 flex items-center pr-3 text-warm-400 hover:text-warm-600"
+            className="absolute inset-y-0 right-0 flex items-center pr-3 text-warm-500 hover:text-warm-600"
           >
             <X className="h-4 w-4" />
           </button>
@@ -319,7 +319,7 @@ export function FoodSearchInput({
 
       {/* Keyboard Hints */}
       {isOpen && results.length > 0 && (
-        <div className="mt-1 text-xs text-warm-400">
+        <div className="mt-1 text-xs text-warm-500">
           Use ↑↓ to navigate, Enter to select, Esc to close
         </div>
       )}

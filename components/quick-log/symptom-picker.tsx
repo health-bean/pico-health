@@ -55,7 +55,7 @@ export function SymptomPicker({
 
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-400">
+      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
         Symptoms
       </h3>
       <div className="flex flex-wrap gap-2">

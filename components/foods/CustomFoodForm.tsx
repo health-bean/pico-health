@@ -240,7 +240,7 @@ export function CustomFoodForm({
           <button
             type="button"
             onClick={onCancel}
-            className="rounded-lg p-1 text-warm-400 hover:bg-warm-100 hover:text-warm-600"
+            className="rounded-lg p-1 text-warm-500 hover:bg-warm-100 hover:text-warm-600"
           >
             <X className="h-5 w-5" />
           </button>

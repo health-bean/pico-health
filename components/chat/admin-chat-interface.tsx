@@ -64,7 +64,7 @@ export function AdminChatInterface() {
               messages.length > 0 &&
               messages[messages.length - 1]?.role === "assistant" &&
               messages[messages.length - 1]?.content === "" && (
-                <div className="flex items-center gap-2 px-3 py-2 text-sm text-warm-400">
+                <div className="flex items-center gap-2 px-3 py-2 text-sm text-warm-500">
                   <Spinner size="sm" />
                   <span>Thinking...</span>
                 </div>

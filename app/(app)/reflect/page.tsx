@@ -283,7 +283,7 @@ export default function ReflectPage() {
             onClick={() => setDate(day.date)}
             className="flex flex-col items-center gap-1"
           >
-            <span className="text-[10px] font-medium text-warm-400">
+            <span className="text-[10px] font-medium text-warm-500">
               {day.label}
             </span>
             <div
@@ -293,7 +293,7 @@ export default function ReflectPage() {
                   ? "bg-teal-600 text-white"
                   : day.hasEntry
                     ? "bg-teal-100 text-teal-700"
-                    : "bg-warm-100 text-warm-400"
+                    : "bg-warm-100 text-warm-500"
               )}
             >
               {day.hasEntry && !day.isSelected ? (
@@ -314,12 +314,12 @@ export default function ReflectPage() {
         <div className="flex flex-col gap-4">
           {/* Progress indicator */}
           <div className="flex items-center justify-between">
-            <span className="text-xs text-warm-400">
+            <span className="text-xs text-warm-500">
               {filledCount}/5 areas rated
             </span>
             <div className="flex items-center gap-1.5">
               {saving && (
-                <span className="flex items-center gap-1 text-xs text-warm-400">
+                <span className="flex items-center gap-1 text-xs text-warm-500">
                   <Loader2 className="h-3 w-3 animate-spin" />
                   Saving…
                 </span>
@@ -359,7 +359,7 @@ export default function ReflectPage() {
                   color={cfg.color}
                   hideLabel
                 />
-                <div className="mt-1 flex items-center justify-between text-[10px] text-warm-400">
+                <div className="mt-1 flex items-center justify-between text-[10px] text-warm-500">
                   <span>{cfg.lowLabel}</span>
                   <span>{cfg.highLabel}</span>
                 </div>
@@ -377,11 +377,11 @@ export default function ReflectPage() {
               onChange={(e) => handleNotesChange(e.target.value)}
               placeholder="How are you feeling overall? Any patterns, insights, or things worth noting…"
               rows={4}
-              className="w-full resize-none rounded-lg border border-warm-200 bg-warm-50 px-3 py-2 text-sm text-warm-900 placeholder:text-warm-400 focus:border-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-100"
+              className="w-full resize-none rounded-lg border border-warm-200 bg-warm-50 px-3 py-2 text-sm text-warm-900 placeholder:text-warm-500 focus:border-teal-300 focus:outline-none focus:ring-2 focus:ring-teal-100"
               maxLength={2000}
             />
             {notes.length > 0 && (
-              <p className="mt-1 text-right text-[10px] text-warm-400">
+              <p className="mt-1 text-right text-[10px] text-warm-500">
                 {notes.length}/2000
               </p>
             )}

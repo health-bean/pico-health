@@ -9,9 +9,13 @@ interface QuickAddSheetProps {
   onClose: () => void;
   /** Called after a batch is saved successfully (before the sheet closes). */
   onSaved?: () => void;
+  /** YYYY-MM-DD of the day being viewed on Log; entries land on this day. */
+  entryDate?: string;
+  /** Display label for `entryDate` when it is not today, e.g. "Fri, Apr 24". */
+  dayLabel?: string;
 }
 
-export function QuickAddSheet({ open, onClose, onSaved }: QuickAddSheetProps) {
+export function QuickAddSheet({ open, onClose, onSaved, entryDate, dayLabel }: QuickAddSheetProps) {
   // True while the panel has unsaved selected items. Backdrop tap and Escape
   // do nothing in that state so a stray tap can't discard the selection —
   // the X button always closes.
@@ -81,10 +85,13 @@ export function QuickAddSheet({ open, onClose, onSaved }: QuickAddSheetProps) {
           <div className="mx-auto h-1 w-10 rounded-full bg-warm-300" />
         </div>
         <div className="flex items-center justify-between px-4 pb-2">
-          <h2 className="text-sm font-semibold text-warm-900">Find something to log</h2>
+          <h2 className="text-sm font-semibold text-warm-900">
+            {dayLabel ? `Log to ${dayLabel}` : "Find something to log"}
+          </h2>
           <button
+            type="button"
             onClick={close}
-            className="flex h-8 w-8 items-center justify-center rounded-lg text-warm-400 hover:bg-warm-100"
+            className="-mr-2 flex h-11 w-11 items-center justify-center rounded-lg text-warm-500 hover:bg-warm-100 hover:text-warm-700"
             aria-label="Close"
           >
             <X className="h-4 w-4" />
@@ -93,7 +100,7 @@ export function QuickAddSheet({ open, onClose, onSaved }: QuickAddSheetProps) {
 
         {/* Content — min-h-0 lets this flex child shrink and actually scroll */}
         <div className="min-h-0 flex-1 overflow-y-auto">
-          <QuickLogPanel onSaved={handleSaved} onItemsChange={setHasItems} />
+          <QuickLogPanel onSaved={handleSaved} onItemsChange={setHasItems} entryDate={entryDate} dayLabel={dayLabel} />
         </div>
       </div>
     </div>

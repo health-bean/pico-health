@@ -25,6 +25,10 @@ interface QuickLogPanelProps {
   onSaved?: () => void;
   /** Reports whether there are unsaved selected items. */
   onItemsChange?: (hasItems: boolean) => void;
+  /** YYYY-MM-DD of the day being viewed on Log; entries land on this day. */
+  entryDate?: string;
+  /** Display label for `entryDate` when it is not today, e.g. "Fri, Apr 24". */
+  dayLabel?: string;
 }
 
 /** Split a search result into the id fields the hook expects. */
@@ -33,7 +37,7 @@ function foodIds(food: SearchFood): { foodId?: string; customFoodId?: string } {
   return isCustom ? { customFoodId: food.id } : { foodId: food.id };
 }
 
-export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
+export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: QuickLogPanelProps) {
   const {
     items,
     addItem,
@@ -46,7 +50,7 @@ export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
     submitAll,
     submitting,
     clear,
-  } = useQuickLog();
+  } = useQuickLog({ entryDate });
   const [protocolId, setProtocolId] = useState<string | null>(null);
   const [protocol, setProtocol] = useState<Protocol | null>(null);
   const [submitted, setSubmitted] = useState(false);
@@ -248,7 +252,7 @@ export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
                   )}
                   <button
                     onClick={() => removeItem(item.id)}
-                    className="ml-0.5 text-warm-400 hover:text-warm-600"
+                    className="ml-0.5 text-warm-500 hover:text-warm-600"
                     aria-label={`Remove ${item.name}`}
                   >
                     <X className="h-3 w-3" />
@@ -273,7 +277,7 @@ export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
             <>
               {/* Food Search */}
               <div>
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-400">
+                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
                   Search Foods
                 </h3>
                 <FoodSearchInput
@@ -296,12 +300,12 @@ export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
 
               {/* Meal type + when */}
               <MealTypeChips value={mealType} onChange={setMealType} />
-              <WhenChips value={when} onChange={setWhen} />
+              <WhenChips value={when} onChange={setWhen} dayLabel={dayLabel} />
 
               {/* Selected Food Property Card */}
               {selectedFood && !showComplianceWarning && (
                 <div>
-                  <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-400">
+                  <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
                     Food Properties
                   </h3>
                   <FoodPropertyCard properties={selectedFood.triggerProperties} />
@@ -349,7 +353,7 @@ export function QuickLogPanel({ onSaved, onItemsChange }: QuickLogPanelProps) {
 
           {activeTab === "symptom" && (
             <>
-              <WhenChips value={when} onChange={setWhen} />
+              <WhenChips value={when} onChange={setWhen} dayLabel={dayLabel} />
               <SymptomPicker
                 onSelect={handleSelect}
                 selectedNames={selectedNames}
