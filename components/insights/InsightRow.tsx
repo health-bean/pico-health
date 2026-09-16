@@ -20,6 +20,8 @@ interface InsightRowProps {
   tone?: 'symptom' | 'better';
   /** Shown when the same thing also appears in the other list, so the two rows do not read as a contradiction. */
   note?: string;
+  /** The symptom the count is about, shown with the count so the number never floats free of its meaning. */
+  outcome?: string;
 }
 
 /**
@@ -27,7 +29,7 @@ interface InsightRowProps {
  * "14 of 26 days", so it reads as a count and never as a score, and five
  * days can never look like certainty.
  */
-export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note }: InsightRowProps) {
+export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note, outcome }: InsightRowProps) {
   const bgClass = 'bg-warm-50';
   const iconColor = tone === 'better' ? 'text-teal-600' : 'text-warm-600';
 
@@ -58,7 +60,8 @@ export function InsightRow({ icon: Icon, title, description, days, total, foods,
             </div>
           )}
         </div>
-        <div className="shrink-0 text-right tabular-nums">
+        <div className="max-w-[40%] shrink-0 text-right tabular-nums">
+          {outcome && <div className="text-xs font-medium text-warm-600">{outcome}</div>}
           <div className="text-base font-semibold text-warm-900">{days} of {total}</div>
           <div className="text-xs text-warm-500">days</div>
         </div>

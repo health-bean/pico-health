@@ -5,9 +5,10 @@ import { InsightSection } from '@/components/insights/InsightSection';
 import { InsightRow } from '@/components/insights/InsightRow';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
+import Link from 'next/link';
 import { Spinner, Card, PageTitle } from '@/components/ui';
 import {
-  Activity, Apple, CalendarDays, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
+  Activity, Apple, CalendarDays, ChevronRight, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
   Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, TrendingDown, TrendingUp, Zap,
   type LucideIcon,
 } from 'lucide-react';
@@ -59,7 +60,27 @@ export default function InsightsPage() {
   const [composite, setComposite] = useState<DayComposite | null>(null);
   const [patterns, setPatterns] = useState<InsightsOutput | null>(null);
   const [alerts, setAlerts] = useState<InsightAlert[]>([]);
-  const [timeRange, setTimeRange] = useState<TimeRange>(90);
+  // The chosen window is remembered per viewer, so someone who needs 180 days
+  // does not wait through the default analysis first on every visit.
+  const [timeRange, setTimeRangeState] = useState<TimeRange | null>(null);
+  useEffect(() => {
+    let stored: TimeRange = 90;
+    try {
+      const v = Number(localStorage.getItem('pico:insights-range'));
+      if (v === 30 || v === 90 || v === 180) stored = v;
+    } catch {
+      // storage unavailable: use the default
+    }
+    setTimeRangeState(stored);
+  }, []);
+  const setTimeRange = useCallback((d: TimeRange) => {
+    setTimeRangeState(d);
+    try {
+      localStorage.setItem('pico:insights-range', String(d));
+    } catch {
+      // ignore
+    }
+  }, []);
 
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
@@ -88,7 +109,7 @@ export default function InsightsPage() {
   }, [today]);
 
   useEffect(() => {
-    loadData(timeRange);
+    if (timeRange !== null) loadData(timeRange);
   }, [timeRange, loadData]);
 
   const handleDismissAlert = useCallback(async (id: string) => {
@@ -104,7 +125,7 @@ export default function InsightsPage() {
   // Only the very first load gets the blank spinner. Changing the range
   // keeps the current sections on screen and marks the page busy, so the
   // 180-day analysis (which can take several seconds) never blanks the tab.
-  if (loading && !patterns) {
+  if ((loading && !patterns) || timeRange === null) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <Spinner />
@@ -121,7 +142,23 @@ export default function InsightsPage() {
   const singleTriggers = allTriggers.filter(r => !isMultiFactor(r));
   const triggers = [...multiTriggers, ...singleTriggers]; // compounds first
 
-  const propertyPatterns = patterns?.propertyPatterns ?? [];
+  // One row per property, not one per property × symptom: the symptoms it
+  // lined up with become the row's sentence.
+  const propertyGroups = (() => {
+    const groups = new Map<string, { title: string; lines: { outcome: string; days: number; total: number }[]; impact: number }>();
+    for (const p of patterns?.propertyPatterns ?? []) {
+      const key = `${p.severity}|${p.property}`;
+      const raw = `${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property}`;
+      const g = groups.get(key) ?? { title: raw.charAt(0).toUpperCase() + raw.slice(1), lines: [], impact: 0 };
+      g.lines.push({ outcome: p.outcome.label, days: p.frequency, total: p.totalOpportunities ?? p.frequency });
+      g.impact = Math.max(g.impact, p.impactScore);
+      groups.set(key, g);
+    }
+    return [...groups.values()]
+      .map(g => ({ ...g, lines: g.lines.sort((a, b) => b.days / b.total - a.days / a.total) }))
+      .sort((a, b) => b.impact - a.impact);
+  })();
+  const propertyPatterns = propertyGroups;
   const helpers = withEvidence(patterns?.helpers ?? []);
 
   // The same food can raise one symptom and lower another. Say so on both
@@ -134,9 +171,24 @@ export default function InsightsPage() {
   for (const r of helpers) { const k = singleKey(r); if (k) helperOutcomes.set(k, [...(helperOutcomes.get(k) ?? []), r.outcome.label]); }
   const crossNote = (r: SingleFactorResult | MultiFactorResult, other: Map<string, string[]>, where: string) => {
     const k = singleKey(r);
-    const outcomes = k ? other.get(k) : undefined;
-    return outcomes && outcomes.length > 0 ? `Also listed under ${where} for ${outcomes.slice(0, 2).join(' and ')}.` : undefined;
+    if (k) {
+      const outcomes = other.get(k);
+      return outcomes && outcomes.length > 0 ? `Also listed under ${where} for ${outcomes.slice(0, 2).join(' and ')}.` : undefined;
+    }
+    // Combinations: name each part that also appears on the other list.
+    const parts = (r as MultiFactorResult).factors
+      .map(f => ({ label: f.label, outcomes: other.get(f.key) }))
+      .filter(x => x.outcomes && x.outcomes.length > 0);
+    if (parts.length === 0) return undefined;
+    return parts.map(x => `${x.label} on its own is also listed under ${where} for ${x.outcomes!.slice(0, 2).join(' and ')}.`).join(' ');
   };
+
+  // The three observations with the most evidence behind them, across both
+  // lists, so the page opens with an answer before the full lists.
+  const standouts = [...triggers.map(r => ({ r, dir: 'more' as const })), ...helpers.map(r => ({ r, dir: 'less' as const }))]
+    .filter(x => x.r.confidence !== 'early')
+    .sort((a, b) => b.r.impactScore - a.r.impactScore)
+    .slice(0, 3);
   const progress = patterns?.progress ?? [];
 
   const hasInsights = triggers.length > 0 || propertyPatterns.length > 0 || helpers.length > 0;
@@ -235,6 +287,32 @@ export default function InsightsPage() {
 
       {hasInsights && (
         <div className="space-y-4">
+          <p className="max-w-[65ch] text-sm text-warm-600">
+            These are patterns in your own log, not causes or a diagnosis. Worth raising with your practitioner before changing what you eat.
+          </p>
+
+          {standouts.length > 0 && (
+            <section aria-labelledby="standouts-heading" className="rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-4 shadow-[var(--shadow-card)]">
+              <h2 id="standouts-heading" className="font-[family-name:var(--font-display)] text-lg font-semibold text-warm-900">
+                What stands out
+              </h2>
+              <ul className="mt-2 divide-y divide-warm-200">
+                {standouts.map(({ r, dir }, i) => (
+                  <li key={`s-${i}`} className="flex items-baseline justify-between gap-3 py-2.5">
+                    <span className="min-w-0 text-sm text-warm-800">
+                      <span className="font-semibold text-warm-900">{getTitle(r)}</span>
+                      {' '}
+                      {dir === 'more' ? 'showed up with' : 'showed up on days with less'}{' '}
+                      {r.outcome.label.toLowerCase()}
+                    </span>
+                    <span className="shrink-0 text-sm font-semibold tabular-nums text-warm-900">
+                      {r.frequency} of {getTotalDays(r)} days
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
           {/* Triggers to Avoid */}
           {triggers.length > 0 && (
             <InsightSection
@@ -258,6 +336,7 @@ export default function InsightsPage() {
                   confidence={r.confidence}
                   isNew={alertKeys.has(resultKey(r))}
                   note={crossNote(r, helperOutcomes, 'better days')}
+                  outcome={r.outcome.label}
                 />
               ))}
             </InsightSection>
@@ -269,19 +348,19 @@ export default function InsightsPage() {
               variant="watch"
               icon={Eye}
               title="Properties that keep appearing"
-              subtitle="Food properties that show up across more than one symptom"
+              subtitle="Food properties that showed up with one or more of your symptoms"
               totalCount={propertyPatterns.length}
               defaultVisible={2}
             >
-              {propertyPatterns.map((p, i) => (
+              {propertyPatterns.map((g, i) => (
                 <InsightRow
                   key={`p-${i}`}
                   icon={FlaskConical}
-                  title={(() => { const t = `${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property}`; return t.charAt(0).toUpperCase() + t.slice(1); })()}
-                  description={p.description}
-                  days={p.frequency}
-                  total={p.totalOpportunities ?? daysTracked}
-                  foods={p.foods.length > 0 ? p.foods : undefined}
+                  title={`${g.title} foods`}
+                  description={g.lines.slice(0, 3).map(l => `${l.outcome} on ${l.days} of ${l.total} days`).join(' · ')}
+                  days={g.lines[0].days}
+                  total={g.lines[0].total}
+                  outcome={g.lines[0].outcome}
                 />
               ))}
             </InsightSection>
@@ -309,6 +388,7 @@ export default function InsightsPage() {
                   isNew={alertKeys.has(resultKey(r))}
                   tone="better"
                   note={crossNote(r, triggerOutcomes, 'symptoms')}
+                  outcome={`Less ${r.outcome.label.toLowerCase()}`}
                 />
               ))}
             </InsightSection>
@@ -336,10 +416,23 @@ export default function InsightsPage() {
         </div>
       )}
 
-      {orphanAlerts.length > 0 && (
+      {orphanAlerts.length > 0 && (hasInsights || timeRange >= 180) && (
         <div className="mt-6">
           <AlertStack alerts={orphanAlerts} onDismiss={handleDismissAlert} onClearAll={handleClearAlerts} />
         </div>
+      )}
+
+      {hasInsights && (
+        <Link
+          href="/reintroductions"
+          className="mt-6 flex min-h-11 items-center justify-between gap-3 rounded-xl border border-warm-200 bg-[var(--color-surface-card)] px-4 py-3 text-sm hover:bg-warm-50"
+        >
+          <span>
+            <span className="block font-medium text-warm-900">Want to test one of these?</span>
+            <span className="block text-warm-600">A reintroduction adds a food back over a few days and records how you react.</span>
+          </span>
+          <ChevronRight className="h-4 w-4 shrink-0 text-warm-500" aria-hidden="true" />
+        </Link>
       )}
 
       {/* Your Day */}
