@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { Plus, ArrowLeft } from "lucide-react";
-import { Button, Spinner } from "@/components/ui";
+import Link from "next/link";
+import { Button, Dialog, Spinner } from "@/components/ui";
 import { ReintroductionCard } from "@/components/reintroductions/ReintroductionCard";
 import { ReintroductionHistory } from "@/components/reintroductions/ReintroductionHistory";
 import { ReintroductionDetail } from "@/components/reintroductions/ReintroductionDetail";
@@ -20,6 +21,7 @@ export default function ReintroductionsPage() {
   const [protocolId, setProtocolId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [stopOpen, setStopOpen] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -77,10 +79,7 @@ export default function ReintroductionsPage() {
 
   const handleStopReintroduction = async () => {
     if (!activeReintroduction) return;
-
-    if (!confirm("Are you sure you want to stop this reintroduction?")) {
-      return;
-    }
+    setStopOpen(false);
 
     try {
       const response = await fetch(`/api/reintroductions/${activeReintroduction.id}`, {
@@ -177,45 +176,72 @@ export default function ReintroductionsPage() {
             Back to Overview
           </button>
         )}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-warm-900">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+          <div className="min-w-0">
+            <h1 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
               {viewMode === "overview" && "Reintroductions"}
-              {viewMode === "detail" && "Reintroduction Details"}
-              {viewMode === "recommendations" && "Recommended Foods"}
+              {viewMode === "detail" && "This trial"}
+              {viewMode === "recommendations" && "Ready to try"}
             </h1>
-            <p className="mt-2 text-sm text-warm-600">
-              {viewMode === "overview" && "Track your food reintroduction trials"}
-              {viewMode === "detail" && "View detailed results and analysis"}
-              {viewMode === "recommendations" && "Foods ready for reintroduction"}
+            <p className="mt-1 text-sm text-warm-600">
+              {viewMode === "overview" && "Test a food back in over a few days and record how you react."}
+              {viewMode === "detail" && "How the days went, entry by entry."}
+              {viewMode === "recommendations" && "Foods you have avoided long enough to test."}
             </p>
+            {viewMode === "overview" && (
+              <button
+                type="button"
+                onClick={() => setViewMode("recommendations")}
+                className="-ml-2 mt-1 min-h-11 rounded-lg px-2 text-sm font-medium text-teal-600 hover:bg-teal-50 hover:text-teal-700"
+              >
+                See which foods are ready to try
+              </button>
+            )}
           </div>
           {viewMode === "overview" && (
-            <div className="flex gap-3">
-              <Button
-                onClick={() => setViewMode("recommendations")}
-              >
-                View Recommendations
-              </Button>
+            protocolId ? (
               <Button
                 onClick={handleStartReintroduction}
-                disabled={!!activeReintroduction || !protocolId}
+                disabled={!!activeReintroduction}
+                className="w-full shrink-0 sm:w-auto"
               >
-                <Plus className="mr-2 h-4 w-4" />
-                Start New
+                <Plus className="mr-2 h-4 w-4" aria-hidden="true" />
+                Start a reintroduction
               </Button>
-            </div>
+            ) : (
+              <Link
+                href="/settings"
+                className="inline-flex min-h-11 w-full shrink-0 items-center justify-center rounded-xl border border-teal-200 px-4 text-sm font-medium text-teal-700 hover:bg-teal-50 sm:w-auto"
+              >
+                Choose a protocol in Settings first
+              </Link>
+            )
           )}
         </div>
       </div>
 
+      <Dialog open={stopOpen} onClose={() => setStopOpen(false)} title="Stop this reintroduction?" size="sm">
+        <p className="text-sm text-warm-600">
+          The days you have logged so far stay in your history. You can start a new trial with this food any time.
+        </p>
+        <div className="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+          <Button variant="ghost" onClick={() => setStopOpen(false)} className="w-full sm:w-auto">
+            Keep going
+          </Button>
+          <Button variant="primary" onClick={handleStopReintroduction} className="w-full sm:w-auto">
+            Stop trial
+          </Button>
+        </div>
+      </Dialog>
+
       {/* Error message */}
       {errorMessage && (
-        <div className="mb-4 flex items-center justify-between rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+        <div role="alert" className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-[var(--color-danger)]/30 bg-[var(--color-surface-overlay)] px-4 py-3 text-sm text-[var(--color-danger)]">
           <span>{errorMessage}</span>
           <button
+            type="button"
             onClick={() => setErrorMessage(null)}
-            className="ml-3 shrink-0 text-xs font-medium text-red-600 hover:text-red-800"
+            className="-mr-2 min-h-11 shrink-0 px-2 text-sm font-medium hover:underline"
           >
             Dismiss
           </button>
@@ -231,7 +257,7 @@ export default function ReintroductionsPage() {
               <h2 className="mb-4 text-lg font-semibold text-warm-900">Active Reintroduction</h2>
               <ReintroductionCard
                 reintroduction={activeReintroduction}
-                onStop={handleStopReintroduction}
+                onStop={() => setStopOpen(true)}
                 onViewDetails={() => handleViewDetails(activeReintroduction)}
               />
             </div>

@@ -303,6 +303,11 @@ export default function SettingsPage() {
                 {user.email}
               </p>
             </div>
+            <div className="pt-1">
+              <Button variant="outline" onClick={handleLogout}>
+                Log out
+              </Button>
+            </div>
           </div>
         ) : (
           <p className="text-sm text-warm-500">Not signed in</p>
@@ -339,7 +344,7 @@ export default function SettingsPage() {
               </p>
               <p className="text-xs text-[var(--color-text-muted)]">
                 {subscription?.tier === "free"
-                  ? "Upgrade for AI insights and advanced features"
+                  ? "Everything is included while Pico Health is in early access."
                   : subscription?.cancelAtPeriodEnd
                     ? "Cancels at end of period"
                     : `Active${subscription?.currentPeriodEnd ? ` · Renews ${new Date(subscription.currentPeriodEnd).toLocaleDateString()}` : ""}`}
@@ -347,11 +352,7 @@ export default function SettingsPage() {
             </div>
           </div>
 
-          {subscription?.tier === "free" ? (
-            <p className="text-xs text-[var(--color-text-muted)]">
-              Upgrade options coming soon.
-            </p>
-          ) : (
+          {subscription?.tier === "free" ? null : (
             <Button
               variant="outline"
               size="sm"
@@ -379,10 +380,6 @@ export default function SettingsPage() {
         </div>
       </Card>
 
-      {/* Logout */}
-      <Button variant="danger" onClick={handleLogout} className="w-full">
-        Log Out
-      </Button>
     </div>
   );
 }

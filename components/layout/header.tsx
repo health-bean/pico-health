@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
-import { LogOut } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { useSession } from "@/hooks/use-session";
 import { cn } from "@/lib/utils";
 
@@ -15,14 +14,8 @@ const navItems = [
 ];
 
 export function Header() {
-  const router = useRouter();
   const pathname = usePathname();
   const { user, loading } = useSession();
-
-  async function handleLogout() {
-    await fetch("/api/auth/logout", { method: "POST" });
-    router.push("/login");
-  }
 
   return (
     <header className="sticky top-0 z-40 border-b border-[var(--color-border-light)] bg-[var(--color-surface-card)]/95 backdrop-blur-md">
@@ -71,25 +64,15 @@ export function Header() {
           </nav>
         )}
 
-        {/* User area */}
-        <div className="flex items-center gap-3">
+        {/* User area: the name is the way to your account; signing out lives there */}
+        <div className="flex items-center">
           {!loading && user && (
-            <>
-              <span className="text-sm text-[var(--color-text-secondary)]">
-                {user.firstName}
-              </span>
-              <button
-                onClick={handleLogout}
-                className={cn(
-                  "flex h-9 w-9 items-center justify-center rounded-lg",
-                  "text-[var(--color-text-muted)] hover:bg-teal-50 hover:text-teal-600",
-                  "transition-all duration-200"
-                )}
-                aria-label="Log out"
-              >
-                <LogOut className="h-4 w-4" />
-              </button>
-            </>
+            <Link
+              href="/settings"
+              className="-mr-2 flex min-h-11 items-center rounded-lg px-2 text-sm text-[var(--color-text-secondary)] transition-colors duration-200 hover:bg-teal-50 hover:text-teal-700"
+            >
+              {user.firstName}
+            </Link>
           )}
         </div>
       </div>
