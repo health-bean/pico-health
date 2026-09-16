@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { Spinner } from "@/components/ui";
 
@@ -22,18 +22,30 @@ function writeCached() {
   }
 }
 
+// The cache never changes underneath a mounted tree, so there is nothing to
+// subscribe to; useSyncExternalStore is used for its hydration contract.
+const subscribeNoop = () => () => {};
+const serverSnapshot = () => false;
+
 /**
  * Redirects users who haven't finished onboarding.
  *
  * The check hits /api/onboarding once per browser session and caches the
- * result, so tab switches don't flash a full-screen loader.
+ * result, so tab switches don't flash a full-screen loader. The cache is
+ * read through useSyncExternalStore so the server (no sessionStorage) and
+ * the client agree during hydration; reading it in a useState initializer
+ * rendered the loader on the server and the app on the client, which threw
+ * a hydration mismatch on every load after the first.
  */
 export function OnboardingCheck({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const pathname = usePathname();
   const isOnboardingRoute = pathname === "/onboarding";
-  const [isOnboarded, setIsOnboarded] = useState<boolean>(() => isOnboardingRoute || readCached());
-  const [isChecking, setIsChecking] = useState<boolean>(() => !(isOnboardingRoute || readCached()));
+  const cached = useSyncExternalStore(subscribeNoop, readCached, serverSnapshot);
+  const [verified, setVerified] = useState(false);
+  const [checkFailed, setCheckFailed] = useState(false);
+
+  const isOnboarded = isOnboardingRoute || cached || verified || checkFailed;
 
   useEffect(() => {
     if (isOnboardingRoute) {
@@ -45,11 +57,7 @@ export function OnboardingCheck({ children }: { children: React.ReactNode }) {
       }
       return;
     }
-    if (readCached()) {
-      setIsOnboarded(true);
-      setIsChecking(false);
-      return;
-    }
+    if (readCached()) return;
 
     let cancelled = false;
     fetch("/api/onboarding")
@@ -60,15 +68,12 @@ export function OnboardingCheck({ children }: { children: React.ReactNode }) {
           router.push("/onboarding");
         } else {
           writeCached();
-          setIsOnboarded(true);
+          setVerified(true);
         }
       })
       .catch(() => {
         // On error, allow access (fail open)
-        if (!cancelled) setIsOnboarded(true);
-      })
-      .finally(() => {
-        if (!cancelled) setIsChecking(false);
+        if (!cancelled) setCheckFailed(true);
       });
 
     return () => {
@@ -76,7 +81,7 @@ export function OnboardingCheck({ children }: { children: React.ReactNode }) {
     };
   }, [isOnboardingRoute, router]);
 
-  if (isChecking) {
+  if (!isOnboarded) {
     return (
       <div className="min-h-dvh flex items-center justify-center bg-[var(--color-surface)]">
         <div className="text-center">
@@ -85,10 +90,6 @@ export function OnboardingCheck({ children }: { children: React.ReactNode }) {
         </div>
       </div>
     );
-  }
-
-  if (!isOnboarded) {
-    return null;
   }
 
   return <>{children}</>;
