@@ -60,7 +60,7 @@ export default function AdminReferencePage() {
             onClick={() => setActiveTab(tab.key)}
             className={`flex-1 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
               activeTab === tab.key
-                ? "bg-[var(--color-surface-card)] text-warm-900 shadow-sm"
+                ? "bg-[var(--color-surface-card)] text-warm-900 shadow-[var(--shadow-card)]"
                 : "text-warm-500 hover:text-warm-700"
             }`}
           >

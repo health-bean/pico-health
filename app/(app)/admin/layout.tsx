@@ -9,13 +9,13 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   const [chatOpen, setChatOpen] = useState(false);
 
   return (
-    <div className="flex h-[calc(100dvh-64px)]">
-      {/* Sidebar */}
+    <div className="flex h-[calc(100dvh-64px)] flex-col md:flex-row">
+      {/* Sidebar on wide screens, a scrolling strip on phones */}
       <AdminSidebar />
 
-      {/* Main content */}
-      <div className="flex flex-1 flex-col overflow-hidden">
-        <div className="flex-1 overflow-auto p-6">{children}</div>
+      {/* Main content: min-w-0 keeps a wide table from stretching the viewport */}
+      <div className="flex min-w-0 flex-1 flex-col overflow-hidden">
+        <div className="min-w-0 flex-1 overflow-auto p-4 pb-24 md:p-6 md:pb-6">{children}</div>
 
         {/* Chat panel */}
         {chatOpen && (
@@ -37,7 +37,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {!chatOpen && (
           <button
             onClick={() => setChatOpen(true)}
-            className="fixed bottom-4 right-4 flex items-center gap-2 rounded-full bg-teal-600 px-4 py-3 text-sm font-medium text-white shadow-lg transition-colors hover:bg-teal-700"
+            className="fixed bottom-24 right-4 flex min-h-11 items-center gap-2 rounded-full bg-teal-600 px-4 py-3 text-sm font-medium text-white shadow-[var(--shadow-float)] transition-colors hover:bg-teal-700 md:bottom-4"
           >
             <MessageSquare className="h-4 w-4" />
             AI Assistant

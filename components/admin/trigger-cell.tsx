@@ -11,14 +11,15 @@ interface TriggerCellProps {
   source?: string | null;
 }
 
+// Same one-hue ramp as the rest of the app: the level word carries the meaning.
 const LEVEL_COLORS: Record<string, string> = {
-  low: "bg-teal-100 text-teal-800",
-  moderate: "bg-warning/10 text-warning-strong",
-  high: "bg-danger/10 text-danger-strong",
-  very_high: "bg-danger/25 text-danger-strong font-semibold",
+  low: "bg-level-1-bg text-level-1-fg",
+  moderate: "bg-level-2-bg text-level-2-fg",
+  high: "bg-level-3-bg text-level-3-fg",
+  very_high: "bg-level-4-bg text-level-4-fg font-semibold",
   unknown: "bg-warm-100 text-warm-500",
-  true: "bg-danger/10 text-danger-strong",
-  false: "bg-warm-100 text-warm-500",
+  true: "bg-level-3-bg text-level-3-fg",
+  false: "bg-level-1-bg text-level-1-fg",
 };
 
 const DISPLAY_LABELS: Record<string, string> = {
@@ -53,7 +54,7 @@ export function TriggerCell({ value, property, options, onChange, source }: Trig
   if (editing) {
     return (
       <div ref={ref} className="relative">
-        <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 rounded-md border border-warm-200 bg-[var(--color-surface-card)] shadow-lg">
+        <div className="absolute left-1/2 top-0 z-20 -translate-x-1/2 rounded-md border border-warm-200 bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]">
           {options.map((opt) => {
             const optColor = LEVEL_COLORS[opt] ?? "";
             const optLabel = DISPLAY_LABELS[opt] ?? opt;

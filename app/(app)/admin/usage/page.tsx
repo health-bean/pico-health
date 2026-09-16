@@ -99,7 +99,7 @@ export default function AdminUsagePage() {
               className={cn(
                 "h-11 min-w-[44px] rounded-md px-4 text-sm font-medium transition-colors",
                 days === range
-                  ? "bg-white text-teal-700 shadow-sm"
+                  ? "bg-white text-teal-700 shadow-[var(--shadow-card)]"
                   : "text-warm-600 hover:text-warm-900"
               )}
             >
