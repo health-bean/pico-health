@@ -14,7 +14,8 @@ function humanize(text: string): string {
 }
 
 export function AlertCard({ alert, onDismiss }: AlertCardProps) {
-  const title = humanize(alert.title).replace(/^New pattern: /, '');
+  const stripped = humanize(alert.title).replace(/^New pattern: /, '');
+  const title = stripped.charAt(0).toUpperCase() + stripped.slice(1);
   const body = humanize(alert.body);
   return (
     <div className="flex items-start gap-2 rounded-xl bg-[var(--color-surface-card)] p-3 ring-1 ring-inset ring-warm-200">

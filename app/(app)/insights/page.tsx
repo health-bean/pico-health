@@ -146,7 +146,9 @@ export default function InsightsPage() {
   // with no row to land on (progress milestones, patterns that have since
   // faded) are listed on their own, below the curated sections.
   const alertKeys = new Set(alerts.map(a => a.insightKey));
-  const shownKeys = new Set([...triggers, ...helpers].map(resultKey));
+  // Match against every row, including hidden early signals, so an alert for
+  // an early signal waits for its row instead of appearing out of context.
+  const shownKeys = new Set([...(patterns?.triggers ?? []), ...(patterns?.helpers ?? [])].map(resultKey));
   const orphanAlerts = alerts.filter(a => !shownKeys.has(a.insightKey));
 
   return (
@@ -275,7 +277,7 @@ export default function InsightsPage() {
                 <InsightRow
                   key={`p-${i}`}
                   icon={FlaskConical}
-                  title={`${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property}`}
+                  title={(() => { const t = `${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property}`; return t.charAt(0).toUpperCase() + t.slice(1); })()}
                   description={p.description}
                   days={p.frequency}
                   total={p.totalOpportunities ?? daysTracked}
