@@ -1,17 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import {
-  ChevronLeft,
-  ChevronRight,
-  Moon,
-  Zap,
-  Smile,
-  Brain,
-  Heart,
-  Check,
-  Loader2,
-} from "lucide-react";
+import { ChevronLeft, ChevronRight, Moon, Zap, Smile, Brain, Check, Loader2, Activity } from "lucide-react";
 import { Button, Card, Spinner } from "@/components/ui";
 import { ScoreSlider } from "@/components/journal/score-slider";
 import { ClarifierFillIns } from "@/components/clarifiers/ClarifierFillIns";
@@ -41,14 +31,14 @@ function displayDate(dateStr: string): string {
 const scoreConfig = [
   {
     key: "sleepScore" as const,
-    label: "Sleep Quality",
+    label: "Sleep quality",
     icon: Moon,
     lowLabel: "Terrible",
     highLabel: "Excellent",
   },
   {
     key: "energyScore" as const,
-    label: "Energy Level",
+    label: "Energy level",
     icon: Zap,
     lowLabel: "Exhausted",
     highLabel: "Energized",
@@ -70,7 +60,7 @@ const scoreConfig = [
   {
     key: "painScore" as const,
     label: "Pain / Discomfort",
-    icon: Heart,
+    icon: Activity,
     lowLabel: "Severe",
     highLabel: "None",
   },
@@ -370,7 +360,7 @@ export default function ReflectPage() {
           {/* Notes */}
           <Card>
             <label className="mb-2 block text-sm font-medium text-warm-700">
-              Notes & Reflections
+              Notes
             </label>
             <textarea
               value={notes}

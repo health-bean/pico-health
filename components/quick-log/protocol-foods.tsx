@@ -101,7 +101,7 @@ export function ProtocolFoods({
 
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
+      <h3 className="mb-2 text-sm font-semibold text-warm-700">
         Protocol Foods
       </h3>
       <div className="flex flex-col gap-3">

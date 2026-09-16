@@ -85,7 +85,7 @@ export default function AdminUsagePage() {
     <div>
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl font-semibold text-warm-900">AI Usage</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-warm-900">AI usage</h1>
           <p className="text-sm text-warm-500">
             Token spend and cost per user, last {days} days
           </p>

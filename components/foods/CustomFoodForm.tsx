@@ -329,7 +329,7 @@ export function CustomFoodForm({
         {/* Trigger Properties Section */}
         <div className="space-y-4 rounded-lg border border-warm-200 bg-warm-50 p-4">
           <h3 className="text-sm font-semibold text-warm-900">
-            Trigger Properties (Optional)
+            Trigger properties (optional)
           </h3>
           <p className="text-xs text-warm-600">
             Set trigger property levels if known. Leave as &ldquo;Unknown&rdquo; if unsure.

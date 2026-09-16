@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Frown } from "lucide-react";
 import type { EntryType } from "@/types";
 
 interface SymptomDef {
@@ -55,7 +54,7 @@ export function SymptomPicker({
 
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
+      <h3 className="mb-2 text-sm font-semibold text-warm-700">
         Symptoms
       </h3>
       <div className="flex flex-wrap gap-2">
@@ -74,7 +73,6 @@ export function SymptomPicker({
                     : "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50"
                 }`}
               >
-                <Frown className="h-3.5 w-3.5" />
                 {s.name}
               </button>
               {isSelected && (

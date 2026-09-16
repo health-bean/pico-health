@@ -67,7 +67,7 @@ export default function SignupPage() {
         <div className="mb-8 text-center">
           <PageTitle>Join Pico Health</PageTitle>
           <p className="mt-1 text-sm text-warm-500">
-            Create your account to start tracking
+            Log meals and symptoms in your own words, and see what lines up with how you feel.
           </p>
         </div>
 
@@ -111,7 +111,7 @@ export default function SignupPage() {
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <Input
-                label="First Name"
+                label="First name"
                 type="text"
                 placeholder="Your first name"
                 value={firstName}
@@ -147,7 +147,7 @@ export default function SignupPage() {
               )}
 
               <Button type="submit" loading={loading} className="mt-2 w-full">
-                Create Account
+                Create account
               </Button>
 
               <p className="mt-3 text-center text-xs text-warm-500">

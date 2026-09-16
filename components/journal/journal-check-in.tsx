@@ -36,7 +36,7 @@ export function JournalCheckIn({ onSave, onDismiss }: JournalCheckInProps) {
     <div className="mx-auto w-full max-w-2xl rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-4 shadow-[var(--shadow-card)]">
       <div className="mb-3 flex items-center justify-between">
         <h3 className="text-sm font-semibold text-warm-900">
-          Daily Check-in
+          Daily check-in
         </h3>
         <button
           onClick={onDismiss}

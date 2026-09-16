@@ -264,7 +264,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
             <>
               {/* Food Search */}
               <div>
-                <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
+                <h3 className="mb-2 text-sm font-semibold text-warm-700">
                   Search Foods
                 </h3>
                 <FoodSearchInput
@@ -292,7 +292,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
               {/* Selected Food Property Card */}
               {selectedFood && !showComplianceWarning && (
                 <div>
-                  <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
+                  <h3 className="mb-2 text-sm font-semibold text-warm-700">
                     Food Properties
                   </h3>
                   <FoodPropertyCard properties={selectedFood.triggerProperties} />

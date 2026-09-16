@@ -66,7 +66,7 @@ export function ReintroductionCard({
               {reintroduction.foodName}
             </h3>
             <p className="mt-1 text-sm text-warm-600">
-              Active Reintroduction
+              Active reintroduction
             </p>
           </div>
           <div className="flex items-center gap-2">

@@ -24,7 +24,7 @@ interface MealTypeChipsProps {
 export function MealTypeChips({ value, onChange }: MealTypeChipsProps) {
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
+      <h3 className="mb-2 text-sm font-semibold text-warm-700">
         Meal
       </h3>
       <div
@@ -76,7 +76,7 @@ export function WhenChips({ value, onChange, dayLabel }: WhenChipsProps) {
     : WHEN;
   return (
     <div>
-      <h3 className="mb-2 text-xs font-semibold uppercase tracking-wider text-warm-500">
+      <h3 className="mb-2 text-sm font-semibold text-warm-700">
         When
       </h3>
       <div

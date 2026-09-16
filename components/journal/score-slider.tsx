@@ -63,6 +63,18 @@ export function ScoreSlider({ label, value, onChange, hideLabel, lowLabel, highL
           step={1}
           value={displayValue}
           onChange={(e) => onChange(parseInt(e.target.value, 10))}
+          // An untouched slider already sits at 5, so tapping or releasing
+          // there fires no change event. Commit the position on release so
+          // "about a 5", the most common foggy-day answer, can be recorded.
+          onPointerUp={(e) => {
+            if (!rated) onChange(parseInt(e.currentTarget.value, 10));
+          }}
+          onKeyDown={(e) => {
+            if (!rated && (e.key === "Enter" || e.key === " ")) {
+              e.preventDefault();
+              onChange(parseInt(e.currentTarget.value, 10));
+            }
+          }}
           aria-label={`${label} score`}
           aria-valuetext={valueText}
           className={cn(

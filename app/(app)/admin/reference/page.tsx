@@ -46,7 +46,7 @@ export default function AdminReferencePage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-warm-900">Reference Data</h1>
+        <h1 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-warm-900">Reference data</h1>
         <p className="text-sm text-warm-500">
           Symptoms, supplements, medications, and detox types
         </p>

@@ -11,7 +11,7 @@ const STEPS: Step[] = ["welcome", "protocol", "ready"];
 function ProgressDots({ current }: { current: Step }) {
   const currentIdx = STEPS.indexOf(current);
   return (
-    <div className="flex items-center justify-center gap-2 py-6">
+    <div className="flex items-center justify-center gap-2 py-6" role="img" aria-label={`Step ${currentIdx + 1} of ${STEPS.length}`}>
       {STEPS.map((step, i) => (
         <div
           key={step}

@@ -189,7 +189,7 @@ export default function AdminProtocolsPage() {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-warm-900">Protocols & Rules</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-warm-900">Protocols and rules</h1>
           <p className="text-sm text-warm-500">{protocols.length} protocols</p>
         </div>
         <button

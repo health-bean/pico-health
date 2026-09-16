@@ -254,7 +254,7 @@ export default function ReintroductionsPage() {
           {/* Active Reintroduction */}
           {activeReintroduction && (
             <div>
-              <h2 className="mb-4 text-lg font-semibold text-warm-900">Active Reintroduction</h2>
+              <h2 className="mb-4 text-lg font-semibold text-warm-900">Active reintroduction</h2>
               <ReintroductionCard
                 reintroduction={activeReintroduction}
                 onStop={() => setStopOpen(true)}

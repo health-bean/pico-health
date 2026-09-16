@@ -266,7 +266,7 @@ export default function SettingsPage() {
                       size="sm"
                       variant="secondary"
                     >
-                      Next Phase
+                      Next phase
                       <ChevronRight className="ml-1 h-3.5 w-3.5" />
                     </Button>
                   )}

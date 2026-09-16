@@ -83,7 +83,7 @@ export default function ForgotPasswordPage() {
             )}
 
             <Button type="submit" loading={loading} className="mt-2 w-full">
-              Send Reset Link
+              Send reset link
             </Button>
           </form>
         </Card>

@@ -23,7 +23,7 @@ export function WelcomeStep({ onNext }: WelcomeStepProps) {
       </p>
 
       <Button onClick={onNext} size="lg" className="w-full">
-        Let&apos;s Get Started
+        Get started
       </Button>
     </div>
   );

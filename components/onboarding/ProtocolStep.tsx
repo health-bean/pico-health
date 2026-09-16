@@ -33,9 +33,9 @@ export function ProtocolStep({ selectedProtocolId, onSelect, onNext, onBack }: P
 
   return (
     <div>
-      <h2 className="font-[family-name:var(--font-display)] text-xl font-bold text-[var(--color-text-primary)] mb-1">
+      <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-text-primary)] mb-1">
         Choose your protocol
-      </h2>
+      </h1>
       <p className="text-sm text-[var(--color-text-secondary)] mb-6">
         Which healing approach are you following? You can change this anytime.
       </p>
@@ -49,6 +49,8 @@ export function ProtocolStep({ selectedProtocolId, onSelect, onNext, onBack }: P
           {protocols.map((protocol) => (
             <button
               key={protocol.id}
+              type="button"
+              aria-pressed={selectedProtocolId === protocol.id}
               onClick={() => onSelect(protocol.id)}
               className={cn(
                 "w-full text-left rounded-xl p-4",
@@ -76,20 +78,25 @@ export function ProtocolStep({ selectedProtocolId, onSelect, onNext, onBack }: P
           disabled={!selectedProtocolId}
           className="w-full"
         >
-          Continue
+          {selectedProtocolId ? "Continue" : "Pick a protocol to continue"}
         </Button>
         <button
+          type="button"
           onClick={() => {
             onSelect("");
             onNext();
           }}
-          className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors py-2"
+          className="min-h-11 text-sm font-medium text-teal-700 hover:text-teal-800 transition-colors"
         >
-          Skip — I&apos;ll explore freely
+          Not sure yet? Skip for now
         </button>
+        <p className="-mt-1 text-center text-xs text-[var(--color-text-secondary)]">
+          You can still log everything. Set a protocol later in Settings.
+        </p>
         <button
+          type="button"
           onClick={onBack}
-          className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors"
+          className="min-h-11 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
         >
           Back
         </button>

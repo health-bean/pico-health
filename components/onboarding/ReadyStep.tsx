@@ -42,9 +42,9 @@ export function ReadyStep({ protocolId, onBack }: ReadyStepProps) {
         <Sparkles className="h-8 w-8" />
       </div>
 
-      <h2 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-text-primary)] mb-2">
-        You&apos;re all set!
-      </h2>
+      <h1 className="font-[family-name:var(--font-display)] text-2xl font-bold text-[var(--color-text-primary)] mb-2">
+        You&apos;re all set
+      </h1>
 
       <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed max-w-xs mb-6">
         Start on the Log tab. Type what you ate or how you feel; one line is enough.
@@ -69,12 +69,13 @@ export function ReadyStep({ protocolId, onBack }: ReadyStepProps) {
       </div>
 
       <Button onClick={handleComplete} loading={loading} size="lg" className="w-full">
-        Let&apos;s Go
+        Go to my log
       </Button>
 
       <button
+        type="button"
         onClick={onBack}
-        className="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-text-secondary)] transition-colors mt-4"
+        className="mt-2 min-h-11 text-sm text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
       >
         Back
       </button>

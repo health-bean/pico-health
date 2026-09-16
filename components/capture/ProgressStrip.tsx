@@ -92,10 +92,10 @@ export function ProgressStrip() {
         <button
           type="button"
           onClick={() => setGoalOpen(true)}
-          className="group flex min-h-9 min-w-0 flex-1 items-center gap-3 rounded-xl px-1 text-left focus-visible:outline-2 focus-visible:outline-teal-500"
-          aria-label={`${line}. Set a tracking goal.`}
+          className="group flex min-h-11 min-w-0 flex-1 items-center gap-3 rounded-xl px-1 text-left focus-visible:outline-2 focus-visible:outline-teal-500"
+          aria-label={`${line}. ${hasGoal ? "Change" : "Set"} a tracking goal.`}
         >
-          <span className="min-w-0 truncate text-xs text-warm-500 transition-colors group-hover:text-warm-700">
+          <span className="min-w-0 truncate text-sm text-warm-600 transition-colors group-hover:text-warm-800">
             {line}
           </span>
           <span
@@ -107,11 +107,14 @@ export function ProgressStrip() {
               style={{ width: `${pct}%` }}
             />
           </span>
+          {!hasGoal && (
+            <span className="shrink-0 text-sm font-medium text-teal-700 group-hover:text-teal-800">Set a goal</span>
+          )}
         </button>
         {hasGoal && (
           <a
             href="/api/export?type=all"
-            className="flex min-h-9 items-center gap-1 rounded-lg px-2 text-xs font-medium text-teal-600 transition-colors hover:bg-teal-50 hover:text-teal-700 focus-visible:outline-2 focus-visible:outline-teal-500"
+            className="flex min-h-11 items-center gap-1 rounded-lg px-2 text-sm font-medium text-teal-700 transition-colors hover:bg-teal-50 hover:text-teal-700 focus-visible:outline-2 focus-visible:outline-teal-500"
           >
             <Download className="h-3.5 w-3.5" aria-hidden />
             Export

@@ -33,7 +33,7 @@ export default function LoginPage() {
         return;
       }
 
-      router.push(data.user.isAdmin ? "/admin" : "/log");
+      router.push("/log");
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -61,14 +61,12 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="relative flex min-h-dvh items-center justify-center px-6 py-12 overflow-hidden">
-      {/* Subtle gradient backdrop */}
-      <div className="absolute inset-0 bg-gradient-to-br from-teal-50/80 via-[var(--color-surface)] to-warm-100" />
+    <div className="relative flex min-h-dvh items-center justify-center px-6 py-12">
 
       <div className="relative w-full max-w-sm animate-fade-in-up">
         {/* Brand */}
         <div className="mb-10 text-center">
-          <h1 className="font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-teal-700 mb-2">
+          <h1 className="font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-teal-800 mb-2">
             Pico Health
           </h1>
           <p className="text-sm text-[var(--color-text-secondary)]">
@@ -151,7 +149,7 @@ export default function LoginPage() {
               </div>
 
               <Button type="submit" loading={loading} className="mt-2 w-full">
-                Log In
+                Log in
               </Button>
             </form>
           </div>

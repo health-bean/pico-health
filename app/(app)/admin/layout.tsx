@@ -21,10 +21,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {chatOpen && (
           <div className="border-t border-warm-200 bg-[var(--color-surface-card)]">
             <div className="flex items-center justify-between border-b border-warm-100 px-4 py-2">
-              <span className="text-sm font-medium text-warm-700">AI Assistant</span>
+              <span className="text-sm font-medium text-warm-700">AI assistant</span>
               <button
+                type="button"
                 onClick={() => setChatOpen(false)}
-                className="rounded p-1 text-warm-500 hover:bg-warm-100 hover:text-warm-600"
+                aria-label="Close AI assistant"
+                className="flex h-11 w-11 items-center justify-center rounded-lg text-warm-500 hover:bg-warm-100 hover:text-warm-600"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -37,10 +39,11 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {!chatOpen && (
           <button
             onClick={() => setChatOpen(true)}
-            className="fixed bottom-24 right-4 flex min-h-11 items-center gap-2 rounded-full bg-teal-600 px-4 py-3 text-sm font-medium text-white shadow-[var(--shadow-float)] transition-colors hover:bg-teal-700 md:bottom-4"
+            aria-label="Open AI assistant"
+            className="fixed bottom-24 right-4 flex h-11 min-w-11 items-center justify-center gap-2 rounded-full bg-teal-600 px-3 text-sm font-medium text-white shadow-[var(--shadow-float)] transition-colors hover:bg-teal-700 md:bottom-4 md:px-4"
           >
-            <MessageSquare className="h-4 w-4" />
-            AI Assistant
+            <MessageSquare className="h-4 w-4" aria-hidden="true" />
+            <span className="hidden md:inline">AI assistant</span>
           </button>
         )}
       </div>

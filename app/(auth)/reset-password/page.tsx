@@ -58,7 +58,7 @@ export default function ResetPasswordPage() {
         <Card>
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
             <Input
-              label="New Password"
+              label="New password"
               type="password"
               placeholder="At least 8 characters"
               value={password}
@@ -68,7 +68,7 @@ export default function ResetPasswordPage() {
             />
 
             <Input
-              label="Confirm Password"
+              label="Confirm password"
               type="password"
               placeholder="Repeat your password"
               value={confirmPassword}
@@ -84,7 +84,7 @@ export default function ResetPasswordPage() {
             )}
 
             <Button type="submit" loading={loading} className="mt-2 w-full">
-              Update Password
+              Update password
             </Button>
           </form>
         </Card>

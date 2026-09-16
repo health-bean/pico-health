@@ -304,8 +304,8 @@ export default function AdminFoodsPage() {
   return (
     <div>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold text-warm-900">
-          Foods & Trigger Properties
+        <h1 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-warm-900">
+          Foods and trigger properties
         </h1>
         <p className="text-sm text-warm-500">
           {foods.length} foods &middot; Click any cell to edit

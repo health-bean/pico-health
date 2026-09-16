@@ -367,7 +367,7 @@ export default function TimelinePage() {
           <button
             onClick={() => setShowEnergyOnly(!showEnergyOnly)}
             className={cn(
-              "flex items-center gap-2 rounded-lg px-3 py-1.5 text-xs font-medium transition-all duration-200",
+              "flex min-h-11 items-center gap-2 rounded-lg px-3 text-sm font-medium transition-colors duration-200",
               showEnergyOnly
                 ? "bg-teal-100 text-teal-700"
                 : "bg-[var(--color-surface-overlay)] text-[var(--color-text-secondary)] hover:bg-teal-50"
@@ -423,11 +423,9 @@ export default function TimelinePage() {
           description={
             showEnergyOnly
               ? undefined
-              : "Type it below — “salmon and rice for lunch” is enough. Or snap a photo of your plate."
+              : "Type it below: “salmon and rice for lunch” is enough. Or snap a photo of your plate, or tap Add to pick from a list."
           }
-          action={
-            showEnergyOnly ? undefined : { label: "Or pick from a list", onClick: () => setSheetOpen(true) }
-          }
+
           className="py-20"
         />
       ) : (

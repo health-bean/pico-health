@@ -70,7 +70,7 @@ export default function AdminUsersPage() {
     <div>
       <div className="mb-6 flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold text-warm-900">Users</h1>
+          <h1 className="font-[family-name:var(--font-display)] text-2xl font-semibold tracking-tight text-warm-900">Users</h1>
           <p className="text-sm text-warm-500">
             {users.length} registered {users.length === 1 ? "user" : "users"}
           </p>

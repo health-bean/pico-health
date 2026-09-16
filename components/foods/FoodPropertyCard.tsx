@@ -269,7 +269,7 @@ export function FoodPropertyCard({
       className={`rounded-lg border border-warm-200 bg-[var(--color-surface-card)] p-4 ${className}`}
     >
       <h3 className="mb-3 text-sm font-semibold text-warm-900">
-        Trigger Properties
+        Trigger properties
       </h3>
       <div className="flex flex-wrap gap-2">
         {propertyList.map((property, index) => (

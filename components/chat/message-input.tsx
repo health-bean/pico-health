@@ -56,7 +56,7 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
         rows={1}
         className={cn(
           "flex-1 resize-none rounded-xl border border-warm-200 bg-[var(--color-surface-card)] px-4 py-2.5",
-          "text-sm text-warm-900 placeholder:text-warm-500",
+          "text-base text-warm-900 placeholder:text-warm-500",
           "focus:border-teal-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-1",
           "disabled:cursor-not-allowed disabled:opacity-50",
           "min-h-[44px] max-h-[96px]"
@@ -64,6 +64,7 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
       />
 
       <button
+        type="button"
         onClick={handleSubmit}
         disabled={disabled || !value.trim()}
         className={cn(
@@ -71,7 +72,7 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
           "bg-teal-600 text-white",
           "transition-colors duration-150",
           "hover:bg-teal-700 active:bg-teal-800",
-          "disabled:opacity-50 disabled:pointer-events-none"
+          "disabled:pointer-events-none disabled:bg-warm-200 disabled:text-warm-500"
         )}
         aria-label="Send message"
       >
