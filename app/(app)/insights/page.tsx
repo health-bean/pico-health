@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { InsightSection } from '@/components/insights/InsightSection';
 import { InsightRow } from '@/components/insights/InsightRow';
-import { HelperRow } from '@/components/insights/HelperRow';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
 import { Spinner, Card, PageTitle } from '@/components/ui';
@@ -39,8 +38,9 @@ function getFoods(_result: SingleFactorResult | MultiFactorResult): string[] {
   return [];
 }
 
-function getPercentage(result: SingleFactorResult | MultiFactorResult): number {
-  return Math.round(result.conditionalRate * 100);
+/** Days the factor was present: the denominator behind every row. */
+function getTotalDays(result: SingleFactorResult | MultiFactorResult): number {
+  return 'factors' in result ? (result as MultiFactorResult).coOccurrences : (result as SingleFactorResult).totalOpportunities;
 }
 
 function isMultiFactor(result: SingleFactorResult | MultiFactorResult): boolean {
@@ -152,8 +152,25 @@ export default function InsightsPage() {
         </div>
       </div>
 
+      {/* Nothing in this window, but recent alerts point at an older one */}
+      {!hasInsights && orphanAlerts.length > 0 && timeRange < 180 && (
+        <Card className="p-5 mb-4 text-center">
+          <p className="text-sm text-warm-600 font-medium">Your patterns are from before the last {timeRange} days.</p>
+          <p className="text-sm text-warm-500 mt-1">
+            {daysTracked} of the last {timeRange} days logged. A wider window still has them.
+          </p>
+          <button
+            type="button"
+            onClick={() => setTimeRange(180)}
+            className="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-teal-50 px-4 text-sm font-medium text-teal-700 hover:bg-teal-100"
+          >
+            Show the last 180 days
+          </button>
+        </Card>
+      )}
+
       {/* Cold start */}
-      {!hasInsights && (
+      {!hasInsights && (orphanAlerts.length === 0 || timeRange >= 180) && (
         <Card className="p-5 mb-4 text-center">
           <p className="text-sm text-warm-600 font-medium">Patterns emerge with more data.</p>
           <p className="text-sm text-warm-500 mt-1">
@@ -175,8 +192,8 @@ export default function InsightsPage() {
             <InsightSection
               variant="trigger"
               icon={Flame}
-              title="Triggers to Avoid"
-              subtitle="These items correlate with your symptoms"
+              title="Showed up with symptoms"
+              subtitle="On days you logged these, the symptom was more common than on other days"
               totalCount={triggers.length}
               defaultVisible={3}
             >
@@ -186,7 +203,8 @@ export default function InsightsPage() {
                   icon={getIcon(r)}
                   title={getTitle(r)}
                   description={r.description}
-                  percentage={getPercentage(r)}
+                  days={r.frequency}
+                  total={getTotalDays(r)}
                   foods={getFoods(r)}
                   isCompound={isMultiFactor(r)}
                   confidence={r.confidence}
@@ -201,8 +219,8 @@ export default function InsightsPage() {
             <InsightSection
               variant="watch"
               icon={Eye}
-              title="Patterns to Watch"
-              subtitle="These patterns may explain multiple symptoms"
+              title="Properties that keep appearing"
+              subtitle="Food properties that show up across more than one symptom"
               totalCount={propertyPatterns.length}
               defaultVisible={2}
             >
@@ -210,9 +228,10 @@ export default function InsightsPage() {
                 <InsightRow
                   key={`p-${i}`}
                   icon={FlaskConical}
-                  title={`${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property} sensitivity`}
+                  title={`${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property}`}
                   description={p.description}
-                  percentage={Math.round((p.frequency / (daysTracked || 1)) * 100)}
+                  days={p.frequency}
+                  total={daysTracked}
                   foods={p.foods.length > 0 ? p.foods : undefined}
                 />
               ))}
@@ -224,20 +243,22 @@ export default function InsightsPage() {
             <InsightSection
               variant="helper"
               icon={ThumbsUp}
-              title="Things That Help"
-              subtitle="Keep doing these — they're working"
+              title="Showed up on better days"
+              subtitle="On days you logged these, the symptom was less common than on other days"
               totalCount={helpers.length}
               defaultVisible={3}
             >
               {helpers.map((r, i) => (
-                <HelperRow
+                <InsightRow
                   key={`h-${i}`}
                   icon={getIcon(r)}
                   title={getTitle(r)}
                   description={r.description}
-                  percentage={getPercentage(r)}
+                  days={r.frequency}
+                  total={getTotalDays(r)}
                   confidence={r.confidence}
                   isNew={alertKeys.has(resultKey(r))}
+                  tone="better"
                 />
               ))}
             </InsightSection>
