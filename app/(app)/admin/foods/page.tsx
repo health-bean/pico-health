@@ -370,20 +370,21 @@ export default function AdminFoodsPage() {
               <Loader2 className="h-6 w-6 animate-spin text-warm-500" />
             </div>
           ) : (
-            <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200 contain-inline-size">
+            <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200">
+              <p className="px-3 py-2 text-xs text-warm-500 md:hidden">Property columns need a wider screen. Open a food to edit its properties.</p>
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-warm-200 bg-warm-50">
                     <th className="sticky left-0 z-10 bg-warm-50 px-3 py-2 text-left font-medium text-warm-700">
                       Food
                     </th>
-                    <th className="px-2 py-2 text-left font-medium text-warm-500">
+                    <th className="hidden px-2 py-2 text-left font-medium text-warm-500 md:table-cell">
                       Category
                     </th>
                     {visibleColumns.map((col) => (
                       <th
                         key={col.key}
-                        className="px-1.5 py-2 text-center font-medium text-warm-500"
+                        className="hidden px-1.5 py-2 text-center font-medium text-warm-500 md:table-cell"
                         title={col.key}
                       >
                         {col.label}
@@ -410,11 +411,11 @@ export default function AdminFoodsPage() {
                       <td className="sticky left-0 z-10 whitespace-nowrap bg-inherit px-3 py-1.5 font-medium text-warm-900">
                         {food.displayName}
                       </td>
-                      <td className="whitespace-nowrap px-2 py-1.5 text-warm-500">
+                      <td className="hidden whitespace-nowrap px-2 py-1.5 text-warm-500 md:table-cell">
                         {food.subcategoryName}
                       </td>
                       {visibleColumns.map((col) => (
-                        <td key={col.key} className="px-0.5 py-0.5">
+                        <td key={col.key} className="hidden px-0.5 py-0.5 md:table-cell">
                           <TriggerCell
                             value={
                               food[col.key as keyof FoodRow] as
@@ -496,7 +497,7 @@ export default function AdminFoodsPage() {
                     description="Every logged food has trigger properties."
                   />
                 ) : (
-                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200 contain-inline-size">
+                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200">
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-warm-200 bg-warm-50">
@@ -556,7 +557,7 @@ export default function AdminFoodsPage() {
                     description="Every logged name matched a known food."
                   />
                 ) : (
-                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200 contain-inline-size">
+                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200">
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-warm-200 bg-warm-50">
