@@ -17,7 +17,7 @@ const CLASS: Record<Confidence, string> = {
 /** How much data sits behind a pattern. Observe, don't verdict: an "early signal" is a nudge to keep logging. */
 export function ConfidenceTag({ confidence }: { confidence: Confidence }) {
   return (
-    <span className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[10px] font-medium ring-1 ring-inset ${CLASS[confidence]}`}>
+    <span className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-medium ring-1 ring-inset ${CLASS[confidence]}`}>
       {LABEL[confidence]}
     </span>
   );

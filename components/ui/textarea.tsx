@@ -30,7 +30,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
           id={textareaId}
           rows={rows}
           className={cn(
-            "w-full rounded-xl border px-4 py-2.5 text-sm min-h-[88px]",
+            "w-full rounded-xl border px-4 py-2.5 text-base min-h-[88px]",
             "bg-[var(--color-surface-card)] text-[var(--color-text-primary)]",
             "placeholder:text-[var(--color-text-muted)]",
             "transition-all duration-200 ease-[var(--ease-out-expo)]",

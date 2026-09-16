@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import Link from "next/link";
-import { Input, Button, Card } from "@/components/ui";
+import { Input, Button, Card, PageTitle } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
 
 export default function ForgotPasswordPage() {
@@ -39,7 +39,7 @@ export default function ForgotPasswordPage() {
     return (
       <div className="flex min-h-dvh items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm text-center">
-          <h1 className="text-2xl font-bold text-warm-900">Check your email</h1>
+          <PageTitle>Check your email</PageTitle>
           <p className="mt-2 text-sm text-warm-500">
             We sent a password reset link to <strong>{email}</strong>. Click the
             link in the email to reset your password.
@@ -58,7 +58,7 @@ export default function ForgotPasswordPage() {
     <div className="flex min-h-dvh items-center justify-center px-6 py-12">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-warm-900">Reset password</h1>
+          <PageTitle>Reset password</PageTitle>
           <p className="mt-1 text-sm text-warm-500">
             Enter your email and we&apos;ll send you a reset link
           </p>

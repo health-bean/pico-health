@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Check, X, Loader2, Apple, Frown, Activity, AlertCircle } from "lucide-react";
-import { Button } from "@/components/ui";
+import { Button, Tabs } from "@/components/ui";
 import { useQuickLog } from "@/hooks/use-quick-log";
 import { RecentItems } from "./recent-items";
 import { ProtocolFoods } from "./protocol-foods";
@@ -205,26 +205,13 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
     <div className="flex flex-col">
       <div className="mx-auto w-full max-w-2xl px-4 py-4">
         {/* Tabs */}
-        <div className="mb-4 flex gap-2 border-b border-warm-200">
-          {tabs.map((tab) => {
-            const Icon = tab.icon;
-            const isActive = activeTab === tab.id;
-            return (
-              <button
-                key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex items-center gap-2 border-b-2 px-4 py-2 text-sm font-medium transition-colors ${
-                  isActive
-                    ? "border-teal-600 text-teal-600"
-                    : "border-transparent text-warm-500 hover:text-warm-700"
-                }`}
-              >
-                <Icon className="h-4 w-4" />
-                {tab.label}
-              </button>
-            );
-          })}
-        </div>
+        <Tabs
+          className="mb-4 flex w-full"
+          label="What to log"
+          tabs={tabs.map((tab) => ({ value: tab.id, label: tab.label, icon: tab.icon }))}
+          value={activeTab}
+          onChange={(v) => setActiveTab(v as TabType)}
+        />
 
         {/* Selected items summary */}
         {items.length > 0 && (

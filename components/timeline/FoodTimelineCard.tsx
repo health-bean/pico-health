@@ -105,7 +105,6 @@ export function FoodTimelineCard({
             <span className="text-sm font-medium text-warm-900">
               {displayName}
             </span>
-            <Badge variant="allowed">Food</Badge>
             {food?.isCustom && (
               <Badge variant="default">Custom</Badge>
             )}

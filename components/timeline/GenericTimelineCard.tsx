@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { SlidersHorizontal, Clock, type LucideIcon } from "lucide-react";
-import { Badge, type BadgeVariant } from "@/components/ui";
+import { type BadgeVariant } from "@/components/ui";
 import { EntryActions } from "./EntryActions";
 import { EntryEditor, type EntryPatch } from "./EntryEditor";
 import type { EntryType } from "@/types";
@@ -41,7 +41,6 @@ export function GenericTimelineCard({
   name,
   icon: Icon,
   label,
-  variant,
   entryTime,
   severity,
   onDelete,
@@ -51,22 +50,20 @@ export function GenericTimelineCard({
   const isSymptom = entryType === "symptom";
 
   return (
-    <div className="flex flex-col rounded-xl bg-[var(--color-surface-card)] shadow-[var(--shadow-card)] transition-shadow hover:shadow-[var(--shadow-elevated)]">
+    <div className="flex flex-col rounded-xl border border-warm-200 bg-[var(--color-surface-card)]">
       <div className="flex items-center gap-3 px-4 py-3">
         <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-600">
           <Icon className="h-4 w-4" />
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
-            <span className="truncate text-sm font-medium text-[var(--color-text-primary)]">
-              {name}
-            </span>
-            <Badge variant={variant}>{label}</Badge>
-          </div>
-          {entryTime && (
-            <p className="text-xs text-[var(--color-text-muted)]">{formatTime(entryTime)}</p>
-          )}
+          <span className="block truncate text-sm font-medium text-[var(--color-text-primary)]">
+            {name}
+          </span>
+          <p className="mt-0.5 text-xs text-[var(--color-text-muted)]">
+            {label}
+            {entryTime && <> · {formatTime(entryTime)}</>}
+          </p>
         </div>
 
         {severity != null && (

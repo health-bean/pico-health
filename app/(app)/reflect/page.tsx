@@ -253,7 +253,7 @@ export default function ReflectPage() {
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        <h1 className="text-base font-semibold text-warm-900">
+        <h1 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-text-primary)]">
           {displayDate(date)}
         </h1>
 
@@ -278,7 +278,7 @@ export default function ReflectPage() {
             onClick={() => setDate(day.date)}
             className="flex flex-col items-center gap-1"
           >
-            <span className="text-[10px] font-medium text-warm-500">
+            <span className="text-[11px] font-medium text-warm-500">
               {day.label}
             </span>
             <div
@@ -353,7 +353,7 @@ export default function ReflectPage() {
                   onChange={(v) => handleScoreChange(cfg.key, v)}
                   hideLabel
                 />
-                <div className="mt-1 flex items-center justify-between text-[10px] text-warm-500">
+                <div className="mt-1 flex items-center justify-between text-xs text-warm-500">
                   <span>{cfg.lowLabel}</span>
                   <span>{cfg.highLabel}</span>
                 </div>
@@ -375,7 +375,7 @@ export default function ReflectPage() {
               maxLength={2000}
             />
             {notes.length > 0 && (
-              <p className="mt-1 text-right text-[10px] text-warm-500">
+              <p className="mt-1 text-right text-xs text-warm-500">
                 {notes.length}/2000
               </p>
             )}

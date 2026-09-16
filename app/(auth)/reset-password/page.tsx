@@ -2,7 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
-import { Input, Button, Card } from "@/components/ui";
+import { Input, Button, Card, PageTitle } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
 
 export default function ResetPasswordPage() {
@@ -49,7 +49,7 @@ export default function ResetPasswordPage() {
     <div className="flex min-h-dvh items-center justify-center px-6 py-12">
       <div className="w-full max-w-sm">
         <div className="mb-8 text-center">
-          <h1 className="text-2xl font-bold text-warm-900">Set new password</h1>
+          <PageTitle>Set new password</PageTitle>
           <p className="mt-1 text-sm text-warm-500">
             Enter your new password below
           </p>

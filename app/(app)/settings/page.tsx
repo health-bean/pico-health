@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { Button, Card, Select, Spinner, Progress } from "@/components/ui";
+import { Button, Card, Select, Spinner, Progress, PageTitle } from "@/components/ui";
 import { useSession } from "@/hooks/use-session";
 import Link from "next/link";
 import { ChevronRight, CreditCard, FlaskConical } from "lucide-react";
@@ -198,7 +198,7 @@ export default function SettingsPage() {
 
   return (
     <div className="mx-auto max-w-2xl px-4 py-6">
-      <h1 className="mb-6 text-lg font-semibold text-warm-900">Settings</h1>
+      <PageTitle className="mb-6">Settings</PageTitle>
 
       {/* Protocol section */}
       <Card header="Protocol" className="mb-4">

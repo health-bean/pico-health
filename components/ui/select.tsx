@@ -40,7 +40,7 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             value={value}
             onChange={(e) => onChange?.(e.target.value)}
             className={cn(
-              "w-full appearance-none rounded-xl border px-4 py-2.5 pr-10 text-sm min-h-[44px]",
+              "w-full appearance-none rounded-xl border px-4 py-2.5 pr-10 text-base min-h-[44px]",
               "bg-[var(--color-surface-card)] text-[var(--color-text-primary)]",
               "transition-all duration-200 ease-[var(--ease-out-expo)]",
               "focus:outline-none focus:ring-2 focus:ring-offset-1",

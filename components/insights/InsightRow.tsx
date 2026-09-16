@@ -34,7 +34,7 @@ export function InsightRow({ icon: Icon, title, description, percentage, foods, 
             {confidence && <ConfidenceTag confidence={confidence} />}
             {isNew && <NewTag />}
           </div>
-          <p className="text-sm text-warm-600 leading-snug">{description}</p>
+          <p className="max-w-[65ch] text-sm text-warm-600 leading-snug">{description}</p>
           {foods && foods.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {foods.map((food, i) => (

@@ -84,7 +84,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
         {message.createdAt && (
           <span
             className={cn(
-              "mt-1 text-[10px] text-[var(--color-text-muted)]",
+              "mt-1 text-xs text-[var(--color-text-muted)]",
               isUser ? "mr-1" : "ml-1"
             )}
           >

@@ -11,7 +11,6 @@ import {
   Zap,
   ArrowRight,
 } from "lucide-react";
-import { Badge } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import { EntryActions } from "./EntryActions";
 import { EntryEditor, type EntryPatch } from "./EntryEditor";
@@ -126,11 +125,12 @@ export function ExerciseTimelineCard({
           <span className="text-sm font-medium text-warm-900">
             {exerciseLabel}
           </span>
-          <Badge variant="info">Exercise</Badge>
         </div>
 
         {/* Duration and Intensity */}
         <div className="mt-1 flex items-center gap-2 flex-wrap text-xs text-warm-600">
+          <span>Exercise</span>
+          <span className="text-warm-300">•</span>
           <span className="font-medium">{durationMinutes} min</span>
           <span className="text-warm-300">•</span>
           <span

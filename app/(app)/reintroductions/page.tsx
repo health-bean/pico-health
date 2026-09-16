@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { Plus, ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import { Button, Dialog, Spinner } from "@/components/ui";
+import { Button, Dialog, Spinner, PageTitle } from "@/components/ui";
 import { ReintroductionCard } from "@/components/reintroductions/ReintroductionCard";
 import { ReintroductionHistory } from "@/components/reintroductions/ReintroductionHistory";
 import { ReintroductionDetail } from "@/components/reintroductions/ReintroductionDetail";
@@ -178,11 +178,11 @@ export default function ReintroductionsPage() {
         )}
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="min-w-0">
-            <h1 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
+            <PageTitle>
               {viewMode === "overview" && "Reintroductions"}
               {viewMode === "detail" && "This trial"}
               {viewMode === "recommendations" && "Ready to try"}
-            </h1>
+            </PageTitle>
             <p className="mt-1 text-sm text-warm-600">
               {viewMode === "overview" && "Test a food back in over a few days and record how you react."}
               {viewMode === "detail" && "How the days went, entry by entry."}

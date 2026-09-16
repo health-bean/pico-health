@@ -24,7 +24,7 @@ export function HelperRow({ icon: Icon, title, description, percentage, confiden
             {confidence && <ConfidenceTag confidence={confidence} />}
             {isNew && <NewTag />}
           </div>
-          <p className="text-sm text-warm-600 leading-snug">{description}</p>
+          <p className="max-w-[65ch] text-sm text-warm-600 leading-snug">{description}</p>
         </div>
         <div className="text-right ml-3 shrink-0">
           <div className="text-xl font-semibold tabular-nums text-teal-700">{percentage}%</div>

@@ -6,7 +6,7 @@ import { InsightRow } from '@/components/insights/InsightRow';
 import { HelperRow } from '@/components/insights/HelperRow';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
-import { Spinner, Card } from '@/components/ui';
+import { Spinner, Card, PageTitle } from '@/components/ui';
 import {
   Activity, Apple, CalendarDays, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
   Flame, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, ThumbsUp, Zap,
@@ -129,7 +129,7 @@ export default function InsightsPage() {
     <div className="mx-auto max-w-2xl px-4 pb-24">
       {/* Header + Timeframe */}
       <div className="flex items-center justify-between py-5">
-        <h1 className="font-display text-2xl text-warm-900">Insights</h1>
+        <PageTitle>Insights</PageTitle>
         <div role="group" aria-label="Time range" className="flex gap-0.5 rounded-lg bg-warm-100 p-0.5">
           {([30, 90, 180] as TimeRange[]).map(d => (
             <button

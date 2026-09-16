@@ -21,7 +21,7 @@ export function AlertCard({ alert, onDismiss }: AlertCardProps) {
       <Sparkles className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />
       <div className="min-w-0 flex-1">
         <p className="text-sm font-medium text-teal-900">{title}</p>
-        <p className="mt-0.5 text-sm leading-snug text-teal-700">{body}</p>
+        <p className="mt-0.5 max-w-[65ch] text-sm leading-snug text-teal-700">{body}</p>
       </div>
       <button
         type="button"

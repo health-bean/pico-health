@@ -31,3 +31,5 @@ export { Avatar } from "./avatar";
 export { Progress } from "./progress";
 
 export { Skeleton } from "./skeleton";
+
+export { PageTitle } from "./page-title";
