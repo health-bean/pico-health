@@ -97,7 +97,10 @@ export default function InsightsPage() {
     await fetch('/api/insights/alerts', { method: 'PATCH' });
   }, []);
 
-  if (loading) {
+  // Only the very first load gets the blank spinner. Changing the range
+  // keeps the current sections on screen and marks the page busy, so the
+  // 180-day analysis (which can take several seconds) never blanks the tab.
+  if (loading && !patterns) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <Spinner />
@@ -126,7 +129,7 @@ export default function InsightsPage() {
   const orphanAlerts = alerts.filter(a => !shownKeys.has(a.insightKey));
 
   return (
-    <div className="mx-auto max-w-2xl px-4 pb-24">
+    <div className="mx-auto max-w-2xl px-4 pb-24" aria-busy={loading}>
       {/* Header + Timeframe */}
       <div className="flex items-center justify-between py-5">
         <PageTitle>Insights</PageTitle>
@@ -139,11 +142,11 @@ export default function InsightsPage() {
               onClick={() => setTimeRange(d)}
               className={`min-h-10 rounded-md px-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
                 timeRange === d
-                  ? 'bg-white text-warm-900 shadow-sm'
+                  ? 'bg-[var(--color-surface-card)] text-warm-900 shadow-[var(--shadow-card)]'
                   : 'text-warm-500 hover:text-warm-700'
               }`}
             >
-              {d}d
+              {loading && timeRange === d ? <Spinner size="sm" /> : `${d}d`}
             </button>
           ))}
         </div>

@@ -38,7 +38,7 @@ export function extractFactorsFromDay(day: DayComposite): Factor[] {
       factors.push({
         category: 'food_property',
         key: `food_property:${prop.property}_${prop.severity}`,
-        label: `${capitalize(prop.severity)} ${prop.property}`,
+        label: `${capitalize(prop.severity.replace(/_/g, ' '))} ${prop.property}`,
       });
     }
     for (const prep of food.preparation ?? []) {

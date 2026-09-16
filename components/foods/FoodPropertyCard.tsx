@@ -262,7 +262,7 @@ export function FoodPropertyCard({
         ))}
       </div>
       <p className="mt-3 text-xs text-warm-500">
-        Hover over properties for more information
+        Tap a property to see what it means
       </p>
     </div>
   );

@@ -18,7 +18,7 @@ export function HelperRow({ icon: Icon, title, description, percentage, confiden
     <div className="p-3 rounded-lg bg-warm-50">
       <div className="flex items-start justify-between">
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-1.5 mb-1">
+          <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mb-1">
             <Icon className="h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />
             <span className="text-sm font-semibold text-warm-900">{title}</span>
             {confidence && <ConfidenceTag confidence={confidence} />}
