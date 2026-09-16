@@ -83,18 +83,18 @@ export function ReintroductionDetail({
         </span>
       ),
       passed: (
-        <span className="inline-flex items-center rounded-full bg-emerald-50 px-3 py-1 text-sm font-medium text-emerald-800">
-          ✓ Passed
+        <span className="inline-flex items-center rounded-full bg-teal-50 px-3 py-1 text-sm font-medium text-teal-800">
+          Passed
         </span>
       ),
       failed: (
-        <span className="inline-flex items-center rounded-full bg-red-100 px-3 py-1 text-sm font-medium text-red-800">
-          ✗ Failed
+        <span className="inline-flex items-center rounded-full bg-danger/10 px-3 py-1 text-sm font-medium text-danger-strong">
+          Failed
         </span>
       ),
       inconclusive: (
-        <span className="inline-flex items-center rounded-full bg-yellow-100 px-3 py-1 text-sm font-medium text-yellow-800">
-          ? Inconclusive
+        <span className="inline-flex items-center rounded-full bg-warning/10 px-3 py-1 text-sm font-medium text-warning-strong">
+          Inconclusive
         </span>
       ),
       cancelled: (
@@ -118,12 +118,12 @@ export function ReintroductionDetail({
 
   if (error || !data) {
     return (
-      <div className="rounded-xl border border-red-200 bg-red-50 p-6">
+      <div className="rounded-xl border border-danger/30 bg-danger/10 p-6">
         <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
+          <AlertCircle className="h-5 w-5 shrink-0 text-danger-strong" />
           <div>
-            <h3 className="text-sm font-semibold text-red-900">Error Loading Details</h3>
-            <p className="mt-1 text-sm text-red-700">{error || "Failed to load reintroduction details"}</p>
+            <h3 className="text-sm font-semibold text-danger-strong">Error Loading Details</h3>
+            <p className="mt-1 text-sm text-danger-strong">{error || "Failed to load reintroduction details"}</p>
           </div>
         </div>
       </div>
@@ -216,7 +216,7 @@ export function ReintroductionDetail({
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-24 overflow-hidden rounded-full bg-warm-200">
                     <div
-                      className="h-full rounded-full bg-red-500"
+                      className="h-full rounded-full bg-danger"
                       style={{ width: `${(symptom.severity / 10) * 100}%` }}
                     />
                   </div>
@@ -232,23 +232,23 @@ export function ReintroductionDetail({
       {data.analysis && (
         <div className={`rounded-xl border p-6 ${
           data.analysis.symptomIncrease
-            ? "border-red-200 bg-red-50"
-            : "border-emerald-200 bg-emerald-50"
+            ? "border-danger/30 bg-danger/10"
+            : "border-teal-200 bg-teal-50"
         }`}>
           <div className="flex items-start gap-3">
             {data.analysis.symptomIncrease ? (
-              <TrendingUp className="h-5 w-5 shrink-0 text-red-600" />
+              <TrendingUp className="h-5 w-5 shrink-0 text-danger-strong" />
             ) : (
-              <TrendingDown className="h-5 w-5 shrink-0 text-emerald-600" />
+              <TrendingDown className="h-5 w-5 shrink-0 text-teal-600" />
             )}
             <div className="flex-1">
               <h3 className={`text-base font-semibold ${
-                data.analysis.symptomIncrease ? "text-red-900" : "text-emerald-900"
+                data.analysis.symptomIncrease ? "text-danger-strong" : "text-teal-900"
               }`}>
                 Analysis Results
               </h3>
               <p className={`mt-2 text-sm ${
-                data.analysis.symptomIncrease ? "text-red-700" : "text-emerald-700"
+                data.analysis.symptomIncrease ? "text-danger-strong" : "text-teal-700"
               }`}>
                 {data.analysis.recommendation}
               </p>
@@ -285,7 +285,7 @@ export function ReintroductionDetail({
           {onMarkPassed && (
             <Button
               onClick={onMarkPassed}
-              className="flex-1 bg-emerald-600 hover:bg-emerald-700"
+              className="flex-1 bg-teal-600 hover:bg-teal-700"
             >
               Mark as Passed
             </Button>
@@ -293,7 +293,7 @@ export function ReintroductionDetail({
           {onMarkFailed && (
             <Button
               onClick={onMarkFailed}
-              className="flex-1 border-red-200 text-red-600 hover:bg-red-50"
+              className="flex-1 border-danger/30 text-danger-strong hover:bg-danger/10"
             >
               Mark as Failed
             </Button>

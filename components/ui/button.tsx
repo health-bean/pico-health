@@ -12,7 +12,7 @@ const variantClasses = {
   outline:
     "border border-teal-300 text-teal-700 bg-transparent hover:bg-teal-50 active:bg-teal-100 focus-visible:ring-teal-400",
   danger:
-    "bg-red-600 text-white hover:bg-red-700 active:bg-red-800 focus-visible:ring-red-500",
+    "bg-danger text-white hover:bg-danger-strong active:bg-danger-strong focus-visible:ring-danger",
   ghost:
     "bg-transparent text-[var(--color-text-secondary)] hover:bg-teal-50 active:bg-teal-100 focus-visible:ring-teal-400",
 } as const;

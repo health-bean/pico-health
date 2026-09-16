@@ -248,7 +248,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
                 >
                   {item.name}
                   {item.severity && (
-                    <span className="text-red-500">{item.severity}/10</span>
+                    <span className="text-danger-strong">{item.severity}/10</span>
                   )}
                   <button
                     onClick={() => removeItem(item.id)}
@@ -265,7 +265,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
 
         {/* Success message */}
         {submitted && items.length === 0 && (
-          <div className="mb-4 flex items-center gap-2 rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm text-emerald-700">
+          <div className="mb-4 flex items-center gap-2 rounded-xl border border-teal-200 bg-teal-50 px-4 py-3 text-sm text-teal-700">
             <Check className="h-4 w-4" />
             Entries saved to timeline!
           </div>
@@ -372,7 +372,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
             {saveError && (
               <div
                 role="alert"
-                className="mb-2 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 px-3 py-2 text-sm text-red-700"
+                className="mb-2 flex items-center gap-2 rounded-lg border border-danger/30 bg-danger/10 px-3 py-2 text-sm text-danger-strong"
               >
                 <AlertCircle className="h-4 w-4 shrink-0" />
                 Couldn&apos;t save. Try again.

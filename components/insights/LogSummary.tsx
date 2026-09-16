@@ -36,7 +36,7 @@ export function LogSummary({ composite }: LogSummaryProps) {
               </div>
             )}
             {food.protocolStatus === 'avoid' && (
-              <span className="inline-block mt-0.5 text-[11px] text-red-600 font-medium">Off-protocol</span>
+              <span className="inline-block mt-0.5 text-[11px] text-danger-strong font-medium">Off-protocol</span>
             )}
           </div>
         </div>

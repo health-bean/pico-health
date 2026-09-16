@@ -56,31 +56,26 @@ export function JournalCheckIn({ onSave, onDismiss }: JournalCheckInProps) {
           label="Sleep"
           value={scores.sleepScore ?? null}
           onChange={(v) => setScore("sleepScore", v)}
-          color="teal"
         />
         <ScoreSlider
           label="Energy"
           value={scores.energyScore ?? null}
           onChange={(v) => setScore("energyScore", v)}
-          color="amber"
         />
         <ScoreSlider
           label="Mood"
           value={scores.moodScore ?? null}
           onChange={(v) => setScore("moodScore", v)}
-          color="green"
         />
         <ScoreSlider
           label="Stress"
           value={scores.stressScore ?? null}
           onChange={(v) => setScore("stressScore", v)}
-          color="red"
         />
         <ScoreSlider
           label="Pain"
           value={scores.painScore ?? null}
           onChange={(v) => setScore("painScore", v)}
-          color="orange"
         />
       </div>
 

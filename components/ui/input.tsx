@@ -34,7 +34,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             "focus:outline-none focus:ring-2 focus:ring-offset-1",
             "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-[var(--color-surface-overlay)]",
             error
-              ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+              ? "border-danger/30 focus:border-danger focus:ring-danger/30"
               : "border-[var(--color-border)] focus:border-teal-500 focus:ring-teal-500",
             className
           )}
@@ -46,7 +46,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         {error && (
           <p
             id={inputId ? `${inputId}-error` : undefined}
-            className="text-xs text-red-600"
+            className="text-xs text-danger-strong"
             role="alert"
           >
             {error}

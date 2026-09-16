@@ -60,18 +60,18 @@ const INTENSITY_CONFIG: Record<
   { color: string; bgColor: string; label: string }
 > = {
   light: {
-    color: "text-emerald-700",
-    bgColor: "bg-emerald-50",
+    color: "text-teal-700",
+    bgColor: "bg-teal-50",
     label: "Light",
   },
   moderate: {
-    color: "text-yellow-700",
-    bgColor: "bg-yellow-50",
+    color: "text-warning-strong",
+    bgColor: "bg-warning/10",
     label: "Moderate",
   },
   vigorous: {
-    color: "text-red-700",
-    bgColor: "bg-red-50",
+    color: "text-danger-strong",
+    bgColor: "bg-danger/10",
     label: "Vigorous",
   },
 };
@@ -153,7 +153,7 @@ export function ExerciseTimelineCard({
         {/* Energy Levels */}
         {hasEnergyData && (
           <div className="mt-2 flex items-center gap-2 text-xs">
-            <Zap className="h-3.5 w-3.5 text-amber-500" />
+            <Zap className="h-3.5 w-3.5 text-warning-strong" />
             <div className="flex items-center gap-1.5">
               {energyBefore != null && (
                 <span className="font-medium text-warm-700">
@@ -171,9 +171,9 @@ export function ExerciseTimelineCard({
                       className={cn(
                         "ml-1 font-medium",
                         energyChange > 0
-                          ? "text-emerald-600"
+                          ? "text-teal-600"
                           : energyChange < 0
-                            ? "text-red-600"
+                            ? "text-danger-strong"
                             : "text-warm-500"
                       )}
                     >

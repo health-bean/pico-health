@@ -34,9 +34,9 @@ interface Protocol {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  avoid: "bg-red-100 text-red-800",
-  moderation: "bg-amber-100 text-amber-800",
-  allowed: "bg-emerald-100 text-emerald-800",
+  avoid: "bg-danger/10 text-danger-strong",
+  moderation: "bg-warning/10 text-warning-strong",
+  allowed: "bg-teal-100 text-teal-800",
 };
 
 const STATUS_OPTIONS = ["avoid", "moderation", "allowed"];
@@ -257,7 +257,7 @@ export default function AdminProtocolsPage() {
                       placeholder="Description"
                       className="flex-1 rounded border border-warm-200 px-2 py-1 text-sm"
                     />
-                    <button onClick={() => handleUpdateProtocol(protocol.id)} className="rounded p-1 text-emerald-600 hover:bg-emerald-50"><Check className="h-4 w-4" /></button>
+                    <button onClick={() => handleUpdateProtocol(protocol.id)} className="rounded p-1 text-teal-600 hover:bg-teal-50"><Check className="h-4 w-4" /></button>
                     <button onClick={() => setEditingProtocol(null)} className="rounded p-1 text-warm-500 hover:bg-warm-50"><X className="h-4 w-4" /></button>
                   </div>
                 ) : (
@@ -280,7 +280,7 @@ export default function AdminProtocolsPage() {
                     </button>
                     <button
                       onClick={() => handleDeleteProtocol(protocol.id, protocol.name)}
-                      className="rounded p-1 text-warm-500 hover:bg-red-50 hover:text-red-600"
+                      className="rounded p-1 text-warm-500 hover:bg-danger/10 hover:text-danger-strong"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -348,7 +348,7 @@ export default function AdminProtocolsPage() {
                                 </td>
                                 <td className="py-2">
                                   <div className="flex gap-1">
-                                    <button onClick={() => handleUpdateRule(rule.id)} className="rounded p-1 text-emerald-600 hover:bg-emerald-50"><Check className="h-3.5 w-3.5" /></button>
+                                    <button onClick={() => handleUpdateRule(rule.id)} className="rounded p-1 text-teal-600 hover:bg-teal-50"><Check className="h-3.5 w-3.5" /></button>
                                     <button onClick={() => setEditingRule(null)} className="rounded p-1 text-warm-500 hover:bg-warm-50"><X className="h-3.5 w-3.5" /></button>
                                   </div>
                                 </td>
@@ -390,7 +390,7 @@ export default function AdminProtocolsPage() {
                                   </button>
                                   <button
                                     onClick={() => handleDeleteRule(rule.id)}
-                                    className="rounded p-1 text-warm-500 hover:bg-red-50 hover:text-red-600"
+                                    className="rounded p-1 text-warm-500 hover:bg-danger/10 hover:text-danger-strong"
                                   >
                                     <Trash2 className="h-3 w-3" />
                                   </button>

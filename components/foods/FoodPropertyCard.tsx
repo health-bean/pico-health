@@ -50,7 +50,8 @@ const PROPERTY_LABELS: Record<string, string> = {
   tyramine: "Tyramine",
 };
 
-function getLevelColor(level: TriggerLevel): {
+/** Level colors climb one ramp; the level word on the tag carries the meaning. */
+export function getLevelColor(level: TriggerLevel): {
   bg: string;
   text: string;
   ring: string;
@@ -59,22 +60,27 @@ function getLevelColor(level: TriggerLevel): {
     case "none":
     case "low":
       return {
-        bg: "bg-emerald-50",
-        text: "text-emerald-700",
-        ring: "ring-emerald-600/20",
+        bg: "bg-level-1-bg",
+        text: "text-level-1-fg",
+        ring: "ring-level-1-fg/20",
       };
     case "moderate":
       return {
-        bg: "bg-yellow-50",
-        text: "text-yellow-700",
-        ring: "ring-yellow-600/20",
+        bg: "bg-level-2-bg",
+        text: "text-level-2-fg",
+        ring: "ring-level-2-fg/20",
       };
     case "high":
+      return {
+        bg: "bg-level-3-bg",
+        text: "text-level-3-fg",
+        ring: "ring-level-3-fg/20",
+      };
     case "very_high":
       return {
-        bg: "bg-red-50",
-        text: "text-red-700",
-        ring: "ring-red-600/20",
+        bg: "bg-level-4-bg",
+        text: "text-level-4-fg",
+        ring: "ring-level-4-fg/20",
       };
     case "unknown":
     default:
@@ -86,26 +92,26 @@ function getLevelColor(level: TriggerLevel): {
   }
 }
 
-function getBooleanColor(value: boolean): {
+export function getBooleanColor(value: boolean): {
   bg: string;
   text: string;
   ring: string;
 } {
   if (value) {
     return {
-      bg: "bg-red-50",
-      text: "text-red-700",
-      ring: "ring-red-600/20",
+      bg: "bg-level-3-bg",
+      text: "text-level-3-fg",
+      ring: "ring-level-3-fg/20",
     };
   }
   return {
-    bg: "bg-emerald-50",
-    text: "text-emerald-700",
-    ring: "ring-emerald-600/20",
+    bg: "bg-level-1-bg",
+    text: "text-level-1-fg",
+    ring: "ring-level-1-fg/20",
   };
 }
 
-function formatLevel(level: TriggerLevel): string {
+export function formatLevel(level: TriggerLevel): string {
   switch (level) {
     case "none":
       return "None";

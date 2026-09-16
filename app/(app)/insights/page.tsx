@@ -7,30 +7,23 @@ import { HelperRow } from '@/components/insights/HelperRow';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
 import { Spinner, Card } from '@/components/ui';
+import {
+  Activity, Apple, CalendarDays, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
+  Flame, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, ThumbsUp, Zap,
+  type LucideIcon,
+} from 'lucide-react';
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
 import { insightKey } from '@/lib/insights/types';
 
-const FACTOR_ICONS: Record<string, string> = {
-  food: '🍽️', food_property: '🧪', supplement: '💊', medication: '💉',
-  exposure: '☣️', exercise: '🏊', sleep: '😴', stress: '😤',
-  energy: '⚡', mood: '🧠', pain: '🩹', timing: '🕐', compliance: '📋',
+const FACTOR_ICONS: Record<string, LucideIcon> = {
+  food: Apple, food_property: FlaskConical, supplement: Pill, medication: Pill,
+  exposure: ShieldAlert, exercise: Activity, sleep: Moon, stress: Gauge,
+  energy: Zap, mood: Smile, pain: Frown, timing: Clock, compliance: ClipboardList,
 };
 
-const PROPERTY_ICONS: Record<string, string> = {
-  nightshade: '🌶️', histamine: '🧪', oxalate: '💎', fodmap: '🫧',
-  lectin: '🫘', salicylate: '💊', amines: '🧬', tyramine: '🧀',
-};
-
-function getIcon(result: SingleFactorResult | MultiFactorResult): string {
-  if ('factors' in result) {
-    const first = (result as MultiFactorResult).factors[0];
-    return PROPERTY_ICONS[first.key.split(':')[1]?.split('_')[0]] ?? FACTOR_ICONS[first.category] ?? '🔍';
-  }
-  const f = (result as SingleFactorResult).factor;
-  if (f.category === 'food_property') {
-    return PROPERTY_ICONS[f.key.replace('food_property:', '').split('_')[0]] ?? '🧪';
-  }
-  return FACTOR_ICONS[f.category] ?? '🔍';
+function getIcon(result: SingleFactorResult | MultiFactorResult): LucideIcon {
+  const f = 'factors' in result ? (result as MultiFactorResult).factors[0] : (result as SingleFactorResult).factor;
+  return FACTOR_ICONS[f.category] ?? Search;
 }
 
 function getTitle(result: SingleFactorResult | MultiFactorResult): string {
@@ -178,7 +171,7 @@ export default function InsightsPage() {
           {triggers.length > 0 && (
             <InsightSection
               variant="trigger"
-              icon="⚠️"
+              icon={Flame}
               title="Triggers to Avoid"
               subtitle="These items correlate with your symptoms"
               totalCount={triggers.length}
@@ -204,7 +197,7 @@ export default function InsightsPage() {
           {propertyPatterns.length > 0 && (
             <InsightSection
               variant="watch"
-              icon="👁️"
+              icon={Eye}
               title="Patterns to Watch"
               subtitle="These patterns may explain multiple symptoms"
               totalCount={propertyPatterns.length}
@@ -213,7 +206,7 @@ export default function InsightsPage() {
               {propertyPatterns.map((p, i) => (
                 <InsightRow
                   key={`p-${i}`}
-                  icon={PROPERTY_ICONS[p.property] ?? '🔬'}
+                  icon={FlaskConical}
                   title={`${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property} sensitivity`}
                   description={p.description}
                   percentage={Math.round((p.frequency / (daysTracked || 1)) * 100)}
@@ -227,7 +220,7 @@ export default function InsightsPage() {
           {helpers.length > 0 && (
             <InsightSection
               variant="helper"
-              icon="✅"
+              icon={ThumbsUp}
               title="Things That Help"
               subtitle="Keep doing these — they're working"
               totalCount={helpers.length}
@@ -249,22 +242,22 @@ export default function InsightsPage() {
 
           {/* Progress */}
           {progress.length > 0 && (
-            <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-warm-200 p-4">
+            <section className="bg-[var(--color-surface-card)] rounded-xl overflow-hidden shadow-[var(--shadow-card)] border border-warm-200 p-4">
               <div className="flex items-center gap-2 mb-3">
-                <span className="text-base">🗓️</span>
-                <h3 className="text-[15px] font-bold text-warm-900">This month vs. last</h3>
+                <CalendarRange className="h-4 w-4 text-warm-600" aria-hidden="true" />
+                <h2 className="text-base font-semibold text-warm-900">This month vs. last</h2>
               </div>
-              <p className="mb-3 text-[12px] text-warm-500">
+              <p className="mb-3 text-sm text-warm-600">
                 Symptom days, side by side. Chronic conditions move in waves — this is a comparison, not a scorecard.
               </p>
               <div className="space-y-2">
                 {progress.map((o, i) => (
                   <div key={i} className="p-2.5 bg-warm-50 rounded-lg">
-                    <p className="text-[13px] text-warm-700">{o.observation}</p>
+                    <p className="text-sm text-warm-700">{o.observation}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            </section>
           )}
         </div>
       )}
@@ -278,8 +271,8 @@ export default function InsightsPage() {
       {/* Your Day */}
       <div className="mt-8 pt-6 border-t border-warm-200">
         <div className="flex items-center gap-2 mb-2">
-          <span className="text-base">📅</span>
-          <h2 className="text-xs font-semibold uppercase tracking-wider text-warm-500">Your Day</h2>
+          <CalendarDays className="h-4 w-4 text-warm-600" aria-hidden="true" />
+          <h2 className="text-base font-semibold text-warm-900">Your day</h2>
         </div>
         <DayView initialDate={today} initialComposite={composite} />
       </div>

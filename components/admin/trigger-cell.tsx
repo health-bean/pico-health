@@ -12,12 +12,12 @@ interface TriggerCellProps {
 }
 
 const LEVEL_COLORS: Record<string, string> = {
-  low: "bg-emerald-100 text-emerald-800",
-  moderate: "bg-amber-100 text-amber-800",
-  high: "bg-red-100 text-red-800",
-  very_high: "bg-red-200 text-red-900 font-semibold",
+  low: "bg-teal-100 text-teal-800",
+  moderate: "bg-warning/10 text-warning-strong",
+  high: "bg-danger/10 text-danger-strong",
+  very_high: "bg-danger/25 text-danger-strong font-semibold",
   unknown: "bg-warm-100 text-warm-500",
-  true: "bg-red-100 text-red-800",
+  true: "bg-danger/10 text-danger-strong",
   false: "bg-warm-100 text-warm-500",
 };
 

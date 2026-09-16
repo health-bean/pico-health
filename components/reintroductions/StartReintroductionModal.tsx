@@ -166,22 +166,22 @@ export function StartReintroductionModal({
         <div className="px-6 py-4">
           {/* Error Message */}
           {error && (
-            <div className="mb-4 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4">
-              <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
+            <div className="mb-4 flex items-start gap-3 rounded-lg border border-danger/30 bg-danger/10 p-4">
+              <AlertCircle className="h-5 w-5 shrink-0 text-danger-strong" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-red-900">Error</p>
-                <p className="mt-1 text-sm text-red-700">{error}</p>
+                <p className="text-sm font-medium text-danger-strong">Error</p>
+                <p className="mt-1 text-sm text-danger-strong">{error}</p>
               </div>
             </div>
           )}
 
           {/* Success Message */}
           {successMessage && (
-            <div className="mb-4 flex items-start gap-3 rounded-lg border border-emerald-200 bg-emerald-50 p-4">
-              <CheckCircle2 className="h-5 w-5 shrink-0 text-emerald-600" />
+            <div className="mb-4 flex items-start gap-3 rounded-lg border border-teal-200 bg-teal-50 p-4">
+              <CheckCircle2 className="h-5 w-5 shrink-0 text-teal-600" />
               <div className="flex-1">
-                <p className="text-sm font-medium text-emerald-900">Success</p>
-                <p className="mt-1 text-sm text-emerald-700">{successMessage}</p>
+                <p className="text-sm font-medium text-teal-900">Success</p>
+                <p className="mt-1 text-sm text-teal-700">{successMessage}</p>
               </div>
             </div>
           )}
@@ -205,7 +205,7 @@ export function StartReintroductionModal({
                   htmlFor="food-select"
                   className="mb-2 block text-sm font-medium text-warm-700"
                 >
-                  Select Food to Reintroduce <span className="text-red-500">*</span>
+                  Select Food to Reintroduce <span className="text-danger-strong">*</span>
                 </label>
                 <select
                   id="food-select"

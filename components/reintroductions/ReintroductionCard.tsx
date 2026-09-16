@@ -41,14 +41,14 @@ export function ReintroductionCard({
       return {
         title: "Observation Phase",
         description: "Avoid this food and continue monitoring symptoms",
-        icon: <AlertCircle className="h-5 w-5 text-amber-600" />,
+        icon: <AlertCircle className="h-5 w-5 text-warning-strong" />,
         color: "amber",
       };
     } else {
       return {
         title: "Complete",
         description: "Ready for analysis",
-        icon: <CheckCircle className="h-5 w-5 text-emerald-600" />,
+        icon: <CheckCircle className="h-5 w-5 text-teal-600" />,
         color: "green",
       };
     }
@@ -119,7 +119,7 @@ export function ReintroductionCard({
         )}
 
         {reintroduction.missedDays && reintroduction.missedDays > 0 && (
-          <div className="flex items-center gap-2 text-sm text-amber-600">
+          <div className="flex items-center gap-2 text-sm text-warning-strong">
             <AlertCircle className="h-4 w-4" />
             <span>{reintroduction.missedDays} missed day{reintroduction.missedDays > 1 ? 's' : ''}</span>
           </div>
@@ -139,7 +139,7 @@ export function ReintroductionCard({
         {onStop && (
           <Button
             onClick={onStop}
-            className="border-red-200 text-red-600 hover:bg-red-50"
+            className="border-danger/30 text-danger-strong hover:bg-danger/10"
           >
             <XCircle className="mr-2 h-4 w-4" />
             Stop

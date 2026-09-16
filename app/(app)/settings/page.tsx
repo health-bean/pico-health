@@ -278,7 +278,7 @@ export default function SettingsPage() {
               </Button>
 
               {saved && (
-                <span className="text-sm text-green-600">
+                <span className="text-sm text-teal-600">
                   Protocol updated
                 </span>
               )}

@@ -10,15 +10,15 @@ const typeConfig: Record<
   EntryType,
   { label: string; variant: "allowed" | "avoid" | "moderation" | "info" | "default"; bg: string }
 > = {
-  food: { label: "Food", variant: "allowed", bg: "bg-emerald-50 border-emerald-200" },
-  symptom: { label: "Symptom", variant: "avoid", bg: "bg-red-50 border-red-200" },
+  food: { label: "Food", variant: "allowed", bg: "bg-teal-50 border-teal-200" },
+  symptom: { label: "Symptom", variant: "avoid", bg: "bg-danger/10 border-danger/30" },
   supplement: { label: "Supplement", variant: "info", bg: "bg-teal-50 border-teal-200" },
-  medication: { label: "Medication", variant: "moderation", bg: "bg-purple-50 border-purple-200" },
-  exposure: { label: "Exposure", variant: "moderation", bg: "bg-amber-50 border-amber-200" },
+  medication: { label: "Medication", variant: "moderation", bg: "bg-teal-50 border-teal-200" },
+  exposure: { label: "Exposure", variant: "moderation", bg: "bg-warning/10 border-warning/30" },
   detox: { label: "Detox", variant: "default", bg: "bg-teal-50 border-teal-200" },
   exercise: { label: "Exercise", variant: "info", bg: "bg-teal-50 border-teal-200" },
-  energy: { label: "Energy", variant: "default", bg: "bg-yellow-50 border-yellow-200" },
-  off_protocol: { label: "Off-Protocol", variant: "moderation", bg: "bg-orange-50 border-orange-200" },
+  energy: { label: "Energy", variant: "default", bg: "bg-warning/10 border-warning/30" },
+  off_protocol: { label: "Off-Protocol", variant: "moderation", bg: "bg-warning/10 border-warning/30" },
 };
 
 export function ExtractedCard({ entry }: ExtractedCardProps) {

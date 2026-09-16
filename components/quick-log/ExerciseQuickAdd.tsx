@@ -183,11 +183,11 @@ export function ExerciseQuickAdd({ onSuccess, onCancel }: ExerciseQuickAddProps)
 
   if (success) {
     return (
-      <div className="rounded-xl border border-emerald-200 bg-emerald-50 p-6 text-center">
-        <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50">
-          <Activity className="h-6 w-6 text-emerald-600" />
+      <div className="rounded-xl border border-teal-200 bg-teal-50 p-6 text-center">
+        <div className="mx-auto mb-2 flex h-12 w-12 items-center justify-center rounded-full bg-teal-50">
+          <Activity className="h-6 w-6 text-teal-600" />
         </div>
-        <p className="text-sm font-medium text-emerald-800">Exercise logged successfully!</p>
+        <p className="text-sm font-medium text-teal-800">Exercise logged successfully!</p>
       </div>
     );
   }
@@ -197,7 +197,7 @@ export function ExerciseQuickAdd({ onSuccess, onCancel }: ExerciseQuickAddProps)
       {/* Exercise Type */}
       <div>
         <label htmlFor="exerciseType" className="mb-1.5 block text-sm font-medium text-warm-700">
-          Exercise Type <span className="text-red-500">*</span>
+          Exercise Type <span className="text-danger-strong">*</span>
         </label>
         <select
           id="exerciseType"
@@ -216,7 +216,7 @@ export function ExerciseQuickAdd({ onSuccess, onCancel }: ExerciseQuickAddProps)
       {/* Duration */}
       <div>
         <label htmlFor="duration" className="mb-1.5 block text-sm font-medium text-warm-700">
-          Duration (minutes) <span className="text-red-500">*</span>
+          Duration (minutes) <span className="text-danger-strong">*</span>
         </label>
         <input
           id="duration"
@@ -227,19 +227,19 @@ export function ExerciseQuickAdd({ onSuccess, onCancel }: ExerciseQuickAddProps)
           placeholder="30"
           className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
             errors.durationMinutes
-              ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+              ? "border-danger/30 focus:border-danger focus:ring-danger/30"
               : "border-warm-200 focus:border-teal-500 focus:ring-teal-500"
           }`}
         />
         {errors.durationMinutes && (
-          <p className="mt-1 text-xs text-red-600">{errors.durationMinutes}</p>
+          <p className="mt-1 text-xs text-danger-strong">{errors.durationMinutes}</p>
         )}
       </div>
 
       {/* Intensity Level */}
       <div>
         <label className="mb-2 block text-sm font-medium text-warm-700">
-          Intensity <span className="text-red-500">*</span>
+          Intensity <span className="text-danger-strong">*</span>
         </label>
         <div className="space-y-2">
           {INTENSITY_LEVELS.map((level) => (
@@ -283,12 +283,12 @@ export function ExerciseQuickAdd({ onSuccess, onCancel }: ExerciseQuickAddProps)
           placeholder="5"
           className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
             errors.energyBefore
-              ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+              ? "border-danger/30 focus:border-danger focus:ring-danger/30"
               : "border-warm-200 focus:border-teal-500 focus:ring-teal-500"
           }`}
         />
         {errors.energyBefore && (
-          <p className="mt-1 text-xs text-red-600">{errors.energyBefore}</p>
+          <p className="mt-1 text-xs text-danger-strong">{errors.energyBefore}</p>
         )}
       </div>
 
@@ -307,12 +307,12 @@ export function ExerciseQuickAdd({ onSuccess, onCancel }: ExerciseQuickAddProps)
           placeholder="7"
           className={`w-full rounded-lg border px-3 py-2 text-sm focus:outline-none focus:ring-1 ${
             errors.energyAfter
-              ? "border-red-300 focus:border-red-500 focus:ring-red-500"
+              ? "border-danger/30 focus:border-danger focus:ring-danger/30"
               : "border-warm-200 focus:border-teal-500 focus:ring-teal-500"
           }`}
         />
         {errors.energyAfter && (
-          <p className="mt-1 text-xs text-red-600">{errors.energyAfter}</p>
+          <p className="mt-1 text-xs text-danger-strong">{errors.energyAfter}</p>
         )}
       </div>
 

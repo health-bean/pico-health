@@ -53,7 +53,7 @@ export function ReintroductionRecommendations({
   const getPriorityBadge = (priority: number) => {
     if (priority >= 8) {
       return (
-        <span className="inline-flex items-center rounded-full bg-emerald-50 px-2 py-0.5 text-xs font-medium text-emerald-800">
+        <span className="inline-flex items-center rounded-full bg-teal-50 px-2 py-0.5 text-xs font-medium text-teal-800">
           High Priority
         </span>
       );
@@ -83,12 +83,12 @@ export function ReintroductionRecommendations({
 
   if (error) {
     return (
-      <div className="rounded-xl border border-red-200 bg-red-50 p-6">
+      <div className="rounded-xl border border-danger/30 bg-danger/10 p-6">
         <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 shrink-0 text-red-600" />
+          <AlertCircle className="h-5 w-5 shrink-0 text-danger-strong" />
           <div>
-            <h3 className="text-sm font-semibold text-red-900">Error Loading Recommendations</h3>
-            <p className="mt-1 text-sm text-red-700">{error}</p>
+            <h3 className="text-sm font-semibold text-danger-strong">Error Loading Recommendations</h3>
+            <p className="mt-1 text-sm text-danger-strong">{error}</p>
           </div>
         </div>
       </div>

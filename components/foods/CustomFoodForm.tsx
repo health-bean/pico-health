@@ -248,13 +248,13 @@ export function CustomFoodForm({
       </div>
 
       {error && (
-        <div className="mb-4 rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700">
+        <div className="mb-4 rounded-lg border border-danger/30 bg-danger/10 p-3 text-sm text-danger-strong">
           {error}
         </div>
       )}
 
       {successMessage && (
-        <div className="mb-4 rounded-lg border border-emerald-200 bg-emerald-50 p-3 text-sm text-emerald-700">
+        <div className="mb-4 rounded-lg border border-teal-200 bg-teal-50 p-3 text-sm text-teal-700">
           {successMessage}
         </div>
       )}
@@ -266,7 +266,7 @@ export function CustomFoodForm({
             htmlFor="displayName"
             className="mb-1.5 block text-sm font-medium text-warm-700"
           >
-            Food Name <span className="text-red-500">*</span>
+            Food Name <span className="text-danger-strong">*</span>
           </label>
           <input
             type="text"

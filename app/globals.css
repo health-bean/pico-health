@@ -49,6 +49,24 @@ html {
   --color-warning: oklch(0.68 0.14 75);
   --color-danger: oklch(0.55 0.18 27);
   --color-info: oklch(0.52 0.09 270);
+  /* Text-weight versions: the base tokens are fine for icons and fills,
+     these clear 4.5:1 as small text on the surfaces. */
+  --color-warning-strong: oklch(0.46 0.11 75);
+  --color-danger-strong: oklch(0.47 0.16 27);
+
+  /* ── Level ramp (one hue, rising weight) ─────────────────────── */
+  /* Trigger-property intensity, protocol status, and pattern strength all
+     read on this ramp: warm neutral for low, deepening through the warning
+     hue for high. Not a traffic light. The label always carries the level
+     in words as well. */
+  --color-level-1-bg: oklch(0.97 0.008 80);
+  --color-level-1-fg: oklch(0.45 0.02 80);
+  --color-level-2-bg: oklch(0.95 0.045 75);
+  --color-level-2-fg: oklch(0.46 0.09 75);
+  --color-level-3-bg: oklch(0.92 0.08 75);
+  --color-level-3-fg: oklch(0.40 0.11 75);
+  --color-level-4-bg: oklch(0.86 0.11 75);
+  --color-level-4-fg: oklch(0.32 0.11 75);
 
   /* ── Surfaces ────────────────────────────────────────────────── */
   --color-surface: oklch(0.98 0.006 80);

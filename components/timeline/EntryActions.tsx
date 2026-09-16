@@ -173,7 +173,7 @@ export function EntryActions({ name, actions = [], onDelete }: EntryActionsProps
               type="button"
               role="menuitem"
               onClick={() => pick(onDelete)}
-              className={cn(itemClass, "text-[var(--color-danger)] hover:bg-red-50")}
+              className={cn(itemClass, "text-[var(--color-danger)] hover:bg-danger/10")}
             >
               <Trash2 className="h-4 w-4" aria-hidden />
               Delete

@@ -31,7 +31,7 @@ export function AdminChatInterface() {
   return (
     <div className="flex h-[calc(100dvh-3.5rem-5rem)] flex-col md:h-[calc(100dvh-3.5rem)]">
       {/* Admin banner */}
-      <div className="flex items-center gap-2 border-b border-amber-200 bg-amber-50 px-4 py-2 text-sm font-medium text-amber-800">
+      <div className="flex items-center gap-2 border-b border-warning/30 bg-warning/10 px-4 py-2 text-sm font-medium text-warning-strong">
         <ShieldAlert className="h-4 w-4" />
         <span>Admin Mode &mdash; Changes affect all users&apos; data</span>
       </div>
@@ -43,7 +43,7 @@ export function AdminChatInterface() {
       >
         {messages.length === 0 && !loading ? (
           <div className="flex h-full flex-col items-center justify-center text-center">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-amber-50 text-amber-600">
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-warning/10 text-warning-strong">
               <ShieldAlert className="h-6 w-6" />
             </div>
             <h2 className="mt-4 text-base font-semibold text-warm-900">

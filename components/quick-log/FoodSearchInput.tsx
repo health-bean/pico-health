@@ -193,17 +193,17 @@ export function FoodSearchInput({
 
     const badges = {
       allowed: (
-        <span className="rounded bg-emerald-50 px-1.5 py-0.5 text-xs font-medium text-emerald-700">
+        <span className="rounded bg-teal-50 px-1.5 py-0.5 text-xs font-medium text-teal-700">
           Allowed
         </span>
       ),
       avoid: (
-        <span className="rounded bg-red-100 px-1.5 py-0.5 text-xs font-medium text-red-700">
+        <span className="rounded bg-danger/10 px-1.5 py-0.5 text-xs font-medium text-danger-strong">
           Avoid
         </span>
       ),
       moderation: (
-        <span className="rounded bg-yellow-100 px-1.5 py-0.5 text-xs font-medium text-yellow-700">
+        <span className="rounded bg-warning/10 px-1.5 py-0.5 text-xs font-medium text-warning-strong">
           Moderation
         </span>
       ),
@@ -262,7 +262,7 @@ export function FoodSearchInput({
 
       {/* Error Message */}
       {error && (
-        <div className="mt-2 flex items-center gap-2 rounded-lg border border-red-200 bg-red-50 p-2 text-xs text-red-700">
+        <div className="mt-2 flex items-center gap-2 rounded-lg border border-danger/30 bg-danger/10 p-2 text-xs text-danger-strong">
           <AlertCircle className="h-4 w-4 shrink-0" />
           <span>{error}</span>
         </div>
@@ -300,7 +300,7 @@ export function FoodSearchInput({
 
               {/* Protocol Violations Warning */}
               {food.protocolStatus === "avoid" && (
-                <div className="mt-2 flex items-start gap-1.5 text-xs text-red-600">
+                <div className="mt-2 flex items-start gap-1.5 text-xs text-danger-strong">
                   <AlertCircle className="h-3 w-3 shrink-0 mt-0.5" />
                   <span>Not allowed on your protocol</span>
                 </div>

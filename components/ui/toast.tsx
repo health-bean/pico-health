@@ -42,7 +42,7 @@ const ToastContext = createContext<ToastContextValue | null>(null);
 
 const variantClasses: Record<ToastVariant, string> = {
   success: "bg-teal-600 text-white",
-  error: "bg-red-600 text-white",
+  error: "bg-danger text-white",
   info: "bg-warm-700 text-white",
 };
 

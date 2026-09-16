@@ -6,20 +6,14 @@ interface ScoreSliderProps {
   label: string;
   value: number | null;
   onChange: (value: number) => void;
-  color: string; // tailwind color name: "teal" | "amber" | "green" | "red" | "orange"
   hideLabel?: boolean;
 }
 
-const colorMap: Record<string, { bg: string; accent: string; track: string }> = {
-  teal: { bg: "bg-teal-50", accent: "accent-teal-600", track: "text-teal-600" },
-  amber: { bg: "bg-amber-50", accent: "accent-amber-500", track: "text-amber-600" },
-  green: { bg: "bg-emerald-50", accent: "accent-emerald-600", track: "text-emerald-600" },
-  red: { bg: "bg-red-50", accent: "accent-red-500", track: "text-red-600" },
-  orange: { bg: "bg-orange-50", accent: "accent-orange-500", track: "text-orange-600" },
-};
+// Every score is the same instrument, so every slider is the same color.
+// The rating is carried by the number and the labels, not by a hue per row.
+const colors = { bg: "bg-warm-50", accent: "accent-teal-600", track: "text-teal-700" };
 
-export function ScoreSlider({ label, value, onChange, color, hideLabel }: ScoreSliderProps) {
-  const colors = colorMap[color] ?? colorMap.teal;
+export function ScoreSlider({ label, value, onChange, hideLabel }: ScoreSliderProps) {
   const displayValue = value ?? 5;
 
   return (

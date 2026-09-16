@@ -43,7 +43,6 @@ const scoreConfig = [
     key: "sleepScore" as const,
     label: "Sleep Quality",
     icon: Moon,
-    color: "indigo",
     lowLabel: "Terrible",
     highLabel: "Excellent",
   },
@@ -51,7 +50,6 @@ const scoreConfig = [
     key: "energyScore" as const,
     label: "Energy Level",
     icon: Zap,
-    color: "amber",
     lowLabel: "Exhausted",
     highLabel: "Energized",
   },
@@ -59,7 +57,6 @@ const scoreConfig = [
     key: "moodScore" as const,
     label: "Mood",
     icon: Smile,
-    color: "green",
     lowLabel: "Low",
     highLabel: "Great",
   },
@@ -67,7 +64,6 @@ const scoreConfig = [
     key: "stressScore" as const,
     label: "Stress",
     icon: Brain,
-    color: "red",
     lowLabel: "Very stressed",
     highLabel: "Calm",
   },
@@ -75,7 +71,6 @@ const scoreConfig = [
     key: "painScore" as const,
     label: "Pain / Discomfort",
     icon: Heart,
-    color: "orange",
     lowLabel: "Severe",
     highLabel: "None",
   },
@@ -325,13 +320,13 @@ export default function ReflectPage() {
                 </span>
               )}
               {saved && !saving && !hasChanges && (
-                <span className="flex items-center gap-1 text-xs text-green-600">
+                <span className="flex items-center gap-1 text-xs text-teal-600">
                   <Check className="h-3 w-3" />
                   Saved
                 </span>
               )}
               {hasChanges && !saving && (
-                <span className="text-xs text-amber-500">Unsaved</span>
+                <span className="text-xs text-warning-strong">Unsaved</span>
               )}
             </div>
           </div>
@@ -356,7 +351,6 @@ export default function ReflectPage() {
                   label={cfg.label}
                   value={value}
                   onChange={(v) => handleScoreChange(cfg.key, v)}
-                  color={cfg.color}
                   hideLabel
                 />
                 <div className="mt-1 flex items-center justify-between text-[10px] text-warm-500">

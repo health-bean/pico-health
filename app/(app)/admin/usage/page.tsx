@@ -132,7 +132,7 @@ export default function AdminUsagePage() {
           </div>
 
           {data.totals.unknownModelRequests > 0 && (
-            <p className="rounded-md bg-amber-50 px-3 py-2 text-xs text-amber-700">
+            <p className="rounded-md bg-warning/10 px-3 py-2 text-xs text-warning-strong">
               {formatTokens(data.totals.unknownModelRequests)} request
               {data.totals.unknownModelRequests === 1 ? "" : "s"} used a model
               with no known pricing and are excluded from cost estimates.
@@ -157,7 +157,7 @@ export default function AdminUsagePage() {
                     <td className="px-4 py-3 font-medium text-warm-900">{row.task}</td>
                     <td className="px-4 py-3 text-warm-600">
                       {row.estCostUsd === null ? (
-                        <span className="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-xs font-medium text-amber-700">
+                        <span className="inline-flex items-center rounded-full bg-warning/10 px-2 py-0.5 text-xs font-medium text-warning-strong">
                           {row.model} — unknown model
                         </span>
                       ) : (
