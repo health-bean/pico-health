@@ -247,7 +247,7 @@ export default function ReflectPage() {
       <div className="mb-6 flex items-center justify-between">
         <button
           onClick={() => shiftDate(-1)}
-          className="flex h-10 w-10 items-center justify-center rounded-lg text-warm-500 hover:bg-warm-100"
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-warm-500 hover:bg-warm-100"
           aria-label="Previous day"
         >
           <ChevronLeft className="h-5 w-5" />
@@ -261,7 +261,7 @@ export default function ReflectPage() {
           onClick={() => shiftDate(1)}
           disabled={isToday}
           className={cn(
-            "flex h-10 w-10 items-center justify-center rounded-lg text-warm-500",
+            "flex h-11 w-11 items-center justify-center rounded-lg text-warm-500",
             isToday ? "opacity-30" : "hover:bg-warm-100"
           )}
           aria-label="Next day"
@@ -275,7 +275,10 @@ export default function ReflectPage() {
         {weekDays.map((day) => (
           <button
             key={day.date}
+            type="button"
             onClick={() => setDate(day.date)}
+            aria-pressed={day.isSelected}
+            aria-label={`${new Date(day.date + "T12:00:00").toLocaleDateString(undefined, { weekday: "long", month: "long", day: "numeric" })}${day.hasEntry ? ", reflected" : ""}`}
             className="flex flex-col items-center gap-1"
           >
             <span className="text-[11px] font-medium text-warm-500">
@@ -283,7 +286,7 @@ export default function ReflectPage() {
             </span>
             <div
               className={cn(
-                "flex h-8 w-8 items-center justify-center rounded-full text-xs font-semibold transition-colors",
+                "flex h-11 w-11 items-center justify-center rounded-full text-sm font-semibold transition-colors",
                 day.isSelected
                   ? "bg-teal-600 text-white"
                   : day.hasEntry
@@ -351,6 +354,8 @@ export default function ReflectPage() {
                   label={cfg.label}
                   value={value}
                   onChange={(v) => handleScoreChange(cfg.key, v)}
+                  lowLabel={cfg.lowLabel}
+                  highLabel={cfg.highLabel}
                   hideLabel
                 />
                 <div className="mt-1 flex items-center justify-between text-xs text-warm-500">
@@ -381,19 +386,12 @@ export default function ReflectPage() {
             )}
           </Card>
 
-          {/* Save button */}
-          <Button
-            onClick={handleManualSave}
-            loading={saving}
-            disabled={!hasChanges && !saving}
-            className="w-full"
-          >
-            {saving
-              ? "Saving…"
-              : saved && !hasChanges
-                ? "Saved"
-                : "Save Reflection"}
-          </Button>
+          {/* Everything auto-saves; the button only appears while there is something unsaved */}
+          {(hasChanges || saving) && (
+            <Button onClick={handleManualSave} loading={saving} className="w-full">
+              {saving ? "Saving…" : "Save now"}
+            </Button>
+          )}
         </div>
       )}
     </div>
