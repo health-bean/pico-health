@@ -372,7 +372,7 @@ export default function AdminFoodsPage() {
           ) : (
             <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200">
               <p className="px-3 py-2 text-xs text-warm-500 md:hidden">Property columns need a wider screen. Open a food to edit its properties.</p>
-              <table className="w-full text-sm">
+              <table className="w-full table-fixed text-sm md:table-auto">
                 <thead>
                   <tr className="border-b border-warm-200 bg-warm-50">
                     <th className="sticky left-0 z-10 bg-warm-50 px-3 py-2 text-left font-medium text-warm-700">
@@ -408,7 +408,7 @@ export default function AdminFoodsPage() {
                           : "bg-warm-25"
                       }
                     >
-                      <td className="sticky left-0 z-10 whitespace-nowrap bg-inherit px-3 py-1.5 font-medium text-warm-900">
+                      <td className="sticky left-0 z-10 bg-inherit px-3 py-1.5 font-medium text-warm-900 md:whitespace-nowrap">
                         {food.displayName}
                       </td>
                       <td className="hidden whitespace-nowrap px-2 py-1.5 text-warm-500 md:table-cell">
@@ -442,10 +442,10 @@ export default function AdminFoodsPage() {
                           />
                         </td>
                       ))}
-                      <td className="whitespace-nowrap px-2 py-1.5">
+                      <td className="px-2 py-1.5 md:whitespace-nowrap">
                         <ReviewStatusPill food={food} />
                       </td>
-                      <td className="whitespace-nowrap px-2 py-1">
+                      <td className="px-2 py-1 md:whitespace-nowrap">
                         {food.reviewStatus !== "practitioner_reviewed" && (
                           <Button
                             variant="ghost"
