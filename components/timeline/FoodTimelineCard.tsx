@@ -151,7 +151,7 @@ export function FoodTimelineCard({
           {/* Off-protocol: a fact about the day, not a warning on the plate */}
           {hasViolations && (
             <p className="mt-1 text-xs text-[var(--color-warning)]">
-              Outside your protocol · {protocolViolations.join(", ")}
+              Outside your protocol · {protocolViolations.map((v) => v.replace(/\s+not allowed$/i, "")).join(", ")}
             </p>
           )}
 
