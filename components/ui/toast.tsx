@@ -66,7 +66,7 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
       role="alert"
       className={cn(
         "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium shadow-[var(--shadow-elevated)]",
-        "animate-in slide-in-from-right fade-in duration-300",
+        "animate-slide-in-right",
         variantClasses[t.variant]
       )}
     >

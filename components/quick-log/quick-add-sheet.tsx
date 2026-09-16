@@ -65,7 +65,7 @@ export function QuickAddSheet({ open, onClose, onSaved, entryDate, dayLabel }: Q
     <div className="fixed inset-0 z-50 flex items-end justify-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/30"
+        className="absolute inset-0 bg-scrim"
         onClick={dismiss}
         aria-hidden="true"
       />
@@ -78,7 +78,7 @@ export function QuickAddSheet({ open, onClose, onSaved, entryDate, dayLabel }: Q
         // Fixed height (not max-height) so the sheet's top edge stays put when
         // switching between Food / Symptom / Exercise instead of jumping with
         // each tab's content length.
-        className="relative z-10 flex h-[85dvh] w-full max-w-lg flex-col rounded-t-2xl bg-[var(--color-surface-card)] shadow-xl"
+        className="relative z-10 flex h-[85dvh] w-full max-w-lg flex-col rounded-t-2xl bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]"
       >
         {/* Handle + close */}
         <div className="flex items-center justify-between px-4 pt-3 pb-1">

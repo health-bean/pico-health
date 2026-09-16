@@ -148,7 +148,7 @@ export function EntryActions({ name, actions = [], onDelete }: EntryActionsProps
             className={cn(
               "fixed z-[60] min-w-44 overflow-hidden rounded-xl py-1",
               "border border-[var(--color-border-light)] bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]",
-              "animate-in fade-in zoom-in-95 duration-150"
+              "animate-fade-in"
             )}
           >
             {actions.map((action) => {

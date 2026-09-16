@@ -6,7 +6,7 @@ import { Spinner } from "./spinner";
 
 const variantClasses = {
   primary:
-    "bg-teal-600 text-white hover:bg-teal-700 active:bg-teal-800 focus-visible:ring-teal-500 shadow-sm hover:shadow-md",
+    "bg-teal-600 text-white hover:bg-teal-700 active:bg-teal-800 focus-visible:ring-teal-500 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-elevated)]",
   secondary:
     "bg-teal-50 text-teal-700 hover:bg-teal-100 active:bg-teal-200 focus-visible:ring-teal-400",
   outline:

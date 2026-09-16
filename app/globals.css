@@ -74,6 +74,9 @@ html {
   --color-surface-elevated: oklch(0.995 0.003 80);
   --color-surface-overlay: oklch(0.97 0.005 80);
 
+  /* ── Scrim (behind sheets and dialogs) ───────────────────────── */
+  --color-scrim: oklch(0.20 0.015 80 / 0.45);
+
   /* ── Borders ─────────────────────────────────────────────────── */
   --color-border: oklch(0.92 0.01 80);
   --color-border-light: oklch(0.94 0.005 80);
@@ -213,7 +216,8 @@ select {
   .stagger-children > * {
     animation: none;
   }
-  .animate-pulse-warm {
+  .animate-pulse-warm,
+  .animate-pulse {
     animation: none;
     opacity: 0.6;
   }

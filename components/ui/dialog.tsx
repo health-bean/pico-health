@@ -88,7 +88,7 @@ export function Dialog({
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="fixed inset-0 bg-black/30 backdrop-blur-sm animate-in fade-in duration-200"
+        className="fixed inset-0 bg-scrim backdrop-blur-sm animate-fade-in"
         onClick={onClose}
         aria-hidden="true"
       />
@@ -102,7 +102,7 @@ export function Dialog({
         className={cn(
           "relative z-10 w-full rounded-2xl bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]",
           "border border-[var(--color-border)]/20",
-          "animate-in fade-in slide-in-from-bottom-4 duration-300",
+          "animate-fade-in-up",
           sizeClasses[size]
         )}
       >

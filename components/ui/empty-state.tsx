@@ -20,12 +20,12 @@ export function EmptyState({ icon, title, description, action, className }: Empt
       <div className="flex flex-col items-center gap-1 text-center">
         <p className="text-sm font-medium text-[var(--color-text-primary)]">{title}</p>
         {description && (
-          <p className="text-xs text-[var(--color-text-muted)]">{description}</p>
+          <p className="max-w-[40ch] text-sm leading-relaxed text-[var(--color-text-secondary)]">{description}</p>
         )}
       </div>
 
       {action && (
-        <Button variant="secondary" size="sm" onClick={action.onClick}>
+        <Button variant="secondary" onClick={action.onClick}>
           {action.label}
         </Button>
       )}

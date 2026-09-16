@@ -272,7 +272,7 @@ export function FoodSearchInput({
       {isOpen && results.length > 0 && (
         <div
           ref={dropdownRef}
-          className="absolute z-50 mt-1 max-h-80 w-full overflow-y-auto rounded-lg border border-warm-200 bg-[var(--color-surface-card)] shadow-lg"
+          className="absolute z-50 mt-1 max-h-80 w-full overflow-y-auto rounded-lg border border-warm-200 bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]"
         >
           {results.map((food, index) => (
             <button
@@ -312,7 +312,7 @@ export function FoodSearchInput({
 
       {/* No Results Message */}
       {isOpen && !loading && query.length >= 2 && results.length === 0 && (
-        <div className="absolute z-50 mt-1 w-full rounded-lg border border-warm-200 bg-[var(--color-surface-card)] p-4 text-center text-sm text-warm-500 shadow-lg">
+        <div className="absolute z-50 mt-1 w-full rounded-lg border border-warm-200 bg-[var(--color-surface-card)] p-4 text-center text-sm text-warm-500 shadow-[var(--shadow-float)]">
           No foods found for &quot;{query}&quot;
         </div>
       )}

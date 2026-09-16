@@ -231,7 +231,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
               {items.map((item) => (
                 <span
                   key={item.id}
-                  className="inline-flex items-center gap-1 rounded-full bg-[var(--color-surface-card)] px-2.5 py-1 text-xs font-medium text-warm-700 shadow-sm"
+                  className="inline-flex items-center gap-1 rounded-full bg-[var(--color-surface-card)] px-2.5 py-1 text-xs font-medium text-warm-700 shadow-[var(--shadow-card)]"
                 >
                   {item.name}
                   {item.severity && (
@@ -312,7 +312,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
 
               {/* Custom Food Form Modal */}
               {showCustomFoodForm && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-scrim p-4">
                   <div className="w-full max-w-md">
                     <CustomFoodForm
                       onSuccess={handleCustomFoodCreate}

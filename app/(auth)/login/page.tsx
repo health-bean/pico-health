@@ -82,7 +82,7 @@ export default function LoginPage() {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={googleLoading}
-              className="flex w-full items-center justify-center gap-3 rounded-lg border border-warm-200 bg-white px-4 py-2.5 text-sm font-medium text-warm-700 shadow-sm transition-colors hover:bg-warm-50 disabled:opacity-50"
+              className="flex w-full items-center justify-center gap-3 rounded-lg border border-warm-200 bg-white px-4 py-2.5 text-sm font-medium text-warm-700 shadow-[var(--shadow-card)] transition-colors hover:bg-warm-50 disabled:opacity-50"
             >
               <svg viewBox="0 0 24 24" className="h-5 w-5" aria-hidden="true">
                 <path

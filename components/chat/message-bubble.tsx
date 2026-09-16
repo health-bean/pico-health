@@ -64,7 +64,7 @@ export function MessageBubble({ message }: MessageBubbleProps) {
           className={cn(
             "max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed",
             isUser
-              ? "bg-teal-600 text-white shadow-sm rounded-tr-sm"
+              ? "bg-teal-600 text-white shadow-[var(--shadow-card)] rounded-tr-sm"
               : "bg-[var(--color-surface-card)] text-[var(--color-text-primary)] shadow-[var(--shadow-card)] border border-[var(--color-border)]/20 rounded-tl-sm"
           )}
         >

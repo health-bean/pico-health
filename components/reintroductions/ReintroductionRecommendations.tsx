@@ -129,7 +129,7 @@ export function ReintroductionRecommendations({
         {foods.map((food) => (
           <div
             key={food.id}
-            className="rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-5 transition-all hover:border-teal-300 hover:shadow-md"
+            className="rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-5 transition-all hover:border-teal-300 hover:shadow-[var(--shadow-elevated)]"
           >
             {/* Header */}
             <div className="flex items-start justify-between gap-3">

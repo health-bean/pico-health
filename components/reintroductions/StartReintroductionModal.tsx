@@ -144,8 +144,8 @@ export function StartReintroductionModal({
   );
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-      <div className="w-full max-w-2xl rounded-2xl border border-warm-200 bg-[var(--color-surface-card)] shadow-xl">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-scrim p-4">
+      <div className="w-full max-w-2xl rounded-2xl border border-warm-200 bg-[var(--color-surface-card)] shadow-[var(--shadow-float)]">
         {/* Header */}
         <div className="flex items-center justify-between border-b border-warm-200 px-6 py-4">
           <h2 className="text-xl font-semibold text-warm-900">

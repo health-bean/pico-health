@@ -1,7 +1,8 @@
 "use client";
 
+import { EmptyState } from "@/components/ui";
 import { useState, useEffect } from "react";
-import { Loader2, AlertCircle, Calendar, Clock } from "lucide-react";
+import { Loader2, AlertCircle, Calendar, Clock, FlaskConical } from "lucide-react";
 import type { ReintroductionTrial, ReintroductionStatus } from "@/types";
 
 interface ReintroductionHistoryProps {
@@ -162,15 +163,11 @@ export function ReintroductionHistory({
   // Empty state
   if (reintroductions.length === 0) {
     return (
-      <div className="rounded-xl border border-warm-200 bg-warm-50 p-8 text-center">
-        <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-warm-100">
-          <Calendar className="h-6 w-6 text-warm-500" />
-        </div>
-        <h3 className="text-base font-semibold text-warm-900">No Reintroductions Yet</h3>
-        <p className="mt-2 text-sm text-warm-600">
-          Start your first food reintroduction to see your history here.
-        </p>
-      </div>
+      <EmptyState
+        icon={<FlaskConical className="h-6 w-6" />}
+        title="No reintroductions yet"
+        description="When you test a food back in, each trial and how it went is kept here."
+      />
     );
   }
 
@@ -213,7 +210,7 @@ export function ReintroductionHistory({
             <button
               key={reintroduction.id}
               onClick={() => handleCardClick(reintroduction)}
-              className="group rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-4 text-left transition-all hover:border-teal-300 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
+              className="group rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-4 text-left transition-all hover:border-teal-300 hover:shadow-[var(--shadow-elevated)] focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-offset-2"
             >
               {/* Food Name & Status */}
               <div className="flex items-start justify-between gap-2">
