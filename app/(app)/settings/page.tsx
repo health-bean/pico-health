@@ -35,6 +35,9 @@ export default function SettingsPage() {
 
   const [protocols, setProtocols] = useState<Protocol[]>([]);
   const [selectedProtocolId, setSelectedProtocolId] = useState<string>("");
+  // The protocol actually stored on the profile. null until loaded, so an
+  // unloaded select can never be saved over the real value.
+  const [savedProtocolId, setSavedProtocolId] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
   const [loadingProtocols, setLoadingProtocols] = useState(true);
@@ -111,19 +114,30 @@ export default function SettingsPage() {
     fetchPhaseState();
   }, [saved]);
 
-  // Set initial selection once we have user + protocols
+  // Load the stored protocol from the profile. The session payload does not
+  // carry it; reading it from there showed "No protocol selected" to every
+  // user and let Save write null over their real protocol.
   useEffect(() => {
-    if (user && protocols.length > 0 && !selectedProtocolId) {
-      const current = protocols.find(
-        (p) => p.id === (user as unknown as { currentProtocolId?: string }).currentProtocolId
-      );
-      if (current) {
-        setSelectedProtocolId(current.id);
-      }
-    }
-  }, [user, protocols, selectedProtocolId]);
+    let cancelled = false;
+    fetch("/api/users/me")
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (cancelled || !data) return;
+        const id: string = data.user?.currentProtocolId ?? "";
+        setSavedProtocolId(id);
+        setSelectedProtocolId(id);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
+
+  const protocolLoaded = savedProtocolId !== null;
+  const protocolChanged = protocolLoaded && selectedProtocolId !== savedProtocolId;
 
   async function handleSaveProtocol() {
+    if (!protocolChanged) return;
     setSaving(true);
     setSaved(false);
     try {
@@ -135,6 +149,7 @@ export default function SettingsPage() {
       });
 
       if (res.ok) {
+        setSavedProtocolId(selectedProtocolId);
         // Also initialize protocol state if the protocol has phases
         const selectedProtocol = protocols.find((p) => p.id === selectedProtocolId);
         if (selectedProtocol?.hasPhases && selectedProtocolId) {
@@ -202,7 +217,7 @@ export default function SettingsPage() {
 
       {/* Protocol section */}
       <Card header="Protocol" className="mb-4">
-        {loadingProtocols ? (
+        {loadingProtocols || !protocolLoaded ? (
           <div className="flex items-center gap-2 py-2">
             <Spinner size="sm" />
             <span className="text-sm text-warm-500">Loading protocols...</span>
@@ -272,9 +287,9 @@ export default function SettingsPage() {
               <Button
                 onClick={handleSaveProtocol}
                 loading={saving}
-                size="sm"
+                disabled={!protocolChanged}
               >
-                Save
+                Save protocol
               </Button>
 
               {saved && (

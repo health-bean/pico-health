@@ -22,9 +22,9 @@ export function Card({ children, header, className, noPadding }: CardProps) {
       {header && (
         <div className="border-b border-[var(--color-border-light)] px-5 py-4">
           {typeof header === "string" ? (
-            <h3 className="font-[family-name:var(--font-display)] text-base font-semibold text-[var(--color-text-primary)]">
+            <h2 className="font-[family-name:var(--font-display)] text-base font-semibold text-[var(--color-text-primary)]">
               {header}
-            </h3>
+            </h2>
           ) : (
             header
           )}
