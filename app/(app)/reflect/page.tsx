@@ -272,7 +272,7 @@ export default function ReflectPage() {
       </div>
 
       {/* Week streak */}
-      <div className="mb-6 flex items-center justify-center gap-3">
+      <div className="mb-6 flex items-center justify-center gap-1">
         {weekDays.map((day) => (
           <button
             key={day.date}

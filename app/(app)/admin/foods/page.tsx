@@ -370,7 +370,7 @@ export default function AdminFoodsPage() {
               <Loader2 className="h-6 w-6 animate-spin text-warm-500" />
             </div>
           ) : (
-            <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200">
+            <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200 contain-inline-size">
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-warm-200 bg-warm-50">
@@ -496,7 +496,7 @@ export default function AdminFoodsPage() {
                     description="Every logged food has trigger properties."
                   />
                 ) : (
-                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200">
+                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200 contain-inline-size">
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-warm-200 bg-warm-50">
@@ -556,7 +556,7 @@ export default function AdminFoodsPage() {
                     description="Every logged name matched a known food."
                   />
                 ) : (
-                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200">
+                  <div className="min-w-0 max-w-full overflow-x-auto rounded-lg border border-warm-200 contain-inline-size">
                     <table className="w-full text-sm">
                       <thead>
                         <tr className="border-b border-warm-200 bg-warm-50">
