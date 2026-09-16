@@ -2,12 +2,40 @@
 
 import { Apple, Replace, Clock } from "lucide-react";
 import { Badge } from "@/components/ui";
-import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
+import { FoodPropertyCard, getLevelColor, getBooleanColor } from "@/components/foods/FoodPropertyCard";
+import { PROPERTY_LABELS } from "@/components/foods/FoodPropertyTag";
+
+const LEVEL_RANK: Record<string, number> = { very_high: 2, high: 1 };
+
+/**
+ * The properties a person would actually want on the card: booleans that
+ * are true and levels at high or above, strongest first, at most three.
+ * Everything else lives behind "Show food properties".
+ */
+function notableProperties(properties: Record<string, unknown> | undefined) {
+  if (!properties) return [];
+  const out: { key: string; label: string; rank: number; colors: ReturnType<typeof getLevelColor> }[] = [];
+  for (const [key, value] of Object.entries(properties)) {
+    const base = PROPERTY_LABELS[key] ?? key;
+    if (value === true) {
+      out.push({ key, label: base, rank: 3, colors: getBooleanColor(true) });
+    } else if (typeof value === "string" && LEVEL_RANK[value]) {
+      const level = value as TriggerLevel;
+      out.push({
+        key,
+        label: `${value === "very_high" ? "Very high" : "High"} ${base.toLowerCase()}`,
+        rank: LEVEL_RANK[value],
+        colors: getLevelColor(level),
+      });
+    }
+  }
+  return out.sort((a, b) => b.rank - a.rank).slice(0, 3);
+}
 import { EntryActions } from "./EntryActions";
 import { EntryEditor, type EntryEditorMode, type EntryPatch } from "./EntryEditor";
 import { useState } from "react";
 import { ANSWER_LABELS } from "@/lib/clarifiers/rules";
-import type { FoodTriggerProperties } from "@/types";
+import type { FoodTriggerProperties, TriggerLevel } from "@/types";
 
 /** Human-readable clarifier answers stored on the entry, for the detail line. */
 function clarifierLabels(sc: Record<string, unknown> | null | undefined): string[] {
@@ -88,6 +116,7 @@ export function FoodTimelineCard({
   const displayName = food?.displayName || name;
   const hasViolations = protocolViolations.length > 0;
   const hasProperties = food?.properties && Object.keys(food.properties).length > 0;
+  const notable = notableProperties(food?.properties as Record<string, unknown> | undefined);
 
   return (
     <div className="flex flex-col rounded-xl border border-warm-200 bg-[var(--color-surface-card)]">
@@ -130,18 +159,7 @@ export function FoodTimelineCard({
                 <span className="text-warm-300">•</span>
               </span>
             ))}
-            {food?.category && (
-              <>
-                <span className="text-warm-500">{food.category}</span>
-                {food.subcategory && (
-                  <>
-                    <span className="text-warm-300">›</span>
-                    <span className="text-warm-500">{food.subcategory}</span>
-                  </>
-                )}
-                <span className="text-warm-300">•</span>
-              </>
-            )}
+
             {entryTime && (
               <span className="text-warm-500">{formatTime(entryTime)}</span>
             )}
@@ -152,6 +170,20 @@ export function FoodTimelineCard({
             <p className="mt-1 text-xs text-[var(--color-warning)]">
               Outside your protocol · {protocolViolations.map((v) => v.replace(/\s+not allowed$/i, "")).join(", ")}
             </p>
+          )}
+
+          {/* The two or three properties worth knowing, inline; the full list is one tap away */}
+          {notable.length > 0 && (
+            <div className="mt-1.5 flex flex-wrap gap-1">
+              {notable.map((n) => (
+                <span
+                  key={n.key}
+                  className={`inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-medium ring-1 ring-inset ${n.colors.bg} ${n.colors.text} ${n.colors.ring}`}
+                >
+                  {n.label}
+                </span>
+              ))}
+            </div>
           )}
 
           {/* Show properties button */}

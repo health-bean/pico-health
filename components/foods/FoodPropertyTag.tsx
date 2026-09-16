@@ -1,6 +1,6 @@
 'use client';
 
-const PROPERTY_LABELS: Record<string, string> = {
+export const PROPERTY_LABELS: Record<string, string> = {
   oxalate: 'Oxalate',
   histamine: 'Histamine',
   lectin: 'Lectin',

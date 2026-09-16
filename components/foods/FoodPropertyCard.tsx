@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Info } from "lucide-react";
 import type { FoodTriggerProperties, TriggerLevel } from "@/types";
 
@@ -129,26 +129,41 @@ export function formatLevel(level: TriggerLevel): string {
   }
 }
 
+/** Explanation on hover, focus, or tap; the trigger is a button so a keyboard reaches it. */
 function Tooltip({
   content,
+  label,
   children,
 }: {
   content: string;
+  label: string;
   children: React.ReactNode;
 }) {
   const [isVisible, setIsVisible] = useState(false);
+  const id = useId();
 
   return (
     <div className="relative inline-block">
-      <div
+      <button
+        type="button"
+        aria-label={`About ${label}`}
+        aria-expanded={isVisible}
+        aria-describedby={isVisible ? id : undefined}
         onMouseEnter={() => setIsVisible(true)}
         onMouseLeave={() => setIsVisible(false)}
-        onClick={() => setIsVisible(!isVisible)}
+        onFocus={() => setIsVisible(true)}
+        onBlur={() => setIsVisible(false)}
+        onClick={() => setIsVisible((v) => !v)}
+        className="min-h-9 rounded-full"
       >
         {children}
-      </div>
+      </button>
       {isVisible && (
-        <div className="absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-lg border border-warm-200 bg-[var(--color-surface-card)] p-3 text-xs text-warm-700 shadow-lg">
+        <div
+          id={id}
+          role="tooltip"
+          className="absolute bottom-full left-1/2 z-50 mb-2 w-64 -translate-x-1/2 rounded-lg border border-warm-200 bg-[var(--color-surface-card)] p-3 text-sm leading-snug text-warm-700 shadow-[var(--shadow-float)]"
+        >
           <div className="absolute -bottom-1 left-1/2 h-2 w-2 -translate-x-1/2 rotate-45 border-b border-r border-warm-200 bg-[var(--color-surface-card)]" />
           {content}
         </div>
@@ -178,14 +193,14 @@ function PropertyBadge({ property }: { property: PropertyInfo }) {
       : formatLevel(value as TriggerLevel);
 
   return (
-    <Tooltip content={description}>
-      <div
-        className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ring-1 ring-inset ${colors.bg} ${colors.text} ${colors.ring} cursor-help transition-all hover:shadow-sm`}
+    <Tooltip content={description} label={label}>
+      <span
+        className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ring-1 ring-inset ${colors.bg} ${colors.text} ${colors.ring} transition-shadow hover:shadow-[var(--shadow-card)]`}
       >
         <span className="font-semibold">{label}:</span>
         <span>{displayValue}</span>
-        <Info className="h-3 w-3 opacity-60" />
-      </div>
+        <Info className="h-3 w-3 opacity-60" aria-hidden="true" />
+      </span>
     </Tooltip>
   );
 }
@@ -262,7 +277,7 @@ export function FoodPropertyCard({
         ))}
       </div>
       <p className="mt-3 text-xs text-warm-500">
-        Tap a property to see what it means
+        Tap a property to read what it means
       </p>
     </div>
   );
