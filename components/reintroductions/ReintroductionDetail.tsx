@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { Loader2, AlertCircle, Calendar, TrendingUp, TrendingDown, Activity, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Dialog } from "@/components/ui/dialog";
 import type { ReintroductionTrial } from "@/types";
 
 interface ReintroductionDetailProps {
@@ -38,6 +39,7 @@ export function ReintroductionDetail({
   onMarkFailed,
 }: ReintroductionDetailProps) {
   const [data, setData] = useState<ReintroductionDetailData | null>(null);
+  const [verdict, setVerdict] = useState<"passed" | "failed" | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -279,27 +281,50 @@ export function ReintroductionDetail({
         </div>
       )}
 
-      {/* Actions */}
+      {/* Verdict: a real decision, so it is named and confirmed */}
       {data.status === "active" && data.currentDay && data.currentDay >= 7 && (
-        <div className="flex gap-3 border-t border-warm-200 pt-6">
+        <div className="flex flex-col gap-3 border-t border-warm-200 pt-6 sm:flex-row">
           {onMarkPassed && (
-            <Button
-              onClick={onMarkPassed}
-              className="flex-1 bg-teal-600 hover:bg-teal-700"
-            >
-              Mark as Passed
+            <Button onClick={() => setVerdict("passed")} className="flex-1">
+              Record as passed
             </Button>
           )}
           {onMarkFailed && (
-            <Button
-              onClick={onMarkFailed}
-              className="flex-1 border-danger/30 text-danger-strong hover:bg-danger/10"
-            >
-              Mark as Failed
+            <Button variant="outline-danger" onClick={() => setVerdict("failed")} className="flex-1">
+              Record as failed
             </Button>
           )}
         </div>
       )}
+
+      <Dialog
+        open={verdict !== null}
+        onClose={() => setVerdict(null)}
+        title={verdict === "passed" ? `Record ${data.foodName} as passed?` : `Record ${data.foodName} as failed?`}
+        size="sm"
+      >
+        <p className="text-sm text-warm-600">
+          {verdict === "passed"
+            ? "This closes the trial and marks the food as tolerated. You can run another trial with it later."
+            : "This closes the trial and marks the food as not tolerated for now. You can test it again later."}
+        </p>
+        <div className="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+          <Button variant="ghost" onClick={() => setVerdict(null)} className="w-full sm:w-auto">
+            Not yet
+          </Button>
+          <Button
+            variant={verdict === "failed" ? "outline-danger" : "primary"}
+            onClick={() => {
+              const fn = verdict === "passed" ? onMarkPassed : onMarkFailed;
+              setVerdict(null);
+              fn?.();
+            }}
+            className="w-full sm:w-auto"
+          >
+            {verdict === "passed" ? "Record as passed" : "Record as failed"}
+          </Button>
+        </div>
+      </Dialog>
     </div>
   );
 }
