@@ -4,7 +4,7 @@ import { Coffee, Sun, Moon, Cookie, Clock } from "lucide-react";
 import type { MealType, QuickLogWhen, WhenMode } from "@/hooks/use-quick-log";
 
 const chipBase =
-  "flex min-h-9 shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors";
+  "flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border px-3.5 text-sm transition-colors";
 const chipOn = "border-teal-300 bg-teal-50 text-teal-700";
 const chipOff =
   "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50";
@@ -28,7 +28,7 @@ export function MealTypeChips({ value, onChange }: MealTypeChipsProps) {
         Meal
       </h3>
       <div
-        className="flex flex-nowrap gap-2 overflow-x-auto pb-1 -mx-1 px-1"
+        className="flex flex-nowrap gap-2 overflow-x-auto pb-1 -mx-1 px-1 pr-8 [mask-image:linear-gradient(to_right,black_85%,transparent)]"
         role="group"
         aria-label="Meal type"
       >
@@ -80,7 +80,7 @@ export function WhenChips({ value, onChange, dayLabel }: WhenChipsProps) {
         When
       </h3>
       <div
-        className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1"
+        className="flex flex-nowrap items-center gap-2 overflow-x-auto pb-1 -mx-1 px-1 pr-8 [mask-image:linear-gradient(to_right,black_85%,transparent)]"
         role="group"
         aria-label="When"
       >
@@ -105,7 +105,7 @@ export function WhenChips({ value, onChange, dayLabel }: WhenChipsProps) {
             value={value.time}
             onChange={(e) => onChange({ ...value, time: e.target.value })}
             aria-label="Time"
-            className="min-h-9 shrink-0 rounded-full border border-warm-200 bg-[var(--color-surface-card)] px-3 py-1.5 text-sm text-warm-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
+            className="min-h-11 shrink-0 rounded-full border border-warm-200 bg-[var(--color-surface-card)] px-3 py-1.5 text-sm text-warm-700 focus:border-teal-500 focus:outline-none focus:ring-1 focus:ring-teal-500"
           />
         )}
       </div>

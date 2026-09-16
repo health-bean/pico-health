@@ -24,15 +24,17 @@ interface RecentItemsProps {
 
 export function RecentItems({ onSelect, selectedNames }: RecentItemsProps) {
   const [items, setItems] = useState<RecentItem[]>([]);
+  const [allTime, setAllTime] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("/api/entries/recent?days=7");
+        const res = await fetch("/api/entries/recent?days=7&fallback=1");
         if (res.ok) {
           const data = await res.json();
           setItems(data.items ?? []);
+          setAllTime(data.window === "all");
         }
       } catch {
         // ignore
@@ -49,7 +51,7 @@ export function RecentItems({ onSelect, selectedNames }: RecentItemsProps) {
   return (
     <div>
       <h3 className="mb-2 text-sm font-semibold text-warm-700">
-        Recent (7 days)
+        {allTime ? "Your usual" : "Recent"}
       </h3>
       <div className="flex flex-wrap gap-2">
         {items.map((item) => {

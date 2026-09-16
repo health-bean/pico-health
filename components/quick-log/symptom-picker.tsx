@@ -24,15 +24,25 @@ export function SymptomPicker({
   severities,
 }: SymptomPickerProps) {
   const [symptoms, setSymptoms] = useState<SymptomDef[]>([]);
+  const [usual, setUsual] = useState<string[]>([]);
+  const [showAll, setShowAll] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function load() {
       try {
-        const res = await fetch("/api/symptoms");
+        const [res, recentRes] = await Promise.all([
+          fetch("/api/symptoms"),
+          fetch("/api/entries/recent?days=90&fallback=1"),
+        ]);
         if (res.ok) {
           const data = await res.json();
           setSymptoms(data.symptoms ?? []);
+        }
+        if (recentRes.ok) {
+          const data = await recentRes.json();
+          const mine: { entryType: string; name: string }[] = data.items ?? [];
+          setUsual(mine.filter((i) => i.entryType === "symptom").slice(0, 6).map((i) => i.name));
         }
       } catch {
         // ignore
@@ -45,17 +55,24 @@ export function SymptomPicker({
 
   if (loading) return null;
 
-  // Show common symptoms first
-  const sorted = [...symptoms].sort((a, b) => {
-    if (a.isCommon && !b.isCommon) return -1;
-    if (!a.isCommon && b.isCommon) return 1;
-    return 0;
-  });
+  // Personal history first: the symptoms this person actually logs. Everything
+  // else (common ones first) sits behind "More symptoms" so a foggy scan is
+  // six chips, not twenty-seven.
+  const byName = new Map(symptoms.map((s) => [s.name.toLowerCase(), s]));
+  const usualDefs = usual
+    .map((n) => byName.get(n.toLowerCase()) ?? { id: `usual-${n}`, name: n, category: "", isCommon: true })
+    .filter((s, i, arr) => arr.findIndex((x) => x.name === s.name) === i);
+  const usualNames = new Set(usualDefs.map((s) => s.name.toLowerCase()));
+  const rest = [...symptoms]
+    .filter((s) => !usualNames.has(s.name.toLowerCase()))
+    .sort((a, b) => Number(b.isCommon) - Number(a.isCommon));
+  const hasUsual = usualDefs.length > 0;
+  const sorted = hasUsual ? [...usualDefs, ...(showAll ? rest : [])] : rest;
 
   return (
     <div>
       <h3 className="mb-2 text-sm font-semibold text-warm-700">
-        Symptoms
+        {hasUsual ? "Your usual" : "Symptoms"}
       </h3>
       <div className="flex flex-wrap gap-2">
         {sorted.map((s) => {
@@ -66,8 +83,10 @@ export function SymptomPicker({
           return (
             <div key={s.id} className="flex items-center gap-1">
               <button
+                type="button"
+                aria-pressed={isSelected}
                 onClick={() => onSelect("symptom", s.name)}
-                className={`flex min-h-9 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
+                className={`flex min-h-11 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
                   isSelected
                     ? "border-danger/30 bg-danger/10 text-danger-strong"
                     : "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50"
@@ -81,7 +100,7 @@ export function SymptomPicker({
                   onChange={(e) =>
                     onSeverityChange(s.name, parseInt(e.target.value, 10))
                   }
-                  className="h-8 w-14 rounded-md border border-warm-200 text-center text-xs"
+                  className="h-11 w-16 rounded-lg border border-warm-200 text-center text-base"
                   aria-label={`${s.name} severity`}
                 >
                   {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
@@ -95,6 +114,16 @@ export function SymptomPicker({
           );
         })}
       </div>
+      {hasUsual && rest.length > 0 && (
+        <button
+          type="button"
+          onClick={() => setShowAll((v) => !v)}
+          aria-expanded={showAll}
+          className="mt-2 min-h-11 text-sm font-medium text-teal-700 hover:text-teal-800"
+        >
+          {showAll ? "Fewer symptoms" : `More symptoms (${rest.length})`}
+        </button>
+      )}
     </div>
   );
 }

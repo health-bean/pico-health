@@ -49,7 +49,7 @@ describe("GET /api/entries/stats", () => {
   it("returns days tracked, first entry date, and the tracking goal", async () => {
     vi.mocked(db.select)
       .mockReturnValueOnce(
-        aggregateChain([{ daysTracked: 12, firstEntryDate: "2026-08-20" }])
+        aggregateChain([{ daysTracked: 12, firstEntryDate: "2026-08-20", lastEntryDate: "2026-09-10" }])
       )
       .mockReturnValueOnce(
         profileChain([
@@ -62,6 +62,7 @@ describe("GET /api/entries/stats", () => {
     expect(await res.json()).toEqual({
       daysTracked: 12,
       firstEntryDate: "2026-08-20",
+      lastEntryDate: "2026-09-10",
       trackingGoalDays: 30,
       trackingGoalStartDate: "2026-08-25",
     });
@@ -70,7 +71,7 @@ describe("GET /api/entries/stats", () => {
   it("returns zero-state values for a brand new user", async () => {
     vi.mocked(db.select)
       .mockReturnValueOnce(
-        aggregateChain([{ daysTracked: 0, firstEntryDate: null }])
+        aggregateChain([{ daysTracked: 0, firstEntryDate: null, lastEntryDate: null }])
       )
       .mockReturnValueOnce(profileChain([]));
 
@@ -79,6 +80,7 @@ describe("GET /api/entries/stats", () => {
     expect(await res.json()).toEqual({
       daysTracked: 0,
       firstEntryDate: null,
+      lastEntryDate: null,
       trackingGoalDays: null,
       trackingGoalStartDate: null,
     });

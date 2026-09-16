@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 interface Stats {
   daysTracked: number;
   firstEntryDate: string | null;
+  lastEntryDate: string | null;
   trackingGoalDays: number | null;
   trackingGoalStartDate: string | null;
 }
@@ -26,7 +27,12 @@ function daysSince(dateStr: string): number {
  * Default: progress toward the ~14 days the engine needs before patterns appear.
  * With a tracking goal set (e.g. a practitioner's "30 days"): day N of goal + export.
  */
-export function ProgressStrip() {
+interface ProgressStripProps {
+  /** Jump the Log to a given day (YYYY-MM-DD). */
+  onJumpToDay?: (date: string) => void;
+}
+
+export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
   const [stats, setStats] = useState<Stats | null>(null);
   const [goalOpen, setGoalOpen] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -83,11 +89,37 @@ export function ProgressStrip() {
   } else if (stats.daysTracked < PATTERN_THRESHOLD) {
     line = `Day ${stats.daysTracked} — patterns typically appear around day 14`;
   } else {
-    line = `${stats.daysTracked} days tracked`;
+    line = `${stats.daysTracked} days logged`;
   }
+
+  // Coming back after a break (flares make breaks normal): say when the last
+  // entry was and offer a one-tap bridge to it, instead of a full bar over an
+  // empty today.
+  const gapDays = stats.lastEntryDate ? daysSince(stats.lastEntryDate) - 1 : 0;
+  const returning = gapDays > 2 && stats.lastEntryDate != null;
+  const lastLabel = stats.lastEntryDate
+    ? new Date(stats.lastEntryDate + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" })
+    : "";
+  const showBar = hasGoal || stats.daysTracked < PATTERN_THRESHOLD;
 
   return (
     <>
+      {returning && (
+        <div className="mb-3 flex items-center justify-between gap-2 rounded-xl bg-warm-100 px-3 text-sm text-warm-700">
+          <span className="py-2">
+            Welcome back. You last logged on <span className="font-medium text-warm-900">{lastLabel}</span>.
+          </span>
+          {onJumpToDay && (
+            <button
+              type="button"
+              onClick={() => onJumpToDay(stats.lastEntryDate!)}
+              className="-mr-2 min-h-11 shrink-0 rounded-lg px-2 font-medium text-teal-700 hover:bg-warm-200"
+            >
+              See that day
+            </button>
+          )}
+        </div>
+      )}
       <div className="mb-4 flex items-center gap-3">
         <button
           type="button"
@@ -98,6 +130,7 @@ export function ProgressStrip() {
           <span className="min-w-0 truncate text-sm text-warm-600 transition-colors group-hover:text-warm-800">
             {line}
           </span>
+          {showBar && (
           <span
             className="h-1 max-w-24 flex-1 overflow-hidden rounded-full bg-warm-200"
             aria-hidden
@@ -107,6 +140,7 @@ export function ProgressStrip() {
               style={{ width: `${pct}%` }}
             />
           </span>
+          )}
           {!hasGoal && (
             <span className="shrink-0 text-sm font-medium text-teal-700 group-hover:text-teal-800">Set a goal</span>
           )}

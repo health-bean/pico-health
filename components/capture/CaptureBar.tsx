@@ -99,8 +99,14 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-20 z-40 md:bottom-6">
+      {/* A soft band of the page surface behind the stack, so cards scrolling
+          underneath never show through between the banner and the bar. */}
       <div
-        className="pointer-events-auto mx-auto w-full max-w-2xl px-4"
+        aria-hidden="true"
+        className="absolute inset-x-0 -bottom-20 -top-6 bg-gradient-to-t from-[var(--color-surface)] from-70% to-transparent md:-bottom-6"
+      />
+      <div
+        className="pointer-events-auto relative mx-auto w-full max-w-2xl px-4"
         // Focus anywhere in the bar (the field or a shortcut) keeps shortcuts
         // open, so a keyboard user can Tab from the field into them.
         onFocus={() => setFocused(true)}

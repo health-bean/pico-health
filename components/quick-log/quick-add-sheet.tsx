@@ -122,7 +122,7 @@ export function QuickAddSheet({ open, onClose, onSaved, entryDate, dayLabel }: Q
       >
         {/* Handle + close */}
         <div className="flex items-center justify-between px-4 pt-3 pb-1">
-          <div className="mx-auto h-1 w-10 rounded-full bg-warm-300" />
+          <div aria-hidden="true" className="mx-auto h-1 w-10 rounded-full bg-warm-300 md:hidden" />
         </div>
         <div className="flex items-center justify-between px-4 pb-2">
           <h2

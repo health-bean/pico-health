@@ -20,6 +20,7 @@ export async function GET() {
       .select({
         daysTracked: sql<number>`COUNT(DISTINCT ${timelineEntries.entryDate})::int`,
         firstEntryDate: sql<string | null>`MIN(${timelineEntries.entryDate})`,
+        lastEntryDate: sql<string | null>`MAX(${timelineEntries.entryDate})`,
       })
       .from(timelineEntries)
       .where(eq(timelineEntries.userId, session.userId));
@@ -36,6 +37,7 @@ export async function GET() {
     return NextResponse.json({
       daysTracked: stats?.daysTracked ?? 0,
       firstEntryDate: stats?.firstEntryDate ?? null,
+      lastEntryDate: stats?.lastEntryDate ?? null,
       trackingGoalDays: profile?.trackingGoalDays ?? null,
       trackingGoalStartDate: profile?.trackingGoalStartDate ?? null,
     });

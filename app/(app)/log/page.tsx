@@ -313,7 +313,7 @@ export default function TimelinePage() {
     // Opacity-only entrance: a transform on this root would break `position:
     // fixed` for the capture bar, the Quick Add sheet, and entry menus inside.
     <div className={cn("mx-auto max-w-2xl px-4 py-6 animate-fade-in", isToday ? "pb-36 md:pb-28" : "pb-52 md:pb-44")}>
-      <ProgressStrip />
+      <ProgressStrip onJumpToDay={setDate} />
 
       {/* Date nav: the heading opens a week strip for jumping straight to a day */}
       <div className="mb-2 flex items-center justify-between">
