@@ -15,7 +15,7 @@ describe('detectNewAlerts', () => {
         factor: { category: 'food', key: 'food:eggs', label: 'Eggs' },
         outcome: { type: 'symptom_occurrence', key: 'symptom:headache', label: 'Headache' },
         frequency: 5, totalOpportunities: 8, baseRate: 0.1, conditionalRate: 0.6,
-        rateMultiplier: 6, recencyDays: 1, impactScore: 0.8,
+        rateMultiplier: 6, recencyDays: 1, impactScore: 0.8, direction: 'increases',
         description: 'On days with eggs, headache was 6x more frequent (seen 5 times)',
       }],
     });
@@ -32,13 +32,56 @@ describe('detectNewAlerts', () => {
         factor: { category: 'food', key: 'food:eggs', label: 'Eggs' },
         outcome: { type: 'symptom_occurrence', key: 'symptom:headache', label: 'Headache' },
         frequency: 5, totalOpportunities: 8, baseRate: 0.1, conditionalRate: 0.6,
-        rateMultiplier: 6, recencyDays: 1, impactScore: 0.8,
+        rateMultiplier: 6, recencyDays: 1, impactScore: 0.8, direction: 'increases',
         description: 'test',
       }],
     });
 
     const alerts = detectNewAlerts(current, new Set(['food:eggs→symptom:headache']));
     expect(alerts).toHaveLength(0);
+  });
+
+  it('skips a trigger whose conditional rate is not above its base rate', () => {
+    const current = makeOutput({
+      triggers: [{
+        factor: { category: 'food', key: 'food:bell_pepper', label: 'Bell peppers' },
+        outcome: { type: 'symptom_occurrence', key: 'symptom:headache', label: 'Headache' },
+        frequency: 16, totalOpportunities: 68, baseRate: 0.31, conditionalRate: 0.24,
+        rateMultiplier: 0.77, recencyDays: 1, impactScore: 0.2, direction: 'increases',
+        description: 'Headache on 16 of 68 days with bell peppers (24%), vs 31% of days without',
+      }],
+    });
+
+    expect(detectNewAlerts(current, new Set())).toHaveLength(0);
+  });
+
+  it('skips a helper whose conditional rate is not below its base rate', () => {
+    const current = makeOutput({
+      helpers: [{
+        factor: { category: 'supplement', key: 'supplement:magnesium', label: 'Magnesium' },
+        outcome: { type: 'symptom_occurrence', key: 'symptom:headache', label: 'Headache' },
+        frequency: 10, totalOpportunities: 20, baseRate: 0.3, conditionalRate: 0.5,
+        rateMultiplier: 1.6, recencyDays: 1, impactScore: 0.2, direction: 'decreases',
+        description: 'test',
+      }],
+    });
+
+    expect(detectNewAlerts(current, new Set())).toHaveLength(0);
+  });
+
+  it('records the rates behind a pattern alert', () => {
+    const current = makeOutput({
+      triggers: [{
+        factor: { category: 'food', key: 'food:eggs', label: 'Eggs' },
+        outcome: { type: 'symptom_occurrence', key: 'symptom:headache', label: 'Headache' },
+        frequency: 5, totalOpportunities: 8, baseRate: 0.1, conditionalRate: 0.6,
+        rateMultiplier: 6, recencyDays: 1, impactScore: 0.8, direction: 'increases',
+        description: 'test',
+      }],
+    });
+
+    const [alert] = detectNewAlerts(current, new Set());
+    expect(alert.detail).toMatchObject({ conditionalRate: 0.6, baseRate: 0.1, direction: 'increases' });
   });
 
   it('creates progress milestone alert for significant improvement', () => {

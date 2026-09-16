@@ -1,6 +1,7 @@
 'use client';
 
 import { ConfidenceTag, type Confidence } from './ConfidenceTag';
+import { NewTag } from './NewTag';
 
 interface InsightRowProps {
   icon: string;
@@ -10,9 +11,10 @@ interface InsightRowProps {
   foods?: string[];
   isCompound?: boolean;
   confidence?: Confidence;
+  isNew?: boolean;
 }
 
-export function InsightRow({ icon, title, description, percentage, foods, isCompound, confidence }: InsightRowProps) {
+export function InsightRow({ icon, title, description, percentage, foods, isCompound, confidence, isNew }: InsightRowProps) {
   const bgClass = isCompound ? 'bg-amber-50/60 border border-amber-100' : 'bg-warm-50';
   const pctColor = percentage >= 60 ? 'text-red-600' : percentage >= 40 ? 'text-amber-600' : 'text-warm-500';
 
@@ -29,6 +31,7 @@ export function InsightRow({ icon, title, description, percentage, foods, isComp
               </span>
             )}
             {confidence && <ConfidenceTag confidence={confidence} />}
+            {isNew && <NewTag />}
           </div>
           <p className="text-[13px] text-warm-600 leading-snug">{description}</p>
           {foods && foods.length > 0 && (

@@ -8,6 +8,7 @@ import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
 import { Spinner, Card } from '@/components/ui';
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
+import { insightKey } from '@/lib/insights/types';
 
 const FACTOR_ICONS: Record<string, string> = {
   food: '🍽️', food_property: '🧪', supplement: '💊', medication: '💉',
@@ -53,6 +54,11 @@ function isMultiFactor(result: SingleFactorResult | MultiFactorResult): boolean 
   return 'factors' in result && (result as MultiFactorResult).factorCount >= 2;
 }
 
+function resultKey(result: SingleFactorResult | MultiFactorResult): string {
+  const factors = 'factors' in result ? (result as MultiFactorResult).factors : [(result as SingleFactorResult).factor];
+  return insightKey(factors, result.outcome);
+}
+
 type TimeRange = 30 | 90 | 180;
 
 export default function InsightsPage() {
@@ -93,6 +99,11 @@ export default function InsightsPage() {
     await fetch(`/api/insights/alerts/${id}`, { method: 'PATCH' });
   }, []);
 
+  const handleClearAlerts = useCallback(async () => {
+    setAlerts([]);
+    await fetch('/api/insights/alerts', { method: 'PATCH' });
+  }, []);
+
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
@@ -114,20 +125,29 @@ export default function InsightsPage() {
   const hasInsights = triggers.length > 0 || propertyPatterns.length > 0 || helpers.length > 0;
   const daysTracked = patterns?.dataStatus?.daysTracked ?? 0;
 
+  // An alert is a "New" mark on the curated row it points at. Only alerts
+  // with no row to land on (progress milestones, patterns that have since
+  // faded) are listed on their own, below the curated sections.
+  const alertKeys = new Set(alerts.map(a => a.insightKey));
+  const shownKeys = new Set([...triggers, ...helpers].map(resultKey));
+  const orphanAlerts = alerts.filter(a => !shownKeys.has(a.insightKey));
+
   return (
     <div className="mx-auto max-w-2xl px-4 pb-24">
       {/* Header + Timeframe */}
       <div className="flex items-center justify-between py-5">
         <h1 className="font-display text-2xl text-warm-900">Insights</h1>
-        <div className="flex gap-1 bg-warm-100 rounded-lg p-0.5">
+        <div role="group" aria-label="Time range" className="flex gap-0.5 rounded-lg bg-warm-100 p-0.5">
           {([30, 90, 180] as TimeRange[]).map(d => (
             <button
               key={d}
+              type="button"
+              aria-pressed={timeRange === d}
               onClick={() => setTimeRange(d)}
-              className={`px-2.5 py-1 rounded-md text-xs font-semibold transition-colors ${
+              className={`min-h-10 rounded-md px-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
                 timeRange === d
                   ? 'bg-white text-warm-900 shadow-sm'
-                  : 'text-warm-400 hover:text-warm-600'
+                  : 'text-warm-500 hover:text-warm-700'
               }`}
             >
               {d}d
@@ -136,19 +156,12 @@ export default function InsightsPage() {
         </div>
       </div>
 
-      {/* Alerts */}
-      {alerts.length > 0 && (
-        <div className="mb-4">
-          <AlertStack alerts={alerts} onDismiss={handleDismissAlert} />
-        </div>
-      )}
-
       {/* Cold start */}
       {!hasInsights && (
         <Card className="p-5 mb-4 text-center">
           <p className="text-sm text-warm-600 font-medium">Patterns emerge with more data.</p>
-          <p className="text-xs text-warm-400 mt-1">
-            {daysTracked} days tracked — patterns typically appear around 14 days.
+          <p className="text-sm text-warm-500 mt-1">
+            {daysTracked} of the last {timeRange} days logged. Patterns typically appear around 14 logged days.
           </p>
           <div className="mt-3 h-1.5 w-full max-w-[200px] mx-auto rounded-full bg-warm-100 overflow-hidden">
             <div
@@ -181,6 +194,7 @@ export default function InsightsPage() {
                   foods={getFoods(r)}
                   isCompound={isMultiFactor(r)}
                   confidence={r.confidence}
+                  isNew={alertKeys.has(resultKey(r))}
                 />
               ))}
             </InsightSection>
@@ -227,6 +241,7 @@ export default function InsightsPage() {
                   description={r.description}
                   percentage={getPercentage(r)}
                   confidence={r.confidence}
+                  isNew={alertKeys.has(resultKey(r))}
                 />
               ))}
             </InsightSection>
@@ -251,6 +266,12 @@ export default function InsightsPage() {
               </div>
             </div>
           )}
+        </div>
+      )}
+
+      {orphanAlerts.length > 0 && (
+        <div className="mt-6">
+          <AlertStack alerts={orphanAlerts} onDismiss={handleDismissAlert} onClearAll={handleClearAlerts} />
         </div>
       )}
 
