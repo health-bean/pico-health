@@ -1,6 +1,5 @@
 "use client";
 
-import { AlertTriangle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { Food, Protocol } from "@/types";
 
@@ -12,71 +11,39 @@ interface ProtocolComplianceWarningProps {
   onCancel: () => void;
 }
 
+/**
+ * Shown inline when a picked food sits outside the current protocol. It is
+ * a note, not a verdict: the product observes, it does not police plates.
+ * Logging the food is the useful act; the engine learns from it either way.
+ */
 export function ProtocolComplianceWarning({
+  food,
   protocol,
   violations,
   onProceed,
   onCancel,
 }: ProtocolComplianceWarningProps) {
   return (
-    <div className="rounded-xl border-2 border-amber-300 bg-amber-50 p-4 shadow-sm">
-      {/* Header with Icon */}
-      <div className="flex items-start gap-3">
-        <div className="shrink-0">
-          <AlertTriangle className="h-6 w-6 text-amber-600" />
-        </div>
+    <div
+      role="status"
+      className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface-overlay)] p-4"
+    >
+      <p className="text-sm font-semibold text-[var(--color-text-primary)]">
+        {food.displayName} is outside {protocol.name}
+      </p>
+      <p className="mt-1 text-sm text-[var(--color-warning)]">
+        {violations.join(" · ")}
+      </p>
+      <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">
+        Logging it is the useful part. Days like this are how patterns show up.
+      </p>
 
-        <div className="flex-1">
-          {/* Warning Title */}
-          <h3 className="text-base font-semibold text-amber-900">
-            Protocol Compliance Warning
-          </h3>
-
-          {/* Main Warning Message */}
-          <p className="mt-2 text-sm text-amber-800">
-            This food contains properties that are not allowed on{" "}
-            <span className="font-medium">{protocol.name}</span>:
-          </p>
-
-          {/* Violations List */}
-          <ul className="mt-2 space-y-1">
-            {violations.map((violation, index) => (
-              <li
-                key={index}
-                className="flex items-start gap-2 text-sm text-amber-800"
-              >
-                <span className="mt-0.5 text-amber-600">•</span>
-                <span className="capitalize">{violation}</span>
-              </li>
-            ))}
-          </ul>
-
-          {/* Additional Context */}
-          <p className="mt-3 text-xs text-amber-700">
-            Logging this food may affect your protocol adherence and could
-            trigger symptoms. You can proceed if you&apos;re intentionally
-            testing this food.
-          </p>
-        </div>
-      </div>
-
-      {/* Action Buttons */}
       <div className="mt-4 flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
-        <Button
-          variant="ghost"
-          size="md"
-          onClick={onCancel}
-          className="w-full sm:w-auto"
-        >
-          Cancel
+        <Button variant="ghost" size="md" onClick={onCancel} className="w-full sm:w-auto">
+          Pick another
         </Button>
-        <Button
-          variant="danger"
-          size="md"
-          onClick={onProceed}
-          className="w-full sm:w-auto"
-        >
-          Proceed Anyway
+        <Button variant="primary" size="md" onClick={onProceed} className="w-full sm:w-auto">
+          Log it anyway
         </Button>
       </div>
     </div>

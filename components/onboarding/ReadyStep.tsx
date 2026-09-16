@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Sparkles, MessageSquare } from "lucide-react";
+import { Sparkles, NotebookPen, Apple, Frown, Pill } from "lucide-react";
 import { Button } from "@/components/ui";
 
 interface ReadyStepProps {
@@ -10,9 +10,9 @@ interface ReadyStepProps {
 }
 
 const EXAMPLE_PROMPTS = [
-  { emoji: "\u{1F41F}", text: "I had salmon and sweet potato for lunch" },
-  { emoji: "\u{1F623}", text: "My joint pain is about a 6 today" },
-  { emoji: "\u{1F48A}", text: "I took magnesium and vitamin D this morning" },
+  { icon: Apple, text: "Salmon and sweet potato for lunch" },
+  { icon: Frown, text: "Joint pain about a 6 today" },
+  { icon: Pill, text: "Magnesium and vitamin D this morning" },
 ];
 
 export function ReadyStep({ protocolId, onBack }: ReadyStepProps) {
@@ -38,7 +38,7 @@ export function ReadyStep({ protocolId, onBack }: ReadyStepProps) {
 
   return (
     <div className="flex flex-col items-center text-center py-8">
-      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-50 text-emerald-600 mb-6">
+      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-teal-50 text-teal-600 mb-6">
         <Sparkles className="h-8 w-8" />
       </div>
 
@@ -47,13 +47,13 @@ export function ReadyStep({ protocolId, onBack }: ReadyStepProps) {
       </h2>
 
       <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed max-w-xs mb-6">
-        Start by logging what you ate today, how you&apos;re feeling, or any supplements you took.
+        Start on the Log tab. Type what you ate or how you feel; one line is enough.
       </p>
 
       <div className="w-full rounded-2xl bg-[var(--color-surface-card)] p-4 shadow-[var(--shadow-card)] border border-[var(--color-border)]/20 mb-6 text-left">
         <div className="flex items-center gap-2 mb-3">
-          <MessageSquare className="h-4 w-4 text-[var(--color-text-muted)]" />
-          <span className="text-xs text-[var(--color-text-muted)]">You can also chat with your AI coach:</span>
+          <NotebookPen className="h-4 w-4 text-[var(--color-text-muted)]" aria-hidden="true" />
+          <span className="text-xs text-[var(--color-text-muted)]">Type it the way you&apos;d say it:</span>
         </div>
         <div className="flex flex-col gap-2">
           {EXAMPLE_PROMPTS.map((prompt) => (
@@ -61,7 +61,7 @@ export function ReadyStep({ protocolId, onBack }: ReadyStepProps) {
               key={prompt.text}
               className="flex items-center gap-2.5 text-sm text-[var(--color-text-primary)]"
             >
-              <span className="text-base">{prompt.emoji}</span>
+              <prompt.icon className="h-4 w-4 shrink-0 text-teal-600" aria-hidden="true" />
               <span>&ldquo;{prompt.text}&rdquo;</span>
             </div>
           ))}

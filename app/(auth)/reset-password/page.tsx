@@ -37,7 +37,7 @@ export default function ResetPasswordPage() {
         return;
       }
 
-      router.push("/chat");
+      router.push("/log");
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

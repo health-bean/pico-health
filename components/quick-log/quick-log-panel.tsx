@@ -312,19 +312,15 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
                 </div>
               )}
 
-              {/* Protocol Compliance Warning Modal */}
+              {/* Off-protocol note, inline where the property card would be */}
               {showComplianceWarning && selectedFood && protocol && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
-                  <div className="w-full max-w-md">
-                    <ProtocolComplianceWarning
-                      food={selectedFood}
-                      protocol={protocol}
-                      violations={getViolations(selectedFood)}
-                      onProceed={handleProceedWithFood}
-                      onCancel={handleCancelFood}
-                    />
-                  </div>
-                </div>
+                <ProtocolComplianceWarning
+                  food={selectedFood}
+                  protocol={protocol}
+                  violations={getViolations(selectedFood)}
+                  onProceed={handleProceedWithFood}
+                  onCancel={handleCancelFood}
+                />
               )}
 
               {/* Custom Food Form Modal */}

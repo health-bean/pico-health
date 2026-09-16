@@ -18,8 +18,8 @@ export function WelcomeStep({ onNext }: WelcomeStepProps) {
       </h1>
 
       <p className="text-sm text-[var(--color-text-secondary)] leading-relaxed max-w-xs mb-8">
-        Your intelligent protocol coach. Track food, symptoms, and lifestyle
-        through simple conversation — and discover the patterns that matter.
+        Log meals and symptoms in your own words. Within a couple of weeks,
+        see which foods and food properties line up with how you feel.
       </p>
 
       <Button onClick={onNext} size="lg" className="w-full">
