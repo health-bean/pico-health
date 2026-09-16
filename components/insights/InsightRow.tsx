@@ -18,18 +18,18 @@ interface InsightRowProps {
   isNew?: boolean;
   /** 'symptom' rows describe when a symptom was more common; 'better' rows when it was less common. */
   tone?: 'symptom' | 'better';
+  /** Shown when the same thing also appears in the other list, so the two rows do not read as a contradiction. */
+  note?: string;
 }
 
 /**
- * One observation. The number on the right is the honest denominator, not
- * a score: an early signal is shown as "5 of 5 days", never as "100%", so
- * five days can never look like certainty.
+ * One observation. The number on the right is always the same shape,
+ * "14 of 26 days", so it reads as a count and never as a score, and five
+ * days can never look like certainty.
  */
-export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom' }: InsightRowProps) {
-  const bgClass = isCompound ? 'bg-teal-50/40 border border-teal-100' : 'bg-warm-50';
+export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note }: InsightRowProps) {
+  const bgClass = 'bg-warm-50';
   const iconColor = tone === 'better' ? 'text-teal-600' : 'text-warm-600';
-  const showPercent = confidence !== 'early' && total >= 10;
-  const percentage = total > 0 ? Math.round((days / total) * 100) : 0;
 
   return (
     <div className={`p-3 rounded-lg ${bgClass}`}>
@@ -47,6 +47,7 @@ export function InsightRow({ icon: Icon, title, description, days, total, foods,
             {isNew && <NewTag />}
           </div>
           <p className="max-w-[65ch] text-sm text-warm-600 leading-snug">{description}</p>
+          {note && <p className="mt-1 max-w-[65ch] text-sm text-warm-500">{note}</p>}
           {foods && foods.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {foods.map((food, i) => (
@@ -58,17 +59,8 @@ export function InsightRow({ icon: Icon, title, description, days, total, foods,
           )}
         </div>
         <div className="shrink-0 text-right tabular-nums">
-          {showPercent ? (
-            <>
-              <div className="text-base font-semibold text-warm-900">{percentage}%</div>
-              <div className="text-xs text-warm-500">of {total} days</div>
-            </>
-          ) : (
-            <>
-              <div className="text-base font-semibold text-warm-900">{days} of {total}</div>
-              <div className="text-xs text-warm-500">days</div>
-            </>
-          )}
+          <div className="text-base font-semibold text-warm-900">{days} of {total}</div>
+          <div className="text-xs text-warm-500">days</div>
         </div>
       </div>
     </div>

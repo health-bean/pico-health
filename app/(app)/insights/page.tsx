@@ -8,7 +8,7 @@ import { DayView } from '@/components/insights/DayView';
 import { Spinner, Card, PageTitle } from '@/components/ui';
 import {
   Activity, Apple, CalendarDays, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
-  Flame, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, ThumbsUp, Zap,
+  Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, TrendingDown, TrendingUp, Zap,
   type LucideIcon,
 } from 'lucide-react';
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
@@ -61,7 +61,11 @@ export default function InsightsPage() {
   const [alerts, setAlerts] = useState<InsightAlert[]>([]);
   const [timeRange, setTimeRange] = useState<TimeRange>(90);
 
-  const today = new Date().toISOString().split('T')[0];
+  const now = new Date();
+  const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
+  // Early signals (a handful of days) stay out of the default view so the
+  // page leads with what has real evidence behind it. One tap brings them in.
+  const [showEarly, setShowEarly] = useState(false);
 
   const loadData = useCallback(async (days: number) => {
     setLoading(true);
@@ -109,13 +113,30 @@ export default function InsightsPage() {
   }
 
   // Separate and curate
-  const allTriggers = patterns?.triggers ?? [];
+  const withEvidence = <T extends { confidence?: string }>(rows: T[]) =>
+    showEarly ? rows : rows.filter(r => r.confidence !== 'early');
+  const earlyCount = [...(patterns?.triggers ?? []), ...(patterns?.helpers ?? [])].filter(r => r.confidence === 'early').length;
+  const allTriggers = withEvidence(patterns?.triggers ?? []);
   const multiTriggers = allTriggers.filter(r => isMultiFactor(r));
   const singleTriggers = allTriggers.filter(r => !isMultiFactor(r));
   const triggers = [...multiTriggers, ...singleTriggers]; // compounds first
 
   const propertyPatterns = patterns?.propertyPatterns ?? [];
-  const helpers = patterns?.helpers ?? [];
+  const helpers = withEvidence(patterns?.helpers ?? []);
+
+  // The same food can raise one symptom and lower another. Say so on both
+  // rows so a person does not read the two lists as a contradiction.
+  const singleKey = (r: SingleFactorResult | MultiFactorResult) =>
+    'factors' in r && (r as MultiFactorResult).factorCount >= 2 ? null : ('factors' in r ? (r as MultiFactorResult).factors[0].key : (r as SingleFactorResult).factor.key);
+  const triggerOutcomes = new Map<string, string[]>();
+  for (const r of allTriggers) { const k = singleKey(r); if (k) triggerOutcomes.set(k, [...(triggerOutcomes.get(k) ?? []), r.outcome.label]); }
+  const helperOutcomes = new Map<string, string[]>();
+  for (const r of helpers) { const k = singleKey(r); if (k) helperOutcomes.set(k, [...(helperOutcomes.get(k) ?? []), r.outcome.label]); }
+  const crossNote = (r: SingleFactorResult | MultiFactorResult, other: Map<string, string[]>, where: string) => {
+    const k = singleKey(r);
+    const outcomes = k ? other.get(k) : undefined;
+    return outcomes && outcomes.length > 0 ? `Also listed under ${where} for ${outcomes.slice(0, 2).join(' and ')}.` : undefined;
+  };
   const progress = patterns?.progress ?? [];
 
   const hasInsights = triggers.length > 0 || propertyPatterns.length > 0 || helpers.length > 0;
@@ -140,7 +161,7 @@ export default function InsightsPage() {
               type="button"
               aria-pressed={timeRange === d}
               onClick={() => setTimeRange(d)}
-              className={`min-h-10 rounded-md px-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
+              className={`min-h-11 rounded-md px-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 ${
                 timeRange === d
                   ? 'bg-[var(--color-surface-card)] text-warm-900 shadow-[var(--shadow-card)]'
                   : 'text-warm-500 hover:text-warm-700'
@@ -152,7 +173,32 @@ export default function InsightsPage() {
         </div>
       </div>
 
-      {/* Nothing in this window, but recent alerts point at an older one */}
+      {(hasInsights || earlyCount > 0) && (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+          <details className="group text-sm text-warm-600">
+            <summary className="inline-flex min-h-11 cursor-pointer list-none items-center font-medium text-teal-700 hover:text-teal-800">
+              How to read this
+            </summary>
+            <div className="mt-1 max-w-[65ch] space-y-2 rounded-xl bg-warm-50 p-3 leading-relaxed">
+              <p>Each row is something that happened alongside a symptom, counted in days. It is a pattern in your own log, not a cause or a diagnosis. Worth raising with your practitioner.</p>
+              <p><span className="font-medium text-warm-800">Early signal</span> means only a few days so far. <span className="font-medium text-warm-800">Moderate</span> and <span className="font-medium text-warm-800">strong evidence</span> mean more days and a bigger difference from your other days.</p>
+              <p>A <span className="font-medium text-warm-800">flare day</span> is a day with two or more symptoms logged, or any symptom rated 7 or higher.</p>
+            </div>
+          </details>
+          {earlyCount > 0 && (
+            <button
+              type="button"
+              onClick={() => setShowEarly(v => !v)}
+              aria-pressed={showEarly}
+              className="min-h-11 rounded-lg px-2 text-sm font-medium text-teal-700 hover:bg-teal-50"
+            >
+              {showEarly ? 'Hide early signals' : `Include ${earlyCount} early signals`}
+            </button>
+          )}
+        </div>
+      )}
+
+            {/* Nothing in this window, but recent alerts point at an older one */}
       {!hasInsights && orphanAlerts.length > 0 && timeRange < 180 && (
         <Card className="p-5 mb-4 text-center">
           <p className="text-sm text-warm-600 font-medium">Your patterns are from before the last {timeRange} days.</p>
@@ -191,7 +237,7 @@ export default function InsightsPage() {
           {triggers.length > 0 && (
             <InsightSection
               variant="trigger"
-              icon={Flame}
+              icon={TrendingUp}
               title="Showed up with symptoms"
               subtitle="On days you logged these, the symptom was more common than on other days"
               totalCount={triggers.length}
@@ -209,6 +255,7 @@ export default function InsightsPage() {
                   isCompound={isMultiFactor(r)}
                   confidence={r.confidence}
                   isNew={alertKeys.has(resultKey(r))}
+                  note={crossNote(r, helperOutcomes, 'better days')}
                 />
               ))}
             </InsightSection>
@@ -231,7 +278,7 @@ export default function InsightsPage() {
                   title={`${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property}`}
                   description={p.description}
                   days={p.frequency}
-                  total={daysTracked}
+                  total={p.totalOpportunities ?? daysTracked}
                   foods={p.foods.length > 0 ? p.foods : undefined}
                 />
               ))}
@@ -242,7 +289,7 @@ export default function InsightsPage() {
           {helpers.length > 0 && (
             <InsightSection
               variant="helper"
-              icon={ThumbsUp}
+              icon={TrendingDown}
               title="Showed up on better days"
               subtitle="On days you logged these, the symptom was less common than on other days"
               totalCount={helpers.length}
@@ -259,6 +306,7 @@ export default function InsightsPage() {
                   confidence={r.confidence}
                   isNew={alertKeys.has(resultKey(r))}
                   tone="better"
+                  note={crossNote(r, triggerOutcomes, 'symptoms')}
                 />
               ))}
             </InsightSection>

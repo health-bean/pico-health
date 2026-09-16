@@ -5,34 +5,17 @@ import type { LucideIcon } from 'lucide-react';
 
 type SectionVariant = 'trigger' | 'watch' | 'helper';
 
-// Triggers sit on the level ramp, helpers on the brand hue, watch stays
-// neutral: three sections, two hues, no traffic light.
-const variants = {
-  trigger: {
-    border: 'border-warm-200',
-    headerBg: 'bg-level-2-bg',
-    headerBorder: 'border-level-2-fg/15',
-    titleColor: 'text-level-4-fg',
-    subtitleColor: 'text-level-3-fg',
-    iconColor: 'text-level-3-fg',
-  },
-  watch: {
-    border: 'border-warm-200',
-    headerBg: 'bg-warm-100',
-    headerBorder: 'border-warm-200',
-    titleColor: 'text-warm-900',
-    subtitleColor: 'text-warm-600',
-    iconColor: 'text-warm-600',
-  },
-  helper: {
-    border: 'border-warm-200',
-    headerBg: 'bg-teal-50',
-    headerBorder: 'border-teal-200/60',
-    titleColor: 'text-teal-900',
-    subtitleColor: 'text-teal-700',
-    iconColor: 'text-teal-600',
-  },
+// Every section is an observation, so every section looks the same. Colour
+// here would say "bad" and "good", which is a verdict the data cannot make.
+const NEUTRAL = {
+  border: 'border-warm-200',
+  headerBg: 'bg-warm-50',
+  headerBorder: 'border-warm-200',
+  titleColor: 'text-warm-900',
+  subtitleColor: 'text-warm-600',
+  iconColor: 'text-teal-700',
 };
+const variants = { trigger: NEUTRAL, watch: NEUTRAL, helper: NEUTRAL };
 
 interface InsightSectionProps {
   variant: SectionVariant;

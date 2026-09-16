@@ -6,6 +6,11 @@ import { JournalSummary } from './JournalSummary';
 import { LogSummary } from './LogSummary';
 import type { DayComposite } from '@/lib/insights/types';
 
+/** Local calendar date; toISOString() is UTC and shows tomorrow on US evenings. */
+function localDate(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+}
+
 interface DayViewProps {
   initialDate: string;
   initialComposite: DayComposite | null;
@@ -16,7 +21,7 @@ export function DayView({ initialDate, initialComposite }: DayViewProps) {
   const [composite, setComposite] = useState(initialComposite);
   const [loading, setLoading] = useState(false);
 
-  const today = new Date().toISOString().split('T')[0];
+  const today = localDate(new Date());
 
   const navigate = useCallback(async (newDate: string) => {
     setDate(newDate);
@@ -33,14 +38,14 @@ export function DayView({ initialDate, initialComposite }: DayViewProps) {
   const prevDay = () => {
     const d = new Date(date + 'T12:00:00');
     d.setDate(d.getDate() - 1);
-    navigate(d.toISOString().split('T')[0]);
+    navigate(localDate(d));
   };
 
   const nextDay = () => {
     if (date >= today) return;
     const d = new Date(date + 'T12:00:00');
     d.setDate(d.getDate() + 1);
-    navigate(d.toISOString().split('T')[0]);
+    navigate(localDate(d));
   };
 
   return (
@@ -48,7 +53,7 @@ export function DayView({ initialDate, initialComposite }: DayViewProps) {
       <DayHeader date={date} onPrevious={prevDay} onNext={nextDay} isToday={date === today} />
 
       {loading ? (
-        <div className="py-8 text-center text-warm-500 animate-pulse">Loading...</div>
+        <div role="status" className="py-8 text-center text-sm text-warm-500">Loading this day…</div>
       ) : composite ? (
         <div className="space-y-3">
           {composite.hasJournal && (
@@ -57,17 +62,14 @@ export function DayView({ initialDate, initialComposite }: DayViewProps) {
 
           <LogSummary composite={composite} />
 
-          <div className="flex items-center justify-between text-xs text-warm-500 pt-1">
-            <span>{composite.entryCount} entries logged</span>
-            {composite.compliancePct !== null && (
-              <span>{Math.round(composite.compliancePct)}% protocol compliant</span>
-            )}
-          </div>
+          <p className="pt-1 text-sm text-warm-500">
+            {composite.entryCount} {composite.entryCount === 1 ? 'entry' : 'entries'} logged
+          </p>
         </div>
       ) : (
         <div className="py-8 text-center text-warm-500">
-          <p className="text-sm">No data for this day.</p>
-          <p className="text-xs mt-1">Swipe to browse other days.</p>
+          <p className="text-sm">Nothing logged this day.</p>
+          <p className="mt-1 text-sm">Use the arrows to look at other days.</p>
         </div>
       )}
     </div>

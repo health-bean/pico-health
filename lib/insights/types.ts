@@ -161,6 +161,8 @@ export interface PropertyPattern {
   foods: string[];
   outcome: Outcome;
   frequency: number;
+  /** Days with foods carrying this property: the row's denominator. */
+  totalOpportunities?: number;
   impactScore: number;
   description: string;
 }

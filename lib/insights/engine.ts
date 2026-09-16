@@ -144,6 +144,7 @@ function extractPropertyPatterns(singleResults: SingleFactorResult[]): PropertyP
       foods: [],
       outcome: data.outcome,
       frequency: data.frequency,
+      totalOpportunities: data.total,
       impactScore: data.impact,
       description: `${data.outcome.label} on ${data.frequency} of ${data.total} days with ${sev}-${data.property} foods (${Math.round(data.rate * 100)}%), vs ${Math.round(data.base * 100)}% of other days.`,
     });
