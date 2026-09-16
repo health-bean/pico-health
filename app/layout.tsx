@@ -15,7 +15,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Pico Health",
+  title: { default: "Pico Health", template: "%s · Pico Health" },
   description: "Your intelligent protocol coach for chronic illness recovery",
 };
 

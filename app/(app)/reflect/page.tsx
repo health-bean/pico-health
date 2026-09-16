@@ -253,9 +253,10 @@ export default function ReflectPage() {
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        <h1 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-text-primary)]">
+        <h1 className="sr-only">Reflect</h1>
+        <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-text-primary)]">
           {displayDate(date)}
-        </h1>
+        </h2>
 
         <button
           onClick={() => shiftDate(1)}

@@ -312,7 +312,8 @@ export default function TimelinePage() {
           <ChevronLeft className="h-5 w-5" />
         </button>
 
-        <h1 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-text-primary)]">
+        <h1 className="sr-only">Log</h1>
+        <h2 className="font-[family-name:var(--font-display)] text-lg font-semibold text-[var(--color-text-primary)]">
           <button
             type="button"
             onClick={() => setStripOpen((v) => !v)}
@@ -326,7 +327,7 @@ export default function TimelinePage() {
               aria-hidden="true"
             />
           </button>
-        </h1>
+        </h2>
 
         <button
           type="button"
