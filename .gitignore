@@ -215,3 +215,12 @@ out/
 
 # Eval reports (real API runs, keep local)
 evals/*/results/
+
+# Claude Code per-machine settings (permissions + machine-local hooks)
+.claude/settings.local.json
+
+# Impeccable: commit the skill and agents, not the platform binary or local state
+!.claude/skills/impeccable/scripts/
+.claude/skills/impeccable/scripts/bin/
+.impeccable/config.local.json
+.impeccable/hook.cache.json
