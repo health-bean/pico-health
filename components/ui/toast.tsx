@@ -63,9 +63,9 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
 
   return (
     <div
-      role="alert"
+      role={t.variant === "error" ? "alert" : "status"}
       className={cn(
-        "flex items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium shadow-[var(--shadow-elevated)]",
+        "flex items-center gap-2 rounded-xl py-1.5 pl-4 pr-1.5 text-sm font-medium shadow-[var(--shadow-elevated)]",
         "animate-slide-in-right",
         variantClasses[t.variant]
       )}
@@ -77,14 +77,14 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
             t.action?.onClick();
             onDismiss(t.id);
           }}
-          className="shrink-0 -my-1 min-h-[36px] rounded-lg bg-white/15 px-3 text-sm font-semibold hover:bg-white/25 transition-colors cursor-pointer"
+          className="shrink-0 min-h-11 rounded-lg bg-white/15 px-3.5 text-sm font-semibold hover:bg-white/25 transition-colors cursor-pointer"
         >
           {t.action.label}
         </button>
       )}
       <button
         onClick={() => onDismiss(t.id)}
-        className="shrink-0 rounded-lg p-0.5 opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+        className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
         aria-label="Dismiss"
       >
         <X className="h-4 w-4" />

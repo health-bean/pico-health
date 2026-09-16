@@ -121,19 +121,18 @@ export function ShortcutRow({ onShortcut }: ShortcutRowProps) {
   return (
     <div
       className="mb-1.5 flex gap-1.5 overflow-x-auto pb-0.5 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-      role="listbox"
+      role="group"
       aria-label="Quick log shortcuts"
     >
       {shortcuts.map((s) => (
         <button
           key={s.key}
           type="button"
-          // onMouseDown so the tap wins the race against the input's blur.
-          onMouseDown={(e) => {
-            e.preventDefault();
-            onShortcut(s.items);
-          }}
-          className="flex min-h-9 shrink-0 items-center gap-1.5 rounded-full border border-[var(--color-border-light)] bg-[var(--color-surface-card)] px-3 text-xs font-medium text-warm-700 shadow-sm transition-colors hover:border-teal-300 hover:text-teal-700 focus-visible:outline-2 focus-visible:outline-teal-500"
+          // Keep focus in the bar on pointer press; the log itself happens on
+          // click, so Enter and Space work for keyboard users too.
+          onMouseDown={(e) => e.preventDefault()}
+          onClick={() => onShortcut(s.items)}
+          className="flex min-h-11 shrink-0 items-center gap-1.5 rounded-full border border-[var(--color-border-light)] bg-[var(--color-surface-card)] px-3 text-sm font-medium text-warm-700 shadow-[var(--shadow-card)] transition-colors hover:border-teal-300 hover:text-teal-700 focus-visible:outline-2 focus-visible:outline-teal-500"
         >
           <s.icon className="h-3.5 w-3.5 text-teal-600" aria-hidden />
           <span className="max-w-64 truncate">{s.label}</span>

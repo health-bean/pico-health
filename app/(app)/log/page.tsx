@@ -179,7 +179,21 @@ export default function TimelinePage() {
           }),
         });
         if (!res.ok) throw new Error(`Batch failed (${res.status})`);
-        toast(`Logged ${items.length} ${items.length === 1 ? "item" : "items"}`, "success");
+        const created: { id: string }[] = (await res.json().catch(() => ({})))?.entries ?? [];
+        // A shortcut logs in one tap, so it gets the same Undo as delete.
+        toast(`Logged ${items.length} ${items.length === 1 ? "item" : "items"}`, "success", {
+          action:
+            created.length > 0
+              ? {
+                  label: "Undo",
+                  onClick: () => {
+                    void Promise.all(
+                      created.map((e) => fetch(`/api/entries/${e.id}`, { method: "DELETE" }))
+                    ).then(() => fetchEntries(dateRef.current));
+                  },
+                }
+              : undefined,
+        });
         fetchEntries(dateRef.current);
       } catch {
         toast("Couldn't log that — try typing it instead", "error");
@@ -298,7 +312,7 @@ export default function TimelinePage() {
   return (
     // Opacity-only entrance: a transform on this root would break `position:
     // fixed` for the capture bar, the Quick Add sheet, and entry menus inside.
-    <div className="mx-auto max-w-2xl px-4 py-6 pb-36 md:pb-28 animate-fade-in">
+    <div className={cn("mx-auto max-w-2xl px-4 py-6 animate-fade-in", isToday ? "pb-36 md:pb-28" : "pb-52 md:pb-44")}>
       <ProgressStrip />
 
       {/* Date nav: the heading opens a week strip for jumping straight to a day */}
@@ -374,6 +388,15 @@ export default function TimelinePage() {
               session={session}
               onUndo={() => void undoSession(session.id)}
               onDismiss={() => dismissSession(session.id)}
+              onRetry={
+                session.status === "error" && session.sourceText && !session.imagePreviewUrl
+                  ? () => {
+                      const retryText = session.sourceText as string;
+                      dismissSession(session.id);
+                      void submitText(retryText);
+                    }
+                  : undefined
+              }
               onRemoveEntry={(entryId) => void removeEntry(session.id, entryId)}
               onPatchEntry={(entryId, patch) => patchEntry(session.id, entryId, patch)}
               onClarified={() => fetchEntries(dateRef.current)}
@@ -474,6 +497,8 @@ export default function TimelinePage() {
       {/* The pen is always out */}
       <CaptureBar
         onSubmitText={(text) => void submitText(text)}
+        dayLabel={isToday ? undefined : displayDate(date)}
+        onBackToToday={() => setDate(today)}
         onSubmitImage={(input) => void submitImage(input)}
         onBrowse={() => setSheetOpen(true)}
         onShortcut={(items) => void logShortcut(items)}

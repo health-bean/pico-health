@@ -45,9 +45,13 @@ interface CaptureBarProps {
   disabled?: boolean;
   /** Log the entries a shortcut carries (already-known foods/symptoms). */
   onShortcut: (items: { entryType: string; name: string; foodId?: string; mealType?: string }[]) => void;
+  /** Label of a past day being backfilled ("Fri, Apr 24"); omitted for today. */
+  dayLabel?: string;
+  /** Jump the Log back to today; shown only while backfilling. */
+  onBackToToday?: () => void;
 }
 
-export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, onShortcut }: CaptureBarProps) {
+export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, onShortcut, dayLabel, onBackToToday }: CaptureBarProps) {
   const [text, setText] = useState("");
   const [focused, setFocused] = useState(false);
   const [placeholderIdx, setPlaceholderIdx] = useState(0);
@@ -56,11 +60,15 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
   const fileRef = useRef<HTMLInputElement>(null);
 
   // Rotate the placeholder while the field is idle — the bar teaches by example.
+  // Not while backfilling (the placeholder names the day instead) and not for
+  // people who asked for less motion: a moving target is hard to read on a
+  // foggy day.
   useEffect(() => {
-    if (focused || text) return;
-    const id = setInterval(() => setPlaceholderIdx((i) => (i + 1) % PLACEHOLDERS.length), 5000);
+    if (focused || text || dayLabel) return;
+    if (typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setPlaceholderIdx((i) => (i + 1) % PLACEHOLDERS.length), 8000);
     return () => clearInterval(id);
-  }, [focused, text]);
+  }, [focused, text, dayLabel]);
 
   const submit = useCallback(() => {
     const trimmed = text.trim();
@@ -91,7 +99,32 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
 
   return (
     <div className="pointer-events-none fixed inset-x-0 bottom-20 z-40 md:bottom-6">
-      <div className="pointer-events-auto mx-auto w-full max-w-2xl px-4">
+      <div
+        className="pointer-events-auto mx-auto w-full max-w-2xl px-4"
+        // Focus anywhere in the bar (the field or a shortcut) keeps shortcuts
+        // open, so a keyboard user can Tab from the field into them.
+        onFocus={() => setFocused(true)}
+        onBlur={(e) => {
+          if (e.currentTarget.contains(e.relatedTarget as Node | null)) return;
+          setTimeout(() => setFocused(false), 150);
+        }}
+      >
+        {dayLabel && (
+          <div className="mb-1.5 flex items-center justify-between gap-2 rounded-xl bg-teal-50 px-3 text-sm text-teal-800 ring-1 ring-inset ring-teal-200/70">
+            <span className="py-2">
+              Logging to <span className="font-semibold">{dayLabel}</span>
+            </span>
+            {onBackToToday && (
+              <button
+                type="button"
+                onClick={onBackToToday}
+                className="-mr-2 min-h-11 shrink-0 rounded-lg px-2 font-medium text-teal-700 hover:bg-teal-100"
+              >
+                Back to today
+              </button>
+            )}
+          </div>
+        )}
         {focused && (
           <ShortcutRow
             onShortcut={(items) => {
@@ -101,13 +134,13 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
           />
         )}
         {photoError && (
-          <p className="mb-1.5 rounded-lg bg-[var(--color-surface-card)] px-3 py-1.5 text-xs text-warm-600 shadow-sm ring-1 ring-[var(--color-border-light)]">
+          <p role="alert" className="mb-1.5 rounded-lg bg-[var(--color-surface-card)] px-3 py-1.5 text-sm text-warm-700 shadow-[var(--shadow-card)] ring-1 ring-[var(--color-border-light)]">
             {photoError}
           </p>
         )}
         <div
           className={cn(
-            "flex items-end gap-1.5 rounded-2xl border bg-[var(--color-surface-card)] p-1.5 shadow-lg shadow-warm-900/10 transition-colors duration-200",
+            "flex items-end gap-1.5 rounded-2xl border bg-[var(--color-surface-card)] p-1.5 shadow-[var(--shadow-float)] transition-colors duration-200",
             focused ? "border-teal-400" : "border-[var(--color-border-light)]"
           )}
         >
@@ -128,14 +161,12 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            onFocus={() => setFocused(true)}
-            onBlur={() => setTimeout(() => setFocused(false), 150)}
             onKeyDown={(e) => {
               if (e.key === "Enter") submit();
             }}
             enterKeyHint="send"
-            placeholder={PLACEHOLDERS[placeholderIdx]}
-            aria-label="Log a meal, symptom, or anything else"
+            placeholder={dayLabel ? `Add to ${dayLabel}…` : PLACEHOLDERS[placeholderIdx]}
+            aria-label={dayLabel ? `Log a meal, symptom, or anything else to ${dayLabel}` : "Log a meal, symptom, or anything else"}
             className="min-h-11 min-w-0 flex-1 bg-transparent px-1 text-[15px] text-[var(--color-text-primary)] caret-teal-600 placeholder:text-warm-500 focus:outline-none"
           />
 

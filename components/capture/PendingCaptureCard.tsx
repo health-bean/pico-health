@@ -21,6 +21,8 @@ interface PendingCaptureCardProps {
   ) => Promise<boolean>;
   /** A clarifier was answered or skipped — the timeline should refetch. */
   onClarified?: () => void;
+  /** Re-run a failed text capture with the same words. */
+  onRetry?: () => void;
   protocolId?: string;
 }
 
@@ -101,7 +103,7 @@ function EntryChip({
         <button
           type="button"
           onClick={onRemove}
-          className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-warm-500 transition-colors hover:bg-warm-100 hover:text-warm-600 focus-visible:outline-2 focus-visible:outline-teal-500"
+          className="-mr-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-lg text-warm-500 transition-colors hover:bg-warm-100 hover:text-warm-600 focus-visible:outline-2 focus-visible:outline-teal-500"
           aria-label={`Remove ${entry.name}`}
         >
           <X className="h-4 w-4" />
@@ -109,7 +111,7 @@ function EntryChip({
       </div>
 
       {offProtocol && (
-        <p className="mt-1 pl-3 text-xs text-[var(--color-warning)]">
+        <p className="mt-1 pl-3 text-xs text-[var(--color-warning-strong)]">
           Outside your protocol · {entry.protocolViolations.join(", ")}
         </p>
       )}
@@ -128,7 +130,7 @@ function EntryChip({
           <button
             type="button"
             onClick={onCloseEdit}
-            className="mt-1 text-xs text-warm-500 hover:text-warm-700"
+            className="mt-1 min-h-11 px-1 text-sm text-warm-600 hover:text-warm-800"
           >
             Keep &ldquo;{entry.name}&rdquo;
           </button>
@@ -145,6 +147,7 @@ export function PendingCaptureCard({
   onRemoveEntry,
   onPatchEntry,
   onClarified,
+  onRetry,
   protocolId,
 }: PendingCaptureCardProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
@@ -183,24 +186,35 @@ export function PendingCaptureCard({
 
   if (session.status === "error") {
     return (
-      <div className="rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-surface-card)] p-4 shadow-sm">
+      <div role="alert" className="rounded-2xl border border-[var(--color-border-light)] bg-[var(--color-surface-card)] p-4 shadow-[var(--shadow-card)]">
         <p className="text-sm text-[var(--color-text-primary)]">{session.error}</p>
         {session.sourceText && (
-          <p className="mt-1 text-xs text-warm-500">&ldquo;{session.sourceText}&rdquo;</p>
+          <p className="mt-1 text-sm text-warm-600">&ldquo;{session.sourceText}&rdquo;</p>
         )}
-        <button
-          type="button"
-          onClick={onDismiss}
-          className="mt-2 text-xs font-medium text-teal-600 hover:text-teal-700"
-        >
-          Dismiss
-        </button>
+        <div className="mt-2 flex items-center gap-1">
+          {onRetry && (
+            <button
+              type="button"
+              onClick={onRetry}
+              className="-ml-2 min-h-11 rounded-lg px-2 text-sm font-medium text-teal-700 hover:bg-teal-50"
+            >
+              Try again
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={onDismiss}
+            className={cn("min-h-11 rounded-lg px-2 text-sm font-medium text-warm-600 hover:bg-warm-100", !onRetry && "-ml-2")}
+          >
+            Dismiss
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="rounded-2xl border border-teal-200 bg-[var(--color-surface-card)] p-3 shadow-sm">
+    <div className="rounded-2xl border border-teal-200 bg-[var(--color-surface-card)] p-3 shadow-[var(--shadow-card)]">
       <div className="mb-2 flex items-center justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           {session.imagePreviewUrl && (
@@ -211,7 +225,7 @@ export function PendingCaptureCard({
               className="h-8 w-8 shrink-0 rounded-lg object-cover"
             />
           )}
-          <p className="truncate text-xs font-medium text-warm-500">
+          <p role="status" aria-live="polite" className="truncate text-xs font-medium text-warm-500">
             {session.status === "streaming" ? (
               "Reading…"
             ) : (
@@ -231,15 +245,15 @@ export function PendingCaptureCard({
             <button
               type="button"
               onClick={onUndo}
-              className="flex min-h-8 items-center gap-1 rounded-lg px-2 text-xs font-medium text-warm-600 transition-colors hover:bg-warm-100 focus-visible:outline-2 focus-visible:outline-teal-500"
+              className="flex min-h-11 items-center gap-1 rounded-lg px-2.5 text-sm font-medium text-warm-600 transition-colors hover:bg-warm-100 focus-visible:outline-2 focus-visible:outline-teal-500"
             >
-              <RotateCcw className="h-3 w-3" aria-hidden />
+              <RotateCcw className="h-3.5 w-3.5" aria-hidden />
               Undo
             </button>
             <button
               type="button"
               onClick={onDismiss}
-              className="flex min-h-8 items-center rounded-lg bg-teal-600 px-2.5 text-xs font-medium text-white transition-colors hover:bg-teal-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+              className="flex min-h-11 items-center rounded-lg bg-teal-600 px-3.5 text-sm font-medium text-white transition-colors hover:bg-teal-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
             >
               Done
             </button>
@@ -312,7 +326,7 @@ function MealTimeEditor({
       <button
         type="button"
         onClick={() => setOpen(true)}
-        className="mt-2 text-xs text-warm-500 underline decoration-warm-300 underline-offset-2 hover:text-warm-700"
+        className="mt-1 inline-flex min-h-11 items-center text-sm text-warm-600 underline decoration-warm-300 underline-offset-2 hover:text-warm-800"
       >
         Wrong meal or time?
       </button>
@@ -329,7 +343,7 @@ function MealTimeEditor({
             entries.forEach((e) => void onPatchEntry(e.id, { mealType: meal }));
           }}
           className={cn(
-            "min-h-8 rounded-full px-3 text-xs font-medium transition-colors focus-visible:outline-2 focus-visible:outline-teal-500",
+            "min-h-11 rounded-full px-3.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-teal-500",
             current === meal
               ? "bg-teal-100 text-teal-700"
               : "bg-warm-100 text-warm-600 hover:bg-teal-50"
@@ -347,7 +361,7 @@ function MealTimeEditor({
           }
         }}
         aria-label="Time eaten"
-        className="min-h-8 rounded-full border border-[var(--color-border-light)] bg-[var(--color-surface)] px-2 text-xs text-warm-700"
+        className="min-h-11 rounded-full border border-[var(--color-border-light)] bg-[var(--color-surface)] px-3 text-sm text-warm-700"
       />
     </div>
   );

@@ -31,7 +31,7 @@ export function ProtocolComplianceWarning({
       <p className="text-sm font-semibold text-[var(--color-text-primary)]">
         {food.displayName} is outside {protocol.name}
       </p>
-      <p className="mt-1 text-sm text-[var(--color-warning)]">
+      <p className="mt-1 text-sm text-[var(--color-warning-strong)]">
         {violations.join(" · ")}
       </p>
       <p className="mt-2 text-sm leading-relaxed text-[var(--color-text-secondary)]">

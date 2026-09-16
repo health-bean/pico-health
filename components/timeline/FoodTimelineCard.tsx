@@ -8,9 +8,9 @@ import { PROPERTY_LABELS } from "@/components/foods/FoodPropertyTag";
 const LEVEL_RANK: Record<string, number> = { very_high: 2, high: 1 };
 
 /**
- * The properties a person would actually want on the card: booleans that
- * are true and levels at high or above, strongest first, at most three.
- * Everything else lives behind "Show food properties".
+ * The one property a person would most want on the card: a true boolean or
+ * the strongest level at high or above. One pill, so a day of meals does not
+ * read as a column of flags; the full list lives behind "Show food properties".
  */
 function notableProperties(properties: Record<string, unknown> | undefined) {
   if (!properties) return [];
@@ -29,7 +29,7 @@ function notableProperties(properties: Record<string, unknown> | undefined) {
       });
     }
   }
-  return out.sort((a, b) => b.rank - a.rank).slice(0, 3);
+  return out.sort((a, b) => b.rank - a.rank).slice(0, 1);
 }
 import { EntryActions } from "./EntryActions";
 import { EntryEditor, type EntryEditorMode, type EntryPatch } from "./EntryEditor";
@@ -116,7 +116,9 @@ export function FoodTimelineCard({
   const displayName = food?.displayName || name;
   const hasViolations = protocolViolations.length > 0;
   const hasProperties = food?.properties && Object.keys(food.properties).length > 0;
-  const notable = notableProperties(food?.properties as Record<string, unknown> | undefined);
+  // When the card already says why it is outside the protocol, a pill would
+  // repeat it; the protocol line carries the property instead.
+  const notable = hasViolations ? [] : notableProperties(food?.properties as Record<string, unknown> | undefined);
 
   return (
     <div className="flex flex-col rounded-xl border border-warm-200 bg-[var(--color-surface-card)]">
@@ -167,7 +169,7 @@ export function FoodTimelineCard({
 
           {/* Off-protocol: a fact about the day, not a warning on the plate */}
           {hasViolations && (
-            <p className="mt-1 text-xs text-[var(--color-warning)]">
+            <p className="mt-1 text-xs text-[var(--color-warning-strong)]">
               Outside your protocol · {protocolViolations.map((v) => v.replace(/\s+not allowed$/i, "")).join(", ")}
             </p>
           )}
@@ -189,8 +191,10 @@ export function FoodTimelineCard({
           {/* Show properties button */}
           {hasProperties && (
             <button
+              type="button"
               onClick={() => setShowProperties(!showProperties)}
-              className="mt-2 text-xs font-medium text-teal-600 hover:text-teal-700"
+              aria-expanded={showProperties}
+              className="-my-1 inline-flex min-h-11 items-center text-sm font-medium text-teal-700 hover:text-teal-800"
             >
               {showProperties ? "Hide" : "Show"} food properties
             </button>
