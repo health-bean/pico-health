@@ -359,10 +359,11 @@ export default function ReflectPage() {
 
           {/* Notes */}
           <Card>
-            <label className="mb-2 block text-sm font-medium text-warm-700">
+            <label htmlFor="reflect-notes" className="mb-2 block text-sm font-medium text-warm-700">
               Notes
             </label>
             <textarea
+              id="reflect-notes"
               value={notes}
               onChange={(e) => handleNotesChange(e.target.value)}
               placeholder="How are you feeling overall? Any patterns, insights, or things worth noting…"

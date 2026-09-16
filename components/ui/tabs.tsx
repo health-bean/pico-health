@@ -63,7 +63,7 @@ export function Tabs({ tabs, value, onChange, className, label }: TabsProps) {
             onClick={() => onChange(tab.value)}
             onKeyDown={(e) => onKeyDown(e, i)}
             className={cn(
-              "inline-flex min-h-10 flex-1 items-center justify-center gap-1.5 rounded-lg px-3 text-sm font-medium",
+              "inline-flex min-h-11 flex-1 items-center justify-center gap-1.5 rounded-lg px-3 text-sm font-medium",
               "transition-colors duration-200 ease-[var(--ease-out-expo)] cursor-pointer",
               isActive
                 ? "bg-[var(--color-surface-card)] text-teal-700 font-semibold shadow-[var(--shadow-card)]"

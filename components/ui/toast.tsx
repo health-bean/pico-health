@@ -22,7 +22,7 @@ interface ToastAction {
 interface ToastOptions {
   /** Optional inline action (e.g. "Undo"). Clicking it dismisses the toast. */
   action?: ToastAction;
-  /** Auto-dismiss delay in ms. Defaults to 4000, or 6000 when an action is present. */
+  /** Auto-dismiss delay in ms. Defaults to 5000, or 10000 when an action is present. Paused while hovered or focused. */
   duration?: number;
 }
 
@@ -50,20 +50,38 @@ let toastCounter = 0;
 
 function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: string) => void }) {
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
+  const remainingRef = useRef(t.duration);
+  const startedRef = useRef(0);
+
+  // The timer pauses while the toast is hovered or has focus, so a slow tap
+  // or a keyboard user reaching Undo never loses the chance to use it.
+  const start = useCallback(() => {
+    if (timerRef.current) clearTimeout(timerRef.current);
+    startedRef.current = Date.now();
+    timerRef.current = setTimeout(() => onDismiss(t.id), remainingRef.current);
+  }, [onDismiss, t.id]);
+  const pause = useCallback(() => {
+    if (!timerRef.current) return;
+    clearTimeout(timerRef.current);
+    timerRef.current = null;
+    remainingRef.current = Math.max(1500, remainingRef.current - (Date.now() - startedRef.current));
+  }, []);
 
   useEffect(() => {
-    timerRef.current = setTimeout(() => {
-      onDismiss(t.id);
-    }, t.duration);
-
+    start();
     return () => {
       if (timerRef.current) clearTimeout(timerRef.current);
     };
-  }, [t.id, t.duration, onDismiss]);
+  }, [start]);
 
   return (
     <div
-      role={t.variant === "error" ? "alert" : "status"}
+      onMouseEnter={pause}
+      onMouseLeave={start}
+      onFocus={pause}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget as Node | null)) start();
+      }}
       className={cn(
         "flex items-center gap-2 rounded-xl py-1.5 pl-4 pr-1.5 text-sm font-medium shadow-[var(--shadow-elevated)]",
         "animate-slide-in-right",
@@ -73,6 +91,7 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
       <span className="flex-1">{t.message}</span>
       {t.action && (
         <button
+          type="button"
           onClick={() => {
             t.action?.onClick();
             onDismiss(t.id);
@@ -83,6 +102,7 @@ function ToastItem({ toast: t, onDismiss }: { toast: Toast; onDismiss: (id: stri
         </button>
       )}
       <button
+        type="button"
         onClick={() => onDismiss(t.id)}
         className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
         aria-label="Dismiss"
@@ -103,7 +123,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
   const addToast = useCallback(
     (message: string, variant: ToastVariant = "info", options?: ToastOptions) => {
       const id = `toast-${++toastCounter}`;
-      const duration = options?.duration ?? (options?.action ? 6000 : 4000);
+      const duration = options?.duration ?? (options?.action ? 10000 : 5000);
       setToasts((prev) => [...prev, { id, message, variant, action: options?.action, duration }]);
     },
     []
@@ -113,13 +133,19 @@ export function ToastProvider({ children }: { children: ReactNode }) {
     <ToastContext.Provider value={{ toast: addToast }}>
       {children}
 
-      {toasts.length > 0 && (
-        <div className="fixed bottom-24 left-4 right-4 z-50 flex flex-col gap-2 md:bottom-auto md:left-auto md:top-4 md:w-80">
-          {toasts.map((t) => (
-            <ToastItem key={t.id} toast={t} onDismiss={dismiss} />
-          ))}
-        </div>
-      )}
+      {/* One persistent live region, so every toast is announced reliably.
+          On phones it sits above the capture bar stack, not over it. */}
+      <div
+        role="status"
+        aria-live="polite"
+        className="pointer-events-none fixed bottom-[calc(10.5rem+env(safe-area-inset-bottom))] left-4 right-4 z-[55] flex flex-col gap-2 md:bottom-auto md:left-auto md:top-4 md:w-80"
+      >
+        {toasts.map((t) => (
+          <div key={t.id} className="pointer-events-auto">
+            <ToastItem toast={t} onDismiss={dismiss} />
+          </div>
+        ))}
+      </div>
     </ToastContext.Provider>
   );
 }

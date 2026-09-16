@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Input, Button, Card, PageTitle } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
@@ -11,6 +12,23 @@ export default function ResetPasswordPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  // The reset link signs the person in for this one step. Without that
+  // session the form cannot work, so say why and offer the way forward.
+  const [linkValid, setLinkValid] = useState<boolean | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    createClient()
+      .auth.getSession()
+      .then(({ data }) => {
+        if (!cancelled) setLinkValid(!!data.session);
+      })
+      .catch(() => {
+        if (!cancelled) setLinkValid(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -43,6 +61,30 @@ export default function ResetPasswordPage() {
     } finally {
       setLoading(false);
     }
+  }
+
+  if (linkValid === false) {
+    return (
+      <div className="flex min-h-dvh items-center justify-center px-6 py-12">
+        <div className="w-full max-w-sm text-center">
+          <PageTitle>This link has expired</PageTitle>
+          <p className="mt-2 text-sm leading-relaxed text-warm-600">
+            Reset links work once and only for a short time. Ask for a new one and it will arrive in a minute or two.
+          </p>
+          <div className="mt-6 flex flex-col items-center gap-1">
+            <Link
+              href="/forgot-password"
+              className="inline-flex min-h-11 items-center rounded-xl bg-teal-600 px-5 text-sm font-medium text-white hover:bg-teal-700"
+            >
+              Send a new link
+            </Link>
+            <Link href="/login" className="inline-flex min-h-11 items-center text-sm text-teal-700 hover:text-teal-800">
+              Back to log in
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   return (

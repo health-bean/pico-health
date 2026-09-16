@@ -29,7 +29,7 @@ export function Header() {
 
         {/* Desktop nav */}
         {!loading && user && (
-          <nav className="hidden md:flex items-center gap-1">
+          <nav aria-label="Main" className="hidden md:flex items-center gap-1">
             {navItems.map((item) => {
               const isActive =
                 pathname === item.href || pathname.startsWith(item.href + "/");
@@ -37,6 +37,7 @@ export function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
+                  aria-current={isActive ? "page" : undefined}
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200",
                     isActive
@@ -51,6 +52,7 @@ export function Header() {
             {user.isAdmin && (
               <Link
                 href="/admin"
+                aria-current={pathname.startsWith("/admin") ? "page" : undefined}
                 className={cn(
                   "px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200",
                   pathname.startsWith("/admin")

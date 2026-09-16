@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button, Card, Select, Spinner, Progress, PageTitle } from "@/components/ui";
 import { useSession } from "@/hooks/use-session";
 import Link from "next/link";
-import { ChevronRight, CreditCard, FlaskConical } from "lucide-react";
+import { ChevronRight, CreditCard, Download, FlaskConical } from "lucide-react";
 import type { Protocol } from "@/types";
 
 interface SubscriptionInfo {
@@ -283,21 +283,18 @@ export default function SettingsPage() {
               </div>
             )}
 
-            <div className="flex items-center gap-3">
-              <Button
-                onClick={handleSaveProtocol}
-                loading={saving}
-                disabled={!protocolChanged}
-              >
-                Save protocol
-              </Button>
-
-              {saved && (
-                <span className="text-sm text-teal-600">
-                  Protocol updated
-                </span>
-              )}
-            </div>
+            {(protocolChanged || saving || saved) && (
+              <div className="flex items-center gap-3" role="status" aria-live="polite">
+                {(protocolChanged || saving) && (
+                  <Button onClick={handleSaveProtocol} loading={saving}>
+                    Save protocol
+                  </Button>
+                )}
+                {saved && !protocolChanged && (
+                  <span className="text-sm text-teal-700">Protocol updated</span>
+                )}
+              </div>
+            )}
           </div>
         )}
       </Card>
@@ -346,6 +343,24 @@ export default function SettingsPage() {
         </Link>
       </Card>
 
+      {/* Your data */}
+      <Card header="Your data" className="mb-4">
+        <div className="flex flex-col gap-2">
+          <p className="text-sm text-warm-600">
+            Download everything you have logged, to keep or to bring to an appointment.
+          </p>
+          <div>
+            <a
+              href="/api/export?type=all"
+              className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-teal-300 px-4 text-sm font-medium text-teal-700 hover:bg-teal-50"
+            >
+              <Download className="h-4 w-4" aria-hidden="true" />
+              Export my data
+            </a>
+          </div>
+        </div>
+      </Card>
+
       {/* Billing */}
       <Card header="Subscription" className="mb-4">
         <div className="flex flex-col gap-3">
@@ -382,14 +397,14 @@ export default function SettingsPage() {
 
       {/* Legal */}
       <Card header="About" className="mb-4">
-        <div className="flex flex-col gap-2 text-sm">
-          <Link href="/terms" className="text-teal-700 hover:text-teal-800">
+        <div className="flex flex-col text-sm">
+          <Link href="/terms" className="flex min-h-11 items-center text-teal-700 hover:text-teal-800">
             Terms of Service
           </Link>
-          <Link href="/privacy" className="text-teal-700 hover:text-teal-800">
+          <Link href="/privacy" className="flex min-h-11 items-center text-teal-700 hover:text-teal-800">
             Privacy Policy
           </Link>
-          <a href="mailto:support@picohealth.app" className="text-teal-700 hover:text-teal-800">
+          <a href="mailto:support@picohealth.app" className="flex min-h-11 items-center text-teal-700 hover:text-teal-800">
             Contact support
           </a>
         </div>

@@ -52,6 +52,7 @@ export function MessageInput({ onSend, disabled = false }: MessageInputProps) {
         }}
         onKeyDown={handleKeyDown}
         placeholder="Ask about your food or symptoms…"
+        aria-label="Message"
         disabled={disabled}
         rows={1}
         className={cn(

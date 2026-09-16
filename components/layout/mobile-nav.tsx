@@ -22,7 +22,7 @@ export function MobileNav() {
   const visibleTabs = tabs.filter((tab) => !tab.adminOnly || user?.isAdmin);
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--color-border-light)] bg-[var(--color-surface-card)]/95 backdrop-blur-md md:hidden">
+    <nav aria-label="Main" className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--color-border-light)] bg-[var(--color-surface-card)]/95 backdrop-blur-md md:hidden">
       <div className="flex items-stretch justify-around">
         {visibleTabs.map((tab) => {
           const isActive =
@@ -32,6 +32,7 @@ export function MobileNav() {
             <Link
               key={tab.href}
               href={tab.href}
+              aria-current={isActive ? "page" : undefined}
               className={cn(
                 "flex min-h-[56px] flex-1 flex-col items-center justify-center gap-0.5 px-2 py-2",
                 "transition-all duration-200 ease-[var(--ease-out-expo)]",
@@ -41,7 +42,7 @@ export function MobileNav() {
                   : "text-[var(--color-text-muted)] hover:text-teal-500"
               )}
             >
-              <tab.icon className="h-5 w-5" />
+              <tab.icon className="h-5 w-5" aria-hidden="true" />
               <span className="text-[11px] font-medium">{tab.label}</span>
             </Link>
           );

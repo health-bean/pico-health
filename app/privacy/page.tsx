@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LegalShell } from "@/components/legal/LegalShell";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Pico Health",
+  title: "Privacy Policy",
   description: "What Pico Health collects, how it's used, and the choices you have.",
 };
 
