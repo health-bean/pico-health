@@ -224,3 +224,5 @@ evals/*/results/
 .claude/skills/impeccable/scripts/bin/
 .impeccable/config.local.json
 .impeccable/hook.cache.json
+.impeccable/live/sessions/
+.impeccable/live/inject-journal.json
