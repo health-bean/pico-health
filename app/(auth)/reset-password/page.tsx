@@ -63,6 +63,10 @@ export default function ResetPasswordPage() {
     }
   }
 
+  if (linkValid === null) {
+    return <div className="min-h-dvh" aria-busy="true" />;
+  }
+
   if (linkValid === false) {
     return (
       <div className="flex min-h-dvh items-center justify-center px-6 py-12">

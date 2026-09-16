@@ -148,8 +148,11 @@ export default function InsightsPage() {
     const groups = new Map<string, { title: string; lines: { outcome: string; days: number; total: number }[]; impact: number }>();
     for (const p of patterns?.propertyPatterns ?? []) {
       const key = `${p.severity}|${p.property}`;
-      const raw = `${p.severity !== 'high' ? p.severity.replace('_', ' ') + ' ' : ''}${p.property}`;
-      const g = groups.get(key) ?? { title: raw.charAt(0).toUpperCase() + raw.slice(1), lines: [], impact: 0 };
+      const sev = p.severity.replace('_', ' ');
+      const title = p.severity === 'high' || p.severity === 'very_high'
+        ? `Foods ${sev} in ${p.property}`
+        : `Foods with ${sev} ${p.property}`;
+      const g = groups.get(key) ?? { title, lines: [], impact: 0 };
       g.lines.push({ outcome: p.outcome.label, days: p.frequency, total: p.totalOpportunities ?? p.frequency });
       g.impact = Math.max(g.impact, p.impactScore);
       groups.set(key, g);
@@ -173,21 +176,26 @@ export default function InsightsPage() {
     const k = singleKey(r);
     if (k) {
       const outcomes = other.get(k);
-      return outcomes && outcomes.length > 0 ? `Also listed under ${where} for ${outcomes.slice(0, 2).join(' and ')}.` : undefined;
+      return outcomes && outcomes.length > 0
+        ? `Also showed up ${where} for ${outcomes.slice(0, 2).map(o => o.toLowerCase()).join(' and ')}.`
+        : undefined;
     }
-    // Combinations: name each part that also appears on the other list.
-    const parts = (r as MultiFactorResult).factors
-      .map(f => ({ label: f.label, outcomes: other.get(f.key) }))
-      .filter(x => x.outcomes && x.outcomes.length > 0);
+    // Combinations: one short sentence naming the parts that also appear on the other list.
+    const parts = (r as MultiFactorResult).factors.filter(f => (other.get(f.key)?.length ?? 0) > 0).map(f => f.label.toLowerCase());
     if (parts.length === 0) return undefined;
-    return parts.map(x => `${x.label} on its own is also listed under ${where} for ${x.outcomes!.slice(0, 2).join(' and ')}.`).join(' ');
+    return `Separately, ${parts.join(' and ')} also showed up ${where}.`;
   };
 
   // The three observations with the most evidence behind them, across both
   // lists, so the page opens with an answer before the full lists.
-  const standouts = [...triggers.map(r => ({ r, dir: 'more' as const })), ...helpers.map(r => ({ r, dir: 'less' as const }))]
-    .filter(x => x.r.confidence !== 'early')
-    .sort((a, b) => b.r.impactScore - a.r.impactScore)
+  // Symptom-linked observations come first (they are what a person came to
+  // understand); one better-day observation rounds it out when there is one.
+  const byImpact = <T extends { impactScore: number; confidence?: string }>(rows: T[]) =>
+    rows.filter(r => r.confidence !== 'early').sort((a, b) => b.impactScore - a.impactScore);
+  const topTriggers = byImpact(triggers).map(r => ({ r, dir: 'more' as const }));
+  const topHelpers = byImpact(helpers).map(r => ({ r, dir: 'less' as const }));
+  const standouts = [...topTriggers.slice(0, topHelpers.length > 0 ? 2 : 3), ...topHelpers.slice(0, 1)]
+    .concat(topTriggers.length < 2 ? topHelpers.slice(1, 3 - topTriggers.length) : [])
     .slice(0, 3);
   const progress = patterns?.progress ?? [];
 
@@ -298,15 +306,16 @@ export default function InsightsPage() {
               </h2>
               <ul className="mt-2 divide-y divide-warm-200">
                 {standouts.map(({ r, dir }, i) => (
-                  <li key={`s-${i}`} className="flex items-baseline justify-between gap-3 py-2.5">
-                    <span className="min-w-0 text-sm text-warm-800">
-                      <span className="font-semibold text-warm-900">{getTitle(r)}</span>
-                      {' '}
-                      {dir === 'more' ? 'showed up with' : 'showed up on days with less'}{' '}
-                      {r.outcome.label.toLowerCase()}
-                    </span>
-                    <span className="shrink-0 text-sm font-semibold tabular-nums text-warm-900">
-                      {r.frequency} of {getTotalDays(r)} days
+                  <li key={`s-${i}`} className="flex gap-3 py-2.5 text-sm text-warm-800">
+                    {dir === 'more'
+                      ? <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" aria-hidden="true" />
+                      : <TrendingDown className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" aria-hidden="true" />}
+                    <span className="min-w-0">
+                      <span className="font-semibold text-warm-900">{r.outcome.label}</span>
+                      {dir === 'more' ? ' on ' : ' on only '}
+                      <span className="font-semibold tabular-nums text-warm-900">{r.frequency} of {getTotalDays(r)}</span>
+                      {' days with '}
+                      <span className="font-semibold text-warm-900">{getTitle(r).toLowerCase()}</span>
                     </span>
                   </li>
                 ))}
@@ -335,7 +344,7 @@ export default function InsightsPage() {
                   isCompound={isMultiFactor(r)}
                   confidence={r.confidence}
                   isNew={alertKeys.has(resultKey(r))}
-                  note={crossNote(r, helperOutcomes, 'better days')}
+                  note={crossNote(r, helperOutcomes, 'on better days')}
                   outcome={r.outcome.label}
                 />
               ))}
@@ -356,7 +365,7 @@ export default function InsightsPage() {
                 <InsightRow
                   key={`p-${i}`}
                   icon={FlaskConical}
-                  title={`${g.title} foods`}
+                  title={g.title}
                   description={g.lines.slice(0, 3).map(l => `${l.outcome} on ${l.days} of ${l.total} days`).join(' · ')}
                   days={g.lines[0].days}
                   total={g.lines[0].total}
@@ -387,7 +396,7 @@ export default function InsightsPage() {
                   confidence={r.confidence}
                   isNew={alertKeys.has(resultKey(r))}
                   tone="better"
-                  note={crossNote(r, triggerOutcomes, 'symptoms')}
+                  note={crossNote(r, triggerOutcomes, 'with symptoms')}
                   outcome={`Less ${r.outcome.label.toLowerCase()}`}
                 />
               ))}
