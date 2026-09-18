@@ -16,21 +16,26 @@ interface PropertyInfo {
   type: "boolean" | "level";
 }
 
+/**
+ * What each property is, and which eating approach limits it. These describe
+ * the food and report what a protocol or published food list says: they do not
+ * claim a food causes a condition, and nothing here is reviewed by a clinician.
+ */
 const PROPERTY_DESCRIPTIONS: Record<string, string> = {
-  nightshade: "Nightshades contain alkaloids that may trigger inflammation in sensitive individuals. Common nightshades include tomatoes, peppers, eggplant, and potatoes.",
-  histamine: "Histamine is a compound involved in immune responses. High-histamine foods can trigger symptoms like headaches, hives, or digestive issues in those with histamine intolerance.",
-  oxalate: "Oxalates are naturally occurring compounds that can contribute to kidney stones and may cause inflammation in sensitive individuals.",
-  lectin: "Lectins are proteins that can interfere with nutrient absorption and may trigger digestive issues or inflammation in some people.",
-  fodmap: "FODMAPs are fermentable carbohydrates that can cause digestive symptoms like bloating, gas, and pain in people with IBS.",
-  salicylate: "Salicylates are natural chemicals found in many plants. High levels can trigger symptoms in salicylate-sensitive individuals.",
-  amines: "Amines are compounds formed during food fermentation or aging. They can trigger headaches and other symptoms in sensitive individuals.",
-  glutamates: "Glutamates are amino acids that can act as excitatory neurotransmitters. High levels may trigger symptoms in MSG-sensitive individuals.",
-  sulfites: "Sulfites are preservatives that can trigger asthma-like symptoms, headaches, or digestive issues in sensitive individuals.",
-  goitrogens: "Goitrogens can interfere with thyroid function by blocking iodine absorption. Important for those with thyroid conditions.",
-  purines: "Purines break down into uric acid and can trigger gout attacks or worsen symptoms in those with high uric acid levels.",
-  phytoestrogens: "Phytoestrogens are plant compounds that mimic estrogen. They may affect hormone-sensitive conditions.",
-  phytates: "Phytates can bind to minerals and reduce their absorption. May be a concern for those with mineral deficiencies.",
-  tyramine: "Tyramine can trigger migraines and interact with certain medications (MAOIs). Found in aged, fermented, or spoiled foods.",
+  nightshade: "Nightshades are a plant family: tomatoes, peppers, eggplant, potatoes. They are excluded on AIP and on elimination diets that test for them. Some people report joint or gut symptoms on days they eat them.",
+  histamine: "Histamine occurs naturally in food and builds up as food ages or ferments. Low-histamine diets, which follow lists like SIGHI's, limit high-histamine foods. Some people report headaches, flushing, or gut symptoms.",
+  oxalate: "Oxalate is a compound found in many plants, highest in leafy greens, nuts, and some roots. Low-oxalate diets limit these foods. Talk to your practitioner before lowering oxalate, especially if you have had kidney stones.",
+  lectin: "Lectins are plant proteins, highest in legumes, grains, and some nightshades, and much lower once food is soaked or cooked. Lectin-limiting diets avoid them. Some people report digestive symptoms.",
+  fodmap: "FODMAPs are fermentable carbohydrates found in wheat, onion, garlic, some fruit, and dairy. The low-FODMAP diet, developed at Monash University, limits them in a structured elimination and reintroduction.",
+  salicylate: "Salicylates are natural plant chemicals, highest in herbs, spices, and some fruit. The RPAH elimination diet limits them. Some people report symptoms on high-salicylate days.",
+  amines: "Amines form as food ages, ferments, or is cured. The RPAH elimination diet limits them, alongside salicylates and glutamates. Some people report headaches.",
+  glutamates: "Free glutamates occur naturally in aged cheese, tomato, and broth, and are added as MSG. The RPAH elimination diet limits them. Some people report symptoms after high-glutamate meals.",
+  sulfites: "Sulfites are preservatives, common in dried fruit, wine, and some processed foods. They are limited on several elimination diets, and people with asthma are often advised to watch them.",
+  goitrogens: "Goitrogens are compounds in raw cruciferous vegetables and soy that can affect how the thyroid uses iodine; cooking reduces them. If you have a thyroid condition, ask your practitioner what applies to you.",
+  purines: "Purines are compounds found in organ meats, some seafood, and some legumes, which the body breaks down into uric acid. Low-purine diets limit them. People managing gout are often advised to track them.",
+  phytoestrogens: "Phytoestrogens are plant compounds with a structure similar to estrogen, highest in soy and flax. Some hormone-focused protocols limit them.",
+  phytates: "Phytates are compounds in grains, legumes, nuts, and seeds that bind minerals such as iron and zinc; soaking, sprouting, and cooking reduce them.",
+  tyramine: "Tyramine forms as food ages, ferments, or is cured. Low-tyramine diets limit it, and it is the property most often flagged for people taking MAOI medication. Some people report migraines.",
 };
 
 const PROPERTY_LABELS: Record<string, string> = {
@@ -276,8 +281,10 @@ export function FoodPropertyCard({
           <PropertyBadge key={index} property={property} />
         ))}
       </div>
-      <p className="mt-3 text-xs text-warm-500">
-        Tap a property to read what it means
+      <p className="mt-3 text-sm text-warm-500">
+        Tap a property to read what it means. Levels come from published food lists (SIGHI,
+        RPAH, Monash, Harvard) and have not been reviewed by a clinician. They describe the
+        food, not a diagnosis.
       </p>
     </div>
   );
