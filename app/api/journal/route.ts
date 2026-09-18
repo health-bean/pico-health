@@ -98,6 +98,13 @@ const journalSchema = z.object({
   moodScore: z.number().int().min(1).max(10).optional(),
   stressScore: z.number().int().min(1).max(10).optional(),
   painScore: z.number().int().min(1).max(10).optional(),
+  meditationPractice: z.boolean().nullable().optional(),
+  meditationMinutes: z.number().int().min(0).max(600).nullable().optional(),
+  cycleDay: z.number().int().min(1).max(99).nullable().optional(),
+  ovulation: z.boolean().nullable().optional(),
+  bedtime: z.string().regex(/^\d{2}:\d{2}$/).nullable().optional(),
+  wakeTime: z.string().regex(/^\d{2}:\d{2}$/).nullable().optional(),
+  activityLevel: z.enum(["none", "light", "moderate", "vigorous"]).nullable().optional(),
   notes: z.string().max(2000).optional(),
 });
 
@@ -125,6 +132,13 @@ export async function POST(request: Request) {
       moodScore,
       stressScore,
       painScore,
+      meditationPractice,
+      meditationMinutes,
+      cycleDay,
+      ovulation,
+      bedtime,
+      wakeTime,
+      activityLevel,
       notes,
     } = parsed.data;
 
@@ -141,6 +155,13 @@ export async function POST(request: Request) {
         moodScore: moodScore ?? null,
         stressScore: stressScore ?? null,
         painScore: painScore ?? null,
+        meditationPractice: meditationPractice ?? null,
+        meditationMinutes: meditationMinutes ?? null,
+        cycleDay: cycleDay ?? null,
+        ovulation: ovulation ?? null,
+        bedtime: bedtime ?? null,
+        wakeTime: wakeTime ?? null,
+        activityLevel: activityLevel ?? null,
         notes: notes ?? null,
       })
       .onConflictDoUpdate({
@@ -151,6 +172,13 @@ export async function POST(request: Request) {
           ...(moodScore !== undefined && { moodScore }),
           ...(stressScore !== undefined && { stressScore }),
           ...(painScore !== undefined && { painScore }),
+          ...(meditationPractice !== undefined && { meditationPractice }),
+          ...(meditationMinutes !== undefined && { meditationMinutes }),
+          ...(cycleDay !== undefined && { cycleDay }),
+          ...(ovulation !== undefined && { ovulation }),
+          ...(bedtime !== undefined && { bedtime }),
+          ...(wakeTime !== undefined && { wakeTime }),
+          ...(activityLevel !== undefined && { activityLevel }),
           ...(notes !== undefined && { notes }),
         },
       })

@@ -92,6 +92,44 @@ export function extractFactorsFromDay(day: DayComposite): Factor[] {
     const moodBucket = bucketScore(day.journal.mood);
     if (moodBucket) factors.push({ category: 'mood', key: `mood:${moodBucket}`, label: `${capitalize(moodBucket)} mood` });
 
+    // Restored Reflect fields become factors in their own right, so "days you
+    // meditated" or "the week before your period" can show up as a pattern.
+    if (day.journal.meditationPractice) {
+      factors.push({ category: 'practice', key: 'practice:meditation', label: 'Meditation' });
+      const mins = day.journal.meditationMinutes ?? 0;
+      if (mins >= 15) factors.push({ category: 'practice', key: 'practice:meditation_15plus', label: '15+ minutes of meditation' });
+    }
+
+    if (day.journal.activityLevel && day.journal.activityLevel !== 'none') {
+      factors.push({
+        category: 'exercise',
+        key: `activity:${day.journal.activityLevel}`,
+        label: `${capitalize(day.journal.activityLevel)} movement`,
+      });
+    }
+
+    if (day.journal.bedtime) {
+      const hour = parseInt(day.journal.bedtime.split(':')[0], 10);
+      if (!Number.isNaN(hour) && (hour >= 23 || hour < 4)) {
+        factors.push({ category: 'timing', key: 'sleep:late_bedtime', label: 'Late to bed' });
+      }
+    }
+
+    // Cycle phase, on the common 28-day framing. Named in plain words so a row
+    // reads "the week before your period", not "luteal day 24".
+    const cycleDay = day.journal.cycleDay;
+    if (cycleDay && cycleDay > 0) {
+      const phase =
+        cycleDay <= 5 ? { key: 'menstrual', label: 'Period days' }
+          : cycleDay <= 13 ? { key: 'follicular', label: 'The week after your period' }
+          : cycleDay <= 16 ? { key: 'ovulatory', label: 'Around ovulation' }
+          : { key: 'luteal', label: 'The week before your period' };
+      factors.push({ category: 'cycle', key: `cycle:${phase.key}`, label: phase.label });
+    }
+    if (day.journal.ovulation) {
+      factors.push({ category: 'cycle', key: 'cycle:ovulation', label: 'Ovulation day' });
+    }
+
     const painBucket = bucketNegativeScore(day.journal.pain);
     if (painBucket) factors.push({ category: 'pain', key: `pain:${painBucket}`, label: `${capitalize(painBucket)} pain` });
   }

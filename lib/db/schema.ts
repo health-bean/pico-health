@@ -316,6 +316,18 @@ export const journalEntries = pgTable(
     moodScore: integer("mood_score"),
     stressScore: integer("stress_score"),
     painScore: integer("pain_score"),
+    // Restored 2026-09-18: these were in Reflect before the March rewrite and
+    // were dropped silently. They are real factors for this audience, and the
+    // insights engine can correlate against them.
+    meditationPractice: boolean("meditation_practice"),
+    meditationMinutes: integer("meditation_minutes"),
+    /** Day of the menstrual cycle, 1 = first day of bleed. */
+    cycleDay: integer("cycle_day"),
+    ovulation: boolean("ovulation"),
+    bedtime: varchar("bedtime", { length: 5 }),      // HH:MM, local
+    wakeTime: varchar("wake_time", { length: 5 }),
+    /** none | light | moderate | vigorous */
+    activityLevel: varchar("activity_level", { length: 20 }),
     notes: text("notes"),
     isSample: boolean("is_sample").default(false),
     createdAt: timestamp("created_at").defaultNow(),

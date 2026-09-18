@@ -24,6 +24,13 @@ interface RawJournal {
   moodScore: number | null;
   stressScore: number | null;
   painScore: number | null;
+  meditationPractice?: boolean | null;
+  meditationMinutes?: number | null;
+  cycleDay?: number | null;
+  ovulation?: boolean | null;
+  bedtime?: string | null;
+  wakeTime?: string | null;
+  activityLevel?: string | null;
 }
 
 interface ProtocolContext {
@@ -136,6 +143,13 @@ export function buildDayComposite(
     mood: journal?.moodScore ?? null,
     stress: journal?.stressScore ?? null,
     pain: journal?.painScore ?? null,
+    meditationPractice: journal?.meditationPractice ?? null,
+    meditationMinutes: journal?.meditationMinutes ?? null,
+    cycleDay: journal?.cycleDay ?? null,
+    ovulation: journal?.ovulation ?? null,
+    bedtime: journal?.bedtime ?? null,
+    wakeTime: journal?.wakeTime ?? null,
+    activityLevel: journal?.activityLevel ?? null,
   };
 
   const compliancePct = totalProtocolFoods > 0

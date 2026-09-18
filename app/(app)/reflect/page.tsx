@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { ChevronLeft, ChevronRight, Moon, Zap, Smile, Brain, Check, Loader2, Activity } from "lucide-react";
 import { Button, Card, Spinner } from "@/components/ui";
 import { ScoreSlider } from "@/components/journal/score-slider";
+import { DailyExtrasCard, type DailyExtras } from "@/components/journal/daily-extras";
 import { ClarifierFillIns } from "@/components/clarifiers/ClarifierFillIns";
 import { cn } from "@/lib/utils";
 import type { JournalEntry, JournalScores } from "@/types";
@@ -71,6 +72,7 @@ export default function ReflectPage() {
   const [entry, setEntry] = useState<JournalEntry | null>(null);
   const [scores, setScores] = useState<JournalScores>({});
   const [notes, setNotes] = useState("");
+  const [extras, setExtras] = useState<DailyExtras>({});
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -119,9 +121,19 @@ export default function ReflectPage() {
             stressScore: e.stressScore ?? undefined,
             painScore: e.painScore ?? undefined,
           });
+          setExtras({
+            meditationPractice: e.meditationPractice ?? null,
+            meditationMinutes: e.meditationMinutes ?? null,
+            cycleDay: e.cycleDay ?? null,
+            ovulation: e.ovulation ?? null,
+            bedtime: e.bedtime ?? null,
+            wakeTime: e.wakeTime ?? null,
+            activityLevel: e.activityLevel ?? null,
+          });
           setNotes(e.notes ?? "");
         } else {
           setScores({});
+          setExtras({});
           setNotes("");
         }
       }
@@ -170,18 +182,27 @@ export default function ReflectPage() {
     scheduleAutoSave(scores, value);
   }
 
-  function scheduleAutoSave(s: JournalScores, n: string) {
+  function scheduleAutoSave(s: JournalScores, n: string, x: DailyExtras = extras) {
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current);
     saveTimerRef.current = setTimeout(() => {
-      doSave(s, n);
+      doSave(s, n, x);
     }, 1500);
   }
 
-  async function doSave(s: JournalScores, n: string) {
+  function handleExtrasChange(patch: Partial<DailyExtras>) {
+    const next = { ...extras, ...patch };
+    setExtras(next);
+    setHasChanges(true);
+    setSaved(false);
+    scheduleAutoSave(scores, notes, next);
+  }
+
+  async function doSave(s: JournalScores, n: string, x: DailyExtras = extras) {
     const hasScores = Object.values(s).some(
       (v) => v !== undefined && typeof v === "number"
     );
-    if (!hasScores && !n.trim()) return;
+    const hasExtras = Object.values(x).some((v) => v !== null && v !== undefined);
+    if (!hasScores && !hasExtras && !n.trim()) return;
 
     setSaving(true);
     try {
@@ -191,6 +212,7 @@ export default function ReflectPage() {
         body: JSON.stringify({
           entryDate: date,
           ...s,
+          ...x,
           ...(n.trim() ? { notes: n } : {}),
         }),
       });
@@ -357,7 +379,9 @@ export default function ReflectPage() {
             );
           })}
 
-          {/* Notes */}
+          <DailyExtrasCard value={extras} onChange={handleExtrasChange} showCycle />
+
+                    {/* Notes */}
           <Card>
             <label htmlFor="reflect-notes" className="mb-2 block text-sm font-medium text-warm-700">
               Notes

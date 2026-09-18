@@ -5,17 +5,36 @@ import type { LucideIcon } from 'lucide-react';
 
 type SectionVariant = 'trigger' | 'watch' | 'helper';
 
-// Every section is an observation, so every section looks the same. Colour
-// here would say "bad" and "good", which is a verdict the data cannot make.
-const NEUTRAL = {
-  border: 'border-warm-200',
-  headerBg: 'bg-warm-50',
-  headerBorder: 'border-warm-200',
-  titleColor: 'text-warm-900',
-  subtitleColor: 'text-warm-600',
-  iconColor: 'text-teal-700',
+// Each section carries its own colour, drawn from the brand's warm range:
+// clay for what goes with symptoms, gold for what to watch, olive for what
+// helps. Warm rather than a red/green traffic light, and the words carry the
+// meaning either way.
+const variants = {
+  trigger: {
+    border: 'border-clay-500/20',
+    headerBg: 'bg-clay-50',
+    headerBorder: 'border-clay-500/20',
+    titleColor: 'text-brick-600',
+    subtitleColor: 'text-clay-500',
+    iconColor: 'text-clay-500',
+  },
+  watch: {
+    border: 'border-gold-400/30',
+    headerBg: 'bg-gold-50',
+    headerBorder: 'border-gold-400/30',
+    titleColor: 'text-warm-900',
+    subtitleColor: 'text-warm-700',
+    iconColor: 'text-clay-500',
+  },
+  helper: {
+    border: 'border-olive-600/20',
+    headerBg: 'bg-olive-50',
+    headerBorder: 'border-olive-600/20',
+    titleColor: 'text-olive-600',
+    subtitleColor: 'text-olive-600',
+    iconColor: 'text-olive-600',
+  },
 };
-const variants = { trigger: NEUTRAL, watch: NEUTRAL, helper: NEUTRAL };
 
 interface InsightSectionProps {
   variant: SectionVariant;

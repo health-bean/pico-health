@@ -56,6 +56,14 @@ export interface JournalScores {
   mood: number | null;
   stress: number | null;
   pain: number | null;
+  /** Restored Reflect fields. Optional: days logged before they existed have none. */
+  meditationPractice?: boolean | null;
+  meditationMinutes?: number | null;
+  cycleDay?: number | null;
+  ovulation?: boolean | null;
+  bedtime?: string | null;
+  wakeTime?: string | null;
+  activityLevel?: string | null;
 }
 
 export interface DayComposite {
@@ -88,7 +96,7 @@ export interface DayComposite {
 export type FactorCategory =
   | 'food' | 'food_property' | 'preparation' | 'quantity' | 'addition' | 'supplement' | 'medication'
   | 'exposure' | 'exercise' | 'sleep' | 'stress' | 'energy'
-  | 'mood' | 'pain' | 'timing' | 'compliance';
+  | 'mood' | 'pain' | 'timing' | 'practice' | 'cycle' | 'compliance';
 
 export interface Factor {
   category: FactorCategory;

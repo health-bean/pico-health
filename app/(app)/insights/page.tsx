@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { Spinner, Card, PageTitle } from '@/components/ui';
 import {
   Activity, Apple, CalendarDays, ChevronRight, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
-  Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, TrendingDown, TrendingUp, Zap,
+  Droplets, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, Sparkles, TrendingDown, TrendingUp, Zap,
   type LucideIcon,
 } from 'lucide-react';
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
@@ -19,6 +19,7 @@ const FACTOR_ICONS: Record<string, LucideIcon> = {
   food: Apple, food_property: FlaskConical, supplement: Pill, medication: Pill,
   exposure: ShieldAlert, exercise: Activity, sleep: Moon, stress: Gauge,
   energy: Zap, mood: Smile, pain: Frown, timing: Clock, compliance: ClipboardList,
+  practice: Sparkles, cycle: Droplets,
 };
 
 function getIcon(result: SingleFactorResult | MultiFactorResult): LucideIcon {
@@ -344,8 +345,8 @@ export default function InsightsPage() {
             <InsightSection
               variant="trigger"
               icon={TrendingUp}
-              title="Showed up with symptoms"
-              subtitle="On days you logged these, the symptom was more common than on other days"
+              title="Triggers to Avoid"
+              subtitle="These items may be causing your symptoms"
               totalCount={triggers.length}
               defaultVisible={3}
               expandSignal={expandSignal}
@@ -374,8 +375,8 @@ export default function InsightsPage() {
             <InsightSection
               variant="watch"
               icon={Eye}
-              title="Properties that keep appearing"
-              subtitle="Food properties that showed up with one or more of your symptoms"
+              title="Watch for Patterns"
+              subtitle="These patterns might explain multiple symptoms"
               totalCount={propertyPatterns.length}
               defaultVisible={2}
               expandSignal={expandSignal}
@@ -399,8 +400,8 @@ export default function InsightsPage() {
             <InsightSection
               variant="helper"
               icon={TrendingDown}
-              title="Showed up on better days"
-              subtitle="On days you logged these, the symptom was less common than on other days"
+              title="Things That Help"
+              subtitle="Keep doing these — they&rsquo;re working for you"
               totalCount={helpers.length}
               defaultVisible={3}
               expandSignal={expandSignal}

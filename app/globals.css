@@ -54,6 +54,17 @@ html {
   --color-warning-strong: oklch(0.46 0.11 75);
   --color-danger-strong: oklch(0.47 0.16 27);
 
+  /* ── Deck accents (FILO pitch deck, July 2025) ───────────────── */
+  /* The brand's own warm range: cream ground, teal, burnt orange, olive,
+     mustard, brick. Used for meaning on Insights, never as decoration. */
+  --color-clay-500: oklch(0.55 0.14 55);      /* BE5D0E burnt orange */
+  --color-clay-50: oklch(0.93 0.045 60);
+  --color-brick-600: oklch(0.44 0.15 25);     /* 922C2E */
+  --color-olive-600: oklch(0.47 0.09 130);    /* 44652F */
+  --color-olive-50: oklch(0.93 0.04 130);
+  --color-gold-400: oklch(0.82 0.12 85);      /* EAC757 */
+  --color-gold-50: oklch(0.95 0.05 85);
+
   /* ── Level ramp (one hue, rising weight) ─────────────────────── */
   /* Trigger-property intensity, protocol status, and pattern strength all
      read on this ramp: warm neutral for low, deepening through the warning
