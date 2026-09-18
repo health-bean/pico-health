@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { LucideIcon } from 'lucide-react';
 
 type SectionVariant = 'trigger' | 'watch' | 'helper';
@@ -24,11 +24,16 @@ interface InsightSectionProps {
   subtitle: string;
   defaultVisible?: number;
   totalCount: number;
+  /** Bumping this opens the section, so rows added from outside are visible. */
+  expandSignal?: number;
   children: React.ReactNode[];
 }
 
-export function InsightSection({ variant, icon: Icon, title, subtitle, defaultVisible = 3, totalCount, children }: InsightSectionProps) {
+export function InsightSection({ variant, icon: Icon, title, subtitle, defaultVisible = 3, totalCount, children, expandSignal = 0 }: InsightSectionProps) {
   const [showAll, setShowAll] = useState(false);
+  useEffect(() => {
+    if (expandSignal > 0) setShowAll(true);
+  }, [expandSignal]);
   const v = variants[variant];
   const visible = showAll ? children : children.slice(0, defaultVisible);
   const hasMore = totalCount > defaultVisible;

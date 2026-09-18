@@ -45,8 +45,21 @@ describe("GET /api/insights/alerts", () => {
     expect(db.select).not.toHaveBeenCalled();
   });
 
+  it("shows one card per pattern, keeping the most recent", async () => {
+    const rows = [
+      { id: "a", insightKey: "progress:headache", createdAt: "2026-09-15T00:00:00Z" },
+      { id: "b", insightKey: "progress:headache", createdAt: "2026-09-08T00:00:00Z" },
+      { id: "c", insightKey: "food:eggs→symptom:headache", createdAt: "2026-09-07T00:00:00Z" },
+    ];
+    const { chain } = listChain(rows);
+    vi.mocked(db.select).mockReturnValueOnce(chain);
+
+    const res = await GET();
+    expect(await res.json()).toEqual([rows[0], rows[2]]);
+  });
+
   it("returns a bounded, newest-first list of recent alerts", async () => {
-    const rows = [{ id: "a", createdAt: "2026-09-15T00:00:00Z" }];
+    const rows = [{ id: "a", insightKey: "food:eggs→symptom:headache", createdAt: "2026-09-15T00:00:00Z" }];
     const { chain, orderBy, limit } = listChain(rows);
     vi.mocked(db.select).mockReturnValueOnce(chain);
 
@@ -54,7 +67,7 @@ describe("GET /api/insights/alerts", () => {
     expect(res.status).toBe(200);
     expect(await res.json()).toEqual(rows);
     expect(orderBy).toHaveBeenCalledTimes(1);
-    expect(limit).toHaveBeenCalledWith(20);
+    expect(limit).toHaveBeenCalledWith(80);
   });
 });
 

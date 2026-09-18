@@ -100,6 +100,20 @@ describe('detectNewAlerts', () => {
     expect(milestone).toBeDefined();
   });
 
+  it('skips a progress milestone the previous snapshot already raised', () => {
+    const current = makeOutput({
+      progress: [{
+        metric: 'symptom_frequency:headache',
+        label: 'Headache frequency',
+        currentPeriod: { count: 2, days: 30, label: 'Apr' },
+        previousPeriod: { count: 8, days: 30, label: 'Mar' },
+        observation: 'Headache frequency: 8 in Mar, 2 in Apr',
+      }],
+    });
+
+    expect(detectNewAlerts(current, new Set(['progress:symptom_frequency:headache']))).toHaveLength(0);
+  });
+
   it('does not create progress alert for marginal change', () => {
     const current = makeOutput({
       progress: [{

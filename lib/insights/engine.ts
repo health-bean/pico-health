@@ -87,6 +87,11 @@ async function saveSnapshotAndAlerts(userId: string, output: InsightsOutput, day
       const fKeys = factors.map(f => f.key).sort().join('+');
       previousKeys.add(`${fKeys}→${r.outcome.key}`);
     }
+    // Progress milestones use their own key shape. Without this they were
+    // never recognised as already-known, so every run raised the same
+    // "Brain Fog frequency" alert again.
+    const prevProgress = (prev[0].progress ?? []) as Array<{ metric: string }>;
+    for (const o of prevProgress) previousKeys.add(`progress:${o.metric}`);
   }
 
   await db.insert(insightSnapshots).values({

@@ -87,6 +87,16 @@ export default function InsightsPage() {
   // Early signals (a handful of days) stay out of the default view so the
   // page leads with what has real evidence behind it. One tap brings them in.
   const [showEarly, setShowEarly] = useState(false);
+  // Including early signals adds rows inside sections that are collapsed by
+  // default, so the toggle used to change nothing a person could see. Bumping
+  // this opens those sections, and the status line says what changed.
+  const [expandSignal, setExpandSignal] = useState(0);
+  const toggleEarly = useCallback(() => {
+    setShowEarly(v => {
+      if (!v) setExpandSignal(n => n + 1);
+      return !v;
+    });
+  }, []);
 
   const loadData = useCallback(async (days: number) => {
     setLoading(true);
@@ -248,14 +258,21 @@ export default function InsightsPage() {
             </div>
           </details>
           {earlyCount > 0 && (
+            <>
             <button
               type="button"
-              onClick={() => setShowEarly(v => !v)}
+              onClick={toggleEarly}
               aria-pressed={showEarly}
               className="min-h-11 rounded-lg px-2 text-sm font-medium text-teal-700 hover:bg-teal-50"
             >
               {showEarly ? 'Hide early signals' : `Include ${earlyCount} early signals`}
             </button>
+            <p role="status" className="w-full text-sm text-warm-600">
+              {showEarly
+                ? `Showing ${earlyCount} early ${earlyCount === 1 ? 'signal' : 'signals'}: patterns with only a few days behind them so far.`
+                : ''}
+            </p>
+            </>
           )}
         </div>
       )}
@@ -331,6 +348,7 @@ export default function InsightsPage() {
               subtitle="On days you logged these, the symptom was more common than on other days"
               totalCount={triggers.length}
               defaultVisible={3}
+              expandSignal={expandSignal}
             >
               {triggers.map((r, i) => (
                 <InsightRow
@@ -360,6 +378,7 @@ export default function InsightsPage() {
               subtitle="Food properties that showed up with one or more of your symptoms"
               totalCount={propertyPatterns.length}
               defaultVisible={2}
+              expandSignal={expandSignal}
             >
               {propertyPatterns.map((g, i) => (
                 <InsightRow
@@ -384,6 +403,7 @@ export default function InsightsPage() {
               subtitle="On days you logged these, the symptom was less common than on other days"
               totalCount={helpers.length}
               defaultVisible={3}
+              expandSignal={expandSignal}
             >
               {helpers.map((r, i) => (
                 <InsightRow

@@ -7,6 +7,8 @@ import { eq, and, gte, desc } from 'drizzle-orm';
 /** Alerts older than this are stale news; the curated sections carry them now. */
 const ALERT_WINDOW_DAYS = 30;
 const ALERT_LIMIT = 20;
+/** Read more than we show, so de-duplication cannot starve the list. */
+const ALERT_FETCH = 80;
 
 export async function GET() {
   const session = await getSessionFromCookies();
@@ -22,9 +24,18 @@ export async function GET() {
       gte(insightAlerts.createdAt, since),
     ))
     .orderBy(desc(insightAlerts.createdAt))
-    .limit(ALERT_LIMIT);
+    .limit(ALERT_FETCH);
 
-  return NextResponse.json(alerts);
+  // The same pattern can have raised an alert more than once. Show the most
+  // recent card for each; duplicates read as a broken app.
+  const seen = new Set<string>();
+  const unique = alerts.filter(a => {
+    if (seen.has(a.insightKey)) return false;
+    seen.add(a.insightKey);
+    return true;
+  });
+
+  return NextResponse.json(unique.slice(0, ALERT_LIMIT));
 }
 
 /** Dismiss every open alert for the signed-in user ("Clear all"). */
