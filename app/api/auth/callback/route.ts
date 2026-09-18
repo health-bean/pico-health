@@ -63,16 +63,29 @@ export async function GET(request: Request) {
 
       // Existing user — check if they still need onboarding
       const [profile] = await db
-        .select({ onboardingCompleted: profiles.onboardingCompleted })
+        .select({
+          onboardingCompleted: profiles.onboardingCompleted,
+          deletionRequestedAt: profiles.deletionRequestedAt,
+        })
         .from(profiles)
         .where(eq(profiles.id, data.user.id))
         .limit(1);
+
+      // Coming back is how a pending deletion is undone.
+      const restored = profile?.deletionRequestedAt != null;
+      if (restored) {
+        await db
+          .update(profiles)
+          .set({ deletionRequestedAt: null, updatedAt: new Date() })
+          .where(eq(profiles.id, data.user.id));
+        log.info("account restored on sign-in", { userId: data.user.id });
+      }
 
       if (profile && !profile.onboardingCompleted) {
         return NextResponse.redirect(`${origin}/onboarding`);
       }
 
-      return NextResponse.redirect(`${origin}${next}`);
+      return NextResponse.redirect(`${origin}${next}${restored ? (next.includes("?") ? "&" : "?") + "restored=1" : ""}`);
     }
   }
 

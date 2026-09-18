@@ -101,9 +101,12 @@ export default function PrivacyPage() {
         <li><strong>Access &amp; export:</strong> download your complete log history from the Service (CSV) at any time.</li>
         <li><strong>Correction:</strong> every entry can be edited or deleted in the app.</li>
         <li>
-          <strong>Deletion:</strong> email{" "}
-          <a href="mailto:support@picohealth.app">support@picohealth.app</a> from your account
-          email and we will delete your account and data as described in Section 6.
+          <strong>Deletion:</strong> delete your account from Settings at any time. Your data
+          is held for 30 days so signing back in restores it, after which it is permanently
+          deleted as described in Section 6. You can also choose to delete it permanently
+          straight away, or email{" "}
+          <a href="mailto:support@picohealth.app">support@picohealth.app</a> and we will do it
+          for you.
         </li>
         <li>
           Depending on where you live, you may have additional legal rights over your personal

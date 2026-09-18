@@ -40,6 +40,7 @@ export async function GET() {
         timezone: profiles.timezone,
         trackingGoalDays: profiles.trackingGoalDays,
         trackingGoalStartDate: profiles.trackingGoalStartDate,
+        deletionRequestedAt: profiles.deletionRequestedAt,
       })
       .from(profiles)
       .where(eq(profiles.id, session.userId))

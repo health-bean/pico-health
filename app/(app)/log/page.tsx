@@ -119,6 +119,19 @@ export default function TimelinePage() {
   // week fires several requests; without this, a slow response for an
   // earlier day could land after the current one and show a logged day as
   // empty. Superseded requests are also aborted so they stop costing anything.
+  // Signing in cancels a pending deletion; the person should hear that it worked.
+  const restoredShown = useRef(false);
+  useEffect(() => {
+    if (restoredShown.current) return;
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("restored") !== "1") return;
+    restoredShown.current = true;
+    toast("Welcome back. Your account is no longer scheduled for deletion.", "success");
+    params.delete("restored");
+    const qs = params.toString();
+    window.history.replaceState(null, "", window.location.pathname + (qs ? `?${qs}` : ""));
+  }, [toast]);
+
   const fetchSeq = useRef(0);
   const fetchAbort = useRef<AbortController | null>(null);
   const fetchEntries = useCallback(async (d: string) => {

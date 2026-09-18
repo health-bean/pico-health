@@ -59,8 +59,11 @@ export default function TermsPage() {
         Service to you as described in our <a href="/privacy">Privacy Policy</a> — including
         generating your personal insights — and for nothing else without your explicit
         consent. You can export your data at any time from within the Service, and you can
-        request deletion of your account and data by emailing{" "}
-        <a href="mailto:support@picohealth.app">support@picohealth.app</a>.
+        delete your account and data from Settings. Deleted accounts are held for 30 days so
+        you can restore them by signing back in, or you can choose to delete permanently
+        straight away. You can also email{" "}
+        <a href="mailto:support@picohealth.app">support@picohealth.app</a> and we will do it
+        for you.
       </p>
 
       <h2>4. AI features</h2>

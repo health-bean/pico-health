@@ -58,6 +58,16 @@ export async function POST(request: Request) {
       .where(eq(profiles.id, data.user.id))
       .limit(1);
 
+    // Coming back is how a pending deletion is undone.
+    const restored = profile?.deletionRequestedAt != null;
+    if (restored) {
+      await db
+        .update(profiles)
+        .set({ deletionRequestedAt: null, updatedAt: new Date() })
+        .where(eq(profiles.id, data.user.id));
+      log.info("account restored on sign-in", { userId: data.user.id });
+    }
+
     return NextResponse.json({
       user: {
         id: data.user.id,
@@ -65,6 +75,7 @@ export async function POST(request: Request) {
         firstName: profile?.firstName ?? "",
         isAdmin: profile?.isAdmin ?? false,
       },
+      restored,
     });
   } catch (error) {
     log.error("login failed", { error: error as Error });

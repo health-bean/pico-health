@@ -194,6 +194,10 @@ export const profiles = pgTable("profiles", {
   // Capture-loop tracking goal ("Day 12 of 30" mandate strip)
   trackingGoalDays: integer("tracking_goal_days"),
   trackingGoalStartDate: date("tracking_goal_start_date"),
+  // Set when the person asks to delete their account. Their data stays for
+  // GRACE_DAYS so signing back in can restore it; after that a scheduled job
+  // purges the account. Deleting immediately clears the account outright.
+  deletionRequestedAt: timestamp("deletion_requested_at", { withTimezone: true }),
   createdAt: timestamp("created_at").defaultNow(),
   updatedAt: timestamp("updated_at").defaultNow(),
 });

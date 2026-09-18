@@ -33,7 +33,7 @@ export default function LoginPage() {
         return;
       }
 
-      router.push("/log");
+      router.push(data.restored ? "/log?restored=1" : "/log");
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

@@ -6,6 +6,7 @@ import { Button, Card, Select, Spinner, Progress, PageTitle } from "@/components
 import { useSession } from "@/hooks/use-session";
 import Link from "next/link";
 import { ChevronRight, CreditCard, Download, FlaskConical } from "lucide-react";
+import { DeleteAccount } from "@/components/settings/DeleteAccount";
 import type { Protocol } from "@/types";
 
 interface SubscriptionInfo {
@@ -357,6 +358,14 @@ export default function SettingsPage() {
               <Download className="h-4 w-4" aria-hidden="true" />
               Export my data
             </a>
+          </div>
+
+          <div className="mt-2 border-t border-[var(--color-border-light)] pt-4">
+            <p className="mb-2 text-sm text-warm-600">
+              Deleting your account removes everything you have logged. You have 30 days to change
+              your mind before it is permanent.
+            </p>
+            <DeleteAccount />
           </div>
         </div>
       </Card>
