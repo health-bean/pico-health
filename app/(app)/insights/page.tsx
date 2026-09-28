@@ -8,15 +8,15 @@ import { DayView } from '@/components/insights/DayView';
 import Link from 'next/link';
 import { Spinner, Card, PageTitle } from '@/components/ui';
 import {
-  Activity, Apple, CalendarDays, ChevronRight, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
-  Droplets, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, Sparkles, TrendingDown, TrendingUp, Zap,
+  Activity, CalendarDays, ChevronRight, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
+  Droplets, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, Sparkles, TrendingDown, TrendingUp, Utensils, Zap,
   type LucideIcon,
 } from 'lucide-react';
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
 import { insightKey } from '@/lib/insights/types';
 
 const FACTOR_ICONS: Record<string, LucideIcon> = {
-  food: Apple, food_property: FlaskConical, supplement: Pill, medication: Pill,
+  food: Utensils, food_property: FlaskConical, supplement: Pill, medication: Pill,
   exposure: ShieldAlert, exercise: Activity, sleep: Moon, stress: Gauge,
   energy: Zap, mood: Smile, pain: Frown, timing: Clock, compliance: ClipboardList,
   practice: Sparkles, cycle: Droplets,
@@ -319,8 +319,11 @@ export default function InsightsPage() {
 
           {standouts.length > 0 && (
             <section aria-labelledby="standouts-heading" className="rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-4 shadow-[var(--shadow-card)]">
+              {/* Names the scale of the read rather than labelling the box.
+                  Scales honestly in both directions: modest at 12 days,
+                  substantial at 300. */}
               <h2 id="standouts-heading" className="font-[family-name:var(--font-display)] text-lg font-semibold text-warm-900">
-                What stands out
+                What {daysTracked} logged {daysTracked === 1 ? 'day' : 'days'} show
               </h2>
               <ul className="mt-2 divide-y divide-warm-200">
                 {standouts.map(({ r, dir }, i) => (
@@ -340,13 +343,12 @@ export default function InsightsPage() {
               </ul>
             </section>
           )}
-          {/* Triggers to Avoid */}
+          {/* Things that may be causing symptoms */}
           {triggers.length > 0 && (
             <InsightSection
               variant="trigger"
               icon={TrendingUp}
-              title="Triggers to Avoid"
-              subtitle="These items may be causing your symptoms"
+              title="Things That May Be Causing Symptoms"
               totalCount={triggers.length}
               defaultVisible={3}
               expandSignal={expandSignal}
@@ -370,13 +372,12 @@ export default function InsightsPage() {
             </InsightSection>
           )}
 
-          {/* Patterns to Watch */}
+          {/* Patterns worth keeping an eye on */}
           {propertyPatterns.length > 0 && (
             <InsightSection
               variant="watch"
               icon={Eye}
-              title="Watch for Patterns"
-              subtitle="These patterns might explain multiple symptoms"
+              title="Patterns Worth Keeping an Eye On"
               totalCount={propertyPatterns.length}
               defaultVisible={2}
               expandSignal={expandSignal}
@@ -395,13 +396,12 @@ export default function InsightsPage() {
             </InsightSection>
           )}
 
-          {/* Things That Help */}
+          {/* Things that seem to help */}
           {helpers.length > 0 && (
             <InsightSection
               variant="helper"
               icon={TrendingDown}
-              title="Things That Help"
-              subtitle="Keep doing these — they&rsquo;re working for you"
+              title="Things That Seem to Help"
               totalCount={helpers.length}
               defaultVisible={3}
               expandSignal={expandSignal}

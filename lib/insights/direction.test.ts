@@ -45,7 +45,7 @@ describe('direction is decided by the numbers, not the category', () => {
     const r = results.find(x => x.factor.key === 'supplement:turmeric' && x.outcome.key === 'symptom:headache');
     expect(r?.direction).toBe('decreases');
     expect(r?.rateMultiplier).toBeLessThan(0.8);
-    expect(r?.description).toBe('Headache on 2 of 10 days with turmeric (20%), vs 67% of days without.');
+    expect(r?.description).toBe('Headache on 2 of 10 days with turmeric (20%), vs 67% of other days.');
   });
 
   it('a supplement with MORE headaches is not reported as a helper — or at all', () => {

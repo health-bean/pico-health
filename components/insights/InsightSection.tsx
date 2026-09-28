@@ -40,7 +40,9 @@ interface InsightSectionProps {
   variant: SectionVariant;
   icon: LucideIcon;
   title: string;
-  subtitle: string;
+  /** Optional. The titles carry their own hedge and the page intro carries the
+      disclaimer, so a subtitle here is usually a third restatement. */
+  subtitle?: string;
   defaultVisible?: number;
   totalCount: number;
   /** Bumping this opens the section, so rows added from outside are visible. */
@@ -64,7 +66,7 @@ export function InsightSection({ variant, icon: Icon, title, subtitle, defaultVi
           <Icon className={`h-4 w-4 ${v.iconColor}`} aria-hidden="true" />
           <h2 className={`text-base font-semibold ${v.titleColor}`}>{title}</h2>
         </div>
-        <p className={`text-sm ${v.subtitleColor} mt-0.5 ml-6`}>{subtitle}</p>
+        {subtitle && <p className={`text-sm ${v.subtitleColor} mt-0.5 ml-6`}>{subtitle}</p>}
       </div>
       <div className="p-3 space-y-2">
         {visible}

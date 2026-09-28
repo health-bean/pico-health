@@ -245,7 +245,7 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
         impactScore,
         direction,
         confidence,
-        description: formatDescription(factor, outcome, direction, coOccurrence, fDays.size, conditionalRate, baseRate),
+        description: formatDescription(factor, outcome, coOccurrence, fDays.size, conditionalRate, baseRate),
       });
     }
   }
@@ -347,7 +347,6 @@ const pct = (n: number) => `${Math.round(n * 100)}%`;
 function formatDescription(
   factor: Factor,
   outcome: Outcome,
-  direction: Direction,
   coOccurrence: number,
   factorDays: number,
   conditionalRate: number,
@@ -355,9 +354,10 @@ function formatDescription(
 ): string {
   const f = factor.label.toLowerCase();
   const o = outcome.label;
-  if (direction === 'decreases') {
-    return `${o} on ${coOccurrence} of ${factorDays} days with ${f} (${pct(conditionalRate)}), vs ${pct(baseRate)} of days without.`;
-  }
+  // Both directions describe the same comparison, so they read the same way.
+  // "of days without" was ambiguous — without the factor, or without the
+  // symptom? — and doubly so for helpers, where the factor is itself phrased
+  // as an absence ("days without low stress"). "Other days" has one reading.
   return `${o} on ${coOccurrence} of ${factorDays} days with ${f} (${pct(conditionalRate)}), vs ${pct(baseRate)} of other days.`;
 }
 

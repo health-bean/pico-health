@@ -40,8 +40,10 @@ export function InsightRow({ icon: Icon, title, description, days, total, foods,
           <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mb-1">
             <Icon className={`h-4 w-4 shrink-0 ${iconColor}`} aria-hidden="true" />
             <span className="text-sm font-semibold text-warm-900">{title}</span>
+            {/* "Combination" is a type label, not a scale — so it stays outside
+                the confidence ramp and outside the section's colour. */}
             {isCompound && (
-              <span className="bg-teal-50 text-teal-700 text-[11px] font-semibold px-1.5 py-0.5 rounded-md ring-1 ring-inset ring-teal-200/60">
+              <span className="bg-transparent text-warm-600 text-[11px] font-medium px-1.5 py-0.5 rounded-md ring-1 ring-inset ring-warm-300/70">
                 Combination
               </span>
             )}
