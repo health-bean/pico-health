@@ -352,13 +352,26 @@ function formatDescription(
   conditionalRate: number,
   baseRate: number,
 ): string {
-  const f = factor.label.toLowerCase();
-  const o = outcome.label;
   // Both directions describe the same comparison, so they read the same way.
-  // "of days without" was ambiguous — without the factor, or without the
-  // symptom? — and doubly so for helpers, where the factor is itself phrased
-  // as an absence ("days without low stress"). "Other days" has one reading.
-  return `${o} on ${coOccurrence} of ${factorDays} days with ${f} (${pct(conditionalRate)}), vs ${pct(baseRate)} of other days.`;
+  // Leading with the condition rather than the symptom makes the sentence a
+  // comparison instead of a verdict about the factor, and the explicit
+  // "On days with … On other days …" parallel spares the reader from holding
+  // what the second figure is measured against. The raw count is not repeated
+  // here: it already sits in the row's own column, beside this sentence.
+  return `${whenClause(factor)}, ${outcome.label.toLowerCase()} showed up ${pct(conditionalRate)} of the time. On other days, ${pct(baseRate)}.`;
+}
+
+/**
+ * Most factors are things a day contained, so "On days with a late meal" works.
+ * Cycle phases are spans rather than contents — "on days with the week before
+ * your period" is not English — so they take their own preposition.
+ */
+function whenClause(factor: Factor): string {
+  const label = factor.label;
+  if (factor.category !== 'cycle') return `On days with ${label.toLowerCase()}`;
+  if (/^the week/i.test(label)) return `In ${label.toLowerCase()}`;
+  if (/^around/i.test(label)) return label;
+  return `On ${label.toLowerCase()}`;
 }
 
 function capitalize(s: string): string {
