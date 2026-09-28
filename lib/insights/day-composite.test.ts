@@ -24,6 +24,23 @@ describe('isFlareDay', () => {
   it('returns false for empty symptoms', () => {
     expect(isFlareDay([])).toBe(false);
   });
+
+  it('counts distinct symptoms, not log entries', () => {
+    // One symptom logged morning and evening is one symptom. Counting entries
+    // made flare_day partly a measure of how often the app was opened — and
+    // every factor in the engine is correlated against flare_day.
+    expect(isFlareDay([
+      { name: 'Bloating', severity: 3, time: null },
+      { name: 'Bloating', severity: 4, time: null },
+    ])).toBe(false);
+  });
+
+  it('ignores case and surrounding space when comparing names', () => {
+    expect(isFlareDay([
+      { name: 'Bloating', severity: 3, time: null },
+      { name: ' bloating ', severity: 3, time: null },
+    ])).toBe(false);
+  });
 });
 
 describe('hasLateMeal', () => {

@@ -108,3 +108,30 @@ describe('evidence gates and ranking', () => {
     expect(computeConfidence(4, 4)).toBe('early');
   });
 });
+
+describe('a helper is only as strong as the events it is missing', () => {
+  // The signal for a helper is an absence, so its evidence is how many
+  // symptom-days the base rate predicted across the factor days. Counting
+  // factor days instead let a rare symptom's absence read as strong.
+  it('does not call a rare symptom’s absence strong evidence', () => {
+    // Broccoli on 20 days, zero headaches. But headache only runs at ~17%
+    // elsewhere, so ~3 were expected. Missing 3 is a coin flip.
+    const results = analyzeSingleFactors(build({
+      withDays: 20, withHeadache: 0, withoutDays: 30, withoutHeadache: 5, factor: 'tomato',
+    }));
+    const r = results.find(x => x.factor.key === 'food:tomato' && x.outcome.key === 'symptom:headache');
+    expect(r?.direction).toBe('decreases');
+    expect(r?.confidence).toBe('early');
+  });
+
+  it('still calls a common symptom’s absence strong evidence', () => {
+    // Same 20 factor days and the same zero headaches — but headache runs at
+    // 70% elsewhere, so 14 were expected. Missing 14 is a finding.
+    const results = analyzeSingleFactors(build({
+      withDays: 20, withHeadache: 0, withoutDays: 30, withoutHeadache: 21, factor: 'tomato',
+    }));
+    const r = results.find(x => x.factor.key === 'food:tomato' && x.outcome.key === 'symptom:headache');
+    expect(r?.direction).toBe('decreases');
+    expect(r?.confidence).toBe('strong');
+  });
+});

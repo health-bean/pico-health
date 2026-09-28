@@ -57,7 +57,13 @@ function extractQuantity(structuredContent: Record<string, unknown> | null | und
 }
 
 export function isFlareDay(symptoms: SymptomEntry[]): boolean {
-  if (symptoms.length >= 2) return true;
+  // Two or more *different* symptoms — not two log entries. `symptoms` carries
+  // one entry per log, so counting its length made logging bloating at 9am and
+  // again at 6pm a flare day, and `flare_day` partly a measure of how often
+  // someone opened the app. It is an outcome the whole engine correlates
+  // against, so the noise propagated everywhere.
+  const distinct = new Set(symptoms.map(s => s.name.trim().toLowerCase()));
+  if (distinct.size >= 2) return true;
   return symptoms.some(s => s.severity >= 7);
 }
 

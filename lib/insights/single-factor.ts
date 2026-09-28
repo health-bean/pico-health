@@ -228,8 +228,15 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
       const recencyBasis = direction === 'increases' ? coDays : fDays;
       const recencyDays = days.length - 1 - Math.max(...[...recencyBasis]);
 
-      // Evidence: supporting days for a trigger; factor days for a helper (few co-occurrences is the point).
-      const evidenceDays = direction === 'increases' ? coOccurrence : fDays.size;
+      // Evidence: supporting days for a trigger. For a helper the signal is an
+      // absence, so the evidence is how many symptom-days the base rate
+      // predicted across those factor days — the events that should have shown
+      // up and didn't. Counting factor days instead let "20 days with broccoli,
+      // zero headaches" read as strong evidence when the base rate only
+      // predicted two; missing two is a coin flip, missing twelve is a finding.
+      const evidenceDays = direction === 'increases'
+        ? coOccurrence
+        : Math.round(fDays.size * baseRate);
       const confidence = computeConfidence(rateMultiplier, evidenceDays);
       const impactScore = computeImpact(rateMultiplier, evidenceDays, recencyDays, confidence);
 
