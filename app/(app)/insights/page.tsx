@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
 import { insightKey } from '@/lib/insights/types';
+import { StandoutPlot } from '@/components/insights/StandoutPlot';
 
 const FACTOR_ICONS: Record<string, LucideIcon> = {
   food: Utensils, food_property: FlaskConical, supplement: Pill, medication: Pill,
@@ -312,35 +313,35 @@ export default function InsightsPage() {
       )}
 
       {hasInsights && (
-        <div className="space-y-4">
+        <div className="space-y-9">
           <p className="max-w-[65ch] text-sm text-warm-600">
             These are patterns in your own log, not causes or a diagnosis. Worth raising with your practitioner before changing what you eat.
           </p>
 
           {standouts.length > 0 && (
-            <section aria-labelledby="standouts-heading" className="rounded-xl border border-warm-200 bg-[var(--color-surface-card)] p-4 shadow-[var(--shadow-card)]">
+            <section aria-labelledby="standouts-heading" className="border-b border-warm-200 pb-7">
               {/* Names the scale of the read rather than labelling the box.
                   Scales honestly in both directions: modest at 12 days,
                   substantial at 300. */}
-              <h2 id="standouts-heading" className="font-[family-name:var(--font-display)] text-lg font-semibold text-warm-900">
+              <h2 id="standouts-heading" className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
                 What {daysTracked} logged {daysTracked === 1 ? 'day' : 'days'} show
               </h2>
-              <ul className="mt-2 divide-y divide-warm-200">
-                {standouts.map(({ r, dir }, i) => (
-                  <li key={`s-${i}`} className="flex gap-3 py-2.5 text-sm text-warm-800">
-                    {dir === 'more'
-                      ? <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" aria-hidden="true" />
-                      : <TrendingDown className="mt-0.5 h-4 w-4 shrink-0 text-teal-700" aria-hidden="true" />}
-                    <span className="min-w-0">
-                      <span className="font-semibold text-warm-900">{r.outcome.label}</span>
-                      {dir === 'more' ? ' on ' : ' on only '}
-                      <span className="font-semibold tabular-nums text-warm-900">{r.frequency} of {getTotalDays(r)}</span>
-                      {' days with '}
-                      <span className="font-semibold text-warm-900">{getTitle(r).toLowerCase()}</span>
-                    </span>
-                  </li>
-                ))}
-              </ul>
+              <div className="mt-3">
+                <StandoutPlot
+                  items={standouts.map(({ r }) => {
+                    const multi = 'factors' in r;
+                    return {
+                      factor: getTitle(r),
+                      outcome: r.outcome.label,
+                      withRate: r.conditionalRate,
+                      otherRate: multi ? (r as MultiFactorResult).bestSubRate : (r as SingleFactorResult).baseRate,
+                      otherLabel: multi ? 'with either alone' : 'on other days',
+                      days: r.frequency,
+                      total: getTotalDays(r),
+                    };
+                  })}
+                />
+              </div>
             </section>
           )}
           {/* Things that may be causing symptoms */}

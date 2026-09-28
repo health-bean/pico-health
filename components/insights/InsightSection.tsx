@@ -9,27 +9,26 @@ type SectionVariant = 'trigger' | 'watch' | 'helper';
 // clay for what goes with symptoms, gold for what to watch, olive for what
 // helps. Warm rather than a red/green traffic light, and the words carry the
 // meaning either way.
+// A section used to be a card with a filled header band. Boxing every group
+// costs a border, four paddings and a shadow apiece, and flattens the page —
+// when everything is a card, nothing outranks anything. The colour survives
+// where it still means something: the icon, the title, and a hairline under
+// the heading. Rank now comes from type and air.
 const variants = {
   trigger: {
-    border: 'border-clay-500/20',
-    headerBg: 'bg-clay-50',
-    headerBorder: 'border-clay-500/20',
+    rule: 'border-clay-500/35',
     titleColor: 'text-brick-600',
-    subtitleColor: 'text-clay-500',
+    subtitleColor: 'text-clay-600',
     iconColor: 'text-clay-500',
   },
   watch: {
-    border: 'border-gold-400/30',
-    headerBg: 'bg-gold-50',
-    headerBorder: 'border-gold-400/30',
+    rule: 'border-gold-400/50',
     titleColor: 'text-warm-900',
     subtitleColor: 'text-warm-700',
     iconColor: 'text-clay-500',
   },
   helper: {
-    border: 'border-olive-600/20',
-    headerBg: 'bg-olive-50',
-    headerBorder: 'border-olive-600/20',
+    rule: 'border-olive-600/35',
     titleColor: 'text-olive-600',
     subtitleColor: 'text-olive-600',
     iconColor: 'text-olive-600',
@@ -60,28 +59,24 @@ export function InsightSection({ variant, icon: Icon, title, subtitle, defaultVi
   const hasMore = totalCount > defaultVisible;
 
   return (
-    <section className={`bg-[var(--color-surface-card)] rounded-xl overflow-hidden shadow-[var(--shadow-card)] border ${v.border}`}>
-      <div className={`px-4 py-3 ${v.headerBg} border-b ${v.headerBorder}`}>
-        <div className="flex items-center gap-2">
-          <Icon className={`h-4 w-4 ${v.iconColor}`} aria-hidden="true" />
-          <h2 className={`text-base font-semibold ${v.titleColor}`}>{title}</h2>
-        </div>
-        {subtitle && <p className={`text-sm ${v.subtitleColor} mt-0.5 ml-6`}>{subtitle}</p>}
+    <section>
+      <div className={`flex items-center gap-2 border-b pb-2 ${v.rule}`}>
+        <Icon className={`h-4 w-4 shrink-0 ${v.iconColor}`} aria-hidden="true" />
+        <h2 className={`text-base font-semibold ${v.titleColor}`}>{title}</h2>
       </div>
-      <div className="p-3 space-y-2">
+      {subtitle && <p className={`mt-2 text-sm ${v.subtitleColor}`}>{subtitle}</p>}
+      <div className="divide-y divide-warm-200/70">
         {visible}
-        {hasMore && (
-          <div className="text-center pt-1">
-            <button
-              type="button"
-              onClick={() => setShowAll(!showAll)}
-              className="min-h-11 px-3 text-sm text-teal-600 font-semibold hover:text-teal-700"
-            >
-              {showAll ? 'Show less' : `Show ${totalCount - defaultVisible} more`}
-            </button>
-          </div>
-        )}
       </div>
+      {hasMore && (
+        <button
+          type="button"
+          onClick={() => setShowAll(!showAll)}
+          className="mt-1 min-h-11 text-sm text-teal-700 font-semibold hover:text-teal-800 underline-offset-4 hover:underline"
+        >
+          {showAll ? 'Show less' : `Show ${totalCount - defaultVisible} more`}
+        </button>
+      )}
     </section>
   );
 }

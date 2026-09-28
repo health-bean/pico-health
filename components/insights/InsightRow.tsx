@@ -30,11 +30,13 @@ interface InsightRowProps {
  * days can never look like certainty.
  */
 export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note, outcome }: InsightRowProps) {
-  const bgClass = 'bg-warm-50';
   const iconColor = tone === 'better' ? 'text-teal-600' : 'text-warm-600';
 
+  // No tinted box: the row sat in a rounded fill, inside a section card, inside
+  // the page — three nested containers to separate one finding from the next.
+  // The section's divider rule and this padding do that job with 1px.
   return (
-    <div className={`p-3 rounded-lg ${bgClass}`}>
+    <div className="py-3">
       <div className="flex items-start justify-between gap-3">
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-x-1.5 gap-y-1 mb-1">
