@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Source_Sans_3, Fraunces } from "next/font/google";
+import { Source_Sans_3, Fraunces, Oswald, Newsreader } from "next/font/google";
 import "./globals.css";
 
 const sourceSans = Source_Sans_3({
@@ -12,6 +12,24 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-display",
   display: "swap",
+});
+
+// Alternate display faces, used only by the brand treatments under ?brand=.
+// preload:false matters — without it Next emits <link rel=preload> for both and
+// every production visitor pays for two faces the default theme never renders.
+// The files are still self-hosted and fetched the moment a treatment asks.
+const oswald = Oswald({
+  subsets: ["latin"],
+  variable: "--font-display-condensed",
+  display: "swap",
+  preload: false,
+});
+
+const newsreader = Newsreader({
+  subsets: ["latin"],
+  variable: "--font-display-editorial",
+  display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -31,7 +49,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${sourceSans.variable} ${fraunces.variable}`} style={{ colorScheme: "light" }}>
+    <html lang="en" className={`${sourceSans.variable} ${fraunces.variable} ${oswald.variable} ${newsreader.variable}`} style={{ colorScheme: "light" }}>
       <body className="font-[family-name:var(--font-body)] bg-[var(--color-surface)] text-[var(--color-text-primary)] antialiased">
         {children}
       </body>

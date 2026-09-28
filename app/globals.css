@@ -58,6 +58,8 @@ html {
   /* The brand's own warm range: cream ground, teal, burnt orange, olive,
      mustard, brick. Used for meaning on Insights, never as decoration. */
   --color-clay-500: oklch(0.55 0.14 55);      /* BE5D0E burnt orange */
+  --color-clay-600: oklch(0.52 0.135 51);     /* text weight on clay-50 */
+  --color-clay-700: oklch(0.455 0.115 51);    /* heading weight on clay-50 */
   --color-clay-50: oklch(0.93 0.045 60);
   --color-brick-600: oklch(0.44 0.15 25);     /* 922C2E */
   --color-olive-600: oklch(0.47 0.09 130);    /* 44652F */
@@ -123,6 +125,79 @@ html {
 
   /* ── Transitions ──────────────────────────────────────────────── */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Brand treatments under review (?brand=deck|warm|paper) ──────────
+   Each one redefines the tokens the whole app is built on, so a treatment
+   changes every screen rather than a single page. ?brand=off clears it.
+   These blocks are temporary: the chosen direction moves into :root and the
+   rest goes. ──────────────────────────────────────────────────────────── */
+
+/* DECK — the pitch deck's own world. Butter cream ground, deep teal, the
+   earthy accents, condensed uppercase headings. Confident and human. */
+:root[data-brand="deck"] {
+  --color-surface: oklch(0.96 0.035 92);
+  --color-surface-card: oklch(0.99 0.012 92);
+  --color-surface-elevated: oklch(0.99 0.012 92);
+  --color-surface-overlay: oklch(0.94 0.03 92);
+  --color-border: oklch(0.88 0.025 88);
+  --color-border-light: oklch(0.92 0.02 88);
+  --color-text-primary: oklch(0.24 0.02 70);
+  --color-text-secondary: oklch(0.44 0.025 70);
+  --color-text-muted: oklch(0.52 0.025 70);
+  --color-teal-50: oklch(0.95 0.03 190);
+  --color-teal-100: oklch(0.90 0.05 190);
+  --color-teal-600: oklch(0.55 0.09 190);
+  --color-teal-700: oklch(0.47 0.08 190);
+  --color-teal-800: oklch(0.38 0.06 190);
+  --font-display: "Oswald", "Fraunces", Georgia, serif;
+}
+:root[data-brand="deck"] h1,
+:root[data-brand="deck"] h2 {
+  letter-spacing: 0.01em;
+}
+:root[data-brand="deck"] .font-\[family-name\:var\(--font-display\)\] {
+  font-family: var(--font-display-condensed), var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* WARM — Botanical Clinical, dialled up. Same serif and teal, but a warmer
+   ground, deeper ink, and clay used with intent. An evolution, not a rewrite. */
+:root[data-brand="warm"] {
+  --color-surface: oklch(0.97 0.018 85);
+  --color-surface-card: oklch(0.995 0.006 85);
+  --color-surface-overlay: oklch(0.95 0.02 85);
+  --color-border: oklch(0.90 0.018 85);
+  --color-border-light: oklch(0.93 0.012 85);
+  --color-text-primary: oklch(0.20 0.02 70);
+  --color-text-secondary: oklch(0.44 0.022 70);
+  --color-teal-600: oklch(0.44 0.10 195);
+  --color-teal-700: oklch(0.36 0.08 195);
+  --color-teal-800: oklch(0.29 0.06 195);
+}
+
+/* PAPER — a well-made chart. Near-white paper, ink-black text, one clay
+   accent, hierarchy carried by type rather than tinted boxes. */
+:root[data-brand="paper"] {
+  --color-surface: oklch(0.985 0.002 85);
+  --color-surface-card: oklch(1 0 0);
+  --color-surface-overlay: oklch(0.96 0.003 85);
+  --color-border: oklch(0.89 0.004 85);
+  --color-border-light: oklch(0.93 0.003 85);
+  --color-text-primary: oklch(0.16 0.01 70);
+  --color-text-secondary: oklch(0.42 0.012 70);
+  --color-text-muted: oklch(0.52 0.01 70);
+  --color-teal-600: oklch(0.50 0.13 45);
+  --color-teal-700: oklch(0.43 0.13 42);
+  --color-teal-800: oklch(0.35 0.11 40);
+  --color-teal-50: oklch(0.96 0.02 50);
+  --color-teal-100: oklch(0.92 0.04 50);
+  --font-display: "Newsreader", Georgia, serif;
+}
+:root[data-brand="paper"] .font-\[family-name\:var\(--font-display\)\] {
+  font-family: var(--font-display-editorial), Georgia, serif;
+  letter-spacing: -0.01em;
 }
 
 /* ── Base styles ─────────────────────────────────────────────────── */
@@ -251,3 +326,60 @@ select {
 .stagger-children > *:nth-child(8) { animation-delay: 350ms; }
 .stagger-children > *:nth-child(9) { animation-delay: 400ms; }
 .stagger-children > *:nth-child(10) { animation-delay: 450ms; }
+
+/* ── PICO — the chosen direction (?brand=pico) ────────────────────────
+   The deck's palette at its true values (hexes converted, not eyeballed),
+   with the app's own serif kept for display. Deck colour, Botanical
+   Clinical typography. Supersedes deck/warm/paper above; once this is
+   settled it moves into :root and the three trial blocks go. ─────────── */
+
+html[data-brand="pico"] {
+  /* the hardcoded page ground at the top of this file would otherwise
+     show through on overscroll */
+  background-color: oklch(0.961 0.044 93.1);
+}
+
+:root[data-brand="pico"] {
+  /* Ground: FCF2D1 exactly. Cards lift off it toward white so the
+     separation the deck treatment lacked is actually visible. */
+  --color-surface: oklch(0.961 0.044 93.1);   /* FCF2D1 */
+  --color-surface-card: oklch(0.993 0.008 93);
+  --color-surface-elevated: oklch(0.993 0.008 93);
+  --color-surface-overlay: oklch(0.938 0.038 93);
+  --color-border: oklch(0.885 0.030 90);
+  --color-border-light: oklch(0.920 0.022 90);
+
+  /* Warm ink rather than black — text-muted sits at 4.90:1 on cream */
+  --color-text-primary: oklch(0.245 0.022 70);
+  --color-text-secondary: oklch(0.445 0.026 70);
+  --color-text-muted: oklch(0.522 0.024 70);
+
+  /* Teal ramp re-anchored to the deck's own hue (189°), with 499F99
+     landing exactly on the 400 step. The darker steps carry white text:
+     teal-600 6.11:1, teal-700 8.63:1. */
+  --color-teal-50: oklch(0.965 0.018 189);
+  --color-teal-100: oklch(0.925 0.034 189);
+  --color-teal-200: oklch(0.862 0.055 189);
+  --color-teal-300: oklch(0.756 0.072 189);
+  --color-teal-400: oklch(0.648 0.083 189);   /* 499F99 */
+  --color-teal-500: oklch(0.565 0.080 189);
+  --color-teal-600: oklch(0.487 0.072 189);
+  --color-teal-700: oklch(0.408 0.061 189);
+  --color-teal-800: oklch(0.335 0.049 189);
+  --color-teal-900: oklch(0.272 0.039 189);
+
+  /* Deck accents at their true converted values */
+  --color-clay-500: oklch(0.586 0.147 51.3);  /* BE5D0E */
+  --color-clay-600: oklch(0.520 0.135 51);
+  --color-clay-700: oklch(0.455 0.115 51);
+  --color-clay-50: oklch(0.935 0.042 55);
+  --color-brick-600: oklch(0.449 0.137 23.5); /* 922C2E */
+  --color-olive-600: oklch(0.468 0.089 134.5);/* 44652F */
+  --color-olive-50: oklch(0.935 0.038 134);
+  --color-gold-400: oklch(0.839 0.135 91.8);  /* EAC757 */
+  --color-gold-50: oklch(0.952 0.050 92);
+
+  /* Cards need a touch more lift on a coloured ground than on white */
+  --shadow-card: 0 1px 3px oklch(0.45 0.05 70 / 0.10),
+                 0 1px 2px oklch(0.45 0.05 70 / 0.06);
+}
