@@ -13,7 +13,6 @@ interface Stats {
   trackingGoalStartDate: string | null;
 }
 
-const PATTERN_THRESHOLD = 14;
 const GOAL_OPTIONS = [30, 60, 90] as const;
 
 function daysSince(dateStr: string): number {
@@ -24,7 +23,9 @@ function daysSince(dateStr: string): number {
 
 /**
  * The mandate layer: one slim strip, two framings.
- * Default: progress toward the ~14 days the engine needs before patterns appear.
+ * Default: a plain day count. It used to promise patterns "around day 14"
+ * over a bar that filled by then; measured, most patterns take two to three
+ * months, so the strip no longer forecasts anything.
  * With a tracking goal set (e.g. a practitioner's "30 days"): day N of goal + export.
  */
 interface ProgressStripProps {
@@ -74,9 +75,7 @@ export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
 
   const hasGoal = stats.trackingGoalDays != null && stats.trackingGoalStartDate != null;
   const goalDay = hasGoal ? Math.min(daysSince(stats.trackingGoalStartDate!), stats.trackingGoalDays!) : 0;
-  const pct = hasGoal
-    ? Math.min(100, (goalDay / stats.trackingGoalDays!) * 100)
-    : Math.min(100, (stats.daysTracked / PATTERN_THRESHOLD) * 100);
+  const pct = hasGoal ? Math.min(100, (goalDay / stats.trackingGoalDays!) * 100) : 0;
 
   let line: string;
   if (hasGoal) {
@@ -85,11 +84,9 @@ export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
         ? `${stats.trackingGoalDays} days tracked — ready to share`
         : `Day ${goalDay} of ${stats.trackingGoalDays}`;
   } else if (stats.daysTracked === 0) {
-    line = "Log your first day — patterns typically appear around day 14";
-  } else if (stats.daysTracked < PATTERN_THRESHOLD) {
-    line = `Day ${stats.daysTracked} — patterns typically appear around day 14`;
+    line = "Your first day of logging";
   } else {
-    line = `${stats.daysTracked} days logged`;
+    line = `Day ${stats.daysTracked} of logging`;
   }
 
   // Coming back after a break (flares make breaks normal): say when the last
@@ -100,7 +97,7 @@ export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
   const lastLabel = stats.lastEntryDate
     ? new Date(stats.lastEntryDate + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" })
     : "";
-  const showBar = hasGoal || stats.daysTracked < PATTERN_THRESHOLD;
+  const showBar = hasGoal;
 
   return (
     <>

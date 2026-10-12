@@ -25,6 +25,7 @@ import type { EntryPatch } from "@/components/timeline/EntryEditor";
 import { CaptureBar } from "@/components/capture/CaptureBar";
 import { PendingCaptureCard } from "@/components/capture/PendingCaptureCard";
 import { ProgressStrip } from "@/components/capture/ProgressStrip";
+import { SymptomNow } from "@/components/capture/SymptomNow";
 import { useCapture } from "@/hooks/use-capture";
 import { cn } from "@/lib/utils";
 import type { TimelineEntry, EntryType, ExerciseType, IntensityLevel } from "@/types";
@@ -373,6 +374,17 @@ export default function TimelinePage() {
       <div id="log-day-strip">
         {stripOpen && <DayStrip selected={date} today={today} onSelect={setDate} />}
       </div>
+
+      {/* How you feel, first: one tap logs a symptom at the time it happens,
+          which is what lets a reaction show in weeks rather than months. */}
+      {isToday && (
+        <SymptomNow
+          entries={entries}
+          date={date}
+          onChanged={() => fetchEntries(dateRef.current)}
+          onSomethingElse={() => document.getElementById("capture-input")?.focus()}
+        />
+      )}
 
       {/* Energy filter — only offered when the day actually has energy data */}
       {hasEnergyEntries && (

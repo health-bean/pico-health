@@ -164,6 +164,7 @@ export function CaptureBar({ onSubmitText, onSubmitImage, onBrowse, disabled, on
 
           <input
             ref={inputRef}
+            id="capture-input"
             type="text"
             value={text}
             onChange={(e) => setText(e.target.value)}
