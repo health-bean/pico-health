@@ -2,7 +2,7 @@ import { analyzeSingleFactors } from './single-factor';
 import { analyzeMultiFactors } from './n-factor';
 import { computeProgress } from './progress';
 import { analyzeTiming } from './timing';
-import type { DayComposite, InsightsOutput, SingleFactorResult, PropertyPattern } from './types';
+import type { DayComposite, InsightsOutput, SingleFactorResult, PropertyPattern, Watching } from './types';
 import { insightKey } from './types';
 
 /**
@@ -47,6 +47,7 @@ export function assembleInsights(composites: DayComposite[], today: string, days
   ];
 
   return {
+    watching: computeWatching(composites),
     triggers: [...multiResults, ...concreteTriggers].sort((a, b) => b.impactScore - a.impactScore),
     helpers: singleHelpers.sort((a, b) => b.impactScore - a.impactScore),
     propertyPatterns,
@@ -106,4 +107,40 @@ function extractPropertyPatterns(singleResults: SingleFactorResult[]): PropertyP
   }
 
   return patterns.sort((a, b) => b.impactScore - a.impactScore);
+}
+
+/**
+ * The engine needs a food or a symptom on at least this many days before it
+ * can test it at all (MIN_OCCURRENCES in single-factor.ts, MIN_MEALS and
+ * MIN_REACTIONS in timing.ts).
+ */
+const MIN_DAYS_TO_CHECK = 3;
+const WATCH_LIMIT = 6;
+
+/** Most-logged foods and symptoms, by days, for the empty page. */
+export function computeWatching(days: DayComposite[]): Watching {
+  const count = (names: (d: DayComposite) => string[]) => {
+    const m = new Map<string, { label: string; days: number }>();
+    for (const d of days) {
+      const today = new Map<string, string>();
+      for (const label of names(d)) {
+        const key = label.trim().toLowerCase();
+        if (!today.has(key)) today.set(key, label);
+      }
+      for (const [key, label] of today) {
+        const e = m.get(key) ?? { label, days: 0 };
+        e.days++;
+        m.set(key, e);
+      }
+    }
+    return [...m.values()]
+      .sort((a, b) => b.days - a.days || a.label.localeCompare(b.label))
+      .slice(0, WATCH_LIMIT)
+      .map(e => ({ ...e, checkable: e.days >= MIN_DAYS_TO_CHECK }));
+  };
+  return {
+    foods: count(d => d.foods.map(f => f.name)),
+    symptoms: count(d => d.symptoms.map(s => s.name)),
+    minDays: MIN_DAYS_TO_CHECK,
+  };
 }

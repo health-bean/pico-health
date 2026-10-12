@@ -187,7 +187,21 @@ export interface ProgressObservation {
 
 // --- Engine Output ---
 
+/**
+ * What the engine is watching, for a page with nothing to report yet. Plain
+ * counts from the log, never a prediction: `checkable` says only whether
+ * there is enough to test, not whether a pattern will turn up.
+ */
+export interface Watching {
+  foods: Array<{ label: string; days: number; checkable: boolean }>;
+  symptoms: Array<{ label: string; days: number; checkable: boolean }>;
+  /** Days a food or symptom must be logged on before it can be tested at all. */
+  minDays: number;
+}
+
 export interface InsightsOutput {
+  /** Optional: absent on cached output from before it existed. */
+  watching?: Watching;
   triggers: (SingleFactorResult | MultiFactorResult)[];
   helpers: (SingleFactorResult | MultiFactorResult)[];
   propertyPatterns: PropertyPattern[];

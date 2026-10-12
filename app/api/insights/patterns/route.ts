@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   const daysParam = req.nextUrl.searchParams.get('days');
   const days = Math.min(Math.max(parseInt(daysParam ?? '90', 10) || 90, 1), 365);
 
-  const cacheKey = `insights:v3:${session.userId}:${days}`;
+  const cacheKey = `insights:v4:${session.userId}:${days}`;
   const cached = await cacheGet(cacheKey);
   if (cached) return NextResponse.json(cached);
 

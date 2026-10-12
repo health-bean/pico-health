@@ -239,6 +239,7 @@ export default function InsightsPage() {
             </section>
   );
   const daysTracked = patterns?.dataStatus?.daysTracked ?? 0;
+  const watching = patterns?.watching;
   const factorsCompared = patterns?.dataStatus?.factorsCompared;
   const symptomsCompared = patterns?.dataStatus?.symptomsCompared;
   const loggedDays = `${daysTracked} logged ${daysTracked === 1 ? 'day' : 'days'}`;
@@ -354,7 +355,7 @@ export default function InsightsPage() {
                 <p className="text-sm text-warm-600">
                   {daysTracked >= 90
                     ? 'Smaller or rarer patterns can take longer to show. This page updates as you log.'
-                    : 'A strong reaction to something you eat often can show within three to four weeks. Most patterns take two to three months of steady logging.'}
+                    : 'Log symptoms when they happen, not later in the day: the timing lets a strong reaction to something you eat often show within two to three weeks. Most patterns take two to three months of steady logging.'}
                 </p>
               </>
             )}
@@ -362,6 +363,39 @@ export default function InsightsPage() {
               <p className="text-sm text-warm-600">Patterns come from what you log, so they start once there are days to compare.</p>
             )}
           </section>
+
+          {/* Plain counts, never a forecast: "being checked" means there is
+              enough to test, not that anything will turn up. */}
+          {daysTracked > 0 && watching && (watching.symptoms.length > 0 || watching.foods.length > 0) && (
+            <section aria-labelledby="watching-heading" className="max-w-[65ch]">
+              <h3 id="watching-heading" className="text-base font-semibold text-warm-900">What&rsquo;s being watched</h3>
+              <p className="mt-1 text-sm text-warm-600">
+                Anything logged on {watching.minDays} or more days is checked each time you log. Below that there isn&rsquo;t enough to test yet.
+              </p>
+              {[{ title: 'Symptoms', items: watching.symptoms }, { title: 'Foods', items: watching.foods }]
+                .filter(g => g.items.length > 0)
+                .map(g => (
+                  <div key={g.title} className="mt-4">
+                    <h4 className="text-xs font-semibold text-warm-500">{g.title}</h4>
+                    <ul className="mt-1 divide-y divide-warm-200/70">
+                      {g.items.map(item => (
+                        <li key={item.label} className="flex items-baseline justify-between gap-3 py-2 text-sm">
+                          <span className="min-w-0 truncate text-warm-900">{item.label}</span>
+                          <span className="shrink-0 tabular-nums text-warm-600">
+                            {item.days} {item.days === 1 ? 'day' : 'days'}
+                            <span className={item.checkable ? 'ml-2 font-medium text-teal-700' : 'ml-2 text-warm-500'}>
+                              {item.checkable
+                                ? 'being checked'
+                                : `${watching.minDays - item.days} more to check`}
+                            </span>
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+            </section>
+          )}
 
           {progressSection}
 
