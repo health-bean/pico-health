@@ -103,22 +103,20 @@ export async function getFoodForUser(
 }
 
 /**
- * Record the answer to a post-meal check-in on the meal's own food entries
- * (`structuredContent.checkin`): "fine" is a meal someone watched and had no
- * reaction to, which an unanswered meal cannot tell apart from not logging.
- * Returns how many entries were marked; 0 when the meal is not this user's.
+ * Merge `fields` into `structuredContent` on every food entry of one meal
+ * (the foods logged at one time on one day) belonging to this user.
+ * Returns how many entries changed; 0 when the meal is not this user's.
  */
-export async function markMealCheckin(
+export async function mergeIntoMeal(
   userId: string,
   entryDate: string,
   mealTime: string,
-  answer: "fine" | "symptom"
+  fields: Record<string, unknown>
 ): Promise<number> {
-  const checkin = JSON.stringify({ checkin: { answer, at: new Date().toISOString() } });
   const updated = await db
     .update(timelineEntries)
     .set({
-      structuredContent: sql`COALESCE(${timelineEntries.structuredContent}, '{}'::jsonb) || ${checkin}::jsonb`,
+      structuredContent: sql`COALESCE(${timelineEntries.structuredContent}, '{}'::jsonb) || ${JSON.stringify(fields)}::jsonb`,
       updatedAt: new Date(),
     })
     .where(
@@ -131,4 +129,13 @@ export async function markMealCheckin(
     )
     .returning({ id: timelineEntries.id });
   return updated.length;
+}
+
+/**
+ * Record the answer to a post-meal check-in on the meal's own food entries
+ * (`structuredContent.checkin`): "fine" is a meal someone watched and had no
+ * reaction to, which an unanswered meal cannot tell apart from not logging.
+ */
+export function markMealCheckin(userId: string, entryDate: string, mealTime: string, answer: "fine" | "symptom") {
+  return mergeIntoMeal(userId, entryDate, mealTime, { checkin: { answer, at: new Date().toISOString() } });
 }

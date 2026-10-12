@@ -7,6 +7,8 @@ import { useSession } from "@/hooks/use-session";
 import Link from "next/link";
 import { ChevronRight, CreditCard, Download, FlaskConical } from "lucide-react";
 import { DeleteAccount } from "@/components/settings/DeleteAccount";
+import { CheckinReminders } from "@/components/settings/CheckinReminders";
+import { turnRemindersOff } from "@/lib/native/push";
 import type { Protocol } from "@/types";
 
 interface SubscriptionInfo {
@@ -197,6 +199,8 @@ export default function SettingsPage() {
   }
 
   async function handleLogout() {
+    // Forget this phone first, while still signed in, so reminders stop.
+    await turnRemindersOff().catch(() => null);
     await fetch("/api/auth/logout", { method: "POST" });
     router.push("/login");
   }
@@ -326,6 +330,8 @@ export default function SettingsPage() {
           <p className="text-sm text-warm-500">Not signed in</p>
         )}
       </Card>
+
+      <CheckinReminders />
 
       {/* Reintroductions */}
       <Card className="mb-4">

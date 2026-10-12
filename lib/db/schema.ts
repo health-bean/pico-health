@@ -203,6 +203,26 @@ export const profiles = pgTable("profiles", {
 });
 
 
+/**
+ * A phone that asked for post-meal check-in reminders. Having a row is the
+ * opt-in: turning reminders off, or the push service reporting the token
+ * dead, deletes it. Created by lib/db/migrations/add-device-tokens.sql.
+ */
+export const deviceTokens = pgTable(
+  "device_tokens",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    userId: uuid("user_id")
+      .notNull()
+      .references(() => profiles.id, { onDelete: "cascade" }),
+    token: text("token").notNull().unique(),
+    platform: varchar("platform", { length: 10 }).notNull(), // 'ios' | 'android'
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow(),
+    lastSeenAt: timestamp("last_seen_at", { withTimezone: true }).defaultNow(),
+  },
+  (table) => [index("device_tokens_user_idx").on(table.userId)]
+);
+
 /** Per-request AI usage accounting — cost per user is measured, not estimated. */
 export const usageLog = pgTable(
   "usage_log",

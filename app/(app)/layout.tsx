@@ -5,6 +5,7 @@ import { Header } from "@/components/layout/header";
 import { MobileNav } from "@/components/layout/mobile-nav";
 import { OnboardingCheck } from "@/components/layout/OnboardingCheck";
 import { ToastProvider } from "@/components/ui";
+import { NativePush } from "@/components/layout/NativePush";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -12,6 +13,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
 
   return (
     <OnboardingCheck>
+      <NativePush />
       <ToastProvider>
         {isOnboarding ? (
           // Onboarding gets a clean, full-screen layout — no nav chrome
