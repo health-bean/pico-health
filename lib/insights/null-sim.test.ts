@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateNullDays, runNullSim, summarize, plantedRecall } from './null-sim';
+import { generateNullDays, runNullSim, summarize, plantedRecall, acuteRecall } from './null-sim';
 import { assembleInsights } from './assemble';
 
 describe('null simulation', () => {
@@ -36,5 +36,15 @@ describe('null simulation', () => {
     const tomato = (days: number) => plantedRecall(days, 20).find(r => r.effect.cause === 'Tomatoes')!.recall;
     expect(tomato(90)).toBeGreaterThanOrEqual(0.4);
     expect(tomato(180)).toBeGreaterThanOrEqual(0.7);
+  });
+
+  it('shows an obvious reaction to a food eaten every third day within three weeks, when logged as it happens', () => {
+    const [twoWeeks, threeWeeks] = acuteRecall('Oatmeal', 10, [14, 21], 20);
+    expect(twoWeeks).toBeGreaterThanOrEqual(0.5);
+    expect(threeWeeks).toBeGreaterThanOrEqual(0.9);
+  });
+
+  it('adds almost no noise from meal timing', () => {
+    expect(summarize(90, 20).timedShown.median).toBe(0);
   });
 });

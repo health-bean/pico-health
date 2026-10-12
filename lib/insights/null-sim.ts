@@ -22,6 +22,8 @@ export interface NullSimOptions {
   journalRate?: number;
   /** Real effects to plant, for checking that a gate keeps what it should. */
   plant?: PlantedEffect[];
+  /** Symptoms carry the time they were logged (default). False models someone who never logs times. */
+  timed?: boolean;
 }
 
 /** On days with `cause` (a food or supplement), `symptom` is `multiplier`× as likely. */
@@ -29,6 +31,8 @@ export interface PlantedEffect {
   cause: string;
   symptom: string;
   multiplier: number;
+  /** The symptom is logged 15 minutes to 3 hours after the meal with the cause, rather than at a random time. */
+  acute?: boolean;
 }
 
 /** What the Insights page would render with the default filters. */
@@ -36,6 +40,8 @@ export interface NoiseCount {
   /** Non-early trigger rows, singles and combinations. */
   triggersShown: number;
   combinationsShown: number;
+  /** Meal-timing rows (timing.ts). */
+  timedShown: number;
   /** Property groups (one row per property on the page). */
   propertyRowsShown: number;
   helpersShown: number;
@@ -96,7 +102,7 @@ function pickWeighted<T extends { weight: number }>(r: () => number, items: T[])
 
 const int = (r: () => number, lo: number, hi: number) => lo + Math.floor(r() * (hi - lo + 1));
 
-export function generateNullDays({ days, seed, foodsPerDay = 5, journalRate = 0.8, plant = [] }: NullSimOptions): DayComposite[] {
+export function generateNullDays({ days, seed, foodsPerDay = 5, journalRate = 0.8, plant = [], timed = true }: NullSimOptions): DayComposite[] {
   const r = rng(seed);
   const out: DayComposite[] = [];
   const start = Date.UTC(2026, 0, 1);
@@ -123,10 +129,22 @@ export function generateNullDays({ days, seed, foodsPerDay = 5, journalRate = 0.
     const had = new Set([...names, ...supplements.map(s => s.name)]);
 
     const symptoms: SymptomEntry[] = [];
+    const hhmm = (min: number) => `${String(Math.floor(min / 60)).padStart(2, '0')}:${String(min % 60).padStart(2, '0')}`;
     for (const [name, base] of SYMPTOMS) {
       let p = base;
-      for (const e of plant) if (e.symptom === name && had.has(e.cause)) p *= e.multiplier;
-      if (r() < Math.min(p, 0.95)) symptoms.push({ name, severity: int(r, 2, 8), time: null });
+      let acuteAfter: number | null = null;
+      for (const e of plant) {
+        if (e.symptom !== name || !had.has(e.cause)) continue;
+        p *= e.multiplier;
+        const meal = foods.find(f => f.name === e.cause);
+        if (e.acute && meal?.time) acuteAfter = parseInt(meal.time, 10) * 60;
+      }
+      if (r() < Math.min(p, 0.95)) {
+        // Logged as it happens: at a random waking minute, or shortly after
+        // the meal for a planted acute reaction.
+        const minute = acuteAfter !== null ? Math.min(acuteAfter + int(r, 15, 180), 23 * 60 + 59) : int(r, 7 * 60, 23 * 60);
+        symptoms.push({ name, severity: int(r, 2, 8), time: timed ? hhmm(minute) : null });
+      }
     }
 
     const hasJournal = r() < journalRate;
@@ -163,6 +181,7 @@ export function countShown(output: InsightsOutput): NoiseCount {
   return {
     triggersShown: triggers.length,
     combinationsShown,
+    timedShown: triggers.filter(t => 'basis' in t && t.basis === 'meals').length,
     propertyRowsShown,
     helpersShown: helpers.length,
     rowsShown: triggers.length + propertyRowsShown + helpers.length,
@@ -215,4 +234,21 @@ export function plantedRecall(days: number, seeds: number): Array<{ effect: Plan
     });
   }
   return PLANTED.map((effect, i) => ({ effect, recall: hits[i] / seeds }));
+}
+
+/**
+ * An obvious acute reaction: hives within three hours of a food, logged as
+ * it happens. Returns the share of seeds in which it is shown by default,
+ * per window, to answer "how soon does something obvious show up".
+ */
+export function acuteRecall(cause: string, multiplier: number, windows: number[], seeds: number): number[] {
+  return windows.map(days => {
+    let hits = 0;
+    for (let s = 1; s <= seeds; s++) {
+      const d = generateNullDays({ days, seed: 5000 + s, plant: [{ cause, symptom: 'Hives', multiplier, acute: true }] });
+      const out = assembleInsights(d, d[d.length - 1].date, days);
+      if (out.triggers.some(r => r.confidence !== 'early' && r.outcome.label === 'Hives' && ('factors' in r ? r.factors : [r.factor]).some(f => f.label === cause))) hits++;
+    }
+    return hits / seeds;
+  });
 }

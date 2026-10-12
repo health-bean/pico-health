@@ -17,6 +17,8 @@ export interface StandoutDatum {
   otherLabel: string;
   days: number;
   total: number;
+  /** 'times' for a meal-timing row, which counts meals rather than days. */
+  unit?: 'days' | 'times';
 }
 
 const pct = (n: number) => `${Math.round(n * 100)}%`;
@@ -93,12 +95,12 @@ export function StandoutPlot({ items }: { items: StandoutDatum[] }) {
                 <span
                   className="absolute top-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-teal-700 ring-2 ring-[var(--color-surface)]"
                   style={{ left: `${d.withRate * 100}%` }}
-                  title={`${pct(d.withRate)} on days with ${d.factor.toLowerCase()}`}
+                  title={d.unit === 'times' ? `${pct(d.withRate)} within 4 hours of ${d.factor.toLowerCase()}` : `${pct(d.withRate)} on days with ${d.factor.toLowerCase()}`}
                 />
               </div>
 
               <p className="mt-2 text-xs text-warm-500 tabular-nums">
-                {d.days} of {d.total} days · {pct(d.otherRate)} {d.otherLabel}
+                {d.days} of {d.total} {d.unit ?? 'days'} · {pct(d.otherRate)} {d.otherLabel}
               </p>
             </div>
           );

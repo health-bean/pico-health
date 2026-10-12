@@ -22,6 +22,8 @@ interface InsightRowProps {
   note?: string;
   /** The symptom the count is about, shown with the count so the number never floats free of its meaning. */
   outcome?: string;
+  /** What the count counts. Meal-timing rows count times eaten, not days. */
+  unit?: 'days' | 'times';
 }
 
 /**
@@ -29,7 +31,7 @@ interface InsightRowProps {
  * "14 of 26 days", so it reads as a count and never as a score, and five
  * days can never look like certainty.
  */
-export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note, outcome }: InsightRowProps) {
+export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note, outcome, unit = 'days' }: InsightRowProps) {
   const iconColor = tone === 'better' ? 'text-teal-600' : 'text-warm-600';
 
   // No tinted box: the row sat in a rounded fill, inside a section card, inside
@@ -67,7 +69,7 @@ export function InsightRow({ icon: Icon, title, description, days, total, foods,
         <div className="max-w-[40%] shrink-0 text-right tabular-nums">
           {outcome && <div className="text-xs font-medium text-warm-600">{outcome}</div>}
           <div className="text-base font-semibold text-warm-900">{days} of {total}</div>
-          <div className="text-xs text-warm-500">days</div>
+          <div className="text-xs text-warm-500">{unit}</div>
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { analyzeSingleFactors } from './single-factor';
 import { analyzeMultiFactors } from './n-factor';
 import { computeProgress } from './progress';
+import { analyzeTiming } from './timing';
 import type { DayComposite, InsightsOutput, SingleFactorResult, PropertyPattern } from './types';
 import { insightKey } from './types';
 
@@ -36,7 +37,14 @@ export function assembleInsights(composites: DayComposite[], today: string, days
 
   // Property-level results get their own section ("Patterns to Watch");
   // the Triggers list is for concrete things a person can point at.
-  const concreteTriggers = filteredSingleTriggers.filter(r => r.factor.category !== 'food_property');
+  // A reaction seen at the meal level replaces the same pair's day-level
+  // row: one finding, counted the sharper way.
+  const timed = analyzeTiming(composites);
+  const timedKeys = new Set(timed.map(r => insightKey([r.factor], r.outcome)));
+  const concreteTriggers = [
+    ...timed,
+    ...filteredSingleTriggers.filter(r => r.factor.category !== 'food_property' && !timedKeys.has(insightKey([r.factor], r.outcome))),
+  ];
 
   return {
     triggers: [...multiResults, ...concreteTriggers].sort((a, b) => b.impactScore - a.impactScore),

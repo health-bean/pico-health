@@ -42,6 +42,11 @@ function getFoods(_result: SingleFactorResult | MultiFactorResult): string[] {
 }
 
 /** Days the factor was present: the denominator behind every row. */
+/** A meal-timing row (lib/insights/timing.ts): counts meals, not days. */
+function isTimed(result: SingleFactorResult | MultiFactorResult): boolean {
+  return 'basis' in result && result.basis === 'meals';
+}
+
 function getTotalDays(result: SingleFactorResult | MultiFactorResult): number {
   return 'factors' in result ? (result as MultiFactorResult).coOccurrences : (result as SingleFactorResult).totalOpportunities;
 }
@@ -285,6 +290,7 @@ export default function InsightsPage() {
             </summary>
             <div className="mt-1 max-w-[65ch] space-y-2 rounded-xl bg-warm-50 p-3 leading-relaxed">
               <p>Each row is something that happened alongside a symptom, counted in days. It is a pattern in your own log, not a cause or a diagnosis. Worth raising with your practitioner.</p>
+              <p>Rows counted in <span className="font-medium text-warm-800">times</span> are about timing: a symptom logged within four hours after you ate something. They need symptoms logged as they happen; entries logged together all at once are not counted.</p>
               <p><span className="font-medium text-warm-800">Early signal</span> means it could still be chance: too few days so far, or a difference small enough to happen by coincidence. <span className="font-medium text-warm-800">Moderate</span> and <span className="font-medium text-warm-800">strong evidence</span> mean more days and a bigger difference from your other days.</p>
               <p>A <span className="font-medium text-warm-800">flare day</span> is a day with two or more different symptoms, or any symptom rated 7 or higher.</p>
             </div>
@@ -397,9 +403,10 @@ export default function InsightsPage() {
                       outcome: r.outcome.label,
                       withRate: r.conditionalRate,
                       otherRate: multi ? (r as MultiFactorResult).bestSubRate : (r as SingleFactorResult).baseRate,
-                      otherLabel: multi ? 'with either alone' : 'on other days',
+                      otherLabel: multi ? 'with either alone' : isTimed(r) ? 'after other meals' : 'on other days',
                       days: r.frequency,
                       total: getTotalDays(r),
+                      unit: isTimed(r) ? 'times' as const : 'days' as const,
                     };
                   })}
                 />
@@ -424,6 +431,7 @@ export default function InsightsPage() {
                   description={r.description}
                   days={r.frequency}
                   total={getTotalDays(r)}
+                  unit={isTimed(r) ? 'times' : 'days'}
                   foods={getFoods(r)}
                   isCompound={isMultiFactor(r)}
                   confidence={r.confidence}

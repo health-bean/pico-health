@@ -144,6 +144,8 @@ export interface SingleFactorResult {
   direction: Direction;
   confidence: Confidence;
   description: string;
+  /** What was counted. Absent means days; 'meals' rows come from timing.ts and count meals. */
+  basis?: 'days' | 'meals';
 }
 
 export interface MultiFactorResult {
