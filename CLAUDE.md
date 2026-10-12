@@ -45,7 +45,7 @@ Per-task routing in `lib/ai/router.ts` (`getProvider(task)`, `getTaskModel(task)
 To compare models/providers on real data before changing a default, use `npm run eval:capture` (`evals/README.md`) — 55 fixtures, drives the real capture pipeline with tool calls intercepted, no DB writes.
 
 ## Design System — "Botanical Clinical"
-- Teal (hue 195) + warm neutrals (hue 80)
+- "pico" palette (from the pitch deck): cream surface (#FCF2D1), teal ramp (hue 189), warm neutrals, ochre for "watch" patterns — tokens in `@theme` in `app/globals.css`
 - Source Sans 3 (body), Fraunces (display headings)
 - 14 UI components in `components/ui/`
 - Forced light mode (no dark mode yet)
@@ -67,5 +67,7 @@ To compare models/providers on real data before changing a default, use `npm run
 ## TODO
 - support@picohealth.app mailbox needs to exist (referenced in Terms/Privacy/Settings)
 - Counsel review of /terms and /privacy before App Store submission
-- Pricing decision (docs have historically disagreed: $1.99–3.99 vs $15–25/mo) — billing plumbing exists, checkout button does not
+- Pricing decision (docs have historically disagreed: $1.99–3.99 vs $15–25/mo) — billing plumbing exists, checkout button does not. iOS must use IAP unless launching free
+- App Store / Play launch: living checklist at https://claude.ai/artifact/2viZjpRXm5kxoSyT8yNEGX. Blockers: Google OAuth fails inside the Capacitor webview, Sign in with Apple required, no `ios/` project, no POST_NOTIFICATIONS, Play needs a web account-deletion page
+- Push check-in reminders are built but inert until credentials + a 15-min cron exist — see `docs/push-setup.md`
 - Practitioner v0 (Personal Data Store spec) — no practitioner role/accounts yet, only admin
