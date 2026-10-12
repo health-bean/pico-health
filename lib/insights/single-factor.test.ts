@@ -56,6 +56,19 @@ describe('extractFactorsFromDay', () => {
     expect(factors).toContainEqual({ category: 'stress', key: 'stress:high', label: 'High stress' });
   });
 
+  it('same-day pain, energy and mood ratings are not factors: they describe the symptoms, not a cause', () => {
+    // "Low pain → less headache" led the live page: a day rated low pain is
+    // mostly a day without a headache, so the row restated the outcome.
+    const day = makeDay({ hasJournal: true, journal: { sleep: 3, energy: 8, mood: 2, stress: 8, pain: 2 } });
+    const cats = extractFactorsFromDay(day).map(f => f.category);
+    expect(cats).not.toContain('pain');
+    expect(cats).not.toContain('energy');
+    expect(cats).not.toContain('mood');
+    // Last night's sleep precedes the day, and stress is a hypothesised trigger in its own right.
+    expect(cats).toContain('sleep');
+    expect(cats).toContain('stress');
+  });
+
   it('extracts late meal timing', () => {
     const day = makeDay({ hasLateMeal: true });
     const factors = extractFactorsFromDay(day);

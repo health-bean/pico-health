@@ -44,6 +44,26 @@ describe('computeProgress', () => {
     expect(headache!.previousPeriod.count).toBe(6);
   });
 
+  it('labels rolling windows as what they are, not calendar months, and counts logged days', () => {
+    // 30 logged days, then 10 logged days in the last 30. The old labels
+    // called these "Sep" and "so far in Oct" on Oct 12.
+    const days: DayComposite[] = [];
+    const add = (date: string, headache: boolean) => days.push(makeDay(date, {
+      symptoms: headache ? [{ name: 'Headache', severity: 5, time: null }] : [],
+    }));
+    for (let i = 0; i < 30; i++) add(new Date(Date.UTC(2026, 7, 14 + i)).toISOString().slice(0, 10), i < 8);
+    for (let i = 0; i < 10; i++) add(new Date(Date.UTC(2026, 8, 13 + i * 3)).toISOString().slice(0, 10), i < 5);
+    const [h] = computeProgress(days, '2026-10-12');
+    expect(h.observation).toBe('Headache: 8 of 30 logged days in the 30 before → 5 of 10 logged days in the last 30.');
+  });
+
+  it('does not compare when the recent window has too few logged days to say anything', () => {
+    const days: DayComposite[] = [];
+    for (let i = 0; i < 30; i++) days.push(makeDay(new Date(Date.UTC(2026, 7, 14 + i)).toISOString().slice(0, 10), { symptoms: [{ name: 'Headache', severity: 5, time: null }] }));
+    for (let i = 0; i < 6; i++) days.push(makeDay(new Date(Date.UTC(2026, 8, 13 + i * 4)).toISOString().slice(0, 10), { symptoms: [{ name: 'Headache', severity: 5, time: null }] }));
+    expect(computeProgress(days, '2026-10-12')).toEqual([]);
+  });
+
   it('never reports a flare-free streak (gamification is an anti-goal)', () => {
     const days = [
       makeDay('2026-04-01', { isFlareDay: true }),

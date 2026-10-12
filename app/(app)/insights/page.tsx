@@ -6,7 +6,7 @@ import { InsightRow } from '@/components/insights/InsightRow';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
 import Link from 'next/link';
-import { Spinner, Card, PageTitle } from '@/components/ui';
+import { Spinner, PageTitle } from '@/components/ui';
 import {
   Activity, CalendarDays, ChevronRight, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
   Droplets, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, Sparkles, TrendingDown, TrendingUp, Utensils, Zap,
@@ -219,7 +219,7 @@ export default function InsightsPage() {
             <section className="bg-[var(--color-surface-card)] rounded-xl overflow-hidden shadow-[var(--shadow-card)] border border-warm-200 p-4">
               <div className="flex items-center gap-2 mb-3">
                 <CalendarRange className="h-4 w-4 text-warm-600" aria-hidden="true" />
-                <h2 className="text-base font-semibold text-warm-900">This month vs. last</h2>
+                <h2 className="text-base font-semibold text-warm-900">The last 30 days vs. the 30 before</h2>
               </div>
               <p className="mb-3 text-sm text-warm-600">
                 Symptom days, side by side. Chronic conditions move in waves — this is a comparison, not a scorecard.
@@ -309,21 +309,27 @@ export default function InsightsPage() {
         </div>
       )}
 
-            {/* Nothing in this window, but recent alerts point at an older one */}
+      {/* Nothing in this window, but recent alerts point at an older one.
+          Same unboxed shape as the empty state below. */}
       {!hasInsights && orphanAlerts.length > 0 && timeRange < 180 && (
-        <Card className="p-5 mb-4 text-center">
-          <p className="text-sm text-warm-600 font-medium">Your patterns are from before the last {timeRange} days.</p>
-          <p className="text-sm text-warm-500 mt-1">
-            {daysTracked} of the last {timeRange} days logged. A wider window still has them.
-          </p>
-          <button
-            type="button"
-            onClick={() => setTimeRange(180)}
-            className="mt-3 inline-flex min-h-11 items-center justify-center rounded-xl bg-teal-50 px-4 text-sm font-medium text-teal-700 hover:bg-teal-100"
-          >
-            Show the last 180 days
-          </button>
-        </Card>
+        <div className="space-y-9">
+          <section aria-labelledby="earlier-heading" className="max-w-[65ch] space-y-3">
+            <h2 id="earlier-heading" className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
+              Your patterns are from earlier
+            </h2>
+            <p className="text-sm text-warm-600">
+              {daysTracked} of the last {timeRange} days logged, and nothing in that stretch stands out on its own. A longer window still has them.
+            </p>
+            <button
+              type="button"
+              onClick={() => setTimeRange(180)}
+              className="inline-flex min-h-11 items-center text-sm font-semibold text-teal-700 underline-offset-4 hover:text-teal-800 hover:underline"
+            >
+              Show the last 180 days
+            </button>
+          </section>
+          {progressSection}
+        </div>
       )}
 
       {/* Nothing has cleared the bar. Most people see this for their first
@@ -435,6 +441,10 @@ export default function InsightsPage() {
               variant="watch"
               icon={Eye}
               title="Patterns worth keeping an eye on"
+              // These rows join your log against the food list, so part of
+              // the claim is the list's. The list is cited but not yet
+              // practitioner-reviewed, and the row should say so.
+              subtitle="Foods are grouped using Pico's food list, drawn from SIGHI and published FODMAP and oxalate lists. A practitioner hasn't reviewed it yet, so these rows rest on the list as well as your log."
               totalCount={propertyPatterns.length}
               defaultVisible={2}
               expandSignal={expandSignal}

@@ -128,4 +128,30 @@ describe('detectNewAlerts', () => {
     const alerts = detectNewAlerts(current, new Set());
     expect(alerts).toHaveLength(0);
   });
+
+  it('does not call it progress when only the logging dropped', () => {
+    // 10 of 30 logged days before, 4 of 10 now: fewer headache days in
+    // count, but a higher share of the days logged.
+    const current = makeOutput({
+      progress: [{
+        metric: 'symptom_frequency:headache', label: 'Headache frequency',
+        currentPeriod: { count: 4, days: 10, label: 'the last 30' },
+        previousPeriod: { count: 10, days: 30, label: 'the 30 before' },
+        observation: 'x',
+      }],
+    });
+    expect(detectNewAlerts(current, new Set())).toHaveLength(0);
+  });
+
+  it('calls it progress when the share of logged days with the symptom fell', () => {
+    const current = makeOutput({
+      progress: [{
+        metric: 'symptom_frequency:headache', label: 'Headache frequency',
+        currentPeriod: { count: 3, days: 30, label: 'the last 30' },
+        previousPeriod: { count: 12, days: 30, label: 'the 30 before' },
+        observation: 'x',
+      }],
+    });
+    expect(detectNewAlerts(current, new Set())).toHaveLength(1);
+  });
 });

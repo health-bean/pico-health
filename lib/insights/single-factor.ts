@@ -99,11 +99,11 @@ export function extractFactorsFromDay(day: DayComposite): Factor[] {
     const stressBucket = bucketNegativeScore(day.journal.stress);
     if (stressBucket) factors.push({ category: 'stress', key: `stress:${stressBucket}`, label: `${capitalize(stressBucket)} stress` });
 
-    const energyBucket = bucketScore(day.journal.energy);
-    if (energyBucket) factors.push({ category: 'energy', key: `energy:${energyBucket}`, label: `${capitalize(energyBucket)} energy` });
-
-    const moodBucket = bucketScore(day.journal.mood);
-    if (moodBucket) factors.push({ category: 'mood', key: `mood:${moodBucket}`, label: `${capitalize(moodBucket)} mood` });
+    // Energy, mood and pain are rated for the same day the symptoms happened,
+    // so they describe the symptoms rather than cause them: "low pain → less
+    // headache" led the live page, and it only restated that a day without a
+    // headache hurt less. Sleep is last night's and stress is a trigger in
+    // its own right, so those stay.
 
     // Restored Reflect fields become factors in their own right, so "days you
     // meditated" or "the week before your period" can show up as a pattern.
@@ -142,9 +142,6 @@ export function extractFactorsFromDay(day: DayComposite): Factor[] {
     if (day.journal.ovulation) {
       factors.push({ category: 'cycle', key: 'cycle:ovulation', label: 'Ovulation day' });
     }
-
-    const painBucket = bucketNegativeScore(day.journal.pain);
-    if (painBucket) factors.push({ category: 'pain', key: `pain:${painBucket}`, label: `${capitalize(painBucket)} pain` });
   }
 
   if (day.hasLateMeal) factors.push({ category: 'timing', key: 'timing:late_meal', label: 'Late meal' });
@@ -220,8 +217,6 @@ export function analyzeSingleFactors(days: DayComposite[], stats?: ComparisonSta
     if (stats) stats.factors++;
 
     for (const [, { outcome }] of outcomeDays) {
-      if (isSameCategory(factor, outcome)) continue;
-
       const oDays = outcomeDays.get(outcome.key)!.dayIndices;
       const coDays = intersection(fDays, oDays);
       const coOccurrence = coDays.size;
@@ -385,13 +380,6 @@ export function computeConfidence(rateMultiplier: number, evidenceDays: number):
   if (evidenceDays >= 12 && ratio >= 2) return 'strong';
   if (evidenceDays >= 6 && ratio >= 1.5) return 'moderate';
   return 'early';
-}
-
-function isSameCategory(factor: Factor, outcome: Outcome): boolean {
-  if (factor.category === 'pain' && outcome.type === 'next_day_pain') return true;
-  if (factor.category === 'sleep' && outcome.type === 'next_day_sleep') return true;
-  if (factor.category === 'energy' && outcome.type === 'next_day_energy') return true;
-  return false;
 }
 
 function intersection(a: Set<number>, b: Set<number>): Set<number> {

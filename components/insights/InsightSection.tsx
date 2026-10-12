@@ -18,19 +18,16 @@ const variants = {
   trigger: {
     rule: 'border-clay-500/35',
     titleColor: 'text-brick-600',
-    subtitleColor: 'text-clay-600',
     iconColor: 'text-clay-500',
   },
   watch: {
     rule: 'border-ochre-500/45',
     titleColor: 'text-ochre-700',
-    subtitleColor: 'text-ochre-700',
     iconColor: 'text-ochre-500',
   },
   helper: {
     rule: 'border-olive-600/35',
     titleColor: 'text-olive-600',
-    subtitleColor: 'text-olive-600',
     iconColor: 'text-olive-600',
   },
 };
@@ -64,7 +61,7 @@ export function InsightSection({ variant, icon: Icon, title, subtitle, defaultVi
         <Icon className={`h-4 w-4 shrink-0 ${v.iconColor}`} aria-hidden="true" />
         <h2 className={`text-base font-semibold ${v.titleColor}`}>{title}</h2>
       </div>
-      {subtitle && <p className={`mt-2 text-sm ${v.subtitleColor}`}>{subtitle}</p>}
+      {subtitle && <p className="mt-2 max-w-[65ch] text-sm text-warm-600">{subtitle}</p>}
       <div className="divide-y divide-warm-200/70">
         {visible}
       </div>

@@ -46,7 +46,10 @@ export function detectNewAlerts(
     const key = `progress:${obs.metric}`;
     if (previousInsightKeys.has(key)) continue;
 
-    if (obs.previousPeriod.count > 0 && obs.currentPeriod.count < obs.previousPeriod.count * 0.6) {
+    // Compare shares of logged days, not counts: logging less is not getting better.
+    const before = obs.previousPeriod.count / obs.previousPeriod.days;
+    const now = obs.currentPeriod.count / obs.currentPeriod.days;
+    if (before > 0 && now < before * 0.6) {
       alerts.push({
         alertType: 'progress_milestone' as AlertType,
         insightKey: key,
