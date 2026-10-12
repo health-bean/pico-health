@@ -255,7 +255,7 @@ export default function InsightsPage() {
             </summary>
             <div className="mt-1 max-w-[65ch] space-y-2 rounded-xl bg-warm-50 p-3 leading-relaxed">
               <p>Each row is something that happened alongside a symptom, counted in days. It is a pattern in your own log, not a cause or a diagnosis. Worth raising with your practitioner.</p>
-              <p><span className="font-medium text-warm-800">Early signal</span> means only a few days so far. <span className="font-medium text-warm-800">Moderate</span> and <span className="font-medium text-warm-800">strong evidence</span> mean more days and a bigger difference from your other days.</p>
+              <p><span className="font-medium text-warm-800">Early signal</span> means it could still be chance: too few days so far, or a difference small enough to happen by coincidence. <span className="font-medium text-warm-800">Moderate</span> and <span className="font-medium text-warm-800">strong evidence</span> mean more days and a bigger difference from your other days.</p>
               <p>A <span className="font-medium text-warm-800">flare day</span> is a day with two or more different symptoms, or any symptom rated 7 or higher.</p>
             </div>
           </details>
@@ -271,7 +271,7 @@ export default function InsightsPage() {
             </button>
             <p role="status" className="w-full text-sm text-warm-600">
               {showEarly
-                ? `Showing ${earlyCount} early ${earlyCount === 1 ? 'signal' : 'signals'}: patterns with only a few days behind them so far.`
+                ? `Showing ${earlyCount} early ${earlyCount === 1 ? 'signal' : 'signals'}: patterns that could still be chance.`
                 : ''}
             </p>
             </>

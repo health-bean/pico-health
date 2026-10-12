@@ -27,7 +27,10 @@ export function assembleInsights(composites: DayComposite[], today: string, days
 
   const filteredSingleTriggers = singleTriggers.filter(r => !absorbedKeys.has(insightKey([r.factor], r.outcome)));
 
-  const propertyPatterns = extractPropertyPatterns(singleTriggers);
+  // A property row is a claim about a whole class of foods, so it needs the
+  // same evidence as any row shown by default; early ones were slipping
+  // through on 3 co-occurring days with no confidence check at all.
+  const propertyPatterns = extractPropertyPatterns(singleTriggers.filter(r => r.confidence !== 'early'));
   const progress = computeProgress(composites, today);
 
   // Property-level results get their own section ("Patterns to Watch");

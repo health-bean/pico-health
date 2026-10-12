@@ -20,6 +20,15 @@ export interface NullSimOptions {
   foodsPerDay?: number;
   /** Share of days with a Reflect journal entry. */
   journalRate?: number;
+  /** Real effects to plant, for checking that a gate keeps what it should. */
+  plant?: PlantedEffect[];
+}
+
+/** On days with `cause` (a food or supplement), `symptom` is `multiplier`× as likely. */
+export interface PlantedEffect {
+  cause: string;
+  symptom: string;
+  multiplier: number;
 }
 
 /** What the Insights page would render with the default filters. */
@@ -87,7 +96,7 @@ function pickWeighted<T extends { weight: number }>(r: () => number, items: T[])
 
 const int = (r: () => number, lo: number, hi: number) => lo + Math.floor(r() * (hi - lo + 1));
 
-export function generateNullDays({ days, seed, foodsPerDay = 5, journalRate = 0.8 }: NullSimOptions): DayComposite[] {
+export function generateNullDays({ days, seed, foodsPerDay = 5, journalRate = 0.8, plant = [] }: NullSimOptions): DayComposite[] {
   const r = rng(seed);
   const out: DayComposite[] = [];
   const start = Date.UTC(2026, 0, 1);
@@ -110,12 +119,16 @@ export function generateNullDays({ days, seed, foodsPerDay = 5, journalRate = 0.
       });
     }
 
+    const supplements = SUPPLEMENTS.filter(() => r() < 0.4).map(name => ({ name, time: null }));
+    const had = new Set([...names, ...supplements.map(s => s.name)]);
+
     const symptoms: SymptomEntry[] = [];
-    for (const [name, p] of SYMPTOMS) {
-      if (r() < p) symptoms.push({ name, severity: int(r, 2, 8), time: null });
+    for (const [name, base] of SYMPTOMS) {
+      let p = base;
+      for (const e of plant) if (e.symptom === name && had.has(e.cause)) p *= e.multiplier;
+      if (r() < Math.min(p, 0.95)) symptoms.push({ name, severity: int(r, 2, 8), time: null });
     }
 
-    const supplements = SUPPLEMENTS.filter(() => r() < 0.4).map(name => ({ name, time: null }));
     const hasJournal = r() < journalRate;
     const score = () => (hasJournal ? int(r, 1, 10) : null);
 
@@ -173,4 +186,33 @@ export function summarize(days: number, seeds: number): Record<keyof NoiseCount,
     out[k] = { median: v[Math.floor(v.length / 2)], max: v[v.length - 1] };
   }
   return out;
+}
+
+/**
+ * Real effects the engine should find, sized like the ones people report:
+ * a strong food trigger, a modest one, and a supplement that halves a
+ * symptom. `recall` is the share of seeds in which each is shown by default.
+ */
+export const PLANTED: PlantedEffect[] = [
+  { cause: 'Tomatoes', symptom: 'Joint pain', multiplier: 2.5 },
+  { cause: 'Aged cheese', symptom: 'Migraine', multiplier: 3 },
+  { cause: 'Wheat bread', symptom: 'Bloating', multiplier: 1.6 },
+  { cause: 'Magnesium', symptom: 'Headache', multiplier: 0.4 },
+];
+
+export function plantedRecall(days: number, seeds: number): Array<{ effect: PlantedEffect; recall: number }> {
+  const hits = PLANTED.map(() => 0);
+  for (let s = 1; s <= seeds; s++) {
+    const d = generateNullDays({ days, seed: 1000 + s, plant: PLANTED });
+    const out = assembleInsights(d, d[d.length - 1].date, days);
+    const shown = [...out.triggers, ...out.helpers].filter(r => r.confidence !== 'early');
+    PLANTED.forEach((e, i) => {
+      const found = shown.some(r => {
+        const factors = 'factors' in r ? r.factors : [r.factor];
+        return r.outcome.label === e.symptom && factors.some(f => f.label === e.cause);
+      });
+      if (found) hits[i]++;
+    });
+  }
+  return PLANTED.map((effect, i) => ({ effect, recall: hits[i] / seeds }));
 }

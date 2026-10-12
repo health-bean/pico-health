@@ -46,8 +46,8 @@ describe('analyzeMultiFactors', () => {
         hasJournal: true, symptoms: [], symptomCount: 0,
       }));
     }
-    // Both + headache (5 days)
-    for (let i = 6; i < 11; i++) {
+    // Both + headache (15 days: the shared-day floor)
+    for (let i = 6; i < 21; i++) {
       days.push(makeDay(`2026-04-${String(i + 1).padStart(2, '0')}`, {
         foods: [{ foodId: 'f1', name: 'Eggs', properties: [], mealType: null, time: null, protocolStatus: null }],
         journal: { sleep: 3, energy: null, mood: null, stress: null, pain: null },
@@ -57,20 +57,39 @@ describe('analyzeMultiFactors', () => {
       }));
     }
     // Clean days (5 days)
-    for (let i = 11; i < 16; i++) {
+    for (let i = 21; i < 26; i++) {
       days.push(makeDay(`2026-04-${String(i + 1).padStart(2, '0')}`));
     }
 
     const singleResults: SingleFactorResult[] = [
-      makeSingle('food:eggs', 'Eggs', 'food', 'symptom:headache', 'Headache', 5 / 8, 5),
-      makeSingle('sleep:poor', 'Poor sleep', 'sleep', 'symptom:headache', 'Headache', 5 / 8, 5),
+      makeSingle('food:eggs', 'Eggs', 'food', 'symptom:headache', 'Headache', 0.5, 15),
+      makeSingle('sleep:poor', 'Poor sleep', 'sleep', 'symptom:headache', 'Headache', 0.5, 15),
     ];
 
     const results = analyzeMultiFactors(days, singleResults);
     const twoFactor = results.find(r => r.factorCount === 2);
     expect(twoFactor).toBeDefined();
     expect(twoFactor!.factors).toHaveLength(2);
-    expect(twoFactor!.frequency).toBe(5);
+    expect(twoFactor!.frequency).toBe(15);
+  });
+
+  it('ignores a combination seen on fewer than 15 shared days, however high its rate', () => {
+    // 8 shared days, headache on 7 of them (88%) against 50% for either alone:
+    // with a denominator this small a couple of coincidences make the rate.
+    const days: DayComposite[] = [];
+    for (let i = 0; i < 8; i++) {
+      days.push(makeDay(`2026-04-${String(i + 1).padStart(2, '0')}`, {
+        foods: [{ foodId: 'f1', name: 'Eggs', properties: [], mealType: null, time: null, protocolStatus: null }],
+        journal: { sleep: 3, energy: null, mood: null, stress: null, pain: null },
+        hasJournal: true,
+        symptoms: i < 7 ? [{ name: 'Headache', severity: 5, time: null }] : [],
+      }));
+    }
+    const singleResults: SingleFactorResult[] = [
+      makeSingle('food:eggs', 'Eggs', 'food', 'symptom:headache', 'Headache', 0.5, 7),
+      makeSingle('sleep:poor', 'Poor sleep', 'sleep', 'symptom:headache', 'Headache', 0.5, 7),
+    ];
+    expect(analyzeMultiFactors(days, singleResults)).toHaveLength(0);
   });
 
   it('respects 5 co-occurrence gate for 2-factor', () => {

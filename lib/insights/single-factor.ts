@@ -16,6 +16,19 @@ const MIN_SUPPORT_SHARE = 0.25;
 const MIN_HELPER_DAYS = 5;
 /** …and the outcome must be common enough to reduce: "nausea 1% vs 4%" is not a finding. */
 const MIN_HELPER_BASE_RATE = 0.15;
+/**
+ * The bar a pattern must clear to be shown by default: a one-sided Fisher
+ * exact p-value under 0.01. The engine compares every factor with every
+ * outcome (about 2,400 comparisons at 90 days), so some look striking by
+ * chance alone. Measured with `npm run eval:insights-noise` on logs with no
+ * real pattern in them, at 90 days: no test showed 42 rows of pure noise;
+ * this bar shows about 2, and still finds a planted 2.5× food trigger half
+ * the time (80% by 180 days). A full Benjamini–Hochberg correction removed
+ * the last 2 but found almost nothing real before six months; decided with
+ * Dee 2026-10-12. Rows that miss the bar are not dropped: they become early
+ * signals, hidden unless someone asks for them.
+ */
+export const MAX_P_VALUE = 0.01;
 const TRIGGER_THRESHOLD = 1.2; // ≥20% more likely
 const HELPER_THRESHOLD = 0.8; // ≥20% less likely
 
@@ -180,6 +193,8 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
   }
 
   const results: SingleFactorResult[] = [];
+  const resultP: number[] = [];
+  const logFact = logFactorials(totalDays);
 
   for (const [, { factor }] of factorDays) {
     const fDays = factorDays.get(factor.key)!.dayIndices;
@@ -211,6 +226,12 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
       const smoothedWithout = (outcomeWithoutFactor + 0.5) / (withoutFactor + 1);
       const rateMultiplier = clamp(smoothedWith / smoothedWithout, MIN_RATE_MULTIPLIER, MAX_RATE_MULTIPLIER);
 
+      const dir: Direction = rateMultiplier >= 1 ? 'increases' : 'decreases';
+      if (!eligible.has(dir)) continue;
+      const p = dir === 'increases'
+        ? hypergeomUpper(coOccurrence, totalDays, oDays.size, fDays.size, logFact)
+        : hypergeomLower(coOccurrence, totalDays, oDays.size, fDays.size, logFact);
+
       let direction: Direction;
       if (rateMultiplier >= TRIGGER_THRESHOLD && eligible.has('increases')) {
         if (coOccurrence < MIN_OCCURRENCES) continue;
@@ -238,6 +259,7 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
         ? coOccurrence
         : Math.round(fDays.size * baseRate);
       const confidence = computeConfidence(rateMultiplier, evidenceDays);
+      resultP.push(p);
       const impactScore = computeImpact(rateMultiplier, evidenceDays, recencyDays, confidence);
 
       results.push({
@@ -257,7 +279,42 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
     }
   }
 
+  // Anything that misses the bar is an early signal at most, whatever its
+  // effect size, and ranks below everything that made it.
+  results.forEach((r, i) => {
+    if (resultP[i] >= MAX_P_VALUE && r.confidence !== 'early') {
+      r.confidence = 'early';
+      r.impactScore = computeImpact(r.rateMultiplier, r.direction === 'increases' ? r.frequency : Math.round(r.totalOpportunities * r.baseRate), r.recencyDays, 'early');
+    }
+  });
+
   return results.sort((a, b) => b.impactScore - a.impactScore);
+}
+
+function logFactorials(n: number): number[] {
+  const out = [0];
+  for (let i = 1; i <= n; i++) out.push(out[i - 1] + Math.log(i));
+  return out;
+}
+
+/** P(X = k) for X ~ Hypergeometric(population N, K successes, n draws). */
+function hypergeomPmf(k: number, N: number, K: number, n: number, lf: number[]): number {
+  const logC = (a: number, b: number) => lf[a] - lf[b] - lf[a - b];
+  return Math.exp(logC(K, k) + logC(N - K, n - k) - logC(N, n));
+}
+
+/** One-sided Fisher exact: chance of at least `k` outcome-days among the factor days, if unrelated. */
+function hypergeomUpper(k: number, N: number, K: number, n: number, lf: number[]): number {
+  let p = 0;
+  for (let i = k; i <= Math.min(K, n); i++) p += hypergeomPmf(i, N, K, n, lf);
+  return Math.min(1, p);
+}
+
+/** One-sided Fisher exact: chance of at most `k` outcome-days among the factor days, if unrelated. */
+function hypergeomLower(k: number, N: number, K: number, n: number, lf: number[]): number {
+  let p = 0;
+  for (let i = Math.max(0, n - (N - K)); i <= k; i++) p += hypergeomPmf(i, N, K, n, lf);
+  return Math.min(1, p);
 }
 
 /**

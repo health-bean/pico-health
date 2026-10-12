@@ -6,7 +6,7 @@
  *   npm run eval:insights-noise            # 20 seeds per window
  *   npm run eval:insights-noise -- 50      # more seeds
  */
-import { summarize } from '../lib/insights/null-sim';
+import { summarize, plantedRecall } from '../lib/insights/null-sim';
 
 const seeds = Number(process.argv[2] ?? 20);
 const windows = [30, 90, 180];
@@ -30,4 +30,13 @@ for (const [key, label] of rows) {
     return pad(`${v.median} (${v.max})`, 14);
   }).join(''));
 }
+console.log();
+
+console.log(`Real effects planted in otherwise-random logs: share of ${seeds} seeds where each is shown.\n`);
+console.log(pad('', 40) + windows.map(w => pad(`${w} days`, 14)).join(''));
+const recalls = windows.map(w => plantedRecall(w, seeds));
+recalls[0].forEach(({ effect }, i) => {
+  const label = `${effect.cause} → ${effect.symptom} (${effect.multiplier}×)`;
+  console.log(pad(label, 40) + recalls.map(r => pad(`${Math.round(r[i].recall * 100)}%`, 14)).join(''));
+});
 console.log();

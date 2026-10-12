@@ -5,6 +5,14 @@ import { insightKey } from './types';
 const pct = (n: number) => `${Math.round(n * 100)}%`;
 
 const MIN_2_FACTOR = 5;
+/**
+ * Days with both factors. `conditionalRate = coOccurrences / bothFactorDays`,
+ * so with 5–8 shared days a couple of coincidences manufacture a 70%+ rate:
+ * under pure noise half of all combinations sat on 8 or fewer shared days.
+ */
+const MIN_BOTH_DAYS = 15;
+/** "More than either alone" must beat chance, not just the 1.5× ratio. */
+const COMBO_MAX_P = 0.01;
 const MIN_3_FACTOR = 7;
 const PROMOTION_THRESHOLD_2 = 1.5;
 const PROMOTION_THRESHOLD_3 = 1.3;
@@ -60,13 +68,14 @@ export function analyzeMultiFactors(
           }
         }
 
-        if (coOccurrences < MIN_2_FACTOR) continue;
+        if (coOccurrences < MIN_2_FACTOR || bothFactorDays < MIN_BOTH_DAYS) continue;
 
         const conditionalRate = coOccurrences / bothFactorDays;
         const bestSubRate = Math.max(singles[i].conditionalRate, singles[j].conditionalRate);
         const rateMultiplier = bestSubRate > 0 ? conditionalRate / bestSubRate : 10;
 
         if (rateMultiplier < PROMOTION_THRESHOLD_2) continue;
+        if (binomialUpper(coOccurrences, bothFactorDays, bestSubRate) > COMBO_MAX_P) continue;
 
         const recencyDays = lastCoDayIdx >= 0 ? days.length - 1 - lastCoDayIdx : 999;
         const impactScore = computeMultiImpact(rateMultiplier, coOccurrences, recencyDays, 2);
@@ -167,4 +176,17 @@ function computeMultiImpact(rateMultiplier: number, frequency: number, recencyDa
   const recencyScore = Math.max(0, 1 - recencyDays / 90) * 0.15;
   const complexityBonus = factorCount === 3 ? 0.15 : factorCount === 2 ? 0.1 : 0;
   return multiplierScore + frequencyScore + recencyScore + complexityBonus;
+}
+
+/** Chance of at least `k` successes in `n` tries at rate `p`. */
+function binomialUpper(k: number, n: number, p: number): number {
+  if (p <= 0) return k > 0 ? 0 : 1;
+  if (p >= 1) return 1;
+  let logC = 0; // log C(n, i), built up incrementally
+  let total = 0;
+  for (let i = 0; i <= n; i++) {
+    if (i > 0) logC += Math.log(n - i + 1) - Math.log(i);
+    if (i >= k) total += Math.exp(logC + i * Math.log(p) + (n - i) * Math.log(1 - p));
+  }
+  return Math.min(1, total);
 }
