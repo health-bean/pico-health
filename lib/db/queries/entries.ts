@@ -1,4 +1,4 @@
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, inArray, sql } from "drizzle-orm";
 import type { PgUpdateSetSource } from "drizzle-orm/pg-core";
 import { db } from "@/lib/db";
 import { timelineEntries, foods, customFoods } from "@/lib/db/schema";
@@ -100,4 +100,35 @@ export async function getFoodForUser(
     .limit(1);
 
   return custom ?? null;
+}
+
+/**
+ * Record the answer to a post-meal check-in on the meal's own food entries
+ * (`structuredContent.checkin`): "fine" is a meal someone watched and had no
+ * reaction to, which an unanswered meal cannot tell apart from not logging.
+ * Returns how many entries were marked; 0 when the meal is not this user's.
+ */
+export async function markMealCheckin(
+  userId: string,
+  entryDate: string,
+  mealTime: string,
+  answer: "fine" | "symptom"
+): Promise<number> {
+  const checkin = JSON.stringify({ checkin: { answer, at: new Date().toISOString() } });
+  const updated = await db
+    .update(timelineEntries)
+    .set({
+      structuredContent: sql`COALESCE(${timelineEntries.structuredContent}, '{}'::jsonb) || ${checkin}::jsonb`,
+      updatedAt: new Date(),
+    })
+    .where(
+      and(
+        eq(timelineEntries.userId, userId),
+        eq(timelineEntries.entryDate, entryDate),
+        eq(timelineEntries.entryTime, mealTime),
+        inArray(timelineEntries.entryType, ["food", "off_protocol"])
+      )
+    )
+    .returning({ id: timelineEntries.id });
+  return updated.length;
 }

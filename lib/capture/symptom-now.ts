@@ -11,6 +11,8 @@ export interface LoggedEntry {
   name: string;
   entryTime: string | null;
   mealType?: string | null;
+  /** A check-in answer is stored here on the meal's entries (`checkin`). */
+  structuredContent?: Record<string, unknown> | null;
 }
 
 export interface CheckinMeal {
@@ -74,6 +76,9 @@ export function pickCheckinMeal(entries: LoggedEntry[], now: Date, answered: (ti
   const since = nowMin - mealMin;
   if (since < CHECKIN_FROM_MIN || since > CHECKIN_UNTIL_MIN) return null;
   if (answered(latest.time)) return null;
+  // Answered on another device: the answer lives on the meal's entries.
+  const stored = entries.some(e => e.entryTime === latest.time && e.structuredContent?.checkin);
+  if (stored) return null;
   const loggedSince = entries.some(e => e.entryType === 'symptom' && (toMinutes(e.entryTime) ?? -1) > mealMin);
   return loggedSince ? null : latest;
 }

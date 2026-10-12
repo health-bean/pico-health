@@ -22,6 +22,11 @@ describe('post-meal check-in', () => {
     expect(pickCheckinMeal(lunch, at(14, 30), t => t === '12:40:00')).toBeNull();
   });
 
+  it('does not ask again about a meal answered on another device', () => {
+    const answered = lunch.map(e => e.entryTime === '12:40:00' ? { ...e, structuredContent: { checkin: { answer: 'fine' } } } : e);
+    expect(pickCheckinMeal(answered, at(14, 30), never)).toBeNull();
+  });
+
   it('still asks when the only symptom came before the meal', () => {
     expect(pickCheckinMeal([...lunch, { entryType: 'symptom', name: 'Headache', entryTime: '10:00:00' }], at(14, 30), never)).not.toBeNull();
   });

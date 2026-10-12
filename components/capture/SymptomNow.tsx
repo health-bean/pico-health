@@ -48,12 +48,19 @@ function isAnswered(date: string, time: string): boolean {
   }
 }
 
-function markAnswered(date: string, time: string) {
+function markAnswered(date: string, time: string, answer: "fine" | "symptom") {
   try {
     localStorage.setItem(ANSWERED_KEY(date, time), "1");
   } catch {
-    // storage unavailable: the check-in may ask again, which is harmless
+    // storage unavailable: the server copy below still holds the answer
   }
+  // Stored on the meal itself: "fine" is a watched meal with no reaction,
+  // which an unanswered meal can't be told apart from. Best effort.
+  void fetch("/api/entries/checkin", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ entryDate: date, mealTime: time, answer }),
+  }).catch(() => null);
 }
 
 const chip =
@@ -118,7 +125,7 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
     async (name: string) => {
       if (busy) return;
       setBusy(true);
-      if (checkin) markAnswered(date, checkin.time);
+      if (checkin) markAnswered(date, checkin.time, "symptom");
       try {
         const res = await fetch("/api/entries/batch", {
           method: "POST",
@@ -165,7 +172,7 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
   }, [logged, close, onChanged]);
 
   const fine = useCallback(() => {
-    if (checkin) markAnswered(date, checkin.time);
+    if (checkin) markAnswered(date, checkin.time, "fine");
     setCheckin(null);
   }, [checkin, date]);
 
