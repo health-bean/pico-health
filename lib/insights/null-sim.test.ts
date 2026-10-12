@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { generateNullDays, runNullSim, summarize, plantedRecall } from './null-sim';
+import { assembleInsights } from './assemble';
 
 describe('null simulation', () => {
   it('is deterministic for a seed, so a gate change is the only thing that moves the numbers', () => {
@@ -11,6 +12,13 @@ describe('null simulation', () => {
     expect(days).toHaveLength(90);
     const withSymptoms = days.filter(d => d.symptoms.length > 0).length;
     expect(withSymptoms).toBeGreaterThan(50);
+  });
+
+  it('reports how much it compared, for the empty page to say', () => {
+    const days = generateNullDays({ days: 90, seed: 3 });
+    const { dataStatus } = assembleInsights(days, days[89].date, 90);
+    expect(dataStatus.symptomsCompared).toBe(8);
+    expect(dataStatus.factorsCompared).toBeGreaterThan(30);
   });
 
   // The budget. These are regression guards on the noise gates, measured at

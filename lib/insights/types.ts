@@ -197,6 +197,10 @@ export interface InsightsOutput {
     singleFactors: number;
     twoFactorPatterns: number;
     threeFactorPatterns: number;
+    /** Foods, properties and habits tested. Optional: absent on cached output from before it existed. */
+    factorsCompared?: number;
+    /** Distinct symptoms tested against. */
+    symptomsCompared?: number;
   };
 }
 

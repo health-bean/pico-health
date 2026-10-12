@@ -169,7 +169,15 @@ export function extractOutcomesFromDay(day: DayComposite): Outcome[] {
   return outcomes;
 }
 
-export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[] {
+/** What was compared, so an empty page can say how hard it looked. */
+export interface ComparisonStats {
+  /** Foods, properties and habits varied enough to test. */
+  factors: number;
+  /** Distinct symptoms logged in the window. */
+  symptoms: number;
+}
+
+export function analyzeSingleFactors(days: DayComposite[], stats?: ComparisonStats): SingleFactorResult[] {
   const totalDays = days.length;
   if (totalDays < MIN_OCCURRENCES) return [];
 
@@ -209,6 +217,7 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
 
     const eligible = eligibleDirections(factor);
     if (eligible.size === 0) continue;
+    if (stats) stats.factors++;
 
     for (const [, { outcome }] of outcomeDays) {
       if (isSameCategory(factor, outcome)) continue;
@@ -278,6 +287,8 @@ export function analyzeSingleFactors(days: DayComposite[]): SingleFactorResult[]
       });
     }
   }
+
+  if (stats) stats.symptoms = [...outcomeDays.values()].filter(o => o.outcome.type === 'symptom_occurrence').length;
 
   // Anything that misses the bar is an early signal at most, whatever its
   // effect size, and ranks below everything that made it.

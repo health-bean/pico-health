@@ -212,7 +212,37 @@ export default function InsightsPage() {
   const progress = patterns?.progress ?? [];
 
   const hasInsights = triggers.length > 0 || propertyPatterns.length > 0 || helpers.length > 0;
+
+  // Symptom counts month over month. Independent of the patterns, so it shows
+  // on an empty page too.
+  const progressSection = progress.length > 0 && (
+            <section className="bg-[var(--color-surface-card)] rounded-xl overflow-hidden shadow-[var(--shadow-card)] border border-warm-200 p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <CalendarRange className="h-4 w-4 text-warm-600" aria-hidden="true" />
+                <h2 className="text-base font-semibold text-warm-900">This month vs. last</h2>
+              </div>
+              <p className="mb-3 text-sm text-warm-600">
+                Symptom days, side by side. Chronic conditions move in waves — this is a comparison, not a scorecard.
+              </p>
+              <div className="space-y-2">
+                {progress.map((o, i) => (
+                  <div key={i} className="p-2.5 bg-warm-50 rounded-lg">
+                    <p className="text-sm text-warm-700">{o.observation}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+  );
   const daysTracked = patterns?.dataStatus?.daysTracked ?? 0;
+  const factorsCompared = patterns?.dataStatus?.factorsCompared;
+  const symptomsCompared = patterns?.dataStatus?.symptomsCompared;
+  const loggedDays = `${daysTracked} logged ${daysTracked === 1 ? 'day' : 'days'}`;
+  const comparedSentence =
+    symptomsCompared === 0
+      ? `No symptoms logged across ${loggedDays}, so there is nothing to compare against yet.`
+      : factorsCompared && symptomsCompared
+        ? `Across ${loggedDays}, ${factorsCompared} foods and habits were compared with your ${symptomsCompared} ${symptomsCompared === 1 ? 'symptom' : 'symptoms'}. None of them lines up with a symptom more often than chance would.`
+        : `Across ${loggedDays}, nothing lines up with a symptom more often than chance would.`;
 
   // An alert is a "New" mark on the curated row it points at. Only alerts
   // with no row to land on (progress milestones, patterns that have since
@@ -247,7 +277,7 @@ export default function InsightsPage() {
         </div>
       </div>
 
-      {(hasInsights || earlyCount > 0) && (
+      {hasInsights && (
         <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
           <details className="group text-sm text-warm-600">
             <summary className="inline-flex min-h-11 cursor-pointer list-none items-center font-medium text-teal-700 hover:text-teal-800">
@@ -296,20 +326,46 @@ export default function InsightsPage() {
         </Card>
       )}
 
-      {/* Cold start */}
+      {/* Nothing has cleared the bar. Most people see this for their first
+          two or three months, so it says how hard the engine looked rather
+          than promising a date: a progress bar here once promised patterns at
+          14 days and sat full on an empty page. */}
       {!hasInsights && (orphanAlerts.length === 0 || timeRange >= 180) && (
-        <Card className="p-5 mb-4 text-center">
-          <p className="text-sm text-warm-600 font-medium">Patterns emerge with more data.</p>
-          <p className="text-sm text-warm-500 mt-1">
-            {daysTracked} of the last {timeRange} days logged. Patterns typically appear around 14 logged days.
-          </p>
-          <div className="mt-3 h-1.5 w-full max-w-[200px] mx-auto rounded-full bg-warm-100 overflow-hidden">
-            <div
-              className="h-full rounded-full bg-teal-400 transition-all"
-              style={{ width: `${Math.min((daysTracked / 14) * 100, 100)}%` }}
-            />
-          </div>
-        </Card>
+        <div className="space-y-9">
+          <section aria-labelledby="empty-heading" className="max-w-[65ch] space-y-3">
+            <h2 id="empty-heading" className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
+              {daysTracked === 0 ? `Nothing logged in the last ${timeRange} days` : 'Nothing stands out yet'}
+            </h2>
+            {daysTracked > 0 && (
+              <>
+                <p className="text-sm text-warm-600">{comparedSentence}</p>
+                <p className="text-sm text-warm-600">
+                  {daysTracked >= 90
+                    ? 'Smaller or rarer patterns can take longer to show. This page updates as you log.'
+                    : 'A strong reaction to something you eat often can show within three to four weeks. Most patterns take two to three months of steady logging.'}
+                </p>
+              </>
+            )}
+            {daysTracked === 0 && (
+              <p className="text-sm text-warm-600">Patterns come from what you log, so they start once there are days to compare.</p>
+            )}
+          </section>
+
+          {progressSection}
+
+          {earlyCount > 0 && (
+            <div>
+              <button
+                type="button"
+                onClick={toggleEarly}
+                className="inline-flex min-h-11 items-center text-sm font-semibold text-teal-700 underline-offset-4 hover:text-teal-800 hover:underline"
+              >
+                See {earlyCount} early {earlyCount === 1 ? 'signal' : 'signals'}
+              </button>
+              <p className="text-sm text-warm-500">Patterns that could still be chance.</p>
+            </div>
+          )}
+        </div>
       )}
 
       {hasInsights && (
@@ -425,25 +481,7 @@ export default function InsightsPage() {
             </InsightSection>
           )}
 
-          {/* Progress */}
-          {progress.length > 0 && (
-            <section className="bg-[var(--color-surface-card)] rounded-xl overflow-hidden shadow-[var(--shadow-card)] border border-warm-200 p-4">
-              <div className="flex items-center gap-2 mb-3">
-                <CalendarRange className="h-4 w-4 text-warm-600" aria-hidden="true" />
-                <h2 className="text-base font-semibold text-warm-900">This month vs. last</h2>
-              </div>
-              <p className="mb-3 text-sm text-warm-600">
-                Symptom days, side by side. Chronic conditions move in waves — this is a comparison, not a scorecard.
-              </p>
-              <div className="space-y-2">
-                {progress.map((o, i) => (
-                  <div key={i} className="p-2.5 bg-warm-50 rounded-lg">
-                    <p className="text-sm text-warm-700">{o.observation}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
-          )}
+          {progressSection}
         </div>
       )}
 

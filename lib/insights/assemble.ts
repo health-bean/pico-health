@@ -9,7 +9,8 @@ import { insightKey } from './types';
  * so the noise check (`null-sim.ts`) runs exactly what production runs.
  */
 export function assembleInsights(composites: DayComposite[], today: string, days: number): InsightsOutput {
-  const singleResults = analyzeSingleFactors(composites);
+  const compared = { factors: 0, symptoms: 0 };
+  const singleResults = analyzeSingleFactors(composites, compared);
 
   // Direction, not category, decides which list a result belongs in: a
   // trigger makes the outcome MORE likely, a helper makes it LESS likely.
@@ -49,6 +50,8 @@ export function assembleInsights(composites: DayComposite[], today: string, days
       singleFactors: singleResults.length,
       twoFactorPatterns: multiResults.filter(r => r.factorCount === 2).length,
       threeFactorPatterns: multiResults.filter(r => r.factorCount === 3).length,
+      factorsCompared: compared.factors,
+      symptomsCompared: compared.symptoms,
     },
   };
 }
