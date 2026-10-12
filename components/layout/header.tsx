@@ -18,7 +18,7 @@ export function Header() {
   const { user, loading } = useSession();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--color-border-light)] bg-[var(--color-surface-card)]/95 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-[var(--color-border-light)] bg-[var(--color-surface)]/95 backdrop-blur-md">
       <div className="flex h-14 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/log" className="flex items-center group">

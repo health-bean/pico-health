@@ -69,6 +69,11 @@ html {
   --color-olive-50: oklch(0.935 0.038 134);
   --color-gold-400: oklch(0.839 0.135 91.8);  /* EAC757 */
   --color-gold-50: oklch(0.952 0.050 92);
+  /* EAC757 is 1.47:1 on the cream: fine as a fill, invisible as a line or
+     text. Ochre is that mustard darkened until it reads: 500 for icons and
+     rules (3.6:1), 700 for text (5.5:1). */
+  --color-ochre-500: oklch(0.60 0.13 80);
+  --color-ochre-700: oklch(0.50 0.105 75);
 
   /* ── Level ramp (one hue, rising weight) ─────────────────────── */
   /* Trigger-property intensity, protocol status, and pattern strength all

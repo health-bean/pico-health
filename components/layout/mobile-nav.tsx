@@ -22,7 +22,7 @@ export function MobileNav() {
   const visibleTabs = tabs.filter((tab) => !tab.adminOnly || user?.isAdmin);
 
   return (
-    <nav aria-label="Main" className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--color-border-light)] bg-[var(--color-surface-card)]/95 backdrop-blur-md md:hidden">
+    <nav aria-label="Main" className="fixed bottom-0 left-0 right-0 z-50 border-t border-[var(--color-border-light)] bg-[var(--color-surface)]/95 backdrop-blur-md md:hidden">
       <div className="flex items-stretch justify-around">
         {visibleTabs.map((tab) => {
           const isActive =

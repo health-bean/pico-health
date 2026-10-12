@@ -349,7 +349,7 @@ export default function InsightsPage() {
             <InsightSection
               variant="trigger"
               icon={TrendingUp}
-              title="Things That May Be Causing Symptoms"
+              title="Things that may be causing symptoms"
               totalCount={triggers.length}
               defaultVisible={3}
               expandSignal={expandSignal}
@@ -378,7 +378,7 @@ export default function InsightsPage() {
             <InsightSection
               variant="watch"
               icon={Eye}
-              title="Patterns Worth Keeping an Eye On"
+              title="Patterns worth keeping an eye on"
               totalCount={propertyPatterns.length}
               defaultVisible={2}
               expandSignal={expandSignal}
@@ -402,7 +402,7 @@ export default function InsightsPage() {
             <InsightSection
               variant="helper"
               icon={TrendingDown}
-              title="Things That Seem to Help"
+              title="Things that seem to help"
               totalCount={helpers.length}
               defaultVisible={3}
               expandSignal={expandSignal}

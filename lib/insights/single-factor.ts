@@ -365,6 +365,10 @@ function formatDescription(
   // "On days with … On other days …" parallel spares the reader from holding
   // what the second figure is measured against. The raw count is not repeated
   // here: it already sits in the row's own column, beside this sentence.
+  // A flare day is what the day was, not something that happened during it.
+  if (outcome.type === 'flare_day') {
+    return `${whenClause(factor)}, ${pct(conditionalRate)} were flare days. On other days, ${pct(baseRate)}.`;
+  }
   return `${whenClause(factor)}, ${outcome.label.toLowerCase()} showed up ${pct(conditionalRate)} of the time. On other days, ${pct(baseRate)}.`;
 }
 

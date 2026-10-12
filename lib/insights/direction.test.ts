@@ -67,6 +67,14 @@ describe('direction is decided by the numbers, not the category', () => {
     expect(r?.description).toBe('On days with tomato, headache showed up 70% of the time. On other days, 25%.');
   });
 
+  it('a flare day is what the day was, so it is not described as something that "showed up"', () => {
+    // Tomato: 7 of 10 flare days. Without: 3 of 12.
+    const days = build({ withDays: 10, withHeadache: 7, withoutDays: 12, withoutHeadache: 3, factor: 'tomato' })
+      .map(d => ({ ...d, isFlareDay: d.symptoms.length > 0 }));
+    const r = analyzeSingleFactors(days).find(x => x.factor.key === 'food:tomato' && x.outcome.key === 'flare_day');
+    expect(r?.description).toBe('On days with tomato, 70% were flare days. On other days, 25%.');
+  });
+
   it('journal buckets only count in the meaningful direction; "moderate" never counts', () => {
     expect([...eligibleDirections({ category: 'sleep', key: 'sleep:poor', label: 'Poor sleep' })]).toEqual(['increases']);
     expect([...eligibleDirections({ category: 'sleep', key: 'sleep:good', label: 'Good sleep' })]).toEqual(['decreases']);

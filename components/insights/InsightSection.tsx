@@ -6,7 +6,7 @@ import type { LucideIcon } from 'lucide-react';
 type SectionVariant = 'trigger' | 'watch' | 'helper';
 
 // Each section carries its own colour, drawn from the brand's warm range:
-// clay for what goes with symptoms, gold for what to watch, olive for what
+// clay for what goes with symptoms, ochre for what to watch, olive for what
 // helps. Warm rather than a red/green traffic light, and the words carry the
 // meaning either way.
 // A section used to be a card with a filled header band. Boxing every group
@@ -22,10 +22,10 @@ const variants = {
     iconColor: 'text-clay-500',
   },
   watch: {
-    rule: 'border-gold-400/50',
-    titleColor: 'text-warm-900',
-    subtitleColor: 'text-warm-700',
-    iconColor: 'text-clay-500',
+    rule: 'border-ochre-500/45',
+    titleColor: 'text-ochre-700',
+    subtitleColor: 'text-ochre-700',
+    iconColor: 'text-ochre-500',
   },
   helper: {
     rule: 'border-olive-600/35',

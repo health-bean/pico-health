@@ -1,9 +1,14 @@
 'use client';
 
-/** Marks a curated row that appeared since the previous insights snapshot. */
+/**
+ * Marks a curated row that appeared since the previous insights snapshot.
+ * A word, not a chip: as the only filled colour on a row it outranked the
+ * evidence chips, so an early signal marked New read louder than a strong
+ * finding. Freshness is not trust.
+ */
 export function NewTag() {
   return (
-    <span className="inline-flex items-center rounded-md bg-teal-100 px-1.5 py-0.5 text-[11px] font-semibold text-teal-800 ring-1 ring-inset ring-teal-300/60">
+    <span className="inline-flex items-center text-[11px] font-semibold text-teal-700">
       New
     </span>
   );
