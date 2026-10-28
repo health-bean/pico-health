@@ -135,9 +135,9 @@ export class AnthropicProvider implements AIProvider {
       ...(params.tools && params.tools.length > 0
         ? { tools: toAnthropicTools(params.tools) }
         : {}),
-      ...(params.temperature !== undefined
-        ? { temperature: params.temperature }
-        : {}),
+      // params.temperature is deliberately not forwarded: API version
+      // 2026-10-21 (sent by @anthropic-ai/sdk 1.x) rejects temperature/top_p/
+      // top_k on every model with a 400. Nothing in the app sets it today.
     });
 
     return parseAnthropicResponse(response);
