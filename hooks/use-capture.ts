@@ -95,9 +95,16 @@ export function useCapture(options: UseCaptureOptions = {}): UseCaptureReturn {
         });
 
         if (!res.ok || !res.body) {
+          // A daily-limit 429 carries user-facing copy in `error` (with a `code`);
+          // a plain per-minute 429 does not.
+          const body = res.status === 429
+            ? ((await res.json().catch(() => null)) as { error?: string; code?: string } | null)
+            : null;
           const message =
             res.status === 429
-              ? "Slow down a moment, then try again."
+              ? body?.code && body.error
+                ? body.error
+                : "Slow down a moment, then try again."
               : "Couldn't reach the log. Your text is still in the field — try again.";
           updateSession(sessionId, { status: "error", error: message });
           return;

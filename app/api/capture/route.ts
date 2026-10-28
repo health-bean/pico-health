@@ -3,13 +3,15 @@ import { z } from "zod";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getProvider, runConversationLoop, toNeutralTools } from "@/lib/ai/client";
 import { getTaskModel } from "@/lib/ai/router";
-import { recordUsage } from "@/lib/ai/usage";
+import { recordUsage, keepAliveUntil } from "@/lib/ai/usage";
+import { checkAiQuota, quotaExceededResponse } from "@/lib/billing/enforce-quota";
+import { withinBudget, type TokenTotals } from "@/lib/billing/quota";
 import { tools } from "@/lib/ai/tools";
 import { processToolCall } from "@/lib/ai/extract";
 import { buildCapturePrompt } from "@/lib/ai/capture-prompt";
 import { loadUserProtocolInfo } from "@/lib/ai/user-protocol";
 import type { AIMessage, AIContentPart } from "@/lib/ai/providers/types";
-import { rateLimit, getClientIp, CHAT_RATE_LIMIT } from "@/lib/rate-limit";
+import { rateLimit, CHAT_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
 
 const MAX_IMAGE_BYTES = 6 * 1024 * 1024;
@@ -49,15 +51,18 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // ── Rate limit ────────────────────────────────────────────────────
-    const ip = getClientIp(request);
-    const rl = await rateLimit(`capture:${session.userId}:${ip}`, CHAT_RATE_LIMIT);
+    // ── Rate limit (per user, not per user+IP) ────────────────────────
+    const rl = await rateLimit(`capture:${session.userId}`, CHAT_RATE_LIMIT, { strict: true });
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "Too many requests. Please slow down." },
         { status: 429, headers: { "Retry-After": String(Math.ceil((rl.resetAt - Date.now()) / 1000)) } }
       );
     }
+
+    // ── Daily AI cost budget (UTC day; capture has no message cap) ────
+    const quota = await checkAiQuota(session, "capture");
+    if (!quota.allowed) return quotaExceededResponse(quota);
 
     // ── Parse body ────────────────────────────────────────────────────
     const body = await request.json().catch(() => null);
@@ -133,15 +138,22 @@ export async function POST(request: Request) {
     );
 
     // ── Stream NDJSON response ────────────────────────────────────────
+    const usageRecorded = keepAliveUntil();
+    let usageSoFar: TokenTotals | undefined;
+
     const stream = new ReadableStream({
       async start(controller) {
         const encoder = new TextEncoder();
         const send = (event: object) => {
-          controller.enqueue(encoder.encode(JSON.stringify(event) + "\n"));
+          try {
+            controller.enqueue(encoder.encode(JSON.stringify(event) + "\n"));
+          } catch {
+            // Client disconnected; keep going so entries save and usage is recorded.
+          }
         };
 
         try {
-          const { text: finalText, extractedEntries, usage } = await runConversationLoop({
+          const { text: finalText, extractedEntries } = await runConversationLoop({
             provider,
             model,
             systemPrompt,
@@ -155,6 +167,10 @@ export async function POST(request: Request) {
             onExtracted: (entries) => {
               send({ type: "extracted", entries });
             },
+            onUsage: (u) => {
+              usageSoFar = u;
+            },
+            beforeRound: (u) => withinBudget(model, u, quota.remainingBudgetUsd),
           });
 
           const note = finalText.trim();
@@ -163,16 +179,20 @@ export async function POST(request: Request) {
           }
 
           send({ type: "done", entryCount: extractedEntries.length });
-          controller.close();
-
-          void recordUsage({ userId: session.userId, task, provider: "anthropic", model, usage });
         } catch (error) {
           log.error("capture AI error", { error: error as Error });
           send({
             type: "error",
             message: "Something went wrong logging that. Please try again.",
           });
-          controller.close();
+        } finally {
+          await recordUsage({ userId: session.userId, task, provider: provider.id, model, usage: usageSoFar });
+          usageRecorded();
+          try {
+            controller.close();
+          } catch {
+            // already closed by a disconnected client
+          }
         }
       },
     });

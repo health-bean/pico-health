@@ -106,7 +106,8 @@ export class AnthropicProvider implements AIProvider {
   private defaultModel: string;
 
   constructor(apiKey?: string, defaultModel?: string) {
-    this.client = new Anthropic({ apiKey });
+    // Retries happen once, in conversation-loop's withRetry — not here too.
+    this.client = new Anthropic({ apiKey, maxRetries: 0 });
     this.defaultModel = defaultModel ?? process.env.ANTHROPIC_MODEL ?? "claude-opus-5";
   }
 

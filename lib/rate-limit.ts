@@ -110,12 +110,31 @@ interface RateLimitResult {
 }
 
 /**
- * Rate limit a request by key (typically userId:IP).
+ * Fallback for strict (AI / paid-API) limits when Redis is unavailable in
+ * production. The in-memory store is per serverless instance, so the
+ * configured limit would be multiplied by the instance count; this keeps
+ * each instance conservative instead.
+ */
+export const STRICT_FALLBACK_RATE_LIMIT = { limit: 5, windowSeconds: 60 } as const;
+
+let warnedStrictFallback = false;
+
+interface RateLimitOptions {
+  /**
+   * AI routes: in production, never silently fall back to the normal
+   * in-memory limit — use STRICT_FALLBACK_RATE_LIMIT and log an error.
+   */
+  strict?: boolean;
+}
+
+/**
+ * Rate limit a request by key (e.g. `chat:${userId}`).
  * Uses Upstash Redis when configured, falls back to in-memory.
  */
 export async function rateLimit(
   key: string,
-  config: RateLimitConfig
+  config: RateLimitConfig,
+  options: RateLimitOptions = {}
 ): Promise<RateLimitResult> {
   const redisLimiter = getRedisLimiter(config);
 
@@ -132,6 +151,20 @@ export async function rateLimit(
         error: err as Error,
       });
     }
+  }
+
+  if (options.strict && process.env.NODE_ENV === "production") {
+    if (!warnedStrictFallback) {
+      warnedStrictFallback = true;
+      console.error(
+        `[rate-limit] Upstash Redis ${redisLimiter ? "is failing" : "is not configured"} in production; ` +
+          `AI routes are limited to ${STRICT_FALLBACK_RATE_LIMIT.limit} requests / ${STRICT_FALLBACK_RATE_LIMIT.windowSeconds}s per instance until it is fixed.`
+      );
+    }
+    return memoryRateLimit(`strict:${key}`, {
+      limit: Math.min(config.limit, STRICT_FALLBACK_RATE_LIMIT.limit),
+      windowSeconds: Math.max(config.windowSeconds, STRICT_FALLBACK_RATE_LIMIT.windowSeconds),
+    });
   }
 
   // Fallback to in-memory

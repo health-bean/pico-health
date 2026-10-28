@@ -40,6 +40,8 @@ Per-task routing in `lib/ai/router.ts` (`getProvider(task)`, `getTaskModel(task)
 | `food-photo-parse` | `claude-sonnet-5` | Same speed constraint, vision |
 | `health-insights`, `protocol-reasoning`, `admin-chat` | `claude-opus-5` | Low volume, quality-sensitive |
 
+Per-user AI limits (UTC days): `lib/billing/quota.ts` (pure) + `lib/billing/enforce-quota.ts` (`checkAiQuota` in chat/capture before any model call). Free tier = 5 coaching messages/day (`/api/chat` only; capture is not counted) and every tier has a daily estimated-cost ceiling (`FREE_/PAID_DAILY_AI_BUDGET_USD` in `lib/billing/tiers.ts`), also enforced between tool rounds via `beforeRound`. Admins are exempt but still rate-limited. AI rate limits are keyed by userId only and use `{ strict: true }` — in production without working Upstash they drop to `STRICT_FALLBACK_RATE_LIMIT` per instance instead of failing open. Usage is recorded in the stream's `finally` (partial rounds count), kept alive with `keepAliveUntil()`. The Anthropic client has `maxRetries: 0`; `conversation-loop`'s `withRetry` is the only retry layer.
+
 `claude-haiku-4-5` is documented as the cost step-down if unit economics ever demand it. Every AI call writes to `usage_log`; `/admin/usage` shows real cost per user/task/day. Prompt caching is on for system prompts.
 
 To compare models/providers on real data before changing a default, use `npm run eval:capture` (`evals/README.md`) — 55 fixtures, drives the real capture pipeline with tool calls intercepted, no DB writes.

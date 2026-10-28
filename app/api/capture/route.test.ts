@@ -5,6 +5,8 @@ import { rateLimit, CHAT_RATE_LIMIT } from "@/lib/rate-limit";
 import { getProvider, runConversationLoop, toNeutralTools } from "@/lib/ai/client";
 import { processToolCall } from "@/lib/ai/extract";
 import { loadUserProtocolInfo } from "@/lib/ai/user-protocol";
+import { checkAiQuota } from "@/lib/billing/enforce-quota";
+import { recordUsage } from "@/lib/ai/usage";
 
 vi.mock("@/lib/auth/session");
 vi.mock("@/lib/rate-limit", () => ({
@@ -19,6 +21,14 @@ vi.mock("@/lib/ai/client", () => ({
 }));
 vi.mock("@/lib/ai/extract", () => ({
   processToolCall: vi.fn(),
+}));
+vi.mock("@/lib/billing/enforce-quota", async (importOriginal) => ({
+  ...(await importOriginal<typeof import("@/lib/billing/enforce-quota")>()),
+  checkAiQuota: vi.fn(),
+}));
+vi.mock("@/lib/ai/usage", () => ({
+  recordUsage: vi.fn(async () => {}),
+  keepAliveUntil: vi.fn(() => () => {}),
 }));
 vi.mock("@/lib/ai/user-protocol", () => ({
   loadUserProtocolInfo: vi.fn(async () => ({})),
@@ -80,6 +90,8 @@ describe("POST /api/capture", () => {
       resetAt: Date.now() + 60_000,
     });
 
+    vi.mocked(checkAiQuota).mockResolvedValue({ allowed: true, remainingBudgetUsd: 0.5 });
+
     vi.mocked(runConversationLoop).mockImplementation(async (params) => {
       loopParams = params;
       params.onExtracted?.([sampleEntry]);
@@ -99,13 +111,57 @@ describe("POST /api/capture", () => {
     expect(runConversationLoop).not.toHaveBeenCalled();
   });
 
-  it("rate limits with CHAT_RATE_LIMIT on a capture-scoped key", async () => {
+  it("rate limits strictly with CHAT_RATE_LIMIT on a per-user key (no IP)", async () => {
     const res = await post({ text: "salmon" });
     expect(res.status).toBe(200);
     expect(rateLimit).toHaveBeenCalledWith(
-      `capture:${userId}:1.2.3.4`,
-      CHAT_RATE_LIMIT
+      `capture:${userId}`,
+      CHAT_RATE_LIMIT,
+      { strict: true }
     );
+  });
+
+  it("returns a friendly 429 when the daily AI budget is used up", async () => {
+    vi.mocked(checkAiQuota).mockResolvedValue({
+      allowed: false,
+      code: "daily_ai_budget",
+      message: "You've reached today's limit for AI logging. It resets in about 3 hours.",
+      retryAfterSeconds: 10_800,
+    });
+
+    const res = await post({ text: "salmon" });
+    expect(res.status).toBe(429);
+    expect(res.headers.get("Retry-After")).toBe("10800");
+    expect(await res.json()).toEqual({
+      error: "You've reached today's limit for AI logging. It resets in about 3 hours.",
+      code: "daily_ai_budget",
+    });
+    expect(checkAiQuota).toHaveBeenCalledWith(expect.objectContaining({ userId }), "capture");
+    expect(runConversationLoop).not.toHaveBeenCalled();
+  });
+
+  it("records partial usage with the real provider even when the loop fails", async () => {
+    vi.mocked(runConversationLoop).mockImplementation(async (params) => {
+      params.onUsage?.({ inputTokens: 900, outputTokens: 40, cacheReadInputTokens: 0, cacheCreationInputTokens: 0 });
+      throw new Error("round 2 failed");
+    });
+
+    const events = await readEvents(await post({ text: "salmon" }));
+    expect(events[0].type).toBe("error");
+    expect(recordUsage).toHaveBeenCalledWith({
+      userId,
+      task: "capture-extract",
+      provider: "mock-provider",
+      model: expect.any(String),
+      usage: { inputTokens: 900, outputTokens: 40, cacheReadInputTokens: 0, cacheCreationInputTokens: 0 },
+    });
+  });
+
+  it("stops extra rounds once the remaining budget is spent", async () => {
+    await readEvents(await post({ text: "salmon" }));
+    const zero = { inputTokens: 0, outputTokens: 0, cacheReadInputTokens: 0, cacheCreationInputTokens: 0 };
+    expect(loopParams?.beforeRound?.(zero)).toBe(true);
+    expect(loopParams?.beforeRound?.({ ...zero, outputTokens: 1_000_000 })).toBe(false);
   });
 
   it("returns 429 with Retry-After when rate limited", async () => {

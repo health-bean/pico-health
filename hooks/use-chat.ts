@@ -103,10 +103,16 @@ export function useChat(options: UseChatOptions = {}): UseChatReturn {
         });
 
         if (!res.ok) {
-          const errData = await res.json().catch(() => ({}));
-          throw new Error(
-            (errData as { error?: string }).error || "Failed to send message"
-          );
+          const errData = (await res.json().catch(() => ({}))) as { error?: string; code?: string };
+          // Daily-limit 429s carry copy meant for the person; show it as the reply.
+          if (res.status === 429 && errData.code && errData.error) {
+            const notice = errData.error;
+            setMessages((prev) =>
+              prev.map((m) => (m.id === assistantMsgId ? { ...m, content: notice } : m))
+            );
+            return;
+          }
+          throw new Error(errData.error || "Failed to send message");
         }
 
         // Read NDJSON stream
