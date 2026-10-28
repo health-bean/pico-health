@@ -1,19 +1,20 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Input, Button, Card, PageTitle } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
 
 export default function SignupPage() {
-  const router = useRouter();
   const [firstName, setFirstName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  // Set once the signup is accepted: the account only works after the
+  // emailed link is followed, so show that instead of signing in.
+  const [sentTo, setSentTo] = useState<string | null>(null);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -34,7 +35,7 @@ export default function SignupPage() {
         return;
       }
 
-      router.push("/onboarding");
+      setSentTo(email.trim());
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {
@@ -59,6 +60,34 @@ export default function SignupPage() {
     } finally {
       setGoogleLoading(false);
     }
+  }
+
+  if (sentTo) {
+    return (
+      <div className="flex min-h-dvh items-center justify-center px-6 py-12">
+        <div className="w-full max-w-sm text-center" role="status">
+          <PageTitle>Check your email</PageTitle>
+          <p className="mt-2 text-sm leading-relaxed text-warm-600">
+            We sent a link to <span className="font-medium text-warm-800">{sentTo}</span>. Open it to
+            confirm your address and finish setting up your account.
+          </p>
+          <p className="mt-4 text-xs leading-relaxed text-warm-500">
+            Nothing after a few minutes? Check spam, or{" "}
+            <button
+              type="button"
+              onClick={() => setSentTo(null)}
+              className="text-teal-600 underline underline-offset-2 hover:text-teal-700"
+            >
+              try a different address
+            </button>
+            . Already confirmed?{" "}
+            <Link href="/login" className="text-teal-600 hover:text-teal-700">
+              Log in
+            </Link>
+          </p>
+        </div>
+      </div>
+    );
   }
 
   return (
