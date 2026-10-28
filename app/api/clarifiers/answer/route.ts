@@ -4,12 +4,13 @@ import { log } from "@/lib/logger";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { answerClarifier } from "@/lib/clarifiers/service";
 import { insightsCache } from "@/lib/cache/insights";
+import { uuidString } from "@/lib/api/validation";
 
 // ── POST /api/clarifiers/answer ─────────────────────────────────────────
 // { entryId, dimension, answer: string | string[] | "skipped" }
 
 const bodySchema = z.object({
-  entryId: z.string().uuid(),
+  entryId: uuidString(),
   dimension: z.enum(["preparation", "quantity", "additions"]),
   answer: z.union([
     z.literal("skipped"),

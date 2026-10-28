@@ -18,7 +18,7 @@ import { buildCoachingContext } from "@/lib/coaching/context";
 import type { AIMessage } from "@/lib/ai/providers/types";
 import { rateLimit, CHAT_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
-import { readJson } from "@/lib/api/validation";
+import { readJson, uuidString } from "@/lib/api/validation";
 
 /**
  * Only the most recent messages are sent to the model — at most N messages
@@ -31,7 +31,7 @@ const chatSchema = z.object({
   message: z.string().min(1).max(10_000),
   // nullish, not optional: the client's initial state is null and a fresh
   // conversation must not 400.
-  conversationId: z.string().uuid().nullish(),
+  conversationId: uuidString().nullish(),
 });
 
 export async function POST(request: Request) {

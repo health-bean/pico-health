@@ -17,7 +17,7 @@ import { getSessionFromCookies } from "@/lib/auth/session";
 import { loadProtocolContext, checkComplianceSync } from "@/lib/protocols/compliance";
 import { trackReintroductionEntry } from "@/lib/reintroductions/tracking";
 import { insightsCache } from "@/lib/cache/insights";
-import { boundedJsonObject, readJson } from "@/lib/api/validation";
+import { boundedJsonObject, readJson, uuidString } from "@/lib/api/validation";
 
 // ── GET /api/entries ────────────────────────────────────────────────────
 // Query params: ?date=YYYY-MM-DD  ?type=food|symptom|...  ?days=7
@@ -265,7 +265,7 @@ const createEntrySchema = z.object({
   intensityLevel: z.enum(["light", "moderate", "vigorous"]).optional(),
   energyLevel: z.number().int().min(1).max(10).optional(),
   // Food-specific fields
-  foodId: z.string().uuid().optional(),
+  foodId: uuidString().optional(),
   portion: z.string().max(100).optional(),
   mealType: z.enum(["breakfast", "lunch", "dinner", "snack"]).optional(),
   timezone: z.string().max(50).optional(),

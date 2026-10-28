@@ -9,15 +9,15 @@ import {
 } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
-import { readJson } from "@/lib/api/validation";
+import { readJson, uuidString } from "@/lib/api/validation";
 
 // ── POST /api/reintroductions ───────────────────────────────────────────
 // Start a new reintroduction
 
 const startReintroductionSchema = z.object({
-  foodId: z.string().uuid().optional(),
+  foodId: uuidString().optional(),
   foodName: z.string().min(1).max(255),
-  protocolId: z.string().uuid(),
+  protocolId: uuidString(),
 });
 
 export async function POST(request: Request) {

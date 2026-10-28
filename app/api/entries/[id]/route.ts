@@ -4,7 +4,7 @@ import { log } from "@/lib/logger";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { deleteEntry, updateEntry, getFoodForUser } from "@/lib/db/queries/entries";
 import { insightsCache } from "@/lib/cache/insights";
-import { isUuid } from "@/lib/api/validation";
+import { isUuid, uuidString } from "@/lib/api/validation";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -52,7 +52,7 @@ const patchEntrySchema = z
       .nullable()
       .optional(),
     mealType: z.enum(["breakfast", "lunch", "dinner", "snack"]).nullable().optional(),
-    foodId: z.string().uuid().nullable().optional(),
+    foodId: uuidString().nullable().optional(),
     // Clarifier fields, stored inside structuredContent (see lib/clarifiers).
     preparation: z
       .array(z.enum(["fresh", "leftover", "fermented", "aged", "cured", "canned", "smoked", "dried", "raw"]))

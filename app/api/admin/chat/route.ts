@@ -15,14 +15,14 @@ import { processAdminToolCall } from "@/lib/ai/admin-extract";
 import type { AIMessage } from "@/lib/ai/providers/types";
 import { rateLimit, ADMIN_CHAT_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
-import { readJson } from "@/lib/api/validation";
+import { readJson, uuidString } from "@/lib/api/validation";
 
 /** Admin sessions can be long; bound what each turn re-sends to the model. */
 const ADMIN_CHAT_HISTORY_WINDOW = 60;
 
 const adminChatSchema = z.object({
   message: z.string().min(1).max(50_000),
-  conversationId: z.string().uuid().optional(),
+  conversationId: uuidString().optional(),
 });
 
 export async function POST(request: Request) {

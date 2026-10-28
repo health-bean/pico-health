@@ -5,7 +5,7 @@ import { timelineEntries } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { insightsCache } from "@/lib/cache/insights";
 import { log } from "@/lib/logger";
-import { boundedJsonObject, readJson } from "@/lib/api/validation";
+import { boundedJsonObject, readJson, uuidString } from "@/lib/api/validation";
 
 const entrySchema = z.object({
   entryType: z.enum([
@@ -26,7 +26,7 @@ const entrySchema = z.object({
     .optional(),
   timezone: z.string().max(50).optional(),
   // Food-specific fields (mirrors POST /api/entries)
-  foodId: z.string().uuid().optional(),
+  foodId: uuidString().optional(),
   portion: z.string().max(100).optional(),
   mealType: z.enum(["breakfast", "lunch", "dinner", "snack"]).optional(),
 });
