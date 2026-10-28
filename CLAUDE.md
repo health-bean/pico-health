@@ -27,7 +27,7 @@ Next.js 16 (App Router), React 19, Tailwind 4, Supabase (auth + DB), Drizzle ORM
 - Tab structure: **Log** (home — persistent capture bar), Chat (coaching/questions), Reflect, Insights, Settings
 - The capture bar on Log (not Chat) is the primary logging surface — see `docs/superpowers/specs/2026-09-02-capture-loop-design.md` and `PRODUCT.md`
 - All API routes use `getSessionFromCookies()` for auth
-- Supabase auth with middleware-level `getUser()` verification
+- Supabase auth: `getSessionFromCookies()` verifies the JWT with `getClaims()` (never trust `getSession()` server-side — it is unverified cookie data); middleware calls `getUser()` to refresh, redirects pages to /login and returns 401 JSON for `/api/*` except `/api/auth/*`, `/api/cron/*`, `/api/billing/webhook` (`isPublicApiRoute` in `lib/supabase/middleware.ts`)
 - Google OAuth: consent screen must be **Published** (not Testing) in Google Cloud Console, with app name/logo/privacy+terms URLs filled in, or Google shows the raw `*.supabase.co` callback host instead of "Pico Health" on the account picker. No code or custom-domain purchase needed — this is a console-only setting, confirmed working (2026-09-04).
 
 ## AI tasks and models
