@@ -4,6 +4,8 @@ import { db } from "@/lib/db";
 import { customFoods, customFoodProperties } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { parseBody } from "@/lib/api/validation";
+import { createCustomFoodSchema } from "./schema";
 
 // ── POST /api/foods/custom ──────────────────────────────────────────────
 // Create a new custom food
@@ -19,23 +21,16 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json();
-    const { displayName, category, subcategory, properties } = body;
-
-    // Validate required fields
-    if (!displayName || displayName.trim().length === 0) {
-      return NextResponse.json(
-        { error: "displayName is required" },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, createCustomFoodSchema);
+    if (parsed.response) return parsed.response;
+    const { displayName, category, subcategory, properties } = parsed.data;
 
     // Create custom food
     const [newFood] = await db
       .insert(customFoods)
       .values({
         userId: session.userId,
-        displayName: displayName.trim(),
+        displayName,
         category: category || null,
         subcategory: subcategory || null,
         isArchived: false,

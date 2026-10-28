@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import { rateLimit, getClientIp, AUTH_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
 import { ensureProfile } from "@/lib/auth/profile";
+import { readJson } from "@/lib/api/validation";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -27,7 +28,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = loginSchema.safeParse(body);
 
     if (!parsed.success) {

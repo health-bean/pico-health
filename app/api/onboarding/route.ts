@@ -3,7 +3,15 @@ import { db } from "@/lib/db";
 import { profiles } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
+import { z } from "zod";
 import { log } from "@/lib/logger";
+import { parseBody, uuidString } from "@/lib/api/validation";
+
+const completeOnboardingSchema = z.object({
+  protocolId: uuidString().nullable().optional(),
+  // Sent by the client; sample data is no longer loaded server-side.
+  loadSampleData: z.boolean().optional(),
+});
 
 // GET /api/onboarding - Get onboarding status
 export async function GET() {
@@ -47,8 +55,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const body = await request.json();
-    const { protocolId } = body;
+    const parsed = await parseBody(request, completeOnboardingSchema);
+    if (parsed.response) return parsed.response;
+    const { protocolId } = parsed.data;
 
     // Update user onboarding status
     await db

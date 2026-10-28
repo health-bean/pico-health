@@ -9,6 +9,7 @@ import {
 } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { readJson } from "@/lib/api/validation";
 
 // ── POST /api/reintroductions ───────────────────────────────────────────
 // Start a new reintroduction
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = startReintroductionSchema.safeParse(body);
 
     if (!parsed.success) {

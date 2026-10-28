@@ -5,10 +5,17 @@ import { profiles } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { parseBody, timezoneString, uuidString } from "@/lib/api/validation";
 
-const trackingGoalDaysSchema = z
-  .union([z.number().int().min(7).max(365), z.null()])
-  .optional();
+const patchProfileSchema = z.object({
+  // profiles.first_name is varchar(100) NOT NULL
+  firstName: z.string().trim().min(1).max(100).optional(),
+  currentProtocolId: uuidString().nullable().optional(),
+  healthGoals: z.array(z.string().trim().min(1).max(200)).max(20).nullable().optional(),
+  timezone: timezoneString().optional(),
+  // An integer between 7 and 365, or null to clear the goal.
+  trackingGoalDays: z.union([z.number().int().min(7).max(365), z.null()]).optional(),
+});
 
 /** Today's date (YYYY-MM-DD) in the given IANA timezone, UTC fallback. */
 function todayInTimezone(timezone: string | null | undefined): string {
@@ -67,27 +74,17 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const body = await request.json();
-    const { firstName, currentProtocolId, healthGoals, timezone } = body;
-
-    const goal = trackingGoalDaysSchema.safeParse(body?.trackingGoalDays);
-    if (!goal.success) {
-      return NextResponse.json(
-        {
-          error:
-            "trackingGoalDays must be an integer between 7 and 365, or null",
-        },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, patchProfileSchema);
+    if (parsed.response) return parsed.response;
+    const { firstName, currentProtocolId, healthGoals, timezone, trackingGoalDays } = parsed.data;
 
     // Setting a goal also stamps its start date (today in the user's
     // timezone); clearing the goal clears both.
     let goalFields:
       | { trackingGoalDays: number | null; trackingGoalStartDate: string | null }
       | undefined;
-    if (goal.data !== undefined) {
-      if (goal.data === null) {
+    if (trackingGoalDays !== undefined) {
+      if (trackingGoalDays === null) {
         goalFields = { trackingGoalDays: null, trackingGoalStartDate: null };
       } else {
         const [profile] = await db
@@ -97,7 +94,7 @@ export async function PATCH(request: Request) {
           .limit(1);
 
         goalFields = {
-          trackingGoalDays: goal.data,
+          trackingGoalDays,
           trackingGoalStartDate: todayInTimezone(profile?.timezone),
         };
       }

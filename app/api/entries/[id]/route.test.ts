@@ -10,7 +10,7 @@ vi.mock("@/lib/cache/insights", () => ({
 }));
 
 const ownerId = "user-owner";
-const entryId = "entry-1";
+const entryId = "44444444-4444-4444-8444-444444444444";
 const ctx = { params: Promise.resolve({ id: entryId }) };
 
 function mockSession(userId: string | "") {

@@ -15,6 +15,7 @@ import { processAdminToolCall } from "@/lib/ai/admin-extract";
 import type { AIMessage } from "@/lib/ai/providers/types";
 import { rateLimit, ADMIN_CHAT_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { readJson } from "@/lib/api/validation";
 
 /** Admin sessions can be long; bound what each turn re-sends to the model. */
 const ADMIN_CHAT_HISTORY_WINDOW = 60;
@@ -45,7 +46,7 @@ export async function POST(request: Request) {
     }
 
     // ── Parse body ───────────────────────────────────────────────────
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = adminChatSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

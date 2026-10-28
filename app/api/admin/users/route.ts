@@ -3,7 +3,14 @@ import { db } from "@/lib/db";
 import { profiles } from "@/lib/db/schema";
 import { eq, asc } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
+import { z } from "zod";
 import { log } from "@/lib/logger";
+import { parseBody, uuidString } from "@/lib/api/validation";
+
+const patchUserSchema = z.object({
+  userId: uuidString(),
+  isAdmin: z.boolean(),
+});
 
 async function requireAdmin() {
   const session = await getSessionFromCookies();
@@ -47,15 +54,9 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: auth.error }, { status: auth.status });
     }
 
-    const body = await request.json();
-    const { userId, isAdmin } = body;
-
-    if (!userId || typeof isAdmin !== "boolean") {
-      return NextResponse.json(
-        { error: "userId and isAdmin are required" },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, patchUserSchema);
+    if (parsed.response) return parsed.response;
+    const { userId, isAdmin } = parsed.data;
 
     // Prevent removing your own admin access
     if (userId === auth.session.userId && !isAdmin) {

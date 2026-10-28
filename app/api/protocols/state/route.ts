@@ -8,7 +8,11 @@ import {
 } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getUserProtocolContext, advancePhase } from "@/lib/protocols";
+import { z } from "zod";
 import { log } from "@/lib/logger";
+import { parseBody, uuidString } from "@/lib/api/validation";
+
+const protocolIdBodySchema = z.object({ protocolId: uuidString() });
 
 // ── GET /api/protocols/state ──────────────────────────────────────────
 // Returns user's current protocol state (phase, day number, etc.)
@@ -65,16 +69,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { protocolId } = (await request.json()) as {
-      protocolId: string;
-    };
-
-    if (!protocolId) {
-      return NextResponse.json(
-        { error: "protocolId is required" },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, protocolIdBodySchema);
+    if (parsed.response) return parsed.response;
+    const { protocolId } = parsed.data;
 
     // Verify protocol exists
     const [protocol] = await db
@@ -156,16 +153,9 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { protocolId } = (await request.json()) as {
-      protocolId: string;
-    };
-
-    if (!protocolId) {
-      return NextResponse.json(
-        { error: "protocolId is required" },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, protocolIdBodySchema);
+    if (parsed.response) return parsed.response;
+    const { protocolId } = parsed.data;
 
     const nextPhase = await advancePhase(session.userId, protocolId);
 

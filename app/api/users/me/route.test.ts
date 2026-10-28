@@ -142,3 +142,54 @@ describe("PATCH /api/users/me", () => {
     expect("trackingGoalStartDate" in setArg).toBe(false);
   });
 });
+
+describe("PATCH /api/users/me input bounds", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    mockSession(userId);
+  });
+
+  it("returns 400 on malformed JSON", async () => {
+    const res = await PATCH(
+      new Request("http://localhost/api/users/me", { method: "PATCH", body: "{nope" })
+    );
+    expect(res.status).toBe(400);
+    expect(db.update).not.toHaveBeenCalled();
+  });
+
+  it("rejects oversized or empty firstName", async () => {
+    for (const firstName of ["", "x".repeat(101), 42]) {
+      const res = await PATCH(patchReq({ firstName }));
+      expect(res.status).toBe(400);
+    }
+    expect(db.update).not.toHaveBeenCalled();
+  });
+
+  it("rejects unknown timezones and accepts IANA ones", async () => {
+    const bad = await PATCH(patchReq({ timezone: "Mars/Olympus_Mons" }));
+    expect(bad.status).toBe(400);
+    expect(db.update).not.toHaveBeenCalled();
+
+    const setMock = mockUpdate();
+    const ok = await PATCH(patchReq({ timezone: "Europe/Berlin" }));
+    expect(ok.status).toBe(200);
+    expect((setMock.mock.calls[0][0] as Record<string, unknown>).timezone).toBe("Europe/Berlin");
+  });
+
+  it("bounds healthGoals", async () => {
+    const tooMany = await PATCH(patchReq({ healthGoals: Array.from({ length: 21 }, (_, i) => `g${i}`) }));
+    expect(tooMany.status).toBe(400);
+    const tooLong = await PATCH(patchReq({ healthGoals: ["x".repeat(201)] }));
+    expect(tooLong.status).toBe(400);
+    expect(db.update).not.toHaveBeenCalled();
+  });
+
+  it("rejects a malformed currentProtocolId but allows null", async () => {
+    const bad = await PATCH(patchReq({ currentProtocolId: "not-a-uuid" }));
+    expect(bad.status).toBe(400);
+    const setMock = mockUpdate();
+    const ok = await PATCH(patchReq({ currentProtocolId: null }));
+    expect(ok.status).toBe(200);
+    expect((setMock.mock.calls[0][0] as Record<string, unknown>).currentProtocolId).toBeNull();
+  });
+});

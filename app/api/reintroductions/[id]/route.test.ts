@@ -9,7 +9,7 @@ vi.mock("@/lib/auth/session");
 
 describe("GET /api/reintroductions/[id]", () => {
   const mockUserId = "user-123";
-  const mockReintroductionId = "reintro-456";
+  const mockReintroductionId = "55555555-5555-4555-8555-555555555555";
   const mockStartDate = "2024-01-01";
 
   beforeEach(() => {
@@ -294,7 +294,7 @@ describe("GET /api/reintroductions/[id]", () => {
 
 describe("PATCH /api/reintroductions/[id]", () => {
   const mockUserId = "user-123";
-  const mockReintroductionId = "reintro-456";
+  const mockReintroductionId = "55555555-5555-4555-8555-555555555555";
   const mockStartDate = "2024-01-01";
 
   beforeEach(() => {

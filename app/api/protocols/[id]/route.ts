@@ -4,6 +4,7 @@ import { db } from "@/lib/db";
 import { protocols, protocolRules, protocolPhases } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { isUuid } from "@/lib/api/validation";
 
 // ── GET /api/protocols/[id] ─────────────────────────────────────────────
 
@@ -18,6 +19,9 @@ export async function GET(
     }
 
     const { id } = await params;
+    if (!isUuid(id)) {
+      return NextResponse.json({ error: "Protocol not found" }, { status: 404 });
+    }
 
     const [protocol] = await db
       .select({

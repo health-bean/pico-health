@@ -17,6 +17,7 @@ import { getSessionFromCookies } from "@/lib/auth/session";
 import { loadProtocolContext, checkComplianceSync } from "@/lib/protocols/compliance";
 import { trackReintroductionEntry } from "@/lib/reintroductions/tracking";
 import { insightsCache } from "@/lib/cache/insights";
+import { boundedJsonObject, readJson } from "@/lib/api/validation";
 
 // ── GET /api/entries ────────────────────────────────────────────────────
 // Query params: ?date=YYYY-MM-DD  ?type=food|symptom|...  ?days=7
@@ -242,7 +243,7 @@ const createEntrySchema = z.object({
   ]),
   name: z.string().min(1).max(255),
   severity: z.number().int().min(1).max(10).optional(),
-  structuredContent: z.record(z.unknown()).optional(),
+  structuredContent: boundedJsonObject().optional(),
   entryDate: z.string().regex(/^\d{4}-\d{2}-\d{2}$/),
   entryTime: z
     .string()
@@ -277,7 +278,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = createEntrySchema.safeParse(body);
 
     if (!parsed.success) {

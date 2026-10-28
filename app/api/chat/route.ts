@@ -18,6 +18,7 @@ import { buildCoachingContext } from "@/lib/coaching/context";
 import type { AIMessage } from "@/lib/ai/providers/types";
 import { rateLimit, CHAT_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { readJson } from "@/lib/api/validation";
 
 /**
  * Only the most recent messages are sent to the model — at most N messages
@@ -55,7 +56,7 @@ export async function POST(request: Request) {
     if (!quota.allowed) return quotaExceededResponse(quota);
 
     // ── Parse body ───────────────────────────────────────────────────
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = chatSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

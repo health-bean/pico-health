@@ -50,3 +50,34 @@ describe("check-in reminder cron", () => {
     expect(mergeIntoMeal).toHaveBeenCalledWith("u1", "2026-10-12", "12:40:00", expect.objectContaining({ checkinPushedAt: expect.any(String) }));
   });
 });
+
+describe("check-in reminder cron robustness", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    process.env.CRON_SECRET = "s3cret";
+  });
+
+  it("falls back to UTC for an invalid stored timezone and keeps going after one user fails", async () => {
+    vi.useFakeTimers();
+    vi.setSystemTime(new Date(Date.UTC(2026, 9, 12, 14, 30))); // 14:30 UTC
+    vi.mocked(pushConfigured).mockReturnValue(true);
+    vi.mocked(listDevices).mockResolvedValue([
+      { userId: "broken", token: "t0", platform: "ios", timezone: "America/New_York" },
+      { userId: "badtz", token: "t1", platform: "ios", timezone: "Not/AZone" },
+    ] as never);
+    vi.mocked(entriesForDay).mockImplementation(async (userId) => {
+      if (userId === "broken") throw new Error("db hiccup");
+      return [
+        { entryType: "food", name: "Eggs", entryTime: "12:40:00", mealType: "lunch", structuredContent: null },
+      ] as never;
+    });
+    vi.mocked(sendPush).mockResolvedValue("sent");
+
+    const res = await call("Bearer s3cret");
+    expect(res.status).toBe(200);
+    expect(await res.json()).toEqual({ sent: 1, removed: 0, failed: 1 });
+    expect(entriesForDay).toHaveBeenCalledWith("badtz", "2026-10-12");
+    expect(sendPush).toHaveBeenCalledWith("ios", "t1", expect.anything());
+    vi.useRealTimers();
+  });
+});
