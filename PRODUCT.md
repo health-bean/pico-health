@@ -8,6 +8,8 @@ web
 
 (One design language everywhere. Capacitor wraps picohealth.app for an iOS App Store build soon after launch, and possibly Google Play; those builds are the web app in a shell, not native designs. Decided 2026-09-16: native-feel store apps are not a goal before launch; revisit only if store review or user evidence demands it.)
 
+Store priority (founder, 2026-10-29): **Apple first.** The iOS App Store build is the primary target once the app is ready; Android may follow later. The `android/` folder exists but is not a launch target, so design for the web app as it runs inside the iOS shell (safe areas, iOS touch and type conventions where they don't conflict with the one design language).
+
 ## Users
 
 - **Primary: the self-directed chronic-illness patient.** Managing autoimmune, gut, histamine, or other complex conditions on a healing protocol (AIP, elimination, low-FODMAP, low-histamine…). Often dealing with brain fog, fatigue, and anxiety about food. Found the app themselves; nobody is making them track. They must feel value within days or they churn.

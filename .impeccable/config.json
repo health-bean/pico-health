@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "app/page.tsx"
+        ],
+        "createdAt": "2026-10-29T21:20:54.481Z",
+        "reason": "Claude triage: L119 is a typographic pull-quote rule on a <blockquote> (not a card side-tab), matching the healthbean.io quote treatment and the practitioner PDF"
+      }
+    ]
+  }
+}
