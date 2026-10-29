@@ -8,7 +8,7 @@ const config: CapacitorConfig = {
   webDir: "out",
   server: devMode
     ? { url: "http://localhost:3000", cleartext: true }
-    : { url: "https://picohealth.app", cleartext: false },
+    : { url: "https://picohealth.app/login", cleartext: false },
   ios: {
     scheme: "PicoHealth",
     contentInset: "automatic",

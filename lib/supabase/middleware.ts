@@ -36,6 +36,12 @@ export async function updateSession(request: NextRequest) {
 
   const { pathname } = request.nextUrl;
 
+  // Signed-in people skip the landing page and the auth screens. The iOS app
+  // opens /login, so this is also what takes a returning app user into the app.
+  if (user && (pathname === "/" || pathname === "/login" || pathname === "/signup")) {
+    return NextResponse.redirect(new URL("/log", request.url));
+  }
+
   // Public routes that don't require auth
   const publicRoutes = ["/login", "/signup", "/", "/forgot-password", "/reset-password", "/terms", "/privacy"];
   const isPublic =

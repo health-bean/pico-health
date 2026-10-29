@@ -683,3 +683,16 @@ export const clarifierResponses = pgTable(
     index("clarifier_responses_user_last_at_idx").on(table.userId, table.lastAt),
   ]
 );
+
+/** Early-access list from the landing page. `ref` is a neutral referral code (e.g. "seattle"). */
+export const waitlistSignups = pgTable(
+  "waitlist_signups",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    email: varchar("email", { length: 254 }).notNull(),
+    ref: varchar("ref", { length: 40 }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    invitedAt: timestamp("invited_at", { withTimezone: true }),
+  },
+  (table) => [uniqueIndex("waitlist_signups_email_idx").on(table.email)]
+);

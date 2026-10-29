@@ -2,6 +2,11 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   serverExternalPackages: ["postgres"],
+  // Handout links (picohealth.app/join?ref=seattle) land on the home page;
+  // the query string, and so the ref code, carries through.
+  async redirects() {
+    return [{ source: "/join", destination: "/", permanent: false }];
+  },
   async headers() {
     return [
       {
