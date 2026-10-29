@@ -21,6 +21,22 @@ html {
 }
 
 @theme {
+  /* ── Landing page (picohealth.app, signed out) ───────────────── */
+  /* The healthbean.io layout in Pico teal: a softer ramp than the app's
+     teal-900, which reads near-black at hero size. Used only in
+     components/landing. */
+  --color-lp-900: #1f5156;
+  --color-lp-800: #1c6b72;
+  --color-lp-700: #2f817f;
+  --color-lp-600: #499f99;
+  --color-lp-cream: #fdf8f0;
+  --color-lp-cream-dark: #f3ede3;
+  --color-lp-text: #5a5040;
+  --color-lp-muted: #736354;
+  --color-lp-accent: #2f6466;
+  --color-lp-accent-bg: #e6f2f0;
+  --spacing-lp-section: 5rem;
+
   /* ── Brand: Teal (hue 189°, the deck's own) ──────────────────── */
   /* 499F99 lands exactly on the 400 step. The darker steps carry white
      text: teal-600 6.11:1, teal-700 8.63:1. */
@@ -265,3 +281,30 @@ select {
 .stagger-children > *:nth-child(8) { animation-delay: 350ms; }
 .stagger-children > *:nth-child(9) { animation-delay: 400ms; }
 .stagger-children > *:nth-child(10) { animation-delay: 450ms; }
+
+
+/* Landing page base: body text and serif headings, as on healthbean.io.
+   :where() keeps specificity at zero so utility classes still win. */
+@layer base {
+  :where(.landing) {
+    color: var(--color-lp-text);
+  }
+  :where(.landing) :where(h1, h2, h3, h4) {
+    font-family: var(--font-display);
+    color: var(--color-lp-900);
+  }
+}
+
+@keyframes lp-fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes lp-pop {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: none; }
+}
+.lp-fade-up { animation: lp-fade-up 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.lp-pop { animation: lp-pop 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .lp-fade-up, .lp-pop { animation: none; }
+}
