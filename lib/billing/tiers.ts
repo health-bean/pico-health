@@ -6,6 +6,16 @@
  * Premium: + Advanced correlations, data export, practitioner sharing ($3.99/mo)
  */
 
+/**
+ * Daily AI cost ceilings (USD, estimated from usage_log via ai-pricing.ts).
+ * Days are UTC days — the same for everyone and not resettable by changing
+ * the profile timezone. These are abuse ceilings, not expected spend:
+ * a capture costs ~$0.01–0.02 (Sonnet 5), a coaching message ~$0.03–0.25
+ * (Opus 5, grows with history and tool rounds).
+ */
+export const FREE_DAILY_AI_BUDGET_USD = 0.5;
+export const PAID_DAILY_AI_BUDGET_USD = 5;
+
 export type SubscriptionTier = "free" | "basic" | "premium";
 
 export interface TierConfig {
@@ -13,7 +23,10 @@ export interface TierConfig {
   monthlyPrice: number;
   features: string[];
   limits: {
+    /** Coaching messages (POST /api/chat) per UTC day. Capture is not counted. */
     dailyChatMessages: number;
+    /** Estimated AI spend per UTC day across chat + capture. */
+    dailyAiBudgetUsd: number;
     maxProtocols: number;
     correlationInsights: boolean;
     dataExport: boolean;
@@ -32,6 +45,7 @@ export const TIERS: Record<SubscriptionTier, TierConfig> = {
     ],
     limits: {
       dailyChatMessages: 5,
+      dailyAiBudgetUsd: FREE_DAILY_AI_BUDGET_USD,
       maxProtocols: 1,
       correlationInsights: false,
       dataExport: false,
@@ -50,6 +64,7 @@ export const TIERS: Record<SubscriptionTier, TierConfig> = {
     ],
     limits: {
       dailyChatMessages: Infinity,
+      dailyAiBudgetUsd: PAID_DAILY_AI_BUDGET_USD,
       maxProtocols: 3,
       correlationInsights: false,
       dataExport: false,
@@ -69,6 +84,7 @@ export const TIERS: Record<SubscriptionTier, TierConfig> = {
     ],
     limits: {
       dailyChatMessages: Infinity,
+      dailyAiBudgetUsd: PAID_DAILY_AI_BUDGET_USD,
       maxProtocols: Infinity,
       correlationInsights: true,
       dataExport: true,

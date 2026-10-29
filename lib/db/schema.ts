@@ -555,6 +555,20 @@ export const subscriptions = pgTable("subscriptions", {
   ]
 );
 
+/**
+ * Stripe webhook event ids already processed (idempotency for redeliveries).
+ * Created by supabase/migrations/20261028000000_stripe_webhook_events.sql.
+ */
+export const stripeWebhookEvents = pgTable("stripe_webhook_events", {
+  id: varchar("id", { length: 255 }).primaryKey(), // Stripe event.id (evt_...)
+  type: varchar("type", { length: 100 }).notNull(),
+  processedAt: timestamp("processed_at", { withTimezone: true }).notNull().defaultNow(),
+},
+  (table) => [
+    index("stripe_webhook_events_processed_at_idx").on(table.processedAt),
+  ]
+);
+
 // ─── User Food Reactions (confirmed outcomes from reintroductions) ────
 
 export const userFoodReactions = pgTable(

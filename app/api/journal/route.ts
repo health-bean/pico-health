@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { journalEntries } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { readJson } from "@/lib/api/validation";
 
 // ── GET /api/journal?date=YYYY-MM-DD  or  ?days=30 ──────────────────
 
@@ -115,7 +116,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = journalSchema.safeParse(body);
 
     if (!parsed.success) {

@@ -17,7 +17,11 @@ function isRetryable(err: unknown): boolean {
   return /overloaded|rate limit|429|529|ECONNRESET|fetch failed/i.test(e?.message ?? "");
 }
 
-/** Retry transient provider failures (429/5xx/overloaded) with a short backoff. */
+/**
+ * Retry transient provider failures (429/5xx/overloaded) with a short backoff.
+ * This is the only retry layer: the Anthropic client is built with
+ * maxRetries: 0 so retries don't multiply (SDK default 2 × 3 here = 9 calls).
+ */
 async function withRetry<T>(fn: () => Promise<T>): Promise<T> {
   let lastErr: unknown;
   for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
@@ -50,6 +54,16 @@ interface ConversationLoopParams {
   onText?: (text: string) => void;
   /** Called whenever a tool produces extracted entries. */
   onExtracted?: (entries: unknown[]) => void;
+  /**
+   * Called after every model response with the running token totals, so a
+   * caller can record what was spent even if a later round throws.
+   */
+  onUsage?: (usage: ConversationLoopResult["usage"]) => void;
+  /**
+   * Checked before every round after the first; returning false ends the
+   * loop early (e.g. the user's daily AI budget would be exceeded).
+   */
+  beforeRound?: (usage: ConversationLoopResult["usage"]) => boolean;
 }
 
 interface ConversationLoopResult {
@@ -84,6 +98,8 @@ export async function runConversationLoop(
     model,
     onText,
     onExtracted,
+    onUsage,
+    beforeRound,
   } = params;
 
   const currentMessages: AIMessage[] = [...params.messages];
@@ -97,6 +113,8 @@ export async function runConversationLoop(
   };
 
   for (let round = 0; round < maxRounds; round++) {
+    if (round > 0 && beforeRound && !beforeRound({ ...usage })) break;
+
     const response = await withRetry(() =>
       provider.chat({
         model,
@@ -112,6 +130,7 @@ export async function runConversationLoop(
       usage.outputTokens += response.usage.outputTokens;
       usage.cacheReadInputTokens += response.usage.cacheReadInputTokens ?? 0;
       usage.cacheCreationInputTokens += response.usage.cacheCreationInputTokens ?? 0;
+      onUsage?.({ ...usage });
     }
 
     // Accumulate text

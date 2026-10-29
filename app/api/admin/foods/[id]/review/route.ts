@@ -5,6 +5,7 @@ import { foodTriggerProperties } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { isUuid, readJson } from "@/lib/api/validation";
 
 type RouteContext = { params: Promise<{ id: string }> };
 
@@ -49,8 +50,11 @@ export async function POST(request: Request, { params }: RouteContext) {
     }
 
     const { id: foodId } = await params;
+    if (!isUuid(foodId)) {
+      return NextResponse.json({ error: "Food not found" }, { status: 404 });
+    }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = reviewSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

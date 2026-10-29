@@ -3,6 +3,7 @@ import { z } from "zod";
 import { log } from "@/lib/logger";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getClarifiersForEntries } from "@/lib/clarifiers/service";
+import { uuidString } from "@/lib/api/validation";
 
 // ── GET /api/clarifiers?entryIds=a,b ────────────────────────────────────
 // The single clarifier (if any) to show on a just-saved capture card.
@@ -11,7 +12,7 @@ const querySchema = z.object({
   entryIds: z
     .string()
     .transform((s) => s.split(",").map((x) => x.trim()).filter(Boolean))
-    .pipe(z.array(z.string().uuid()).min(1).max(25)),
+    .pipe(z.array(uuidString()).min(1).max(25)),
 });
 
 export async function GET(request: Request) {

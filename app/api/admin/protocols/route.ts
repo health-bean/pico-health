@@ -3,7 +3,62 @@ import { db } from "@/lib/db";
 import { protocols, protocolRules } from "@/lib/db/schema";
 import { eq, asc, sql } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
+import { z } from "zod";
 import { log } from "@/lib/logger";
+import { parseBody, uuidString } from "@/lib/api/validation";
+
+// Column limits: protocols.name varchar(255), category varchar(50);
+// protocol_rules.rule_type varchar(50), property_name varchar(50), status varchar(20).
+const protocolName = z.string().trim().min(1).max(255);
+const protocolDescription = z.string().max(5000).nullable();
+const protocolCategory = z.string().max(50).nullable();
+const ruleType = z.string().trim().min(1).max(50);
+const ruleStatus = z.string().trim().min(1).max(20);
+const propertyName = z.string().max(50).nullable();
+const propertyValues = z.array(z.string().max(50)).max(50);
+const ruleNotes = z.string().max(2000).nullable();
+
+const postSchema = z.discriminatedUnion("action", [
+  z.object({
+    action: z.literal("create_protocol"),
+    name: protocolName,
+    description: protocolDescription.optional(),
+    category: protocolCategory.optional(),
+  }),
+  z.object({
+    action: z.literal("add_rule"),
+    protocolId: uuidString(),
+    ruleType,
+    propertyName: propertyName.optional(),
+    propertyValues: propertyValues.optional(),
+    status: ruleStatus,
+    notes: ruleNotes.optional(),
+  }),
+]);
+
+const patchSchema = z.discriminatedUnion("action", [
+  z.object({
+    action: z.literal("update_protocol"),
+    id: uuidString(),
+    name: protocolName.optional(),
+    description: protocolDescription.optional(),
+    category: protocolCategory.optional(),
+  }),
+  z.object({
+    action: z.literal("update_rule"),
+    id: uuidString(),
+    ruleType: ruleType.optional(),
+    propertyName: propertyName.optional(),
+    propertyValues: propertyValues.optional(),
+    status: ruleStatus.optional(),
+    notes: ruleNotes.optional(),
+  }),
+]);
+
+const deleteSchema = z.object({
+  action: z.enum(["delete_protocol", "delete_rule"]),
+  id: uuidString(),
+});
 
 async function requireAdmin() {
   const session = await getSessionFromCookies();
@@ -67,14 +122,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: auth.error }, { status: auth.status });
     }
 
-    const body = await request.json();
-    const { action } = body;
+    const parsed = await parseBody(request, postSchema);
+    if (parsed.response) return parsed.response;
+    const body = parsed.data;
 
-    if (action === "create_protocol") {
+    if (body.action === "create_protocol") {
       const { name, description, category } = body;
-      if (!name) {
-        return NextResponse.json({ error: "Name is required" }, { status: 400 });
-      }
 
       const [created] = await db
         .insert(protocols)
@@ -89,14 +142,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ success: true, protocol: created });
     }
 
-    if (action === "add_rule") {
+    if (body.action === "add_rule") {
       const { protocolId, ruleType, propertyName, propertyValues, status, notes } = body;
-      if (!protocolId || !ruleType || !status) {
-        return NextResponse.json(
-          { error: "protocolId, ruleType, and status are required" },
-          { status: 400 }
-        );
-      }
 
       // Get next rule order
       const [maxOrder] = await db
@@ -135,14 +182,12 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: auth.error }, { status: auth.status });
     }
 
-    const body = await request.json();
-    const { action } = body;
+    const parsed = await parseBody(request, patchSchema);
+    if (parsed.response) return parsed.response;
+    const body = parsed.data;
 
-    if (action === "update_protocol") {
+    if (body.action === "update_protocol") {
       const { id, name, description, category } = body;
-      if (!id) {
-        return NextResponse.json({ error: "id is required" }, { status: 400 });
-      }
 
       await db
         .update(protocols)
@@ -156,11 +201,8 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ success: true });
     }
 
-    if (action === "update_rule") {
+    if (body.action === "update_rule") {
       const { id, ruleType, propertyName, propertyValues, status, notes } = body;
-      if (!id) {
-        return NextResponse.json({ error: "id is required" }, { status: 400 });
-      }
 
       await db
         .update(protocolRules)
@@ -191,12 +233,9 @@ export async function DELETE(request: Request) {
       return NextResponse.json({ error: auth.error }, { status: auth.status });
     }
 
-    const body = await request.json();
-    const { action, id } = body;
-
-    if (!id) {
-      return NextResponse.json({ error: "id is required" }, { status: 400 });
-    }
+    const parsed = await parseBody(request, deleteSchema);
+    if (parsed.response) return parsed.response;
+    const { action, id } = parsed.data;
 
     if (action === "delete_protocol") {
       // Delete rules first, then protocol

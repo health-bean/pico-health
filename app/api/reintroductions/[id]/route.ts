@@ -7,11 +7,24 @@ import {
   timelineEntries,
 } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
+import { z } from "zod";
 import { log } from "@/lib/logger";
+import { isUuid, readJson } from "@/lib/api/validation";
 
-// ── Types ──────────────────────────────────────────────────────────────
+// ── Validation ─────────────────────────────────────────────────────────
 
-type ReintroductionAction = "stop" | "mark_failed" | "mark_passed" | "extend";
+const VALID_ACTIONS = ["stop", "mark_failed", "mark_passed", "extend"] as const;
+
+const patchReintroductionSchema = z.object({
+  action: z.enum(VALID_ACTIONS, {
+    message: `Invalid action. Must be one of: ${VALID_ACTIONS.join(", ")}`,
+  }),
+  reason: z.string().max(1000).optional(),
+});
+
+function notFound() {
+  return NextResponse.json({ error: "Reintroduction not found" }, { status: 404 });
+}
 
 // ── GET /api/reintroductions/[id] ──────────────────────────────────────
 // Get single reintroduction with details
@@ -27,6 +40,7 @@ export async function GET(
     }
 
     const { id: reintroductionId } = await params;
+    if (!isUuid(reintroductionId)) return notFound();
 
     // Fetch reintroduction record
     const [reintroduction] = await db
@@ -178,27 +192,17 @@ export async function PATCH(
     }
 
     const { id: reintroductionId } = await params;
-    const body = await request.json();
-    const { action, reason } = body as {
-      action: ReintroductionAction;
-      reason?: string;
-    };
+    if (!isUuid(reintroductionId)) return notFound();
 
-    // Validate action
-    const validActions: ReintroductionAction[] = [
-      "stop",
-      "mark_failed",
-      "mark_passed",
-      "extend",
-    ];
-    if (!action || !validActions.includes(action)) {
+    const body = await readJson(request);
+    const parsed = patchReintroductionSchema.safeParse(body);
+    if (!parsed.success) {
       return NextResponse.json(
-        {
-          error: `Invalid action. Must be one of: ${validActions.join(", ")}`,
-        },
+        { error: parsed.error.issues[0]?.message ?? "Validation failed" },
         { status: 400 }
       );
     }
+    const { action, reason } = parsed.data;
 
     // Fetch reintroduction record
     const [reintroduction] = await db

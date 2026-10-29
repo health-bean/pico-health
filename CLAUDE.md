@@ -27,7 +27,8 @@ Next.js 16 (App Router), React 19, Tailwind 4, Supabase (auth + DB), Drizzle ORM
 - Tab structure: **Log** (home — persistent capture bar), Chat (coaching/questions), Reflect, Insights, Settings
 - The capture bar on Log (not Chat) is the primary logging surface — see `docs/superpowers/specs/2026-09-02-capture-loop-design.md` and `PRODUCT.md`
 - All API routes use `getSessionFromCookies()` for auth
-- Supabase auth with middleware-level `getUser()` verification
+- Supabase auth: `getSessionFromCookies()` verifies the JWT with `getClaims()` (never trust `getSession()` server-side — it is unverified cookie data); middleware calls `getUser()` to refresh, redirects pages to /login and returns 401 JSON for `/api/*` except `/api/auth/*`, `/api/cron/*`, `/api/billing/webhook`, `/api/waitlist` (`isPublicApiRoute` in `lib/supabase/middleware.ts`)
+- Email signup uses the confirm-email flow (`supabase.auth.signUp` → link → `/api/auth/callback`, which accepts `?code=` or `?token_hash=&type=`). The signup API returns the same `{ ok, confirmationRequired }` for new and existing emails. Profiles are created by `ensureProfile()` (`lib/auth/profile.ts`, idempotent) in the callback and on password login — never at signup. Requires Supabase "Confirm email" ON and `<origin>/api/auth/callback` in the allowed Redirect URLs
 - Google OAuth: consent screen must be **Published** (not Testing) in Google Cloud Console, with app name/logo/privacy+terms URLs filled in, or Google shows the raw `*.supabase.co` callback host instead of "Pico Health" on the account picker. No code or custom-domain purchase needed — this is a console-only setting, confirmed working (2026-09-04).
 
 ## AI tasks and models
@@ -39,6 +40,8 @@ Per-task routing in `lib/ai/router.ts` (`getProvider(task)`, `getTaskModel(task)
 | `capture-extract` (capture bar text) | `claude-sonnet-5` | Speed-critical (~2s chip streaming); strongest *and* fast |
 | `food-photo-parse` | `claude-sonnet-5` | Same speed constraint, vision |
 | `health-insights`, `protocol-reasoning`, `admin-chat` | `claude-opus-5` | Low volume, quality-sensitive |
+
+Per-user AI limits (UTC days): `lib/billing/quota.ts` (pure) + `lib/billing/enforce-quota.ts` (`checkAiQuota` in chat/capture before any model call). Free tier = 5 coaching messages/day (`/api/chat` only; capture is not counted) and every tier has a daily estimated-cost ceiling (`FREE_/PAID_DAILY_AI_BUDGET_USD` in `lib/billing/tiers.ts`), also enforced between tool rounds via `beforeRound`. Admins are exempt but still rate-limited. AI rate limits are keyed by userId only and use `{ strict: true }` — in production without working Upstash they drop to `STRICT_FALLBACK_RATE_LIMIT` per instance instead of failing open. Usage is recorded in the stream's `finally` (partial rounds count), kept alive with `keepAliveUntil()`. The Anthropic client has `maxRetries: 0`; `conversation-loop`'s `withRetry` is the only retry layer.
 
 `claude-haiku-4-5` is documented as the cost step-down if unit economics ever demand it. Every AI call writes to `usage_log`; `/admin/usage` shows real cost per user/task/day. Prompt caching is on for system prompts.
 

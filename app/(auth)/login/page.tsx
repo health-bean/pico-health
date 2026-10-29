@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Input, Button, Card } from "@/components/ui";
@@ -13,6 +13,15 @@ export default function LoginPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+
+  // /api/auth/callback lands here when a link could not sign the person in —
+  // most often an email confirmation opened in a different browser or app.
+  useEffect(() => {
+    if (new URLSearchParams(window.location.search).get("error") === "auth_callback_failed") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time read of the URL after mount
+      setError("That link couldn't sign you in here. If you just confirmed your email, log in below.");
+    }
+  }, []);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
@@ -33,7 +42,7 @@ export default function LoginPage() {
         return;
       }
 
-      router.push(data.restored ? "/log?restored=1" : "/log");
+      router.push(data.needsOnboarding ? "/onboarding" : data.restored ? "/log?restored=1" : "/log");
     } catch {
       setError("Something went wrong. Please try again.");
     } finally {

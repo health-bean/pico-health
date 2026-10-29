@@ -9,14 +9,15 @@ import {
 } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { readJson, uuidString } from "@/lib/api/validation";
 
 // ── POST /api/reintroductions ───────────────────────────────────────────
 // Start a new reintroduction
 
 const startReintroductionSchema = z.object({
-  foodId: z.string().uuid().optional(),
+  foodId: uuidString().optional(),
   foodName: z.string().min(1).max(255),
-  protocolId: z.string().uuid(),
+  protocolId: uuidString(),
 });
 
 export async function POST(request: Request) {
@@ -26,7 +27,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = startReintroductionSchema.safeParse(body);
 
     if (!parsed.success) {

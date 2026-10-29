@@ -6,7 +6,22 @@ import {
   getActiveTrials,
   getTrialHistory,
 } from "@/lib/protocols/reintroduction";
+import { z } from "zod";
 import { log } from "@/lib/logger";
+import { isUuid, boundedJsonObject, parseBody, uuidString } from "@/lib/api/validation";
+
+const startTrialSchema = z.object({
+  protocolId: uuidString(),
+  foodName: z.string().trim().min(1).max(255), // reintroduction_log.food_name varchar(255)
+  foodId: uuidString().optional(),
+});
+
+const completeTrialSchema = z.object({
+  trialId: uuidString(),
+  status: z.enum(["passed", "failed", "inconclusive"]),
+  outcome: z.string().max(2000).optional(),
+  symptomsSummary: boundedJsonObject(8 * 1024).optional(),
+});
 
 // ── GET /api/protocols/reintroduction?protocolId=uuid ────────────────
 
@@ -21,6 +36,9 @@ export async function GET(request: Request) {
     const protocolId = searchParams.get("protocolId");
 
     if (protocolId) {
+      if (!isUuid(protocolId)) {
+        return NextResponse.json({ error: "Invalid protocolId" }, { status: 400 });
+      }
       const trials = await getTrialHistory(session.userId, protocolId);
       return NextResponse.json({ trials });
     }
@@ -47,18 +65,9 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { protocolId, foodName, foodId } = (await request.json()) as {
-      protocolId: string;
-      foodName: string;
-      foodId?: string;
-    };
-
-    if (!protocolId || !foodName) {
-      return NextResponse.json(
-        { error: "protocolId and foodName are required" },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, startTrialSchema);
+    if (parsed.response) return parsed.response;
+    const { protocolId, foodName, foodId } = parsed.data;
 
     const trial = await startReintroductionTrial(
       session.userId,
@@ -87,20 +96,9 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const { trialId, status, outcome, symptomsSummary } =
-      (await request.json()) as {
-        trialId: string;
-        status: "passed" | "failed" | "inconclusive";
-        outcome?: string;
-        symptomsSummary?: Record<string, unknown>;
-      };
-
-    if (!trialId || !status) {
-      return NextResponse.json(
-        { error: "trialId and status are required" },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, completeTrialSchema);
+    if (parsed.response) return parsed.response;
+    const { trialId, status, outcome, symptomsSummary } = parsed.data;
 
     const trial = await completeReintroductionTrial(
       trialId,

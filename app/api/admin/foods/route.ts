@@ -10,6 +10,7 @@ import {
 import { eq, ilike, asc } from "drizzle-orm";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { readJson, uuidString } from "@/lib/api/validation";
 
 async function requireAdmin() {
   const session = await getSessionFromCookies();
@@ -96,7 +97,7 @@ const citationSchema = z.object({
 });
 
 const patchFoodSchema = z.object({
-  foodId: z.string().uuid(),
+  foodId: uuidString(),
   property: z.enum([
     "oxalate", "histamine", "lectin", "nightshade", "fodmap",
     "salicylate", "amines", "glutamates", "sulfites", "goitrogens",
@@ -123,7 +124,7 @@ export async function PATCH(request: Request) {
       return NextResponse.json({ error: auth.error }, { status: auth.status });
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = patchFoodSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(

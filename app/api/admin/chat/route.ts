@@ -1,22 +1,28 @@
 import { NextResponse } from "next/server";
-import { eq, asc, and } from "drizzle-orm";
+import { eq, desc, and } from "drizzle-orm";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { conversations, messages } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { getProvider, runConversationLoop, toNeutralTools } from "@/lib/ai/client";
 import { getTaskModel } from "@/lib/ai/router";
-import { recordUsage } from "@/lib/ai/usage";
+import { recordUsage, keepAliveUntil } from "@/lib/ai/usage";
+import { capHistoryByChars, ADMIN_CHAT_HISTORY_MAX_CHARS } from "@/lib/ai/history";
+import type { TokenTotals } from "@/lib/billing/quota";
 import { buildAdminSystemPrompt } from "@/lib/ai/admin-system-prompt";
 import { adminTools } from "@/lib/ai/admin-tools";
 import { processAdminToolCall } from "@/lib/ai/admin-extract";
 import type { AIMessage } from "@/lib/ai/providers/types";
-import { rateLimit, getClientIp, ADMIN_CHAT_RATE_LIMIT } from "@/lib/rate-limit";
+import { rateLimit, ADMIN_CHAT_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { readJson, uuidString } from "@/lib/api/validation";
+
+/** Admin sessions can be long; bound what each turn re-sends to the model. */
+const ADMIN_CHAT_HISTORY_WINDOW = 60;
 
 const adminChatSchema = z.object({
   message: z.string().min(1).max(50_000),
-  conversationId: z.string().uuid().optional(),
+  conversationId: uuidString().optional(),
 });
 
 export async function POST(request: Request) {
@@ -30,9 +36,8 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 });
     }
 
-    // ── Rate limit ────────────────────────────────────────────────
-    const ip = getClientIp(request);
-    const rl = await rateLimit(`admin-chat:${session.userId}:${ip}`, ADMIN_CHAT_RATE_LIMIT);
+    // ── Rate limit (per user; admins are exempt from tier limits, not this) ──
+    const rl = await rateLimit(`admin-chat:${session.userId}`, ADMIN_CHAT_RATE_LIMIT, { strict: true });
     if (!rl.allowed) {
       return NextResponse.json(
         { error: "Too many requests. Please slow down." },
@@ -41,7 +46,7 @@ export async function POST(request: Request) {
     }
 
     // ── Parse body ───────────────────────────────────────────────────
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = adminChatSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -103,7 +108,9 @@ export async function POST(request: Request) {
       })
       .from(messages)
       .where(eq(messages.conversationId, conversationId))
-      .orderBy(asc(messages.createdAt));
+      .orderBy(desc(messages.createdAt))
+      .limit(ADMIN_CHAT_HISTORY_WINDOW)
+      .then((rows) => capHistoryByChars(rows.reverse(), ADMIN_CHAT_HISTORY_MAX_CHARS));
 
     // ── Build system prompt ──────────────────────────────────────────
     const systemPrompt = buildAdminSystemPrompt();
@@ -120,15 +127,22 @@ export async function POST(request: Request) {
     const neutralTools = toNeutralTools(adminTools);
 
     // ── Stream response ──────────────────────────────────────────────
+    const usageRecorded = keepAliveUntil();
+    let usageSoFar: TokenTotals | undefined;
+
     const stream = new ReadableStream({
       async start(controller) {
         const encoder = new TextEncoder();
         const send = (event: object) => {
-          controller.enqueue(encoder.encode(JSON.stringify(event) + "\n"));
+          try {
+            controller.enqueue(encoder.encode(JSON.stringify(event) + "\n"));
+          } catch {
+            // Client disconnected; keep going so usage is recorded.
+          }
         };
 
         try {
-          const { text: finalText, usage } = await runConversationLoop({
+          const { text: finalText } = await runConversationLoop({
             provider,
             model: adminModel,
             systemPrompt,
@@ -157,6 +171,9 @@ export async function POST(request: Request) {
                 send({ type: "text", content: text.slice(i, i + chunkSize) });
               }
             },
+            onUsage: (u) => {
+              usageSoFar = u;
+            },
           });
 
           // ── Save assistant message ───────────────────────────────
@@ -180,17 +197,20 @@ export async function POST(request: Request) {
             messageId: assistantMessage.id,
             conversationId,
           });
-
-          controller.close();
-
-          void recordUsage({ userId: session.userId, task: "admin-chat", provider: "anthropic", model: adminModel, usage });
         } catch (error) {
           log.error("admin AI API error", { error: error as Error });
           send({
             type: "error",
             message: "Something went wrong generating a response.",
           });
-          controller.close();
+        } finally {
+          await recordUsage({ userId: session.userId, task: "admin-chat", provider: provider.id, model: adminModel, usage: usageSoFar });
+          usageRecorded();
+          try {
+            controller.close();
+          } catch {
+            // already closed by a disconnected client
+          }
         }
       },
     });

@@ -2,8 +2,26 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 /**
+ * API routes that must work without a Supabase session. Each one does its
+ * own authentication instead (credentials, Stripe signature, CRON_SECRET),
+ * or is public by design (the landing-page waitlist, rate limited).
+ * Everything else under /api gets a 401 here before the handler runs —
+ * handlers still verify via getSessionFromCookies(); this is defense in depth.
+ */
+const PUBLIC_API_PREFIXES = ["/api/auth", "/api/cron"];
+const PUBLIC_API_ROUTES = ["/api/billing/webhook", "/api/waitlist"];
+
+export function isPublicApiRoute(pathname: string): boolean {
+  return (
+    PUBLIC_API_ROUTES.includes(pathname) ||
+    PUBLIC_API_PREFIXES.some((p) => pathname === p || pathname.startsWith(p + "/"))
+  );
+}
+
+/**
  * Refresh the Supabase auth session on every request and
- * redirect unauthenticated users away from protected routes.
+ * redirect unauthenticated users away from protected routes
+ * (pages redirect to /login; API routes get a 401 JSON response).
  */
 export async function updateSession(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request });
@@ -46,6 +64,10 @@ export async function updateSession(request: NextRequest) {
   const publicRoutes = ["/login", "/signup", "/", "/forgot-password", "/reset-password", "/terms", "/privacy"];
   const isPublic =
     publicRoutes.includes(pathname) || pathname.startsWith("/api/auth/");
+
+  if (!user && pathname.startsWith("/api/") && !isPublicApiRoute(pathname)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
 
   if (!user && !isPublic) {
     // Check if this is a protected route

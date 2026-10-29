@@ -6,6 +6,8 @@ import { profiles } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
 import { rateLimit, getClientIp, AUTH_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { ensureProfile } from "@/lib/auth/profile";
+import { readJson } from "@/lib/api/validation";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email address"),
@@ -26,7 +28,7 @@ export async function POST(request: Request) {
       );
     }
 
-    const body = await request.json();
+    const body = await readJson(request);
     const parsed = loginSchema.safeParse(body);
 
     if (!parsed.success) {
@@ -44,12 +46,24 @@ export async function POST(request: Request) {
       password,
     });
 
+    if (error?.code === "email_not_confirmed") {
+      // Only reachable with the right password, so this reveals nothing new.
+      return NextResponse.json(
+        { error: "Please confirm your email first — use the link we sent you." },
+        { status: 403 }
+      );
+    }
+
     if (error || !data.user) {
       return NextResponse.json(
         { error: "Invalid email or password" },
         { status: 401 }
       );
     }
+
+    // A confirmation link opened on another device verifies the email but
+    // can't finish the session, so the profile may not exist yet.
+    const createdProfile = await ensureProfile(data.user);
 
     // Fetch profile for app-specific data
     const [profile] = await db
@@ -76,6 +90,7 @@ export async function POST(request: Request) {
         isAdmin: profile?.isAdmin ?? false,
       },
       restored,
+      needsOnboarding: createdProfile,
     });
   } catch (error) {
     log.error("login failed", { error: error as Error });

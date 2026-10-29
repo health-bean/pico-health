@@ -8,6 +8,8 @@ import {
 } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { isUuid, parseBody } from "@/lib/api/validation";
+import { updateCustomFoodSchema } from "../schema";
 
 // ── PATCH /api/foods/custom/[id] ────────────────────────────────────────
 // Update a custom food
@@ -24,6 +26,9 @@ export async function PATCH(
     if (!session.userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
+    if (!isUuid(id)) {
+      return NextResponse.json({ error: "Food not found" }, { status: 404 });
+    }
 
     // Verify food exists and belongs to user
     const [existingFood] = await db
@@ -36,16 +41,9 @@ export async function PATCH(
       return NextResponse.json({ error: "Food not found" }, { status: 404 });
     }
 
-    const body = await request.json();
-    const { displayName, category, subcategory, properties } = body;
-
-    // Validate displayName if provided
-    if (displayName !== undefined && displayName.trim().length === 0) {
-      return NextResponse.json(
-        { error: "displayName cannot be empty" },
-        { status: 400 }
-      );
-    }
+    const parsed = await parseBody(request, updateCustomFoodSchema);
+    if (parsed.response) return parsed.response;
+    const { displayName, category, subcategory, properties } = parsed.data;
 
     // Update custom food
     const updateData: Record<string, unknown> = {
@@ -53,7 +51,7 @@ export async function PATCH(
     };
 
     if (displayName !== undefined) {
-      updateData.displayName = displayName.trim();
+      updateData.displayName = displayName;
     }
     if (category !== undefined) {
       updateData.category = category || null;
@@ -169,6 +167,9 @@ export async function DELETE(
     const session = await getSessionFromCookies();
     if (!session.userId) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    }
+    if (!isUuid(id)) {
+      return NextResponse.json({ error: "Food not found" }, { status: 404 });
     }
 
     // Verify food exists and belongs to user
