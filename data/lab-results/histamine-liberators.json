@@ -1,0 +1,250 @@
+{
+ "papers": [
+  {
+   "key": "maintz2007",
+   "citation": "Maintz L, Novak N. Histamine and histamine intolerance. Am J Clin Nutr. 2007;85(5):1185-96.",
+   "url": "https://doi.org/10.1093/ajcn/85.5.1185",
+   "accessed": "not accessed",
+   "listsLiberators": null,
+   "whereInPaper": "Not read. Not in PMC/Europe PMC full text; publisher sites (ajcn.nutrition.org, academic.oup.com, sciencedirect.com) returned 403 to curl and a bot-check/CAPTCHA in Chrome. No foods recorded from it.",
+   "evidenceStatement": null
+  },
+  {
+   "key": "comasbaste2020",
+   "citation": "Comas-Basté O, Sánchez-Pérez S, Veciana-Nogués MT, Latorre-Moratalla M, Vidal-Carou MC. Histamine Intolerance: The Current State of the Art. Biomolecules. 2020;10(8):1181.",
+   "url": "https://doi.org/10.3390/biom10081181",
+   "accessed": "full text",
+   "listsLiberators": true,
+   "whereInPaper": "Section on the low-histamine diet (prose, cites refs 8 = Vlieg-Boerstra 2005 and 13 = Kovacova-Hanuskova 2015): 'papayas, kiwis, strawberries, pineapples and plums'",
+   "evidenceStatement": "have been reported to trigger the release of endogenous histamine, although the mechanism responsible has not yet been elucidated"
+  },
+  {
+   "key": "sanchezperez2021",
+   "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, Latorre-Moratalla ML, Vidal-Carou MC. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content? Nutrients. 2021;13(5):1395.",
+   "url": "https://doi.org/10.3390/nu13051395",
+   "accessed": "full text",
+   "listsLiberators": true,
+   "whereInPaper": "Results/discussion after Figure 1 (prose, cites refs 4, 5, 43): 'citrus fruits, seafood, papaya, tomato, nuts, pineapple, spinach, chocolate and strawberries, among others'",
+   "evidenceStatement": "There are no clinical studies in humans supporting the widely held belief that foods could have the ability to release histamine and this hypothesis is only based on few and no conclusive in vitro or animal studies"
+  },
+  {
+   "key": "zhao2022",
+   "citation": "Zhao Y, Zhang X, Jin H, Chen L, Ji J, Zhang Z. Histamine Intolerance—A Kind of Pseudoallergic Reaction. Biomolecules. 2022;12(3):454.",
+   "url": "https://doi.org/10.3390/biom12030454",
+   "accessed": "full text",
+   "listsLiberators": true,
+   "whereInPaper": "Table 2 'Foods that cause HIT', row 'Foods that Promote the Release of Histamine'; same list repeated in section 7.2 (cites ref 85). Prose (section 3.1) gives a shorter list: papaya, strawberries, citrus fruits, some nuts, egg whites, chocolate, fish, pork.",
+   "evidenceStatement": "No evidence-strength statement. Note: the table merges classic 'liberators' with putrescine-rich foods (text: 'Putrescine can promote the release of histamine from the intestinal mucosa')."
+  },
+  {
+   "key": "reese2017",
+   "citation": "Reese I, Ballmer-Weber B, Beyer K, et al. German guideline for the management of adverse reactions to ingested histamine. Allergo J Int. 2017;26(2):72-79.",
+   "url": "https://doi.org/10.1007/s40629-017-0011-5",
+   "accessed": "full text",
+   "listsLiberators": false,
+   "whereInPaper": "Dietary recommendations section; no food list, criticises the concept.",
+   "evidenceStatement": "encourage the avoidance of so-called “histamine liberators” ... despite there being no reliable evidence of their existence in foods or of their clinical relevance"
+  },
+  {
+   "key": "reese2021",
+   "citation": "Reese I, Ballmer-Weber B, Beyer K, et al. Guideline on management of suspected adverse reactions to ingested histamine (DGAKI, GPA, ÄDA, SGAI, ÖGAI). Allergol Select. 2021;5:305-314.",
+   "url": "https://doi.org/10.5414/ALX02269E",
+   "accessed": "full text",
+   "listsLiberators": false,
+   "whereInPaper": "Therapy/diet section; no food list, criticises the concept (cites Vlieg-Boerstra 2005).",
+   "evidenceStatement": "To date, there is no reliable evidence of the existence of “histamine liberators” in foods nor of their clinical significance in adverse reactions to food or food ingredients"
+  },
+  {
+   "key": "vliegboerstra2005",
+   "citation": "Vlieg-Boerstra BJ, van der Heide S, Oude Elberink JN, Kluin-Nelemans JC, Dubois AE. Mastocytosis and adverse reactions to biogenic amines and histamine-releasing foods: what is the evidence? Neth J Med. 2005;63(7):244-9.",
+   "url": "https://pubmed.ncbi.nlm.nih.gov/16093574/",
+   "accessed": "abstract only",
+   "listsLiberators": null,
+   "whereInPaper": "Systematic literature search (abstract). Whether the full text names foods was not checked.",
+   "evidenceStatement": "No studies employing DBPCFC with dietary biogenic amines or histamine-releasing foods in mastocytosis were found."
+  },
+  {
+   "key": "zuberbier2002",
+   "citation": "Zuberbier T, Pfrommer C, Specht K, et al. Aromatic components of food as novel eliciting factors of pseudoallergic reactions in chronic urticaria. J Allergy Clin Immunol. 2002;109(2):343-8.",
+   "url": "https://doi.org/10.1067/mai.2002.121309",
+   "accessed": "abstract only",
+   "listsLiberators": false,
+   "whereInPaper": "Abstract: tomato provocation in 33 chronic-urticaria patients (76% reacted to whole tomato), but tomato extract did not itself release histamine from skin mast cells in vitro.",
+   "evidenceStatement": "Histamine, salicylate, and a direct mast-cell histamine release are not involved in this reactivity to naturally occurring pseudoallergens."
+  },
+  {
+   "key": "bartko2016",
+   "citation": "Bartko J, Gludovacz E, Petroczi K, et al. Recombinant human diamine oxidase activity is not inhibited by ethanol, acetaldehyde, disulfiram, diethyldithiocarbamate or cyanamide. Alcohol. 2016;54:51-59.",
+   "url": "https://doi.org/10.1016/j.alcohol.2016.06.001",
+   "accessed": "abstract only",
+   "listsLiberators": false,
+   "whereInPaper": "Abstract: about alcohol and DAO inhibition in vitro, not food liberators.",
+   "evidenceStatement": "Our in vitro data do not support a direct blocking effect of ethanol, disulfiram, and their metabolites on DAO activity in vivo."
+  },
+  {
+   "key": "hrubisko2021",
+   "citation": "Hrubisko M, Danis R, Huorka M, Wawruch M. Histamine Intolerance—The More We Know the Less We Know. A Review. Nutrients. 2021;13(7):2228.",
+   "url": "https://doi.org/10.3390/nu13072228",
+   "accessed": "full text",
+   "listsLiberators": false,
+   "whereInPaper": "Mentions the concept (citing Sánchez-Pérez 2021) but gives no list of liberating foods in text; Figure 4 (image, not readable as text) is foods often excluded from low-histamine diets, not specifically liberators.",
+   "evidenceStatement": "Some of routinely excluded foods contain only low levels of biogenic amines and become designated as histamine liberators"
+  }
+ ],
+ "foods": [
+  {
+   "food": "Papaya",
+   "listItem": "papaya / papayas",
+   "papers": [
+    "comasbaste2020",
+    "sanchezperez2021",
+    "zhao2022"
+   ]
+  },
+  {
+   "food": "Strawberries",
+   "listItem": "strawberries",
+   "papers": [
+    "comasbaste2020",
+    "sanchezperez2021",
+    "zhao2022"
+   ]
+  },
+  {
+   "food": "Pineapple",
+   "listItem": "pineapple / pineapples",
+   "papers": [
+    "comasbaste2020",
+    "sanchezperez2021"
+   ]
+  },
+  {
+   "food": "Dark Chocolate / Cocoa",
+   "listItem": "chocolate",
+   "papers": [
+    "sanchezperez2021",
+    "zhao2022"
+   ],
+   "note": "Papers say 'chocolate' (type unspecified)."
+  },
+  {
+   "food": "Kiwi",
+   "listItem": "kiwis",
+   "papers": [
+    "comasbaste2020"
+   ]
+  },
+  {
+   "food": "Plum",
+   "listItem": "plums",
+   "papers": [
+    "comasbaste2020"
+   ]
+  },
+  {
+   "food": "Tomato",
+   "listItem": "tomato",
+   "papers": [
+    "sanchezperez2021"
+   ],
+   "note": "Cherry Tomatoes not added (not named). Zuberbier 2002 found tomato reactions in urticaria were NOT due to direct mast-cell histamine release."
+  },
+  {
+   "food": "Spinach",
+   "listItem": "spinach",
+   "papers": [
+    "sanchezperez2021"
+   ]
+  },
+  {
+   "food": "Pork",
+   "listItem": "pork",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Generic 'pork'; Ground Pork / Pork Chop / Pork Tenderloin not expanded."
+  },
+  {
+   "food": "Bell Pepper",
+   "listItem": "green peppers",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Assumed green bell pepper. Zhao 2022 table lists this under 'Foods that Promote the Release of Histamine' but its text attributes it to putrescine content, not a classic liberator effect."
+  },
+  {
+   "food": "Wheat Germ",
+   "listItem": "wheat germ",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Zhao 2022 table lists this under 'Foods that Promote the Release of Histamine' but its text attributes it to putrescine content, not a classic liberator effect."
+  },
+  {
+   "food": "Bean Sprouts",
+   "listItem": "bean sprouts",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Zhao 2022 table lists this under 'Foods that Promote the Release of Histamine' but its text attributes it to putrescine content, not a classic liberator effect."
+  },
+  {
+   "food": null,
+   "listItem": "citrus fruits",
+   "papers": [
+    "sanchezperez2021",
+    "zhao2022"
+   ],
+   "note": "Group; members not named in either paper (Orange, Lemon, Lime, Grapefruit not expanded)."
+  },
+  {
+   "food": null,
+   "listItem": "nuts / some nuts",
+   "papers": [
+    "sanchezperez2021",
+    "zhao2022"
+   ],
+   "note": "Group; no nut species named."
+  },
+  {
+   "food": null,
+   "listItem": "seafood",
+   "papers": [
+    "sanchezperez2021"
+   ],
+   "note": "Group; members not named."
+  },
+  {
+   "food": null,
+   "listItem": "fish",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Group; Zhao also lists fish as histamine-rich and DAO-inhibiting."
+  },
+  {
+   "food": null,
+   "listItem": "egg whites",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Egg white only; catalog has whole Eggs, not matched."
+  },
+  {
+   "food": null,
+   "listItem": "cheese",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Group; no cheese named. Zhao 2022 table lists this under 'Foods that Promote the Release of Histamine' but its text attributes it to putrescine content, not a classic liberator effect."
+  },
+  {
+   "food": null,
+   "listItem": "fermented sausage",
+   "papers": [
+    "zhao2022"
+   ],
+   "note": "Not matched to Salami/Pepperoni (not named). Zhao 2022 table lists this under 'Foods that Promote the Release of Histamine' but its text attributes it to putrescine content, not a classic liberator effect."
+  }
+ ]
+}
