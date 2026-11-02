@@ -406,19 +406,7 @@
     "confidence": "moderate",
     "notes": "Garlic-infused oil delivers flavor with negligible FODMAPs."
   },
-  {
-    "displayName": "Leek",
-    "category": "Vegetables",
-    "subcategory": "Alliums",
-    "isCommon": true,
-    "properties": { "oxalate": "low", "histamine": "low", "lectin": "low", "nightshade": false, "fodmap": "high", "salicylate": "low", "amines": "low", "glutamates": "low", "sulfites": "low", "goitrogens": "low", "purines": "low", "phytoestrogens": "low", "phytates": "low", "tyramine": "low" },
-    "sources": {
-      "fodmap": { "source": "Published FODMAP lists", "ref": "Leek bulb high fructan; green tops categorically low" },
-      "default": { "source": "Botanical/compositional", "ref": "Allium defaults" }
-    },
-    "confidence": "moderate",
-    "notes": "Rating is for the white bulb — the green leaves are a standard low-FODMAP allium substitute."
-  },
+  
   {
     "displayName": "Shallot",
     "category": "Vegetables",
