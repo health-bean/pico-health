@@ -135,14 +135,22 @@ export function checkComplianceSync(
   }
 
   let finalStatus: ProtocolStatus = "allowed";
+  // Restricted properties this food has no rating for. An unrated food is
+  // "unknown", never "allowed": we only claim a food fits when the data says so.
+  const unrated = new Set<string>();
 
   for (const rule of ctx.rules) {
+    // Production rules say "caution"; the app's status for it is "moderation".
+    const ruleStatus = rule.status === "caution" ? "moderation" : rule.status;
     if (rule.ruleType === "property" && rule.propertyName && rule.propertyValues) {
       const propertyValue = foodProperties[rule.propertyName as keyof FoodProperties];
-      if (propertyValue !== undefined && propertyValue !== null) {
+      const restricts = ruleStatus === "avoid" || ruleStatus === "moderation";
+      if (restricts && (propertyValue === undefined || propertyValue === null || propertyValue === "unknown")) {
+        unrated.add(rule.propertyName);
+      } else if (propertyValue !== undefined && propertyValue !== null) {
         const strValue = String(propertyValue);
-        if (rule.propertyValues.includes(strValue)) {
-          if (rule.status === "avoid") {
+        if (matchesRule(rule.propertyValues, strValue, restricts)) {
+          if (ruleStatus === "avoid") {
             finalStatus = "avoid";
             const propertyLabel = formatPropertyName(rule.propertyName);
             const valueLabel = formatPropertyValue(rule.propertyName, strValue);
@@ -151,7 +159,7 @@ export function checkComplianceSync(
                 ? `${propertyLabel} ${valueLabel} not allowed`
                 : `${propertyLabel} not allowed`
             );
-          } else if (rule.status === "moderation" && finalStatus !== "avoid") {
+          } else if (ruleStatus === "moderation" && finalStatus !== "avoid") {
             finalStatus = "moderation";
             const propertyLabel = formatPropertyName(rule.propertyName);
             const valueLabel = formatPropertyValue(rule.propertyName, strValue);
@@ -165,10 +173,10 @@ export function checkComplianceSync(
       }
     } else if (rule.ruleType === "category" && rule.propertyValues && categoryName) {
       if (rule.propertyValues.includes(categoryName)) {
-        if (rule.status === "avoid") {
+        if (ruleStatus === "avoid") {
           finalStatus = "avoid";
           violations.push(`${categoryName} not allowed`);
-        } else if (rule.status === "moderation" && finalStatus !== "avoid") {
+        } else if (ruleStatus === "moderation" && finalStatus !== "avoid") {
           finalStatus = "moderation";
           violations.push(`${categoryName} should be limited`);
         }
@@ -176,7 +184,29 @@ export function checkComplianceSync(
     }
   }
 
+  if (finalStatus === "allowed" && unrated.size > 0) {
+    return {
+      status: "unknown",
+      violations: [...unrated].map((p) => `${formatPropertyName(p)} not rated yet`),
+    };
+  }
+
   return { status: finalStatus, violations };
+}
+
+const LEVEL_ORDER = ["none", "low", "moderate", "high", "very_high"];
+
+/**
+ * Does a food's value match a rule? A restricting rule on a level ("avoid
+ * high") also covers every level above it, so very_high is caught too.
+ * Everything else (booleans, allowed rules) matches exactly.
+ */
+function matchesRule(ruleValues: string[], value: string, restricts: boolean): boolean {
+  if (ruleValues.includes(value)) return true;
+  if (!restricts) return false;
+  const rank = LEVEL_ORDER.indexOf(value);
+  const ruleRanks = ruleValues.map((v) => LEVEL_ORDER.indexOf(v)).filter((r) => r >= 0);
+  return rank >= 0 && ruleRanks.length > 0 && rank >= Math.min(...ruleRanks);
 }
 
 /**
