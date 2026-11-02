@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Apple, Shield, BookOpen, Users, Gauge } from "lucide-react";
+import { Apple, Shield, BookOpen, Users, Gauge, BadgeCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Foods", href: "/admin/foods", icon: Apple },
   { label: "Protocols", href: "/admin/protocols", icon: Shield },
+  { label: "Trusted Sources", href: "/admin/sources", icon: BadgeCheck },
   { label: "Reference Data", href: "/admin/reference", icon: BookOpen },
   { label: "Users", href: "/admin/users", icon: Users },
   { label: "Usage", href: "/admin/usage", icon: Gauge },

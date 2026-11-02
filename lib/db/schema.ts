@@ -710,3 +710,27 @@ export const waitlistSignups = pgTable(
   },
   (table) => [uniqueIndex("waitlist_signups_email_idx").on(table.email)]
 );
+
+/**
+ * Admin-managed list of sources the app may rely on (sites, APIs, datasets).
+ * Food ratings and the coach cite only from active sources here.
+ * Migration: supabase/migrations/20261102120000_trusted_sources.sql
+ */
+export const trustedSources = pgTable(
+  "trusted_sources",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    name: varchar("name", { length: 200 }).notNull(),
+    url: varchar("url", { length: 500 }).notNull(),
+    /** Food properties this source is trusted for (see lib/sources/properties.ts). */
+    trustedFor: text("trusted_for").array().notNull().default([]),
+    /** "data" = ratings may cite it; "reference" = background reading only. */
+    useAs: varchar("use_as", { length: 20 }).notNull().default("data"),
+    notes: text("notes"),
+    isActive: boolean("is_active").notNull().default(true),
+    createdBy: varchar("created_by", { length: 120 }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => [uniqueIndex("trusted_sources_name_idx").on(table.name)]
+);
