@@ -5,8 +5,10 @@
  * - Excluded results don't count.
  * - Results 20+ years older than the newest one are reference only.
  * - Lab amounts beat list levels (e.g. SIGHI) when both exist.
- * - Amounts: take the middle value (median), convert to an amount per
- *   serving, and rank it with the property's bands.
+ * - Amounts: take the middle value (median) and rank it with the
+ *   property's bands, either per serving (oxalate) or by concentration
+ *   (histamine: how much is in the food, mg/kg). The amount per serving is
+ *   worked out whenever the food has a serving size.
  * - List levels: take the stated level; if lists disagree, the higher one.
  * - If the counted results would land in different ranks, flag
  *   "studies_disagree" so an admin can decide which to trust.
@@ -45,6 +47,9 @@ export interface RatingResult {
   method: "median" | "reported" | null;
   median: number | null;
   perServing: number | null;
+  /** The amount the rating is based on, in `amountUnit` (per serving or per kg). */
+  amount: number | null;
+  amountUnit: string | null;
   range: [number, number] | null;
   /** How many results counted toward the rating. */
   counted: number;
@@ -56,15 +61,18 @@ export interface RatingResult {
 }
 
 interface Band {
-  /** Upper limit (exclusive) of this band, per serving. */
+  /** Upper limit (exclusive) of this band, in the rule's unit. */
   below: number;
   band: string;
   level: Level;
 }
 
 interface AmountRule {
-  basis: "serving";
+  /** serving: mg per serving. concentration: mg per kg of food. */
+  basis: "serving" | "concentration";
   unit: string;
+  /** Band for a result of zero (lab found none), if the rule has one. */
+  notDetected?: { band: string; level: Level };
   bands: Band[];
   /** Band for anything at or above the last limit. */
   top: { band: string; level: Level };
@@ -88,9 +96,24 @@ export const AMOUNT_RULES: Partial<Record<FoodProperty, AmountRule>> = {
     ],
     top: { band: "VH+", level: "very_high" },
   },
+  // Histamine content, mg/kg (approved 2026-11-02). 100/200 mg/kg are the EU
+  // legal limits for fish; there is no agreed safe dose for histamine
+  // intolerance, so this ranks content, not a serving.
+  histamine: {
+    basis: "concentration",
+    unit: "mg/kg",
+    notDetected: { band: "ND", level: "low" },
+    bands: [
+      { below: 10, band: "L", level: "low" },
+      { below: 50, band: "M", level: "moderate" },
+      { below: 200, band: "H", level: "high" },
+    ],
+    top: { band: "VH", level: "very_high" },
+  },
 };
 
 export const BAND_LABELS: Record<string, string> = {
+  ND: "Not detected",
   VL: "Very low",
   L: "Low",
   M: "Medium",
@@ -108,9 +131,17 @@ function median(values: number[]): number {
   return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
 }
 
-function bandFor(rule: AmountRule, perServing: number): { band: string; level: Level } {
-  for (const b of rule.bands) if (perServing < b.below) return b;
+function bandFor(rule: AmountRule, amount: number): { band: string; level: Level } {
+  if (amount === 0 && rule.notDetected) return rule.notDetected;
+  for (const b of rule.bands) if (amount < b.below) return b;
   return rule.top;
+}
+
+/** The amount a rule ranks, from a result stored per 100 g. */
+function rankedAmount(rule: AmountRule, per100g: number, servingGrams: number | null): number | null {
+  if (rule.basis === "concentration") return per100g * 10; // per 100 g → per kg
+  if (servingGrams === null || servingGrams <= 0) return null;
+  return (per100g * servingGrams) / 100;
 }
 
 function isLevel(v: string | null): v is Level {
@@ -139,23 +170,34 @@ export function computeRating(input: RatingInput): RatingResult {
   let method: RatingResult["method"] = null;
   let med: number | null = null;
   let perServing: number | null = null;
+  let amount: number | null = null;
+  let amountUnit: string | null = null;
   let disagree = false;
 
   if (amounts.length > 0) {
     method = "median";
     med = median(amounts);
     const rule = AMOUNT_RULES[input.property];
+    const grams = input.servingGrams !== null && input.servingGrams > 0 ? input.servingGrams : null;
+    if (grams !== null) perServing = (med * grams) / 100;
+    const ranked = rule ? rankedAmount(rule, med, grams) : null;
     if (!rule) {
       flags.push("no_rule");
-    } else if (input.servingGrams === null || input.servingGrams <= 0) {
+    } else if (ranked === null) {
       flags.push("no_serving_size");
     } else {
-      const grams = input.servingGrams;
-      perServing = (med * grams) / 100;
-      ({ band, level } = bandFor(rule, perServing));
-      const resultBands = new Set(amounts.map((v) => bandFor(rule, (v * grams) / 100).band));
+      ({ band, level } = bandFor(rule, ranked));
+      amount = ranked;
+      amountUnit = rule.basis === "serving" ? `${rule.unit} per serving` : rule.unit;
+      // Oxalate: results in different bands disagree. Histamine: only
+      // different levels do ("not detected" vs 2 mg/kg is not a conflict).
+      const key = (v: number) => {
+        const b = bandFor(rule, rankedAmount(rule, v, grams)!);
+        return rule.basis === "serving" ? b.band : b.level;
+      };
+      const resultKeys = new Set(amounts.map(key));
       // A list source stating a different level also counts as disagreement.
-      disagree = resultBands.size > 1 || reported.some((r) => r !== level);
+      disagree = resultKeys.size > 1 || reported.some((r) => r !== level);
     }
   } else if (reported.length > 0) {
     method = "reported";
@@ -175,6 +217,8 @@ export function computeRating(input: RatingInput): RatingResult {
     method,
     median: med,
     perServing,
+    amount,
+    amountUnit,
     range: amounts.length ? [Math.min(...amounts), Math.max(...amounts)] : null,
     counted: counted.length,
     superseded,

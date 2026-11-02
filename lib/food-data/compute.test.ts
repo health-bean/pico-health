@@ -153,3 +153,45 @@ describe("computeRating — admin review", () => {
     expect(r.needsReview).toBe(true);
   });
 });
+
+describe("computeRating — histamine (content, mg/kg)", () => {
+  // Stored per 100 g: 3.177 mg/100 g = 31.77 mg/kg.
+  const hist = (values: number[], servingGrams: number | null = null) =>
+    computeRating({
+      property: "histamine",
+      servingGrams,
+      measurements: values.map((v) => m({ valuePer100g: v / 10 })),
+    });
+
+  it("ranks content against the approved bands", () => {
+    const band = (mgPerKg: number) => hist([mgPerKg]).band;
+    expect(band(0)).toBe("ND");
+    expect(band(0.3)).toBe("L");
+    expect(band(9.9)).toBe("L");
+    expect(band(10)).toBe("M");
+    expect(band(49.9)).toBe("M");
+    expect(band(50)).toBe("H");
+    expect(band(199)).toBe("H");
+    expect(band(200)).toBe("VH");
+    expect(hist([0]).level).toBe("low");
+    expect(hist([1000]).level).toBe("very_high");
+  });
+
+  it("doesn't need a serving size, but shows the amount in one when known", () => {
+    const noServing = hist([31.77]);
+    expect(noServing.level).toBe("moderate");
+    expect(noServing.flags).not.toContain("no_serving_size");
+    expect(noServing.amount).toBeCloseTo(31.77);
+    expect(noServing.amountUnit).toBe("mg/kg");
+    expect(noServing.perServing).toBeNull();
+
+    const withServing = hist([31.77], 30);
+    expect(withServing.perServing).toBeCloseTo(0.953);
+  });
+
+  it("not detected next to a trace is not a disagreement; low next to moderate is", () => {
+    expect(hist([0, 1.9]).flags).not.toContain("studies_disagree");
+    expect(hist([31.77, 16, 26]).flags).not.toContain("studies_disagree");
+    expect(hist([2.51, 6, 22]).flags).toContain("studies_disagree");
+  });
+});

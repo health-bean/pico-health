@@ -44,6 +44,18 @@ export async function loadMeasurements(foodId: string, property: FoodProperty) {
     .where(and(eq(foodMeasurements.foodId, foodId), eq(foodMeasurements.property, property)));
 }
 
+function amountNote(result: RatingResult): string {
+  if (result.amount === null) return "";
+  const main = `${round(result.amount)} ${result.amountUnit}`;
+  const serving =
+    result.perServing !== null && !result.amountUnit?.includes("serving")
+      ? ` (about ${round(result.perServing)} mg per serving)`
+      : "";
+  return `: ${main}${serving}`;
+}
+
+const round = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1).replace(/\.0$/, ""));
+
 /** One-line provenance stored next to the rating, e.g. for the coach to quote. */
 export function citationFor(
   result: RatingResult,
@@ -56,9 +68,7 @@ export function citationFor(
   const ref = refs.length > 3 ? `${refs.slice(0, 3).join("; ")}; +${refs.length - 3} more` : refs.join("; ");
   const note =
     result.method === "median"
-      ? `Middle value of ${result.counted} lab test${result.counted === 1 ? "" : "s"}${
-          result.perServing !== null ? `: ${Math.round(result.perServing)} mg per serving` : ""
-        }`
+      ? `Middle value of ${result.counted} lab test${result.counted === 1 ? "" : "s"}${amountNote(result)}`
       : `As rated by ${sources}`;
   return { source: sources, ref: ref.slice(0, 500), note };
 }

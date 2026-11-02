@@ -6,7 +6,7 @@ import { AlertTriangle, ArrowLeft, ExternalLink, Loader2, Plus } from "lucide-re
 import { Badge, Button, Card, Input, Select, Textarea, useToast } from "@/components/ui";
 import { RatingBadge } from "@/components/admin/rating-badge";
 import { cn } from "@/lib/utils";
-import { LEVELS, type RatingResult } from "@/lib/food-data/compute";
+import { AMOUNT_RULES, LEVELS, type RatingResult } from "@/lib/food-data/compute";
 import { FLAG_LABELS, LEVEL_LABELS } from "@/lib/food-data/labels";
 import { FOOD_PROPERTIES, PROPERTY_LABELS, type FoodProperty } from "@/lib/sources/properties";
 
@@ -72,19 +72,28 @@ async function send(url: string, method: string, body: unknown) {
   return { ok: res.ok, data };
 }
 
+/** Histamine is rated by content (mg/kg), not per 100 g. */
+const isPerKg = (property: string) => AMOUNT_RULES[property as FoodProperty]?.basis === "concentration";
+
 const fmt = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1).replace(/\.0$/, ""));
 
 function Summary({ data, food }: { data: PropertyData; food: Detail["food"] }) {
   const r = data.result;
   if (r.method === "median" && r.median !== null) {
     const unit = data.measurements[0]?.unit ?? "mg";
+    const perKg = r.amountUnit === "mg/kg";
+    const serving = food.servingLabel || `${food.servingGrams} g`;
     return (
       <p className="text-sm text-warm-600">
-        Middle value {fmt(r.median)} {unit}/100 g
+        Middle value {perKg ? `${fmt(r.median * 10)} mg/kg` : `${fmt(r.median)} ${unit}/100 g`}
         {r.perServing !== null && food.servingGrams
-          ? ` → ${fmt(r.perServing)} ${unit} per serving (${food.servingLabel || `${food.servingGrams} g`})`
+          ? perKg
+            ? ` · about ${fmt(r.perServing)} mg in a serving (${serving})`
+            : ` → ${fmt(r.perServing)} ${unit} per serving (${serving})`
           : ""}
-        {r.range && r.range[0] !== r.range[1] ? ` · results range ${fmt(r.range[0])}–${fmt(r.range[1])}` : ""}
+        {r.range && r.range[0] !== r.range[1]
+          ? ` · results range ${perKg ? `${fmt(r.range[0] * 10)}–${fmt(r.range[1] * 10)} mg/kg` : `${fmt(r.range[0])}–${fmt(r.range[1])}`}`
+          : ""}
         {` · ${r.counted} counted`}
       </p>
     );
@@ -98,10 +107,12 @@ function Summary({ data, food }: { data: PropertyData; food: Detail["food"] }) {
 function MeasurementRow({
   m,
   superseded,
+  perKg,
   onChange,
 }: {
   m: Measurement;
   superseded: boolean;
+  perKg: boolean;
   onChange: () => Promise<void>;
 }) {
   const { toast } = useToast();
@@ -131,7 +142,11 @@ function MeasurementRow({
           <div className="flex flex-wrap items-center gap-2">
             <span className={cn("font-semibold tabular-nums", m.excluded ? "line-through" : "text-warm-900")}>
               {m.valuePer100g !== null
-                ? `${fmt(m.valuePer100g)} ${m.unit}/100 g`
+                ? perKg
+                  ? m.valuePer100g === 0
+                    ? "Not detected"
+                    : `${fmt(m.valuePer100g * 10)} mg/kg`
+                  : `${fmt(m.valuePer100g)} ${m.unit}/100 g`
                 : LEVEL_LABELS[m.reportedLevel as keyof typeof LEVEL_LABELS] ?? m.reportedLevel}
             </span>
             {m.solublePct !== null && <span className="text-sm">({fmt(m.solublePct)}% soluble)</span>}
@@ -278,13 +293,15 @@ function AddResult({
   const [busy, setBusy] = useState(false);
   const set = (patch: Partial<typeof EMPTY_FORM>) => setF((prev) => ({ ...prev, ...patch }));
   const num = (v: string) => (v.trim() === "" ? null : Number(v));
+  const perKg = isPerKg(f.property);
 
   const submit = async () => {
     setBusy(true);
     try {
       const { ok, data } = await send(`/api/admin/food-data/${foodId}/measurements`, "POST", {
         property: f.property,
-        valuePer100g: f.kind === "amount" ? num(f.value) : null,
+        // Histamine is entered in mg/kg (as studies report it); stored per 100 g.
+        valuePer100g: f.kind === "amount" ? (perKg && num(f.value) !== null ? num(f.value)! / 10 : num(f.value)) : null,
         unit: f.unit,
         reportedLevel: f.kind === "level" ? f.level || null : null,
         solublePct: f.kind === "amount" ? num(f.soluble) : null,
@@ -346,7 +363,7 @@ function AddResult({
 
       {f.kind === "amount" ? (
         <div className="grid gap-4 md:grid-cols-3">
-          <Input id="add-value" label="Amount per 100 g" type="number" step="any" min="0" value={f.value} onChange={(e) => set({ value: e.target.value })} required />
+          <Input id="add-value" label={perKg ? "Amount in mg/kg (0 = not detected)" : "Amount per 100 g"} type="number" step="any" min="0" value={f.value} onChange={(e) => set({ value: e.target.value })} required />
           <Input id="add-unit" label="Unit" value={f.unit} onChange={(e) => set({ unit: e.target.value })} required />
           <Input id="add-soluble" label="Soluble % (optional)" type="number" step="any" min="0" max="100" value={f.soluble} onChange={(e) => set({ soluble: e.target.value })} />
         </div>
@@ -519,7 +536,7 @@ export default function FoodDataDetailPage({ params }: { params: Promise<{ foodI
 
           <ul className="divide-y divide-warm-100">
             {data.measurements.map((m) => (
-              <MeasurementRow key={m.id} m={m} superseded={data.result.superseded.includes(m.id)} onChange={reload} />
+              <MeasurementRow key={m.id} m={m} superseded={data.result.superseded.includes(m.id)} perKg={isPerKg(data.property)} onChange={reload} />
             ))}
           </ul>
         </Card>
