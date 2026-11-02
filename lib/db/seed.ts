@@ -655,7 +655,6 @@ const PROTOCOL_RULES: ProtocolRule[] = [
   // ── Low Histamine ───────────────────────────────────────────────────
   { protocolId: PROTOCOL_IDS.LOW_HISTAMINE, ruleType: "property", propertyName: "histamine", propertyValues: ["high"], status: "avoid", ruleOrder: 1, notes: "High histamine foods trigger symptoms" },
   { protocolId: PROTOCOL_IDS.LOW_HISTAMINE, ruleType: "property", propertyName: "histamine", propertyValues: ["moderate"], status: "caution", ruleOrder: 2, notes: "Moderate histamine — test tolerance" },
-  { protocolId: PROTOCOL_IDS.LOW_HISTAMINE, ruleType: "property", propertyName: "amines", propertyValues: ["high"], status: "avoid", ruleOrder: 3, notes: "Biogenic amines also trigger histamine response" },
   { protocolId: PROTOCOL_IDS.LOW_HISTAMINE, ruleType: "property", propertyName: "tyramine", propertyValues: ["high"], status: "avoid", ruleOrder: 4, notes: "Tyramine worsens histamine intolerance" },
   { protocolId: PROTOCOL_IDS.LOW_HISTAMINE, ruleType: "property", propertyName: "histamine", propertyValues: ["low"], status: "allowed", ruleOrder: 5, notes: "Low histamine foods are safe" },
 ];

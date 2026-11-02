@@ -196,6 +196,21 @@ describe("computeRating — histamine (content, mg/kg)", () => {
   });
 });
 
+describe("computeRating — tyramine (content, mg/kg)", () => {
+  const tyr = (mgPerKg: number) =>
+    computeRating({ property: "tyramine", servingGrams: null, measurements: [m({ valuePer100g: mgPerKg / 10 })] });
+
+  it("uses the histamine cutoffs", () => {
+    expect(tyr(0).band).toBe("ND");
+    expect(tyr(9.9).level).toBe("low");
+    expect(tyr(10).level).toBe("moderate");
+    expect(tyr(50).level).toBe("high");
+    expect(tyr(200).level).toBe("very_high");
+    expect(tyr(50).amountUnit).toBe("mg/kg");
+    expect(tyr(50).flags).not.toContain("no_rule");
+  });
+});
+
 describe("computeRating — permission-pending lists", () => {
   const pending = (level: string) => m({ reportedLevel: level, sourceUse: "check" });
 

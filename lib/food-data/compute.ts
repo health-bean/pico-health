@@ -7,7 +7,7 @@
  * - Lab amounts beat list levels (e.g. SIGHI) when both exist.
  * - Amounts: take the middle value (median) and rank it with the
  *   property's bands, either per serving (oxalate) or by concentration
- *   (histamine: how much is in the food, mg/kg). The amount per serving is
+ *   (histamine, tyramine: how much is in the food, mg/kg). The amount per serving is
  *   worked out whenever the food has a serving size.
  * - List levels: take the stated level; if lists disagree, the higher one.
  * - If the counted results would land in different ranks, flag
@@ -111,6 +111,20 @@ export const AMOUNT_RULES: Partial<Record<FoodProperty, AmountRule>> = {
   // legal limits for fish; there is no agreed safe dose for histamine
   // intolerance, so this ranks content, not a serving.
   histamine: {
+    basis: "concentration",
+    unit: "mg/kg",
+    notDetected: { band: "ND", level: "low" },
+    bands: [
+      { below: 10, band: "L", level: "low" },
+      { below: 50, band: "M", level: "moderate" },
+      { below: 200, band: "H", level: "high" },
+    ],
+    top: { band: "VH", level: "very_high" },
+  },
+  // Tyramine content, mg/kg, same cutoffs as histamine (approved 2026-11-02).
+  // EFSA 2011 per-meal limits (6/50/600 mg) are for MAOI users and healthy
+  // adults; none exists for histamine intolerance, so this ranks content.
+  tyramine: {
     basis: "concentration",
     unit: "mg/kg",
     notDetected: { band: "ND", level: "low" },
