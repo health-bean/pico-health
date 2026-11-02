@@ -23,6 +23,7 @@ interface PropertyInfo {
  */
 const PROPERTY_DESCRIPTIONS: Record<string, string> = {
   nightshade: "Nightshades are a plant family: tomatoes, peppers, eggplant, potatoes. They are excluded on AIP and on elimination diets that test for them. Some people report joint or gut symptoms on days they eat them.",
+  histamine_liberator: "Some clinical reviews list this food as possibly triggering the body to release its own histamine, even though the food itself contains little. This comes from clinical experience, not lab tests, and the evidence is limited, so low-histamine diets often suggest testing your own tolerance rather than avoiding it.",
   histamine: "Histamine occurs naturally in food and builds up as food ages or ferments. Low-histamine diets, which follow lists like SIGHI's, limit high-histamine foods. Some people report headaches, flushing, or gut symptoms.",
   oxalate: "Oxalate is a compound found in many plants, highest in leafy greens, nuts, and some roots. Low-oxalate diets limit these foods. Talk to your practitioner before lowering oxalate, especially if you have had kidney stones.",
   lectin: "Lectins are plant proteins, highest in legumes, grains, and some nightshades, and much lower once food is soaked or cooked. Lectin-limiting diets avoid them. Some people report digestive symptoms.",
@@ -40,6 +41,7 @@ const PROPERTY_DESCRIPTIONS: Record<string, string> = {
 
 const PROPERTY_LABELS: Record<string, string> = {
   nightshade: "Nightshade",
+  histamine_liberator: "May release histamine",
   histamine: "Histamine",
   oxalate: "Oxalate",
   lectin: "Lectin",
@@ -223,6 +225,16 @@ export function FoodPropertyCard({
       label: PROPERTY_LABELS.nightshade,
       description: PROPERTY_DESCRIPTIONS.nightshade,
       value: properties.nightshade,
+      type: "boolean",
+    });
+  }
+
+  // Only shown when listed: "not listed" isn't evidence it's fine.
+  if (properties.histamine_liberator) {
+    propertyList.push({
+      label: PROPERTY_LABELS.histamine_liberator,
+      description: PROPERTY_DESCRIPTIONS.histamine_liberator,
+      value: true,
       type: "boolean",
     });
   }

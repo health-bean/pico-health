@@ -290,6 +290,8 @@ export interface CustomFood {
 
 export interface FoodTriggerProperties {
   nightshade: boolean;
+  /** Listed in clinical reviews as possibly releasing histamine. */
+  histamine_liberator?: boolean;
   histamine: TriggerLevel;
   oxalate: TriggerLevel;
   lectin: TriggerLevel;

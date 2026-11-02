@@ -96,6 +96,7 @@ export async function GET(request: Request) {
                 'histamine', ${foodTriggerProperties.histamine},
                 'lectin', ${foodTriggerProperties.lectin},
                 'nightshade', ${foodTriggerProperties.nightshade},
+                'histamine_liberator', ${foodTriggerProperties.histamineLiberator},
                 'fodmap', ${foodTriggerProperties.fodmap},
                 'salicylate', ${foodTriggerProperties.salicylate},
                 'amines', ${foodTriggerProperties.amines},

@@ -27,6 +27,7 @@ export interface FoodSearchResult {
     histamine?: string;
     lectin?: string;
     nightshade?: boolean;
+    histamine_liberator?: boolean;
     fodmap?: string;
     salicylate?: string;
     amines?: string;
@@ -92,6 +93,7 @@ export async function searchFoods(
         histamine: foodTriggerProperties.histamine,
         lectin: foodTriggerProperties.lectin,
         nightshade: foodTriggerProperties.nightshade,
+        histamine_liberator: foodTriggerProperties.histamineLiberator,
         fodmap: foodTriggerProperties.fodmap,
         salicylate: foodTriggerProperties.salicylate,
         amines: foodTriggerProperties.amines,
@@ -325,7 +327,9 @@ function formatResult(result: {
           oxalate: (result.properties.oxalate as string) || undefined,
           histamine: (result.properties.histamine as string) || undefined,
           lectin: (result.properties.lectin as string) || undefined,
-          nightshade: (result.properties.nightshade as boolean) || undefined,
+          // Keep false: "not a nightshade" is a fact, not a missing rating.
+          nightshade: (result.properties.nightshade as boolean | null) ?? undefined,
+          histamine_liberator: (result.properties.histamine_liberator as boolean | null) ?? undefined,
           fodmap: (result.properties.fodmap as string) || undefined,
           salicylate: (result.properties.salicylate as string) || undefined,
           amines: (result.properties.amines as string) || undefined,

@@ -83,3 +83,49 @@ describe("checkComplianceSync level matching (production rule shapes)", () => {
     expect(checkComplianceSync(aip, { nightshade: false }).status).toBe("allowed");
   });
 });
+
+describe("checkComplianceSync — partly rated foods and yes/no facts", () => {
+  // The production Low Histamine shape: histamine plus amines and tyramine.
+  const lowHistamine: ProtocolContext = {
+    rules: [
+      { ruleType: "property", propertyName: "histamine", propertyValues: ["low"], status: "allowed", notes: null },
+      { ruleType: "property", propertyName: "histamine", propertyValues: ["high"], status: "avoid", notes: null },
+      { ruleType: "property", propertyName: "histamine", propertyValues: ["moderate"], status: "caution", notes: null },
+      { ruleType: "property", propertyName: "amines", propertyValues: ["high"], status: "avoid", notes: null },
+      { ruleType: "property", propertyName: "tyramine", propertyValues: ["high"], status: "avoid", notes: null },
+      { ruleType: "property", propertyName: "histamine_liberator", propertyValues: ["true"], status: "caution", notes: null },
+    ],
+    overrides: new Map(),
+  };
+
+  it("uses the rated property and lists the unrated ones", () => {
+    const r = checkComplianceSync(lowHistamine, { histamine: "low", amines: "unknown", tyramine: "unknown" });
+    expect(r.status).toBe("allowed");
+    expect(r.violations).toEqual(["Amines not rated yet", "Tyramine not rated yet"]);
+  });
+
+  it("is unknown when the only fact is a yes/no 'no'", () => {
+    const r = checkComplianceSync(lowHistamine, { histamine: "unknown" });
+    expect(r.status).toBe("unknown");
+    expect(r.violations).toEqual(["Histamine not rated yet", "Amines not rated yet", "Tyramine not rated yet"]);
+  });
+
+  it("a liberator is still flagged when its histamine content is unrated", () => {
+    expect(checkComplianceSync(lowHistamine, { histamine_liberator: true }).status).toBe("moderation");
+  });
+
+  it("flags a histamine liberator as limit-and-test", () => {
+    const r = checkComplianceSync(lowHistamine, { histamine: "low", histamine_liberator: true });
+    expect(r.status).toBe("moderation");
+    expect(r.violations[0]).toBe("May release histamine: limit and test your tolerance");
+  });
+
+  it("treats a missing yes/no fact as no", () => {
+    const aip: ProtocolContext = {
+      rules: [{ ruleType: "property", propertyName: "nightshade", propertyValues: ["true"], status: "avoid", notes: null }],
+      overrides: new Map(),
+    };
+    expect(checkComplianceSync(aip, {}).status).toBe("allowed");
+    expect(checkComplianceSync(aip, { nightshade: null }).status).toBe("allowed");
+  });
+});

@@ -58,6 +58,7 @@ export const foodTriggerProperties = pgTable(
     histamine: varchar("histamine", { length: 20 }).default("unknown"),
     lectin: varchar("lectin", { length: 20 }).default("unknown"),
     nightshade: boolean("nightshade").default(false),
+    histamineLiberator: boolean("histamine_liberator").default(false),
     fodmap: varchar("fodmap", { length: 20 }).default("unknown"),
     salicylate: varchar("salicylate", { length: 20 }).default("unknown"),
     amines: varchar("amines", { length: 20 }).default("unknown"),

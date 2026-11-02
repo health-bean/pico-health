@@ -20,6 +20,8 @@ export interface FoodProperties {
   histamine?: string | null;
   lectin?: string | null;
   nightshade?: boolean | null;
+  /** Listed in clinical reviews as possibly releasing histamine (yes/no). */
+  histamine_liberator?: boolean | null;
   fodmap?: string | null;
   salicylate?: string | null;
   amines?: string | null;
@@ -135,19 +137,29 @@ export function checkComplianceSync(
   }
 
   let finalStatus: ProtocolStatus = "allowed";
-  // Restricted properties this food has no rating for. An unrated food is
-  // "unknown", never "allowed": we only claim a food fits when the data says so.
+  // Restricted properties this food has no rating for. A food with none of
+  // them rated is "unknown", never "allowed": we only claim a food fits when
+  // the data says so. If some are rated, the rated ones decide the status and
+  // the missing ones are listed as "not rated yet".
   const unrated = new Set<string>();
+  const rated = new Set<string>();
 
   for (const rule of ctx.rules) {
     // Production rules say "caution"; the app's status for it is "moderation".
     const ruleStatus = rule.status === "caution" ? "moderation" : rule.status;
     if (rule.ruleType === "property" && rule.propertyName && rule.propertyValues) {
-      const propertyValue = foodProperties[rule.propertyName as keyof FoodProperties];
+      let propertyValue = foodProperties[rule.propertyName as keyof FoodProperties];
+      // Yes/no facts (nightshade, histamine liberator): not set means no.
+      if ((propertyValue === undefined || propertyValue === null) && isBooleanRule(rule.propertyValues)) {
+        propertyValue = false;
+      }
       const restricts = ruleStatus === "avoid" || ruleStatus === "moderation";
       if (restricts && (propertyValue === undefined || propertyValue === null || propertyValue === "unknown")) {
         unrated.add(rule.propertyName);
       } else if (propertyValue !== undefined && propertyValue !== null) {
+        // Only a level rating counts; a yes/no "no" alone doesn't make a
+        // food with an unrated main property "allowed".
+        if (restricts && !isBooleanRule(rule.propertyValues)) rated.add(rule.propertyName);
         const strValue = String(propertyValue);
         if (matchesRule(rule.propertyValues, strValue, restricts)) {
           if (ruleStatus === "avoid") {
@@ -164,9 +176,11 @@ export function checkComplianceSync(
             const propertyLabel = formatPropertyName(rule.propertyName);
             const valueLabel = formatPropertyValue(rule.propertyName, strValue);
             violations.push(
-              valueLabel
-                ? `${propertyLabel} ${valueLabel} should be limited`
-                : `${propertyLabel} should be limited`
+              strValue === "true"
+                ? `${propertyLabel}: limit and test your tolerance`
+                : valueLabel
+                  ? `${propertyLabel} ${valueLabel} should be limited`
+                  : `${propertyLabel} should be limited`
             );
           }
         }
@@ -184,17 +198,21 @@ export function checkComplianceSync(
     }
   }
 
-  if (finalStatus === "allowed" && unrated.size > 0) {
-    return {
-      status: "unknown",
-      violations: [...unrated].map((p) => `${formatPropertyName(p)} not rated yet`),
-    };
+  // A rated property doesn't also count as unrated (rules can repeat one).
+  for (const p of rated) unrated.delete(p);
+  const notRated = [...unrated].map((p) => `${formatPropertyName(p)} not rated yet`);
+  if (finalStatus === "allowed" && unrated.size > 0 && rated.size === 0) {
+    return { status: "unknown", violations: notRated };
   }
 
-  return { status: finalStatus, violations };
+  return { status: finalStatus, violations: [...violations, ...notRated] };
 }
 
 const LEVEL_ORDER = ["none", "low", "moderate", "high", "very_high"];
+
+function isBooleanRule(values: string[]): boolean {
+  return values.length > 0 && values.every((v) => v === "true" || v === "false");
+}
 
 /**
  * Does a food's value match a rule? A restricting rule on a level ("avoid
@@ -247,6 +265,7 @@ export async function checkFoodCompliance(
         histamine: foodTriggerProperties.histamine,
         lectin: foodTriggerProperties.lectin,
         nightshade: foodTriggerProperties.nightshade,
+        histamine_liberator: foodTriggerProperties.histamineLiberator,
         fodmap: foodTriggerProperties.fodmap,
         salicylate: foodTriggerProperties.salicylate,
         amines: foodTriggerProperties.amines,
@@ -286,6 +305,7 @@ function formatPropertyName(propertyName: string): string {
     histamine: "Histamine",
     lectin: "Lectin",
     nightshade: "Nightshade",
+    histamine_liberator: "May release histamine",
     fodmap: "FODMAP",
     salicylate: "Salicylate",
     amines: "Amines",
