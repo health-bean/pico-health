@@ -46,6 +46,7 @@ export async function loadMeasurements(foodId: string, property: FoodProperty) {
 
 function amountNote(result: RatingResult): string {
   if (result.amount === null) return "";
+  if (result.band === "ND") return ": not detected";
   const main = `${round(result.amount)} ${result.amountUnit}`;
   const serving =
     result.perServing !== null && !result.amountUnit?.includes("serving")
