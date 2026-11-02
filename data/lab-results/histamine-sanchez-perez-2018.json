@@ -834,6 +834,38 @@
      "mgPerKg": 0
     }
    ]
+  },
+  {
+   "food": "Chestnuts",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "sampleDescription": "Chestnuts, 2 samples from Spanish shops — histamine not detected (paper doesn't state its detection limit)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, Veciana-Nogués MT, Latorre-Moratalla ML, Vidal-Carou MC. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets? Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "mgPerKg": 0
+    }
+   ]
+  },
+  {
+   "food": "Soy Milk",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "sampleDescription": "Soybean milk, 3 commercial samples (Spanish market), value quoted in Sánchez-Pérez 2018 Table 1 — histamine not detected",
+     "citation": "Toro-Funes N, Bosch-Fuste J, Latorre-Moratalla ML, Veciana-Nogués MT, Vidal-Carou MC. Biologically active amines in fermented and non-fermented commercial soybean products from the Spanish market. Food Chem. 2015;173:1119–1124.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2014.10.118",
+     "studyYear": 2015,
+     "mgPerKg": 0
+    }
+   ]
   }
  ]
 }

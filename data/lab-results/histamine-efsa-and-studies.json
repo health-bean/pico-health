@@ -1,0 +1,2343 @@
+{
+ "property": "histamine",
+ "source": {
+  "name": "PubMed",
+  "url": "https://pubmed.ncbi.nlm.nih.gov"
+ },
+ "note": "Histamine values (mg/kg or mg/L fresh weight, stored as mg/100 g = mg/kg ÷ 10) from (1) EFSA BIOHAZ 2011 Scientific Opinion (EFSA Journal 9(10):2393), Table 10 EU occurrence means, used only where a sub-category maps to one catalog food (lower-bound mean, nd=0, upper bound noted); and (2) open-access primary studies found via Europe PMC (full-text XML tables read in this session): retail surveys of sauerkraut/fermented cucumbers, soy sauce, fish sauce, wine, beer, canned/fresh/smoked fish, cured meats, raw beef, plus day-0/day-1 chicken and fresh lamb. Individual retail samples are stored as separate rows; group means as reported. Several sources report the mean of histamine-POSITIVE samples only (Michalski 2021, Cao 2025, Tunç 2025) — flagged in sampleDescription. mg/L values for liquids are stored as mg/kg without density correction. Chung 2017 values are ELISA on single products (×10−3 ppm). Dried/salted cod is stored excluded. No Barcelona-group papers were extracted.",
+ "foods": [
+  {
+   "food": "Beer",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.14,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Beer, n=188, 9.6% not detected — mean 1.4 mg/kg (mg/L) — EFSA 2011 Table 10 (EU monitoring data submitted by Member States, samples mainly from retail/border control)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.03,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Beer, Chinese markets, n not given per subcategory (fermented alcoholic drinks total 96), 29.4% detected — mean 0.3 mg/kg reported as the mean of DETECTED samples — Table 4",
+     "citation": "Cao P, Gao M, Huang D et al. Analysis of Five Biogenic Amines in Foods on the Chinese Market and Estimation of Acute Histamine Exposure from Fermented Foods in the Chinese Population. Foods. 2025;14(14):2550.",
+     "citationUrl": "https://doi.org/10.3390/foods14142550",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Red Wine",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.36,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Wine, red, n=300, 10% not detected — mean 3.6 mg/kg (lower bound, nd=0; upper bound 3.7) — EFSA 2011 Table 10 (EU monitoring data submitted by Member States, samples mainly from retail/border control)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.54,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Red wine, Chinese markets (domestic and imported), n=213, 0% nd — mean 5.40 mg/L (median 4.36, P95 13.36) — Table 4",
+     "citation": "Zhu Z, Song X, Jiang Y et al. Determination of Biogenic Amines in Wine from Chinese Markets Using Ion Chromatography-Tandem Mass Spectrometry. Foods. 2023;12(11):2262.",
+     "citationUrl": "https://doi.org/10.3390/foods12112262",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "White Wine",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.08,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Wine, white (still), n=225, 22% not detected — mean 0.8 mg/kg (lower bound; upper bound 0.9) — EFSA 2011 Table 10 (EU monitoring data submitted by Member States, samples mainly from retail/border control)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.209,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "White wine, Chinese markets, n=23, 0% nd — mean 2.09 mg/L (median 0.18, P95 10.11) — Table 4",
+     "citation": "Zhu Z, Song X, Jiang Y et al. Determination of Biogenic Amines in Wine from Chinese Markets Using Ion Chromatography-Tandem Mass Spectrometry. Foods. 2023;12(11):2262.",
+     "citationUrl": "https://doi.org/10.3390/foods12112262",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Fish Sauce",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 19.6,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Fish sauce, n=72, 14% not detected — mean 196 mg/kg (lower bound; upper bound 197), median 180 — EFSA 2011 Table 10 (EU monitoring data submitted by Member States, samples mainly from retail/border control)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS00, Ho Chi Minh City markets/supermarkets — not found by UPLC-MS/MS — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.51,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 01, Ho Chi Minh City markets/supermarkets — 15.1 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.24,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 02, Ho Chi Minh City markets/supermarkets — 12.4 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.8,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 03, Ho Chi Minh City markets/supermarkets — 8.0 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 4.52,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 04, Ho Chi Minh City markets/supermarkets — 45.2 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 3.2,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 05, Ho Chi Minh City markets/supermarkets — 32.0 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 2.15,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 06, Ho Chi Minh City markets/supermarkets — 21.5 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 3.12,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 07, Ho Chi Minh City markets/supermarkets — 31.2 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 6.31,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 08, Ho Chi Minh City markets/supermarkets — 63.1 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 3.52,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 09, Ho Chi Minh City markets/supermarkets — 35.2 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 8.09,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (industrial)",
+     "sampleDescription": "Vietnamese industrial fish sauce IFS 10, Ho Chi Minh City markets/supermarkets — 80.9 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 45.8,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 11, Ho Chi Minh City markets/supermarkets — 458.0 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 77.34,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 12, Ho Chi Minh City markets/supermarkets — 773.4 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 41.03,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 13, Ho Chi Minh City markets/supermarkets — 410.3 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 56.15,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 14, Ho Chi Minh City markets/supermarkets — 561.5 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 46.36,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 15, Ho Chi Minh City markets/supermarkets — 463.6 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 113.01,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 16, Ho Chi Minh City markets/supermarkets — 1130.1 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 39.73,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 17, Ho Chi Minh City markets/supermarkets — 397.3 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 38.56,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 18, Ho Chi Minh City markets/supermarkets — 385.6 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 143.64,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 19, Ho Chi Minh City markets/supermarkets — 1436.4 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 41.86,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (traditional)",
+     "sampleDescription": "Vietnamese traditional fish sauce TFS 20, Ho Chi Minh City markets/supermarkets — 418.6 mg/L by UPLC-MS/MS (n=3; stored as mg/kg without density correction) — Table 7",
+     "citation": "Tran QH, Nguyen TT, Pham KP. Development of the High Sensitivity and Selectivity Method for the Determination of Histamine in Fish and Fish Sauce from Vietnam by UPLC-MS/MS. Int J Anal Chem. 2020;2020:2187646.",
+     "citationUrl": "https://doi.org/10.1155/2020/2187646",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 11.8,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Fish sauce, Chinese markets/online, n=38, 71.1% detected — mean 118.0 mg/kg reported as the mean of DETECTED samples (P95 903.5) — Table 4",
+     "citation": "Cao P, Gao M, Huang D et al. Analysis of Five Biogenic Amines in Foods on the Chinese Market and Estimation of Acute Histamine Exposure from Fermented Foods in the Chinese Population. Foods. 2025;14(14):2550.",
+     "citationUrl": "https://doi.org/10.3390/foods14142550",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Yogurt",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.05,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Yoghurt, n=7, 14% not detected — mean 0.5 mg/kg — EFSA 2011 Table 10 (EU monitoring data submitted by Member States, samples mainly from retail/border control)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Blue Cheese",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 2.18,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Blue cheese, n=678, 85% not detected/not quantified — mean 21.8 mg/kg (lower bound, nd=0); upper bound 63.8 mg/kg because of high LOQs (~50 mg/kg) — EFSA 2011 Table 10 (EU monitoring data submitted by Member States, samples mainly from retail/border control)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.288,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Roquefort cheese (code 13), Saudi food market, single retail sample — Table 1 — 12.88 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Roquefort cheese (code 16), Saudi food market, single retail sample — Table 1 — not detected",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Sauerkraut",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 5.383,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK1, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 53.83 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 5.781,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK2, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 57.81 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK3, Polish producers/supermarkets 2023–24 (2 batches × 2 units) — not detected (reported as <0.09; LOD 0.03 / LOQ 0.09 mg/kg) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.207,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK4, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 12.07 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.934,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK5, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 9.34 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 2.561,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK6, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 25.61 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.774,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK7, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 17.74 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 9.62,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK8, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 96.2 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 4.349,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK9, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 43.49 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 6.348,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK10, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 63.48 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.96,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK11, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 19.6 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.279,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK12, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 2.79 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.786,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK13, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 17.86 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.488,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK14, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 4.88 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Pickles",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 1.192,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO1, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 11.92 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 4.48,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO2, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 44.8 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.087,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO3, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 0.87 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 3.379,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO4, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 33.79 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 3.48,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO5, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 34.8 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.789,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO6, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 17.89 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.119,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO7, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 1.19 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.159,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO8, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 11.59 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 3.05,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO9, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 30.5 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 2.236,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO10, Polish producers/supermarkets 2023–24 (2 batches × 2 units, homogenised product) — 22.36 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Soy Sauce",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 5.833,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Korean soy sauce (ganjang), 10 commercial samples — MEDIAN 58.33 mg/kg wet weight (min 11.25, max 318.46; no mean reported) — Table 1",
+     "citation": "Shi B, Moon B. Monitoring and risk assessment of biogenic amines in Korean commercial fermented seasonings. Heliyon. 2023;9(8):e18906.",
+     "citationUrl": "https://doi.org/10.1016/j.heliyon.2023.e18906",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.45,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s1 (dark, Guangdong), Hangzhou supermarkets — 4.5 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.456,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s2 (light, Guangdong), Hangzhou supermarkets — 4.56 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.268,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s3 (light, Guangdong), Hangzhou supermarkets — 2.68 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.164,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s4 (dark, Hunan), Hangzhou supermarkets — 1.64 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.193,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s5 (dark, Hunan), Hangzhou supermarkets — 1.93 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.242,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s6 (light, Hunan), Hangzhou supermarkets — 12.42 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.14,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s7 (light, Hunan), Hangzhou supermarkets — 1.4 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.509,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s8 (light, Guangdong), Hangzhou supermarkets — 15.09 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 19.835,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s9 (dark, Guangdong), Hangzhou supermarkets — 198.35 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.169,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s10 (light, Guangdong), Hangzhou supermarkets — 11.69 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.337,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s11 (light, Guangdong), Hangzhou supermarkets — 13.37 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.259,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s12 (light, Guangdong), Hangzhou supermarkets — 12.59 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.684,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s13 (light, Guangdong), Hangzhou supermarkets — 6.84 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.459,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s14 (light, Jiangsu), Hangzhou supermarkets — 4.59 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.217,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s15 (light, Jiangsu), Hangzhou supermarkets — 2.17 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.28,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s16 (light, Zhejiang), Hangzhou supermarkets — 12.8 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.312,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s17 (light, Zhejiang), Hangzhou supermarkets — 3.12 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.264,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s18 (light, Zhejiang), Hangzhou supermarkets — 2.64 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.808,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s19 (light, Guangdong), Hangzhou supermarkets — 8.08 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.439,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s20 (dark, Guangdong), Hangzhou supermarkets — 4.39 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.683,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s21 (light, Guangdong), Hangzhou supermarkets — 6.83 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.188,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s22 (light, Guangdong), Hangzhou supermarkets — 1.88 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.287,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s23 (light, Guangdong), Hangzhou supermarkets — 2.87 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.149,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s24 (light, Guangdong), Hangzhou supermarkets — 1.49 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.525,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s25 (dark, Guangdong), Hangzhou supermarkets — 5.25 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.353,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s26 (dark, Guangdong), Hangzhou supermarkets — 13.53 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.108,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s27 (light, Shandong), Hangzhou supermarkets — 1.08 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.269,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s28 (light, Guangdong), Hangzhou supermarkets — 12.69 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.104,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s29 (dark, Guangdong), Hangzhou supermarkets — 1.04 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 47.779,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s30 (dark, Guangdong), Hangzhou supermarkets — 477.79 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 3.636,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s31 (light, Guangdong), Hangzhou supermarkets — 36.36 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.506,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s32 (dark, Guangdong), Hangzhou supermarkets — 5.06 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.22,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s33 (light, Guangdong), Hangzhou supermarkets — 12.2 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.625,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s34 (light, Guangdong), Hangzhou supermarkets — 6.25 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.154,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s35 (dark, Guangdong), Hangzhou supermarkets — 1.54 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.586,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s36 (dark, Guangdong), Hangzhou supermarkets — 15.86 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.107,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s37 (light, Guangdong), Hangzhou supermarkets — 1.07 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.571,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s38 (light, Zhejiang), Hangzhou supermarkets — 5.71 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.698,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s39 (dark, Zhejiang), Hangzhou supermarkets — 6.98 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.748,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s40 (dark, Zhejiang), Hangzhou supermarkets — 7.48 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.082,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s41 (dark, Zhejiang), Hangzhou supermarkets — 0.82 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s42 (light, Zhejiang), Hangzhou supermarkets — not detected (<0.5 mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.14,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s43 (light, Zhejiang), Hangzhou supermarkets — 1.4 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.478,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s44 (dark, Zhejiang), Hangzhou supermarkets — 4.78 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.46,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s45 (dark, Zhejiang), Hangzhou supermarkets — 4.6 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s46 (light, Zhejiang), Hangzhou supermarkets — not detected (<0.5 mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.797,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s47 (dark, Shanghai), Hangzhou supermarkets — 7.97 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.443,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s48 (dark, Shanghai), Hangzhou supermarkets — 14.43 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s49 (dark, Shanghai), Hangzhou supermarkets — not detected (<0.5 mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.061,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s50 (dark, Shanghai), Hangzhou supermarkets — 0.61 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.273,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s51 (dark, Shanghai), Hangzhou supermarkets — 2.73 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s52 (light, Shanghai), Hangzhou supermarkets — not detected (<0.5 mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.4,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s53 (light, Guangdong), Hangzhou supermarkets — 4.0 mg/L (n=3 replicates; reported in mg/L, stored as mg/kg without density correction) — Table 3",
+     "citation": "Li J, Zhou L, Feng W et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):E1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Prosciutto",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 9.707,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw dry-cured, long-ripened (as sold)",
+     "sampleDescription": "Ripening Parma ham, Polish retail 2018–19, n=15 (12 positive, 3 nd) — mean 97.07 ± 82.83 mg/kg reported for the positive samples (range 11.00–292.61); nd = <LOD 2.76 mg/kg — Table 1",
+     "citation": "Michalski M, Pawul-Gruba M, Madejska A. Histamine Contents in Raw Long-ripening Meat Products Commercially Available in Poland. J Vet Res. 2021;65(4):477-481.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0062",
+     "studyYear": 2021,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Ham (cured)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 13.188,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw dry-cured, long-ripened (as sold)",
+     "sampleDescription": "Dry ham (Jamón Serrano, Dulano), Polish retail 2018–19, n=11 (9 positive) — mean 131.88 ± 118.65 mg/kg reported for the positive samples (range 30.08–346.64); nd = <LOD 2.76 mg/kg — Table 1",
+     "citation": "Michalski M, Pawul-Gruba M, Madejska A. Histamine Contents in Raw Long-ripening Meat Products Commercially Available in Poland. J Vet Res. 2021;65(4):477-481.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0062",
+     "studyYear": 2021,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Salami",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 3.304,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Salami (Milano, Toscano), Polish retail 2018–19, n=7 (4 positive) — mean 33.04 ± 48.52 mg/kg reported for the positive samples (range 18.61–121.5); nd = <LOD 2.76 mg/kg — Table 1",
+     "citation": "Michalski M, Pawul-Gruba M, Madejska A. Histamine Contents in Raw Long-ripening Meat Products Commercially Available in Poland. J Vet Res. 2021;65(4):477-481.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0062",
+     "studyYear": 2021,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    },
+    {
+     "valuePer100g": 1.463,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Traditional salami, Polish retail 2018–19, n=23 (4 positive) — mean 14.63 ± 12.67 mg/kg reported for the positive samples (range 3.47–30.06); nd = <LOD 2.76 mg/kg — Table 1",
+     "citation": "Michalski M, Pawul-Gruba M, Madejska A. Histamine Contents in Raw Long-ripening Meat Products Commercially Available in Poland. J Vet Res. 2021;65(4):477-481.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0062",
+     "studyYear": 2021,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Bacon",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw long-ripened (dry-cured) bacon, uncooked",
+     "sampleDescription": "Ripening bacon, Polish retail 2018–19, n=4 — all not detected (<LOD 2.76 mg/kg) — Table 1",
+     "citation": "Michalski M, Pawul-Gruba M, Madejska A. Histamine Contents in Raw Long-ripening Meat Products Commercially Available in Poland. J Vet Res. 2021;65(4):477-481.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0062",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Lamb",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, 48 h post-mortem",
+     "sampleDescription": "Romanov lamb Gluteus medius, n=34 (17 male, 17 female), commercial slaughterhouse, analysed 48 h post-mortem — histamine not detected in any sample (LOD not stated) — Results text / Figure 1",
+     "citation": "Klupsaite D, Buckiuniene V, Bliznikas S et al. Impact of Romanov breed lamb gender on carcass traits and meat quality parameters including biogenic amines and malondialdehyde changes during storage. Food Sci Nutr. 2022;10(6):1745-1755.",
+     "citationUrl": "https://doi.org/10.1002/fsn3.2793",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Mackerel (fresh)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh mackerel sample 1 of 4, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — nd (<LOQ 8 mg/kg)",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.074,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh mackerel sample 2 of 4, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 10.74 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.536,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh mackerel sample 3 of 4, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 15.36 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 2.041,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh mackerel sample 4 of 4, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 20.41 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Atlantic mackerel (Scomber scombrus), raw, Polish retail/manufacturers 2014–18, n=23 — all not detected (<LOD 2.1 mg/kg) — Table 1",
+     "citation": "Pawul-Gruba M, Osek J. Identification of Histamine in Fish and Fish Products in Poland During 2014-2018. J Vet Res. 2021;65(4):483-486.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0066",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Sardines (fresh)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.982,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh Sardina pilchardus sample 1 of 2, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 9.82 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.632,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh Sardina pilchardus sample 2 of 2, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 16.32 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Tuna (fresh)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 1.012,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh tuna sample 1 of 2, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 10.12 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.573,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Fresh tuna sample 2 of 2, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 15.73 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Mackerel (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 1.328,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned mackerel sample 1 of 3, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — 13.28 mg/kg",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned mackerel sample 2 of 3, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — nd (<LOQ 8 mg/kg)",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned mackerel sample 3 of 3, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — nd (<LOQ 8 mg/kg)",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Tuna (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna, 1 sample, Moroccan official-control samples — HPLC-UV, individual sample — Table 3 — nd (<LOQ 8 mg/kg)",
+     "citation": "Kounnoun A, Louajri A, Cacciola F et al. Development and Validation of a TLC-Densitometry Method for Histamine Monitoring in Fish and Fishery Products. Molecules. 2020;25(16):E3611.",
+     "citationUrl": "https://doi.org/10.3390/molecules25163611",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.304,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna (code 4), Saudi food market, single retail sample — Table 2 — 3.04 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.311,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna (code 5), Saudi food market, single retail sample — Table 2 — 3.11 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.412,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna (code 6), Saudi food market, single retail sample — Table 2 — 4.12 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.705,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna, Ankara supermarkets, n=30 (19 positive) — mean 7.05 ± 1.07 (SE) mg/kg reported for histamine-positive samples (range 2.62–20.97); ELISA LOD 2.5 mg/kg — Table 1",
+     "citation": "Tunç S, Demirhan B, Demirhan BE. Investigation of Histamine, Physicochemical Quality, and Potential Health Risks in Various Canned Fish Products. Foods. 2025;14(13):2314.",
+     "citationUrl": "https://doi.org/10.3390/foods14132314",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Shrimp",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.14,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw/fresh seafood as sold",
+     "sampleDescription": "Shrimp (seafood category), Chinese markets 2020s, n not given per subcategory (seafood total 485), 26.2% detected — mean 1.4 mg/kg reported as the mean of DETECTED samples (P95 10.1) — Table 4",
+     "citation": "Cao P, Gao M, Huang D et al. Analysis of Five Biogenic Amines in Foods on the Chinese Market and Estimation of Acute Histamine Exposure from Fermented Foods in the Chinese Population. Foods. 2025;14(14):2550.",
+     "citationUrl": "https://doi.org/10.3390/foods14142550",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    },
+    {
+     "valuePer100g": 0.147,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "frozen, raw",
+     "sampleDescription": "Frozen shrimp (code 1), Saudi food market, single retail sample — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Eggs",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0012,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "boiled (90 °C, 5–10 min)",
+     "sampleDescription": "Chicken eggs, boiled — 12 ±1.73 ×10−3 ppm = 0.012 mg/kg — Korean hypermarket (E-mart), single product bought day of test, ELISA, mean of 3 replicates; reported as ×10−3 ppm — Results text (Fig. 2)",
+     "citation": "Chung BY, Park SY, Byun YS et al. Effect of Different Cooking Methods on Histamine Levels in Selected Foods. Ann Dermatol. 2017;29(6):706-714.",
+     "citationUrl": "https://doi.org/10.5021/ad.2017.29.6.706",
+     "studyYear": 2017,
+     "excluded": true,
+     "exclusionNote": "Single product tested by ELISA, which reads much lower than the HPLC studies. Comparison only."
+    },
+    {
+     "valuePer100g": 0.0011,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "fried in soybean oil (150 °C, 1–5 min)",
+     "sampleDescription": "Chicken eggs, fried — 11 ±1 ×10−3 ppm = 0.011 mg/kg — Korean hypermarket (E-mart), single product bought day of test, ELISA, mean of 3 replicates; reported as ×10−3 ppm — Results text (Fig. 2)",
+     "citation": "Chung BY, Park SY, Byun YS et al. Effect of Different Cooking Methods on Histamine Levels in Selected Foods. Ann Dermatol. 2017;29(6):706-714.",
+     "citationUrl": "https://doi.org/10.5021/ad.2017.29.6.706",
+     "studyYear": 2017,
+     "excluded": true,
+     "exclusionNote": "Single product tested by ELISA, which reads much lower than the HPLC studies. Comparison only."
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (yolk only), fresh",
+     "sampleDescription": "Hen egg YOLK (not whole egg), fresh farm and 'avian' eggs, RP-HPLC/UV (dabsyl) — abstract states only putrescine, cadaverine, propylamine, ethylamine and ethanolamine were detected; histamine not detected in fresh or stored yolks (LOD 0.05–0.06 mg/kg yolk); n not given in abstract — Abstract only (paywalled)",
+     "citation": "Ramos Prieto B, Pinho O, Ferreira IMPLVO. Changes of yolk biogenic amine concentrations during storage of shell hen eggs. Food Chem. 2009;116(1):340-344.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2009.02.015",
+     "studyYear": 2009,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Hot Dogs",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0502,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "grilled (150 °C pan, no oil)",
+     "sampleDescription": "Frankfurter sausage (19% pork, 64% chicken; Bek-Sul Kentucky Frank), grilled — 502 ×10−3 ppm = 0.502 mg/kg — Korean hypermarket (E-mart), single product bought day of test, ELISA, mean of 3 replicates; reported as ×10−3 ppm — Results text (Fig. 2)",
+     "citation": "Chung BY, Park SY, Byun YS et al. Effect of Different Cooking Methods on Histamine Levels in Selected Foods. Ann Dermatol. 2017;29(6):706-714.",
+     "citationUrl": "https://doi.org/10.5021/ad.2017.29.6.706",
+     "studyYear": 2017,
+     "excluded": true,
+     "exclusionNote": "Single product tested by ELISA, which reads much lower than the HPLC studies. Comparison only."
+    },
+    {
+     "valuePer100g": 0.0193,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "boiled (90 °C)",
+     "sampleDescription": "Frankfurter sausage (19% pork, 64% chicken), boiled — 193 ×10−3 ppm = 0.193 mg/kg — Korean hypermarket (E-mart), single product bought day of test, ELISA, mean of 3 replicates; reported as ×10−3 ppm — Results text (Fig. 2)",
+     "citation": "Chung BY, Park SY, Byun YS et al. Effect of Different Cooking Methods on Histamine Levels in Selected Foods. Ann Dermatol. 2017;29(6):706-714.",
+     "citationUrl": "https://doi.org/10.5021/ad.2017.29.6.706",
+     "studyYear": 2017,
+     "excluded": true,
+     "exclusionNote": "Single product tested by ELISA, which reads much lower than the HPLC studies. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Pork",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.1146,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "grilled (150 °C pan, no oil)",
+     "sampleDescription": "Pork, grilled — 1,146 ×10−3 ppm = 1.146 mg/kg — Korean hypermarket (E-mart), single product bought day of test, ELISA, mean of 3 replicates; reported as ×10−3 ppm — Results text (Fig. 2)",
+     "citation": "Chung BY, Park SY, Byun YS et al. Effect of Different Cooking Methods on Histamine Levels in Selected Foods. Ann Dermatol. 2017;29(6):706-714.",
+     "citationUrl": "https://doi.org/10.5021/ad.2017.29.6.706",
+     "studyYear": 2017,
+     "excluded": true,
+     "exclusionNote": "Single product tested by ELISA, which reads much lower than the HPLC studies. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Kimchi",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0378,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (uncooked)",
+     "sampleDescription": "Cabbage kimchi (Pulmuone), uncooked — 378 ×10−3 ppm = 0.378 mg/kg — Korean hypermarket (E-mart), single product bought day of test, ELISA, mean of 3 replicates; reported as ×10−3 ppm — Results text (Fig. 4)",
+     "citation": "Chung BY, Park SY, Byun YS et al. Effect of Different Cooking Methods on Histamine Levels in Selected Foods. Ann Dermatol. 2017;29(6):706-714.",
+     "citationUrl": "https://doi.org/10.5021/ad.2017.29.6.706",
+     "studyYear": 2017,
+     "excluded": true,
+     "exclusionNote": "Single product tested by ELISA, which reads much lower than the HPLC studies. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Cod",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.225,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "stockfish (air-dried), as purchased, not rehydrated",
+     "sampleDescription": "Stockfish, Gadus morhua, Messina market/supermarket 2025, single product, mean of 3 replicates — 2.25 mg/kg — Table 3 (F9)",
+     "citation": "Nava V, Potortì AG, Lo Turco V et al. Safety of Commercial Cod Products and Potential Impact on Consumers. Foods. 2026;15(7):1202.",
+     "citationUrl": "https://doi.org/10.3390/foods15071202",
+     "studyYear": 2026,
+     "excluded": true,
+     "exclusionNote": "Dried product as purchased (not as eaten); comparison only."
+    },
+    {
+     "valuePer100g": 0.374,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "salt cod (baccalà), as purchased, not desalted",
+     "sampleDescription": "Baccalà, Gadus morhua, Messina market/supermarket 2025, single product, mean of 3 replicates — 3.74 mg/kg — Table 3 (F10)",
+     "citation": "Nava V, Potortì AG, Lo Turco V et al. Safety of Commercial Cod Products and Potential Impact on Consumers. Foods. 2026;15(7):1202.",
+     "citationUrl": "https://doi.org/10.3390/foods15071202",
+     "studyYear": 2026,
+     "excluded": true,
+     "exclusionNote": "Salted product as purchased (not as eaten); comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Trout",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw",
+     "sampleDescription": "Rainbow trout (Oncorhynchus mykiss), raw, Polish retail/manufacturers 2014–18, n=20 — all not detected (<LOD 2.1 mg/kg) — Table 1",
+     "citation": "Pawul-Gruba M, Osek J. Identification of Histamine in Fish and Fish Products in Poland During 2014-2018. J Vet Res. 2021;65(4):483-486.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0066",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Herring (smoked)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Atlantic herring, smoked, Polish retail/manufacturers 2014–18, n=7 — all not detected (<LOD 2.1 mg/kg) — Table 2",
+     "citation": "Pawul-Gruba M, Osek J. Identification of Histamine in Fish and Fish Products in Poland During 2014-2018. J Vet Res. 2021;65(4):483-486.",
+     "citationUrl": "https://doi.org/10.2478/jvetres-2021-0066",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Smoked Salmon",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Smoked salmon fillet, Scotland (code 2), Saudi food market, single retail sample — Table 2 — not detected (LOD not stated)",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.03,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Turkish smoked salmon (sample 8), Slovenian/Turkish markets/supermarkets, single product, IC-MS/MS, mean of 3 determinations — Table 3 — 0.3 ± 0.3 mg/kg",
+     "citation": "Kočar D, Köse S, Tufan B et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Canadian smoked salmon (sample 14), Slovenian/Turkish markets/supermarkets, single product, IC-MS/MS, mean of 3 determinations — Table 3 — nd (LOD 0.02 ng/g)",
+     "citation": "Kočar D, Köse S, Tufan B et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Norwegian smoked salmon (sample 15), Slovenian/Turkish markets/supermarkets, single product, IC-MS/MS, mean of 3 determinations — Table 3 — nd (LOD 0.02 ng/g)",
+     "citation": "Kočar D, Köse S, Tufan B et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Norwegian smoked salmon (sample 17), Slovenian/Turkish markets/supermarkets, single product, IC-MS/MS, mean of 3 determinations — Table 3 — nd (LOD 0.02 ng/g)",
+     "citation": "Kočar D, Köse S, Tufan B et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Sardines (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned in spicy tomato sauce",
+     "sampleDescription": "Sardines in spicy tomato sauce (code 7), Saudi food market, single retail sample — Table 2 — not detected",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.446,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned in vegetable oil",
+     "sampleDescription": "Sardines in vegetable oil (code 8), Saudi food market, single retail sample — Table 2 — 4.46 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned in vegetable oil",
+     "sampleDescription": "Sardines in vegetable oils (code 9), Saudi food market, single retail sample — Table 2 — not detected",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.409,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned sardine, Ankara supermarkets, n=30 (11 positive) — mean 4.09 ± 0.32 (SE) mg/kg reported for histamine-positive samples (range 2.51–5.50); ELISA LOD 2.5 mg/kg — Table 1",
+     "citation": "Tunç S, Demirhan B, Demirhan BE. Investigation of Histamine, Physicochemical Quality, and Potential Health Risks in Various Canned Fish Products. Foods. 2025;14(13):2314.",
+     "citationUrl": "https://doi.org/10.3390/foods14132314",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Feta",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.162,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Feta cheese (code 3), Saudi food market, single retail sample — Table 1 — 1.62 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.211,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Feta cheese (code 4), Saudi food market, single retail sample — Table 1 — 2.11 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    },
+    {
+     "valuePer100g": 0.312,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Feta cheese (code 5), Saudi food market, single retail sample — Table 1 — 3.12 mg/kg",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Goat Cheese",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Goat cheese (code 17), Saudi food market, single retail sample — Table 1 — not detected",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Beef",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 1 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 2 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 3 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 4 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 5 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.79,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 6 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — 17.9 mg/kg — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 7 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 8 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 9 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 10 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Anchovies (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.467,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned anchovy, Ankara supermarkets, n=20 in Table 1 (text says 17) with 3 positive — mean 4.67 ± 0.58 (SE) mg/kg reported for histamine-positive samples (range 3.74–5.72); ELISA LOD 2.5 mg/kg — Table 1",
+     "citation": "Tunç S, Demirhan B, Demirhan BE. Investigation of Histamine, Physicochemical Quality, and Potential Health Risks in Various Canned Fish Products. Foods. 2025;14(13):2314.",
+     "citationUrl": "https://doi.org/10.3390/foods14132314",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Chicken Breast",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, chilled, day of slaughter-plant supply (day 0)",
+     "sampleDescription": "Chilled chicken breast (CB0) from a commercial slaughtering/processing plant, analysed day 0, HPLC-DAD (GB 5009.208-2016), mean of 3 replicates — histamine 0.00 mg/kg (LOD not stated) — Table 3",
+     "citation": "Min H, An F, Wei T et al. Microbial community structure and biogenic amines content variations in chilled chicken during storage. Food Sci Nutr. 2023;11(2):627-638.",
+     "citationUrl": "https://doi.org/10.1002/fsn3.3122",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.3,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, minced, 1 day at 2.2 °C after 24 h carcass chilling",
+     "sampleDescription": "Ross 308 broiler breast muscle, control (commercial basal diet) group, n=6 birds, day 1 of refrigerated storage — 1.30 mg/100 g (reported directly in mg/100 g) — Table 5",
+     "citation": "Wójcik W, Świder O, Łukasiewicz-Mierzejewska M et al. Content of amino acids and biogenic amines in stored meat as a result of a broiler diet supplemented with β-alanine and garlic extract. Poult Sci. 2024;103(2):103319.",
+     "citationUrl": "https://doi.org/10.1016/j.psj.2023.103319",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Chicken Thigh",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, chilled, day of slaughter-plant supply (day 0)",
+     "sampleDescription": "Chilled chicken thighs (CL0) from a commercial slaughtering/processing plant, analysed day 0, HPLC-DAD, mean of 3 replicates — histamine 0.00 mg/kg (LOD not stated) — Table 3",
+     "citation": "Min H, An F, Wei T et al. Microbial community structure and biogenic amines content variations in chilled chicken during storage. Food Sci Nutr. 2023;11(2):627-638.",
+     "citationUrl": "https://doi.org/10.1002/fsn3.3122",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  }
+ ]
+}
