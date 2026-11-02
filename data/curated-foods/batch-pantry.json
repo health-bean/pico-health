@@ -245,7 +245,6 @@
    "properties":{"oxalate":"low","histamine":"low","lectin":"low","nightshade":false,"fodmap":"low","salicylate":"low","amines":"low","glutamates":"low","sulfites":"low","goitrogens":"low","purines":"low","phytoestrogens":"low","phytates":"high","tyramine":"low"},
    "sources":{"fodmap":{"source":"Monash","ref":"Teff flour low at 100g"},"phytates":{"source":"Phytate tables","ref":"Whole tiny grain — bran ratio keeps phytate high"},"default":{"source":"Compositional","ref":"Eragrostis tef"}},
    "confidence":"low","notes":"Traditional injera fermentation substantially reduces the phytate."},
-  
   {"displayName":"Sourdough Bread","category":"Grains & Legumes","subcategory":"Breads & Wheat","isCommon":true,
    "properties":{"oxalate":"low","histamine":"moderate","lectin":"moderate","nightshade":false,"fodmap":"moderate","salicylate":"low","amines":"moderate","glutamates":"moderate","sulfites":"low","goitrogens":"low","purines":"low","phytoestrogens":"low","phytates":"low","tyramine":"low"},
    "sources":{"fodmap":{"source":"Monash","ref":"Long-fermented sourdough (esp. spelt) tests low — fermentation consumes fructans"},"histamine":{"source":"SIGHI","ref":"Sourdough is fermented — flagged for sensitive HIT patients"},"phytates":{"source":"Fermentation literature","ref":"Sourdough phytase breaks down most phytate"},"default":{"source":"Compositional","ref":"Wild-fermented wheat bread"}},
