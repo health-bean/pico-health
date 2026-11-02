@@ -41,6 +41,9 @@ export const foods = pgTable("foods", {
   isCommon: boolean("is_common").default(false),
   source: varchar("source", { length: 20 }).default("curated"),
   usdaFdcId: integer("usda_fdc_id"),
+  /** Standard serving, for per-serving ranks (e.g. oxalate mg per serving). */
+  servingGrams: numeric("serving_grams", { precision: 7, scale: 2, mode: "number" }),
+  servingLabel: varchar("serving_label", { length: 60 }),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -733,4 +736,60 @@ export const trustedSources = pgTable(
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
   },
   (table) => [uniqueIndex("trusted_sources_name_idx").on(table.name)]
+);
+
+/**
+ * One lab result (or list rating) for one food and one property, tied to a
+ * trusted source and a citation. Ratings in food_trigger_properties are
+ * computed from the included rows (lib/food-data).
+ * Migration: supabase/migrations/20261102140000_food_measurements.sql
+ */
+export const foodMeasurements = pgTable(
+  "food_measurements",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    foodId: uuid("food_id")
+      .notNull()
+      .references(() => foods.id, { onDelete: "cascade" }),
+    property: varchar("property", { length: 30 }).notNull(),
+    /** Lab amount per 100 g (unit below). Null for list sources like SIGHI. */
+    valuePer100g: numeric("value_per_100g", { precision: 10, scale: 3, mode: "number" }),
+    unit: varchar("unit", { length: 20 }).notNull().default("mg"),
+    /** Level as a list source states it: none | low | moderate | high | very_high. */
+    reportedLevel: varchar("reported_level", { length: 20 }),
+    solublePct: numeric("soluble_pct", { precision: 5, scale: 2, mode: "number" }),
+    preparation: varchar("preparation", { length: 120 }),
+    sampleDescription: text("sample_description"),
+    sourceId: uuid("source_id")
+      .notNull()
+      .references(() => trustedSources.id),
+    citation: text("citation").notNull(),
+    citationUrl: varchar("citation_url", { length: 500 }),
+    studyYear: integer("study_year"),
+    excluded: boolean("excluded").notNull().default(false),
+    exclusionNote: text("exclusion_note"),
+    createdBy: varchar("created_by", { length: 120 }),
+    createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => [
+    index("food_measurements_food_property_idx").on(table.foodId, table.property),
+    index("food_measurements_source_idx").on(table.sourceId),
+  ]
+);
+
+/** Admin sign-off on one food + property; stale once its measurements change. */
+export const foodPropertyReviews = pgTable(
+  "food_property_reviews",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    foodId: uuid("food_id")
+      .notNull()
+      .references(() => foods.id, { onDelete: "cascade" }),
+    property: varchar("property", { length: 30 }).notNull(),
+    note: text("note"),
+    reviewedBy: varchar("reviewed_by", { length: 120 }).notNull(),
+    reviewedAt: timestamp("reviewed_at", { withTimezone: true }).defaultNow().notNull(),
+  },
+  (table) => [uniqueIndex("food_property_reviews_food_property_idx").on(table.foodId, table.property)]
 );

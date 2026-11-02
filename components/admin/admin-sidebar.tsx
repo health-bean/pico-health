@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Apple, Shield, BookOpen, Users, Gauge, BadgeCheck } from "lucide-react";
+import { Apple, Shield, BookOpen, Users, Gauge, BadgeCheck, FlaskConical } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { label: "Foods", href: "/admin/foods", icon: Apple },
+  { label: "Food Data", href: "/admin/food-data", icon: FlaskConical },
   { label: "Protocols", href: "/admin/protocols", icon: Shield },
   { label: "Trusted Sources", href: "/admin/sources", icon: BadgeCheck },
   { label: "Reference Data", href: "/admin/reference", icon: BookOpen },

@@ -1,0 +1,772 @@
+{
+ "property": "oxalate",
+ "source": {
+  "name": "Sally K. Norton — Oxalate Data Companion (free errata)",
+  "url": "https://sallyknorton.com/toxic_superfoods/data_companion/"
+ },
+ "note": "Individual lab results listed in the free errata (2024-08-25) to Sally K. Norton's Data Companion to Toxic Superfoods. Each result cites the original study. Foods matched by hand to the Pico catalog.",
+ "foods": [
+  {
+   "food": "Green Peas",
+   "nortonEntry": "E-001",
+   "nortonTitle": "Peas, Green, canned",
+   "servingGrams": 80.0,
+   "servingLabel": "1/2 C",
+   "results": [
+    {
+     "valuePer100g": 6.0,
+     "unit": "mg",
+     "sampleDescription": "Peas, green (pisum sativa), canned",
+     "citation": "Honow, R., and Hesse, A. (2002). Comparison of extraction methods for the determination of soluble and total oxalate in foods by HPLC-enzyme- reactor. Food Chemistry, 78(4), 511-521.",
+     "citationUrl": "https://doi.org/10.1016/S0308-8146(02)00212-1",
+     "studyYear": 2002,
+     "refCode": "HOHE02"
+    },
+    {
+     "valuePer100g": 35.0,
+     "unit": "mg",
+     "sampleDescription": "Peas, Green Pigeon, canned",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Almonds",
+   "nortonEntry": "E-002",
+   "nortonTitle": "Almond, roasted",
+   "servingGrams": 28.0,
+   "servingLabel": "1 wt oz",
+   "results": [
+    {
+     "valuePer100g": 470.0,
+     "unit": "mg",
+     "sampleDescription": "Almond, roasted",
+     "citation": "Chai, W., and Liebman, M. (2005b). Oxalate content of legumes, nuts, and grain-based flours. Journal of Food Composition and Analysis, 18(7), 723–729.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2004.07.001",
+     "studyYear": 2005,
+     "refCode": "CH05FC"
+    },
+    {
+     "valuePer100g": 410.0,
+     "unit": "mg",
+     "sampleDescription": "Almond, dry roasted, chopped",
+     "citation": "The Low Oxalate Diet Addendum 2010 Winter- Numerical Values Table. (2010). The VP Foundation Newsletter, 33, 18-23.",
+     "citationUrl": null,
+     "studyYear": 2010,
+     "refCode": "VP1033"
+    },
+    {
+     "valuePer100g": 410.0,
+     "unit": "mg",
+     "sampleDescription": "Almond, dry roasted",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 130.0,
+     "unit": "mg",
+     "sampleDescription": "Almond, dry roasted, unsalted",
+     "citation": "Brinkley, L. J., Gregory, J., and Pak, C. Y. (1990). A further study of oxalate bioavailability in foods. The Journal of Urology, 144(1), 94–96.",
+     "citationUrl": null,
+     "studyYear": 1990,
+     "refCode": "BRNK90"
+    }
+   ]
+  },
+  {
+   "food": "Cashews",
+   "nortonEntry": "E-003",
+   "nortonTitle": "Cashew, roasted",
+   "servingGrams": 28.0,
+   "servingLabel": "1 wt oz",
+   "results": [
+    {
+     "valuePer100g": 260.0,
+     "unit": "mg",
+     "sampleDescription": "Cashew, roasted",
+     "citation": "The Low Oxalate Diet Addendum 2010 Winter- Numerical Values Table. (2010). The VP Foundation Newsletter, 33, 18-23.",
+     "citationUrl": null,
+     "studyYear": 2010,
+     "refCode": "VP1033"
+    },
+    {
+     "valuePer100g": 260.0,
+     "unit": "mg",
+     "sampleDescription": "Cashew, roasted",
+     "citation": "Chai, W., and Liebman, M. (2005b). Oxalate content of legumes, nuts, and grain-based flours. Journal of Food Composition and Analysis, 18(7), 723–729.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2004.07.001",
+     "studyYear": 2005,
+     "refCode": "CH05FC"
+    },
+    {
+     "valuePer100g": 260.0,
+     "unit": "mg",
+     "sampleDescription": "Cashew, honey roasted, whole or chopped",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Peanuts",
+   "nortonEntry": "E-004",
+   "nortonTitle": "Peanuts, raw",
+   "servingGrams": 28.0,
+   "servingLabel": "1 wt oz",
+   "results": [
+    {
+     "valuePer100g": 140.0,
+     "unit": "mg",
+     "sampleDescription": "Peanuts (Arachis hypogaea L.), raw",
+     "citation": "Judprasong, K., Charoenkiatkul, S., Sungpuag, P., Vasanachitt, K., and Nakjamanong, Y. (2006). Total and soluble oxalate contents in Thai vegetables, cereal grains and legume seeds and their changes after cooking. After Processing: The Fate of Food Components, 19(4), 340-347.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2005.04.002",
+     "studyYear": 2006,
+     "refCode": "JUDP06"
+    },
+    {
+     "valuePer100g": 75.0,
+     "unit": "mg",
+     "sampleDescription": "Peanuts (Arachis hypogaea L.), raw",
+     "citation": "Ruan, Q.-Y., Zheng, X.-Q., Chen, B.-L., Xiao, Y., Peng, X.-X., Leung, D. W. M., and Liu, E.-E. (2013). Determination of total oxalate contents of a great variety of foods commonly available in Southern China using an oxalate oxidase prepared from wheat bran. Journal of Food Composition and Analysis, 32(1), 6-11.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2013.08.002",
+     "studyYear": 2013,
+     "refCode": "RUAN13"
+    },
+    {
+     "valuePer100g": 140.0,
+     "unit": "mg",
+     "sampleDescription": "Peanuts, chopped",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Pistachios",
+   "nortonEntry": "E-005",
+   "nortonTitle": "Pistachio, chopped",
+   "servingGrams": 28.0,
+   "servingLabel": "1 wt oz",
+   "results": [
+    {
+     "valuePer100g": 55.0,
+     "unit": "mg",
+     "sampleDescription": "Pistachio, chopped",
+     "citation": "Honow, R., and Hesse, A. (2002). Comparison of extraction methods for the determination of soluble and total oxalate in foods by HPLC-enzyme- reactor. Food Chemistry, 78(4), 511-521.",
+     "citationUrl": "https://doi.org/10.1016/S0308-8146(02)00212-1",
+     "studyYear": 2002,
+     "refCode": "HOHE02"
+    },
+    {
+     "valuePer100g": 65.0,
+     "unit": "mg",
+     "sampleDescription": "Pistachio (pistacia vera L.), raw",
+     "citation": "Ruan, Q.-Y., Zheng, X.-Q., Chen, B.-L., Xiao, Y., Peng, X.-X., Leung, D. W. M., and Liu, E.-E. (2013). Determination of total oxalate contents of a great variety of foods commonly available in Southern China using an oxalate oxidase prepared from wheat bran. Journal of Food Composition and Analysis, 32(1), 6-11.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2013.08.002",
+     "studyYear": 2013,
+     "refCode": "RUAN13"
+    },
+    {
+     "valuePer100g": 50.0,
+     "unit": "mg",
+     "sampleDescription": "Pistachio, shelled",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Pumpkin Seeds",
+   "nortonEntry": "E-006",
+   "nortonTitle": "Pumpkin Seed, raw",
+   "servingGrams": 28.0,
+   "servingLabel": "1 wt oz",
+   "results": [
+    {
+     "valuePer100g": 6.0,
+     "unit": "mg",
+     "sampleDescription": "Pumpkin Seeds, raw",
+     "citation": "The Low Oxalate Diet Addendum 2010 Winter- Numerical Values Table. (2010). The VP Foundation Newsletter, 33, 18-23.",
+     "citationUrl": null,
+     "studyYear": 2010,
+     "refCode": "VP1033"
+    },
+    {
+     "valuePer100g": 2.0,
+     "unit": "mg",
+     "sampleDescription": "Pumpkin (Curcurbita moschata), raw",
+     "citation": "Ruan, Q.-Y., Zheng, X.-Q., Chen, B.-L., Xiao, Y., Peng, X.-X., Leung, D. W. M., and Liu, E.-E. (2013). Determination of total oxalate contents of a great variety of foods commonly available in Southern China using an oxalate oxidase prepared from wheat bran. Journal of Food Composition and Analysis, 32(1), 6-11.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2013.08.002",
+     "studyYear": 2013,
+     "refCode": "RUAN13"
+    },
+    {
+     "valuePer100g": 19.0,
+     "unit": "mg",
+     "sampleDescription": "Pumpkin Seeds",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Black Tea",
+   "nortonEntry": "E-008",
+   "nortonTitle": "Tea, Black, Common Varieties, English Breakfast, steeped",
+   "servingGrams": 240.0,
+   "servingLabel": "1 cup brewed",
+   "results": [
+    {
+     "valuePer100g": 5.0,
+     "unit": "mg",
+     "sampleDescription": "English Breakfast, Coffee Time, tea bag, brewed 5 min in 245ml water",
+     "citation": "Charrier, M. J. S., Savage, G. P., and Vanhanen, L. (2002). Oxalate content and calcium binding capacity of tea and herbal teas. Asia Pacific Journal of Clinical Nutrition, 11(4), 298–301.",
+     "citationUrl": null,
+     "studyYear": 2002,
+     "refCode": "CHAR02"
+    },
+    {
+     "valuePer100g": 6.0,
+     "unit": "mg",
+     "sampleDescription": "English Breakfast, Bigelow, steeped 1 min",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 1.0,
+     "unit": "mg",
+     "sampleDescription": "English Breakfast, Mandura of Australia, steeped 4 min",
+     "citation": "Autism Oxalate Project. (2020). Food Testing Results Spreadsheet [Social Media]. Trying Low Oxalates.",
+     "citationUrl": "https://www.facebook.com/groups/TryingLowOxalates",
+     "studyYear": 2020,
+     "refCode": "AOPTLO",
+     "excluded": true,
+     "exclusionNote": "Community test results posted in a Facebook group (Trying Low Oxalates); not peer-reviewed. Include if you trust it."
+    },
+    {
+     "valuePer100g": 6.0,
+     "unit": "mg",
+     "sampleDescription": "English Breakfast, Stash, teabag brewed 5 min",
+     "citation": "The Low Oxalate Diet Addendum 2010 Winter- Numerical Values Table. (2010). The VP Foundation Newsletter, 33, 18-23.",
+     "citationUrl": null,
+     "studyYear": 2010,
+     "refCode": "VP1033"
+    },
+    {
+     "valuePer100g": 3.0,
+     "unit": "mg",
+     "sampleDescription": "English Breakfast, Twinings, tea bag, brewed 5 min in 245ml water",
+     "citation": "Charrier, M. J. S., Savage, G. P., and Vanhanen, L. (2002). Oxalate content and calcium binding capacity of tea and herbal teas. Asia Pacific Journal of Clinical Nutrition, 11(4), 298–301.",
+     "citationUrl": null,
+     "studyYear": 2002,
+     "refCode": "CHAR02"
+    }
+   ]
+  },
+  {
+   "food": "Chamomile Tea",
+   "nortonEntry": "E-012",
+   "nortonTitle": "Chamomile Teas, Sweet Dreams [Bigelow], steeped 5 min",
+   "servingGrams": 240.0,
+   "servingLabel": "1 cup brewed",
+   "results": [
+    {
+     "valuePer100g": 1.0,
+     "unit": "mg",
+     "sampleDescription": "Sweet Dreams, Bigelow, brewed 5 min in 250ml water",
+     "citation": "McKay, D. W., Seviour, J. P., Comerford, A., Vasdev, S., and Massey, L. K. (1995). Herbal tea: An alternative to regular tea for those who form calcium oxalate stones. Journal of the American Dietetic Association, 95(3), 360-361.",
+     "citationUrl": "https://doi.org/10.1016/S0002-8223(95)00093-3",
+     "studyYear": 1995,
+     "refCode": "MCKY95"
+    },
+    {
+     "valuePer100g": 1.0,
+     "unit": "mg",
+     "sampleDescription": "Sweet Dreams, Bigelow, steeped 4 min",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Mandarin",
+   "nortonEntry": "E-016",
+   "nortonTitle": "Orange, varieties, Mandarin, canned",
+   "servingGrams": 80.0,
+   "servingLabel": "1/3 C",
+   "results": [
+    {
+     "valuePer100g": 19.0,
+     "unit": "mg",
+     "sampleDescription": "Orange, Mandarin, organic, Native Forest, canned",
+     "citation": "The Low Oxalate Diet Addendum 2015 Spring- Numerical Values Table. (2015). The VP Foundation Newsletter, 42, 16-17.",
+     "citationUrl": null,
+     "studyYear": 2015,
+     "refCode": "VP1542"
+    },
+    {
+     "valuePer100g": 12.0,
+     "unit": "mg",
+     "sampleDescription": "Orange, Mandarin, Del Monte, canned",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Coconut (dried)",
+   "nortonEntry": "E-017",
+   "nortonTitle": "Coconut, shredded",
+   "servingGrams": 14.0,
+   "servingLabel": "1/2 C",
+   "results": [
+    {
+     "valuePer100g": 5.0,
+     "unit": "mg",
+     "sampleDescription": "Coconut, organic, Ojio Brand, shredded",
+     "citation": "The Low Oxalate Diet Addendum 2015 Spring- Numerical Values Table. (2015). The VP Foundation Newsletter, 42, 16-17.",
+     "citationUrl": null,
+     "studyYear": 2015,
+     "refCode": "VP1542"
+    },
+    {
+     "valuePer100g": 2.0,
+     "unit": "mg",
+     "sampleDescription": "Coconut, flesh, shredded",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Plum",
+   "nortonEntry": "E-018",
+   "nortonTitle": "Plum, Cherry, fresh",
+   "servingGrams": 40.0,
+   "servingLabel": "1 fruit",
+   "results": [
+    {
+     "valuePer100g": 4.0,
+     "unit": "mg",
+     "sampleDescription": "Plum, cherry (prunus cerasifera L.), fresh",
+     "citation": "Nguyen, H. V. H., and Savage, G. P. (2013). Oxalate content of New Zealand grown and imported fruits. Journal of Food Composition and Analysis, 31(2), 180-184.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2013.06.001",
+     "studyYear": 2013,
+     "refCode": "NGU13"
+    },
+    {
+     "valuePer100g": 8.0,
+     "unit": "mg",
+     "sampleDescription": "Plum, Cherry, raw, 1.2 in. diameter",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Swiss Chard",
+   "nortonEntry": "E-019",
+   "nortonTitle": "Chard, White Stem, aka \"Green\" or \"Silverbeet\", boiled 6 minutes",
+   "servingGrams": 90.0,
+   "servingLabel": "1/2 C",
+   "results": [
+    {
+     "valuePer100g": 290.0,
+     "unit": "mg",
+     "sampleDescription": "Chard, \"Silverbeet\", Leaves, 100g food boiled in 100g water, 6 minutes",
+     "citation": "Savage, G. P., Vanhanen, L., Mason, S. M., and Ross, A. B. (2000). Effect of Cooking on the Soluble and Insoluble Oxalate Content of Some New Zealand Foods. Journal of Food Composition and Analysis, 13(3), 201-206.",
+     "citationUrl": "https://doi.org/10.1006/jfca.2000.0879",
+     "studyYear": 2000,
+     "refCode": "SAV00"
+    },
+    {
+     "valuePer100g": 340.0,
+     "unit": "mg",
+     "sampleDescription": "Chard, Swiss, Green, chopped, boiled",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Potato",
+   "nortonEntry": "E-020",
+   "nortonTitle": "Potato, Russet Burbank or Idaho, Brown Russet, boiled, flesh only AOPTLO Potato, Brown Russet, peeled, boiled 25 min, To",
+   "servingGrams": 170.0,
+   "servingLabel": "6 wt oz",
+   "results": [
+    {
+     "valuePer100g": 25.0,
+     "unit": "mg",
+     "sampleDescription": "Potato, Brown Russet, peeled, boiled 25 min",
+     "citation": "Autism Oxalate Project. (2020). Food Testing Results Spreadsheet [Social Media]. Trying Low Oxalates.",
+     "citationUrl": "https://www.facebook.com/groups/TryingLowOxalates",
+     "studyYear": 2020,
+     "refCode": "AOPTLO",
+     "excluded": true,
+     "exclusionNote": "Community test results posted in a Facebook group (Trying Low Oxalates); not peer-reviewed. Include if you trust it."
+    },
+    {
+     "valuePer100g": 25.0,
+     "unit": "mg",
+     "sampleDescription": "Potato, Russet, peeled, boiled",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    }
+   ]
+  },
+  {
+   "food": "Bell Pepper",
+   "nortonEntry": "E-021",
+   "nortonTitle": "Pepper, Sweet, Red Bell, raw",
+   "servingGrams": 57.0,
+   "servingLabel": "2 wt oz",
+   "results": [
+    {
+     "valuePer100g": 8.0,
+     "unit": "mg",
+     "sampleDescription": "Pepper, Sweet, Red, raw, sliced",
+     "citation": "The Low Oxalate Diet Addendum 2012 Summer- Numerical Values Table. (2012). The VP Foundation Newsletter, 37, 6-9, 19-25.",
+     "citationUrl": null,
+     "studyYear": 2012,
+     "refCode": "VP1237"
+    },
+    {
+     "valuePer100g": 2.0,
+     "unit": "mg",
+     "sampleDescription": "Pepper, Sweet, Red, raw, chopped",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 11.0,
+     "unit": "mg",
+     "sampleDescription": "Pepper, Sweet, Red Bell (capsicum annum var. grossum), raw",
+     "citation": "Abdel-Moemin, A. R. (2014). Oxalate Content of Egyptian Grown Fruits and Vegetables and Daily Common Herbs. Journal of Food Research, 3(3), p66.",
+     "citationUrl": "https://doi.org/10.5539/jfr.v3n3p66",
+     "studyYear": 2014,
+     "refCode": "AM2014"
+    },
+    {
+     "valuePer100g": 2.0,
+     "unit": "mg",
+     "sampleDescription": "Pepper, Sweet, Red Bell (capsicum annum var. grossum L. var. grossum (L.) Sendt), raw",
+     "citation": "Ruan, Q.-Y., Zheng, X.-Q., Chen, B.-L., Xiao, Y., Peng, X.-X., Leung, D. W. M., and Liu, E.-E. (2013). Determination of total oxalate contents of a great variety of foods commonly available in Southern China using an oxalate oxidase prepared from wheat bran. Journal of Food Composition and Analysis, 32(1), 6-11.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2013.08.002",
+     "studyYear": 2013,
+     "refCode": "RUAN13"
+    }
+   ]
+  },
+  {
+   "food": "Rhubarb",
+   "nortonEntry": "E-022",
+   "nortonTitle": "Rhubarb, steamed",
+   "servingGrams": 120.0,
+   "servingLabel": "1/2 C",
+   "results": [
+    {
+     "valuePer100g": 500.0,
+     "unit": "mg",
+     "sampleDescription": "Rhubarb, steamed",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 500.0,
+     "unit": "mg",
+     "sampleDescription": "Rhubarb, stalk, steamed",
+     "citation": "Chai, W., and Liebman, M. (2005a). Effect of Different Cooking Methods on Vegetable Oxalate Content. Journal of Agricultural and Food Chemistry, 53(8), 3027–3030.",
+     "citationUrl": "https://doi.org/10.1021/jf048128d",
+     "studyYear": 2005,
+     "refCode": "CL05AF"
+    }
+   ]
+  },
+  {
+   "food": "Bread (Wheat)",
+   "nortonEntry": "E-023",
+   "nortonTitle": "Bread, Whole Wheat, Whole",
+   "servingGrams": 38.0,
+   "servingLabel": "1 slice",
+   "results": [
+    {
+     "valuePer100g": 40.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, Whole Grain 100% Whole Wheat, Orowheat",
+     "citation": "The Low Oxalate Diet Addendum 2008 Fall- Numerical Values Table. (2008). The VP Foundation Newsletter, 31, 7-11.",
+     "citationUrl": null,
+     "studyYear": 2008,
+     "refCode": "VP0831"
+    },
+    {
+     "valuePer100g": 45.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, whole, Hearty 100% Whole Wheat with Honey, Sara Lee",
+     "citation": "The Low Oxalate Diet Addendum 2008 Fall- Numerical Values Table. (2008). The VP Foundation Newsletter, 31, 7-11.",
+     "citationUrl": null,
+     "studyYear": 2008,
+     "refCode": "VP0831"
+    },
+    {
+     "valuePer100g": 25.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, Sara Lee Country, made with whole grain white",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 40.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, whole, Whole Grain 100% Whole Wheat, Orowheat",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 35.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, Arnold 100% Natural, whole wheat",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 40.0,
+     "unit": "mg",
+     "sampleDescription": "bread, wheat, whole, Arnold Country Oatmeal",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 25.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, Farmhouse (made with whole grain white), Pepperidge Farm",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 15.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, Hawaiian Sweet, King's Hawaiian Brand",
+     "citation": "The Low Oxalate Diet Addendum 2021 Spring- Numerical Values Table. (2021). The VP Foundation Newsletter, 51, 14.",
+     "citationUrl": null,
+     "studyYear": 2021,
+     "refCode": "VP2151"
+    },
+    {
+     "valuePer100g": 45.0,
+     "unit": "mg",
+     "sampleDescription": "bread, wheat, whole, Sara Lee Hearty Whole Wheat with Honey",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 30.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, Whole Grain White, Wonder",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 25.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, whole, variety unspecified",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 35.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, wheat, whole, Very Thin Sliced (made with 100% whole wheat), Pepperidge Farm",
+     "citation": "The Low Oxalate Diet Addendum 2008 Fall- Numerical Values Table. (2008). The VP Foundation Newsletter, 31, 7-11.",
+     "citationUrl": null,
+     "studyYear": 2008,
+     "refCode": "VP0831"
+    },
+    {
+     "valuePer100g": 30.0,
+     "unit": "mg",
+     "sampleDescription": "bread, wheat, whole, Organic Harvest Oats and Honey, Organics",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 40.0,
+     "unit": "mg",
+     "sampleDescription": "bread, wheat, whole, Sara Lee 100% Multi-Grain",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 35.0,
+     "unit": "mg",
+     "sampleDescription": "bread, wheat, whole, Pepperidge Farm Stone Ground 100% Whole Wheat",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 35.0,
+     "unit": "mg",
+     "sampleDescription": "bread, wheat, whole, Pepperidge Farm 100% Whole Wheat",
+     "citation": "Okombo, J., and Liebman, M. (2010). Oxalate content of selected breads and crackers. Journal of Food Composition and Analysis, 23(1), 118- 121.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2009.07.003",
+     "studyYear": 2010,
+     "refCode": "OKOM10"
+    },
+    {
+     "valuePer100g": 40.0,
+     "unit": "mg",
+     "sampleDescription": "Bread, Wheat, Wholemeal, \"Toast\"",
+     "citation": "Siener, R., Honow, R., Voss, S., Seidler, A., and Hesse, A. (2006). Oxalate content of cereals and cereal products. Journal of Agricultural and Food Chemistry, 54(8), 3008-3011.",
+     "citationUrl": "https://doi.org/10.1021/jf052776v",
+     "studyYear": 2006,
+     "refCode": "SIE06B"
+    }
+   ]
+  },
+  {
+   "food": "Pasta",
+   "nortonEntry": "E-027",
+   "nortonTitle": "Spaghetti, Spaghetti, cooked",
+   "servingGrams": 132.0,
+   "servingLabel": "1C",
+   "results": [
+    {
+     "valuePer100g": 18.0,
+     "unit": "mg",
+     "sampleDescription": "Spaghetti, Thin, Protein Plus, Barilla, cooked 11 min",
+     "citation": "The Low Oxalate Diet Addendum 2006- Numerical Values Table. (2006). The VP Foundation Newsletter, 27, 16.",
+     "citationUrl": null,
+     "studyYear": 2006,
+     "refCode": "VP0627"
+    },
+    {
+     "valuePer100g": 19.0,
+     "unit": "mg",
+     "sampleDescription": "Spaghetti, Barilla, cooked 10 min",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 19.0,
+     "unit": "mg",
+     "sampleDescription": "Spaghetti, Thin, Mueller's, cooked 16 min",
+     "citation": "The Low Oxalate Diet Addendum 2006- Numerical Values Table. (2006). The VP Foundation Newsletter, 27, 16.",
+     "citationUrl": null,
+     "studyYear": 2006,
+     "refCode": "VP0627"
+    },
+    {
+     "valuePer100g": 4.0,
+     "unit": "mg",
+     "sampleDescription": "Spaghetti, Sainsbury, cooked 10 min",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 19.0,
+     "unit": "mg",
+     "sampleDescription": "Spaghetti, Barilla, cooked 12 min",
+     "citation": "The Low Oxalate Diet Addendum 2006- Numerical Values Table. (2006). The VP Foundation Newsletter, 27, 16.",
+     "citationUrl": null,
+     "studyYear": 2006,
+     "refCode": "VP0627"
+    },
+    {
+     "valuePer100g": 14.0,
+     "unit": "mg",
+     "sampleDescription": "Spaghetti, boiled and drained per package directions",
+     "citation": "Liebman, M., and Okombo, J. (2009). Oxalate content of selected pasta products. Journal of Food Composition and Analysis, 22(3), 254-256.",
+     "citationUrl": "https://doi.org/10.1016/j.jfca.2008.10.013",
+     "studyYear": 2009,
+     "refCode": "LIEB09"
+    }
+   ]
+  },
+  {
+   "food": "Oats",
+   "nortonEntry": "E-028",
+   "nortonTitle": "Oats, Instant, dry",
+   "servingGrams": 21.0,
+   "servingLabel": "1/4 C",
+   "results": [
+    {
+     "valuePer100g": 18.0,
+     "unit": "mg",
+     "sampleDescription": "Oats, Instant, Quaker, dry",
+     "citation": "Yount, J., and Gottlieb, A. (2005). The low oxalate cookbook, book two. Vulvar Pain Foundation.",
+     "citationUrl": null,
+     "studyYear": 2005,
+     "refCode": "VP05CK"
+    },
+    {
+     "valuePer100g": 35.0,
+     "unit": "mg",
+     "sampleDescription": "Instant oats, original [Quaker Oats], dry",
+     "citation": "Autism Oxalate Project. (2020). Food Testing Results Spreadsheet [Social Media]. Trying Low Oxalates.",
+     "citationUrl": "https://www.facebook.com/groups/TryingLowOxalates",
+     "studyYear": 2020,
+     "refCode": "AOPTLO",
+     "excluded": true,
+     "exclusionNote": "Community test results posted in a Facebook group (Trying Low Oxalates); not peer-reviewed. Include if you trust it."
+    }
+   ]
+  }
+ ]
+}

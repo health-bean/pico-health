@@ -1,0 +1,184 @@
+/**
+ * Turn the lab results stored for one food + property into a rating.
+ *
+ * The rule, applied the same way to every food:
+ * - Excluded results don't count.
+ * - Results 20+ years older than the newest one are reference only.
+ * - Lab amounts beat list levels (e.g. SIGHI) when both exist.
+ * - Amounts: take the middle value (median), convert to an amount per
+ *   serving, and rank it with the property's bands.
+ * - List levels: take the stated level; if lists disagree, the higher one.
+ * - If the counted results would land in different ranks, flag
+ *   "studies_disagree" so an admin can decide which to trust.
+ *
+ * Pure: no database access. Tested in compute.test.ts.
+ */
+import type { FoodProperty } from "@/lib/sources/properties";
+
+export type Level = "none" | "low" | "moderate" | "high" | "very_high";
+export const LEVELS: readonly Level[] = ["none", "low", "moderate", "high", "very_high"];
+
+export type Flag = "one_test" | "studies_disagree" | "no_serving_size" | "no_rule";
+
+export interface MeasurementInput {
+  id: string;
+  valuePer100g: number | null;
+  reportedLevel: string | null;
+  studyYear: number | null;
+  excluded: boolean;
+  updatedAt: Date;
+}
+
+export interface RatingInput {
+  property: FoodProperty;
+  servingGrams: number | null;
+  measurements: MeasurementInput[];
+  /** When an admin last signed off on this food + property. */
+  reviewedAt?: Date | null;
+}
+
+export interface RatingResult {
+  /** The app-wide level, or null when there's nothing to go on (→ "unknown"). */
+  level: Level | null;
+  /** Fine-grained band for amount rules, e.g. "VH+". */
+  band: string | null;
+  method: "median" | "reported" | null;
+  median: number | null;
+  perServing: number | null;
+  range: [number, number] | null;
+  /** How many results counted toward the rating. */
+  counted: number;
+  /** Ids of results set aside as reference because newer data exists. */
+  superseded: string[];
+  flags: Flag[];
+  /** Studies disagree and no admin has signed off since the last change. */
+  needsReview: boolean;
+}
+
+interface Band {
+  /** Upper limit (exclusive) of this band, per serving. */
+  below: number;
+  band: string;
+  level: Level;
+}
+
+interface AmountRule {
+  basis: "serving";
+  unit: string;
+  bands: Band[];
+  /** Band for anything at or above the last limit. */
+  top: { band: string; level: Level };
+}
+
+/**
+ * Ranking rules for lab amounts, per property. Oxalate bands are inferred
+ * from Sally K. Norton's published ranks (mg per serving; matched 22 of 24
+ * test foods). Other properties get bands once we have their data.
+ */
+export const AMOUNT_RULES: Partial<Record<FoodProperty, AmountRule>> = {
+  oxalate: {
+    basis: "serving",
+    unit: "mg",
+    bands: [
+      { below: 1.5, band: "VL", level: "low" },
+      { below: 4.5, band: "L", level: "low" },
+      { below: 11.5, band: "M", level: "moderate" },
+      { below: 23, band: "H", level: "high" },
+      { below: 60, band: "VH", level: "very_high" },
+    ],
+    top: { band: "VH+", level: "very_high" },
+  },
+};
+
+export const BAND_LABELS: Record<string, string> = {
+  VL: "Very low",
+  L: "Low",
+  M: "Medium",
+  H: "High",
+  VH: "Very high",
+  "VH+": "Extreme",
+};
+
+/** Results this many years older than the newest are reference only. */
+export const SUPERSEDED_AFTER_YEARS = 20;
+
+function median(values: number[]): number {
+  const s = [...values].sort((a, b) => a - b);
+  const mid = Math.floor(s.length / 2);
+  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+}
+
+function bandFor(rule: AmountRule, perServing: number): { band: string; level: Level } {
+  for (const b of rule.bands) if (perServing < b.below) return b;
+  return rule.top;
+}
+
+function isLevel(v: string | null): v is Level {
+  return v !== null && (LEVELS as readonly string[]).includes(v);
+}
+
+export function computeRating(input: RatingInput): RatingResult {
+  const included = input.measurements.filter((m) => !m.excluded);
+
+  // Recency: older results become reference only when much newer data exists.
+  const years = included.map((m) => m.studyYear).filter((y): y is number => y !== null);
+  const newest = years.length ? Math.max(...years) : null;
+  const superseded = included
+    .filter((m) => newest !== null && m.studyYear !== null && m.studyYear <= newest - SUPERSEDED_AFTER_YEARS)
+    .map((m) => m.id);
+  const counted = included.filter((m) => !superseded.includes(m.id));
+
+  const amounts = counted.map((m) => m.valuePer100g).filter((v): v is number => v !== null);
+  const reported = counted.map((m) => m.reportedLevel).filter(isLevel);
+
+  const flags: Flag[] = [];
+  if (counted.length === 1) flags.push("one_test");
+
+  let level: Level | null = null;
+  let band: string | null = null;
+  let method: RatingResult["method"] = null;
+  let med: number | null = null;
+  let perServing: number | null = null;
+  let disagree = false;
+
+  if (amounts.length > 0) {
+    method = "median";
+    med = median(amounts);
+    const rule = AMOUNT_RULES[input.property];
+    if (!rule) {
+      flags.push("no_rule");
+    } else if (input.servingGrams === null || input.servingGrams <= 0) {
+      flags.push("no_serving_size");
+    } else {
+      const grams = input.servingGrams;
+      perServing = (med * grams) / 100;
+      ({ band, level } = bandFor(rule, perServing));
+      const resultBands = new Set(amounts.map((v) => bandFor(rule, (v * grams) / 100).band));
+      // A list source stating a different level also counts as disagreement.
+      disagree = resultBands.size > 1 || reported.some((r) => r !== level);
+    }
+  } else if (reported.length > 0) {
+    method = "reported";
+    // Lists that disagree: take the higher (more cautious) level.
+    level = reported.reduce((a, b) => (LEVELS.indexOf(b) > LEVELS.indexOf(a) ? b : a));
+    disagree = new Set(reported).size > 1;
+  }
+
+  if (disagree) flags.push("studies_disagree");
+
+  const lastChange = Math.max(0, ...input.measurements.map((m) => m.updatedAt.getTime()));
+  const reviewedSinceChange = !!input.reviewedAt && input.reviewedAt.getTime() >= lastChange;
+
+  return {
+    level,
+    band,
+    method,
+    median: med,
+    perServing,
+    range: amounts.length ? [Math.min(...amounts), Math.max(...amounts)] : null,
+    counted: counted.length,
+    superseded,
+    flags,
+    needsReview: disagree && !reviewedSinceChange,
+  };
+}
