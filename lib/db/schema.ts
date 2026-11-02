@@ -789,6 +789,8 @@ export const foodPropertyReviews = pgTable(
       .references(() => foods.id, { onDelete: "cascade" }),
     property: varchar("property", { length: 30 }).notNull(),
     note: text("note"),
+    /** Admin-set level that replaces the computed one (see compute.ts). */
+    overrideLevel: varchar("override_level", { length: 20 }),
     reviewedBy: varchar("reviewed_by", { length: 120 }).notNull(),
     reviewedAt: timestamp("reviewed_at", { withTimezone: true }).defaultNow().notNull(),
   },

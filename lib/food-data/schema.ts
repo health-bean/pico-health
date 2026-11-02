@@ -64,7 +64,14 @@ export const updateServingSchema = z.object({
   servingLabel: optionalText(60),
 });
 
-export const reviewSchema = z.object({
-  property: measuredProperty,
-  note: optionalText(2000),
-});
+export const reviewSchema = z
+  .object({
+    property: measuredProperty,
+    note: optionalText(2000),
+    /** Replace the computed level; null clears an earlier override. */
+    overrideLevel: z.enum(["none", "low", "moderate", "high", "very_high"]).nullable().optional(),
+  })
+  .refine((d) => !d.overrideLevel || (d.note && d.note.trim().length > 0), {
+    message: "Say why when you set the rating by hand",
+    path: ["note"],
+  });

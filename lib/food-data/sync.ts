@@ -56,6 +56,15 @@ function amountNote(result: RatingResult): string {
   return `: ${main}${serving}`;
 }
 
+/** "not detected to 5130 mg/kg" for an override's note. */
+function rangeNote(result: RatingResult): string {
+  const [lo, hi] = result.range!;
+  const perKg = result.amountUnit === "mg/kg";
+  const fmt = (v: number) => (perKg ? round(v * 10) : round(v));
+  const unit = perKg ? "mg/kg" : "mg per 100 g";
+  return `${lo === 0 ? "not detected" : fmt(lo)} to ${fmt(hi)} ${unit}`;
+}
+
 const round = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1).replace(/\.0$/, ""));
 
 /** One-line provenance stored next to the rating, e.g. for the coach to quote. */
@@ -78,8 +87,11 @@ export function citationFor(
   const sources = [...new Set(counted.map((r) => r.sourceName))].join(", ");
   const refs = counted.map((r) => (r.studyYear ? `${r.citation.split(".")[0]} (${r.studyYear})` : r.citation.split(".")[0]));
   const ref = refs.length > 3 ? `${refs.slice(0, 3).join("; ")}; +${refs.length - 3} more` : refs.join("; ");
-  const note =
-    result.method === "median"
+  const note = result.flags.includes("admin_override")
+    ? `Results vary widely across ${result.counted} lab test${result.counted === 1 ? "" : "s"}${
+        result.range ? ` (${rangeNote(result)})` : ""
+      }; rated on the higher results`
+    : result.method === "median"
       ? `Middle value of ${result.counted} lab test${result.counted === 1 ? "" : "s"}${amountNote(result)}`
       : `As rated by ${sources}`;
   return { source: sources, ref: ref.slice(0, 500), note };
@@ -95,7 +107,7 @@ export async function recomputeFoodProperty(foodId: string, property: FoodProper
 
   const rows = await loadMeasurements(foodId, property);
   const [review] = await db
-    .select({ reviewedAt: foodPropertyReviews.reviewedAt })
+    .select({ reviewedAt: foodPropertyReviews.reviewedAt, overrideLevel: foodPropertyReviews.overrideLevel })
     .from(foodPropertyReviews)
     .where(and(eq(foodPropertyReviews.foodId, foodId), eq(foodPropertyReviews.property, property)))
     .limit(1);
@@ -105,6 +117,7 @@ export async function recomputeFoodProperty(foodId: string, property: FoodProper
     servingGrams: food.servingGrams,
     measurements: rows,
     reviewedAt: review?.reviewedAt ?? null,
+    overrideLevel: review?.overrideLevel ?? null,
   });
 
   // Nightshade is a yes/no botanical fact, not a level; it isn't computed here.

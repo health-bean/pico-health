@@ -34,6 +34,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ foo
       foodId,
       property: parsed.data.property,
       note: parsed.data.note,
+      overrideLevel: parsed.data.overrideLevel ?? null,
       reviewedBy: auth.session.email || auth.session.userId,
       reviewedAt: new Date(),
     };
@@ -42,7 +43,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ foo
       .values(values)
       .onConflictDoUpdate({
         target: [foodPropertyReviews.foodId, foodPropertyReviews.property],
-        set: { note: values.note, reviewedBy: values.reviewedBy, reviewedAt: values.reviewedAt },
+        set: { note: values.note, overrideLevel: values.overrideLevel, reviewedBy: values.reviewedBy, reviewedAt: values.reviewedAt },
       });
 
     const { result } = await recomputeFoodProperty(foodId, parsed.data.property as FoodProperty);

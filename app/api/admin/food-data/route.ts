@@ -45,11 +45,12 @@ export async function GET() {
           foodId: foodPropertyReviews.foodId,
           property: foodPropertyReviews.property,
           reviewedAt: foodPropertyReviews.reviewedAt,
+          overrideLevel: foodPropertyReviews.overrideLevel,
         })
         .from(foodPropertyReviews),
     ]);
 
-    const reviewed = new Map(reviews.map((r) => [`${r.foodId}:${r.property}`, r.reviewedAt]));
+    const reviewed = new Map(reviews.map((r) => [`${r.foodId}:${r.property}`, r]));
     const groups = new Map<string, typeof rows>();
     for (const r of rows) {
       const key = `${r.foodId}:${r.property}`;
@@ -68,7 +69,8 @@ export async function GET() {
           property,
           servingGrams: first.servingGrams,
           measurements: group,
-          reviewedAt: reviewed.get(key) ?? null,
+          reviewedAt: reviewed.get(key)?.reviewedAt ?? null,
+          overrideLevel: reviewed.get(key)?.overrideLevel ?? null,
         }),
       };
     });

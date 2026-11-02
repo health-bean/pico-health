@@ -211,6 +211,22 @@ describe("computeRating — tyramine (content, mg/kg)", () => {
   });
 });
 
+describe("computeRating — admin override", () => {
+  const blue = [0, 0, 0, 2900, 5130].map((v) => m({ valuePer100g: v / 10 }));
+
+  it("replaces the middle value and is flagged", () => {
+    const r = computeRating({ property: "tyramine", servingGrams: null, measurements: blue, overrideLevel: "very_high" });
+    expect(r.level).toBe("very_high");
+    expect(r.flags).toContain("admin_override");
+    expect(r.median).toBe(0);
+  });
+
+  it("is ignored without counted results or with a bad value", () => {
+    expect(computeRating({ property: "tyramine", servingGrams: null, measurements: [], overrideLevel: "high" }).level).toBeNull();
+    expect(computeRating({ property: "tyramine", servingGrams: null, measurements: blue, overrideLevel: "nope" }).level).toBe("low");
+  });
+});
+
 describe("computeRating — permission-pending lists", () => {
   const pending = (level: string) => m({ reportedLevel: level, sourceUse: "check" });
 

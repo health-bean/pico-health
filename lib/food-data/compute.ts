@@ -12,6 +12,8 @@
  * - List levels: take the stated level; if lists disagree, the higher one.
  * - If the counted results would land in different ranks, flag
  *   "studies_disagree" so an admin can decide which to trust.
+ * - An admin can set the level by hand (with a note) when the middle value
+ *   misleads; the result is flagged "admin_override".
  * - Results from a "permission pending" source never count. They're only
  *   compared: "lists_disagree" when one rates the food differently, and
  *   "pending_list_only" when it rates a food we have nothing else for.
@@ -29,7 +31,8 @@ export type Flag =
   | "no_serving_size"
   | "no_rule"
   | "lists_disagree"
-  | "pending_list_only";
+  | "pending_list_only"
+  | "admin_override";
 
 export interface MeasurementInput {
   id: string;
@@ -48,6 +51,12 @@ export interface RatingInput {
   measurements: MeasurementInput[];
   /** When an admin last signed off on this food + property. */
   reviewedAt?: Date | null;
+  /**
+   * A level an admin set by hand because the middle value misleads, e.g.
+   * results range from not detected to very high. Applies only when there
+   * are counted results.
+   */
+  overrideLevel?: string | null;
 }
 
 export interface RatingResult {
@@ -234,6 +243,11 @@ export function computeRating(input: RatingInput): RatingResult {
   }
 
   if (disagree) flags.push("studies_disagree");
+  if (isLevel(input.overrideLevel ?? null) && counted.length > 0) {
+    level = input.overrideLevel as Level;
+    band = null;
+    flags.push("admin_override");
+  }
   if (checkLevels.length > 0) {
     if (level === null) flags.push("pending_list_only");
     else if (checkLevels.some((l) => l !== level)) flags.push("lists_disagree");

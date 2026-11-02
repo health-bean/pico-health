@@ -79,6 +79,7 @@ export async function GET(_request: Request, { params }: Params) {
           servingGrams: food.servingGrams,
           measurements,
           reviewedAt: review?.reviewedAt ?? null,
+          overrideLevel: review?.overrideLevel ?? null,
         });
         return { property, measurements, result, review };
       })

@@ -33,7 +33,7 @@ interface PropertyData {
   property: FoodProperty;
   measurements: Measurement[];
   result: RatingResult;
-  review: { note: string | null; reviewedBy: string; reviewedAt: string } | null;
+  review: { note: string | null; overrideLevel: string | null; reviewedBy: string; reviewedAt: string } | null;
 }
 
 interface Detail {
@@ -228,22 +228,38 @@ function MeasurementRow({
   );
 }
 
-function SignOff({ foodId, data, onChange }: { foodId: string; data: PropertyData; onChange: () => Promise<void> }) {
+const COMPUTED = "computed";
+
+function SignOff({
+  foodId,
+  data,
+  onChange,
+  onCancel,
+}: {
+  foodId: string;
+  data: PropertyData;
+  onChange: () => Promise<void>;
+  onCancel?: () => void;
+}) {
   const { toast } = useToast();
-  const [note, setNote] = useState("");
+  const [note, setNote] = useState(data.review?.note ?? "");
+  const [rating, setRating] = useState<string>(data.review?.overrideLevel ?? COMPUTED);
   const [busy, setBusy] = useState(false);
+  const byHand = rating !== COMPUTED;
 
   const signOff = async () => {
+    if (byHand && !note.trim()) return toast("Say why you're setting the rating by hand", "error");
     setBusy(true);
     try {
       const { ok, data: body } = await send(`/api/admin/food-data/${foodId}/review`, "POST", {
         property: data.property,
         note,
+        overrideLevel: byHand ? rating : null,
       });
       if (!ok) return toast(errorMessage(body, "Could not sign off"), "error");
       toast("Signed off", "success");
-      setNote("");
       await onChange();
+      onCancel?.();
     } finally {
       setBusy(false);
     }
@@ -251,24 +267,48 @@ function SignOff({ foodId, data, onChange }: { foodId: string; data: PropertyDat
 
   return (
     <div className="space-y-2 rounded-xl bg-level-2-bg p-4 text-level-2-fg">
-      <p className="flex items-center gap-2 text-sm font-medium">
-        <AlertTriangle className="h-4 w-4" aria-hidden="true" />
-        Studies disagree: they fall in different ranks.
-      </p>
+      {data.result.flags.includes("studies_disagree") && (
+        <p className="flex items-center gap-2 text-sm font-medium">
+          <AlertTriangle className="h-4 w-4" aria-hidden="true" />
+          Studies disagree: they fall in different ranks.
+        </p>
+      )}
       <p className="text-sm">
         Check the results below. Exclude any that don&apos;t describe this food (say why), then sign off on
-        the rating.
+        the rating. If the middle value misleads (results range from none to very high), set the rating by
+        hand and say why. Users see &quot;results vary widely&quot; next to it.
       </p>
+      <Select
+        id={`override-${data.property}`}
+        label="Rating"
+        value={rating}
+        onChange={setRating}
+        options={[
+          { value: COMPUTED, label: "Use the middle value" },
+          ...LEVELS.map((l) => ({ value: l, label: `Set by hand: ${LEVEL_LABELS[l]}` })),
+        ]}
+      />
       <Textarea
         id={`signoff-${data.property}`}
         aria-label="Sign-off note"
         value={note}
         onChange={(e) => setNote(e.target.value)}
-        placeholder="Optional note, e.g. Kept the middle value; the low result was a different variety"
+        placeholder={
+          byHand
+            ? "Required: why, e.g. Most samples not detected but Cabrales blue cheese is 1,300–5,130 mg/kg"
+            : "Optional note, e.g. Kept the middle value; the low result was a different variety"
+        }
       />
-      <Button size="sm" disabled={busy} onClick={signOff}>
-        Sign off on this rating
-      </Button>
+      <div className="flex gap-2">
+        <Button size="sm" disabled={busy} onClick={signOff}>
+          Sign off on this rating
+        </Button>
+        {onCancel && (
+          <Button size="sm" variant="ghost" onClick={onCancel}>
+            Cancel
+          </Button>
+        )}
+      </div>
     </div>
   );
 }
@@ -455,6 +495,7 @@ export default function FoodDataDetailPage({ params }: { params: Promise<{ foodI
   const [sources, setSources] = useState<Source[]>([]);
   const [loading, setLoading] = useState(true);
   const [adding, setAdding] = useState(false);
+  const [editing, setEditing] = useState<string | null>(null);
 
   const fetchDetail = useCallback(async (): Promise<Detail> => {
     const res = await fetch(`/api/admin/food-data/${foodId}`);
@@ -537,13 +578,32 @@ export default function FoodDataDetailPage({ params }: { params: Promise<{ foodI
             <Summary data={data} food={food} />
             {data.review && !data.result.needsReview && (
               <p className="text-sm text-warm-600">
-                Signed off by {data.review.reviewedBy} on {new Date(data.review.reviewedAt).toLocaleDateString()}
+                {data.review.overrideLevel
+                  ? `* Set by hand to ${LEVEL_LABELS[data.review.overrideLevel as keyof typeof LEVEL_LABELS] ?? data.review.overrideLevel}`
+                  : "Signed off"}{" "}
+                by {data.review.reviewedBy} on {new Date(data.review.reviewedAt).toLocaleDateString()}
                 {data.review.note ? `: ${data.review.note}` : ""}
               </p>
             )}
+            {!data.result.needsReview && editing !== data.property && data.result.counted > 0 && (
+              <button
+                type="button"
+                className="min-h-9 text-sm text-teal-700 hover:underline"
+                onClick={() => setEditing(data.property)}
+              >
+                Change rating
+              </button>
+            )}
           </div>
 
-          {data.result.needsReview && <SignOff foodId={food.id} data={data} onChange={reload} />}
+          {(data.result.needsReview || editing === data.property) && (
+            <SignOff
+              foodId={food.id}
+              data={data}
+              onChange={reload}
+              onCancel={data.result.needsReview ? undefined : () => setEditing(null)}
+            />
+          )}
 
           <ul className="divide-y divide-warm-100">
             {data.measurements.map((m) => (
