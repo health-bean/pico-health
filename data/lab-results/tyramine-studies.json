@@ -1,0 +1,3919 @@
+{
+ "property": "tyramine",
+ "source": {
+  "name": "PubMed",
+  "url": "https://pubmed.ncbi.nlm.nih.gov"
+ },
+ "note": "Tyramine values (mg/kg or mg/L fresh weight as reported, stored as mg/100 g = mg/kg ÷ 10; mgPerKg holds the reported value in mg/kg) read this session from the full text of open-access papers (Europe PMC full-text XML tables, one supplementary PDF) and the EFSA 2011 opinion (PDF). Sources: re-read of the histamine sources' tyramine columns (Sánchez-Pérez 2018 Tables 1–3 own Spanish-market data, plus lab values that paper quotes from Moret 2005, Preti 2017, Toro-Funes 2015 and a Dionex note, cited to the original; Sánchez-Pérez 2021 Table 1; Hernández-Macias 2021; EFSA 2011 Table 11; Choińska 2025; Shi & Moon 2023 (median only); Li 2019; Kočar 2021; Rampazzo 2025; Zhu 2023; Min 2023 day 0; Wójcik 2024 day 1 control; Klupsaite 2022) and new retail surveys of cheeses (Pawul-Gruba 2022 and 2025, per-sample supplementary data; Cabrales contest cheeses), salami (Brazil ×2), fish sauce, canned fish, dark chocolate, radish kimchi, craft beer, and day-0 fresh meats (Triki 2018). Not detected / below LOQ = 0 (limit in sampleDescription). mg/L for liquids treated as mg/kg (no density correction). Individual products are separate rows; group means as reported, never averaged by us. Excluded (comparison only): means of positive samples only (Cao 2025), single Saudi retail samples whose table means don't recompute (Aladhadh 2024), dried/salted cod as purchased (Nava 2026).",
+ "foods": [
+  {
+   "food": "Asparagus",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.069,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Asparagus, n=5, Spanish market (authors' own database) — mean 0.69 mg/kg, range nd–2.1 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.69
+    }
+   ]
+  },
+  {
+   "food": "Green Beans",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.246,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Beans (green), n=12, Spanish market (authors' own database) — mean 2.46 mg/kg, range nd–9.86 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2.46
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table",
+     "sampleDescription": "Green bean (green variety), n not given — tyramine not detected — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Preti R, Rapa M, Vinci G. Effect of Steaming and boiling on the antioxidant properties and biogenic amines content in Green Bean (Phaeseolus vulgaris) varieties of different colours. J Food Qual. 2017. doi:10.1155/2017/5329070.",
+     "citationUrl": "https://doi.org/10.1155/2017/5329070",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Cauliflower",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.105,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Cauliflower, n=3, Spanish market (authors' own database) — mean 1.05 mg/kg, range nd–1.71 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.05
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Cauliflower, vegetable survey (Moret 2005), n not given — tyramine <0.5 mg/kg (reported as <0.5 mg/kg; stored as 0) — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Carrot",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Carrot, n=13, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.1,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Carrot, vegetable survey (Moret 2005), n not given — tyramine 1 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1
+    }
+   ]
+  },
+  {
+   "food": "Swiss Chard",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.19,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Chard, n=8, Spanish market (authors' own database) — mean 1.9 mg/kg, range 0.74–3.48 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.9
+    }
+   ]
+  },
+  {
+   "food": "Zucchini",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Courgette, n=41, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.2,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Courgette, vegetable survey (Moret 2005), n not given — tyramine 2 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2
+    }
+   ]
+  },
+  {
+   "food": "Cucumber",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.061,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Cucumber, n=10, Spanish market (authors' own database) — mean 0.61 mg/kg, range nd–2.33 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.61
+    },
+    {
+     "valuePer100g": 0.1,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Cucumber, vegetable survey (Moret 2005), n not given — tyramine 1 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1
+    }
+   ]
+  },
+  {
+   "food": "Eggplant",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.06,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Eggplant, n=23, Spanish market (authors' own database) — mean 0.6 mg/kg, range nd–2.27 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.6
+    }
+   ]
+  },
+  {
+   "food": "Lettuce",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Lettuce, n=4, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Mushrooms",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Mushroom, n=11, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Onion",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Onion, n=4, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.3,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Onion, vegetable survey (Moret 2005), n not given — tyramine 3 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 3
+    }
+   ]
+  },
+  {
+   "food": "Bell Pepper",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Pepper (green), n=9, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Pepper (red), n=8, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Potato",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.058,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Potato, n=10, Spanish market (authors' own database) — mean 0.58 mg/kg, range nd–2.2 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.58
+    },
+    {
+     "valuePer100g": 0.5,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Potato, vegetable survey (Moret 2005), n not given — tyramine 5 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 5
+    }
+   ]
+  },
+  {
+   "food": "Pumpkin",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Pumpkin, n=12, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Spinach",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.205,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Spinach, n=18, Spanish market (authors' own database) — mean 2.05 mg/kg, range 0.785–4.28 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2.05
+    },
+    {
+     "valuePer100g": 0.6,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Spinach, vegetable survey (Moret 2005), n not given — tyramine 6 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated",
+     "sampleDescription": "Spinach, single analysis in a vendor (Dionex/Thermo) ion-chromatography application note — tyramine not detected — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Dionex (Thermo Fisher). Determination of biogenic amines in fruit, vegetables, and chocolate using ion chromatography with suppressed conductivity and integrated pulsed amperometric detections. Application Update 162. 2016.",
+     "citationUrl": null,
+     "studyYear": 2016,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Corn (Sweet)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Sweet corn, n=5, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Tomato",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.049,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Tomato, n=53, Spanish market (authors' own database) — mean 0.49 mg/kg, range nd–6.38 mg/kg — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.49
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Tomato, vegetable survey (Moret 2005), n not given — tyramine <0.5 mg/kg (reported as <0.5 mg/kg; stored as 0) — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Ketchup",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Tomato (ketchup), n=3, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "White Beans",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Beans (white), n=6, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.2,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Beans (white), vegetable survey (Moret 2005), n not given — tyramine 2 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2
+    }
+   ]
+  },
+  {
+   "food": "Chickpeas",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Chickpeas, n=4, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Chickpeas, vegetable survey (Moret 2005), n not given — tyramine <0.5 mg/kg (reported as <0.5 mg/kg; stored as 0) — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Peanuts",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Peanuts, n=7, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Green Peas",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Peas, n=9, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Tofu",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Tofu, n=6, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 1",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Avocado",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.181,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Avocado, n=5, Spanish market (authors' own database) — mean 1.81 mg/kg, range 0.58–5.44 mg/kg — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.81
+    }
+   ]
+  },
+  {
+   "food": "Banana",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.053,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Banana, n=8, Spanish market (authors' own database) — mean 0.53 mg/kg, range nd–1.85 mg/kg — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.53
+    }
+   ]
+  },
+  {
+   "food": "Cherries",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Cherry, n=5, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Grapefruit",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Grapefruit, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Kiwi",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Kiwi, n=13, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated",
+     "sampleDescription": "Kiwi, single analysis in a vendor (Dionex/Thermo) ion-chromatography application note — tyramine not detected — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Dionex (Thermo Fisher). Determination of biogenic amines in fruit, vegetables, and chocolate using ion chromatography with suppressed conductivity and integrated pulsed amperometric detections. Application Update 162. 2016.",
+     "citationUrl": null,
+     "studyYear": 2016,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Lemon",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Lemon, n=3, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Mandarin",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.094,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Mandarin, n=21, Spanish market (authors' own database) — mean 0.94 mg/kg, range nd–5.76 mg/kg — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.94
+    }
+   ]
+  },
+  {
+   "food": "Orange",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Orange, n=12, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Peach",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Peach, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Pineapple",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Pineapple, n=6, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Plum",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.402,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Plum, n=2, Spanish market (authors' own database) — mean 4.02 mg/kg, range 0.96–7.07 mg/kg — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 4.02
+    }
+   ]
+  },
+  {
+   "food": "Strawberries",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Strawberry, n=9, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Almonds",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Almonds, n=7, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Chestnuts",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Chestnuts, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Hazelnuts",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.049,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Hazelnuts, n=9, Spanish market (authors' own database) — mean 0.49 mg/kg, range nd–2.63 mg/kg — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.49
+    }
+   ]
+  },
+  {
+   "food": "Pistachios",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Pistachios, n=7, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Sunflower Seeds",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Sunflower seeds, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 2",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Barley",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Barley, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 3",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Bread (Wheat)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Bread, white, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 3",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Bread, wholemeal, n=6, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 3",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Oats",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Oats, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 3",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Pasta",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Pasta (wheat), n=7, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 3",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "White Rice",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Rice (type not stated), n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 3",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Wheat Germ",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (preparation not stated)",
+     "sampleDescription": "Wheat germ, n=2, Spanish market (authors' own database) — tyramine not detected (paper doesn't state its detection limit) — Sánchez-Pérez 2018 Table 3",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Rabell-González J, et al. Biogenic Amines in Plant-Origin Foods: Are They Frequently Underestimated in Low-Histamine Diets?. Foods. 2018;7(12):205.",
+     "citationUrl": "https://doi.org/10.3390/foods7120205",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Cabbage",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Cabbage, vegetable survey (Moret 2005), n not given — tyramine <0.5 mg/kg (reported as <0.5 mg/kg; stored as 0) — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Kidney Beans",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.3,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "not stated in the quoting table (the survey covered fresh and preserved vegetables)",
+     "sampleDescription": "Beans (red kidney), vegetable survey (Moret 2005), n not given — tyramine 3 mg/kg — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1",
+     "citation": "Moret S, Smela D, Populin T, et al. A survey on free biogenic amine content of fresh and preserved vegetables. Food Chem. 2005;89:355-361.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2004.02.050",
+     "studyYear": 2005,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 3
+    }
+   ]
+  },
+  {
+   "food": "Soy Milk",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Soybean milk, Spanish market, n=3 — tyramine not detected — value quoted in Sánchez-Pérez 2018 Foods 7:205, Table 1 (the original's abstract also states tyramine was not detected in non-fermented soybean products)",
+     "citation": "Toro-Funes N, Bosch-Fuste J, Latorre-Moratalla ML, et al. Biologically active amines in fermented and non-fermented commercial soybean products from the Spanish market. Food Chem. 2015;173:1119-1124.",
+     "citationUrl": "https://doi.org/10.1016/j.foodchem.2014.10.118",
+     "studyYear": 2015,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Sauerkraut",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 4.347,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (fermented)",
+     "sampleDescription": "Sauerkraut, n=5 — mean 43.47 mg/kg (SD 28.05; P95 61.32; range 23.63–63.3) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 43.47
+    },
+    {
+     "valuePer100g": 2.629,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK1, commercial product from local producers/shops, Poland (homogenised) — 26.29 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 26.29
+    },
+    {
+     "valuePer100g": 4.036,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK2, commercial product from local producers/shops, Poland (homogenised) — 40.36 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 40.36
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK3, commercial product from local producers/shops, Poland (homogenised) — < 0.07 (below LOQ 0.07; LOD 0.02 mg/L) → stored as 0 (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 1.665,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK4, commercial product from local producers/shops, Poland (homogenised) — 16.65 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 16.65
+    },
+    {
+     "valuePer100g": 3.542,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK5, commercial product from local producers/shops, Poland (homogenised) — 35.42 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 35.42
+    },
+    {
+     "valuePer100g": 2.986,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK6, commercial product from local producers/shops, Poland (homogenised) — 29.86 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 29.86
+    },
+    {
+     "valuePer100g": 0.687,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK7, commercial product from local producers/shops, Poland (homogenised) — 6.87 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6.87
+    },
+    {
+     "valuePer100g": 8.442,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK8, commercial product from local producers/shops, Poland (homogenised) — 84.42 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 84.42
+    },
+    {
+     "valuePer100g": 5.943,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK9, commercial product from local producers/shops, Poland (homogenised) — 59.43 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 59.43
+    },
+    {
+     "valuePer100g": 8.184,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK10, commercial product from local producers/shops, Poland (homogenised) — 81.84 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 81.84
+    },
+    {
+     "valuePer100g": 3.392,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK11, commercial product from local producers/shops, Poland (homogenised) — 33.92 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 33.92
+    },
+    {
+     "valuePer100g": 1.511,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK12, commercial product from local producers/shops, Poland (homogenised) — 15.11 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 15.11
+    },
+    {
+     "valuePer100g": 3.147,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK13, commercial product from local producers/shops, Poland (homogenised) — 31.47 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 31.47
+    },
+    {
+     "valuePer100g": 6.077,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ready to eat)",
+     "sampleDescription": "Sauerkraut sample FK14, commercial product from local producers/shops, Poland (homogenised) — 60.77 mg/kg (table header says mg·L−1; text reports the same values as mg·kg−1) — Table 1",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 60.77
+    }
+   ]
+  },
+  {
+   "food": "Eggs",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (raw)",
+     "sampleDescription": "Eggs, n=14 — tyramine ND (detection limit not stated) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Yogurt",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Yogurt (type not stated), n=5 — tyramine ND (detection limit not stated) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.19,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Yoghurt, n=7, 29% not detected — mean 1.9 mg/kg, median 1 — EFSA 2011 Table 11 (EU occurrence data submitted by Member States)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.9
+    }
+   ]
+  },
+  {
+   "food": "Whole Milk",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Milk (type/fat level not stated), n=5 — tyramine ND (detection limit not stated) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Olives",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.195,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (table olives)",
+     "sampleDescription": "Olives, n=5 — mean 1.95 mg/kg (SD 1.85; P95 3.7; range 0.28–3.94) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.95
+    }
+   ]
+  },
+  {
+   "food": "Dark Chocolate / Cocoa",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.37,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Chocolate (type/cocoa % not stated), n=15 — mean 3.70 mg/kg (SD 1.24; P95 5.69; range 2.27–5.81) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 3.7
+    },
+    {
+     "valuePer100g": 0.65,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark chocolate)",
+     "sampleDescription": "Commercial dark chocolate, declared cocoa variety Criollo, n=5 — mean 6.5 mg/kg (range 0.8–12.7) — Table 2 (43 bars with no declared variety not reported separately)",
+     "citation": "Morales LV, Sentellas S, Saurina J. Signal-Corrected LC-MS/MS Approaches in Amino Acid and Biogenic Amine Profiling for Chemometric Characterization of Commercial Dark Chocolates According to Cocoa Content and Manufacturer. Molecules. 2026;31(15):2597.",
+     "citationUrl": "https://doi.org/10.3390/molecules31152597",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6.5
+    },
+    {
+     "valuePer100g": 0.35,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark chocolate)",
+     "sampleDescription": "Commercial dark chocolate, declared cocoa variety Forastero, n=3 — mean 3.5 mg/kg (range 0.4–5.3) — Table 2 (43 bars with no declared variety not reported separately)",
+     "citation": "Morales LV, Sentellas S, Saurina J. Signal-Corrected LC-MS/MS Approaches in Amino Acid and Biogenic Amine Profiling for Chemometric Characterization of Commercial Dark Chocolates According to Cocoa Content and Manufacturer. Molecules. 2026;31(15):2597.",
+     "citationUrl": "https://doi.org/10.3390/molecules31152597",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 3.5
+    },
+    {
+     "valuePer100g": 0.47,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark chocolate)",
+     "sampleDescription": "Commercial dark chocolate, declared cocoa variety Trinitario, n=13 — mean 4.7 mg/kg (range 0.1–11.8) — Table 2 (43 bars with no declared variety not reported separately)",
+     "citation": "Morales LV, Sentellas S, Saurina J. Signal-Corrected LC-MS/MS Approaches in Amino Acid and Biogenic Amine Profiling for Chemometric Characterization of Commercial Dark Chocolates According to Cocoa Content and Manufacturer. Molecules. 2026;31(15):2597.",
+     "citationUrl": "https://doi.org/10.3390/molecules31152597",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 4.7
+    },
+    {
+     "valuePer100g": 0.44,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark chocolate)",
+     "sampleDescription": "Commercial dark chocolate, declared cocoa variety Nacional, n=18 — mean 4.4 mg/kg (range 0.5–19.8) — Table 2 (43 bars with no declared variety not reported separately)",
+     "citation": "Morales LV, Sentellas S, Saurina J. Signal-Corrected LC-MS/MS Approaches in Amino Acid and Biogenic Amine Profiling for Chemometric Characterization of Commercial Dark Chocolates According to Cocoa Content and Manufacturer. Molecules. 2026;31(15):2597.",
+     "citationUrl": "https://doi.org/10.3390/molecules31152597",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 4.4
+    },
+    {
+     "valuePer100g": 0.6,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark chocolate)",
+     "sampleDescription": "Commercial dark chocolate, declared cocoa variety Blend, n=9 — mean 6 mg/kg (range 0.2–27.7) — Table 2 (43 bars with no declared variety not reported separately)",
+     "citation": "Morales LV, Sentellas S, Saurina J. Signal-Corrected LC-MS/MS Approaches in Amino Acid and Biogenic Amine Profiling for Chemometric Characterization of Commercial Dark Chocolates According to Cocoa Content and Manufacturer. Molecules. 2026;31(15):2597.",
+     "citationUrl": "https://doi.org/10.3390/molecules31152597",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6
+    }
+   ]
+  },
+  {
+   "food": "Apricot",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Apricot, n=4 — tyramine ND (detection limit not stated) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Grapes",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Grapes, n=10 — tyramine ND (detection limit not stated) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Papaya",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Papaya, n=6 — tyramine ND (detection limit not stated) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Beer",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.631,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Beer, n=176 — mean 6.31 mg/L (SD 8.04; P95 25.44; range 0.55–46.80); mg/L treated as mg/kg — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6.31
+    },
+    {
+     "valuePer100g": 0.61,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Beer, n=188, 0% not detected — mean 6.1 mg/kg (mg/L), median 3.2, P95 24.7 — EFSA 2011 Table 11 (EU occurrence data submitted by Member States)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6.1
+    },
+    {
+     "valuePer100g": 0.31,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Beer, Chinese market, 44.1% of samples with tyramine detected — mean 3.1 mg/kg reported as the mean of DETECTED samples ('mean and P95 values of the detected BAs') — Table 4",
+     "citation": "Cao P, Gao M, Huang D, et al. Analysis of Five Biogenic Amines in Foods on the Chinese Market and Estimation of Acute Histamine Exposure from Fermented Foods in the Chinese Population. Foods. 2025;14(14):2550.",
+     "citationUrl": "https://doi.org/10.3390/foods14142550",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only.",
+     "mgPerKg": 3.1
+    },
+    {
+     "valuePer100g": 0.16,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (craft beer)",
+     "sampleDescription": "Craft beer 'Dark ale' — 1.6 mg/L (average of n=9 determinations); mg/L treated as mg/kg — Table 4",
+     "citation": "Gil RL, Amorim CMPG, Amorim HG, et al. Influence of Brewing Process on the Profile of Biogenic Amines in Craft Beers. Sensors (Basel). 2022;23(1):343.",
+     "citationUrl": "https://doi.org/10.3390/s23010343",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.6
+    },
+    {
+     "valuePer100g": 0.222,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (craft beer)",
+     "sampleDescription": "Craft beer 'Wheat pale ale' — 2.22 mg/L (average of n=9 determinations); mg/L treated as mg/kg — Table 4",
+     "citation": "Gil RL, Amorim CMPG, Amorim HG, et al. Influence of Brewing Process on the Profile of Biogenic Amines in Craft Beers. Sensors (Basel). 2022;23(1):343.",
+     "citationUrl": "https://doi.org/10.3390/s23010343",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2.22
+    },
+    {
+     "valuePer100g": 0.29,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (craft beer)",
+     "sampleDescription": "Craft beer 'Pale ale 1' — 2.9 mg/L (average of n=9 determinations); mg/L treated as mg/kg — Table 4",
+     "citation": "Gil RL, Amorim CMPG, Amorim HG, et al. Influence of Brewing Process on the Profile of Biogenic Amines in Craft Beers. Sensors (Basel). 2022;23(1):343.",
+     "citationUrl": "https://doi.org/10.3390/s23010343",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2.9
+    },
+    {
+     "valuePer100g": 0.185,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (craft beer)",
+     "sampleDescription": "Craft beer 'Pale ale 2' — 1.85 mg/L (average of n=9 determinations); mg/L treated as mg/kg — Table 4",
+     "citation": "Gil RL, Amorim CMPG, Amorim HG, et al. Influence of Brewing Process on the Profile of Biogenic Amines in Craft Beers. Sensors (Basel). 2022;23(1):343.",
+     "citationUrl": "https://doi.org/10.3390/s23010343",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.85
+    },
+    {
+     "valuePer100g": 0.198,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (craft beer)",
+     "sampleDescription": "Craft beer 'Red lager' — 1.98 mg/L (average of n=9 determinations); mg/L treated as mg/kg — Table 4",
+     "citation": "Gil RL, Amorim CMPG, Amorim HG, et al. Influence of Brewing Process on the Profile of Biogenic Amines in Craft Beers. Sensors (Basel). 2022;23(1):343.",
+     "citationUrl": "https://doi.org/10.3390/s23010343",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.98
+    }
+   ]
+  },
+  {
+   "food": "Salami",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 14.09,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Dry-fermented sausages (category; types not itemized), n=424 — mean 140.9 mg/kg (SD 119.59; P95 378.51; range ND–742.60) — Nutrients 2021 Table 1 (authors' own 'self-produced and updated database', Spanish market)",
+     "citation": "Sánchez-Pérez S, Comas-Basté O, Veciana-Nogués MT, et al. Low-Histamine Diets: Is the Exclusion of Foods Justified by Their Histamine Content?. Nutrients. 2021;13(5):1395.",
+     "citationUrl": "https://doi.org/10.3390/nu13051395",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 140.9
+    },
+    {
+     "valuePer100g": 33.917,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, ripened, as sold",
+     "sampleDescription": "Italian-type salami, brand A, markets in Niterói (RJ), Brazil, whole vacuum-packed salami, mean of replicate analyses — 339.17 mg/kg — Table 2",
+     "citation": "Dos Santos LF, Mársico ET, Lázaro CA, et al. Evaluation of Biogenic Amines Levels, and Biochemical and Microbiological Characterization of Italian-type Salami Sold in Rio de Janeiro, Brazil. Ital J Food Saf. 2015;4(3):4048.",
+     "citationUrl": "https://doi.org/10.4081/ijfs.2015.4048",
+     "studyYear": 2015,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 339.17
+    },
+    {
+     "valuePer100g": 23.71,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, ripened, as sold",
+     "sampleDescription": "Italian-type salami, brand B, markets in Niterói (RJ), Brazil, whole vacuum-packed salami, mean of replicate analyses — 237.1 mg/kg — Table 2",
+     "citation": "Dos Santos LF, Mársico ET, Lázaro CA, et al. Evaluation of Biogenic Amines Levels, and Biochemical and Microbiological Characterization of Italian-type Salami Sold in Rio de Janeiro, Brazil. Ital J Food Saf. 2015;4(3):4048.",
+     "citationUrl": "https://doi.org/10.4081/ijfs.2015.4048",
+     "studyYear": 2015,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 237.1
+    },
+    {
+     "valuePer100g": 9.426,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, ripened, as sold",
+     "sampleDescription": "Italian-type salami, brand C, markets in Niterói (RJ), Brazil, whole vacuum-packed salami, mean of replicate analyses — 94.26 mg/kg — Table 2",
+     "citation": "Dos Santos LF, Mársico ET, Lázaro CA, et al. Evaluation of Biogenic Amines Levels, and Biochemical and Microbiological Characterization of Italian-type Salami Sold in Rio de Janeiro, Brazil. Ital J Food Saf. 2015;4(3):4048.",
+     "citationUrl": "https://doi.org/10.4081/ijfs.2015.4048",
+     "studyYear": 2015,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 94.26
+    },
+    {
+     "valuePer100g": 19.007,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, ripened, as sold",
+     "sampleDescription": "Italian-type salami, brand D, markets in Niterói (RJ), Brazil, whole vacuum-packed salami, mean of replicate analyses — 190.07 mg/kg — Table 2",
+     "citation": "Dos Santos LF, Mársico ET, Lázaro CA, et al. Evaluation of Biogenic Amines Levels, and Biochemical and Microbiological Characterization of Italian-type Salami Sold in Rio de Janeiro, Brazil. Ital J Food Saf. 2015;4(3):4048.",
+     "citationUrl": "https://doi.org/10.4081/ijfs.2015.4048",
+     "studyYear": 2015,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 190.07
+    },
+    {
+     "valuePer100g": 16.327,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, ripened, as sold",
+     "sampleDescription": "Italian-type salami, brand E, markets in Niterói (RJ), Brazil, whole vacuum-packed salami, mean of replicate analyses — 163.27 mg/kg — Table 2",
+     "citation": "Dos Santos LF, Mársico ET, Lázaro CA, et al. Evaluation of Biogenic Amines Levels, and Biochemical and Microbiological Characterization of Italian-type Salami Sold in Rio de Janeiro, Brazil. Ital J Food Saf. 2015;4(3):4048.",
+     "citationUrl": "https://doi.org/10.4081/ijfs.2015.4048",
+     "studyYear": 2015,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 163.27
+    },
+    {
+     "valuePer100g": 16.068,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, ripened, as sold",
+     "sampleDescription": "Italian-type salami, brand F, markets in Niterói (RJ), Brazil, whole vacuum-packed salami, mean of replicate analyses — 160.68 mg/kg — Table 2",
+     "citation": "Dos Santos LF, Mársico ET, Lázaro CA, et al. Evaluation of Biogenic Amines Levels, and Biochemical and Microbiological Characterization of Italian-type Salami Sold in Rio de Janeiro, Brazil. Ital J Food Saf. 2015;4(3):4048.",
+     "citationUrl": "https://doi.org/10.4081/ijfs.2015.4048",
+     "studyYear": 2015,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 160.68
+    },
+    {
+     "valuePer100g": 22.99,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Italiano', lot A, single sample, Belo Horizonte (MG) retail — 229.9 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 229.9
+    },
+    {
+     "valuePer100g": 22.56,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Italiano', lot B, single sample, Belo Horizonte (MG) retail — 225.6 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 225.6
+    },
+    {
+     "valuePer100g": 55.256,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Gourmet Italiano', lot A, single sample, Belo Horizonte (MG) retail — 552.56 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 552.56
+    },
+    {
+     "valuePer100g": 115.426,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Gourmet Italiano', lot B, single sample, Belo Horizonte (MG) retail — 1154.26 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1154.26
+    },
+    {
+     "valuePer100g": 27.377,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Milano', lot A, single sample, Belo Horizonte (MG) retail — 273.77 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 273.77
+    },
+    {
+     "valuePer100g": 8.909,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Milano', lot B, single sample, Belo Horizonte (MG) retail — 89.09 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 89.09
+    },
+    {
+     "valuePer100g": 15.905,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Salaminho', lot A, single sample, Belo Horizonte (MG) retail — 159.05 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 159.05
+    },
+    {
+     "valuePer100g": 32.583,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Salaminho', lot B, single sample, Belo Horizonte (MG) retail — 325.83 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 325.83
+    },
+    {
+     "valuePer100g": 13.006,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Hamburguês', lot A, single sample, Belo Horizonte (MG) retail — 130.06 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 130.06
+    },
+    {
+     "valuePer100g": 15.5,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Hamburguês', lot B, single sample, Belo Horizonte (MG) retail — 155.0 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 155.0
+    },
+    {
+     "valuePer100g": 54.149,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Mini Hamburguês', lot A, single sample, Belo Horizonte (MG) retail — 541.49 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 541.49
+    },
+    {
+     "valuePer100g": 32.453,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "dry-fermented, as sold",
+     "sampleDescription": "Brazilian dry-fermented salami type 'Mini Hamburguês', lot B, single sample, Belo Horizonte (MG) retail — 324.53 mg/kg — Table 1 (market screening; 'Gourmet Serrano' type not mapped)",
+     "citation": "Braga DE, Dala-Paula BM, Gonçalves JE, et al. Matrix-dependent bioaccessibility of bioactive amines in Milano dry-fermented sausages after in vitro digestion. Curr Res Food Sci. 2026;13:101537.",
+     "citationUrl": "https://doi.org/10.1016/j.crfs.2026.101537",
+     "studyYear": 2026,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 324.53
+    }
+   ]
+  },
+  {
+   "food": "Sourdough Bread",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "baked (lab-made: wheat flour + sourdough + baker's yeast)",
+     "sampleDescription": "Control bread made with sourdough (no cava lees), lab batch — tyramine nd (<0.05 mg/kg); the sourdough itself was also nd — Table 2",
+     "citation": "Hernández-Macias S, Martín-Garcia A, Ferrer-Bustins N, et al. Inhibition of Biogenic Amines Formation in Fermented Foods by the Addition of Cava Lees. Front Microbiol. 2021;12:818565.",
+     "citationUrl": "https://doi.org/10.3389/fmicb.2021.818565",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Red Wine",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.27,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Wine, red, n=296, 12% not detected — mean 2.7 mg/kg (lower bound, nd=0; upper bound 2.9), median 1.6–1.8 — EFSA 2011 Table 11 (EU occurrence data submitted by Member States)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2.7
+    },
+    {
+     "valuePer100g": 0.454,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Red wine, Chinese markets (domestic and imported), n=213, 0% nd — mean 4.54 mg/L (median 3.83, P95 11.38, max 14.67) — Table 4",
+     "citation": "Zhu Z, Song X, Jiang Y, et al. Determination of Biogenic Amines in Wine from Chinese Markets Using Ion Chromatography-Tandem Mass Spectrometry. Foods. 2023;12(11):2262.",
+     "citationUrl": "https://doi.org/10.3390/foods12112262",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 4.54
+    }
+   ]
+  },
+  {
+   "food": "White Wine",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.11,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Wine, white (still), n=224, 17% not detected — mean 1.1 mg/kg (lower bound; upper bound 1.2), median 0.8 — EFSA 2011 Table 11 (EU occurrence data submitted by Member States)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 1.1
+    },
+    {
+     "valuePer100g": 0.208,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "White wine, Chinese markets, n=23, 0% nd — mean 2.08 mg/L (median 0.26, P95 8.25, max 12.64) — Table 4",
+     "citation": "Zhu Z, Song X, Jiang Y, et al. Determination of Biogenic Amines in Wine from Chinese Markets Using Ion Chromatography-Tandem Mass Spectrometry. Foods. 2023;12(11):2262.",
+     "citationUrl": "https://doi.org/10.3390/foods12112262",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2.08
+    }
+   ]
+  },
+  {
+   "food": "Fish Sauce",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 10.5,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Fish sauce, n=71, 15% not detected — mean 105 mg/kg (lower bound; upper bound 107), median 69.3 — EFSA 2011 Table 11 (EU occurrence data submitted by Member States)",
+     "citation": "EFSA Panel on Biological Hazards (BIOHAZ). Scientific Opinion on risk based control of biogenic amine formation in fermented foods. EFSA J. 2011;9(10):2393.",
+     "citationUrl": "https://doi.org/10.2903/j.efsa.2011.2393",
+     "studyYear": 2011,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 105
+    },
+    {
+     "valuePer100g": 4.44,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Fish sauce, Chinese market, 39.5% of samples with tyramine detected — mean 44.4 mg/kg reported as the mean of DETECTED samples ('mean and P95 values of the detected BAs') — Table 4",
+     "citation": "Cao P, Gao M, Huang D, et al. Analysis of Five Biogenic Amines in Foods on the Chinese Market and Estimation of Acute Histamine Exposure from Fermented Foods in the Chinese Population. Foods. 2025;14(14):2550.",
+     "citationUrl": "https://doi.org/10.3390/foods14142550",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only.",
+     "mgPerKg": 44.4
+    },
+    {
+     "valuePer100g": 3.257,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Commercial fish sauces made in Thailand (Taiwan-based study; products with Taiwanese expiry labelling), n=16 products (each in triplicate) — mean 32.57 ppm (range 6.21–86.32); ppm (mg/L) treated as mg/kg — Table 4",
+     "citation": "Huang YR, Wu PC, Lo CJ, et al. Comparative Analysis of Chemical Composition and Food Safety of Commercial Fish Sauces from Four Asian Countries. Foods. 2025;14(17):3134.",
+     "citationUrl": "https://doi.org/10.3390/foods14173134",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 32.57
+    },
+    {
+     "valuePer100g": 3.525,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Commercial fish sauces made in South Korea (Taiwan-based study; products with Taiwanese expiry labelling), n=5 products (each in triplicate) — mean 35.25 ppm (range 14.02–55.00); ppm (mg/L) treated as mg/kg — Table 4",
+     "citation": "Huang YR, Wu PC, Lo CJ, et al. Comparative Analysis of Chemical Composition and Food Safety of Commercial Fish Sauces from Four Asian Countries. Foods. 2025;14(17):3134.",
+     "citationUrl": "https://doi.org/10.3390/foods14173134",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 35.25
+    },
+    {
+     "valuePer100g": 4.126,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Commercial fish sauces made in Taiwan (Taiwan-based study; products with Taiwanese expiry labelling), n=7 products (each in triplicate) — mean 41.26 ppm (range 6.53–116.96); ppm (mg/L) treated as mg/kg — Table 4",
+     "citation": "Huang YR, Wu PC, Lo CJ, et al. Comparative Analysis of Chemical Composition and Food Safety of Commercial Fish Sauces from Four Asian Countries. Foods. 2025;14(17):3134.",
+     "citationUrl": "https://doi.org/10.3390/foods14173134",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 41.26
+    },
+    {
+     "valuePer100g": 1.568,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Commercial fish sauces made in Vietnam (Taiwan-based study; products with Taiwanese expiry labelling), n=10 products (each in triplicate) — mean 15.68 ppm (range 2.74–34.86); ppm (mg/L) treated as mg/kg — Table 4",
+     "citation": "Huang YR, Wu PC, Lo CJ, et al. Comparative Analysis of Chemical Composition and Food Safety of Commercial Fish Sauces from Four Asian Countries. Foods. 2025;14(17):3134.",
+     "citationUrl": "https://doi.org/10.3390/foods14173134",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 15.68
+    }
+   ]
+  },
+  {
+   "food": "Pickles",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 2.011,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO1, commercial product from local producers/shops, Poland (homogenised) — 20.11 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 20.11
+    },
+    {
+     "valuePer100g": 5.639,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO2, commercial product from local producers/shops, Poland (homogenised) — 56.39 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 56.39
+    },
+    {
+     "valuePer100g": 4.039,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO3, commercial product from local producers/shops, Poland (homogenised) — 40.39 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 40.39
+    },
+    {
+     "valuePer100g": 4.381,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO4, commercial product from local producers/shops, Poland (homogenised) — 43.81 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 43.81
+    },
+    {
+     "valuePer100g": 4.368,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO5, commercial product from local producers/shops, Poland (homogenised) — 43.68 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 43.68
+    },
+    {
+     "valuePer100g": 0.79,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO6, commercial product from local producers/shops, Poland (homogenised) — 7.9 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 7.9
+    },
+    {
+     "valuePer100g": 3.832,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO7, commercial product from local producers/shops, Poland (homogenised) — 38.32 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 38.32
+    },
+    {
+     "valuePer100g": 2.145,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO8, commercial product from local producers/shops, Poland (homogenised) — 21.45 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 21.45
+    },
+    {
+     "valuePer100g": 5.475,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO9, commercial product from local producers/shops, Poland (homogenised) — 54.75 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 54.75
+    },
+    {
+     "valuePer100g": 4.621,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "lacto-fermented in brine, ready to eat",
+     "sampleDescription": "Fermented (brine) cucumbers sample FO10, commercial product from local producers/shops, Poland (homogenised) — 46.21 mg/kg (table header says mg·L−1; text reports values as mg·kg−1) — Table 2",
+     "citation": "Choińska R, Piasecka-Jóźwiak K, Świder O, et al. Microbiota and Quality Indexes of Commercial Sauerkraut and Fermented Cucumbers. Environ Microbiol Rep. 2025;17(6):e70250.",
+     "citationUrl": "https://doi.org/10.1111/1758-2229.70250",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 46.21
+    }
+   ]
+  },
+  {
+   "food": "Soy Sauce",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 2.005,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Korean soy sauce (ganjang), 10 commercial samples — MEDIAN 20.05 mg/kg wet weight (min below LOQ, max 114.41; no mean reported) — Table 1",
+     "citation": "Shi B, Moon B. Monitoring and risk assessment of biogenic amines in Korean commercial fermented seasonings. Heliyon. 2023;9(8):e18906.",
+     "citationUrl": "https://doi.org/10.1016/j.heliyon.2023.e18906",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 20.05
+    },
+    {
+     "valuePer100g": 1.409,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s1 (dark, region code GDax), Hangzhou supermarkets — tyramine 14.09 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 14.09
+    },
+    {
+     "valuePer100g": 0.903,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s2 (light, region code GDy), Hangzhou supermarkets — tyramine 9.03 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 9.03
+    },
+    {
+     "valuePer100g": 3.135,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s3 (light, region code GDy), Hangzhou supermarkets — tyramine 31.35 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 31.35
+    },
+    {
+     "valuePer100g": 3.111,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s4 (dark, region code HNbx), Hangzhou supermarkets — tyramine 31.11 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 31.11
+    },
+    {
+     "valuePer100g": 3.422,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s5 (dark, region code HNx), Hangzhou supermarkets — tyramine 34.22 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 34.22
+    },
+    {
+     "valuePer100g": 1.409,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s6 (light, region code HNy), Hangzhou supermarkets — tyramine 14.09 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 14.09
+    },
+    {
+     "valuePer100g": 1.244,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s7 (light, region code HNy), Hangzhou supermarkets — tyramine 12.44 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 12.44
+    },
+    {
+     "valuePer100g": 1.086,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s8 (light, region code GDy), Hangzhou supermarkets — tyramine 10.86 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 10.86
+    },
+    {
+     "valuePer100g": 8.575,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s9 (dark, region code GDx), Hangzhou supermarkets — tyramine 85.75 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 85.75
+    },
+    {
+     "valuePer100g": 0.501,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s10 (light, region code GDy), Hangzhou supermarkets — tyramine 5.01 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 5.01
+    },
+    {
+     "valuePer100g": 0.464,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s11 (light, region code GDy), Hangzhou supermarkets — tyramine 4.64 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 4.64
+    },
+    {
+     "valuePer100g": 0.413,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s12 (light, region code GDy), Hangzhou supermarkets — tyramine 4.13 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 4.13
+    },
+    {
+     "valuePer100g": 1.366,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s13 (light, region code GDy), Hangzhou supermarkets — tyramine 13.66 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 13.66
+    },
+    {
+     "valuePer100g": 15.863,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s14 (light, region code JScy), Hangzhou supermarkets — tyramine 158.63 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 158.63
+    },
+    {
+     "valuePer100g": 25.738,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s15 (light, region code JSy), Hangzhou supermarkets — tyramine 257.38 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 257.38
+    },
+    {
+     "valuePer100g": 5.402,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s16 (light, region code ZJdy), Hangzhou supermarkets — tyramine 54.02 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 54.02
+    },
+    {
+     "valuePer100g": 8.705,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s17 (light, region code ZJy), Hangzhou supermarkets — tyramine 87.05 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 87.05
+    },
+    {
+     "valuePer100g": 10.407,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s18 (light, region code ZJy), Hangzhou supermarkets — tyramine 104.07 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 104.07
+    },
+    {
+     "valuePer100g": 4.41,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s19 (light, region code GDy), Hangzhou supermarkets — tyramine 44.1 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 44.1
+    },
+    {
+     "valuePer100g": 2.907,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s20 (dark, region code GDx), Hangzhou supermarkets — tyramine 29.07 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 29.07
+    },
+    {
+     "valuePer100g": 1.23,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s21 (light, region code GDy), Hangzhou supermarkets — tyramine 12.3 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 12.3
+    },
+    {
+     "valuePer100g": 2.89,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s22 (light, region code GDy), Hangzhou supermarkets — tyramine 28.9 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 28.9
+    },
+    {
+     "valuePer100g": 2.852,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s23 (light, region code GDy), Hangzhou supermarkets — tyramine 28.52 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 28.52
+    },
+    {
+     "valuePer100g": 3.209,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s24 (light, region code GDy), Hangzhou supermarkets — tyramine 32.09 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 32.09
+    },
+    {
+     "valuePer100g": 4.041,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s25 (dark, region code GDx), Hangzhou supermarkets — tyramine 40.41 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 40.41
+    },
+    {
+     "valuePer100g": 7.957,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s26 (dark, region code GDx), Hangzhou supermarkets — tyramine 79.57 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 79.57
+    },
+    {
+     "valuePer100g": 6.878,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s27 (light, region code SDey), Hangzhou supermarkets — tyramine 68.78 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 68.78
+    },
+    {
+     "valuePer100g": 1.399,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s28 (light, region code GDy), Hangzhou supermarkets — tyramine 13.99 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 13.99
+    },
+    {
+     "valuePer100g": 3.861,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s29 (dark, region code GDx), Hangzhou supermarkets — tyramine 38.61 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 38.61
+    },
+    {
+     "valuePer100g": 8.554,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s30 (dark, region code GDx), Hangzhou supermarkets — tyramine 85.54 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 85.54
+    },
+    {
+     "valuePer100g": 7.066,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s31 (light, region code GDy), Hangzhou supermarkets — tyramine 70.66 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 70.66
+    },
+    {
+     "valuePer100g": 6.182,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s32 (dark, region code GDx), Hangzhou supermarkets — tyramine 61.82 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 61.82
+    },
+    {
+     "valuePer100g": 0.953,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s33 (light, region code GDy), Hangzhou supermarkets — tyramine 9.53 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 9.53
+    },
+    {
+     "valuePer100g": 4.341,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s34 (light, region code GDy), Hangzhou supermarkets — tyramine 43.41 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 43.41
+    },
+    {
+     "valuePer100g": 3.154,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s35 (dark, region code GDx), Hangzhou supermarkets — tyramine 31.54 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 31.54
+    },
+    {
+     "valuePer100g": 1.03,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s36 (dark, region code GDx), Hangzhou supermarkets — tyramine 10.3 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 10.3
+    },
+    {
+     "valuePer100g": 7.593,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s37 (light, region code GDy), Hangzhou supermarkets — tyramine 75.93 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 75.93
+    },
+    {
+     "valuePer100g": 14.455,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s38 (light, region code ZJy), Hangzhou supermarkets — tyramine 144.55 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 144.55
+    },
+    {
+     "valuePer100g": 2.624,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s39 (dark, region code ZJx), Hangzhou supermarkets — tyramine 26.24 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 26.24
+    },
+    {
+     "valuePer100g": 1.64,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s40 (dark, region code ZJx), Hangzhou supermarkets — tyramine 16.4 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 16.4
+    },
+    {
+     "valuePer100g": 5.901,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s41 (dark, region code ZJx), Hangzhou supermarkets — tyramine 59.01 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 59.01
+    },
+    {
+     "valuePer100g": 8.92,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s42 (light, region code ZJy), Hangzhou supermarkets — tyramine 89.2 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 89.2
+    },
+    {
+     "valuePer100g": 4.247,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s43 (light, region code ZJy), Hangzhou supermarkets — tyramine 42.47 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 42.47
+    },
+    {
+     "valuePer100g": 16.702,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s44 (dark, region code ZJx), Hangzhou supermarkets — tyramine 167.02 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 167.02
+    },
+    {
+     "valuePer100g": 2.191,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s45 (dark, region code ZJx), Hangzhou supermarkets — tyramine 21.91 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 21.91
+    },
+    {
+     "valuePer100g": 1.796,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s46 (light, region code ZJy), Hangzhou supermarkets — tyramine 17.96 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 17.96
+    },
+    {
+     "valuePer100g": 1.902,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s47 (dark, region code SHfx), Hangzhou supermarkets — tyramine 19.02 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 19.02
+    },
+    {
+     "valuePer100g": 0.663,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s48 (dark, region code SHx), Hangzhou supermarkets — tyramine 6.63 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6.63
+    },
+    {
+     "valuePer100g": 9.208,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s49 (dark, region code SHx), Hangzhou supermarkets — tyramine 92.08 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 92.08
+    },
+    {
+     "valuePer100g": 13.741,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s50 (dark, region code SHx), Hangzhou supermarkets — tyramine 137.41 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 137.41
+    },
+    {
+     "valuePer100g": 2.773,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (dark soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s51 (dark, region code SHx), Hangzhou supermarkets — tyramine 27.73 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 27.73
+    },
+    {
+     "valuePer100g": 2.012,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s52 (light, region code SHy), Hangzhou supermarkets — tyramine 20.12 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 20.12
+    },
+    {
+     "valuePer100g": 3.302,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (light soy sauce)",
+     "sampleDescription": "Chinese soy sauce sample s53 (light, region code GDy), Hangzhou supermarkets — tyramine 33.02 mg/L (n=3 replicates; reported in mg/L, treated as mg/kg) — Table 3",
+     "citation": "Li J, Zhou L, Feng W, et al. Comparison of Biogenic Amines in Chinese Commercial Soy Sauces. Molecules. 2019;24(8):1522.",
+     "citationUrl": "https://doi.org/10.3390/molecules24081522",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 33.02
+    }
+   ]
+  },
+  {
+   "food": "Smoked Salmon",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Turkish smoked salmon (sample 8), commercial product, single product, IC-MS/MS, mean of 3 determinations — nd (LOD 0.02 ng/g) — Table 3",
+     "citation": "Kočar D, Köse S, Tufan B, et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 7.72,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Canadian smoked salmon (sample 14), commercial product, single product, IC-MS/MS, mean of 3 determinations — 77.2 mg/kg — Table 3",
+     "citation": "Kočar D, Köse S, Tufan B, et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 77.2
+    },
+    {
+     "valuePer100g": 19.51,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Norwegian smoked salmon (sample 15), commercial product, single product, IC-MS/MS, mean of 3 determinations — 195.1 mg/kg — Table 3",
+     "citation": "Kočar D, Köse S, Tufan B, et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 195.1
+    },
+    {
+     "valuePer100g": 17.81,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Norwegian smoked salmon (sample 17), commercial product, single product, IC-MS/MS, mean of 3 determinations — 178.1 mg/kg — Table 3",
+     "citation": "Kočar D, Köse S, Tufan B, et al. Determination of Biogenic Amines in Fresh Fish and Processed Fish Products Using IC-MS/MS. Foods. 2021;10(8):1746.",
+     "citationUrl": "https://doi.org/10.3390/foods10081746",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 178.1
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "smoked",
+     "sampleDescription": "Smoked salmon fillet, Scotland (code 2), Saudi food market, single retail sample — not detected (LOD not stated) — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Beef",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 1 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) → stored as 0 — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 2 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) → stored as 0 — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 3 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) → stored as 0 — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 1.06,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 4 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — 10.6 mg/kg (µg/g) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 10.6
+    },
+    {
+     "valuePer100g": 6.65,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 5 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — 66.5 mg/kg (µg/g) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 66.5
+    },
+    {
+     "valuePer100g": 2.38,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 6 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — 23.8 mg/kg (µg/g) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 23.8
+    },
+    {
+     "valuePer100g": 2.55,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 7 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — 25.5 mg/kg (µg/g) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 25.5
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 8 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) → stored as 0 — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 5.06,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 9 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — 50.6 mg/kg (µg/g) — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 50.6
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw (minced muscle), as purchased",
+     "sampleDescription": "Raw beef sample 10 of 10, Italian local markets (different batches, same expiry date), LC-MS/MS — below LOQ (10 mg/kg) → stored as 0 — Table 4",
+     "citation": "Rampazzo G, Depau G, Pagliuca G, et al. A Rapid LC-MS/MS Method for Quantification of Biogenic Amines in Meat: Validation and Application for Food Safety Monitoring. Methods Protoc. 2025;8(5):106.",
+     "citationUrl": "https://doi.org/10.3390/mps8050106",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.034,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, fresh (day 0 of chilled storage)",
+     "sampleDescription": "Beef leg (4 muscles), commercial cuts from a local supermarket, day 0 — tyramine 0.34 mg/kg — Table 4 (days 3–10 of storage not used)",
+     "citation": "Triki M, Herrero AM, Jiménez-Colmenero F, et al. Quality Assessment of Fresh Meat from Several Species Based on Free Amino Acid and Biogenic Amine Contents during Chilled Storage. Foods. 2018;7(9):132.",
+     "citationUrl": "https://doi.org/10.3390/foods7090132",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.34
+    }
+   ]
+  },
+  {
+   "food": "Chicken Breast",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, chilled, day 0",
+     "sampleDescription": "Chilled chicken breast (CB0), analysed day 0 of storage, HPLC, mean of 3 replicates — tyramine 0.00 mg/kg (LOD not stated) — Table 3 (later storage days not used)",
+     "citation": "Min H, An F, Wei T, et al. Microbial community structure and biogenic amines content variations in chilled chicken during storage. Food Sci Nutr. 2023;11(2):627-638.",
+     "citationUrl": "https://doi.org/10.1002/fsn3.3122",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, minced, 1 day at 2.2 °C after 24 h carcass chilling",
+     "sampleDescription": "Ross 308 broiler breast muscle, control (commercial basal diet) group, n=6 birds, day 1 of refrigerated storage — tyramine 0.00 mg/100 g (reported directly in mg/100 g) — Table 5 (supplement groups and later days not used)",
+     "citation": "Wójcik W, Świder O, Łukasiewicz-Mierzejewska M, et al. Content of amino acids and biogenic amines in stored meat as a result of a broiler diet supplemented with β-alanine and garlic extract. Poult Sci. 2024;103(2):103319.",
+     "citationUrl": "https://doi.org/10.1016/j.psj.2023.103319",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, fresh (day 0 of chilled storage)",
+     "sampleDescription": "Chicken breast (pectoralis major), commercial cuts from a local supermarket, day 0 — tyramine ND (LOD not stated) — Table 4 (days 3–10 of storage not used)",
+     "citation": "Triki M, Herrero AM, Jiménez-Colmenero F, et al. Quality Assessment of Fresh Meat from Several Species Based on Free Amino Acid and Biogenic Amine Contents during Chilled Storage. Foods. 2018;7(9):132.",
+     "citationUrl": "https://doi.org/10.3390/foods7090132",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Chicken Thigh",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, chilled, day 0",
+     "sampleDescription": "Chilled chicken thighs (CL0), analysed day 0 of storage, HPLC, mean of 3 replicates — tyramine 0.00 mg/kg (LOD not stated) — Table 3 (later storage days not used)",
+     "citation": "Min H, An F, Wei T, et al. Microbial community structure and biogenic amines content variations in chilled chicken during storage. Food Sci Nutr. 2023;11(2):627-638.",
+     "citationUrl": "https://doi.org/10.1002/fsn3.3122",
+     "studyYear": 2023,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Lamb",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, 48 h post-mortem",
+     "sampleDescription": "Romanov lamb Gluteus medius, 17 male + 17 female lambs, fresh meat analysed 48 h post-mortem — 'Histamine and tyramine were not detected in all analyzed samples' (LOD not stated) — Results text / Figure 1",
+     "citation": "Klupsaite D, Buckiuniene V, Bliznikas S, et al. Impact of Romanov breed lamb gender on carcass traits and meat quality parameters including biogenic amines and malondialdehyde changes during storage. Food Sci Nutr. 2022;10(6):1745-1755.",
+     "citationUrl": "https://doi.org/10.1002/fsn3.2793",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.01,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, fresh (day 0 of chilled storage)",
+     "sampleDescription": "Lamb leg (7 muscles), commercial cuts from a local supermarket, day 0 — tyramine 0.1 mg/kg — Table 4 (days 3–10 of storage not used)",
+     "citation": "Triki M, Herrero AM, Jiménez-Colmenero F, et al. Quality Assessment of Fresh Meat from Several Species Based on Free Amino Acid and Biogenic Amine Contents during Chilled Storage. Foods. 2018;7(9):132.",
+     "citationUrl": "https://doi.org/10.3390/foods7090132",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.1
+    }
+   ]
+  },
+  {
+   "food": "Pork",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.067,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, fresh (day 0 of chilled storage)",
+     "sampleDescription": "Pork leg (5 muscles), commercial cuts from a local supermarket, day 0 — tyramine 0.67 mg/kg — Table 4 (days 3–10 of storage not used)",
+     "citation": "Triki M, Herrero AM, Jiménez-Colmenero F, et al. Quality Assessment of Fresh Meat from Several Species Based on Free Amino Acid and Biogenic Amine Contents during Chilled Storage. Foods. 2018;7(9):132.",
+     "citationUrl": "https://doi.org/10.3390/foods7090132",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.67
+    }
+   ]
+  },
+  {
+   "food": "Turkey",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "raw, fresh (day 0 of chilled storage)",
+     "sampleDescription": "Turkey leg (4 muscles), commercial cuts from a local supermarket, day 0 — tyramine ND (LOD not stated) — Table 4 (days 3–10 of storage not used)",
+     "citation": "Triki M, Herrero AM, Jiménez-Colmenero F, et al. Quality Assessment of Fresh Meat from Several Species Based on Free Amino Acid and Biogenic Amine Contents during Chilled Storage. Foods. 2018;7(9):132.",
+     "citationUrl": "https://doi.org/10.3390/foods7090132",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Shrimp",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 16.48,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Shrimp (seafood category), Chinese market, 36.0% of samples with tyramine detected — mean 164.8 mg/kg reported as the mean of DETECTED samples ('mean and P95 values of the detected BAs') — Table 4",
+     "citation": "Cao P, Gao M, Huang D, et al. Analysis of Five Biogenic Amines in Foods on the Chinese Market and Estimation of Acute Histamine Exposure from Fermented Foods in the Chinese Population. Foods. 2025;14(14):2550.",
+     "citationUrl": "https://doi.org/10.3390/foods14142550",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Average of positive samples only, which overstates a typical product. Comparison only.",
+     "mgPerKg": 164.8
+    },
+    {
+     "valuePer100g": 0.052,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "frozen, raw",
+     "sampleDescription": "Frozen shrimp (code 1), Saudi food market, single retail sample — 0.52 mg/kg — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.52
+    }
+   ]
+  },
+  {
+   "food": "Feta",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.027,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Feta cheese (code 3), Saudi food market, single retail sample — 0.27 mg/kg — Table 1",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.27
+    },
+    {
+     "valuePer100g": 0.023,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Feta cheese (code 4), Saudi food market, single retail sample — 0.23 mg/kg — Table 1",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.23
+    },
+    {
+     "valuePer100g": 0.041,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold",
+     "sampleDescription": "Feta cheese (code 5), Saudi food market, single retail sample — 0.41 mg/kg — Table 1",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.41
+    }
+   ]
+  },
+  {
+   "food": "Tuna (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna (code 4), Saudi food market, single retail sample — not detected (LOD not stated) — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.177,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna (code 5), Saudi food market, single retail sample — 1.77 mg/kg — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 1.77
+    },
+    {
+     "valuePer100g": 0.169,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tuna (code 6), Saudi food market, single retail sample — 1.69 mg/kg — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 1.69
+    },
+    {
+     "valuePer100g": 0.698,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned tunas, Chinese market, n=42, detection rate 14.29% — mean 6.98 mg/kg over all samples (range ND–75.97; LOD 10.8 µg/kg) — Table 2 (caption says n=6 but Methods give n=42)",
+     "citation": "Guo X, Dai Z, Zhang W. Pollution, Exposure and Risk of Biogenic Amines in Canned Sea Fish: Classification of Analytical Methods Based on Carbon Spheres QuEChERS Extraction Combined with HPLC. Molecules. 2022;27(19):6243.",
+     "citationUrl": "https://doi.org/10.3390/molecules27196243",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6.98
+    }
+   ]
+  },
+  {
+   "food": "Sardines (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned in spicy tomato sauce",
+     "sampleDescription": "Sardines in spicy tomato sauce (code 7), Saudi food market, single retail sample — not detected (LOD not stated) — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.18,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned in vegetable oil",
+     "sampleDescription": "Milo sardines in vegetable oil (code 8), Saudi food market, single retail sample — 1.8 mg/kg — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 1.8
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned in vegetable oil",
+     "sampleDescription": "Sardines Jon in vegetable oils (code 9), Saudi food market, single retail sample — not detected (LOD not stated) — Table 2",
+     "citation": "Aladhadh M, Nasser Binjawhar D, Abd El-Kader Ebrahim HNE, et al. Investigation of Biogenic Amine Levels and Microbiological Activity as Quality Markers in Some Dairy and Fish Products in Food Markets in the Kingdom of Saudi Arabia. ACS Omega. 2024;9(17):19193-19202.",
+     "citationUrl": "https://doi.org/10.1021/acsomega.3c10347",
+     "studyYear": 2024,
+     "excluded": true,
+     "exclusionNote": "Single samples; the paper's table averages don't recompute. Comparison only.",
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 2.866,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned sardine, Chinese market, n=33, detection rate 57.58% — mean 28.66 mg/kg over all samples (range ND–115.60; LOD 10.8 µg/kg) — Table 2 (caption says n=6 but Methods give n=33)",
+     "citation": "Guo X, Dai Z, Zhang W. Pollution, Exposure and Risk of Biogenic Amines in Canned Sea Fish: Classification of Analytical Methods Based on Carbon Spheres QuEChERS Extraction Combined with HPLC. Molecules. 2022;27(19):6243.",
+     "citationUrl": "https://doi.org/10.3390/molecules27196243",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 28.66
+    }
+   ]
+  },
+  {
+   "food": "Cod",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.259,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "stockfish (air-dried), as purchased, not rehydrated",
+     "sampleDescription": "Stockfish, Gadus morhua, Messina market/supermarket, single product, mean of 3 replicates — 2.59 mg/kg — Table 3 (F9)",
+     "citation": "Nava V, Potortì AG, Lo Turco V, et al. Safety of Commercial Cod Products and Potential Impact on Consumers. Foods. 2026;15(7):1202.",
+     "citationUrl": "https://doi.org/10.3390/foods15071202",
+     "studyYear": 2026,
+     "excluded": true,
+     "exclusionNote": "Dried product as purchased (not as eaten); comparison only.",
+     "mgPerKg": 2.59
+    },
+    {
+     "valuePer100g": 0.354,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "baccalà (salted), as purchased, not desalted",
+     "sampleDescription": "Baccalà (salted cod), Gadus morhua, Messina market/supermarket, single product, mean of 3 replicates — 3.54 mg/kg — Table 3 (F10)",
+     "citation": "Nava V, Potortì AG, Lo Turco V, et al. Safety of Commercial Cod Products and Potential Impact on Consumers. Foods. 2026;15(7):1202.",
+     "citationUrl": "https://doi.org/10.3390/foods15071202",
+     "studyYear": 2026,
+     "excluded": true,
+     "exclusionNote": "Salted product as purchased (not as eaten); comparison only.",
+     "mgPerKg": 3.54
+    }
+   ]
+  },
+  {
+   "food": "Parmesan",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.699,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano #1 (Italy), hard cheese, single retail sample, Polish retail market — tyramine 6.99 mg/kg — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 6.99
+    },
+    {
+     "valuePer100g": 1.14,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano #2 (Italy), hard cheese, single retail sample, Polish retail market — tyramine 11.4 mg/kg — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 11.4
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano #3 (Italy), hard cheese, single retail sample, Polish retail market — tyramine below LOQ ('-' in Table S1; method LOD 1.53–1.88, LOQ 5.13–6.28 mg/kg across amines) → stored as 0 — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano #4 (Italy), hard cheese, single retail sample, Polish retail market — tyramine below LOQ ('-' in Table S1; method LOD 1.53–1.88, LOQ 5.13–6.28 mg/kg across amines) → stored as 0 — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano #5 (Italy), hard cheese, single retail sample, Polish retail market — tyramine below LOQ ('-' in Table S1; method LOD 1.53–1.88, LOQ 5.13–6.28 mg/kg across amines) → stored as 0 — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano #6 (Italy), hard cheese, single retail sample, Polish retail market — tyramine below LOQ ('-' in Table S1; method LOD 1.53–1.88, LOQ 5.13–6.28 mg/kg across amines) → stored as 0 — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano #7 (Italy), hard cheese, single retail sample, Polish retail market — tyramine below LOQ ('-' in Table S1; method LOD 1.53–1.88, LOQ 5.13–6.28 mg/kg across amines) → stored as 0 — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Parmigiano Reggiano, hard cheese, single retail sample, local retail markets, Puławy region, Poland — tyramine no detectable level ('-' in Table 5; tyramine LOD 1.60, LOQ 5.33 mg/kg) → stored as 0 — Table 5",
+     "citation": "Pawul-Gruba M, Kiljanek T, Madejska A, et al. Development of a High Performance Liquid Chromatography with Diode Array Detector (HPLC-DAD) Method for Determination of Biogenic Amines in Ripened Cheeses. Molecules. 2022;27(23):8194.",
+     "citationUrl": "https://doi.org/10.3390/molecules27238194",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Cheddar Cheese",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Cheddar #1 (age not stated) (UK), hard cheese, single retail sample, Polish retail market — tyramine below LOQ ('-' in Table S1; method LOD 1.53–1.88, LOQ 5.13–6.28 mg/kg across amines) → stored as 0 — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (ripened)",
+     "sampleDescription": "Cheddar #2 (age not stated) (UK), hard cheese, single retail sample, Polish retail market — tyramine below LOQ ('-' in Table S1; method LOD 1.53–1.88, LOQ 5.13–6.28 mg/kg across amines) → stored as 0 — Supplementary Table S1 (Table 4 positive-sample statistics recompute from these values)",
+     "citation": "Pawul-Gruba M, Denis E, Kiljanek T, et al. Prevalence of Biogenic Amines and Their Relation to the Bacterial Content in Ripened Cheeses on the Retail Market in Poland. Foods. 2025;14(14):2478.",
+     "citationUrl": "https://doi.org/10.3390/foods14142478",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.0
+    }
+   ]
+  },
+  {
+   "food": "Anchovies (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 1.841,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned anchovy, Chinese market, n=24, detection rate 45.83% — mean 18.41 mg/kg over all samples (range ND–87.25; LOD 10.8 µg/kg) — Table 2 (caption says n=6 but Methods give n=24)",
+     "citation": "Guo X, Dai Z, Zhang W. Pollution, Exposure and Risk of Biogenic Amines in Canned Sea Fish: Classification of Analytical Methods Based on Carbon Spheres QuEChERS Extraction Combined with HPLC. Molecules. 2022;27(19):6243.",
+     "citationUrl": "https://doi.org/10.3390/molecules27196243",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 18.41
+    }
+   ]
+  },
+  {
+   "food": "Mackerel (canned)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 1.262,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "canned",
+     "sampleDescription": "Canned mackerel, Chinese market, n=14, detection rate 42.86% — mean 12.62 mg/kg over all samples (range ND–50.64; LOD 10.8 µg/kg) — Table 2 (caption says n=6 but Methods give n=14)",
+     "citation": "Guo X, Dai Z, Zhang W. Pollution, Exposure and Risk of Biogenic Amines in Canned Sea Fish: Classification of Analytical Methods Based on Carbon Spheres QuEChERS Extraction Combined with HPLC. Molecules. 2022;27(19):6243.",
+     "citationUrl": "https://doi.org/10.3390/molecules27196243",
+     "studyYear": 2022,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 12.62
+    }
+   ]
+  },
+  {
+   "food": "Kimchi",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.297,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Kkakdugi (diced radish kimchi), sample KD1, one of five popular manufacturers, Korean retail markets — 2.97 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 2.97
+    },
+    {
+     "valuePer100g": 1.473,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Kkakdugi (diced radish kimchi), sample KD2, one of five popular manufacturers, Korean retail markets — 14.73 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 14.73
+    },
+    {
+     "valuePer100g": 1.08,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Kkakdugi (diced radish kimchi), sample KD3, one of five popular manufacturers, Korean retail markets — 10.8 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 10.8
+    },
+    {
+     "valuePer100g": 2.167,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Kkakdugi (diced radish kimchi), sample KD4, one of five popular manufacturers, Korean retail markets — 21.67 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 21.67
+    },
+    {
+     "valuePer100g": 7.695,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Kkakdugi (diced radish kimchi), sample KD5, one of five popular manufacturers, Korean retail markets — 76.95 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 76.95
+    },
+    {
+     "valuePer100g": 0.485,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Chonggak kimchi (ponytail radish kimchi), sample CG1, one of five popular manufacturers, Korean retail markets — 4.85 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 4.85
+    },
+    {
+     "valuePer100g": 0.079,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Chonggak kimchi (ponytail radish kimchi), sample CG2, one of five popular manufacturers, Korean retail markets — 0.79 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 0.79
+    },
+    {
+     "valuePer100g": 1.87,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Chonggak kimchi (ponytail radish kimchi), sample CG3, one of five popular manufacturers, Korean retail markets — 18.7 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 18.7
+    },
+    {
+     "valuePer100g": 1.11,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Chonggak kimchi (ponytail radish kimchi), sample CG4, one of five popular manufacturers, Korean retail markets — 11.1 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 11.1
+    },
+    {
+     "valuePer100g": 0.7,
+     "unit": "mg",
+     "solublePct": null,
+     "preparation": "as sold (radish kimchi, within 30 days of manufacture)",
+     "sampleDescription": "Chonggak kimchi (ponytail radish kimchi), sample CG5, one of five popular manufacturers, Korean retail markets — 7.0 mg/kg (mean of replicates; ND limit <0.1 mg/kg) — Table 2",
+     "citation": "Jin YH, Lee JH, Park YK, et al. The Occurrence of Biogenic Amines and Determination of Biogenic Amine-Producing Lactic Acid Bacteria in Kkakdugi and Chonggak Kimchi. Foods. 2019;8(2):73.",
+     "citationUrl": "https://doi.org/10.3390/foods8020073",
+     "studyYear": 2019,
+     "excluded": false,
+     "exclusionNote": null,
+     "mgPerKg": 7.0
+    }
+   ]
+  }
+ ]
+}
