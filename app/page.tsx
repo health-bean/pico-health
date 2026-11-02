@@ -28,10 +28,17 @@ export default async function LandingPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  const refCode = normalizeRef((await searchParams).ref) ?? undefined;
+  const params = await searchParams;
+  const refCode = normalizeRef(params.ref) ?? undefined;
+  const inviteRequired = params.invite === "required";
 
   return (
     <main className="landing bg-lp-cream">
+      {inviteRequired && (
+        <p role="status" className="bg-teal-700 px-6 py-3 text-center text-sm text-white">
+          Pico is invite-only for now. Join the early-access list below and we&apos;ll let you in soon.
+        </p>
+      )}
       <Hero refCode={refCode} />
       <Problem />
       <Approach />

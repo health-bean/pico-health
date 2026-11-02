@@ -3,6 +3,7 @@ import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import { rateLimit, getClientIp, SIGNUP_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
+import { isInvited } from "@/lib/auth/invite";
 
 const signupSchema = z.object({
   firstName: z.string().trim().min(1, "First name is required").max(100),
@@ -45,6 +46,18 @@ export async function POST(request: Request) {
     const { firstName, password } = parsed.data;
     const email = parsed.data.email.toLowerCase();
     const { origin } = new URL(request.url);
+
+    // Invite-only until launch. This reveals only whether an address is
+    // invited, not whether it has an account.
+    if (!(await isInvited(email))) {
+      return NextResponse.json(
+        {
+          error: "Pico is invite-only for now. Join the early-access list and we'll let you know.",
+          inviteRequired: true,
+        },
+        { status: 403 }
+      );
+    }
 
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signUp({

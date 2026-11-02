@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { EmailOtpType, User } from "@supabase/supabase-js";
 import { createClient } from "@/lib/supabase/server";
 import { ensureProfile } from "@/lib/auth/profile";
+import { INVITE_REQUIRED_PATH, mayHaveProfile } from "@/lib/auth/invite";
 import { db } from "@/lib/db";
 import { profiles } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -57,6 +58,14 @@ export async function GET(request: Request) {
   }
 
   if (user) {
+    // Invite-only: a new account (e.g. first Google sign-in) without an
+    // invite gets no profile and is signed straight back out.
+    if (!(await mayHaveProfile(user))) {
+      await supabase.auth.signOut();
+      log.info("sign-in without invite", { userId: user.id });
+      return NextResponse.redirect(`${origin}${INVITE_REQUIRED_PATH}`);
+    }
+
     let created = false;
     try {
       created = await ensureProfile(user);

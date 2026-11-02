@@ -14,12 +14,14 @@ vi.mock("@/lib/rate-limit", () => ({
   getClientIp: vi.fn(() => "1.2.3.4"),
   SIGNUP_RATE_LIMIT: { limit: 5, windowSeconds: 600 },
 }));
+vi.mock("@/lib/auth/invite", () => ({ isInvited: vi.fn(async () => true) }));
 vi.mock("@/lib/db", () => ({
   db: new Proxy({}, { get: () => { throw new Error("signup must not write to the DB"); } }),
 }));
 
 import { POST } from "./route";
 import { rateLimit } from "@/lib/rate-limit";
+import { isInvited } from "@/lib/auth/invite";
 
 const body = { firstName: "Pat", email: "Pat@Example.com", password: "correct horse" };
 const post = (b: unknown = body) =>
@@ -29,6 +31,16 @@ describe("POST /api/auth/signup", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     vi.mocked(rateLimit).mockResolvedValue({ allowed: true, remaining: 4, resetAt: Date.now() + 1000 });
+    vi.mocked(isInvited).mockResolvedValue(true);
+  });
+
+  it("is invite-only: an email without an invite can't sign up", async () => {
+    vi.mocked(isInvited).mockResolvedValue(false);
+    const res = await post();
+    expect(res.status).toBe(403);
+    expect(await res.json()).toMatchObject({ inviteRequired: true });
+    expect(isInvited).toHaveBeenCalledWith("pat@example.com");
+    expect(signUp).not.toHaveBeenCalled();
   });
 
   it("starts the confirm-email flow instead of creating a confirmed user", async () => {

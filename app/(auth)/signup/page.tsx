@@ -12,6 +12,7 @@ export default function SignupPage() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
+  const [inviteRequired, setInviteRequired] = useState(false);
   // Set once the signup is accepted: the account only works after the
   // emailed link is followed, so show that instead of signing in.
   const [sentTo, setSentTo] = useState<string | null>(null);
@@ -19,6 +20,7 @@ export default function SignupPage() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError("");
+    setInviteRequired(false);
     setLoading(true);
 
     try {
@@ -32,6 +34,7 @@ export default function SignupPage() {
 
       if (!res.ok) {
         setError(data.error || "Something went wrong");
+        setInviteRequired(!!data.inviteRequired);
         return;
       }
 
@@ -97,6 +100,13 @@ export default function SignupPage() {
           <PageTitle>Join Pico Health</PageTitle>
           <p className="mt-1 text-sm text-warm-500">
             Log meals and symptoms in your own words, and see what lines up with how you feel.
+          </p>
+          <p className="mt-3 rounded-lg bg-teal-50 px-3 py-2 text-sm text-teal-800">
+            Pico is invite-only while we finish testing. Use the email your invite went to, or{" "}
+            <Link href="/#early-access" className="font-medium underline underline-offset-2">
+              join the early-access list
+            </Link>
+            .
           </p>
         </div>
 
@@ -172,6 +182,14 @@ export default function SignupPage() {
               {error && (
                 <p className="text-sm text-danger-strong" role="alert">
                   {error}
+                  {inviteRequired && (
+                    <>
+                      {" "}
+                      <Link href="/#early-access" className="font-medium underline underline-offset-2">
+                        Join the list
+                      </Link>
+                    </>
+                  )}
                 </p>
               )}
 

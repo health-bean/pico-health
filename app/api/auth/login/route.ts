@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 import { rateLimit, getClientIp, AUTH_RATE_LIMIT } from "@/lib/rate-limit";
 import { log } from "@/lib/logger";
 import { ensureProfile } from "@/lib/auth/profile";
+import { mayHaveProfile } from "@/lib/auth/invite";
 import { readJson } from "@/lib/api/validation";
 
 const loginSchema = z.object({
@@ -63,6 +64,13 @@ export async function POST(request: Request) {
 
     // A confirmation link opened on another device verifies the email but
     // can't finish the session, so the profile may not exist yet.
+    if (!(await mayHaveProfile(data.user))) {
+      await supabase.auth.signOut();
+      return NextResponse.json(
+        { error: "Pico is invite-only for now. Join the early-access list and we'll let you know." },
+        { status: 403 }
+      );
+    }
     const createdProfile = await ensureProfile(data.user);
 
     // Fetch profile for app-specific data
