@@ -12,6 +12,9 @@
  * - List levels: take the stated level; if lists disagree, the higher one.
  * - If the counted results would land in different ranks, flag
  *   "studies_disagree" so an admin can decide which to trust.
+ * - Results from a "permission pending" source never count. They're only
+ *   compared: "lists_disagree" when one rates the food differently, and
+ *   "pending_list_only" when it rates a food we have nothing else for.
  *
  * Pure: no database access. Tested in compute.test.ts.
  */
@@ -20,7 +23,13 @@ import type { FoodProperty } from "@/lib/sources/properties";
 export type Level = "none" | "low" | "moderate" | "high" | "very_high";
 export const LEVELS: readonly Level[] = ["none", "low", "moderate", "high", "very_high"];
 
-export type Flag = "one_test" | "studies_disagree" | "no_serving_size" | "no_rule";
+export type Flag =
+  | "one_test"
+  | "studies_disagree"
+  | "no_serving_size"
+  | "no_rule"
+  | "lists_disagree"
+  | "pending_list_only";
 
 export interface MeasurementInput {
   id: string;
@@ -29,6 +38,8 @@ export interface MeasurementInput {
   studyYear: number | null;
   excluded: boolean;
   updatedAt: Date;
+  /** The source's use; "check" = permission pending, compare only. */
+  sourceUse?: string | null;
 }
 
 export interface RatingInput {
@@ -149,7 +160,9 @@ function isLevel(v: string | null): v is Level {
 }
 
 export function computeRating(input: RatingInput): RatingResult {
-  const included = input.measurements.filter((m) => !m.excluded);
+  const live = input.measurements.filter((m) => !m.excluded);
+  const included = live.filter((m) => m.sourceUse !== "check");
+  const checkLevels = live.filter((m) => m.sourceUse === "check").map((m) => m.reportedLevel).filter(isLevel);
 
   // Recency: older results become reference only when much newer data exists.
   const years = included.map((m) => m.studyYear).filter((y): y is number => y !== null);
@@ -207,6 +220,10 @@ export function computeRating(input: RatingInput): RatingResult {
   }
 
   if (disagree) flags.push("studies_disagree");
+  if (checkLevels.length > 0) {
+    if (level === null) flags.push("pending_list_only");
+    else if (checkLevels.some((l) => l !== level)) flags.push("lists_disagree");
+  }
 
   const lastChange = Math.max(0, ...input.measurements.map((m) => m.updatedAt.getTime()));
   const reviewedSinceChange = !!input.reviewedAt && input.reviewedAt.getTime() >= lastChange;

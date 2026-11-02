@@ -13,6 +13,8 @@ export const FLAG_LABELS: Record<Flag, string> = {
   one_test: "One test only",
   no_serving_size: "Needs serving size",
   no_rule: "No ranking rule yet",
+  lists_disagree: "Pending list disagrees",
+  pending_list_only: "Only a pending list rates it",
 };
 
 /** Badge colour for a level, using the app's level tokens. */

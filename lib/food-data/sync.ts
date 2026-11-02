@@ -31,6 +31,7 @@ export async function loadMeasurements(foodId: string, property: FoodProperty) {
       sampleDescription: foodMeasurements.sampleDescription,
       sourceId: foodMeasurements.sourceId,
       sourceName: trustedSources.name,
+      sourceUse: trustedSources.useAs,
       citation: foodMeasurements.citation,
       citationUrl: foodMeasurements.citationUrl,
       studyYear: foodMeasurements.studyYear,
@@ -60,10 +61,20 @@ const round = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1).
 /** One-line provenance stored next to the rating, e.g. for the coach to quote. */
 export function citationFor(
   result: RatingResult,
-  rows: { id: string; sourceName: string; citation: string; studyYear: number | null; excluded: boolean }[]
+  rows: {
+    id: string;
+    sourceName: string;
+    sourceUse: string;
+    citation: string;
+    studyYear: number | null;
+    excluded: boolean;
+  }[]
 ): Citation | null {
   if (result.level === null) return null;
-  const counted = rows.filter((r) => !r.excluded && !result.superseded.includes(r.id));
+  // Permission-pending sources are never cited to users.
+  const counted = rows.filter(
+    (r) => !r.excluded && r.sourceUse !== "check" && !result.superseded.includes(r.id)
+  );
   const sources = [...new Set(counted.map((r) => r.sourceName))].join(", ");
   const refs = counted.map((r) => (r.studyYear ? `${r.citation.split(".")[0]} (${r.studyYear})` : r.citation.split(".")[0]));
   const ref = refs.length > 3 ? `${refs.slice(0, 3).join("; ")}; +${refs.length - 3} more` : refs.join("; ");

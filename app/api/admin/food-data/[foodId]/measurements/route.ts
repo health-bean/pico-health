@@ -39,9 +39,9 @@ export async function POST(request: Request, { params }: { params: Promise<{ foo
       .from(trustedSources)
       .where(eq(trustedSources.id, data.sourceId))
       .limit(1);
-    if (!source || !source.isActive || source.useAs !== "data") {
+    if (!source || !source.isActive || (source.useAs !== "data" && source.useAs !== "check")) {
       return NextResponse.json(
-        { error: "Choose an active trusted source marked as a data source" },
+        { error: "Choose an active source marked as data or permission pending" },
         { status: 400 }
       );
     }

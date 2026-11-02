@@ -195,3 +195,51 @@ describe("computeRating — histamine (content, mg/kg)", () => {
     expect(hist([2.51, 6, 22]).flags).toContain("studies_disagree");
   });
 });
+
+describe("computeRating — permission-pending lists", () => {
+  const pending = (level: string) => m({ reportedLevel: level, sourceUse: "check" });
+
+  it("never count toward the rating", () => {
+    const r = computeRating({
+      property: "histamine",
+      servingGrams: null,
+      measurements: [m({ valuePer100g: 0 }), pending("high")],
+    });
+    expect(r.level).toBe("low");
+    expect(r.counted).toBe(1);
+    expect(r.flags).not.toContain("studies_disagree");
+    expect(r.needsReview).toBe(false);
+  });
+
+  it("flag when they rate the food differently", () => {
+    const r = computeRating({
+      property: "histamine",
+      servingGrams: null,
+      measurements: [m({ valuePer100g: 0 }), pending("high")],
+    });
+    expect(r.flags).toContain("lists_disagree");
+
+    const agree = computeRating({
+      property: "histamine",
+      servingGrams: null,
+      measurements: [m({ valuePer100g: 0 }), pending("low")],
+    });
+    expect(agree.flags).not.toContain("lists_disagree");
+  });
+
+  it("leave the food unknown when they are all we have", () => {
+    const r = computeRating({ property: "lectin", servingGrams: null, measurements: [pending("high")] });
+    expect(r.level).toBeNull();
+    expect(r.counted).toBe(0);
+    expect(r.flags).toEqual(["pending_list_only"]);
+  });
+
+  it("ignore an excluded pending result", () => {
+    const r = computeRating({
+      property: "lectin",
+      servingGrams: null,
+      measurements: [m({ reportedLevel: "high", sourceUse: "check", excluded: true })],
+    });
+    expect(r.flags).toEqual([]);
+  });
+});

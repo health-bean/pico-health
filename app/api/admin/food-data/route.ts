@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { foodMeasurements, foodPropertyReviews, foods } from "@/lib/db/schema";
+import { foodMeasurements, foodPropertyReviews, foods, trustedSources } from "@/lib/db/schema";
 import { requireAdmin } from "@/lib/auth/require-admin";
 import { log } from "@/lib/logger";
 import { computeRating, type RatingResult } from "@/lib/food-data/compute";
@@ -35,9 +35,11 @@ export async function GET() {
           studyYear: foodMeasurements.studyYear,
           excluded: foodMeasurements.excluded,
           updatedAt: foodMeasurements.updatedAt,
+          sourceUse: trustedSources.useAs,
         })
         .from(foodMeasurements)
-        .innerJoin(foods, eq(foods.id, foodMeasurements.foodId)),
+        .innerJoin(foods, eq(foods.id, foodMeasurements.foodId))
+        .innerJoin(trustedSources, eq(trustedSources.id, foodMeasurements.sourceId)),
       db
         .select({
           foodId: foodPropertyReviews.foodId,

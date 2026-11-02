@@ -20,6 +20,8 @@ interface Measurement {
   preparation: string | null;
   sampleDescription: string | null;
   sourceName: string;
+  /** "check" = permission pending: shown here only, never counted. */
+  sourceUse: string;
   citation: string;
   citationUrl: string | null;
   studyYear: number | null;
@@ -133,10 +135,17 @@ function MeasurementRow({
     }
   };
 
-  const status = m.excluded ? "Excluded" : superseded ? "Older — reference only" : "Counted";
+  const pending = m.sourceUse === "check";
+  const status = m.excluded
+    ? "Excluded"
+    : pending
+      ? "Permission pending — can't be used"
+      : superseded
+        ? "Older — reference only"
+        : "Counted";
 
   return (
-    <li className={cn("py-3", (m.excluded || superseded) && "text-warm-500")}>
+    <li className={cn("py-3", (m.excluded || superseded || pending) && "text-warm-500")}>
       <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
         <div className="min-w-0 space-y-1">
           <div className="flex flex-wrap items-center gap-2">
@@ -150,7 +159,9 @@ function MeasurementRow({
                 : LEVEL_LABELS[m.reportedLevel as keyof typeof LEVEL_LABELS] ?? m.reportedLevel}
             </span>
             {m.solublePct !== null && <span className="text-sm">({fmt(m.solublePct)}% soluble)</span>}
-            <Badge variant={m.excluded || superseded ? "default" : "info"}>{status}</Badge>
+            <Badge variant={pending && !m.excluded ? "moderation" : m.excluded || superseded ? "default" : "info"}>
+              {status}
+            </Badge>
           </div>
           {(m.sampleDescription || m.preparation) && (
             <p className="text-sm">
@@ -343,7 +354,7 @@ function AddResult({
           value={f.sourceId}
           onChange={(v) => set({ sourceId: v })}
           placeholder="Choose a source"
-          options={sources.map((s) => ({ value: s.id, label: s.name }))}
+          options={sources.map((s) => ({ value: s.id, label: s.useAs === "check" ? `${s.name} (permission pending)` : s.name }))}
         />
       </div>
 
@@ -468,7 +479,7 @@ export default function FoodDataDetailPage({ params }: { params: Promise<{ foodI
       .then(([d, s]) => {
         if (cancelled) return;
         setDetail(d);
-        setSources((s.sources as Source[]).filter((x) => x.isActive && x.useAs === "data"));
+        setSources((s.sources as Source[]).filter((x) => x.isActive && (x.useAs === "data" || x.useAs === "check")));
       })
       .catch(() => !cancelled && toast("Could not load this food", "error"))
       .finally(() => !cancelled && setLoading(false));

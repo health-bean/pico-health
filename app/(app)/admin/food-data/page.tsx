@@ -23,12 +23,14 @@ interface FoodHit {
   displayName: string;
 }
 
-type Filter = "needs_review" | "one_test" | "all";
+type Filter = "needs_review" | "lists_disagree" | "pending_only" | "one_test" | "all";
 
 const FILTERS: { key: Filter; label: string; match: (i: Item) => boolean }[] = [
   { key: "needs_review", label: "Studies disagree", match: (i) => i.result.needsReview },
+  { key: "lists_disagree", label: "Lists disagree", match: (i) => i.result.flags.includes("lists_disagree") },
+  { key: "pending_only", label: "Needs lab data", match: (i) => i.result.flags.includes("pending_list_only") },
   { key: "one_test", label: "One test only", match: (i) => i.result.flags.includes("one_test") },
-  { key: "all", label: "All rated", match: () => true },
+  { key: "all", label: "All", match: () => true },
 ];
 
 export default function FoodDataPage() {
@@ -86,6 +88,12 @@ export default function FoodDataPage() {
         <p className="text-sm text-warm-500">
           Lab results behind each rating. Ratings use the middle value of the counted results; you
           decide when studies disagree.
+        </p>
+        <p className="mt-1 text-sm text-warm-500">
+          Lists marked <span className="font-medium text-warm-700">permission pending</span> are a
+          check for us only: they never set a rating and users never see them. &ldquo;Lists
+          disagree&rdquo; shows where they rate a food differently; &ldquo;Needs lab data&rdquo;
+          shows foods only a pending list rates so far.
         </p>
       </div>
 

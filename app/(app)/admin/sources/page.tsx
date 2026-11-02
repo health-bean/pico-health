@@ -11,6 +11,13 @@ import {
   type SourceUse,
 } from "@/lib/sources/properties";
 
+
+const USE_BADGE: Record<SourceUse, { label: string; variant: "info" | "default" | "moderation" }> = {
+  data: { label: "Data source", variant: "info" },
+  reference: { label: "Reference only", variant: "default" },
+  check: { label: "Permission pending — can't be used", variant: "moderation" },
+};
+
 interface TrustedSource {
   id: string;
   name: string;
@@ -160,6 +167,16 @@ function SourceForm({
               className="accent-teal-600"
             />
             Reference only <span className="text-warm-500">— background reading</span>
+          </label>
+          <label className="flex min-h-9 items-center gap-2">
+            <input
+              type="radio"
+              name="use-as"
+              checked={form.useAs === "check"}
+              onChange={() => setForm({ ...form, useAs: "check" })}
+              className="accent-teal-600"
+            />
+            Permission pending <span className="text-warm-500">— admin check only, never shown to users</span>
           </label>
         </div>
       </fieldset>
@@ -317,9 +334,7 @@ export default function AdminSourcesPage() {
                     <div className="min-w-0 space-y-2">
                       <div className="flex flex-wrap items-center gap-2">
                         <h2 className="text-base font-semibold text-warm-900">{s.name}</h2>
-                        <Badge variant={s.useAs === "data" ? "info" : "default"}>
-                          {s.useAs === "data" ? "Data source" : "Reference only"}
-                        </Badge>
+                        <Badge variant={USE_BADGE[s.useAs].variant}>{USE_BADGE[s.useAs].label}</Badge>
                         {!s.isActive && <Badge>Off</Badge>}
                       </div>
                       <a

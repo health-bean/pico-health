@@ -89,6 +89,11 @@ describe("POST measurements", () => {
     expect(recomputeFoodProperty).toHaveBeenCalledWith(foodId, "oxalate");
   });
 
+  it("accepts a permission-pending source (stored for comparison only)", async () => {
+    selects([{ id: foodId }], [{ isActive: true, useAs: "check" }]);
+    expect((await addMeasurement(req(valid), p({ foodId }))).status).toBe(201);
+  });
+
   it("rejects reference-only or turned-off sources", async () => {
     selects([{ id: foodId }], [{ isActive: true, useAs: "reference" }]);
     expect((await addMeasurement(req(valid), p({ foodId }))).status).toBe(400);
