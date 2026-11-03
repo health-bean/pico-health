@@ -1,7 +1,8 @@
 import { db } from '@/lib/db';
 import {
   dayComposites, timelineEntries, journalEntries,
-  foodTriggerProperties, profiles,
+  foodTriggerProperties, profiles, foods as foodsTable,
+  foodSubcategories, foodCategories, userProtocolState,
 } from '@/lib/db/schema';
 import { eq, and, gte, lte, inArray, sql } from 'drizzle-orm';
 import { buildDayComposite } from './day-composite';
@@ -37,21 +38,27 @@ export async function computeAndStoreDayComposite(userId: string, date: string):
     .filter(e => e.foodId)
     .map(e => e.foodId!);
 
-  const foodPropsMap = await loadFoodProperties(foodIds);
+  const { props: foodPropsMap, raw: rawProps, category } = await loadFoodData(foodIds);
 
   let protocolCtx = null;
   const protocolId = profile[0]?.currentProtocolId;
   if (protocolId) {
-    const ctx = await loadProtocolContext(protocolId, null, foodIds);
+    const [state] = await db.select({ phaseId: userProtocolState.currentPhaseId })
+      .from(userProtocolState)
+      .where(and(eq(userProtocolState.userId, userId), eq(userProtocolState.protocolId, protocolId)))
+      .limit(1);
+    const ctx = await loadProtocolContext(protocolId, state?.phaseId ?? null, foodIds);
     protocolCtx = {
       protocolId,
-      checkCompliance: (foodId: string | null, props: FoodProperty[]) => {
-        const foodProps: FoodProperties = {};
-        for (const p of props) {
-          (foodProps as Record<string, string>)[p.property] = p.severity;
-        }
-        return checkComplianceSync(ctx, foodProps, foodId);
-      },
+      // Check against the food's stored ratings and category, the same
+      // inputs the Log and food search use, so insights agree with them.
+      checkCompliance: (foodId: string | null) =>
+        checkComplianceSync(
+          ctx,
+          foodId ? (rawProps.get(foodId) ?? {}) : {},
+          foodId,
+          foodId ? (category.get(foodId) ?? null) : null,
+        ),
     };
   }
 
@@ -73,6 +80,17 @@ export async function computeAndStoreDayComposite(userId: string, date: string):
   const composite = buildDayComposite(
     userId, date, rawEntries, journal[0] ?? null, foodPropsMap, protocolCtx,
   );
+
+  const j = composite.journal;
+  const journalExtras = {
+    meditationPractice: j.meditationPractice ?? null,
+    meditationMinutes: j.meditationMinutes ?? null,
+    cycleDay: j.cycleDay ?? null,
+    ovulation: j.ovulation ?? null,
+    bedtime: j.bedtime ?? null,
+    wakeTime: j.wakeTime ?? null,
+    activityLevel: j.activityLevel ?? null,
+  };
 
   await db.insert(dayComposites).values({
     userId: composite.userId,
@@ -101,6 +119,7 @@ export async function computeAndStoreDayComposite(userId: string, date: string):
     hasJournal: composite.hasJournal,
     isFlareDay: composite.isFlareDay,
     hasLateMeal: composite.hasLateMeal,
+    journalExtras,
   }).onConflictDoUpdate({
     target: [dayComposites.userId, dayComposites.date],
     set: {
@@ -128,6 +147,8 @@ export async function computeAndStoreDayComposite(userId: string, date: string):
       hasJournal: composite.hasJournal,
       isFlareDay: composite.isFlareDay,
       hasLateMeal: composite.hasLateMeal,
+      journalExtras,
+      updatedAt: new Date(),
     },
   });
 
@@ -160,25 +181,45 @@ export async function getCompositesForRange(
   return rows.map(rowToComposite);
 }
 
-async function loadFoodProperties(foodIds: string[]): Promise<Map<string, FoodProperty[]>> {
-  if (foodIds.length === 0) return new Map();
+async function loadFoodData(foodIds: string[]): Promise<{
+  props: Map<string, FoodProperty[]>;
+  raw: Map<string, FoodProperties>;
+  category: Map<string, string | null>;
+}> {
+  const props = new Map<string, FoodProperty[]>();
+  const raw = new Map<string, FoodProperties>();
+  const category = new Map<string, string | null>();
+  if (foodIds.length === 0) return { props, raw, category };
 
-  const props = await db.select().from(foodTriggerProperties)
-    .where(inArray(foodTriggerProperties.foodId, foodIds));
+  const rows = await db.select({
+    foodId: foodsTable.id,
+    categoryName: foodCategories.name,
+    trigger: foodTriggerProperties,
+  })
+    .from(foodsTable)
+    .leftJoin(foodSubcategories, eq(foodsTable.subcategoryId, foodSubcategories.id))
+    .leftJoin(foodCategories, eq(foodSubcategories.categoryId, foodCategories.id))
+    .leftJoin(foodTriggerProperties, eq(foodTriggerProperties.foodId, foodsTable.id))
+    .where(inArray(foodsTable.id, [...new Set(foodIds)]));
 
-  const map = new Map<string, FoodProperty[]>();
   const propertyFields = [
     'oxalate', 'histamine', 'lectin', 'fodmap',
     'salicylate', 'amines', 'glutamates', 'sulfites', 'goitrogens',
     'purines', 'phytoestrogens', 'phytates', 'tyramine',
   ] as const;
 
-  for (const row of props) {
+  for (const { foodId, categoryName, trigger: row } of rows) {
+    category.set(foodId, categoryName ?? null);
+    if (!row) continue;
     const entries: FoodProperty[] = [];
+    const rawRow: FoodProperties = {
+      nightshade: row.nightshade,
+      histamine_liberator: row.histamineLiberator,
+    };
 
-    // Handle varchar properties
     for (const field of propertyFields) {
       const value = row[field] as string | null;
+      rawRow[field] = value;
       if (value && value !== 'unknown' && value !== 'none') {
         entries.push({ property: field, severity: value });
       }
@@ -192,9 +233,10 @@ async function loadFoodProperties(foodIds: string[]): Promise<Map<string, FoodPr
       entries.push({ property: 'histamine_liberator', severity: 'high' });
     }
 
-    map.set(row.foodId, entries);
+    props.set(foodId, entries);
+    raw.set(foodId, rawRow);
   }
-  return map;
+  return { props, raw, category };
 }
 
 export async function backfillComposites(userId: string, startDate: string, endDate: string): Promise<number> {
@@ -255,6 +297,7 @@ function rowToComposite(row: typeof dayComposites.$inferSelect): DayComposite {
     exposures: (row.exposures ?? []) as DayComposite['exposures'],
     exercises: (row.exercises ?? []) as DayComposite['exercises'],
     journal: {
+      ...((row.journalExtras ?? {}) as Partial<DayComposite['journal']>),
       sleep: row.sleepScore, energy: row.energyScore, mood: row.moodScore,
       stress: row.stressScore, pain: row.painScore,
     },

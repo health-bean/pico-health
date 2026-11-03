@@ -630,9 +630,14 @@ export const dayComposites = pgTable(
     hasJournal: boolean("has_journal").notNull().default(false),
     isFlareDay: boolean("is_flare_day").notNull().default(false),
     hasLateMeal: boolean("has_late_meal").notNull().default(false),
+    /** Meditation, cycle day, bedtime, movement: the journal beyond the 1-10 scores. */
+    journalExtras: jsonb("journal_extras").notNull().default({}),
     createdAt: timestamp("created_at", { withTimezone: true }).defaultNow().notNull(),
     updatedAt: timestamp("updated_at", { withTimezone: true }).defaultNow().notNull(),
   },
+  // A trigger on timeline_entries and journal_entries deletes a day's row
+  // whenever that day's logs change (migration 20261103200000), so the next
+  // insights run rebuilds it.
   (table) => [
     uniqueIndex("day_composites_user_date_idx").on(table.userId, table.date),
   ]

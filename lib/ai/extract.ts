@@ -11,6 +11,7 @@ import {
 } from "@/lib/db/schema";
 import { eq, ilike, and, sql } from "drizzle-orm";
 import { checkFoodCompliance } from "@/lib/protocols/compliance";
+import { invalidateUserInsights } from "@/lib/cache/insights";
 
 /** Escape SQL LIKE wildcards in user input */
 function escapeLikeWildcards(str: string): string {
@@ -85,14 +86,21 @@ export async function processToolCall(
   messageId: string | null
 ): Promise<{ result: unknown; entries?: CreatedEntry[] }> {
   switch (toolName) {
-    case "log_entries":
-      return handleLogEntries(toolInput as LogEntriesInput, userId, messageId);
     case "search_foods":
       return handleSearchFoods(toolInput as SearchFoodsInput, userId);
+    case "log_entries":
     case "log_journal_scores":
-      return handleLogJournalScores(toolInput as JournalScoresInput, userId);
-    case "log_exercise":
-      return handleLogExercise(toolInput as LogExerciseInput, userId, messageId);
+    case "log_exercise": {
+      const out =
+        toolName === "log_entries"
+          ? await handleLogEntries(toolInput as LogEntriesInput, userId, messageId)
+          : toolName === "log_journal_scores"
+            ? await handleLogJournalScores(toolInput as JournalScoresInput, userId)
+            : await handleLogExercise(toolInput as LogExerciseInput, userId, messageId);
+      // New logs must show in insights right away, not after the cache expires.
+      await invalidateUserInsights(userId);
+      return out;
+    }
     default:
       return { result: { error: `Unknown tool: ${toolName}` } };
   }

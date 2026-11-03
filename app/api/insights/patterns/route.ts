@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSessionFromCookies } from '@/lib/auth/session';
 import { runInsightsEngine } from '@/lib/insights/engine';
-import { cacheGet, cacheSet } from '@/lib/cache/insights';
+import { cacheGet, cacheSet, insightsCacheKey } from '@/lib/cache/insights';
 
 export async function GET(req: NextRequest) {
   const session = await getSessionFromCookies();
@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   const daysParam = req.nextUrl.searchParams.get('days');
   const days = Math.min(Math.max(parseInt(daysParam ?? '90', 10) || 90, 1), 365);
 
-  const cacheKey = `insights:v4:${session.userId}:${days}`;
+  const cacheKey = insightsCacheKey(session.userId, 'v4', days);
   const cached = await cacheGet(cacheKey);
   if (cached) return NextResponse.json(cached);
 

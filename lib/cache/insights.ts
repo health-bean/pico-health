@@ -139,6 +139,19 @@ export function getCacheKey(
   return `${userId}:${type}:${paramStr}`;
 }
 
+/**
+ * Cache key for a user's insights. Every variant starts with
+ * "<userId>:insights:" so invalidateUserInsights clears them all.
+ */
+export function insightsCacheKey(userId: string, variant: string, days: number): string {
+  return `${userId}:insights:${variant}:${days}`;
+}
+
+/** Clear a user's cached insights. Call after any log, journal or clarifier change. */
+export async function invalidateUserInsights(userId: string): Promise<void> {
+  await cacheInvalidatePattern(`^${userId}:insights:`);
+}
+
 // ── Legacy compatibility ─────────────────────────────────────────────
 // Sync wrapper for code that hasn't migrated to async yet.
 // Falls back to in-memory only (no Redis).

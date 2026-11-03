@@ -1,10 +1,10 @@
 import { getCompositesForRange, computeAndStoreDayComposite, backfillComposites } from './day-composite-db';
-import { detectNewAlerts } from './alerts';
+import { detectNewAlerts, withoutAlreadyRaised } from './alerts';
 import { assembleInsights } from './assemble';
 import type { InsightsOutput } from './types';
 import { db } from '@/lib/db';
 import { insightSnapshots, insightAlerts } from '@/lib/db/schema';
-import { eq, desc } from 'drizzle-orm';
+import { eq, desc, sql } from 'drizzle-orm';
 
 export { parsePropertyKey } from './assemble';
 
@@ -34,45 +34,54 @@ export async function runInsightsEngine(userId: string, days: number = 90): Prom
 }
 
 async function saveSnapshotAndAlerts(userId: string, output: InsightsOutput, daysAnalyzed: number) {
-  const prev = await db.select().from(insightSnapshots)
-    .where(eq(insightSnapshots.userId, userId))
-    .orderBy(desc(insightSnapshots.computedAt))
-    .limit(1);
+  // Both insights pages can run the engine at once. A per-user lock makes the
+  // second run see the first one's alerts, so the same alert isn't raised twice.
+  await db.transaction(async (tx) => {
+    await tx.execute(sql`select pg_advisory_xact_lock(hashtext(${'insights:' + userId}))`);
 
-  const previousKeys = new Set<string>();
-  if (prev.length > 0) {
-    const prevTriggers = (prev[0].triggers ?? []) as Array<{ factors?: Array<{ key: string }>; factor?: { key: string }; outcome: { key: string } }>;
-    const prevHelpers = (prev[0].helpers ?? []) as typeof prevTriggers;
-    for (const r of [...prevTriggers, ...prevHelpers]) {
-      const factors = r.factors ?? (r.factor ? [r.factor] : []);
-      const fKeys = factors.map(f => f.key).sort().join('+');
-      previousKeys.add(`${fKeys}→${r.outcome.key}`);
+    const prev = await tx.select().from(insightSnapshots)
+      .where(eq(insightSnapshots.userId, userId))
+      .orderBy(desc(insightSnapshots.computedAt))
+      .limit(1);
+
+    const previousKeys = new Set<string>();
+    if (prev.length > 0) {
+      const prevTriggers = (prev[0].triggers ?? []) as Array<{ factors?: Array<{ key: string }>; factor?: { key: string }; outcome: { key: string } }>;
+      const prevHelpers = (prev[0].helpers ?? []) as typeof prevTriggers;
+      for (const r of [...prevTriggers, ...prevHelpers]) {
+        const factors = r.factors ?? (r.factor ? [r.factor] : []);
+        const fKeys = factors.map(f => f.key).sort().join('+');
+        previousKeys.add(`${fKeys}→${r.outcome.key}`);
+      }
+      const prevProgress = (prev[0].progress ?? []) as Array<{ metric: string }>;
+      for (const o of prevProgress) previousKeys.add(`progress:${o.metric}`);
     }
-    // Progress milestones use their own key shape. Without this they were
-    // never recognised as already-known, so every run raised the same
-    // "Brain Fog frequency" alert again.
-    const prevProgress = (prev[0].progress ?? []) as Array<{ metric: string }>;
-    for (const o of prevProgress) previousKeys.add(`progress:${o.metric}`);
-  }
 
-  await db.insert(insightSnapshots).values({
-    userId,
-    daysAnalyzed,
-    triggers: output.triggers as unknown as Record<string, unknown>,
-    helpers: output.helpers as unknown as Record<string, unknown>,
-    patterns: output.propertyPatterns as unknown as Record<string, unknown>,
-    progress: output.progress as unknown as Record<string, unknown>,
-    singleCount: output.dataStatus.singleFactors,
-    twoFactorCount: output.dataStatus.twoFactorPatterns,
-    threeFactorCount: output.dataStatus.threeFactorPatterns,
+    await tx.insert(insightSnapshots).values({
+      userId,
+      daysAnalyzed,
+      triggers: output.triggers as unknown as Record<string, unknown>,
+      helpers: output.helpers as unknown as Record<string, unknown>,
+      patterns: output.propertyPatterns as unknown as Record<string, unknown>,
+      progress: output.progress as unknown as Record<string, unknown>,
+      singleCount: output.dataStatus.singleFactors,
+      twoFactorCount: output.dataStatus.twoFactorPatterns,
+      threeFactorCount: output.dataStatus.threeFactorPatterns,
+    });
+
+    const candidates = detectNewAlerts(output, previousKeys);
+    if (candidates.length === 0) return;
+
+    // The last snapshot alone isn't enough: a pattern that dropped out for one
+    // run and came back was raised again, even after it was dismissed.
+    const existing = await tx.select({ insightKey: insightAlerts.insightKey, createdAt: insightAlerts.createdAt })
+      .from(insightAlerts)
+      .where(eq(insightAlerts.userId, userId));
+    const newAlerts = withoutAlreadyRaised(candidates, existing);
+    if (newAlerts.length > 0) {
+      await tx.insert(insightAlerts).values(newAlerts.map(a => ({ userId, ...a })));
+    }
   });
-
-  const newAlerts = detectNewAlerts(output, previousKeys);
-  if (newAlerts.length > 0) {
-    await db.insert(insightAlerts).values(
-      newAlerts.map(a => ({ userId, ...a })),
-    );
-  }
 }
 
 function emptyOutput(tracked: number, analyzed: number): InsightsOutput {

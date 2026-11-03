@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { runInsightsEngine } from "@/lib/insights/engine";
-import { cacheGet, cacheSet, getCacheKey } from "@/lib/cache/insights";
+import { cacheGet, cacheSet, insightsCacheKey } from "@/lib/cache/insights";
 import { log } from "@/lib/logger";
 
 export async function GET(request: Request) {
@@ -22,7 +22,7 @@ export async function GET(request: Request) {
       );
     }
 
-    const cacheKey = getCacheKey(session.userId, "insights-v2", { days });
+    const cacheKey = insightsCacheKey(session.userId, "v2", days);
     const cached = await cacheGet(cacheKey);
     if (cached) {
       return NextResponse.json(cached);

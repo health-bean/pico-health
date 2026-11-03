@@ -70,3 +70,33 @@ function ratesSupportDirection(result: SingleFactorResult | MultiFactorResult): 
   if (result.direction === 'decreases') return result.rateMultiplier < 1;
   return false;
 }
+
+/** A progress milestone may be raised again after this long; a pattern never is. */
+export const PROGRESS_REPEAT_DAYS = 30;
+
+/**
+ * Drop alerts the user has already been shown. A pattern alert is raised
+ * once per pattern, ever: if it fades and comes back, or was dismissed, it
+ * doesn't return as "new". A progress milestone can return after
+ * PROGRESS_REPEAT_DAYS, since getting better again is news.
+ */
+export function withoutAlreadyRaised<T extends { insightKey: string; alertType: string }>(
+  alerts: T[],
+  existing: { insightKey: string; createdAt: Date }[],
+  now: Date = new Date(),
+): T[] {
+  const lastRaised = new Map<string, number>();
+  for (const e of existing) {
+    const t = e.createdAt.getTime();
+    if (t > (lastRaised.get(e.insightKey) ?? -Infinity)) lastRaised.set(e.insightKey, t);
+  }
+  const repeatAfterMs = PROGRESS_REPEAT_DAYS * 24 * 60 * 60 * 1000;
+  const seen = new Set<string>();
+  return alerts.filter(a => {
+    if (seen.has(a.insightKey)) return false;
+    seen.add(a.insightKey);
+    const last = lastRaised.get(a.insightKey);
+    if (last === undefined) return true;
+    return a.alertType === 'progress_milestone' && now.getTime() - last >= repeatAfterMs;
+  });
+}

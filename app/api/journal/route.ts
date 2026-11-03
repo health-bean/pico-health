@@ -5,6 +5,7 @@ import { db } from "@/lib/db";
 import { journalEntries } from "@/lib/db/schema";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { log } from "@/lib/logger";
+import { invalidateUserInsights } from "@/lib/cache/insights";
 import { readJson } from "@/lib/api/validation";
 
 // ── GET /api/journal?date=YYYY-MM-DD  or  ?days=30 ──────────────────
@@ -185,6 +186,7 @@ export async function POST(request: Request) {
       })
       .returning();
 
+    await invalidateUserInsights(session.userId);
     return NextResponse.json({ entry }, { status: 201 });
   } catch (error) {
     log.error("POST /api/journal error", { error: error as Error });
