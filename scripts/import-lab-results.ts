@@ -23,7 +23,7 @@ if (existsSync(envPath)) {
 
 import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { foodMeasurements, foods, trustedSources } from "@/lib/db/schema";
+import { foodCategories, foodMeasurements, foodSubcategories, foods, trustedSources } from "@/lib/db/schema";
 import { computeRating } from "@/lib/food-data/compute";
 import { recomputeFoodProperty } from "@/lib/food-data/sync";
 import type { FoodProperty } from "@/lib/sources/properties";
@@ -32,6 +32,8 @@ interface ResultRow {
   valuePer100g: number;
   unit: string;
   solublePct?: number | null;
+  /** FODMAP only, e.g. "fructans". */
+  component?: string | null;
   preparation?: string | null;
   sampleDescription: string;
   citation: string;
@@ -85,8 +87,10 @@ async function main() {
   let skipped = 0;
   for (const entry of data.foods) {
     const matches = await db
-      .select({ id: foods.id, servingGrams: foods.servingGrams })
+      .select({ id: foods.id, servingGrams: foods.servingGrams, category: foodCategories.name })
       .from(foods)
+      .leftJoin(foodSubcategories, eq(foodSubcategories.id, foods.subcategoryId))
+      .leftJoin(foodCategories, eq(foodCategories.id, foodSubcategories.categoryId))
       .where(and(eq(foods.displayName, entry.food), eq(foods.source, "curated")));
     if (matches.length !== 1) {
       console.log(`! ${entry.food}: ${matches.length} catalog matches, skipped`);
@@ -110,6 +114,7 @@ async function main() {
             citation: foodMeasurements.citation,
             value: foodMeasurements.valuePer100g,
             sample: foodMeasurements.sampleDescription,
+            component: foodMeasurements.component,
           })
           .from(foodMeasurements)
           .where(and(eq(foodMeasurements.foodId, food.id), eq(foodMeasurements.property, property)))
@@ -118,7 +123,11 @@ async function main() {
     let foodAdded = 0;
     for (const r of entry.results) {
       const dup = existing.some(
-        (e) => e.citation === r.citation && e.value === r.valuePer100g && e.sample === r.sampleDescription
+        (e) =>
+          e.citation === r.citation &&
+          e.value === r.valuePer100g &&
+          e.sample === r.sampleDescription &&
+          (e.component ?? null) === (r.component ?? null)
       );
       if (dup) {
         skipped++;
@@ -132,6 +141,7 @@ async function main() {
           valuePer100g: r.valuePer100g,
           unit: r.unit,
           solublePct: r.solublePct ?? null,
+          component: r.component ?? null,
           preparation: r.preparation ?? null,
           sampleDescription: r.sampleDescription,
           sourceId: source.id,
@@ -151,18 +161,21 @@ async function main() {
       : computeRating({
           property,
           servingGrams: food.servingGrams,
+          category: food.category,
           measurements: entry.results.map((r, i) => ({
             id: String(i),
             valuePer100g: r.valuePer100g,
             reportedLevel: null,
             studyYear: r.studyYear,
             excluded: r.excluded ?? false,
+            component: r.component ?? null,
             updatedAt: new Date(),
           })),
         });
     console.log(
       `  ${entry.food.padEnd(16)} +${foodAdded}  → ${result.level ?? "unknown"}${result.band ? ` (${result.band})` : ""}` +
-        `${result.flags.length ? `  [${result.flags.join(", ")}]` : ""}`
+        `${result.flags.length ? `  [${result.flags.join(", ")}]` : ""}` +
+        `${result.fodmap ? `  ${result.fodmap.checks.map((c) => `${c.name} ${c.grams.toFixed(2)}/${c.cutoff}${c.over ? "!" : ""}`).join(" ")}${result.fodmap.missing.length ? ` missing: ${result.fodmap.missing.join(",")}` : ""}` : ""}`
     );
   }
 

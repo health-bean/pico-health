@@ -80,6 +80,7 @@ export async function GET(_request: Request, { params }: Params) {
           measurements,
           reviewedAt: review?.reviewedAt ?? null,
           overrideLevel: review?.overrideLevel ?? null,
+          category: food.category,
         });
         return { property, measurements, result, review };
       })

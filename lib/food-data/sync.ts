@@ -6,14 +6,16 @@
 import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import {
+  foodCategories,
   foodMeasurements,
   foodPropertyReviews,
+  foodSubcategories,
   foodTriggerProperties,
   foods,
   trustedSources,
 } from "@/lib/db/schema";
 import type { FoodProperty } from "@/lib/sources/properties";
-import { computeRating, type RatingResult } from "./compute";
+import { computeRating, FODMAP_LABELS, type RatingResult } from "./compute";
 
 type Citation = { source: string; ref?: string; note?: string };
 
@@ -26,6 +28,7 @@ export async function loadMeasurements(foodId: string, property: FoodProperty) {
       valuePer100g: foodMeasurements.valuePer100g,
       unit: foodMeasurements.unit,
       reportedLevel: foodMeasurements.reportedLevel,
+      component: foodMeasurements.component,
       solublePct: foodMeasurements.solublePct,
       preparation: foodMeasurements.preparation,
       sampleDescription: foodMeasurements.sampleDescription,
@@ -54,6 +57,18 @@ function amountNote(result: RatingResult): string {
       ? ` (about ${round(result.perServing)} mg per serving)`
       : "";
   return `: ${main}${serving}`;
+}
+
+/** e.g. "Sorbitol 2.3 g per serving (low is under 0.2 g); Monash cutoffs". */
+function fodmapNote(result: RatingResult): string {
+  const d = result.fodmap!;
+  const g = (n: number) => (n >= 1 ? n.toFixed(1) : n.toFixed(2)).replace(/\.?0+$/, "") || "0";
+  const over = d.checks.filter((c) => c.over);
+  const what = over.length
+    ? over.map((c) => `${FODMAP_LABELS[c.name] ?? c.name} ${g(c.grams)} g per serving (low is under ${g(c.cutoff)} g)`).join("; ")
+    : `Under every cutoff per serving across ${result.counted} lab tests`;
+  const prefix = result.flags.includes("admin_override") ? "Set by admin. " : "";
+  return `${prefix}${what}. Cutoffs: Monash University (Varney 2017)`;
 }
 
 /** "not detected to 5130 mg/kg" for an override's note. */
@@ -87,7 +102,9 @@ export function citationFor(
   const sources = [...new Set(counted.map((r) => r.sourceName))].join(", ");
   const refs = counted.map((r) => (r.studyYear ? `${r.citation.split(".")[0]} (${r.studyYear})` : r.citation.split(".")[0]));
   const ref = refs.length > 3 ? `${refs.slice(0, 3).join("; ")}; +${refs.length - 3} more` : refs.join("; ");
-  const note = result.flags.includes("admin_override")
+  const note = result.fodmap
+    ? fodmapNote(result)
+    : result.flags.includes("admin_override")
     ? `Results vary widely across ${result.counted} lab test${result.counted === 1 ? "" : "s"}${
         result.range ? ` (${rangeNote(result)})` : ""
       }; rated on the higher results`
@@ -99,8 +116,10 @@ export function citationFor(
 
 export async function recomputeFoodProperty(foodId: string, property: FoodProperty) {
   const [food] = await db
-    .select({ servingGrams: foods.servingGrams })
+    .select({ servingGrams: foods.servingGrams, category: foodCategories.name })
     .from(foods)
+    .leftJoin(foodSubcategories, eq(foodSubcategories.id, foods.subcategoryId))
+    .leftJoin(foodCategories, eq(foodCategories.id, foodSubcategories.categoryId))
     .where(eq(foods.id, foodId))
     .limit(1);
   if (!food) throw new Error(`Food ${foodId} not found`);
@@ -118,6 +137,7 @@ export async function recomputeFoodProperty(foodId: string, property: FoodProper
     measurements: rows,
     reviewedAt: review?.reviewedAt ?? null,
     overrideLevel: review?.overrideLevel ?? null,
+    category: food.category,
   });
 
   // Nightshade is a yes/no botanical fact, not a level; it isn't computed here.

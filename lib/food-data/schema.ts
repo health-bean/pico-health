@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { FOOD_PROPERTIES } from "@/lib/sources/properties";
-import { LEVELS } from "./compute";
+import { FODMAP_COMPONENTS, LEVELS } from "./compute";
 
 /** Properties that take measurements. Nightshade is a yes/no botanical fact. */
 export const MEASURED_PROPERTIES = FOOD_PROPERTIES.filter((p) => p !== "nightshade");
@@ -35,6 +35,7 @@ const measurementFields = {
   valuePer100g: z.number().min(0).max(1_000_000).nullish(),
   unit: z.string().trim().min(1).max(20).default("mg"),
   reportedLevel: z.enum(LEVELS as [string, ...string[]]).nullish(),
+  component: z.enum(FODMAP_COMPONENTS).nullish(),
   solublePct: z.number().min(0).max(100).nullish(),
   preparation: optionalText(120),
   sampleDescription: optionalText(1000),
@@ -48,6 +49,10 @@ export const createMeasurementSchema = z
   .object(measurementFields)
   .refine((m) => m.valuePer100g != null || m.reportedLevel != null, {
     message: "Enter an amount per 100 g or a level",
+  })
+  .refine((m) => m.property !== "fodmap" || m.valuePer100g == null || !!m.component, {
+    message: "Choose which FODMAP type this measures",
+    path: ["component"],
   });
 
 export const updateMeasurementSchema = z

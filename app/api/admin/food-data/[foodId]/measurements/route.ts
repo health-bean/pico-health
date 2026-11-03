@@ -54,6 +54,7 @@ export async function POST(request: Request, { params }: { params: Promise<{ foo
         valuePer100g: data.valuePer100g ?? null,
         unit: data.unit,
         reportedLevel: data.reportedLevel ?? null,
+        component: data.property === "fodmap" ? (data.component ?? null) : null,
         solublePct: data.solublePct ?? null,
         preparation: data.preparation,
         sampleDescription: data.sampleDescription,

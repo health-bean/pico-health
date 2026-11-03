@@ -16,6 +16,7 @@ export const FLAG_LABELS: Record<Flag, string> = {
   lists_disagree: "Pending list disagrees",
   pending_list_only: "Only a pending list rates it",
   admin_override: "Set by admin",
+  fodmap_incomplete: "Not all FODMAP types tested",
 };
 
 /** Badge colour for a level, using the app's level tokens. */

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { db } from "@/lib/db";
-import { foodMeasurements, foodPropertyReviews, foods, trustedSources } from "@/lib/db/schema";
+import { foodCategories, foodMeasurements, foodPropertyReviews, foodSubcategories, foods, trustedSources } from "@/lib/db/schema";
 import { requireAdmin } from "@/lib/auth/require-admin";
 import { log } from "@/lib/logger";
 import { computeRating, type RatingResult } from "@/lib/food-data/compute";
@@ -32,6 +32,8 @@ export async function GET() {
           property: foodMeasurements.property,
           valuePer100g: foodMeasurements.valuePer100g,
           reportedLevel: foodMeasurements.reportedLevel,
+          component: foodMeasurements.component,
+          category: foodCategories.name,
           studyYear: foodMeasurements.studyYear,
           excluded: foodMeasurements.excluded,
           updatedAt: foodMeasurements.updatedAt,
@@ -39,6 +41,8 @@ export async function GET() {
         })
         .from(foodMeasurements)
         .innerJoin(foods, eq(foods.id, foodMeasurements.foodId))
+        .leftJoin(foodSubcategories, eq(foodSubcategories.id, foods.subcategoryId))
+        .leftJoin(foodCategories, eq(foodCategories.id, foodSubcategories.categoryId))
         .innerJoin(trustedSources, eq(trustedSources.id, foodMeasurements.sourceId)),
       db
         .select({
@@ -71,6 +75,7 @@ export async function GET() {
           measurements: group,
           reviewedAt: reviewed.get(key)?.reviewedAt ?? null,
           overrideLevel: reviewed.get(key)?.overrideLevel ?? null,
+          category: first.category,
         }),
       };
     });

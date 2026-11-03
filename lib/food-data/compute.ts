@@ -32,7 +32,8 @@ export type Flag =
   | "no_rule"
   | "lists_disagree"
   | "pending_list_only"
-  | "admin_override";
+  | "admin_override"
+  | "fodmap_incomplete";
 
 export interface MeasurementInput {
   id: string;
@@ -43,6 +44,8 @@ export interface MeasurementInput {
   updatedAt: Date;
   /** The source's use; "check" = permission pending, compare only. */
   sourceUse?: string | null;
+  /** FODMAP only: which sugar the result measures (see FODMAP_COMPONENTS). */
+  component?: string | null;
 }
 
 export interface RatingInput {
@@ -57,6 +60,8 @@ export interface RatingInput {
    * are counted results.
    */
   overrideLevel?: string | null;
+  /** The food's category name, e.g. "Fruits" (FODMAP cutoffs depend on it). */
+  category?: string | null;
 }
 
 export interface RatingResult {
@@ -78,6 +83,24 @@ export interface RatingResult {
   flags: Flag[];
   /** Studies disagree and no admin has signed off since the last change. */
   needsReview: boolean;
+  /** FODMAP only: each cutoff check, per serving. */
+  fodmap?: FodmapDetail;
+}
+
+export interface FodmapCheck {
+  /** e.g. "oligos" (fructans + GOS), "sorbitol", "excess_fructose". */
+  name: string;
+  /** Grams per serving (median of each component). */
+  grams: number;
+  /** Low if below this, in grams per serving. */
+  cutoff: number;
+  over: boolean;
+}
+
+export interface FodmapDetail {
+  checks: FodmapCheck[];
+  /** Components a "low" rating still needs tested. */
+  missing: string[];
 }
 
 interface Band {
@@ -182,6 +205,139 @@ function isLevel(v: string | null): v is Level {
   return v !== null && (LEVELS as readonly string[]).includes(v);
 }
 
+/**
+ * FODMAP: several sugars, each with its own per-serving cutoff (Varney J et
+ * al. J Gastroenterol Hepatol 2017;32 Suppl 1:53-61, Table 1; Monash
+ * University). A serving is high if any one is at or over its cutoff, low
+ * only if every relevant sugar was tested and is under. The cutoffs only
+ * separate low from high, so there is no "moderate".
+ */
+export const FODMAP_COMPONENTS = [
+  "fructans",
+  "gos",
+  "lactose",
+  "excess_fructose",
+  "sorbitol",
+  "mannitol",
+  "total_fodmap",
+] as const;
+
+export const FODMAP_LABELS: Record<string, string> = {
+  fructans: "Fructans",
+  gos: "GOS",
+  oligos: "Fructans + GOS",
+  lactose: "Lactose",
+  excess_fructose: "Excess fructose",
+  sorbitol: "Sorbitol",
+  mannitol: "Mannitol",
+  polyols: "Sorbitol + mannitol",
+  total_fodmap: "Total FODMAP",
+};
+
+export const FODMAP_CUTOFFS = {
+  /** Fructans + GOS for core grain products, legumes, nuts and seeds. */
+  oligosGrain: 0.3,
+  /** Fructans + GOS for fruit, vegetables and all other foods. */
+  oligosOther: 0.2,
+  sorbitol: 0.2,
+  mannitol: 0.2,
+  polyols: 0.4,
+  excessFructose: 0.15,
+  /** Fresh fruit and veg when excess fructose is the only FODMAP present. */
+  excessFructoseOnly: 0.4,
+  lactose: 1.0,
+};
+
+const GRAIN_CATEGORIES = ["Grains & Legumes", "Grains & Starches", "Nuts & Seeds"];
+const PRODUCE_CATEGORIES = ["Fruits", "Vegetables"];
+const isDairy = (category: string | null | undefined) => !!category && category.startsWith("Dairy");
+
+/** Components that must all be tested before a food can be called low. */
+function requiredFodmapComponents(category: string | null | undefined): string[] {
+  const plant = ["fructans", "gos", "sorbitol", "mannitol", "excess_fructose"];
+  return isDairy(category) ? [...plant, "lactose"] : plant;
+}
+
+/** One component's own cutoff, for spotting results that disagree. */
+function componentCutoff(component: string, category: string | null | undefined): number | null {
+  switch (component) {
+    case "fructans":
+    case "gos":
+      return GRAIN_CATEGORIES.includes(category ?? "") ? FODMAP_CUTOFFS.oligosGrain : FODMAP_CUTOFFS.oligosOther;
+    case "sorbitol":
+      return FODMAP_CUTOFFS.sorbitol;
+    case "mannitol":
+      return FODMAP_CUTOFFS.mannitol;
+    case "excess_fructose":
+      return FODMAP_CUTOFFS.excessFructose;
+    case "lactose":
+      return FODMAP_CUTOFFS.lactose;
+    default:
+      return null;
+  }
+}
+
+function rateFodmap(
+  rows: { valuePer100g: number; component: string }[],
+  grams: number,
+  category: string | null | undefined
+): { level: Level | null; detail: FodmapDetail; disagree: boolean; deciding: FodmapCheck | null } {
+  const byComponent = new Map<string, number[]>();
+  for (const r of rows) byComponent.set(r.component, [...(byComponent.get(r.component) ?? []), r.valuePer100g]);
+  const perServing = (c: string) => {
+    const v = byComponent.get(c);
+    return v ? (median(v) * grams) / 100 : null;
+  };
+  const known = (c: string) => byComponent.has(c);
+
+  const checks: FodmapCheck[] = [];
+  const add = (name: string, value: number | null, cutoff: number) => {
+    if (value !== null) checks.push({ name, grams: value, cutoff, over: value >= cutoff });
+  };
+
+  const fructans = perServing("fructans");
+  const gos = perServing("gos");
+  if (fructans !== null || gos !== null) {
+    const cutoff = GRAIN_CATEGORIES.includes(category ?? "") ? FODMAP_CUTOFFS.oligosGrain : FODMAP_CUTOFFS.oligosOther;
+    add("oligos", (fructans ?? 0) + (gos ?? 0), cutoff);
+  }
+  const sorbitol = perServing("sorbitol");
+  const mannitol = perServing("mannitol");
+  add("sorbitol", sorbitol, FODMAP_CUTOFFS.sorbitol);
+  add("mannitol", mannitol, FODMAP_CUTOFFS.mannitol);
+  if (sorbitol !== null && mannitol !== null) add("polyols", sorbitol + mannitol, FODMAP_CUTOFFS.polyols);
+
+  const required = requiredFodmapComponents(category);
+  const ef = perServing("excess_fructose");
+  if (ef !== null) {
+    // The looser fruit/veg limit applies only when every other sugar was
+    // tested and none was found.
+    const othersNone = required
+      .filter((c) => c !== "excess_fructose")
+      .every((c) => known(c) && perServing(c) === 0);
+    const cutoff =
+      PRODUCE_CATEGORIES.includes(category ?? "") && othersNone
+        ? FODMAP_CUTOFFS.excessFructoseOnly
+        : FODMAP_CUTOFFS.excessFructose;
+    add("excess_fructose", ef, cutoff);
+  }
+  add("lactose", perServing("lactose"), FODMAP_CUTOFFS.lactose);
+
+  const missing = required.filter((c) => !known(c));
+  const overs = checks.filter((c) => c.over);
+  const level: Level | null = overs.length > 0 ? "high" : missing.length === 0 ? "low" : null;
+  // The check that decided it: the one furthest over (or closest to) its cutoff.
+  const ranked = [...(overs.length ? overs : checks)].sort((a, b) => b.grams / b.cutoff - a.grams / a.cutoff);
+
+  const disagree = [...byComponent.entries()].some(([c, values]) => {
+    const cutoff = componentCutoff(c, category);
+    if (cutoff === null || values.length < 2) return false;
+    return new Set(values.map((v) => (v * grams) / 100 >= cutoff)).size > 1;
+  });
+
+  return { level, detail: { checks, missing }, disagree, deciding: ranked[0] ?? null };
+}
+
 export function computeRating(input: RatingInput): RatingResult {
   const live = input.measurements.filter((m) => !m.excluded);
   const included = live.filter((m) => m.sourceUse !== "check");
@@ -210,7 +366,29 @@ export function computeRating(input: RatingInput): RatingResult {
   let amountUnit: string | null = null;
   let disagree = false;
 
-  if (amounts.length > 0) {
+  let fodmap: FodmapDetail | undefined;
+  const fodmapRows = counted
+    .filter((m) => m.valuePer100g !== null && m.component && m.component !== "total_fodmap")
+    .map((m) => ({ valuePer100g: m.valuePer100g as number, component: m.component as string }));
+
+  if (input.property === "fodmap" && fodmapRows.length > 0) {
+    method = "median";
+    const grams = input.servingGrams !== null && input.servingGrams > 0 ? input.servingGrams : null;
+    if (grams === null) {
+      flags.push("no_serving_size");
+    } else {
+      const r = rateFodmap(fodmapRows, grams, input.category);
+      level = r.level;
+      fodmap = r.detail;
+      disagree = r.disagree;
+      if (r.deciding) {
+        amount = r.deciding.grams;
+        amountUnit = "g per serving";
+        perServing = r.deciding.grams;
+      }
+      if (level === null) flags.push("fodmap_incomplete");
+    }
+  } else if (amounts.length > 0) {
     method = "median";
     med = median(amounts);
     const rule = AMOUNT_RULES[input.property];
@@ -264,10 +442,11 @@ export function computeRating(input: RatingInput): RatingResult {
     perServing,
     amount,
     amountUnit,
-    range: amounts.length ? [Math.min(...amounts), Math.max(...amounts)] : null,
+    range: amounts.length && input.property !== "fodmap" ? [Math.min(...amounts), Math.max(...amounts)] : null,
     counted: counted.length,
     superseded,
     flags,
     needsReview: disagree && !reviewedSinceChange,
+    ...(fodmap ? { fodmap } : {}),
   };
 }

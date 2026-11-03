@@ -6,7 +6,7 @@ import { AlertTriangle, ArrowLeft, ExternalLink, Loader2, Plus } from "lucide-re
 import { Badge, Button, Card, Input, Select, Textarea, useToast } from "@/components/ui";
 import { RatingBadge } from "@/components/admin/rating-badge";
 import { cn } from "@/lib/utils";
-import { AMOUNT_RULES, LEVELS, type RatingResult } from "@/lib/food-data/compute";
+import { AMOUNT_RULES, FODMAP_COMPONENTS, FODMAP_LABELS, LEVELS, type RatingResult } from "@/lib/food-data/compute";
 import { FLAG_LABELS, LEVEL_LABELS } from "@/lib/food-data/labels";
 import { FOOD_PROPERTIES, PROPERTY_LABELS, type FoodProperty } from "@/lib/sources/properties";
 
@@ -16,6 +16,7 @@ interface Measurement {
   valuePer100g: number | null;
   unit: string;
   reportedLevel: string | null;
+  component: string | null;
   solublePct: number | null;
   preparation: string | null;
   sampleDescription: string | null;
@@ -81,6 +82,36 @@ const fmt = (n: number) => (n >= 10 ? Math.round(n).toString() : n.toFixed(1).re
 
 function Summary({ data, food }: { data: PropertyData; food: Detail["food"] }) {
   const r = data.result;
+  if (data.property === "fodmap") {
+    const serving = food.servingLabel || (food.servingGrams ? `${food.servingGrams} g` : null);
+    if (!r.fodmap) {
+      return (
+        <p className="text-sm text-warm-600">
+          {r.flags.includes("no_serving_size")
+            ? "FODMAP is rated per serving: set a serving size above."
+            : "No counted results, so the app shows this as unknown."}
+        </p>
+      );
+    }
+    return (
+      <div className="space-y-1 text-sm text-warm-600">
+        <p>Per serving ({serving}), Monash cutoffs (Varney 2017):</p>
+        <ul className="list-inside list-disc">
+          {r.fodmap.checks.map((c) => (
+            <li key={c.name} className={c.over ? "font-medium text-warm-900" : undefined}>
+              {FODMAP_LABELS[c.name] ?? c.name}: {fmt(c.grams)} g · low is under {c.cutoff} g{c.over ? " · over" : ""}
+            </li>
+          ))}
+        </ul>
+        {r.fodmap.missing.length > 0 && (
+          <p>
+            Not tested yet: {r.fodmap.missing.map((c) => FODMAP_LABELS[c] ?? c).join(", ")}.
+            {r.level === null ? " It can't be called low until they are." : ""}
+          </p>
+        )}
+      </div>
+    );
+  }
   if (r.method === "median" && r.median !== null) {
     const unit = data.measurements[0]?.unit ?? "mg";
     const perKg = r.amountUnit === "mg/kg";
@@ -158,6 +189,7 @@ function MeasurementRow({
                   : `${fmt(m.valuePer100g)} ${m.unit}/100 g`
                 : LEVEL_LABELS[m.reportedLevel as keyof typeof LEVEL_LABELS] ?? m.reportedLevel}
             </span>
+            {m.component && <span className="text-sm">{FODMAP_LABELS[m.component] ?? m.component}</span>}
             {m.solublePct !== null && <span className="text-sm">({fmt(m.solublePct)}% soluble)</span>}
             <Badge variant={pending && !m.excluded ? "moderation" : m.excluded || superseded ? "default" : "info"}>
               {status}
@@ -319,6 +351,7 @@ const EMPTY_FORM = {
   value: "",
   unit: "mg",
   level: "",
+  component: "",
   soluble: "",
   preparation: "",
   sample: "",
@@ -355,6 +388,7 @@ function AddResult({
         valuePer100g: f.kind === "amount" ? (perKg && num(f.value) !== null ? num(f.value)! / 10 : num(f.value)) : null,
         unit: f.unit,
         reportedLevel: f.kind === "level" ? f.level || null : null,
+        component: f.property === "fodmap" && f.kind === "amount" ? f.component || null : null,
         solublePct: f.kind === "amount" ? num(f.soluble) : null,
         preparation: f.preparation,
         sampleDescription: f.sample,
@@ -412,6 +446,16 @@ function AddResult({
         </div>
       </fieldset>
 
+      {f.kind === "amount" && f.property === "fodmap" && (
+        <Select
+          id="add-component"
+          label="FODMAP type (grams per 100 g)"
+          value={f.component}
+          onChange={(v) => set({ component: v, unit: "g" })}
+          placeholder="Choose a type"
+          options={FODMAP_COMPONENTS.map((c) => ({ value: c, label: FODMAP_LABELS[c] }))}
+        />
+      )}
       {f.kind === "amount" ? (
         <div className="grid gap-4 md:grid-cols-3">
           <Input id="add-value" label={perKg ? "Amount in mg/kg (0 = not detected)" : "Amount per 100 g"} type="number" step="any" min="0" value={f.value} onChange={(e) => set({ value: e.target.value })} required />

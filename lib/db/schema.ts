@@ -758,6 +758,8 @@ export const foodMeasurements = pgTable(
     unit: varchar("unit", { length: 20 }).notNull().default("mg"),
     /** Level as a list source states it: none | low | moderate | high | very_high. */
     reportedLevel: varchar("reported_level", { length: 20 }),
+    /** FODMAP only: which sugar this measures, e.g. "fructans", "sorbitol". */
+    component: varchar("component", { length: 30 }),
     solublePct: numeric("soluble_pct", { precision: 5, scale: 2, mode: "number" }),
     preparation: varchar("preparation", { length: 120 }),
     sampleDescription: text("sample_description"),
