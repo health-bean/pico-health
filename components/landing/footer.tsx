@@ -1,12 +1,13 @@
 import Link from "next/link";
+import { Wordmark } from "@/components/brand/wordmark";
 import { LANDING_SITE, LANDING_DISCLAIMER } from "@/lib/landing-content";
 
 export function Footer() {
   return (
     <footer className="bg-lp-900 px-6 py-8 md:px-12">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-        <span className="font-[family-name:var(--font-display)] text-sm font-bold text-white/70">
-          {LANDING_SITE.name}
+        <span className="text-white/70">
+          <Wordmark tone="mono" title={LANDING_SITE.name} className="h-4 w-auto" />
         </span>
         <p className="text-xs text-white/60">
           &copy; {new Date().getFullYear()} Health Bean LLC ·{" "}
