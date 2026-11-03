@@ -7,9 +7,11 @@
  * entry has listName, listCategory, level, food (exact catalog name or null),
  * page. Entries without a catalog match or a level are skipped and listed.
  *
- *   npx tsx scripts/import-list-checks.ts <file.json> --source "<source name>" [--notes "..."] [--apply]
+ *   npx tsx scripts/import-list-checks.ts <file.json> --source "<source name>" [--use data] [--notes "..."] [--apply]
  *
- * The named source is created (or switched) to use_as = 'check'. Safe to
+ * The named source is created (or switched) to use_as = 'check', or 'data'
+ * with --use data: only for sources we may show users (public domain or an
+ * open license), whose levels then count toward ratings. Safe to
  * re-run: identical rows are skipped. Dry run by default.
  */
 import { readFileSync, existsSync } from "fs";
@@ -27,6 +29,7 @@ import { and, eq } from "drizzle-orm";
 import { db } from "@/lib/db";
 import { foodMeasurements, foods, trustedSources } from "@/lib/db/schema";
 import { FOOD_PROPERTIES, type FoodProperty } from "@/lib/sources/properties";
+import { recomputeFoodProperty } from "@/lib/food-data/sync";
 
 const LEVELS = ["none", "low", "moderate", "high", "very_high"];
 const CREATED_BY = "import:list-check";
@@ -57,12 +60,13 @@ async function main() {
   const file = process.argv[2];
   const apply = process.argv.includes("--apply");
   const sourceName = arg("--source");
+  const useAs = arg("--use") === "data" ? "data" : "check";
   if (!file || !sourceName) throw new Error('Usage: import-list-checks.ts <file.json> --source "<name>" [--notes ...] [--apply]');
 
   const data = JSON.parse(readFileSync(file, "utf8")) as ListFile;
   const property = data.property;
   if (!FOOD_PROPERTIES.includes(property)) throw new Error(`Unknown property ${property}`);
-  console.log(`${apply ? "APPLYING" : "DRY RUN"}: ${file} → "${sourceName}" (${property}, permission pending)\n`);
+  console.log(`${apply ? "APPLYING" : "DRY RUN"}: ${file} → "${sourceName}" (${property}, ${useAs === "data" ? "counts toward ratings" : "permission pending"})\n`);
 
   let [source] = await db
     .select({ id: trustedSources.id, useAs: trustedSources.useAs, trustedFor: trustedSources.trustedFor })
@@ -71,7 +75,7 @@ async function main() {
     .limit(1);
   const notes = arg("--notes");
   if (!source) {
-    console.log(`+ source "${sourceName}" (permission pending)`);
+    console.log(`+ source "${sourceName}" (${useAs === "data" ? "data" : "permission pending"})`);
     if (apply) {
       [source] = await db
         .insert(trustedSources)
@@ -79,19 +83,19 @@ async function main() {
           name: sourceName,
           url: data.source.url,
           trustedFor: [property],
-          useAs: "check",
-          notes: notes ?? "Permission pending. Admin check only; never shown to users.",
+          useAs,
+          notes: notes ?? (useAs === "check" ? "Permission pending. Admin check only; never shown to users." : null),
           createdBy: CREATED_BY,
         })
         .returning({ id: trustedSources.id, useAs: trustedSources.useAs, trustedFor: trustedSources.trustedFor });
     }
   } else {
     const trustedFor = source.trustedFor.includes(property) ? source.trustedFor : [...source.trustedFor, property];
-    if (source.useAs !== "check") console.log(`~ source "${sourceName}": ${source.useAs} → permission pending`);
+    if (source.useAs !== useAs) console.log(`~ source "${sourceName}": ${source.useAs} → ${useAs}`);
     if (apply) {
       await db
         .update(trustedSources)
-        .set({ useAs: "check", trustedFor, ...(notes ? { notes } : {}), updatedAt: new Date() })
+        .set({ useAs, trustedFor, ...(notes ? { notes } : {}), updatedAt: new Date() })
         .where(eq(trustedSources.id, source.id));
     }
   }
@@ -152,14 +156,24 @@ async function main() {
         sampleDescription: sample,
         sourceId: source.id,
         citation,
-        citationUrl: null,
+        citationUrl: useAs === "data" ? data.source.url : null,
         studyYear: null,
         createdBy: CREATED_BY,
       });
     }
   }
 
-  // No re-rating needed: permission-pending rows never change a rating.
+  // Permission-pending rows never change a rating; data rows do.
+  if (apply && useAs === "data") {
+    const touched = [...new Set(data.entries.map((e) => e.food).filter((f): f is string => !!f))];
+    for (const name of touched) {
+      const ids = byName.get(name) ?? [];
+      if (ids.length === 1) {
+        const { result } = await recomputeFoodProperty(ids[0], property);
+        console.log(`  → ${name}: ${result.level ?? "unknown"}${result.flags.length ? ` [${result.flags.join(", ")}]` : ""}`);
+      }
+    }
+  }
   console.log(`\n${apply ? "Added" : "Would add"} ${added}; ${dupes} already stored; ${skipped.length} skipped.`);
   if (skipped.length) console.log(`Skipped: ${skipped.join("; ")}`);
   process.exit(0);

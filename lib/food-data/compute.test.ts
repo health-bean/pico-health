@@ -283,6 +283,29 @@ describe("computeRating — FODMAP (Varney 2017 cutoffs)", () => {
     expect(rate(250, "Dairy & Alternatives", { ...all0, lactose: 0.5 }).level).toBe("low");
   });
 
+  it("lets a list fill a partial lab result, and flags a list that disagrees with a full one", () => {
+    const list = (level: string) => m({ reportedLevel: level });
+    const partial = computeRating({
+      property: "fodmap", servingGrams: 100, category: "Vegetables",
+      measurements: [m({ component: "fructans", valuePer100g: 0.05 }), list("low")],
+    });
+    expect(partial.level).toBe("low");
+    expect(partial.method).toBe("reported");
+    expect(partial.flags).not.toContain("fodmap_incomplete");
+
+    const full = computeRating({
+      property: "fodmap", servingGrams: 100, category: "Fruits",
+      measurements: [
+        ...Object.entries(all0).map(([component, v]) => m({ component, valuePer100g: v })),
+        list("high"),
+      ],
+    });
+    expect(full.level).toBe("low");
+    expect(full.flags).toContain("studies_disagree");
+
+    expect(computeRating({ property: "fodmap", servingGrams: null, measurements: [list("high")] }).level).toBe("high");
+  });
+
   it("needs a serving size", () => {
     const r = computeRating({ property: "fodmap", servingGrams: null, category: "Fruits", measurements: [m({ component: "sorbitol", valuePer100g: 2 })] });
     expect(r.level).toBeNull();

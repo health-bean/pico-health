@@ -386,7 +386,18 @@ export function computeRating(input: RatingInput): RatingResult {
         amountUnit = "g per serving";
         perServing = r.deciding.grams;
       }
-      if (level === null) flags.push("fodmap_incomplete");
+      if (level !== null) {
+        // A list that rates the food differently from the lab counts as disagreement.
+        if (reported.some((l) => l !== level)) disagree = true;
+      } else if (reported.length > 0) {
+        // Lab data is partial: the list fills the gap (the higher level if lists differ).
+        method = "reported";
+        level = reported.reduce((a, b) => (LEVELS.indexOf(b) > LEVELS.indexOf(a) ? b : a));
+        disagree = disagree || new Set(reported).size > 1;
+        if (r.detail.checks.some((c) => c.over) && level !== "high") disagree = true;
+      } else {
+        flags.push("fodmap_incomplete");
+      }
     }
   } else if (amounts.length > 0) {
     method = "median";

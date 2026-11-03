@@ -91,6 +91,7 @@ export function citationFor(
     citation: string;
     studyYear: number | null;
     excluded: boolean;
+    reportedLevel?: string | null;
   }[]
 ): Citation | null {
   if (result.level === null) return null;
@@ -99,17 +100,18 @@ export function citationFor(
     (r) => !r.excluded && r.sourceUse !== "check" && !result.superseded.includes(r.id)
   );
   const sources = [...new Set(counted.map((r) => r.sourceName))].join(", ");
+  const listSources = [...new Set(counted.filter((r) => r.reportedLevel).map((r) => r.sourceName))].join(", ");
   const refs = [...new Set(counted.map((r) => (r.studyYear ? `${r.citation.split(".")[0]} (${r.studyYear})` : r.citation.split(".")[0])))];
   const ref = refs.length > 3 ? `${refs.slice(0, 3).join("; ")}; +${refs.length - 3} more` : refs.join("; ");
   const note = result.flags.includes("admin_override")
     ? `Results vary widely across ${result.counted} lab test${result.counted === 1 ? "" : "s"}${
         result.range ? ` (${rangeNote(result)})` : ""
       }; rated on the higher results${result.fodmap ? ". Cutoffs: Monash University (Varney 2017)" : ""}`
-    : result.fodmap
+    : result.fodmap && result.method !== "reported"
     ? fodmapNote(result)
     : result.method === "median"
       ? `Middle value of ${result.counted} lab test${result.counted === 1 ? "" : "s"}${amountNote(result)}`
-      : `As rated by ${sources}`;
+      : `As rated by ${listSources || sources}`;
   return { source: sources, ref: ref.slice(0, 500), note };
 }
 
