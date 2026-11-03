@@ -53,14 +53,18 @@ export const LANDING_SHOWCASE = {
       { time: "4:00p", type: "Exposure" as const, description: "Mold — office building HVAC" },
     ],
   },
-  homeHealth: {
-    caption: "Home health from Pico Home, our companion app",
-    score: 85,
-    tasks: [
-      { name: "Replace HVAC Filter", status: "overdue" as const, detail: "Overdue 3 days" },
-      { name: "Test Smoke Detectors", status: "soon" as const, detail: "Due in 2 days" },
-      { name: "Clean Dryer Vent", status: "scheduled" as const, detail: "Scheduled — Apr 20" },
+  protocolCheck: {
+    title: "Protocol check",
+    meal: "Lunch: chicken, spinach, zucchini, olive oil",
+    protocol: "Low Histamine protocol",
+    foods: [
+      { name: "Chicken (fresh)", detail: "Low histamine", fits: true },
+      { name: "Spinach", detail: "High histamine · high oxalate", fits: false },
+      { name: "Zucchini", detail: "Low histamine", fits: true },
+      { name: "Olive oil", detail: "Low histamine", fits: true },
     ],
+    summaryLabel: "This meal",
+    summary: "3 of 4 foods fit",
   },
 } as const;
 
