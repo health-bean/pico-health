@@ -69,7 +69,7 @@ export function EarlyAccessForm({
         <button
           type="submit"
           disabled={status === "loading"}
-          className="whitespace-nowrap rounded-[0.625rem] bg-lp-800 px-6 py-3 text-sm font-semibold text-lp-cream transition-colors hover:bg-lp-900 disabled:opacity-50"
+          className="whitespace-nowrap rounded-[0.625rem] bg-clay-500 px-6 py-3 text-sm font-semibold text-white shadow-[0_4px_12px_-6px_rgb(120_50_5/0.5)] transition-colors hover:bg-clay-600 disabled:opacity-50"
         >
           {status === "loading" ? LANDING_FORM.sending : LANDING_FORM.button}
         </button>

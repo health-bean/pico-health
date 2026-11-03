@@ -1,5 +1,5 @@
 import { LANDING_SHOWCASE, LANDING_QUOTE } from "@/lib/landing-content";
-import { TrendingUp, Calendar, AlertTriangle } from "lucide-react";
+import { TrendingUp, Calendar, AlertTriangle, ClipboardCheck } from "lucide-react";
 
 const ENTRY_ICONS = {
   Meal: { bg: "bg-emerald-50", text: "text-emerald-600", label: "Food" },
@@ -7,24 +7,6 @@ const ENTRY_ICONS = {
   Symptom: { bg: "bg-red-50", text: "text-red-600", label: "Symptom" },
   Exposure: { bg: "bg-amber-50", text: "text-amber-700", label: "Exposure" },
   Cycle: { bg: "bg-pink-50", text: "text-pink-700", label: "Cycle" },
-} as const;
-
-const TASK_STYLES = {
-  overdue: {
-    strip: "bg-red-500",
-    badge: "bg-red-50 text-red-600 ring-red-600/15",
-    label: "Overdue",
-  },
-  soon: {
-    strip: "bg-amber-400",
-    badge: "bg-amber-50 text-amber-700 ring-amber-600/15",
-    label: "Due Soon",
-  },
-  scheduled: {
-    strip: "bg-neutral-300",
-    badge: "bg-neutral-100 text-neutral-600 ring-neutral-400/15",
-    label: "Scheduled",
-  },
 } as const;
 
 const CORRELATION_STYLES = {
@@ -152,99 +134,45 @@ function TimelineCard() {
   );
 }
 
-function HomeHealthCard() {
-  const { homeHealth } = LANDING_SHOWCASE;
-  const circumference = 2 * Math.PI * 38;
-  const offset = circumference * (1 - homeHealth.score / 100);
-
+function ProtocolCheckCard() {
+  const { protocolCheck } = LANDING_SHOWCASE;
   return (
     <div className="rounded-2xl border border-neutral-200/60 bg-white p-4 shadow-sm">
-      <div className="mb-4 text-center">
-        {/* Score ring — matches real HoneyDoIQ: 100px, strokeWidth 8, amber→emerald */}
-        <div className="relative mx-auto mb-2 h-[100px] w-[100px]">
-          <svg width="100" height="100" viewBox="0 0 100 100">
-            <circle
-              cx="50"
-              cy="50"
-              r="38"
-              fill="none"
-              stroke="#f3ede3"
-              strokeWidth="8"
-            />
-            <circle
-              cx="50"
-              cy="50"
-              r="38"
-              fill="none"
-              stroke="url(#scoreGradient)"
-              strokeWidth="8"
-              strokeDasharray={circumference}
-              strokeDashoffset={offset}
-              strokeLinecap="round"
-              transform="rotate(-90 50 50)"
-            />
-            <defs>
-              <linearGradient
-                id="scoreGradient"
-                x1="0"
-                y1="0"
-                x2="1"
-                y2="1"
-              >
-                <stop offset="0%" stopColor="#f59e0b" />
-                <stop offset="100%" stopColor="#16a34a" />
-              </linearGradient>
-            </defs>
-          </svg>
-          <div className="absolute inset-0 flex flex-col items-center justify-center">
-            <span className="text-3xl font-extrabold">{homeHealth.score}</span>
-            <span className="text-[10px] font-semibold text-neutral-400">
-              Health
+      <div className="mb-3 flex items-center gap-2">
+        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-lp-accent-bg text-lp-accent">
+          <ClipboardCheck className="h-4 w-4" />
+        </div>
+        <p className="text-xs text-lp-muted">{protocolCheck.title}</p>
+      </div>
+      <p className="text-sm font-medium leading-snug">{protocolCheck.meal}</p>
+      <span className="mt-1.5 inline-block rounded-full bg-lp-accent-bg px-2.5 py-0.5 text-[10px] font-medium text-lp-accent ring-1 ring-inset ring-lp-accent/15">
+        {protocolCheck.protocol}
+      </span>
+      <div className="mt-3 flex flex-col gap-2">
+        {protocolCheck.foods.map((food) => (
+          <div
+            key={food.name}
+            className="flex items-center gap-3 rounded-xl border border-neutral-100 bg-white px-3 py-2.5"
+          >
+            <div className="min-w-0 flex-1">
+              <p className="text-xs font-medium">{food.name}</p>
+              <p className="text-[10px] text-lp-muted">{food.detail}</p>
+            </div>
+            <span
+              className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold ring-1 ring-inset ${
+                food.fits
+                  ? "bg-emerald-50 text-emerald-700 ring-emerald-600/20"
+                  : "bg-red-50 text-red-600 ring-red-600/15"
+              }`}
+            >
+              {food.fits ? "Fits" : "Not on protocol"}
             </span>
           </div>
-        </div>
-
-        {/* Category sub-scores — distinctive real HoneyDoIQ pattern */}
-        <div className="mx-auto flex max-w-[200px] justify-between text-[10px]">
-          <div>
-            <span className="text-neutral-400">Safety</span>{" "}
-            <span className="font-semibold text-emerald-600">92%</span>
-          </div>
-          <div>
-            <span className="text-neutral-400">Prevention</span>{" "}
-            <span className="font-semibold text-amber-600">78%</span>
-          </div>
-          <div>
-            <span className="text-neutral-400">Efficiency</span>{" "}
-            <span className="font-semibold text-emerald-600">85%</span>
-          </div>
-        </div>
+        ))}
       </div>
-
-      {/* Task rows — matches real HoneyDoIQ structure */}
-      <div className="flex flex-col gap-2">
-        {homeHealth.tasks.map((task) => {
-          const style = TASK_STYLES[task.status];
-          return (
-            <div
-              key={task.name}
-              className="flex items-center gap-3 rounded-2xl border border-neutral-200 bg-white px-3.5 py-3"
-            >
-              <div
-                className={`h-8 w-1 shrink-0 rounded-full ${style.strip}`}
-              />
-              <div className="min-w-0 flex-1">
-                <p className="text-xs font-semibold">{task.name}</p>
-                <p className="text-[10px] text-neutral-400">{task.detail}</p>
-              </div>
-              <span
-                className={`shrink-0 rounded-full px-2.5 py-0.5 text-[10px] font-bold ring-1 ring-inset ${style.badge}`}
-              >
-                {style.label}
-              </span>
-            </div>
-          );
-        })}
+      <div className="mt-3 flex justify-between border-t border-neutral-100 pt-3 text-[10px]">
+        <span className="text-lp-muted">{protocolCheck.summaryLabel}</span>
+        <span className="font-semibold text-emerald-700">{protocolCheck.summary}</span>
       </div>
     </div>
   );
@@ -264,10 +192,7 @@ export function Approach() {
       <div className="mx-auto mt-8 grid max-w-4xl gap-5 md:grid-cols-3">
         <InsightCard />
         <TimelineCard />
-        <div>
-          <HomeHealthCard />
-          <p className="mt-2 text-center text-xs text-lp-muted">{LANDING_SHOWCASE.homeHealth.caption}</p>
-        </div>
+        <ProtocolCheckCard />
       </div>
     </section>
   );
