@@ -3,7 +3,7 @@ import { EarlyAccessForm } from "./early-access-form";
 
 export function Cta({ refCode }: { refCode?: string }) {
   return (
-    <section id="early-access" className="bg-gradient-to-b from-lp-cream to-lp-cream-dark px-6 py-lp-section text-center md:px-12">
+    <section id="early-access" className="scroll-mt-[4.5rem] bg-gradient-to-b from-lp-cream to-lp-cream-dark px-6 py-lp-section text-center md:px-12">
       <h2 className="text-2xl font-bold leading-snug md:text-3xl">
         {LANDING_CTA.headline}
       </h2>

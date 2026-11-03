@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LANDING_HERO } from "@/lib/landing-content";
 import { normalizeRef } from "@/lib/waitlist";
+import { Nav } from "@/components/landing/nav";
 import { Hero } from "@/components/landing/hero";
 import { Problem } from "@/components/landing/problem";
 import { Approach } from "@/components/landing/approach";
@@ -39,6 +40,7 @@ export default async function LandingPage({
           Pico is invite-only for now. Join the early-access list below and we&apos;ll let you in soon.
         </p>
       )}
+      <Nav />
       <Hero refCode={refCode} />
       <Problem />
       <Approach />
