@@ -1,4 +1,4 @@
-import { analyzeSingleFactors } from './single-factor';
+import { analyzeSingleFactors, YES_NO_PROPERTY_LABELS } from './single-factor';
 import { analyzeMultiFactors } from './n-factor';
 import { computeProgress } from './progress';
 import { analyzeTiming } from './timing';
@@ -94,6 +94,8 @@ function extractPropertyPatterns(singleResults: SingleFactorResult[]): PropertyP
   for (const [, data] of byPropertyOutcome) {
     if (data.frequency < 3) continue;
     const sev = data.severity.replace('_', ' ');
+    const yesNo = YES_NO_PROPERTY_LABELS[data.property];
+    const what = yesNo ? `${yesNo.toLowerCase()}` : `${sev}-${data.property}`;
     patterns.push({
       property: data.property,
       severity: data.severity,
@@ -102,7 +104,7 @@ function extractPropertyPatterns(singleResults: SingleFactorResult[]): PropertyP
       frequency: data.frequency,
       totalOpportunities: data.total,
       impactScore: data.impact,
-      description: `${data.outcome.label} on ${data.frequency} of ${data.total} days with ${sev}-${data.property} foods (${Math.round(data.rate * 100)}%), vs ${Math.round(data.base * 100)}% of other days.`,
+      description: `${data.outcome.label} on ${data.frequency} of ${data.total} days with ${what} foods (${Math.round(data.rate * 100)}%), vs ${Math.round(data.base * 100)}% of other days.`,
     });
   }
 

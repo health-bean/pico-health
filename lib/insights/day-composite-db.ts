@@ -3,7 +3,7 @@ import {
   dayComposites, timelineEntries, journalEntries,
   foodTriggerProperties, profiles,
 } from '@/lib/db/schema';
-import { eq, and, gte, lte, inArray } from 'drizzle-orm';
+import { eq, and, gte, lte, inArray, sql } from 'drizzle-orm';
 import { buildDayComposite } from './day-composite';
 import { loadProtocolContext, checkComplianceSync } from '@/lib/protocols/compliance';
 import type { DayComposite, FoodProperty } from './types';
@@ -134,6 +134,18 @@ export async function computeAndStoreDayComposite(userId: string, date: string):
   return composite;
 }
 
+/**
+ * Drop cached days that include a food, so they rebuild with its current
+ * ratings the next time insights run (backfill recomputes missing days).
+ * Call whenever a food's ratings change.
+ */
+export async function invalidateCompositesForFood(foodId: string): Promise<number> {
+  const rows = await db.delete(dayComposites)
+    .where(sql`${dayComposites.foods} @> ${JSON.stringify([{ foodId }])}::jsonb`)
+    .returning({ id: dayComposites.id });
+  return rows.length;
+}
+
 export async function getCompositesForRange(
   userId: string, startDate: string, endDate: string,
 ): Promise<DayComposite[]> {
@@ -172,9 +184,12 @@ async function loadFoodProperties(foodIds: string[]): Promise<Map<string, FoodPr
       }
     }
 
-    // Handle nightshade boolean
+    // Yes/no facts count as "high" (labelled without a level in insights).
     if (row.nightshade) {
       entries.push({ property: 'nightshade', severity: 'high' });
+    }
+    if (row.histamineLiberator) {
+      entries.push({ property: 'histamine_liberator', severity: 'high' });
     }
 
     map.set(row.foodId, entries);

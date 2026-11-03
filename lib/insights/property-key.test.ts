@@ -11,3 +11,14 @@ describe('parsePropertyKey', () => {
     expect(parsePropertyKey('food_property:nightshade_high')).toEqual({ property: 'nightshade', severity: 'high' });
   });
 });
+
+describe('yes/no food facts', () => {
+  it('parse and label without a level', async () => {
+    const { extractFactorsFromDay } = await import('./single-factor');
+    expect(parsePropertyKey('food_property:histamine_liberator_high')).toEqual({ property: 'histamine_liberator', severity: 'high' });
+    const day = { foods: [{ name: 'Strawberries', properties: [{ property: 'histamine_liberator', severity: 'high' }] }], supplements: [], medications: [], exposures: [], symptoms: [], exercises: [], detox: [] } as never;
+    const labels = extractFactorsFromDay(day).map((f) => f.label);
+    expect(labels).toContain('May release histamine food');
+  });
+});
+

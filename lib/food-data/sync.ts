@@ -16,6 +16,7 @@ import {
 } from "@/lib/db/schema";
 import type { FoodProperty } from "@/lib/sources/properties";
 import { computeRating, FODMAP_LABELS, type RatingResult } from "./compute";
+import { invalidateCompositesForFood } from "@/lib/insights/day-composite-db";
 
 type Citation = { source: string; ref?: string; note?: string };
 
@@ -145,10 +146,11 @@ export async function recomputeFoodProperty(foodId: string, property: FoodProper
   if (property !== "nightshade") {
     const citation = citationFor(result, rows);
     const [existing] = await db
-      .select({ sources: foodTriggerProperties.sources })
+      .select()
       .from(foodTriggerProperties)
       .where(eq(foodTriggerProperties.foodId, foodId))
       .limit(1);
+    const previous = existing ? (existing as Record<string, unknown>)[property] ?? "unknown" : "unknown";
 
     const sources = { ...(existing?.sources ?? {}) };
     if (citation) sources[property] = citation;
@@ -160,6 +162,8 @@ export async function recomputeFoodProperty(foodId: string, property: FoodProper
     } else {
       await db.insert(foodTriggerProperties).values({ foodId, ...values });
     }
+    // Cached insight days still hold the old rating; drop them to rebuild.
+    if (previous !== values[property]) await invalidateCompositesForFood(foodId);
   }
 
   return { result, rows };

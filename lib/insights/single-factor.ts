@@ -42,6 +42,12 @@ const ADDITION_LABELS: Record<string, string> = {
   garlic: 'Garlic',
 };
 
+/** Yes/no food facts: stored as severity "high", shown without a level. */
+export const YES_NO_PROPERTY_LABELS: Record<string, string> = {
+  nightshade: 'Nightshade',
+  histamine_liberator: 'May release histamine',
+};
+
 export function extractFactorsFromDay(day: DayComposite): Factor[] {
   const factors: Factor[] = [];
 
@@ -51,7 +57,9 @@ export function extractFactorsFromDay(day: DayComposite): Factor[] {
       factors.push({
         category: 'food_property',
         key: `food_property:${prop.property}_${prop.severity}`,
-        label: `${capitalize(prop.severity.replace(/_/g, ' '))} ${prop.property}`,
+        label: YES_NO_PROPERTY_LABELS[prop.property]
+          ? `${YES_NO_PROPERTY_LABELS[prop.property]} food`
+          : `${capitalize(prop.severity.replace(/_/g, ' '))} ${prop.property}`,
       });
     }
     for (const prep of food.preparation ?? []) {
