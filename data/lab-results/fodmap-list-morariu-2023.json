@@ -1,0 +1,486 @@
+{
+ "property": "fodmap",
+ "source": {
+  "name": "Morariu ID, Avasilcai L, Vieriu M, et al. — Effects of a Low-FODMAP Diet on Irritable Bowel Syndrome in Both Children and Adults—A Narrative Review. Nutrients 2023;15(10):2295",
+  "url": "https://doi.org/10.3390/nu15102295",
+  "file": "Morariu 2023 Nutrients review, Table 1 (PMC10223978)"
+ },
+ "license": "CC BY 4.0. Read in the Europe PMC full-text XML (PMC10223978) <license> element: \"Licensee MDPI, Basel, Switzerland. This article is an open access article distributed under the terms and conditions of the Creative Commons Attribution (CC BY) license (https://creativecommons.org/licenses/by/4.0/).\" Copyright statement: \"© 2023 by the authors.\"",
+ "use": "data",
+ "derivedFromMonash": null,
+ "termsNotice": "CC BY 4.0: credit the authors and the article, link the licence, and say if changes were made. Table 1 cites no source; the only text referring to it is: 'Depending on the FODMAP content, the products are split into two categories: high-FODMAP foods versus low-FODMAP foods, as shown in Table 1.' The paper does not mention Monash. No serving sizes. A secondary narrative-review list, not lab data.",
+ "entries": [
+  {
+   "listName": "asparagus",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Asparagus",
+   "page": null
+  },
+  {
+   "listName": "garlic",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Garlic",
+   "page": null
+  },
+  {
+   "listName": "onions",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Onion",
+   "page": null
+  },
+  {
+   "listName": "broccoli",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Broccoli",
+   "page": null
+  },
+  {
+   "listName": "green peas",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Green Peas",
+   "page": null
+  },
+  {
+   "listName": "sugar snap peas",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Snap Peas",
+   "page": null
+  },
+  {
+   "listName": "mushrooms",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Mushrooms",
+   "page": null
+  },
+  {
+   "listName": "cabbage",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Cabbage",
+   "page": null
+  },
+  {
+   "listName": "capsicum",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Bell Pepper",
+   "page": null
+  },
+  {
+   "listName": "carrot",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Carrot",
+   "page": null
+  },
+  {
+   "listName": "corn",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Corn",
+   "page": null
+  },
+  {
+   "listName": "cucumber",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Cucumber",
+   "page": null
+  },
+  {
+   "listName": "eggplant",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Eggplant",
+   "page": null
+  },
+  {
+   "listName": "green beans",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Green Beans",
+   "page": null
+  },
+  {
+   "listName": "lettuce",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Lettuce",
+   "page": null
+  },
+  {
+   "listName": "pumpkin",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Pumpkin",
+   "page": null
+  },
+  {
+   "listName": "tomato",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Tomato",
+   "page": null
+  },
+  {
+   "listName": "zucchini",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'vegetables', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Zucchini",
+   "page": null
+  },
+  {
+   "listName": "apples",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Apple",
+   "page": null
+  },
+  {
+   "listName": "pears",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Pear",
+   "page": null
+  },
+  {
+   "listName": "mangos",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Mango",
+   "page": null
+  },
+  {
+   "listName": "watermelon",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Watermelon",
+   "page": null
+  },
+  {
+   "listName": "nectarines",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Nectarine",
+   "page": null
+  },
+  {
+   "listName": "peaches",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Peach",
+   "page": null
+  },
+  {
+   "listName": "plums",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Plum",
+   "page": null
+  },
+  {
+   "listName": "dried fruits",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "orange",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Orange",
+   "page": null
+  },
+  {
+   "listName": "mandarin",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Mandarin",
+   "page": null
+  },
+  {
+   "listName": "grapes",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Grapes",
+   "page": null
+  },
+  {
+   "listName": "blueberries",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Blueberries",
+   "page": null
+  },
+  {
+   "listName": "lemon",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Lemon",
+   "page": null
+  },
+  {
+   "listName": "kiwi",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Kiwi",
+   "page": null
+  },
+  {
+   "listName": "banana",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Banana",
+   "page": null
+  },
+  {
+   "listName": "strawberries",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'fruits', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Strawberries",
+   "page": null
+  },
+  {
+   "listName": "milk (cow, goat, sheep)",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Whole Milk",
+   "page": null
+  },
+  {
+   "listName": "milk (cow, goat, sheep)",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Goat Milk",
+   "page": null
+  },
+  {
+   "listName": "milk (cow, goat, sheep)",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Sheep Milk",
+   "page": null
+  },
+  {
+   "listName": "condensed milk",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "yoghurt",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Yogurt",
+   "page": null
+  },
+  {
+   "listName": "cream",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Cream",
+   "page": null
+  },
+  {
+   "listName": "ice cream",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "cheese (fresh)",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "soy milk",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Soy Milk",
+   "page": null
+  },
+  {
+   "listName": "lactose-free milk",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "almond/rice milk",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Almond Milk",
+   "page": null
+  },
+  {
+   "listName": "almond/rice milk",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Rice Milk",
+   "page": null
+  },
+  {
+   "listName": "lactose-free yogurts",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "ripened cheese",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "peanut butter",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Peanut Butter",
+   "page": null
+  },
+  {
+   "listName": "hard cheese",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "camembert/brie cheese",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'dairy and alternatives', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "rye",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Rye",
+   "page": null
+  },
+  {
+   "listName": "wheat-containing bread",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Bread (Wheat)",
+   "page": null
+  },
+  {
+   "listName": "wheat-based cereals with dried fruit",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "wheat pasta",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Pasta",
+   "page": null
+  },
+  {
+   "listName": "breakfast cereals",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "rice",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "note": "generic 'rice' — not mapped (catalog splits white/brown/black/wild)",
+   "page": null
+  },
+  {
+   "listName": "quinoa",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Quinoa",
+   "page": null
+  },
+  {
+   "listName": "gluten-free bread",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "gluten-free pasta",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "sourdough",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Sourdough Bread",
+   "note": "source says 'sourdough' in the bread row; grain not stated",
+   "page": null
+  },
+  {
+   "listName": "spelt bread",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'bread and cereals', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": null,
+   "note": "as bread",
+   "page": null
+  },
+  {
+   "listName": "pistachios",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'nuts and seeds', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Pistachios",
+   "page": null
+  },
+  {
+   "listName": "cashews",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'nuts and seeds', column 'High-FODMAP Content'",
+   "level": "high",
+   "food": "Cashews",
+   "page": null
+  },
+  {
+   "listName": "peanuts",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'nuts and seeds', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Peanuts",
+   "page": null
+  },
+  {
+   "listName": "walnuts",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'nuts and seeds', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Walnuts",
+   "page": null
+  },
+  {
+   "listName": "pumpkin seeds",
+   "listCategory": "Table 1 'Products with high and low-FODMAP content' — row 'nuts and seeds', column 'Low-FODMAP Content'",
+   "level": "low",
+   "food": "Pumpkin Seeds",
+   "page": null
+  }
+ ]
+}

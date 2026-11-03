@@ -1,0 +1,258 @@
+{
+ "property": "fodmap",
+ "source": {
+  "name": "National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK/NIH) — Eating, Diet, & Nutrition for Irritable Bowel Syndrome",
+  "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/irritable-bowel-syndrome/eating-diet-nutrition",
+  "file": "NIDDK IBS diet page (last reviewed Nov 2017)"
+ },
+ "license": "US federal government work. NIDDK copyright page (https://www.niddk.nih.gov/copyright, read 2026-11-02): \"The majority of information on this site is copyright free and can be freely downloaded and reproduced. Content reproduced without changes should acknowledge the National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK) as the source.\" Exceptions are co-sponsored documents, logos and licensed graphics, which 'generally ... will include a copyright statement'; this page carries none. Page footer: 'This content is provided as a service of the National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK), part of the National Institutes of Health.'",
+ "use": "data",
+ "derivedFromMonash": null,
+ "termsNotice": "Acknowledge NIDDK as the source. If text is edited, NIDDK/NIH logos must be removed and content must not imply endorsement. The page cites no source for the food list (its only reference is the Dietary Guidelines, for fiber). It lists only foods that CONTAIN FODMAPs (no low list) and gives no serving sizes. Page says 'Last Reviewed November 2017'.",
+ "entries": [
+  {
+   "listName": "apples",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Apple",
+   "page": null
+  },
+  {
+   "listName": "apricots",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Apricot",
+   "page": null
+  },
+  {
+   "listName": "blackberries",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Blackberries",
+   "page": null
+  },
+  {
+   "listName": "cherries",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Cherries",
+   "page": null
+  },
+  {
+   "listName": "mango",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Mango",
+   "page": null
+  },
+  {
+   "listName": "nectarines",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Nectarine",
+   "page": null
+  },
+  {
+   "listName": "pears",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Pear",
+   "page": null
+  },
+  {
+   "listName": "plums",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Plum",
+   "page": null
+  },
+  {
+   "listName": "watermelon",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": "Watermelon",
+   "page": null
+  },
+  {
+   "listName": "juice containing any of these fruits",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / fruits such as apples, apricots, blackberries, cherries, mango, nectarines, pears, plums, and watermelon, or juice containing any of these fruits",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "canned fruit in natural fruit juice",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / canned fruit in natural fruit juice, or large amounts of fruit juice or dried fruit",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "large amounts of fruit juice or dried fruit",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / canned fruit in natural fruit juice, or large amounts of fruit juice or dried fruit",
+   "level": "high",
+   "food": null,
+   "note": "\"large amounts\"",
+   "page": null
+  },
+  {
+   "listName": "artichokes",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Artichoke",
+   "page": null
+  },
+  {
+   "listName": "asparagus",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Asparagus",
+   "page": null
+  },
+  {
+   "listName": "beans",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": null,
+   "note": "generic term 'beans' — not mapped",
+   "page": null
+  },
+  {
+   "listName": "cabbage",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Cabbage",
+   "page": null
+  },
+  {
+   "listName": "cauliflower",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Cauliflower",
+   "page": null
+  },
+  {
+   "listName": "garlic",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Garlic",
+   "page": null
+  },
+  {
+   "listName": "garlic salts",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "lentils",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Green Lentils",
+   "note": "source says 'lentils' without colour; mapped to both catalog lentils",
+   "page": null
+  },
+  {
+   "listName": "lentils",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Red Lentils",
+   "note": "source says 'lentils' without colour; mapped to both catalog lentils",
+   "page": null
+  },
+  {
+   "listName": "mushrooms",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Mushrooms",
+   "page": null
+  },
+  {
+   "listName": "onions",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Onion",
+   "page": null
+  },
+  {
+   "listName": "sugar snap or snow peas",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / vegetables such as artichokes, asparagus, beans, cabbage, cauliflower, garlic and garlic salts, lentils, mushrooms, onions, and sugar snap or snow peas",
+   "level": "high",
+   "food": "Snap Peas",
+   "page": null
+  },
+  {
+   "listName": "milk",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / dairy products such as milk, milk products, soft cheeses, yogurt, custard, and ice cream",
+   "level": "high",
+   "food": "Whole Milk",
+   "note": "source says 'milk' under dairy products; mapped to cow's whole milk",
+   "page": null
+  },
+  {
+   "listName": "milk products",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / dairy products such as milk, milk products, soft cheeses, yogurt, custard, and ice cream",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "soft cheeses",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / dairy products such as milk, milk products, soft cheeses, yogurt, custard, and ice cream",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "yogurt",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / dairy products such as milk, milk products, soft cheeses, yogurt, custard, and ice cream",
+   "level": "high",
+   "food": "Yogurt",
+   "page": null
+  },
+  {
+   "listName": "custard",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / dairy products such as milk, milk products, soft cheeses, yogurt, custard, and ice cream",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "ice cream",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / dairy products such as milk, milk products, soft cheeses, yogurt, custard, and ice cream",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "wheat and rye products",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / wheat and rye products",
+   "level": "high",
+   "food": null,
+   "note": "generic product group — not mapped to Wheat/Rye",
+   "page": null
+  },
+  {
+   "listName": "honey",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / honey and foods with high-fructose corn syrup",
+   "level": "high",
+   "food": "Honey",
+   "page": null
+  },
+  {
+   "listName": "foods with high-fructose corn syrup",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\" / honey and foods with high-fructose corn syrup",
+   "level": "high",
+   "food": null,
+   "page": null
+  },
+  {
+   "listName": "products, including candy and gum, with sweeteners ending in “–ol,” such as sorbitol, mannitol, xylitol, and maltitol",
+   "listCategory": "Low FODMAP diet — \"Examples of foods that contain FODMAPs include\"",
+   "level": "high",
+   "food": null,
+   "page": null
+  }
+ ]
+}
