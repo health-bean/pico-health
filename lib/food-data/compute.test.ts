@@ -310,6 +310,8 @@ describe("computeRating — FODMAP (Varney 2017 cutoffs)", () => {
     const r = computeRating({ property: "fodmap", servingGrams: null, category: "Fruits", measurements: [m({ component: "sorbitol", valuePer100g: 2 })] });
     expect(r.level).toBeNull();
     expect(r.flags).toContain("no_serving_size");
+    const withList = computeRating({ property: "fodmap", servingGrams: null, category: "Fruits", measurements: [m({ component: "lactose", valuePer100g: 0 }), m({ reportedLevel: "low" })] });
+    expect(withList.level).toBe("low");
   });
 });
 

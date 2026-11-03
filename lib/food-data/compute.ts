@@ -376,6 +376,12 @@ export function computeRating(input: RatingInput): RatingResult {
     const grams = input.servingGrams !== null && input.servingGrams > 0 ? input.servingGrams : null;
     if (grams === null) {
       flags.push("no_serving_size");
+      // Without a serving the lab amounts can't be ranked; a list still can.
+      if (reported.length > 0) {
+        method = "reported";
+        level = reported.reduce((a, b) => (LEVELS.indexOf(b) > LEVELS.indexOf(a) ? b : a));
+        disagree = new Set(reported).size > 1;
+      }
     } else {
       const r = rateFodmap(fodmapRows, grams, input.category);
       level = r.level;

@@ -11,7 +11,11 @@
  *
  * Low-confidence matches are skipped. FODMAP rows are added only for
  * high-confidence matches, and only for sugars USDA actually reports
- * (missing is not zero). Safe to re-run. Dry run by default.
+ * (missing is not zero). Lactose counts toward ratings. Excess fructose is
+ * stored as an admin cross-check only: it's fructose minus glucose, a small
+ * difference of two averaged numbers, and on USDA data it wrongly makes
+ * grapes, kiwi and berries high (Monash's lab rates them low).
+ * Safe to re-run. Dry run by default.
  */
 import { readFileSync, existsSync } from "fs";
 import path from "path";
@@ -44,6 +48,7 @@ interface NutrientRecord {
 }
 
 const SOURCE = "USDA FoodData Central";
+const CHECK_SOURCE = "USDA FoodData Central — fructose check";
 const CREATED_BY = "import:usda";
 const round3 = (n: number) => Math.round(n * 1000) / 1000;
 
@@ -65,6 +70,21 @@ async function main() {
         trustedFor: ["fodmap"],
         useAs: "data",
         notes: "US government data (public domain). Fructose, glucose and lactose per 100 g from each food's matched record; excess fructose = fructose − glucose.",
+        createdBy: CREATED_BY,
+      })
+      .returning();
+  }
+
+  let [checkSource] = await db.select().from(trustedSources).where(eq(trustedSources.name, CHECK_SOURCE)).limit(1);
+  if (!checkSource && apply) {
+    [checkSource] = await db
+      .insert(trustedSources)
+      .values({
+        name: CHECK_SOURCE,
+        url: "https://fdc.nal.usda.gov",
+        trustedFor: ["fodmap"],
+        useAs: "check",
+        notes: "Excess fructose (fructose − glucose) from USDA averages. Admin cross-check only: too imprecise to rate fruit (makes grapes, kiwi, berries high).",
         createdBy: CREATED_BY,
       })
       .returning();
@@ -125,7 +145,7 @@ async function main() {
     if (!rows.length) continue;
 
     const citation = `USDA FoodData Central. ${rec.description}. ${rec.dataType}, FDC ID ${m.fdcId}.`;
-    const existing = source
+    const existing = source && checkSource
       ? await db
           .select({ component: foodMeasurements.component })
           .from(foodMeasurements)
@@ -140,7 +160,8 @@ async function main() {
     for (const r of rows) {
       if (existing.some((e) => e.component === r.component)) continue;
       counts.fodmapRows++;
-      if (apply && source) {
+      const src = r.component === "excess_fructose" ? checkSource : source;
+      if (apply && src) {
         await db.insert(foodMeasurements).values({
           foodId: food.id,
           property: "fodmap",
@@ -149,7 +170,7 @@ async function main() {
           unit: "g",
           preparation: null,
           sampleDescription: r.sample,
-          sourceId: source.id,
+          sourceId: src.id,
           citation,
           citationUrl: `https://fdc.nal.usda.gov/food-details/${m.fdcId}/nutrients`,
           studyYear: null,

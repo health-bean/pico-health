@@ -1,0 +1,5904 @@
+[
+ {
+  "food": "A2 Milk",
+  "fdcId": 746782,
+  "dataType": "Foundation",
+  "description": "Milk, whole, 3.25% milkfat, with added vitamin D",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "No A2-specific record. A2 differs from regular milk only in beta-casein variant, so whole milk 3.25% macros and lactose apply. Assumes whole fat."
+ },
+ {
+  "food": "Acorn Squash",
+  "fdcId": 2685571,
+  "dataType": "Foundation",
+  "description": "Squash, winter, acorn, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Agave Syrup",
+  "fdcId": 170277,
+  "dataType": "SR Legacy",
+  "description": "Sweetener, syrup, agave",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Allspice",
+  "fdcId": 171315,
+  "dataType": "SR Legacy",
+  "description": "Spices, allspice, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Almond Butter",
+  "fdcId": 2262074,
+  "dataType": "Foundation",
+  "description": "Almond butter, creamy",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Almond Flour",
+  "fdcId": 2261420,
+  "dataType": "Foundation",
+  "description": "Flour, almond",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Almond Milk",
+  "fdcId": 2257045,
+  "dataType": "Foundation",
+  "description": "Almond milk, unsweetened, plain, refrigerated",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Assumes unsweetened plain. Sweetened/vanilla versions carry several g sugar per cup."
+ },
+ {
+  "food": "Almonds",
+  "fdcId": 2346393,
+  "dataType": "Foundation",
+  "description": "Nuts, almonds, whole, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Raw whole."
+ },
+ {
+  "food": "Amaranth",
+  "fdcId": 170682,
+  "dataType": "SR Legacy",
+  "description": "Amaranth grain, uncooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Serving label says uncooked."
+ },
+ {
+  "food": "Anchovies (canned)",
+  "fdcId": 2747652,
+  "dataType": "Foundation",
+  "description": "Anchovies, canned in olive oil, with salt, drained",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Anise Seed",
+  "fdcId": 171316,
+  "dataType": "SR Legacy",
+  "description": "Spices, anise seed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Apple",
+  "fdcId": 171688,
+  "dataType": "SR Legacy",
+  "description": "Apples, raw, with skin (Includes foods for USDA's Food Distribution Program)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's generic apple with skin. Foundation only has single varieties (fuji/gala/etc)."
+ },
+ {
+  "food": "Apple Cider Vinegar",
+  "fdcId": 173469,
+  "dataType": "SR Legacy",
+  "description": "Vinegar, cider",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Apricot",
+  "fdcId": 2710815,
+  "dataType": "Foundation",
+  "description": "Apricot, with skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Arrowroot Flour",
+  "fdcId": 170684,
+  "dataType": "SR Legacy",
+  "description": "Arrowroot flour",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Artichoke",
+  "fdcId": 168386,
+  "dataType": "SR Legacy",
+  "description": "Artichokes, (globe or french), cooked, boiled, drained, without salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Serving label says boiled, so cooked boiled, no salt."
+ },
+ {
+  "food": "Arugula",
+  "fdcId": 169387,
+  "dataType": "SR Legacy",
+  "description": "Arugula, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic arugula raw. The Foundation record is baby arugula only."
+ },
+ {
+  "food": "Asparagus",
+  "fdcId": 2710823,
+  "dataType": "Foundation",
+  "description": "Asparagus, green, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Avocado",
+  "fdcId": 2710824,
+  "dataType": "Foundation",
+  "description": "Avocado, Hass, peeled, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Hass (most avocados sold in the US)."
+ },
+ {
+  "food": "Avocado Oil",
+  "fdcId": 173573,
+  "dataType": "SR Legacy",
+  "description": "Oil, avocado",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Bacon",
+  "fdcId": 749420,
+  "dataType": "Foundation",
+  "description": "Pork, cured, bacon, cooked, restaurant",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Cooked bacon, the form people eat (raw bacon weighs and reads very differently). Restaurant-cooked; fat varies with how crisp it is."
+ },
+ {
+  "food": "Balsamic Vinegar",
+  "fdcId": 172241,
+  "dataType": "SR Legacy",
+  "description": "Vinegar, balsamic",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Bamboo Shoots",
+  "fdcId": 169210,
+  "dataType": "SR Legacy",
+  "description": "Bamboo shoots, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Serving label says raw."
+ },
+ {
+  "food": "Banana",
+  "fdcId": 1105314,
+  "dataType": "Foundation",
+  "description": "Bananas, ripe and slightly ripe, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Ripe and slightly ripe."
+ },
+ {
+  "food": "Banana (green)",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No unripe-banana record. Green bananas are mostly resistant starch with little sugar, so the ripe banana values (high fructose/glucose) would be wrong. Plantain is a different cultivar group."
+ },
+ {
+  "food": "Barley",
+  "fdcId": 170284,
+  "dataType": "SR Legacy",
+  "description": "Barley, pearled, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Pearled raw (the common supermarket form). Serving label says uncooked."
+ },
+ {
+  "food": "Basil",
+  "fdcId": 172232,
+  "dataType": "SR Legacy",
+  "description": "Basil, fresh",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Fresh."
+ },
+ {
+  "food": "Bay Leaf",
+  "fdcId": 170917,
+  "dataType": "SR Legacy",
+  "description": "Spices, bay leaf",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Bean Sprouts",
+  "fdcId": 169957,
+  "dataType": "SR Legacy",
+  "description": "Mung beans, mature seeds, sprouted, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic \"bean sprouts\" = mung bean sprouts (USDA common usage)."
+ },
+ {
+  "food": "Beef",
+  "fdcId": 169483,
+  "dataType": "SR Legacy",
+  "description": "Beef, composite of trimmed retail cuts, separable lean and fat, trimmed to 1/8\" fat, all grades, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic: composite of trimmed retail cuts, lean and fat, 1/8\" trim, all grades, raw. Actual fat depends heavily on the cut."
+ },
+ {
+  "food": "Beef Heart",
+  "fdcId": 168625,
+  "dataType": "SR Legacy",
+  "description": "Beef, variety meats and by-products, heart, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Beef Kidney",
+  "fdcId": 169449,
+  "dataType": "SR Legacy",
+  "description": "Beef, variety meats and by-products, kidneys, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Beef Liver",
+  "fdcId": 169451,
+  "dataType": "SR Legacy",
+  "description": "Beef, variety meats and by-products, liver, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Beer",
+  "fdcId": 168746,
+  "dataType": "SR Legacy",
+  "description": "Alcoholic beverage, beer, regular, all",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Regular beer, all."
+ },
+ {
+  "food": "Beet",
+  "fdcId": 2685576,
+  "dataType": "Foundation",
+  "description": "Beets, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Beet Greens",
+  "fdcId": 2747653,
+  "dataType": "Foundation",
+  "description": "Beet greens, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Bell Pepper",
+  "fdcId": 2258588,
+  "dataType": "Foundation",
+  "description": "Peppers, bell, green, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Color unspecified, so green (most purchased in the US). Red has about 2x the sugars/fructose."
+ },
+ {
+  "food": "Bison",
+  "fdcId": 2727571,
+  "dataType": "Foundation",
+  "description": "Bison, ground, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic bison: ground (most common retail form)."
+ },
+ {
+  "food": "Black Beans",
+  "fdcId": 173735,
+  "dataType": "SR Legacy",
+  "description": "Beans, black, mature seeds, cooked, boiled, without salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No uncooked label, so mature seeds boiled, no salt."
+ },
+ {
+  "food": "Black Pepper",
+  "fdcId": 170931,
+  "dataType": "SR Legacy",
+  "description": "Spices, pepper, black",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Black Rice",
+  "fdcId": 2710825,
+  "dataType": "Foundation",
+  "description": "Rice, black, unenriched, raw",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only a dry/raw record exists, while the catalog has no serving label (normally means cooked). Values are per 100 g DRY. About 3x too high if applied to cooked weight."
+ },
+ {
+  "food": "Black Tea",
+  "fdcId": 173227,
+  "dataType": "SR Legacy",
+  "description": "Beverages, tea, black, brewed, prepared with tap water",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Brewed."
+ },
+ {
+  "food": "Black-Eyed Peas",
+  "fdcId": 173759,
+  "dataType": "SR Legacy",
+  "description": "Cowpeas, common (blackeyes, crowder, southern), mature seeds, cooked, boiled, without salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mature seeds boiled, no salt."
+ },
+ {
+  "food": "Blackberries",
+  "fdcId": 173946,
+  "dataType": "SR Legacy",
+  "description": "Blackberries, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2727581 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Blue Cheese",
+  "fdcId": 172175,
+  "dataType": "SR Legacy",
+  "description": "Cheese, blue",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Blueberries",
+  "fdcId": 2346411,
+  "dataType": "Foundation",
+  "description": "Blueberries, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Bok Choy",
+  "fdcId": 2685572,
+  "dataType": "Foundation",
+  "description": "Cabbage, bok choy, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Bone Broth",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No bone-broth record. USDA broth/bouillon records are thin stock with far less protein/collagen than bone broth, and the animal is unspecified."
+ },
+ {
+  "food": "Bone Marrow",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only record is caribou marrow (Alaska Native). Species mismatch."
+ },
+ {
+  "food": "Bratwurst",
+  "fdcId": 171620,
+  "dataType": "SR Legacy",
+  "description": "Bratwurst, pork, cooked",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Pork bratwurst, cooked (no raw pork brat record). Meat mix varies."
+ },
+ {
+  "food": "Brazil Nuts",
+  "fdcId": 2515373,
+  "dataType": "Foundation",
+  "description": "Nuts, brazilnuts, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Bread (Wheat)",
+  "fdcId": 172686,
+  "dataType": "SR Legacy",
+  "description": "Bread, wheat",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "US \"wheat bread\" (not 100% whole wheat), which fits the Refined Grains subcategory. Whole-wheat would be Foundation 2758994."
+ },
+ {
+  "food": "Broccoli",
+  "fdcId": 747447,
+  "dataType": "Foundation",
+  "description": "Broccoli, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Broccolini",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record. Hybrid of broccoli and gai lan. Neither USDA broccoli nor broccoli raab is the same plant."
+ },
+ {
+  "food": "Brown Rice",
+  "fdcId": 169704,
+  "dataType": "SR Legacy",
+  "description": "Rice, brown, long-grain, cooked (Includes foods for USDA's Food Distribution Program)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Serving label says cooked. Long-grain."
+ },
+ {
+  "food": "Brown Rice Flour",
+  "fdcId": 1104812,
+  "dataType": "Foundation",
+  "description": "Flour, rice, brown",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Brussels Sprouts",
+  "fdcId": 169971,
+  "dataType": "SR Legacy",
+  "description": "Brussels sprouts, cooked, boiled, drained, without salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Serving label says boiled."
+ },
+ {
+  "food": "Buckwheat",
+  "fdcId": 2512378,
+  "dataType": "Foundation",
+  "description": "Buckwheat, whole grain",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Whole-grain groats, dry. Serving label says uncooked groats."
+ },
+ {
+  "food": "Buckwheat Flour",
+  "fdcId": 2512374,
+  "dataType": "Foundation",
+  "description": "Flour, buckwheat",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Bulgur",
+  "fdcId": 2710820,
+  "dataType": "Foundation",
+  "description": "Bulgur, dry, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Serving label says dry."
+ },
+ {
+  "food": "Butter",
+  "fdcId": 173410,
+  "dataType": "SR Legacy",
+  "description": "Butter, salted",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 790508 has sugar detail but no energy/fat/carbs, so SR was used.  Salted stick."
+ },
+ {
+  "food": "Butter Lettuce",
+  "fdcId": 168429,
+  "dataType": "SR Legacy",
+  "description": "Lettuce, butterhead (includes boston and bibb types), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Butterhead (Boston/Bibb)."
+ },
+ {
+  "food": "Buttermilk",
+  "fdcId": 2259792,
+  "dataType": "Foundation",
+  "description": "Buttermilk, low fat",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Low-fat cultured, the standard retail buttermilk."
+ },
+ {
+  "food": "Butternut Squash",
+  "fdcId": 2685570,
+  "dataType": "Foundation",
+  "description": "Squash, winter, butternut, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cabbage",
+  "fdcId": 2346407,
+  "dataType": "Foundation",
+  "description": "Cabbage, green, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic = green cabbage."
+ },
+ {
+  "food": "Cabbage (Green)",
+  "fdcId": 2346407,
+  "dataType": "Foundation",
+  "description": "Cabbage, green, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cabbage (Napa)",
+  "fdcId": 169979,
+  "dataType": "SR Legacy",
+  "description": "Cabbage, chinese (pe-tsai), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 2727583 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Cabbage (Red)",
+  "fdcId": 2346408,
+  "dataType": "Foundation",
+  "description": "Cabbage, red, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cantaloupe",
+  "fdcId": 746770,
+  "dataType": "Foundation",
+  "description": "Melons, cantaloupe, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Caraway Seed",
+  "fdcId": 170918,
+  "dataType": "SR Legacy",
+  "description": "Spices, caraway seed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cardamom",
+  "fdcId": 170919,
+  "dataType": "SR Legacy",
+  "description": "Spices, cardamom",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Carrot",
+  "fdcId": 2258586,
+  "dataType": "Foundation",
+  "description": "Carrots, mature, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mature carrots, raw."
+ },
+ {
+  "food": "Cashew Milk",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No cashew-milk record in Foundation, SR or FNDDS."
+ },
+ {
+  "food": "Cashews",
+  "fdcId": 2515374,
+  "dataType": "Foundation",
+  "description": "Nuts, cashew nuts, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Raw."
+ },
+ {
+  "food": "Cassava (Yuca)",
+  "fdcId": 169985,
+  "dataType": "SR Legacy",
+  "description": "Cassava, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cassava Flour",
+  "fdcId": 2512377,
+  "dataType": "Foundation",
+  "description": "Flour, cassava",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Catfish",
+  "fdcId": 2684445,
+  "dataType": "Foundation",
+  "description": "Fish, catfish, farm raised, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Farm-raised (most US catfish)."
+ },
+ {
+  "food": "Cauliflower",
+  "fdcId": 2685573,
+  "dataType": "Foundation",
+  "description": "Cauliflower, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cayenne",
+  "fdcId": 170932,
+  "dataType": "SR Legacy",
+  "description": "Spices, pepper, red or cayenne",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Celeriac",
+  "fdcId": 170400,
+  "dataType": "SR Legacy",
+  "description": "Celeriac, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Celery",
+  "fdcId": 2346405,
+  "dataType": "Foundation",
+  "description": "Celery, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Chamomile Tea",
+  "fdcId": 174156,
+  "dataType": "SR Legacy",
+  "description": "Beverages, tea, herb, brewed, chamomile",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Brewed."
+ },
+ {
+  "food": "Cheddar (aged)",
+  "fdcId": 328637,
+  "dataType": "Foundation",
+  "description": "Cheese, cheddar",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "No aged-specific record. Macros match, but aged cheddar has close to zero lactose, possibly less than this record shows."
+ },
+ {
+  "food": "Cheddar Cheese",
+  "fdcId": 328637,
+  "dataType": "Foundation",
+  "description": "Cheese, cheddar",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Cherries",
+  "fdcId": 2346399,
+  "dataType": "Foundation",
+  "description": "Cherries, sweet, dark red, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Sweet, dark red."
+ },
+ {
+  "food": "Cherry Tomatoes",
+  "fdcId": 321360,
+  "dataType": "Foundation",
+  "description": "Tomatoes, grape, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No cherry-tomato record. Grape tomatoes are the closest small-tomato record."
+ },
+ {
+  "food": "Chestnuts",
+  "fdcId": 170575,
+  "dataType": "SR Legacy",
+  "description": "Nuts, chestnuts, european, raw, peeled",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "European chestnuts, raw, peeled (the common species in the US/EU). Chinese/Japanese records also exist. Usually eaten roasted (170190)."
+ },
+ {
+  "food": "Chia Seeds",
+  "fdcId": 2710819,
+  "dataType": "Foundation",
+  "description": "Chia seeds, dry, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Chicken",
+  "fdcId": 171052,
+  "dataType": "SR Legacy",
+  "description": "Chicken, broilers or fryers, meat only, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic: broiler meat only (no skin), raw. With skin, fat roughly doubles."
+ },
+ {
+  "food": "Chicken Breast",
+  "fdcId": 2646170,
+  "dataType": "Foundation",
+  "description": "Chicken, breast, boneless, skinless, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Boneless, skinless, raw."
+ },
+ {
+  "food": "Chicken Drumsticks",
+  "fdcId": 2727566,
+  "dataType": "Foundation",
+  "description": "Chicken, drumstick, meat and skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Meat and skin, raw."
+ },
+ {
+  "food": "Chicken Liver",
+  "fdcId": 171060,
+  "dataType": "SR Legacy",
+  "description": "Chicken, liver, all classes, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Chicken Sausage (fresh)",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No fresh chicken-sausage record. Only smoked multi-meat sausage, or the FNDDS \"turkey or chicken sausage\" blend. Recipes vary a lot."
+ },
+ {
+  "food": "Chicken Thigh",
+  "fdcId": 2646171,
+  "dataType": "Foundation",
+  "description": "Chicken, thigh, boneless, skinless, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Boneless, skinless (common retail form). Skin-on thigh (2727567) has much more fat."
+ },
+ {
+  "food": "Chicken Wings",
+  "fdcId": 2727568,
+  "dataType": "Foundation",
+  "description": "Chicken, wing, meat and skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Meat and skin, raw."
+ },
+ {
+  "food": "Chickpeas",
+  "fdcId": 2644282,
+  "dataType": "Foundation",
+  "description": "Chickpeas, (garbanzo beans, bengal gram), dry",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Serving label says dry/uncooked."
+ },
+ {
+  "food": "Chicory",
+  "fdcId": 169992,
+  "dataType": "SR Legacy",
+  "description": "Chicory greens, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Serving label says greens."
+ },
+ {
+  "food": "Chili Powder",
+  "fdcId": 171319,
+  "dataType": "SR Legacy",
+  "description": "Spices, chili powder",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's chili powder blend record."
+ },
+ {
+  "food": "Chives",
+  "fdcId": 169994,
+  "dataType": "SR Legacy",
+  "description": "Chives, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cilantro (fresh)",
+  "fdcId": 169997,
+  "dataType": "SR Legacy",
+  "description": "Coriander (cilantro) leaves, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cinnamon",
+  "fdcId": 171320,
+  "dataType": "SR Legacy",
+  "description": "Spices, cinnamon, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Clams",
+  "fdcId": 174214,
+  "dataType": "SR Legacy",
+  "description": "Mollusks, clam, mixed species, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Mixed species, raw."
+ },
+ {
+  "food": "Cloves",
+  "fdcId": 171321,
+  "dataType": "SR Legacy",
+  "description": "Spices, cloves, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Cocoa Butter",
+  "fdcId": 171421,
+  "dataType": "SR Legacy",
+  "description": "Oil, cocoa butter",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Coconut",
+  "fdcId": 170169,
+  "dataType": "SR Legacy",
+  "description": "Nuts, coconut meat, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic coconut (Fruits/Tropical), so raw coconut meat."
+ },
+ {
+  "food": "Coconut (dried)",
+  "fdcId": 170170,
+  "dataType": "SR Legacy",
+  "description": "Nuts, coconut meat, dried (desiccated), not sweetened",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Desiccated, unsweetened."
+ },
+ {
+  "food": "Coconut (Flesh)",
+  "fdcId": 170169,
+  "dataType": "SR Legacy",
+  "description": "Nuts, coconut meat, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Coconut Aminos",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record. Proprietary fermented coconut-sap condiment."
+ },
+ {
+  "food": "Coconut Cream",
+  "fdcId": 170580,
+  "dataType": "SR Legacy",
+  "description": "Nuts, coconut cream, raw (liquid expressed from grated meat)",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Raw coconut cream (liquid pressed from grated meat), the best match for canned unsweetened coconut cream. Avoid the SR \"coconut cream, canned, sweetened\": that's cream of coconut, a sugary cocktail mix."
+ },
+ {
+  "food": "Coconut Milk",
+  "fdcId": 170173,
+  "dataType": "SR Legacy",
+  "description": "Nuts, coconut milk, canned (liquid expressed from grated meat and water)",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "AMBIGUOUS. Canned coconut milk (~200 kcal/100 g) was chosen because it's the cooking staple in elimination diets. Carton coconut-milk BEVERAGE (only a sweetened, fortified SR record, 174116) has ~1/6 the calories. The catalog places this under Plant-Based Alternatives, so the beverage reading is plausible."
+ },
+ {
+  "food": "Coconut Oil",
+  "fdcId": 330458,
+  "dataType": "Foundation",
+  "description": "Oil, coconut",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Coconut Sugar",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Coconut Water",
+  "fdcId": 174831,
+  "dataType": "SR Legacy",
+  "description": "Beverages, Coconut water, ready-to-drink, unsweetened",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Packaged, unsweetened, ready-to-drink."
+ },
+ {
+  "food": "Coconut Water (fresh)",
+  "fdcId": 170174,
+  "dataType": "SR Legacy",
+  "description": "Nuts, coconut water (liquid from coconuts)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Liquid from coconuts."
+ },
+ {
+  "food": "Coconut Yogurt",
+  "fdcId": 2707569,
+  "dataType": "Survey (FNDDS)",
+  "description": "Yogurt, coconut milk",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only FNDDS \"Yogurt, coconut milk\". Commercial coconut yogurts vary widely in fat and sugar. No fructose/glucose/lactose breakdown."
+ },
+ {
+  "food": "Cod",
+  "fdcId": 2684444,
+  "dataType": "Foundation",
+  "description": "Fish, cod, Atlantic, wild caught, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Atlantic, wild, raw."
+ },
+ {
+  "food": "Coffee",
+  "fdcId": 171890,
+  "dataType": "SR Legacy",
+  "description": "Beverages, coffee, brewed, prepared with tap water",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Brewed."
+ },
+ {
+  "food": "Collard Greens",
+  "fdcId": 2685574,
+  "dataType": "Foundation",
+  "description": "Collards, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Coriander Seed",
+  "fdcId": 170922,
+  "dataType": "SR Legacy",
+  "description": "Spices, coriander seed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Corn",
+  "fdcId": 2710826,
+  "dataType": "Foundation",
+  "description": "Corn, sweet, yellow and white kernels,  fresh, raw",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "AMBIGUOUS. Catalog files this under Grains & Starches/Whole Grains, separate from \"Corn (Sweet)\". The kernel record (sweet corn, raw) was chosen because that's what people mean by \"corn\" at a meal. If this is meant to be dry field-corn grain, use SR 170288 \"Corn grain, yellow\" (~4x the calories)."
+ },
+ {
+  "food": "Corn (Sweet)",
+  "fdcId": 2710826,
+  "dataType": "Foundation",
+  "description": "Corn, sweet, yellow and white kernels,  fresh, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Yellow and white kernels, raw."
+ },
+ {
+  "food": "Corn Tortillas",
+  "fdcId": 2758997,
+  "dataType": "Foundation",
+  "description": "Tortilla, corn, shelf stable",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Corned Beef",
+  "fdcId": 170200,
+  "dataType": "SR Legacy",
+  "description": "Beef, cured, corned beef, brisket, cooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Cured brisket, cooked (the form people eat)."
+ },
+ {
+  "food": "Cornmeal",
+  "fdcId": 168867,
+  "dataType": "SR Legacy",
+  "description": "Cornmeal, degermed, enriched, yellow",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Degermed, enriched, yellow (standard supermarket cornmeal). Whole-grain yellow is 169697."
+ },
+ {
+  "food": "Cornstarch",
+  "fdcId": 169698,
+  "dataType": "SR Legacy",
+  "description": "Cornstarch",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Cottage Cheese",
+  "fdcId": 2346384,
+  "dataType": "Foundation",
+  "description": "Cottage cheese, full fat, large or small curd",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Full fat."
+ },
+ {
+  "food": "Crab",
+  "fdcId": 174204,
+  "dataType": "SR Legacy",
+  "description": "Crustaceans, crab, blue, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Blue crab, raw (per the raw-meat rule). Most crab is bought already cooked, and cooked has ~15% higher values per g from water loss."
+ },
+ {
+  "food": "Cranberries",
+  "fdcId": 171722,
+  "dataType": "SR Legacy",
+  "description": "Cranberries, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Raw."
+ },
+ {
+  "food": "Cream",
+  "fdcId": 2346386,
+  "dataType": "Foundation",
+  "description": "Cream, heavy",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic cream, so heavy cream. Light/half-and-half have much less fat."
+ },
+ {
+  "food": "Cream Cheese",
+  "fdcId": 2346385,
+  "dataType": "Foundation",
+  "description": "Cream cheese, full fat, block",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Full fat block."
+ },
+ {
+  "food": "Cucumber",
+  "fdcId": 2346406,
+  "dataType": "Foundation",
+  "description": "Cucumber, with peel, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "With peel."
+ },
+ {
+  "food": "Cumin",
+  "fdcId": 170923,
+  "dataType": "SR Legacy",
+  "description": "Spices, cumin seed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Currants",
+  "fdcId": 173964,
+  "dataType": "SR Legacy",
+  "description": "Currants, red and white, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": false
+  },
+  "note": "Fresh red/white currants (Fruits/Berries, so fresh, not dried zante \"currants\"). Black currants are 173963, with more vitamin C and different sugars."
+ },
+ {
+  "food": "Curry Leaves",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Curry Powder",
+  "fdcId": 170924,
+  "dataType": "SR Legacy",
+  "description": "Spices, curry powder",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's curry powder blend record."
+ },
+ {
+  "food": "Daikon",
+  "fdcId": 168451,
+  "dataType": "SR Legacy",
+  "description": "Radishes, oriental, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "\"Radishes, oriental, raw\" = daikon."
+ },
+ {
+  "food": "Dandelion Greens",
+  "fdcId": 169226,
+  "dataType": "SR Legacy",
+  "description": "Dandelion greens, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Dandelion Root Tea",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Dark Chocolate / Cocoa",
+  "fdcId": 169593,
+  "dataType": "SR Legacy",
+  "description": "Cocoa, dry powder, unsweetened",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Serving label says 1 tbsp cocoa powder, so unsweetened cocoa powder. Dark chocolate bars are very different (sugar, fat). See SR 170273 (70-85%)."
+ },
+ {
+  "food": "Dates",
+  "fdcId": 171726,
+  "dataType": "SR Legacy",
+  "description": "Dates, deglet noor",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Deglet Noor (USDA's historical generic date). Medjool (168191) is similar per 100 g."
+ },
+ {
+  "food": "Deli Turkey",
+  "fdcId": 2759001,
+  "dataType": "Foundation",
+  "description": "Lunchmeat, turkey, oven roasted, sliced",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Oven-roasted sliced turkey lunchmeat."
+ },
+ {
+  "food": "Delicata Squash",
+  "fdcId": 170489,
+  "dataType": "SR Legacy",
+  "description": "Squash, winter, all varieties, raw",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No delicata record. Uses \"winter squash, all varieties, raw\". Delicata is a C. pepo winter squash, close but not exact."
+ },
+ {
+  "food": "Dill",
+  "fdcId": 172233,
+  "dataType": "SR Legacy",
+  "description": "Dill weed, fresh",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Fresh dill weed."
+ },
+ {
+  "food": "Dragon Fruit",
+  "fdcId": 2709234,
+  "dataType": "Survey (FNDDS)",
+  "description": "Dragon fruit",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only FNDDS has it. No fructose/glucose breakdown."
+ },
+ {
+  "food": "Duck",
+  "fdcId": 172408,
+  "dataType": "SR Legacy",
+  "description": "Duck, domesticated, meat and skin, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Domesticated duck, meat and skin, raw. Meat-only (172410) has far less fat."
+ },
+ {
+  "food": "Duck Fat",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No duck-fat record. Goose fat (SR 173572) would be a near-identical proxy but is a different species."
+ },
+ {
+  "food": "Edamame",
+  "fdcId": 168411,
+  "dataType": "SR Legacy",
+  "description": "Edamame, frozen, prepared",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2758981 has sugar detail but no energy/fat/carbs, so SR was used.  Frozen, prepared."
+ },
+ {
+  "food": "Eggplant",
+  "fdcId": 2685577,
+  "dataType": "Foundation",
+  "description": "Eggplant, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Eggs",
+  "fdcId": 748967,
+  "dataType": "Foundation",
+  "description": "Eggs, Grade A, Large, egg whole",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Grade A large whole egg."
+ },
+ {
+  "food": "Eggs (chicken)",
+  "fdcId": 748967,
+  "dataType": "Foundation",
+  "description": "Eggs, Grade A, Large, egg whole",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Eggs (duck)",
+  "fdcId": 172189,
+  "dataType": "SR Legacy",
+  "description": "Egg, duck, whole, fresh, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Einkorn",
+  "fdcId": 2710827,
+  "dataType": "Foundation",
+  "description": "Einkorn, grain, dry, raw",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only a dry/raw grain record. No serving label (normally means cooked). Values are per 100 g DRY."
+ },
+ {
+  "food": "Elk",
+  "fdcId": 175301,
+  "dataType": "SR Legacy",
+  "description": "Game meat, elk, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Endive",
+  "fdcId": 168412,
+  "dataType": "SR Legacy",
+  "description": "Endive, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "USDA \"Endive, raw\" is curly endive/frisée (C. endivia). US shoppers often mean Belgian endive, which USDA files as \"Chicory, witloof\" (170404). Similar macros, different plant."
+ },
+ {
+  "food": "Escarole",
+  "fdcId": 168412,
+  "dataType": "SR Legacy",
+  "description": "Endive, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Escarole is broad-leaf C. endivia. USDA \"Endive, raw\" covers it. The only escarole-named record is cooked."
+ },
+ {
+  "food": "Fennel",
+  "fdcId": 2747655,
+  "dataType": "Foundation",
+  "description": "Fennel, bulb, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Bulb, raw."
+ },
+ {
+  "food": "Fenugreek",
+  "fdcId": 171324,
+  "dataType": "SR Legacy",
+  "description": "Spices, fenugreek seed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Seed."
+ },
+ {
+  "food": "Feta",
+  "fdcId": 2259796,
+  "dataType": "Foundation",
+  "description": "Cheese, feta, whole milk, crumbled",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Fiddlehead Ferns",
+  "fdcId": 169405,
+  "dataType": "SR Legacy",
+  "description": "Fiddlehead ferns, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Figs",
+  "fdcId": 173021,
+  "dataType": "SR Legacy",
+  "description": "Figs, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Raw (serving label says raw)."
+ },
+ {
+  "food": "Fish Sauce",
+  "fdcId": 2706457,
+  "dataType": "Survey (FNDDS)",
+  "description": "Fish sauce",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only FNDDS has it. Sodium and protein vary by brand."
+ },
+ {
+  "food": "Flaxseed",
+  "fdcId": 2262075,
+  "dataType": "Foundation",
+  "description": "Flaxseed, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Ground. Whole seeds have the same composition."
+ },
+ {
+  "food": "Flaxseed Oil",
+  "fdcId": 167702,
+  "dataType": "SR Legacy",
+  "description": "Oil, flaxseed, cold pressed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Fresh Chili (Paprika Pepper)",
+  "fdcId": 170106,
+  "dataType": "SR Legacy",
+  "description": "Peppers, hot chili, red, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No fresh paprika-pepper record. Uses red hot chili pepper, raw. Paprika peppers are milder/sweeter (closer to red bell in sugar)."
+ },
+ {
+  "food": "Freshwater Bass",
+  "fdcId": 174184,
+  "dataType": "SR Legacy",
+  "description": "Fish, bass, fresh water, mixed species, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mixed species, raw."
+ },
+ {
+  "food": "Garlic",
+  "fdcId": 1104647,
+  "dataType": "Foundation",
+  "description": "Garlic, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Garlic Powder",
+  "fdcId": 171325,
+  "dataType": "SR Legacy",
+  "description": "Spices, garlic powder",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Ghee",
+  "fdcId": 171314,
+  "dataType": "SR Legacy",
+  "description": "Butter, Clarified butter (ghee)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Ginger",
+  "fdcId": 170926,
+  "dataType": "SR Legacy",
+  "description": "Spices, ginger, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Serving label says 1 tsp under Dried Spices, so ground ginger. Fresh root is 169231."
+ },
+ {
+  "food": "Goat",
+  "fdcId": 175303,
+  "dataType": "SR Legacy",
+  "description": "Game meat, goat, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Goat Butter",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No goat-butter record. Cow butter would be a close macro proxy but is a different species."
+ },
+ {
+  "food": "Goat Cheese",
+  "fdcId": 173435,
+  "dataType": "SR Legacy",
+  "description": "Cheese, goat, soft type",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic goat cheese (Fermented Dairy), so soft type (chèvre, most common). Semisoft/hard types have much more fat and protein."
+ },
+ {
+  "food": "Goat Cheese (fresh)",
+  "fdcId": 173435,
+  "dataType": "SR Legacy",
+  "description": "Cheese, goat, soft type",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Soft type = fresh chèvre."
+ },
+ {
+  "food": "Goat Milk",
+  "fdcId": 171278,
+  "dataType": "SR Legacy",
+  "description": "Milk, goat, fluid, with added vitamin D",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Goat Yogurt",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No goat-yogurt record."
+ },
+ {
+  "food": "Goji Berries",
+  "fdcId": 173032,
+  "dataType": "SR Legacy",
+  "description": "Goji berries, dried",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Dried (the form sold)."
+ },
+ {
+  "food": "Goose",
+  "fdcId": 174470,
+  "dataType": "SR Legacy",
+  "description": "Goose, domesticated, meat and skin, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Domesticated, meat and skin, raw. Meat-only is 172413."
+ },
+ {
+  "food": "Grapefruit",
+  "fdcId": 174673,
+  "dataType": "SR Legacy",
+  "description": "Grapefruit, raw, pink and red, all areas",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2758977 has sugar detail but no energy/fat/carbs, so SR was used. Pink/red, all areas (white grapefruit is 174676)."
+ },
+ {
+  "food": "Grapes",
+  "fdcId": 174683,
+  "dataType": "SR Legacy",
+  "description": "Grapes, red or green (European type, such as Thompson seedless), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's generic red-or-green European grape. Foundation only has red/green separately."
+ },
+ {
+  "food": "Grapeseed Oil",
+  "fdcId": 171028,
+  "dataType": "SR Legacy",
+  "description": "Oil, grapeseed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Greek Yogurt",
+  "fdcId": 2259794,
+  "dataType": "Foundation",
+  "description": "Yogurt, Greek, plain, whole milk",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Plain, whole milk. Fat level unspecified, and nonfat Greek (330137) is very common: ~1/2 the calories, more protein."
+ },
+ {
+  "food": "Green Banana Flour",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Green Beans",
+  "fdcId": 2346400,
+  "dataType": "Foundation",
+  "description": "Beans, snap, green, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Green Lentils",
+  "fdcId": 172421,
+  "dataType": "SR Legacy",
+  "description": "Lentils, mature seeds, cooked, boiled, without salt",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No serving label, so cooked. USDA lentil records are generic (brown/green), not green-specific."
+ },
+ {
+  "food": "Green Onion",
+  "fdcId": 170005,
+  "dataType": "SR Legacy",
+  "description": "Onions, spring or scallions (includes tops and bulb), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 2727585 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Green Peas",
+  "fdcId": 170419,
+  "dataType": "SR Legacy",
+  "description": "Peas, green, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Raw."
+ },
+ {
+  "food": "Green Tea",
+  "fdcId": 171917,
+  "dataType": "SR Legacy",
+  "description": "Beverages, tea, green, brewed, regular",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Brewed."
+ },
+ {
+  "food": "Ground Beef",
+  "fdcId": 2514744,
+  "dataType": "Foundation",
+  "description": "Beef, ground, 80% lean meat / 20% fat, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "80/20 (most common retail ground beef). The lean ratio changes fat a lot. 90/10 is 2514743."
+ },
+ {
+  "food": "Ground Chicken",
+  "fdcId": 2514746,
+  "dataType": "Foundation",
+  "description": "Chicken, ground, with additives, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation record notes \"with additives\" (sodium solution). Plain SR is 171116."
+ },
+ {
+  "food": "Ground Lamb",
+  "fdcId": 2727570,
+  "dataType": "Foundation",
+  "description": "Lamb, ground, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Ground Pork",
+  "fdcId": 2514745,
+  "dataType": "Foundation",
+  "description": "Pork, ground, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Ground Turkey",
+  "fdcId": 2514747,
+  "dataType": "Foundation",
+  "description": "Turkey, ground, 93% lean/ 7% fat, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "93/7, the standard retail blend."
+ },
+ {
+  "food": "Guava",
+  "fdcId": 173044,
+  "dataType": "SR Legacy",
+  "description": "Guavas, common, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Common guava."
+ },
+ {
+  "food": "Haddock",
+  "fdcId": 333374,
+  "dataType": "Foundation",
+  "description": "Fish, haddock, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Halibut",
+  "fdcId": 2747656,
+  "dataType": "Foundation",
+  "description": "Halibut, frozen, wild caught",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Ham (cured)",
+  "fdcId": 167875,
+  "dataType": "SR Legacy",
+  "description": "Pork, cured, ham, whole, separable lean and fat, unheated",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Whole cured ham, lean and fat, unheated (ready-to-eat). Deli ham is often leaner and water-added (Foundation 332397)."
+ },
+ {
+  "food": "Hard Cider",
+  "fdcId": 174146,
+  "dataType": "SR Legacy",
+  "description": "Beverages, AMBER, hard cider",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "SR record is a single brand (AMBER). FNDDS \"Hard cider\" (2710621) is the alternative. Residual sugar varies widely by style."
+ },
+ {
+  "food": "Hazelnut Flour",
+  "fdcId": 2515375,
+  "dataType": "Foundation",
+  "description": "Nuts, hazelnuts or filberts, raw",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No hazelnut-flour record. Uses raw hazelnuts (hazelnut flour = ground whole hazelnuts). Wrong if the product is defatted hazelnut meal."
+ },
+ {
+  "food": "Hazelnut Milk",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Hazelnuts",
+  "fdcId": 2515375,
+  "dataType": "Foundation",
+  "description": "Nuts, hazelnuts or filberts, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Hearts of Palm",
+  "fdcId": 168569,
+  "dataType": "SR Legacy",
+  "description": "Hearts of palm, canned",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Canned (the form almost everyone buys). Raw is 167714."
+ },
+ {
+  "food": "Heavy Cream",
+  "fdcId": 2346386,
+  "dataType": "Foundation",
+  "description": "Cream, heavy",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Hemp Milk",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Hemp Seed Oil",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Hemp Seeds",
+  "fdcId": 170148,
+  "dataType": "SR Legacy",
+  "description": "Seeds, hemp seed, hulled",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Hulled (hemp hearts)."
+ },
+ {
+  "food": "Herring (fresh)",
+  "fdcId": 175116,
+  "dataType": "SR Legacy",
+  "description": "Fish, herring, Atlantic, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Atlantic, raw."
+ },
+ {
+  "food": "Herring (smoked)",
+  "fdcId": 173668,
+  "dataType": "SR Legacy",
+  "description": "Fish, herring, Atlantic, kippered",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Kippered (= smoked) Atlantic herring."
+ },
+ {
+  "food": "Honey",
+  "fdcId": 169640,
+  "dataType": "SR Legacy",
+  "description": "Honey",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Honeydew",
+  "fdcId": 2710816,
+  "dataType": "Foundation",
+  "description": "Melons, honeydew, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Hot Dogs",
+  "fdcId": 172968,
+  "dataType": "SR Legacy",
+  "description": "Frankfurter, meat",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic \"Frankfurter, meat\". Beef-only is Foundation 323121, turkey 171625."
+ },
+ {
+  "food": "Hot Sauce",
+  "fdcId": 174527,
+  "dataType": "SR Legacy",
+  "description": "Sauce, ready-to-serve, pepper or hot",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic pepper/hot sauce."
+ },
+ {
+  "food": "Iceberg Lettuce",
+  "fdcId": 2346388,
+  "dataType": "Foundation",
+  "description": "Lettuce, iceberg, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Jackfruit",
+  "fdcId": 174687,
+  "dataType": "SR Legacy",
+  "description": "Jackfruit, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Jalapeño",
+  "fdcId": 2747661,
+  "dataType": "Foundation",
+  "description": "Peppers, jalapeno, seeded, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Seeded, raw."
+ },
+ {
+  "food": "Jerusalem Artichoke (Sunchoke)",
+  "fdcId": 169236,
+  "dataType": "SR Legacy",
+  "description": "Jerusalem-artichokes, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Jicama",
+  "fdcId": 170073,
+  "dataType": "SR Legacy",
+  "description": "Yambean (jicama), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Kale",
+  "fdcId": 323505,
+  "dataType": "Foundation",
+  "description": "Kale, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Kamut",
+  "fdcId": 169744,
+  "dataType": "SR Legacy",
+  "description": "Wheat, khorasan, cooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Khorasan wheat (Kamut is the brand), cooked. No serving label, so cooked."
+ },
+ {
+  "food": "Kefir",
+  "fdcId": 170904,
+  "dataType": "SR Legacy",
+  "description": "Kefir, lowfat, plain, LIFEWAY",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Only SR kefir is lowfat plain (one brand, LIFEWAY). Whole-milk kefir has ~2x the fat."
+ },
+ {
+  "food": "Kelp Noodles",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record. Kelp noodles are mostly sodium alginate and water, nothing like raw kelp."
+ },
+ {
+  "food": "Ketchup",
+  "fdcId": 747693,
+  "dataType": "Foundation",
+  "description": "Ketchup, restaurant",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Kidney Beans",
+  "fdcId": 173744,
+  "dataType": "SR Legacy",
+  "description": "Beans, kidney, red, mature seeds, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Red kidney, mature seeds, raw. Serving label says dry."
+ },
+ {
+  "food": "Kimchi",
+  "fdcId": 170392,
+  "dataType": "SR Legacy",
+  "description": "Cabbage, kimchi",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Kiwi",
+  "fdcId": 2710831,
+  "dataType": "Foundation",
+  "description": "Kiwifruit (kiwi), green, peeled, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Green, peeled."
+ },
+ {
+  "food": "Kohlrabi",
+  "fdcId": 168424,
+  "dataType": "SR Legacy",
+  "description": "Kohlrabi, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Kombucha",
+  "fdcId": 2710509,
+  "dataType": "Survey (FNDDS)",
+  "description": "Tea, kombucha",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only FNDDS has it. Sugar varies by brand. No fructose/glucose breakdown."
+ },
+ {
+  "food": "Lamb",
+  "fdcId": 172479,
+  "dataType": "SR Legacy",
+  "description": "Lamb, composite of trimmed retail cuts, separable lean and fat, trimmed to 1/4\" fat, choice, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic: composite of trimmed retail cuts, lean and fat, 1/4\" trim, choice, raw."
+ },
+ {
+  "food": "Lard",
+  "fdcId": 171401,
+  "dataType": "SR Legacy",
+  "description": "Lard",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Leeks",
+  "fdcId": 169246,
+  "dataType": "SR Legacy",
+  "description": "Leeks, (bulb and lower leaf-portion), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 2727584 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Lemon",
+  "fdcId": 167746,
+  "dataType": "SR Legacy",
+  "description": "Lemons, raw, without peel",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Without peel (matches serving label)."
+ },
+ {
+  "food": "Lemongrass",
+  "fdcId": 168573,
+  "dataType": "SR Legacy",
+  "description": "Lemon grass (citronella), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Lettuce",
+  "fdcId": 2346391,
+  "dataType": "Foundation",
+  "description": "Lettuce, leaf, green, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic lettuce, so green leaf. Iceberg/romaine have similar macros."
+ },
+ {
+  "food": "Lima Beans",
+  "fdcId": 174253,
+  "dataType": "SR Legacy",
+  "description": "Lima beans, large, mature seeds, cooked, boiled, without salt",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Legumes category, so large mature limas, boiled. If users mean frozen green (baby) limas, use 169135 (immature, boiled)."
+ },
+ {
+  "food": "Lime",
+  "fdcId": 168155,
+  "dataType": "SR Legacy",
+  "description": "Limes, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Lobster",
+  "fdcId": 174208,
+  "dataType": "SR Legacy",
+  "description": "Crustaceans, lobster, northern, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Northern (American) lobster, raw."
+ },
+ {
+  "food": "Loganberries",
+  "fdcId": 169088,
+  "dataType": "SR Legacy",
+  "description": "Loganberries, frozen",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Frozen (unsweetened). The only loganberry record."
+ },
+ {
+  "food": "Loquat",
+  "fdcId": 169908,
+  "dataType": "SR Legacy",
+  "description": "Loquats, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Macadamia Nuts",
+  "fdcId": 2515378,
+  "dataType": "Foundation",
+  "description": "Nuts, macadamia nuts, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Macadamia Oil",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Mace",
+  "fdcId": 170927,
+  "dataType": "SR Legacy",
+  "description": "Spices, mace, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Mackerel (canned)",
+  "fdcId": 175121,
+  "dataType": "SR Legacy",
+  "description": "Fish, mackerel, jack, canned, drained solids",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Jack mackerel, canned, drained (the only SR canned mackerel). Many canned mackerel are Atlantic/chub."
+ },
+ {
+  "food": "Mackerel (fresh)",
+  "fdcId": 175119,
+  "dataType": "SR Legacy",
+  "description": "Fish, mackerel, Atlantic, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Atlantic, raw."
+ },
+ {
+  "food": "Mahi Mahi",
+  "fdcId": 2747658,
+  "dataType": "Foundation",
+  "description": "Mahi mahi, frozen, wild caught",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Mandarin",
+  "fdcId": 2710832,
+  "dataType": "Foundation",
+  "description": "Mandarin, seedless, peeled, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Mango",
+  "fdcId": 169910,
+  "dataType": "SR Legacy",
+  "description": "Mangos, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's generic mango. Foundation only has single varieties."
+ },
+ {
+  "food": "Mango (green)",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No unripe-mango record. Green mango is much lower in sugar than ripe."
+ },
+ {
+  "food": "Maple Syrup",
+  "fdcId": 169661,
+  "dataType": "SR Legacy",
+  "description": "Syrups, maple",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Mayonnaise",
+  "fdcId": 171009,
+  "dataType": "SR Legacy",
+  "description": "Salad dressing, mayonnaise, regular",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2758986 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "MCT Oil",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Millet",
+  "fdcId": 2512379,
+  "dataType": "Foundation",
+  "description": "Millet, whole grain",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Whole grain, dry. Serving label says uncooked."
+ },
+ {
+  "food": "Mineral Water",
+  "fdcId": 174158,
+  "dataType": "SR Legacy",
+  "description": "Water, bottled, generic",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic bottled water. All macros 0. Mineral content varies by source."
+ },
+ {
+  "food": "Mint",
+  "fdcId": 173475,
+  "dataType": "SR Legacy",
+  "description": "Spearmint, fresh",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic mint, so spearmint, fresh (common culinary mint). Peppermint is 173474."
+ },
+ {
+  "food": "Miso",
+  "fdcId": 172442,
+  "dataType": "SR Legacy",
+  "description": "Miso",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Mizuna",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Molasses",
+  "fdcId": 168820,
+  "dataType": "SR Legacy",
+  "description": "Molasses",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Monk Fruit",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only FNDDS \"sugar substitute, monk fruit, powder\", whose filler (erythritol vs dextrose) varies by product. That makes carb/sugar numbers unreliable."
+ },
+ {
+  "food": "Mozzarella",
+  "fdcId": 329370,
+  "dataType": "Foundation",
+  "description": "Cheese, mozzarella, low moisture, part-skim",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Low-moisture part-skim (standard block/shredded). Fresh whole-milk mozzarella is a separate catalog entry."
+ },
+ {
+  "food": "Mozzarella (fresh)",
+  "fdcId": 170845,
+  "dataType": "SR Legacy",
+  "description": "Cheese, mozzarella, whole milk",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Whole-milk mozzarella."
+ },
+ {
+  "food": "Mung Beans",
+  "fdcId": 174256,
+  "dataType": "SR Legacy",
+  "description": "Mung beans, mature seeds, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mature seeds, raw. Serving label says dry seeds."
+ },
+ {
+  "food": "Mushrooms",
+  "fdcId": 1999629,
+  "dataType": "Foundation",
+  "description": "Mushrooms, white button",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic, so white button (USDA common record)."
+ },
+ {
+  "food": "Mushrooms (Shiitake)",
+  "fdcId": 1999628,
+  "dataType": "Foundation",
+  "description": "Mushrooms, shiitake",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Mushrooms (White)",
+  "fdcId": 1999629,
+  "dataType": "Foundation",
+  "description": "Mushrooms, white button",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Mussels",
+  "fdcId": 174216,
+  "dataType": "SR Legacy",
+  "description": "Mollusks, mussel, blue, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Blue mussel, raw."
+ },
+ {
+  "food": "Mustard (prepared)",
+  "fdcId": 326698,
+  "dataType": "Foundation",
+  "description": "Mustard, prepared, yellow",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Yellow."
+ },
+ {
+  "food": "Mustard Greens",
+  "fdcId": 169256,
+  "dataType": "SR Legacy",
+  "description": "Mustard greens, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Mustard Seed",
+  "fdcId": 170929,
+  "dataType": "SR Legacy",
+  "description": "Spices, mustard seed, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Ground."
+ },
+ {
+  "food": "Navy Beans",
+  "fdcId": 173746,
+  "dataType": "SR Legacy",
+  "description": "Beans, navy, mature seeds, cooked, boiled, without salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Mature seeds boiled, no salt."
+ },
+ {
+  "food": "Nectarine",
+  "fdcId": 327357,
+  "dataType": "Foundation",
+  "description": "Nectarines, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Nopales",
+  "fdcId": 168571,
+  "dataType": "SR Legacy",
+  "description": "Nopales, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Nutmeg",
+  "fdcId": 171326,
+  "dataType": "SR Legacy",
+  "description": "Spices, nutmeg, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Nutritional Yeast",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record. Baker's yeast records are a different product, and most nutritional yeast is fortified."
+ },
+ {
+  "food": "Oat Milk",
+  "fdcId": 2257046,
+  "dataType": "Foundation",
+  "description": "Oat milk, unsweetened, plain, refrigerated",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Unsweetened plain."
+ },
+ {
+  "food": "Oats",
+  "fdcId": 2346396,
+  "dataType": "Foundation",
+  "description": "Oats, whole grain, rolled, old fashioned",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Rolled, old-fashioned, dry."
+ },
+ {
+  "food": "Okra",
+  "fdcId": 169260,
+  "dataType": "SR Legacy",
+  "description": "Okra, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Raw."
+ },
+ {
+  "food": "Olive Oil",
+  "fdcId": 171413,
+  "dataType": "SR Legacy",
+  "description": "Oil, olive, salad or cooking",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Olive Oil (extra virgin)",
+  "fdcId": 171413,
+  "dataType": "SR Legacy",
+  "description": "Oil, olive, salad or cooking",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 748608 has sugar detail but no energy/fat/carbs, so SR was used. No EVOO-specific record has full macros. Generic olive oil has identical macros."
+ },
+ {
+  "food": "Olives",
+  "fdcId": 169094,
+  "dataType": "SR Legacy",
+  "description": "Olives, ripe, canned (small-extra large)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Ripe, canned (matches serving label)."
+ },
+ {
+  "food": "Onion",
+  "fdcId": 170000,
+  "dataType": "SR Legacy",
+  "description": "Onions, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's generic onion. Foundation only has red/white/yellow."
+ },
+ {
+  "food": "Onion Powder",
+  "fdcId": 171327,
+  "dataType": "SR Legacy",
+  "description": "Spices, onion powder",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Orange",
+  "fdcId": 169097,
+  "dataType": "SR Legacy",
+  "description": "Oranges, raw, all commercial varieties",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "All commercial varieties."
+ },
+ {
+  "food": "Oregano",
+  "fdcId": 171328,
+  "dataType": "SR Legacy",
+  "description": "Spices, oregano, dried",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Dried."
+ },
+ {
+  "food": "Ostrich",
+  "fdcId": 174481,
+  "dataType": "SR Legacy",
+  "description": "Ostrich, ground, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic ostrich, so ground (most common retail). Whole-muscle cuts are leaner."
+ },
+ {
+  "food": "Oysters",
+  "fdcId": 171978,
+  "dataType": "SR Legacy",
+  "description": "Mollusks, oyster, eastern, wild, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Eastern, wild, raw. Pacific oysters (174219) have about 2x the carbs."
+ },
+ {
+  "food": "Palm Oil",
+  "fdcId": 171015,
+  "dataType": "SR Legacy",
+  "description": "Oil, palm",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Papaya",
+  "fdcId": 169926,
+  "dataType": "SR Legacy",
+  "description": "Papayas, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Papaya (green)",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No unripe-papaya record. Green papaya is much lower in sugar than ripe."
+ },
+ {
+  "food": "Paprika",
+  "fdcId": 171329,
+  "dataType": "SR Legacy",
+  "description": "Spices, paprika",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Parmesan",
+  "fdcId": 325036,
+  "dataType": "Foundation",
+  "description": "Cheese, parmesan, grated",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Grated parmesan. Hard wedge is 170848 (slightly more water)."
+ },
+ {
+  "food": "Parsley (fresh)",
+  "fdcId": 170416,
+  "dataType": "SR Legacy",
+  "description": "Parsley, fresh",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Parsley Root",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No parsley-root (Hamburg parsley) record."
+ },
+ {
+  "food": "Parsnip",
+  "fdcId": 2747659,
+  "dataType": "Foundation",
+  "description": "Parsnips, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Passion Fruit",
+  "fdcId": 169108,
+  "dataType": "SR Legacy",
+  "description": "Passion-fruit, (granadilla), purple, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Purple granadilla."
+ },
+ {
+  "food": "Pasta",
+  "fdcId": 169737,
+  "dataType": "SR Legacy",
+  "description": "Pasta, cooked, enriched, without added salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Cooked, enriched, no salt (serving 1 cup is a cooked volume)."
+ },
+ {
+  "food": "Pawpaw",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only record is Foundation 2727577, which has sugars but no energy, fat or carbohydrate. Can't supply full macros."
+ },
+ {
+  "food": "Peach",
+  "fdcId": 325430,
+  "dataType": "Foundation",
+  "description": "Peaches, yellow, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Peanut Butter",
+  "fdcId": 2262072,
+  "dataType": "Foundation",
+  "description": "Peanut butter, creamy",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Creamy."
+ },
+ {
+  "food": "Peanuts",
+  "fdcId": 2515376,
+  "dataType": "Foundation",
+  "description": "Peanuts, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Raw. Most snacking peanuts are dry-roasted (173806), with similar macros per 100 g."
+ },
+ {
+  "food": "Pear",
+  "fdcId": 169118,
+  "dataType": "SR Legacy",
+  "description": "Pears, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's generic pear. Foundation only has Bartlett/Anjou."
+ },
+ {
+  "food": "Pecans",
+  "fdcId": 2346395,
+  "dataType": "Foundation",
+  "description": "Nuts, pecans, halves, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Pepperoni",
+  "fdcId": 2759006,
+  "dataType": "Foundation",
+  "description": "Pepperoni, beef and pork, sliced",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Perilla",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No perilla leaf record."
+ },
+ {
+  "food": "Persimmon",
+  "fdcId": 169941,
+  "dataType": "SR Legacy",
+  "description": "Persimmons, japanese, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": false
+  },
+  "note": "Japanese persimmon (most common)."
+ },
+ {
+  "food": "Pheasant",
+  "fdcId": 174473,
+  "dataType": "SR Legacy",
+  "description": "Pheasant, raw, meat only",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Meat only, raw. Meat and skin is 174472."
+ },
+ {
+  "food": "Pickles",
+  "fdcId": 324653,
+  "dataType": "Foundation",
+  "description": "Pickles, cucumber, dill or kosher dill",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Dill."
+ },
+ {
+  "food": "Pine Nuts",
+  "fdcId": 2346392,
+  "dataType": "Foundation",
+  "description": "Nuts, pine nuts, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Pineapple",
+  "fdcId": 2346398,
+  "dataType": "Foundation",
+  "description": "Pineapple, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Pink Peppercorns",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record (Schinus, not true pepper)."
+ },
+ {
+  "food": "Pinto Beans",
+  "fdcId": 175200,
+  "dataType": "SR Legacy",
+  "description": "Beans, pinto, mature seeds, cooked, boiled, without salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Mature seeds boiled, no salt."
+ },
+ {
+  "food": "Pistachios",
+  "fdcId": 2515379,
+  "dataType": "Foundation",
+  "description": "Nuts, pistachio nuts, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Raw."
+ },
+ {
+  "food": "Plantain",
+  "fdcId": 2710817,
+  "dataType": "Foundation",
+  "description": "Plantains, ripe, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Ripe plantain, raw. Underripe/green (2710818) has much less sugar and more starch."
+ },
+ {
+  "food": "Plum",
+  "fdcId": 169949,
+  "dataType": "SR Legacy",
+  "description": "Plums, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's generic plum."
+ },
+ {
+  "food": "Pomegranate",
+  "fdcId": 169134,
+  "dataType": "SR Legacy",
+  "description": "Pomegranates, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Popcorn",
+  "fdcId": 167959,
+  "dataType": "SR Legacy",
+  "description": "Snacks, popcorn, air-popped",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Air-popped."
+ },
+ {
+  "food": "Poppy Seeds",
+  "fdcId": 171330,
+  "dataType": "SR Legacy",
+  "description": "Spices, poppy seed",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Pork",
+  "fdcId": 167888,
+  "dataType": "SR Legacy",
+  "description": "Pork, fresh, composite of trimmed retail cuts (leg, loin, shoulder, and spareribs), separable lean and fat, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic: composite of trimmed retail cuts (leg, loin, shoulder, spareribs), lean and fat, raw."
+ },
+ {
+  "food": "Pork Chop",
+  "fdcId": 2727575,
+  "dataType": "Foundation",
+  "description": "Pork, chop, center cut, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Center cut, raw."
+ },
+ {
+  "food": "Pork Sausage (fresh)",
+  "fdcId": 172934,
+  "dataType": "SR Legacy",
+  "description": "Pork sausage, link/patty, unprepared",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Link/patty, unprepared."
+ },
+ {
+  "food": "Pork Tenderloin",
+  "fdcId": 2646169,
+  "dataType": "Foundation",
+  "description": "Pork, loin, tenderloin, boneless, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Potato",
+  "fdcId": 170026,
+  "dataType": "SR Legacy",
+  "description": "Potatoes, flesh and skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Generic potato, flesh and skin, raw."
+ },
+ {
+  "food": "Potato Starch",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No potato-starch record. Foundation \"Flour, potato\" is dehydrated whole potato, a different product (fiber, protein)."
+ },
+ {
+  "food": "Prosciutto",
+  "fdcId": 2705879,
+  "dataType": "Survey (FNDDS)",
+  "description": "Ham, prosciutto",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Only FNDDS has it."
+ },
+ {
+  "food": "Prunes",
+  "fdcId": 168162,
+  "dataType": "SR Legacy",
+  "description": "Plums, dried (prunes), uncooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2758978 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Pumpkin",
+  "fdcId": 2727578,
+  "dataType": "Foundation",
+  "description": "Squash, pie pumpkin, peeled, seeded, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Pie pumpkin, raw."
+ },
+ {
+  "food": "Pumpkin Seed Oil",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Pumpkin Seeds",
+  "fdcId": 2515380,
+  "dataType": "Foundation",
+  "description": "Seeds, pumpkin seeds (pepitas), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Pepitas, raw."
+ },
+ {
+  "food": "Purslane",
+  "fdcId": 169274,
+  "dataType": "SR Legacy",
+  "description": "Purslane, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Quail",
+  "fdcId": 172418,
+  "dataType": "SR Legacy",
+  "description": "Quail, meat and skin, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Meat and skin, raw."
+ },
+ {
+  "food": "Quince",
+  "fdcId": 168163,
+  "dataType": "SR Legacy",
+  "description": "Quinces, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Quinoa",
+  "fdcId": 168874,
+  "dataType": "SR Legacy",
+  "description": "Quinoa, uncooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Uncooked (serving label)."
+ },
+ {
+  "food": "Rabbit",
+  "fdcId": 172521,
+  "dataType": "SR Legacy",
+  "description": "Game meat, rabbit, domesticated, composite of cuts, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Domesticated composite, raw. Wild rabbit (174347) is leaner."
+ },
+ {
+  "food": "Radicchio",
+  "fdcId": 2747664,
+  "dataType": "Foundation",
+  "description": "Radicchio, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Radish",
+  "fdcId": 2747665,
+  "dataType": "Foundation",
+  "description": "Radishes, red, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Red radish."
+ },
+ {
+  "food": "Raisins",
+  "fdcId": 168165,
+  "dataType": "SR Legacy",
+  "description": "Raisins, dark, seedless (Includes foods for USDA's Food Distribution Program)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2758980 has sugar detail but no energy/fat/carbs, so SR was used.  Dark seedless."
+ },
+ {
+  "food": "Raspberries",
+  "fdcId": 2346410,
+  "dataType": "Foundation",
+  "description": "Raspberries, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Red Lentils",
+  "fdcId": 174284,
+  "dataType": "SR Legacy",
+  "description": "Lentils, pink or red, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Pink/red, raw. Serving label says dry."
+ },
+ {
+  "food": "Red Pepper Flakes",
+  "fdcId": 170932,
+  "dataType": "SR Legacy",
+  "description": "Spices, pepper, red or cayenne",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No crushed-red-pepper record. Uses ground red/cayenne pepper (same plant, dried)."
+ },
+ {
+  "food": "Red Wine",
+  "fdcId": 173190,
+  "dataType": "SR Legacy",
+  "description": "Alcoholic beverage, wine, table, red",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Rhubarb",
+  "fdcId": 167758,
+  "dataType": "SR Legacy",
+  "description": "Rhubarb, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 2758975 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Rice Bran Oil",
+  "fdcId": 171013,
+  "dataType": "SR Legacy",
+  "description": "Oil, rice bran",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Rice Milk",
+  "fdcId": 171942,
+  "dataType": "SR Legacy",
+  "description": "Beverages, rice milk, unsweetened",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Unsweetened."
+ },
+ {
+  "food": "Ricotta",
+  "fdcId": 746766,
+  "dataType": "Foundation",
+  "description": "Cheese, ricotta, whole milk",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Whole milk."
+ },
+ {
+  "food": "Romaine Lettuce",
+  "fdcId": 746769,
+  "dataType": "Foundation",
+  "description": "Lettuce, cos or romaine, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Rooibos Tea",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Rosemary",
+  "fdcId": 173473,
+  "dataType": "SR Legacy",
+  "description": "Rosemary, fresh",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Fresh."
+ },
+ {
+  "food": "Rotisserie Chicken",
+  "fdcId": 2705935,
+  "dataType": "Survey (FNDDS)",
+  "description": "Chicken, NS as to part, rotisserie, NS as to skin eaten",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "SR only has individual rotisserie parts. FNDDS whole-bird \"NS as to part, NS as to skin\" is the only whole-chicken record."
+ },
+ {
+  "food": "Rutabaga",
+  "fdcId": 168454,
+  "dataType": "SR Legacy",
+  "description": "Rutabagas, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2727580 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Rye",
+  "fdcId": 168884,
+  "dataType": "SR Legacy",
+  "description": "Rye grain",
+  "confidence": "low",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Only a dry rye-grain record. No serving label (normally means cooked). Values are per 100 g DRY."
+ },
+ {
+  "food": "Safflower Oil",
+  "fdcId": 171027,
+  "dataType": "SR Legacy",
+  "description": "Oil, safflower, salad or cooking, high oleic (primary safflower oil of commerce)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 1750350 has sugar detail but no energy/fat/carbs, so SR was used. High oleic (the main safflower oil sold)."
+ },
+ {
+  "food": "Saffron",
+  "fdcId": 170934,
+  "dataType": "SR Legacy",
+  "description": "Spices, saffron",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Sage",
+  "fdcId": 170935,
+  "dataType": "SR Legacy",
+  "description": "Spices, sage, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Ground, dried."
+ },
+ {
+  "food": "Salami",
+  "fdcId": 2759005,
+  "dataType": "Foundation",
+  "description": "Salami, hard, sliced",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Hard salami."
+ },
+ {
+  "food": "Salmon",
+  "fdcId": 175175,
+  "dataType": "SR Legacy",
+  "description": "Fish, salmon, pink, canned, drained solids",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Plain \"Salmon\" is treated as canned. Chose PINK salmon, canned, drained solids: pink is the dominant US canned salmon (sockeye canned is 173693, fattier). Same as Salmon (canned)."
+ },
+ {
+  "food": "Salmon (canned)",
+  "fdcId": 175175,
+  "dataType": "SR Legacy",
+  "description": "Fish, salmon, pink, canned, drained solids",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Pink, canned, drained solids."
+ },
+ {
+  "food": "Salmon (fresh)",
+  "fdcId": 2684441,
+  "dataType": "Foundation",
+  "description": "Fish, salmon, Atlantic, farm raised, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Atlantic farm-raised (most consumed). Wild sockeye (2684440) is leaner."
+ },
+ {
+  "food": "Salt",
+  "fdcId": 173468,
+  "dataType": "SR Legacy",
+  "description": "Salt, table",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 746775 has sugar detail but no energy/fat/carbs, so SR was used. Non-iodized SR table salt. Macros are all 0, sodium is the only value that matters."
+ },
+ {
+  "food": "Sardines",
+  "fdcId": 175139,
+  "dataType": "SR Legacy",
+  "description": "Fish, sardine, Atlantic, canned in oil, drained solids with bone",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Atlantic, canned in oil, drained, with bone."
+ },
+ {
+  "food": "Sardines (canned)",
+  "fdcId": 175139,
+  "dataType": "SR Legacy",
+  "description": "Fish, sardine, Atlantic, canned in oil, drained solids with bone",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Sardines (fresh)",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No raw sardine record. Only canned (oil/tomato) records exist, and those carry the oil/sauce and processing."
+ },
+ {
+  "food": "Sauerkraut",
+  "fdcId": 169279,
+  "dataType": "SR Legacy",
+  "description": "Sauerkraut, canned, solids and liquids",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": false
+  },
+  "note": "Canned, solids and liquids (matches serving label)."
+ },
+ {
+  "food": "Scallops",
+  "fdcId": 2747667,
+  "dataType": "Foundation",
+  "description": "Scallops, sea, frozen, wild caught",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Sea scallops."
+ },
+ {
+  "food": "Sea Bass",
+  "fdcId": 175142,
+  "dataType": "SR Legacy",
+  "description": "Fish, sea bass, mixed species, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mixed species, raw. Not Foundation \"Chilean sea bass\", which is actually Patagonian toothfish (much fattier)."
+ },
+ {
+  "food": "Sea Salt",
+  "fdcId": 173468,
+  "dataType": "SR Legacy",
+  "description": "Salt, table",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No sea-salt record. Table salt (non-iodized SR) is equivalent for macros and sodium."
+ },
+ {
+  "food": "Seaweed (Nori)",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "SR \"laver, raw\" is the right species but the fresh form (~85% water). Nori is dried sheets, so per-100 g values would be ~8x too low. FNDDS \"Seaweed, dried\" has no stated species."
+ },
+ {
+  "food": "Sesame / Tahini",
+  "fdcId": 170150,
+  "dataType": "SR Legacy",
+  "description": "Seeds, sesame seeds, whole, dried",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Serving label says 1 tbsp seeds, so whole dried sesame seeds. Tahini (paste) is 170189: similar macros, denser."
+ },
+ {
+  "food": "Sesame Oil",
+  "fdcId": 171016,
+  "dataType": "SR Legacy",
+  "description": "Oil, sesame, salad or cooking",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Shallot",
+  "fdcId": 170499,
+  "dataType": "SR Legacy",
+  "description": "Shallots, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 2727586 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Shark",
+  "fdcId": 173697,
+  "dataType": "SR Legacy",
+  "description": "Fish, shark, mixed species, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Sheep Milk",
+  "fdcId": 170882,
+  "dataType": "SR Legacy",
+  "description": "Milk, sheep, fluid",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Sheep Yogurt",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Shirataki Noodles",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record (konjac glucomannan, near-zero calories)."
+ },
+ {
+  "food": "Shrimp",
+  "fdcId": 2684443,
+  "dataType": "Foundation",
+  "description": "Crustaceans, shrimp, farm raised, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Farm-raised, raw."
+ },
+ {
+  "food": "Smoked Salmon",
+  "fdcId": 173687,
+  "dataType": "SR Legacy",
+  "description": "Fish, salmon, chinook, smoked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Chinook, smoked (cold-smoked/lox type). Note very high sodium."
+ },
+ {
+  "food": "Snap Peas",
+  "fdcId": 170010,
+  "dataType": "SR Legacy",
+  "description": "Peas, edible-podded, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Edible-podded peas, raw."
+ },
+ {
+  "food": "Snapper",
+  "fdcId": 2747669,
+  "dataType": "Foundation",
+  "description": "Snapper, frozen, wild caught",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Sorghum",
+  "fdcId": 2710842,
+  "dataType": "Foundation",
+  "description": "Sorghum, whole grain, white, dry, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Whole grain, dry. Serving label says uncooked."
+ },
+ {
+  "food": "Sorrel",
+  "fdcId": 170076,
+  "dataType": "SR Legacy",
+  "description": "Dock, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "USDA \"Dock, raw\" is Rumex, which includes garden sorrel."
+ },
+ {
+  "food": "Sour Cream",
+  "fdcId": 2346387,
+  "dataType": "Foundation",
+  "description": "Cream, sour, full fat",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Sourdough Bread",
+  "fdcId": 172675,
+  "dataType": "SR Legacy",
+  "description": "Bread, french or vienna (includes sourdough)",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "SR French/Vienna bread record explicitly \"includes sourdough\"."
+ },
+ {
+  "food": "Soy Milk",
+  "fdcId": 1999630,
+  "dataType": "Foundation",
+  "description": "Soy milk, unsweetened, plain, shelf stable",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Unsweetened plain. Sweetened is 2257044."
+ },
+ {
+  "food": "Soy Sauce",
+  "fdcId": 174277,
+  "dataType": "SR Legacy",
+  "description": "Soy sauce made from soy and wheat (shoyu)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Shoyu (soy and wheat)."
+ },
+ {
+  "food": "Spaghetti Squash",
+  "fdcId": 169298,
+  "dataType": "SR Legacy",
+  "description": "Squash, winter, spaghetti, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 2727579 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Spelt",
+  "fdcId": 169746,
+  "dataType": "SR Legacy",
+  "description": "Spelt, cooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Cooked (no serving label)."
+ },
+ {
+  "food": "Spinach",
+  "fdcId": 1999633,
+  "dataType": "Foundation",
+  "description": "Spinach, mature",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mature spinach, raw."
+ },
+ {
+  "food": "Split Peas",
+  "fdcId": 172429,
+  "dataType": "SR Legacy",
+  "description": "Peas, split, mature seeds, cooked, boiled, without salt",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Boiled, no salt."
+ },
+ {
+  "food": "Squid (Calamari)",
+  "fdcId": 2747671,
+  "dataType": "Foundation",
+  "description": "Squid (calamari), frozen, tubes only",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Star Anise",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record. Anise seed is a different plant (Pimpinella vs Illicium)."
+ },
+ {
+  "food": "Star Fruit",
+  "fdcId": 171715,
+  "dataType": "SR Legacy",
+  "description": "Carambola, (starfruit), raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Steak",
+  "fdcId": 2727574,
+  "dataType": "Foundation",
+  "description": "Beef, top sirloin steak, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Generic steak, so top sirloin, raw. Ribeye (2646172) has ~2x the fat."
+ },
+ {
+  "food": "Stevia",
+  "fdcId": 170679,
+  "dataType": "SR Legacy",
+  "description": "Sweetener, herbal extract powder from Stevia leaf",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Pure stevia-leaf extract powder. Most retail stevia packets are mostly erythritol or dextrose filler, so carbs will be understated for those."
+ },
+ {
+  "food": "Strawberries",
+  "fdcId": 2346409,
+  "dataType": "Foundation",
+  "description": "Strawberries, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Sugar",
+  "fdcId": 746784,
+  "dataType": "Foundation",
+  "description": "Sugars, granulated",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Granulated."
+ },
+ {
+  "food": "Sumac",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Sunflower Oil",
+  "fdcId": 172338,
+  "dataType": "SR Legacy",
+  "description": "Oil, sunflower, high oleic (70% and over)",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 1750349 has sugar detail but no energy/fat/carbs, so SR was used. High oleic, the dominant retail sunflower oil today. Linoleic types are 171025."
+ },
+ {
+  "food": "Sunflower Seeds",
+  "fdcId": 2515381,
+  "dataType": "Foundation",
+  "description": "Seeds, sunflower seed, kernel, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Kernels, raw."
+ },
+ {
+  "food": "Sweet Potato",
+  "fdcId": 2346404,
+  "dataType": "Foundation",
+  "description": "Sweet potatoes, orange flesh, without skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Orange flesh, raw (serving label says raw)."
+ },
+ {
+  "food": "Sweet Potato Glass Noodles",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Sweet Potato Starch",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Swiss Chard",
+  "fdcId": 169991,
+  "dataType": "SR Legacy",
+  "description": "Chard, swiss, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Swiss Cheese (aged)",
+  "fdcId": 746767,
+  "dataType": "Foundation",
+  "description": "Cheese, swiss",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Swordfish",
+  "fdcId": 2747672,
+  "dataType": "Foundation",
+  "description": "Swordfish, frozen, wild caught",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Tallow",
+  "fdcId": 171400,
+  "dataType": "SR Legacy",
+  "description": "Fat, beef tallow",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Tamari",
+  "fdcId": 174278,
+  "dataType": "SR Legacy",
+  "description": "Soy sauce made from soy (tamari)",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Tapioca Flour",
+  "fdcId": 169717,
+  "dataType": "SR Legacy",
+  "description": "Tapioca, pearl, dry",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Tapioca pearl, dry. Same material as tapioca flour/starch (pure cassava starch)."
+ },
+ {
+  "food": "Taro",
+  "fdcId": 169308,
+  "dataType": "SR Legacy",
+  "description": "Taro, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Tarragon",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Fresh Herbs category but USDA only has DRIED tarragon. Per-100 g values would be ~5-10x too high for fresh."
+ },
+ {
+  "food": "Teff",
+  "fdcId": 168918,
+  "dataType": "SR Legacy",
+  "description": "Teff, cooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Cooked (no serving label)."
+ },
+ {
+  "food": "Tempeh",
+  "fdcId": 174272,
+  "dataType": "SR Legacy",
+  "description": "Tempeh",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Tequila",
+  "fdcId": 174815,
+  "dataType": "SR Legacy",
+  "description": "Alcoholic beverage, distilled, all (gin, rum, vodka, whiskey) 80 proof",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No tequila record outside FNDDS. Uses SR \"distilled spirits, all, 80 proof\", nutritionally identical (ethanol only)."
+ },
+ {
+  "food": "Thyme",
+  "fdcId": 170938,
+  "dataType": "SR Legacy",
+  "description": "Spices, thyme, dried",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Dried."
+ },
+ {
+  "food": "Tiger Nut Flour",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Tiger Nuts",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record (chufa/Cyperus esculentus)."
+ },
+ {
+  "food": "Tilapia",
+  "fdcId": 2684442,
+  "dataType": "Foundation",
+  "description": "Fish, tilapia, farm raised, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Tofu",
+  "fdcId": 172475,
+  "dataType": "SR Legacy",
+  "description": "Tofu, raw, firm, prepared with calcium sulfate",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Firm, calcium sulfate. Silken/soft tofu has ~half the protein and fat."
+ },
+ {
+  "food": "Tomatillo",
+  "fdcId": 168566,
+  "dataType": "SR Legacy",
+  "description": "Tomatillos, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Foundation 2727582 has sugar detail but no energy/fat/carbs, so SR was used."
+ },
+ {
+  "food": "Tomato",
+  "fdcId": 170457,
+  "dataType": "SR Legacy",
+  "description": "Tomatoes, red, ripe, raw, year round average",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "USDA's generic red ripe raw (year-round average)."
+ },
+ {
+  "food": "Trout",
+  "fdcId": 175153,
+  "dataType": "SR Legacy",
+  "description": "Fish, trout, mixed species, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mixed species, raw."
+ },
+ {
+  "food": "Tuna",
+  "fdcId": 334194,
+  "dataType": "Foundation",
+  "description": "Fish, tuna, light, canned in water, drained solids",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Plain \"Tuna\" = canned light in water, drained."
+ },
+ {
+  "food": "Tuna (canned)",
+  "fdcId": 334194,
+  "dataType": "Foundation",
+  "description": "Fish, tuna, light, canned in water, drained solids",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Light, in water, drained."
+ },
+ {
+  "food": "Tuna (fresh)",
+  "fdcId": 2747673,
+  "dataType": "Foundation",
+  "description": "Tuna, ahi or yellowfin, frozen, wild caught",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Ahi/yellowfin."
+ },
+ {
+  "food": "Turkey",
+  "fdcId": 171480,
+  "dataType": "SR Legacy",
+  "description": "Turkey, whole, meat only, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Generic: whole turkey, meat only, raw."
+ },
+ {
+  "food": "Turkey Breast",
+  "fdcId": 171098,
+  "dataType": "SR Legacy",
+  "description": "Turkey, whole, breast, meat only, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Breast meat only, raw."
+ },
+ {
+  "food": "Turkey Sausage (fresh)",
+  "fdcId": 174617,
+  "dataType": "SR Legacy",
+  "description": "Sausage, turkey, fresh, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Turmeric",
+  "fdcId": 172231,
+  "dataType": "SR Legacy",
+  "description": "Spices, turmeric, ground",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Ground."
+ },
+ {
+  "food": "Turnip",
+  "fdcId": 2747674,
+  "dataType": "Foundation",
+  "description": "Turnips, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": ""
+ },
+ {
+  "food": "Turnip Greens",
+  "fdcId": 170061,
+  "dataType": "SR Legacy",
+  "description": "Turnip greens, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Vanilla",
+  "fdcId": 173471,
+  "dataType": "SR Legacy",
+  "description": "Vanilla extract",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Vanilla extract (the common form). About 35% alcohol, which drives most of its calories."
+ },
+ {
+  "food": "Venison",
+  "fdcId": 173855,
+  "dataType": "SR Legacy",
+  "description": "Game meat, deer, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Deer, raw."
+ },
+ {
+  "food": "Walnut Oil",
+  "fdcId": 171030,
+  "dataType": "SR Legacy",
+  "description": "Oil, walnut",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Walnuts",
+  "fdcId": 2346394,
+  "dataType": "Foundation",
+  "description": "Nuts, walnuts, English, halves, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "English."
+ },
+ {
+  "food": "Wasabi",
+  "fdcId": 171831,
+  "dataType": "SR Legacy",
+  "description": "Wasabi",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Prepared wasabi (paste/powder, as used as a condiment). Most commercial wasabi is horseradish-based. Raw root is 168583."
+ },
+ {
+  "food": "Water Chestnuts",
+  "fdcId": 170066,
+  "dataType": "SR Legacy",
+  "description": "Waterchestnuts, chinese, (matai), raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Chinese water chestnut, raw. Most people eat canned (170067), which is lower in sugar."
+ },
+ {
+  "food": "Water Kefir",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record."
+ },
+ {
+  "food": "Watercress",
+  "fdcId": 170068,
+  "dataType": "SR Legacy",
+  "description": "Watercress, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Watermelon",
+  "fdcId": 167765,
+  "dataType": "SR Legacy",
+  "description": "Watermelon, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Foundation 2747675 has sugar detail but no energy/fat/carbs, so SR was used.  Flesh only."
+ },
+ {
+  "food": "Wheat",
+  "fdcId": 168890,
+  "dataType": "SR Legacy",
+  "description": "Wheat, hard red winter",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Hard red winter wheat kernels (serving label says whole grain kernels). Class unspecified."
+ },
+ {
+  "food": "Wheat Germ",
+  "fdcId": 168892,
+  "dataType": "SR Legacy",
+  "description": "Wheat germ, crude",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Crude (raw)."
+ },
+ {
+  "food": "White Beans",
+  "fdcId": 175202,
+  "dataType": "SR Legacy",
+  "description": "Beans, white, mature seeds, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Mature seeds, raw. Serving label says dry."
+ },
+ {
+  "food": "White Flour",
+  "fdcId": 789890,
+  "dataType": "Foundation",
+  "description": "Flour, wheat, all-purpose, enriched, bleached",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "All-purpose, enriched, bleached."
+ },
+ {
+  "food": "White Potato",
+  "fdcId": 170028,
+  "dataType": "SR Legacy",
+  "description": "Potatoes, white, flesh and skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "White potato, flesh and skin, raw."
+ },
+ {
+  "food": "White Rice",
+  "fdcId": 168878,
+  "dataType": "SR Legacy",
+  "description": "Rice, white, long-grain, regular, enriched, cooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "Long-grain, enriched, cooked (serving label says cooked)."
+ },
+ {
+  "food": "White Rice Flour",
+  "fdcId": 790214,
+  "dataType": "Foundation",
+  "description": "Flour, rice, white, unenriched",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "White Tea",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No brewed white tea record."
+ },
+ {
+  "food": "White Vinegar (distilled)",
+  "fdcId": 172237,
+  "dataType": "SR Legacy",
+  "description": "Vinegar, distilled",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "White Wine",
+  "fdcId": 174837,
+  "dataType": "SR Legacy",
+  "description": "Alcoholic beverage, wine, table, white",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Whole Milk",
+  "fdcId": 746782,
+  "dataType": "Foundation",
+  "description": "Milk, whole, 3.25% milkfat, with added vitamin D",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "3.25%."
+ },
+ {
+  "food": "Wild Boar",
+  "fdcId": 175297,
+  "dataType": "SR Legacy",
+  "description": "Game meat, boar, wild, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Wild Rice",
+  "fdcId": 168897,
+  "dataType": "SR Legacy",
+  "description": "Wild rice, cooked",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": false
+  },
+  "note": "Cooked (no serving label)."
+ },
+ {
+  "food": "Worcestershire Sauce",
+  "fdcId": 171610,
+  "dataType": "SR Legacy",
+  "description": "Sauce, worcestershire",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Yacon",
+  "fdcId": null,
+  "dataType": null,
+  "description": null,
+  "confidence": null,
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "No record. Yacon is mostly FOS (fructooligosaccharides), so no other tuber is a valid proxy."
+ },
+ {
+  "food": "Yams",
+  "fdcId": 170071,
+  "dataType": "SR Legacy",
+  "description": "Yam, raw",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": "True yam (Dioscorea). In the US \"yams\" in stores are often orange sweet potatoes (2346404), which are nutritionally different."
+ },
+ {
+  "food": "Yellow Squash",
+  "fdcId": 2685569,
+  "dataType": "Foundation",
+  "description": "Squash, summer, yellow, includes skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ },
+ {
+  "food": "Yogurt",
+  "fdcId": 2259793,
+  "dataType": "Foundation",
+  "description": "Yogurt, plain, whole milk",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Plain whole-milk yogurt. Fat level unspecified."
+ },
+ {
+  "food": "Yogurt (plain)",
+  "fdcId": 2259793,
+  "dataType": "Foundation",
+  "description": "Yogurt, plain, whole milk",
+  "confidence": "medium",
+  "hasSugars": {
+   "fructose": true,
+   "glucose": true,
+   "lactose": true
+  },
+  "note": "Plain whole-milk. Fat level unspecified."
+ },
+ {
+  "food": "Zucchini",
+  "fdcId": 2685568,
+  "dataType": "Foundation",
+  "description": "Squash, summer, green, zucchini, includes skin, raw",
+  "confidence": "high",
+  "hasSugars": {
+   "fructose": false,
+   "glucose": false,
+   "lactose": false
+  },
+  "note": ""
+ }
+]
