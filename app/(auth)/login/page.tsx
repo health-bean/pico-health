@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Input, Button, Card } from "@/components/ui";
 import { createClient } from "@/lib/supabase/client";
+import { Wordmark } from "@/components/brand/wordmark";
 
 export default function LoginPage() {
   const router = useRouter();
@@ -75,8 +76,8 @@ export default function LoginPage() {
       <div className="relative w-full max-w-sm animate-fade-in-up">
         {/* Brand */}
         <div className="mb-10 text-center">
-          <h1 className="font-[family-name:var(--font-display)] text-4xl font-bold tracking-tight text-teal-800 mb-2">
-            Pico Health
+          <h1 className="mb-3 flex justify-center">
+            <Wordmark className="h-9 w-auto" />
           </h1>
           <p className="text-sm text-[var(--color-text-secondary)]">
             Sign in to continue your healing journey
