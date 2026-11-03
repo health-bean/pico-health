@@ -1,0 +1,484 @@
+{
+ "property": "fodmap",
+ "source": {
+  "name": "PubMed",
+  "url": "https://pubmed.ncbi.nlm.nih.gov"
+ },
+ "note": "Per-serve FODMAP values from Varney et al. 2017 (Monash University) Table 2, converted to g per 100 g (value / serve × 100). nd and trace stored as 0; '—' for excess fructose stored as 0 (no fructose in excess of glucose). Gluten-free bread, quinoa pasta and boiled haricot beans not mapped (no matching catalog food or serving basis). Cutoffs used by the app come from Table 1 of the same paper.",
+ "foods": [
+  {
+   "food": "Apple",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "gos",
+     "preparation": "raw",
+     "sampleDescription": "Apple, Pink Lady, typical serve 165 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "fructans",
+     "preparation": "raw",
+     "sampleDescription": "Apple, Pink Lady, typical serve 165 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.83,
+     "unit": "g",
+     "component": "sorbitol",
+     "preparation": "raw",
+     "sampleDescription": "Apple, Pink Lady, typical serve 165 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 1.37 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "mannitol",
+     "preparation": "raw",
+     "sampleDescription": "Apple, Pink Lady, typical serve 165 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 6.424,
+     "unit": "g",
+     "component": "excess_fructose",
+     "preparation": "raw",
+     "sampleDescription": "Apple, Pink Lady, typical serve 165 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 10.6 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": true,
+     "exclusionNote": "Printed as 10.6 g per 165 g serve, implausible for an apple (likely a typo in the table); not used."
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "lactose",
+     "preparation": "raw",
+     "sampleDescription": "Apple, Pink Lady, typical serve 165 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Orange",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "gos",
+     "preparation": "raw",
+     "sampleDescription": "Orange, typical serve 130 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "fructans",
+     "preparation": "raw",
+     "sampleDescription": "Orange, typical serve 130 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "sorbitol",
+     "preparation": "raw",
+     "sampleDescription": "Orange, typical serve 130 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "mannitol",
+     "preparation": "raw",
+     "sampleDescription": "Orange, typical serve 130 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "excess_fructose",
+     "preparation": "raw",
+     "sampleDescription": "Orange, typical serve 130 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: no fructose in excess of glucose (—)",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "lactose",
+     "preparation": "raw",
+     "sampleDescription": "Orange, typical serve 130 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Mushrooms",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "gos",
+     "preparation": "raw",
+     "sampleDescription": "Mushroom, uncooked, typical serve 74 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "fructans",
+     "preparation": "raw",
+     "sampleDescription": "Mushroom, uncooked, typical serve 74 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.108,
+     "unit": "g",
+     "component": "sorbitol",
+     "preparation": "raw",
+     "sampleDescription": "Mushroom, uncooked, typical serve 74 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 0.08 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 2.635,
+     "unit": "g",
+     "component": "mannitol",
+     "preparation": "raw",
+     "sampleDescription": "Mushroom, uncooked, typical serve 74 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 1.95 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "excess_fructose",
+     "preparation": "raw",
+     "sampleDescription": "Mushroom, uncooked, typical serve 74 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: no fructose in excess of glucose (—)",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "lactose",
+     "preparation": "raw",
+     "sampleDescription": "Mushroom, uncooked, typical serve 74 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Onion",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.194,
+     "unit": "g",
+     "component": "gos",
+     "preparation": "raw",
+     "sampleDescription": "Onion, uncooked, typical serve 36 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 0.07 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 1.806,
+     "unit": "g",
+     "component": "fructans",
+     "preparation": "raw",
+     "sampleDescription": "Onion, uncooked, typical serve 36 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 0.65 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "sorbitol",
+     "preparation": "raw",
+     "sampleDescription": "Onion, uncooked, typical serve 36 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "mannitol",
+     "preparation": "raw",
+     "sampleDescription": "Onion, uncooked, typical serve 36 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "excess_fructose",
+     "preparation": "raw",
+     "sampleDescription": "Onion, uncooked, typical serve 36 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: no fructose in excess of glucose (—)",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "lactose",
+     "preparation": "raw",
+     "sampleDescription": "Onion, uncooked, typical serve 36 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Zucchini",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "gos",
+     "preparation": "raw",
+     "sampleDescription": "Zucchini/courgette, uncooked, typical serve 66 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.288,
+     "unit": "g",
+     "component": "fructans",
+     "preparation": "raw",
+     "sampleDescription": "Zucchini/courgette, uncooked, typical serve 66 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 0.19 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "sorbitol",
+     "preparation": "raw",
+     "sampleDescription": "Zucchini/courgette, uncooked, typical serve 66 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "mannitol",
+     "preparation": "raw",
+     "sampleDescription": "Zucchini/courgette, uncooked, typical serve 66 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "excess_fructose",
+     "preparation": "raw",
+     "sampleDescription": "Zucchini/courgette, uncooked, typical serve 66 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: no fructose in excess of glucose (—)",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "lactose",
+     "preparation": "raw",
+     "sampleDescription": "Zucchini/courgette, uncooked, typical serve 66 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Bread (Wheat)",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "valuePer100g": 0.204,
+     "unit": "g",
+     "component": "gos",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Wheat bread, two slices, typical serve 49 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 0.1 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.673,
+     "unit": "g",
+     "component": "fructans",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Wheat bread, two slices, typical serve 49 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 0.33 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "sorbitol",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Wheat bread, two slices, typical serve 49 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: trace",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "mannitol",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Wheat bread, two slices, typical serve 49 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: trace",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.163,
+     "unit": "g",
+     "component": "excess_fructose",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Wheat bread, two slices, typical serve 49 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: 0.08 g per serve",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "component": "lactose",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Wheat bread, two slices, typical serve 49 g, Monash University analysis (pooled from 10 shops for produce, 3 brands for bread) — Varney 2017 Table 2: not detected",
+     "citation": "Varney J, Barrett J, Scarlata K, et al. FODMAPs: food composition, defining cutoff values and international application. J Gastroenterol Hepatol. 2017;32 Suppl 1:53-61.",
+     "citationUrl": "https://doi.org/10.1111/jgh.13698",
+     "studyYear": 2017,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  }
+ ]
+}

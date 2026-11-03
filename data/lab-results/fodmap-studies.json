@@ -1,0 +1,2851 @@
+{
+ "property": "fodmap",
+ "source": {
+  "name": "PubMed",
+  "url": "https://pubmed.ncbi.nlm.nih.gov"
+ },
+ "note": "Lab-measured FODMAP components (g per 100 g as eaten/as sold) from open-access full texts read this session via Europe PMC/NCBI (Chumpitazi 2018 J Pediatr Table 1 — US foods, Megazyme kits; Ferjančič 2024 Front Nutr Table 1 — total fructan in Slovenian foods; Matias 2024 Plant Foods Hum Nutr Table 1 — Spanish wheat bread group mean; Laatikainen 2016 Aliment Pharmacol Ther Table 1 — regular rye bread; Alghamdi 2020 Saudi J Biol Sci Table 2 — honey sugars; Panseri 2021 Foods Table 4 — milk lactose; Torbica 2025 Foods Tables 2–3 — wheat pasta; Alowo 2025 Front Nutr Tables 2/4 — millet, sorghum, sesame) plus values stated in two abstracts (Whelan 2011 rye bread; Prichard 2016 guava, fenugreek). Each row carries one FODMAP component; 'not detected' is recorded as 0 with the detection limit where stated. Excess fructose is taken as reported or computed as fructose − glucose from the same sample (negative set to 0) and labelled as such. GOS for Torbica = raffinose+stachyose+verbascose summed by us. Torbica fructan rows are short-chain FOS only and are excluded (comparison only). No Monash app/website data used. Monash cutoffs (Varney 2017) were only seen second-hand — see papers.md. Serving sizes from USDA FoodData Central SR Legacy household portions (Cornmeal left null because the value is for cooked polenta). Pico edits: Rye left out (values are rye bread, catalog Rye is the grain); dry grains given a 1/4 cup uncooked serving to match legumes.",
+ "foods": [
+  {
+   "food": "Butter",
+   "servingGrams": 14.2,
+   "servingLabel": "1 tbsp",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 1.54,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Butter, Glenview Farms (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Butter, Glenview Farms (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Butter, Glenview Farms (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Butter, Glenview Farms (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Butter, Glenview Farms (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Cheddar Cheese",
+   "servingGrams": 28,
+   "servingLabel": "1 slice (1 oz)",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 1.91,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mild Cheddar, Kraft (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mild Cheddar, Kraft (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mild Cheddar, Kraft (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mild Cheddar, Kraft (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mild Cheddar, Kraft (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Rice Milk",
+   "servingGrams": 240,
+   "servingLabel": "1 cup (8 fl oz)",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.01,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Rice milk, Rice DREAM (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 0.01 − glucose 0.0 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Rice milk, Rice DREAM (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Rice milk, Rice DREAM (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Rice milk, Rice DREAM (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Rice milk, Rice DREAM (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Rice milk, Rice DREAM (n=1 product) — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Banana",
+   "servingGrams": 118,
+   "servingLabel": "1 medium",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Banana, firm, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 3.21 − glucose 5.93 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Banana, firm, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Banana, firm, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Banana, firm, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.15,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Banana, firm, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Banana, firm, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.11,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Banana, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.11 g/100 g fresh weight as reported (dry weight 0.42 g/100 g, water 74%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Grapes",
+   "servingGrams": 151,
+   "servingLabel": "1 cup",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Grapes, red, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 7.04 − glucose 12.11 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Grapes, red, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Grapes, red, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Grapes, red, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Grapes, red, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Grapes, red, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.06,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Grape, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.06 g/100 g fresh weight as reported (dry weight 0.33 g/100 g, water 81%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Orange",
+   "servingGrams": 140,
+   "servingLabel": "1 fruit (2-7/8\" dia)",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Orange, navel, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 2.01 − glucose 3.01 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Orange, navel, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Orange, navel, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Orange, navel, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Orange, navel, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Orange, navel, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.21,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Orange, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.21 g/100 g fresh weight as reported (dry weight 0.9 g/100 g, water 77%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Pineapple",
+   "servingGrams": 165,
+   "servingLabel": "1 cup chunks",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Pineapple, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 1.91 − glucose 2.97 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Pineapple, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Pineapple, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Pineapple, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Pineapple, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Pineapple, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Strawberries",
+   "servingGrams": 144,
+   "servingLabel": "1 cup whole",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Strawberry, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 1.31 − glucose 1.71 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Strawberry, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Strawberry, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Strawberry, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Strawberry, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Strawberry, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Tomato",
+   "servingGrams": 123,
+   "servingLabel": "1 medium whole",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Tomato, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 1.01 − glucose 1.21 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Tomato, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Tomato, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Tomato, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Tomato, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Tomato, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.01,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Tomato, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.01 g/100 g fresh weight as reported (dry weight 0.19 g/100 g, water 95%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Green Beans",
+   "servingGrams": 135,
+   "servingLabel": "1 cup (frozen, boiled)",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Bean, green, frozen — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.02,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Bean, green, frozen — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.01,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Bean, green, frozen — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Bean, green, frozen — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Bean, green, frozen — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.03,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Green beans, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.03 g/100 g fresh weight as reported (dry weight 0.39 g/100 g, water 92%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Broccoli",
+   "servingGrams": 184,
+   "servingLabel": "1 cup chopped (frozen, boiled)",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Broccoli, Monarch, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Broccoli, Monarch, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.04,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Broccoli, Monarch, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Broccoli, Monarch, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Broccoli, Monarch, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.02,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Broccoli, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.02 g/100 g fresh weight as reported (dry weight 0.12 g/100 g, water 87%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Corn (Sweet)",
+   "servingGrams": 165,
+   "servingLabel": "1 cup kernels (frozen, boiled)",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen kernels, analysed raw (as purchased)",
+     "sampleDescription": "Corn, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen kernels, analysed raw (as purchased)",
+     "sampleDescription": "Corn, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.04,
+     "unit": "g",
+     "preparation": "frozen kernels, analysed raw (as purchased)",
+     "sampleDescription": "Corn, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen kernels, analysed raw (as purchased)",
+     "sampleDescription": "Corn, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen kernels, analysed raw (as purchased)",
+     "sampleDescription": "Corn, frozen, Kroger — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Lettuce",
+   "servingGrams": 36,
+   "servingLabel": "1 cup shredded",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Lettuce, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 0.1 − glucose 0.12 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Lettuce, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Lettuce, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Lettuce, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.01,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Lettuce, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Lettuce, fresh — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.01,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Lettuce, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.01 g/100 g fresh weight as reported (dry weight 0.61 g/100 g, water 98%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Spinach",
+   "servingGrams": 95,
+   "servingLabel": "1/2 cup (frozen, boiled)",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Spinach, frozen, Birds Eye — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Spinach, frozen, Birds Eye — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Spinach, frozen, Birds Eye — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.14,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Spinach, frozen, Birds Eye — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "frozen, analysed raw (as purchased)",
+     "sampleDescription": "Spinach, frozen, Birds Eye — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Brown Rice",
+   "servingGrams": 202,
+   "servingLabel": "1 cup cooked",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "Brown rice, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "Brown rice, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "Brown rice, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "Brown rice, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "Brown rice, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "White Rice",
+   "servingGrams": 158,
+   "servingLabel": "1 cup cooked",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "White rice, Success, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "White rice, Success, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "White rice, Success, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "White rice, Success, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "White rice, Success, cooked — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Mayonnaise",
+   "servingGrams": 13.8,
+   "servingLabel": "1 tbsp",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mayonnaise, Hellmann's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mayonnaise, Hellmann's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mayonnaise, Hellmann's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mayonnaise, Hellmann's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mayonnaise, Hellmann's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Peanut Butter",
+   "servingGrams": 32,
+   "servingLabel": "2 tbsp",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Peanut butter, Skippy — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; excess fructose computed as fructose 0.91 − glucose 1.01 g/100 g (paper reports '-' / value when fructose ≤/> glucose; negative set to 0)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Peanut butter, Skippy — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Peanut butter, Skippy — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Peanut butter, Skippy — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.02,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Peanut butter, Skippy — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Peanut butter, Skippy — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Mustard (prepared)",
+   "servingGrams": 5,
+   "servingLabel": "1 tsp",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mustard, French's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mustard, French's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mustard, French's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mustard, French's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; 'FOS' column = Megazyme Fructan HK assay (total fructan); ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "Mustard, French's — Chumpitazi 2018 Table 1; US grocery (Kroger, Houston) / US Foodservice; Megazyme enzymatic kits, analysed in duplicate; GOS by Megazyme Raffinose/Galactose kit; ND = not detected (Megazyme kit; kit detection limits stated in mg/L of assay solution: fructose/glucose 0.66, lactose 2.96, mannitol 0.5, sorbitol 0.2, fructan 67.4, raffinose/GOS 21 mg/L)",
+     "citation": "Chumpitazi BP, Lim J, McMeans AR, et al. Evaluation of FODMAP Carbohydrates Content in Selected Foods in the United States. J Pediatr. 2018;199:252-255.",
+     "citationUrl": "https://doi.org/10.1016/j.jpeds.2018.03.038",
+     "studyYear": 2018,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Onion",
+   "servingGrams": 70,
+   "servingLabel": "1 small",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 1.97,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Onion, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 1.97 g/100 g fresh weight as reported (dry weight 16.41 g/100 g, water 88%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Carrot",
+   "servingGrams": 61,
+   "servingLabel": "1 medium",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.11,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Carrot, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.11 g/100 g fresh weight as reported (dry weight 0.9 g/100 g, water 88%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Kohlrabi",
+   "servingGrams": 135,
+   "servingLabel": "1 cup",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Kohlrabi, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), ND (absorbance difference ≤0.02, below LOQ)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Bell Pepper",
+   "servingGrams": 119,
+   "servingLabel": "1 medium",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.02,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Bell pepper, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.02 g/100 g fresh weight as reported (dry weight 0.17 g/100 g, water 90%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Cauliflower",
+   "servingGrams": 107,
+   "servingLabel": "1 cup chopped",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.09,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Cauliflower, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.09 g/100 g fresh weight as reported (dry weight 0.49 g/100 g, water 89%); note: 0.49 DW × 11% solids ≈ 0.05, so the reported FW figure is not exactly consistent with the stated water content — reported FW value used",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Cucumber",
+   "servingGrams": 52,
+   "servingLabel": "1/2 cup slices",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Cucumber, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), ND (absorbance difference ≤0.02, below LOQ)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Cabbage",
+   "servingGrams": 89,
+   "servingLabel": "1 cup chopped",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.03,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Cabbage, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.03 g/100 g fresh weight as reported (dry weight 0.36 g/100 g, water 91%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Leeks",
+   "servingGrams": 89,
+   "servingLabel": "1 leek",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.24,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Leek, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.24 g/100 g fresh weight as reported (dry weight 2.96 g/100 g, water 92%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Zucchini",
+   "servingGrams": 124,
+   "servingLabel": "1 cup chopped",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.01,
+     "unit": "g",
+     "preparation": "as purchased (paper does not state raw/cooked)",
+     "sampleDescription": "Courgette, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.01 g/100 g fresh weight as reported (dry weight 0.16 g/100 g, water 95%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Pickles",
+   "servingGrams": 35,
+   "servingLabel": "1 small spear",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "pickled (as sold)",
+     "sampleDescription": "Pickle, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), ND (absorbance difference ≤0.02, below LOQ)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Sauerkraut",
+   "servingGrams": 142,
+   "servingLabel": "1 cup",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "fermented (as sold)",
+     "sampleDescription": "Sauerkraut, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), ND (absorbance difference ≤0.02, below LOQ)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Potato",
+   "servingGrams": 136,
+   "servingLabel": "1 potato (2-1/2\" dia), boiled",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "Cooked potato, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), ND (absorbance difference ≤0.02, below LOQ)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "baked",
+     "sampleDescription": "Baked potato, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), ND (absorbance difference ≤0.02, below LOQ)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "fried (French fries)",
+     "sampleDescription": "French fries, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), ND (absorbance difference ≤0.02, below LOQ)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Apple",
+   "servingGrams": 182,
+   "servingLabel": "1 medium",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.09,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Apple, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.09 g/100 g fresh weight as reported (dry weight 0.87 g/100 g, water 85%); note: 0.87 DW × 15% solids ≈ 0.13, so the reported FW figure is not exactly consistent with the stated water content — reported FW value used",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Pear",
+   "servingGrams": 178,
+   "servingLabel": "1 medium",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.13,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Pear, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.13 g/100 g fresh weight as reported (dry weight 0.58 g/100 g, water 77%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Mandarin",
+   "servingGrams": 88,
+   "servingLabel": "1 medium",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.11,
+     "unit": "g",
+     "preparation": "raw",
+     "sampleDescription": "Tangerine, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.11 g/100 g fresh weight as reported (dry weight 0.76 g/100 g, water 88%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Bread (Wheat)",
+   "servingGrams": 29,
+   "servingLabel": "1 slice",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.14,
+     "unit": "g",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "White bread, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.14 g/100 g fresh weight as reported (dry weight 0.22 g/100 g, water 38%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.14,
+     "unit": "g",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Brown bread, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.14 g/100 g fresh weight as reported (dry weight 0.25 g/100 g, water 44%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.31,
+     "unit": "g",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Gluten-containing (wheat) bread group, Spanish supermarkets, mean of group as reported (number of breads and methods in the paper's Supplementary 1, not read) — Matias 2024 Table 1, g/100 g edible portion; total fructan",
+     "citation": "Matias S, Perez-Junkera G, Martínez O, et al. FODMAP Content Like-by-like Comparison in Spanish Gluten-free and Gluten-containing Cereal-based Products. Plant Foods Hum Nutr. 2024;79(2):545-550.",
+     "citationUrl": "https://doi.org/10.1007/s11130-024-01177-8",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.29,
+     "unit": "g",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Gluten-containing (wheat) bread group, Spanish supermarkets, mean of group as reported (number of breads and methods in the paper's Supplementary 1, not read) — Matias 2024 Table 1, g/100 g edible portion; excess fructose as reported by the paper",
+     "citation": "Matias S, Perez-Junkera G, Martínez O, et al. FODMAP Content Like-by-like Comparison in Spanish Gluten-free and Gluten-containing Cereal-based Products. Plant Foods Hum Nutr. 2024;79(2):545-550.",
+     "citationUrl": "https://doi.org/10.1007/s11130-024-01177-8",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.01,
+     "unit": "g",
+     "preparation": "baked (as sold)",
+     "sampleDescription": "Gluten-containing (wheat) bread group, Spanish supermarkets, mean of group as reported (number of breads and methods in the paper's Supplementary 1, not read) — Matias 2024 Table 1, g/100 g edible portion",
+     "citation": "Matias S, Perez-Junkera G, Martínez O, et al. FODMAP Content Like-by-like Comparison in Spanish Gluten-free and Gluten-containing Cereal-based Products. Plant Foods Hum Nutr. 2024;79(2):545-550.",
+     "citationUrl": "https://doi.org/10.1007/s11130-024-01177-8",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "White Flour",
+   "servingGrams": 31,
+   "servingLabel": "1/4 cup",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.75,
+     "unit": "g",
+     "preparation": "raw flour (as sold)",
+     "sampleDescription": "Wheat flour T500 (Slovenian white flour type 500), composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.75 g/100 g fresh weight as reported (dry weight 0.75 g/100 g, water None%); DW and FW identical in table (no water correction applied to dry goods)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Oats",
+   "servingGrams": 27,
+   "servingLabel": "1/3 cup dry",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.32,
+     "unit": "g",
+     "preparation": "raw, dry (as sold)",
+     "sampleDescription": "Rolled oats, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.32 g/100 g fresh weight as reported (dry weight 0.32 g/100 g, water None%); DW and FW identical in table (dry good)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Pasta",
+   "servingGrams": 124,
+   "servingLabel": "1 cup spaghetti, cooked (not packed)",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.33,
+     "unit": "g",
+     "preparation": "cooked",
+     "sampleDescription": "Pasta (cooked), composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.33 g/100 g fresh weight as reported (dry weight 0.73 g/100 g, water 55%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.049,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; excess fructose computed as fructose 0.049 − glucose 0.0 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.006,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.006 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 1.386,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; = kestose 1.337 + nystose 0.049 + kestopentaose 0.0 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.013,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; excess fructose computed as fructose 0.025 − glucose 0.012 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.003,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.003 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.756,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 1: Wheat spaghetti (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; = kestose 0.687 + nystose 0.059 + kestopentaose 0.01 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; excess fructose computed as fructose 0.02 − glucose 0.402 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.016,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.016 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 1.234,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; = kestose 1.093 + nystose 0.049 + kestopentaose 0.092 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.005,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; excess fructose computed as fructose 0.017 − glucose 0.012 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.008,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.008 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.853,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 2: Wheat penne (Sentella), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; = kestose 0.81 + nystose 0.031 + kestopentaose 0.012 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.026,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; excess fructose computed as fructose 0.037 − glucose 0.011 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.066,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.066 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.887,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; = kestose 0.731 + nystose 0.036 + kestopentaose 0.12 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; excess fructose computed as fructose 0.013 − glucose 0.015 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.009,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.044,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.044 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.127,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 3: Penne rigate, durum (Danubius), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; = kestose 0.06 + nystose 0.056 + kestopentaose 0.011 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.014,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; excess fructose computed as fructose 0.014 − glucose 0.0 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.069,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.069 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.799,
+     "unit": "g",
+     "preparation": "dry, uncooked (as sold)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 2; n.d. treated as 0; = kestose 0.618 + nystose 0.029 + kestopentaose 0.152 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    },
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.003,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; excess fructose computed as fructose 0.014 − glucose 0.011 (negative → 0)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.004,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.048,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; GOS = raffinose 0.0 + stachyose 0.048 + verbascose 0.0 (summed here; melibiose excluded)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.175,
+     "unit": "g",
+     "preparation": "cooked per package directions (paper Table 1)",
+     "sampleDescription": "Sample 4: Durum fusilli (Maxi), Serbian market, HPAEC-PAD, g/100 g 'as is' — Torbica 2025 Table 3; n.d. treated as 0; = kestose 0.109 + nystose 0.059 + kestopentaose 0.007 (summed here)",
+     "citation": "Torbica AM, Miljić M, Radosavljević M. FODMAP Profile of Wholegrain Pasta. Foods. 2025;14(4):667.",
+     "citationUrl": "https://doi.org/10.3390/foods14040667",
+     "studyYear": 2025,
+     "excluded": true,
+     "exclusionNote": "Short-chain FOS (DP3–5) only; longer-chain fructans were not measured, so this understates total fructan. Comparison only."
+    }
+   ]
+  },
+  {
+   "food": "Cornmeal",
+   "servingGrams": null,
+   "servingLabel": null,
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.04,
+     "unit": "g",
+     "preparation": "cooked as polenta",
+     "sampleDescription": "Polenta (cooked), composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.04 g/100 g fresh weight as reported (dry weight 0.07 g/100 g, water 53%); value is for cooked polenta, not dry cornmeal",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Barley",
+   "servingGrams": 50,
+   "servingLabel": "1/4 cup uncooked",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.47,
+     "unit": "g",
+     "preparation": "raw, dry (as sold)",
+     "sampleDescription": "Dehulled barley, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.47 g/100 g fresh weight as reported (dry weight 0.47 g/100 g, water None%); DW and FW identical in table (dry good)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Green Peas",
+   "servingGrams": 163,
+   "servingLabel": "1 cup canned, drained",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.33,
+     "unit": "g",
+     "preparation": "canned",
+     "sampleDescription": "Canned peas, composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.33 g/100 g fresh weight as reported (dry weight 1.7 g/100 g, water 81%)",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Almonds",
+   "servingGrams": 28.35,
+   "servingLabel": "1 oz (23 kernels)",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.6,
+     "unit": "g",
+     "preparation": "raw (as sold)",
+     "sampleDescription": "Almond (defatted before assay), composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.6 g/100 g fresh weight as reported (dry weight 1.16 g/100 g, water None%); FW column for nuts is back-calculated by the authors using fat content (48%) per table footnote — a defatted-basis conversion, so treat with some caution",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Hazelnuts",
+   "servingGrams": 28.35,
+   "servingLabel": "1 oz (21 kernels)",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.73,
+     "unit": "g",
+     "preparation": "raw (as sold)",
+     "sampleDescription": "Hazelnut (defatted before assay), composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.73 g/100 g fresh weight as reported (dry weight 1.09 g/100 g, water None%); FW column for nuts uses fat content (33%) per table footnote — treat with some caution",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Walnuts",
+   "servingGrams": 28.35,
+   "servingLabel": "1 oz (14 halves)",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.37,
+     "unit": "g",
+     "preparation": "raw (as sold)",
+     "sampleDescription": "Walnut (defatted before assay), composite of ≥3 subsamples/brands/cultivars, Slovenian shops/markets — Ferjančič 2024 Table 1; total fructan (AOAC 999.03, Megazyme), 0.37 g/100 g fresh weight as reported (dry weight 0.66 g/100 g, water None%); FW column for nuts uses fat content (44%) per table footnote — treat with some caution",
+     "citation": "Ferjančič B, Korošec M, Kočevar Baloh A, et al. Fructan content in most commonly consumed Slovenian foods and estimation of daily fructan consumption. Front Nutr. 2024;11:1446771.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2024.1446771",
+     "studyYear": 2024,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Guava",
+   "servingGrams": 55,
+   "servingLabel": "1 fruit",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 0.41,
+     "unit": "g",
+     "preparation": "raw (fresh fruit)",
+     "sampleDescription": "Guava, UK — value stated in Prichard 2016 abstract (total fructans, Megazyme HK assay); full text not read, n not seen",
+     "citation": "Prichard R, Rossi M, Muir J, et al. Fermentable oligosaccharide, disaccharide, monosaccharide and polyol content of foods commonly consumed by ethnic minority groups in the United Kingdom. Int J Food Sci Nutr. 2016;67(4):383-390.",
+     "citationUrl": "https://doi.org/10.3109/09637486.2016.1163328",
+     "studyYear": 2016,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "raw (fresh fruit)",
+     "sampleDescription": "Guava, UK — GOS 'not detected' per Prichard 2016 abstract (HPLC-ELSD); detection limit not seen",
+     "citation": "Prichard R, Rossi M, Muir J, et al. Fermentable oligosaccharide, disaccharide, monosaccharide and polyol content of foods commonly consumed by ethnic minority groups in the United Kingdom. Int J Food Sci Nutr. 2016;67(4):383-390.",
+     "citationUrl": "https://doi.org/10.3109/09637486.2016.1163328",
+     "studyYear": 2016,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Fenugreek",
+   "servingGrams": 3.7,
+   "servingLabel": "1 tsp seed",
+   "results": [
+    {
+     "component": "fructans",
+     "valuePer100g": 1.11,
+     "unit": "g",
+     "preparation": "seeds (as sold)",
+     "sampleDescription": "Fenugreek seeds, UK — value stated in Prichard 2016 abstract (total fructans, Megazyme HK assay); full text not read",
+     "citation": "Prichard R, Rossi M, Muir J, et al. Fermentable oligosaccharide, disaccharide, monosaccharide and polyol content of foods commonly consumed by ethnic minority groups in the United Kingdom. Int J Food Sci Nutr. 2016;67(4):383-390.",
+     "citationUrl": "https://doi.org/10.3109/09637486.2016.1163328",
+     "studyYear": 2016,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 1.27,
+     "unit": "g",
+     "preparation": "seeds (as sold)",
+     "sampleDescription": "Fenugreek seeds, UK — value stated in Prichard 2016 abstract (GOS by HPLC-ELSD); full text not read",
+     "citation": "Prichard R, Rossi M, Muir J, et al. Fermentable oligosaccharide, disaccharide, monosaccharide and polyol content of foods commonly consumed by ethnic minority groups in the United Kingdom. Int J Food Sci Nutr. 2016;67(4):383-390.",
+     "citationUrl": "https://doi.org/10.3109/09637486.2016.1163328",
+     "studyYear": 2016,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Honey",
+   "servingGrams": 21,
+   "servingLabel": "1 tbsp",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 8.07,
+     "unit": "g",
+     "preparation": "as sold",
+     "sampleDescription": "14 honey samples from Saudi Arabian markets, HPLC — Alghamdi 2020 Table 2 'Average' row: fructose 34.77%, glucose 26.70%; excess fructose computed as fructose − glucose = 8.07 g/100 g",
+     "citation": "Alghamdi BA, Alshumrani ES, Saeed MSB, et al. Analysis of sugar composition and pesticides using HPLC and GC-MS techniques in honey samples collected from Saudi Arabian markets. Saudi J Biol Sci. 2020;27(12):3720-3726.",
+     "citationUrl": "https://doi.org/10.1016/j.sjbs.2020.08.018",
+     "studyYear": 2020,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Whole Milk",
+   "servingGrams": 244,
+   "servingLabel": "1 cup",
+   "results": [
+    {
+     "component": "lactose",
+     "valuePer100g": 4.1,
+     "unit": "g",
+     "preparation": "UHT whole milk, 3% fat",
+     "sampleDescription": "UHT whole milk 3% fat, Italy, n=3 samples, HPLC-MS/MS — Panseri 2021 Table 4 (g/100 g or g/100 mL as reported)",
+     "citation": "Panseri S, Pavlovic R, Castrica M, et al. Determination of Carbohydrates in Lactose-Free Dairy Products to Support Food Labelling. Foods. 2021;10(6):1219.",
+     "citationUrl": "https://doi.org/10.3390/foods10061219",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "lactose",
+     "valuePer100g": 4.39,
+     "unit": "g",
+     "preparation": "UHT semi-skimmed milk, 1.5% fat",
+     "sampleDescription": "UHT semi-skimmed milk 1.5% fat (not whole milk; nearest catalog item), Italy, n=3, HPLC-MS/MS — Panseri 2021 Table 4",
+     "citation": "Panseri S, Pavlovic R, Castrica M, et al. Determination of Carbohydrates in Lactose-Free Dairy Products to Support Food Labelling. Foods. 2021;10(6):1219.",
+     "citationUrl": "https://doi.org/10.3390/foods10061219",
+     "studyYear": 2021,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Millet",
+   "servingGrams": 50,
+   "servingLabel": "1/4 cup uncooked",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.09,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Finger millet (Eleusine coracana), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; NOTE species is finger millet, not proso millet; excess fructose as reported (fructose − glucose)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Finger millet (Eleusine coracana), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; NOTE species is finger millet, not proso millet; sorbitol/mannitol <LOQ (sorbitol LOQ 3.56 µg/mL)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Finger millet (Eleusine coracana), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; NOTE species is finger millet, not proso millet; sorbitol/mannitol <LOQ (mannitol LOQ 5.1 µg/mL)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Finger millet (Eleusine coracana), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; NOTE species is finger millet, not proso millet; total GOS <LOQ (27.1 µg/mL)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.57,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Finger millet (Eleusine coracana), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; NOTE species is finger millet, not proso millet; 'Total FOS' by Megazyme K-FRUC (total fructan assay)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "total_fodmap",
+     "valuePer100g": 0.65,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Finger millet (Eleusine coracana), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; NOTE species is finger millet, not proso millet; total FODMAP as reported (excess fructose + GOS + FOS), Table 4",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Sorghum",
+   "servingGrams": 48,
+   "servingLabel": "1/4 cup uncooked",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.2,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sorghum (Sorghum bicolor), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; excess fructose as reported (fructose − glucose)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sorghum (Sorghum bicolor), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; sorbitol/mannitol <LOQ (sorbitol LOQ 3.56 µg/mL)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sorghum (Sorghum bicolor), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; sorbitol/mannitol <LOQ (mannitol LOQ 5.1 µg/mL)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 0.22,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sorghum (Sorghum bicolor), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; total GOS",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.63,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sorghum (Sorghum bicolor), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; 'Total FOS' by Megazyme K-FRUC (total fructan assay)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "total_fodmap",
+     "valuePer100g": 1.05,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sorghum (Sorghum bicolor), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; total FODMAP as reported (excess fructose + GOS + FOS), Table 4",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  },
+  {
+   "food": "Sesame / Tahini",
+   "servingGrams": 9,
+   "servingLabel": "1 tbsp seeds",
+   "results": [
+    {
+     "component": "excess_fructose",
+     "valuePer100g": 0.28,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sesame seed (Sesamum indicum), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; excess fructose as reported (fructose − glucose)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "sorbitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sesame seed (Sesamum indicum), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; sorbitol/mannitol <LOQ (sorbitol LOQ 3.56 µg/mL)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "mannitol",
+     "valuePer100g": 0.0,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sesame seed (Sesamum indicum), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; sorbitol/mannitol <LOQ (mannitol LOQ 5.1 µg/mL)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "gos",
+     "valuePer100g": 1.93,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sesame seed (Sesamum indicum), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; total GOS",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "fructans",
+     "valuePer100g": 0.83,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sesame seed (Sesamum indicum), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; 'Total FOS' by Megazyme K-FRUC (total fructan assay)",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    },
+    {
+     "component": "total_fodmap",
+     "valuePer100g": 3.04,
+     "unit": "g",
+     "preparation": "dried whole grain, unprocessed (uncooked)",
+     "sampleDescription": "Sesame seed (Sesamum indicum), Uganda, composite of 2 elite + 1 indigenous variety (market-sourced), n=6, oven-dried 50 °C, Megazyme K-FRUC / K-RAFGL + HPLC — Alowo 2025 Table 2 / Table 4 'Unprocessed'; total FODMAP as reported (excess fructose + GOS + FOS), Table 4",
+     "citation": "Alowo D, Olum S, Mukisa IM, et al. Effect of thermal and non-thermal processing on fermentable oligo-di-monosaccharides and polyols (FODMAPs) content in millet, sorghum, soybean and sesame varieties. Front Nutr. 2025;12:1520510.",
+     "citationUrl": "https://doi.org/10.3389/fnut.2025.1520510",
+     "studyYear": 2025,
+     "excluded": false,
+     "exclusionNote": null
+    }
+   ]
+  }
+ ]
+}

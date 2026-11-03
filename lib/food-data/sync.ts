@@ -67,8 +67,7 @@ function fodmapNote(result: RatingResult): string {
   const what = over.length
     ? over.map((c) => `${FODMAP_LABELS[c.name] ?? c.name} ${g(c.grams)} g per serving (low is under ${g(c.cutoff)} g)`).join("; ")
     : `Under every cutoff per serving across ${result.counted} lab tests`;
-  const prefix = result.flags.includes("admin_override") ? "Set by admin. " : "";
-  return `${prefix}${what}. Cutoffs: Monash University (Varney 2017)`;
+  return `${what}. Cutoffs: Monash University (Varney 2017)`;
 }
 
 /** "not detected to 5130 mg/kg" for an override's note. */
@@ -100,14 +99,14 @@ export function citationFor(
     (r) => !r.excluded && r.sourceUse !== "check" && !result.superseded.includes(r.id)
   );
   const sources = [...new Set(counted.map((r) => r.sourceName))].join(", ");
-  const refs = counted.map((r) => (r.studyYear ? `${r.citation.split(".")[0]} (${r.studyYear})` : r.citation.split(".")[0]));
+  const refs = [...new Set(counted.map((r) => (r.studyYear ? `${r.citation.split(".")[0]} (${r.studyYear})` : r.citation.split(".")[0])))];
   const ref = refs.length > 3 ? `${refs.slice(0, 3).join("; ")}; +${refs.length - 3} more` : refs.join("; ");
-  const note = result.fodmap
-    ? fodmapNote(result)
-    : result.flags.includes("admin_override")
+  const note = result.flags.includes("admin_override")
     ? `Results vary widely across ${result.counted} lab test${result.counted === 1 ? "" : "s"}${
         result.range ? ` (${rangeNote(result)})` : ""
-      }; rated on the higher results`
+      }; rated on the higher results${result.fodmap ? ". Cutoffs: Monash University (Varney 2017)" : ""}`
+    : result.fodmap
+    ? fodmapNote(result)
     : result.method === "median"
       ? `Middle value of ${result.counted} lab test${result.counted === 1 ? "" : "s"}${amountNote(result)}`
       : `As rated by ${sources}`;
