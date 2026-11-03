@@ -782,6 +782,25 @@ export const foodMeasurements = pgTable(
 );
 
 /** Admin sign-off on one food + property; stale once its measurements change. */
+/**
+ * Nutrients for a curated food from its matched USDA FoodData Central record
+ * (public domain). Per 100 g; a nutrient USDA doesn't report is absent, not 0.
+ * USDA is a source for our own foods only; its foods aren't added.
+ */
+export const foodNutrients = pgTable("food_nutrients", {
+  foodId: uuid("food_id")
+    .primaryKey()
+    .references(() => foods.id, { onDelete: "cascade" }),
+  fdcId: integer("fdc_id").notNull(),
+  dataType: varchar("data_type", { length: 30 }).notNull(),
+  description: text("description").notNull(),
+  per100g: jsonb("per_100g").$type<Record<string, number>>().notNull(),
+  /** How sure the match is: high | medium | low. */
+  matchConfidence: varchar("match_confidence", { length: 10 }).notNull(),
+  matchNote: text("match_note"),
+  fetchedAt: timestamp("fetched_at", { withTimezone: true }).defaultNow().notNull(),
+});
+
 export const foodPropertyReviews = pgTable(
   "food_property_reviews",
   {
