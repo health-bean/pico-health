@@ -67,7 +67,7 @@ export function InsightAnimation({ refCode }: { refCode?: string }) {
   const confidence = useCountUp(LANDING_HERO.confidence, at("stats"));
 
   return (
-    <div className="flex min-h-[calc(100svh-4.5rem)] flex-col items-center justify-center px-6">
+    <div className="flex min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)] flex-col items-center justify-center px-6">
       {phase !== "reveal" ? (
         <div
           className={`w-full max-w-2xl text-center transition-all duration-700 ${
