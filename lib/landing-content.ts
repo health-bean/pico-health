@@ -19,7 +19,7 @@ export const LANDING_HERO = {
 export const LANDING_PROBLEM = {
   label: "The Problem",
   headline: "You're doing everything right. And still feel lost.",
-  body: "Navigating chronic infections, mold and mycotoxin exposure, autoimmune conditions, uncontrolled inflammation, and complex healing protocols — often alone. People track symptoms across dozens of variables, manage multiple protocols simultaneously, and spend thousands searching for patterns their doctors may not see. And the environmental factors that influence recovery — food and supplement reactions, toxin exposures, chemical exposures, air quality — go completely untracked.",
+  body: "Navigating chronic infections, mold and mycotoxin exposure, autoimmune conditions, uncontrolled inflammation, and complex healing protocols — often alone. Tracking dozens of moving parts when you already feel terrible is nearly impossible. We're putting an end to the overwhelm. Now, you can track what's in your control — from food and supplements to toxin exposures and at-home therapies — so you can clearly see what may be helping you heal.",
   stats: [
     { value: "50M+", description: "Americans with\nchronic illness" },
     { value: "Billions", description: "invested in mobile\nhealth every year" },
