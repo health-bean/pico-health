@@ -12,7 +12,8 @@ Next.js 16 (App Router), React 19, Tailwind 4, Supabase (auth + DB), Drizzle ORM
 - `npm run lint` — eslint (flat config in eslint.config.mjs)
 - `npm run eval:capture` — capture-extraction model eval (see `evals/README.md`); needs a real `ANTHROPIC_API_KEY` in `.env.local`, not the Vercel one
 - DB-backed integration tests are skipped unless `RUN_DB_TESTS=1` is set (they need a real Postgres)
-- `npm run db:push` — push schema to Supabase
+- `npm run db:push` — push schema to Supabase (then runs `db:check-rls`)
+- `npm run db:check-rls` — fails if any `public` table has RLS off or the `ensure_rls` guard is missing
 - `npm run db:generate` — generate Drizzle migrations
 
 ## Deploy
@@ -63,6 +64,7 @@ To compare models/providers on real data before changing a default, use `npm run
 - Database: Drizzle ORM, never raw SQL in route handlers
 - Mobile: Capacitor wraps picohealth.app for native builds
 - Row Level Security is enabled in Supabase but does NOT apply to Drizzle queries (they connect as the DB owner via DATABASE_URL). Every query MUST filter by `session.userId`; the route handler is the only line of defense.
+- Every table in `public` MUST have RLS on, or Supabase's REST API serves it to anyone with the anon key. The `ensure_rls` event trigger (`lib/db/migrations/rls-guard.sql`) turns RLS on automatically for any new `public` table, including hand-made backups (`CREATE TABLE ... AS`). Verify with `npm run db:check-rls` (also runs after `db:push`). Put one-off backups in a non-public schema, and drop them once they're no longer needed.
 - Entry types: food, symptom, supplement, medication, exposure, detox, exercise, energy, off_protocol (DB CHECK constraint + Zod enum must stay in sync)
 - Entries may carry `preparation` tags (leftover/fermented/aged/cured/canned/smoked/dried/raw) in `structuredContent`, surfaced as insight factors independent of the food itself
 - Home route for signed-in users is `/log` (login, root, onboarding, and header logo all agree)
