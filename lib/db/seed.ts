@@ -38,16 +38,23 @@ function log(msg: string) {
 const FOOD_CATEGORIES = [
   "Vegetables",
   "Fruits",
-  "Dairy & Alternatives",
-  "Grains & Starches",
   "Meat & Poultry",
   "Fish & Seafood",
+  "Eggs",
+  "Dairy",
+  "Plant Milks & Yogurts",
+  "Grains",
+  "Legumes",
+  "Starches & Flours",
   "Nuts & Seeds",
   "Fats & Oils",
-  "Herbs Spices & Condiments",
+  "Herbs & Spices",
+  "Fermented & Condiments",
 ] as const;
 
 // ─── Food Subcategories ─────────────────────────────────────────────────
+// Production's catalog has moved on from this seed; category names match it
+// (migration 20261111100000) so protocol category rules work in dev too.
 
 const FOOD_SUBCATEGORIES: Record<string, string[]> = {
   Vegetables: [
@@ -58,22 +65,18 @@ const FOOD_SUBCATEGORIES: Record<string, string[]> = {
     "Other Fresh Vegetables",
   ],
   Fruits: ["Berries", "Citrus", "Tropical", "Stone Fruits", "Pome Fruits"],
-  "Dairy & Alternatives": [
-    "Fresh Dairy",
-    "Fermented Dairy",
-    "Plant-Based Alternatives",
-  ],
-  "Grains & Starches": ["Whole Grains", "Refined Grains", "Gluten-Free Grains"],
+  Dairy: ["Fresh Dairy", "Fermented Dairy"],
+  "Plant Milks & Yogurts": ["Plant-Based Alternatives"],
+  Grains: ["Whole Grains", "Refined Grains"],
+  "Starches & Flours": ["Gluten-Free Grains"],
   "Meat & Poultry": ["Red Meat", "Poultry", "Game"],
   "Fish & Seafood": ["Freshwater Fish", "Saltwater Fish", "Shellfish"],
+  Eggs: ["Eggs"],
+  Legumes: ["Legumes"],
   "Nuts & Seeds": ["Tree Nuts", "Seeds", "Nut Butters"],
   "Fats & Oils": ["Cooking Oils", "Animal Fats", "Other Fats"],
-  "Herbs Spices & Condiments": [
-    "Fresh Herbs",
-    "Dried Spices",
-    "Sauces & Condiments",
-    "Vinegars & Fermented",
-  ],
+  "Herbs & Spices": ["Fresh Herbs", "Dried Spices"],
+  "Fermented & Condiments": ["Sauces & Condiments", "Vinegars & Fermented"],
 };
 
 // ─── Foods ──────────────────────────────────────────────────────────────
@@ -622,17 +625,21 @@ interface ProtocolRule {
 
 const PROTOCOL_RULES: ProtocolRule[] = [
   // ── AIP ─────────────────────────────────────────────────────────────
-  { protocolId: PROTOCOL_IDS.AIP, ruleType: "property", propertyName: "nightshade", propertyValues: ["true"], status: "avoid", ruleOrder: 1, notes: "Nightshades trigger inflammation in autoimmune conditions" },
-  { protocolId: PROTOCOL_IDS.AIP, ruleType: "property", propertyName: "lectin", propertyValues: ["high"], status: "avoid", ruleOrder: 2, notes: "High-lectin foods damage gut lining" },
-  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Grains & Starches"], status: "avoid", ruleOrder: 3, notes: "All grains eliminated on AIP" },
-  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Dairy & Alternatives"], status: "avoid", ruleOrder: 4, notes: "Dairy eliminated on AIP (ghee may be reintroduced)" },
-  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Nuts & Seeds"], status: "avoid", ruleOrder: 5, notes: "Nuts and seeds eliminated on AIP" },
+  // AIP and Paleo are food-group lists, not lectin cutoffs (no lab lectin data
+  // exists). Foods a list names that no category catches (coffee, seed
+  // spices, seed oils…) are protocol_food_overrides: migration 20261111100000.
+  { protocolId: PROTOCOL_IDS.AIP, ruleType: "property", propertyName: "nightshade", propertyValues: ["true"], status: "avoid", ruleOrder: 1, notes: "AIP removes nightshades (tomato, potato, peppers, eggplant, paprika) during elimination" },
+  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Legumes"], status: "avoid", ruleOrder: 2, notes: "AIP removes legumes, including soy and peanuts, during elimination" },
+  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Grains"], status: "avoid", ruleOrder: 3, notes: "AIP removes all grains during elimination" },
+  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Dairy"], status: "avoid", ruleOrder: 4, notes: "AIP removes dairy during elimination; ghee is among the first foods reintroduced" },
+  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Nuts & Seeds"], status: "avoid", ruleOrder: 5, notes: "AIP removes nuts and seeds during elimination" },
+  { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Eggs"], status: "avoid", ruleOrder: 6, notes: "AIP removes eggs during elimination; yolks are among the first foods reintroduced" },
   { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Meat & Poultry", "Fish & Seafood"], status: "allowed", ruleOrder: 6, notes: "Quality meats and seafood are AIP staples" },
   { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Vegetables"], status: "allowed", ruleOrder: 7, notes: "Non-nightshade vegetables are encouraged" },
   { protocolId: PROTOCOL_IDS.AIP, ruleType: "category", propertyName: null, propertyValues: ["Fruits"], status: "allowed", ruleOrder: 8, notes: "Fruits allowed in moderation" },
 
   // ── Keto ─────────────────────────────────────────────────────────────
-  { protocolId: PROTOCOL_IDS.KETO, ruleType: "category", propertyName: null, propertyValues: ["Grains & Starches"], status: "avoid", ruleOrder: 1, notes: "All grains and starches too high in carbs" },
+  { protocolId: PROTOCOL_IDS.KETO, ruleType: "category", propertyName: null, propertyValues: ["Grains", "Starches & Flours"], status: "avoid", ruleOrder: 1, notes: "All grains and starches too high in carbs" },
   { protocolId: PROTOCOL_IDS.KETO, ruleType: "category", propertyName: null, propertyValues: ["Fruits"], status: "caution", ruleOrder: 2, notes: "Most fruits too high in sugar; berries in small amounts OK" },
   { protocolId: PROTOCOL_IDS.KETO, ruleType: "category", propertyName: null, propertyValues: ["Meat & Poultry", "Fish & Seafood"], status: "allowed", ruleOrder: 3, notes: "Protein and fat sources are keto staples" },
   { protocolId: PROTOCOL_IDS.KETO, ruleType: "category", propertyName: null, propertyValues: ["Fats & Oils"], status: "allowed", ruleOrder: 4, notes: "Healthy fats are the primary energy source" },
@@ -644,13 +651,13 @@ const PROTOCOL_RULES: ProtocolRule[] = [
   { protocolId: PROTOCOL_IDS.LOW_FODMAP, ruleType: "property", propertyName: "fodmap", propertyValues: ["low"], status: "allowed", ruleOrder: 3, notes: "Low FODMAP foods are safe" },
 
   // ── Paleo ───────────────────────────────────────────────────────────
-  { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Grains & Starches"], status: "avoid", ruleOrder: 1, notes: "Grains not part of ancestral diet" },
-  { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Dairy & Alternatives"], status: "avoid", ruleOrder: 2, notes: "Dairy eliminated on Paleo (ghee and butter sometimes allowed)" },
+  { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Grains"], status: "avoid", ruleOrder: 1, notes: "Paleo leaves out grains" },
+  { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Legumes"], status: "avoid", ruleOrder: 2, notes: "Paleo leaves out legumes, including soy and peanuts" },
+  { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Dairy"], status: "avoid", ruleOrder: 2, notes: "Paleo leaves out dairy; many plans allow butter and ghee" },
   { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Meat & Poultry", "Fish & Seafood"], status: "allowed", ruleOrder: 3, notes: "Quality animal proteins are Paleo staples" },
   { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Vegetables", "Fruits"], status: "allowed", ruleOrder: 4, notes: "Whole vegetables and fruits encouraged" },
   { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Nuts & Seeds"], status: "allowed", ruleOrder: 5, notes: "Nuts and seeds allowed on Paleo" },
   { protocolId: PROTOCOL_IDS.PALEO, ruleType: "category", propertyName: null, propertyValues: ["Fats & Oils"], status: "allowed", ruleOrder: 6, notes: "Natural fats encouraged" },
-  { protocolId: PROTOCOL_IDS.PALEO, ruleType: "property", propertyName: "lectin", propertyValues: ["high"], status: "caution", ruleOrder: 7, notes: "High-lectin foods should be minimized" },
 
   // ── Low Histamine ───────────────────────────────────────────────────
   { protocolId: PROTOCOL_IDS.LOW_HISTAMINE, ruleType: "property", propertyName: "histamine", propertyValues: ["high"], status: "avoid", ruleOrder: 1, notes: "High histamine foods trigger symptoms" },

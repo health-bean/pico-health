@@ -368,7 +368,7 @@ function calculateNutritionalValue(category: string): number {
   const highValue = [
     "Vegetables",
     "Fruits",
-    "Proteins",
+    "Meat & Poultry",
     "Nuts & Seeds",
     "Legumes",
     "Fish & Seafood",
@@ -377,7 +377,7 @@ function calculateNutritionalValue(category: string): number {
     "Grains",
     "Dairy",
     "Eggs",
-    "Oils & Fats",
+    "Fats & Oils",
   ];
 
   if (highValue.some((c) => category.includes(c))) {

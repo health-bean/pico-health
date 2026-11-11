@@ -247,14 +247,14 @@ describe("computeRating — FODMAP (Varney 2017 cutoffs)", () => {
     expect(rate(74, "Vegetables", { ...all0, sorbitol: 0.08, mannitol: 1.95 }).level).toBe("high"); // mushroom
     expect(rate(36, "Vegetables", { ...all0, gos: 0.07, fructans: 0.65 }).level).toBe("high"); // onion
     expect(rate(66, "Vegetables", { ...all0, fructans: 0.19 }).level).toBe("low"); // zucchini
-    expect(rate(49, "Grains & Starches", { ...all0, gos: 0.1, fructans: 0.33, excess_fructose: 0.08 }).level).toBe("high"); // wheat bread
-    expect(rate(52, "Grains & Starches", { ...all0, gos: 0.07, fructans: 0.1, excess_fructose: 0.12 }).level).toBe("low"); // GF bread
-    expect(rate(155, "Grains & Starches", { ...all0, fructans: 0.22 }).level).toBe("low"); // quinoa pasta
-    expect(rate(88, "Grains & Legumes", { ...all0, gos: 0.96, fructans: 0.23 }).level).toBe("high"); // haricot beans
+    expect(rate(49, "Grains", { ...all0, gos: 0.1, fructans: 0.33, excess_fructose: 0.08 }).level).toBe("high"); // wheat bread
+    expect(rate(52, "Grains", { ...all0, gos: 0.07, fructans: 0.1, excess_fructose: 0.12 }).level).toBe("low"); // GF bread
+    expect(rate(155, "Grains", { ...all0, fructans: 0.22 }).level).toBe("low"); // quinoa pasta
+    expect(rate(88, "Legumes", { ...all0, gos: 0.96, fructans: 0.23 }).level).toBe("high"); // haricot beans
   });
 
   it("uses the grain cutoff for oligos only in grains, legumes, nuts and seeds", () => {
-    expect(rate(100, "Grains & Legumes", { ...all0, fructans: 0.25 }).level).toBe("low");
+    expect(rate(100, "Legumes", { ...all0, fructans: 0.25 }).level).toBe("low");
     expect(rate(100, "Vegetables", { ...all0, fructans: 0.25 }).level).toBe("high");
   });
 
@@ -278,9 +278,9 @@ describe("computeRating — FODMAP (Varney 2017 cutoffs)", () => {
   });
 
   it("needs lactose tested for dairy", () => {
-    expect(rate(250, "Dairy & Alternatives", all0).level).toBeNull();
-    expect(rate(250, "Dairy & Alternatives", { ...all0, lactose: 12 }).level).toBe("high");
-    expect(rate(250, "Dairy & Alternatives", { ...all0, lactose: 0.5 }).level).toBe("low");
+    expect(rate(250, "Dairy", all0).level).toBeNull();
+    expect(rate(250, "Dairy", { ...all0, lactose: 12 }).level).toBe("high");
+    expect(rate(250, "Dairy", { ...all0, lactose: 0.5 }).level).toBe("low");
   });
 
   it("lets a list fill a partial lab result, and flags a list that disagrees with a full one", () => {

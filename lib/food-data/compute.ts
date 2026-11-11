@@ -248,9 +248,10 @@ export const FODMAP_CUTOFFS = {
   lactose: 1.0,
 };
 
-const GRAIN_CATEGORIES = ["Grains & Legumes", "Grains & Starches", "Nuts & Seeds"];
+/** Varney 2017 uses the looser oligosaccharide cutoff for grains, legumes, nuts and seeds. */
+const GRAIN_CATEGORIES = ["Grains", "Legumes", "Starches & Flours", "Nuts & Seeds"];
 const PRODUCE_CATEGORIES = ["Fruits", "Vegetables"];
-const isDairy = (category: string | null | undefined) => !!category && category.startsWith("Dairy");
+const isDairy = (category: string | null | undefined) => category === "Dairy";
 
 /** Components that must all be tested before a food can be called low. */
 function requiredFodmapComponents(category: string | null | undefined): string[] {

@@ -59,17 +59,23 @@ interface FormData {
   };
 }
 
+// Same groups as the food catalog, so protocol category rules apply to custom foods too.
 const CATEGORIES = [
   "Vegetables",
   "Fruits",
-  "Proteins",
-  "Grains",
+  "Meat & Poultry",
+  "Fish & Seafood",
+  "Eggs",
   "Dairy",
-  "Nuts & Seeds",
+  "Plant Milks & Yogurts",
+  "Grains",
   "Legumes",
-  "Oils & Fats",
-  "Beverages",
+  "Starches & Flours",
+  "Nuts & Seeds",
+  "Fats & Oils",
   "Herbs & Spices",
+  "Fermented & Condiments",
+  "Beverages",
   "Other",
 ];
 
