@@ -76,6 +76,9 @@ function TimelineCard() {
   );
 }
 
+// Three tones, as the app will show them: avoid brick, limit ochre, allowed teal.
+const TONE_TEXT = { avoid: "text-brick-600", limit: "text-ochre-700", allowed: "text-teal-700" } as const;
+
 function FoodListCard() {
   const { foodList } = LANDING_SHOWCASE;
   return (
@@ -88,7 +91,7 @@ function FoodListCard() {
       <div className="flex flex-col gap-3">
         {foodList.groups.map((g) => (
           <div key={g.tone}>
-            <p className={`text-xs font-semibold ${g.tone === "allowed" ? "text-teal-700" : "text-warning-strong"}`}>{g.title}</p>
+            <p className={`text-xs font-semibold ${TONE_TEXT[g.tone]}`}>{g.title}</p>
             <ul className="mt-1 divide-y divide-warm-100">
               {g.foods.map((f) => (
                 <li key={f.name} className="flex items-baseline justify-between gap-3 py-1.5">
@@ -104,17 +107,17 @@ function FoodListCard() {
   );
 }
 
-// Sections alternate between the page cream and a deeper cream band, so the
-// page has rhythm without boxing every section.
-const BAND = "bg-surface-overlay";
+// Sections alternate cream / teal so the page breaks into clear chapters:
+// teal hero, cream problem, deep-teal quote, cream features, pale-teal
+// examples, cream team, deep-teal sign-up.
 
 export function Approach() {
   return (
     <>
-      <section className={`${BAND} mt-lp-section px-6 py-16 md:px-12 md:py-20`}>
+      <section className="mt-lp-section bg-lp-900 px-6 py-16 md:px-12 md:py-20">
         <figure className="mx-auto max-w-3xl text-center">
           <div className="mx-auto h-1 w-12 rounded-full bg-gold-400" aria-hidden="true" />
-          <blockquote className="mt-6 text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-lp-900 md:text-3xl">
+          <blockquote className="mt-6 text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-surface md:text-3xl">
             &ldquo;{LANDING_QUOTE}&rdquo;
           </blockquote>
         </figure>
@@ -124,7 +127,7 @@ export function Approach() {
         <Features />
       </section>
 
-      <section id="approach" className={`${BAND} px-6 py-lp-section md:px-12`}>
+      <section id="approach" className="bg-teal-50 px-6 py-lp-section md:px-12">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-balance text-center text-3xl font-bold leading-tight md:text-4xl">{LANDING_SHOWCASE.headline}</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
