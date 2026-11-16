@@ -18,19 +18,42 @@ export const LANDING_HERO = {
 
 export const LANDING_PROBLEM = {
   label: "The Problem",
-  headline: "You're doing everything right. And still feel lost.",
+  headline: "You're doing everything right and still don't feel better?",
   body: "Navigating chronic infections, mold and mycotoxin exposure, autoimmune conditions, uncontrolled inflammation, and complex healing protocols — often alone. Tracking dozens of moving parts when you already feel terrible is nearly impossible. We're putting an end to the overwhelm. Now, you can track what's in your control — from food and supplements to toxin exposures and at-home therapies — so you can clearly see what may be helping you heal.",
   stats: [
     { value: "50M+", description: "Americans with\nchronic illness" },
-    { value: "Billions", description: "invested in mobile\nhealth every year" },
   ],
 } as const;
 
 export const LANDING_QUOTE =
   "No one should navigate chronic illness alone. We build the intelligence layer that reveals what's working, what's not, and what to try next.";
 
+export const LANDING_FEATURES = {
+  label: "Pico Health",
+  headline: "The Protocol Management & Healing Platform",
+  items: [
+    {
+      title: "Your foods' biochemical profiles",
+      body: "See histamine, oxalate, lectin, FODMAP, salicylate and more in the foods you eat.",
+    },
+    {
+      title: "Checked against your protocol",
+      body: "Instantly cross-reference daily foods to your personalized nutritional protocol.",
+    },
+    {
+      title: "See patterns you may miss",
+      body: "Our correlation engine helps you identify your unique triggers.",
+    },
+    {
+      title: "Track everything in one place",
+      body: "Symptoms, food, supplements and environmental exposures (mold, chemicals, EMFs).",
+    },
+  ],
+} as const;
+
 export const LANDING_SHOWCASE = {
   label: "See It In Action",
+  tagline: "Recognizing personal patterns is a powerful key to symptom relief and healing.",
   insight: {
     badge: "Property Pattern",
     title:
@@ -81,8 +104,8 @@ export const LANDING_TEAM = {
     {
       name: "Dee Byrne",
       initials: "DB",
-      role: "Co-Founder",
-      bio: "Leads product and engineering and built Pico Health from the ground up. Chronic illness in Dee's own family is the reason it exists.",
+      role: "Founder & CEO",
+      bio: "Leads product and engineering, and built Pico Health from the ground up. Witnessing chronic illness in her own family drives Dee to create an easier path to healing and recovery.",
     },
   ],
 } as const;

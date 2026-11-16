@@ -1,5 +1,6 @@
 import { LANDING_SHOWCASE, LANDING_QUOTE } from "@/lib/landing-content";
 import { TrendingUp, Calendar, AlertTriangle, ClipboardCheck } from "lucide-react";
+import { Features } from "./features";
 
 const ENTRY_ICONS = {
   Meal: { bg: "bg-emerald-50", text: "text-emerald-600", label: "Food" },
@@ -184,10 +185,14 @@ export function Approach() {
       <blockquote className="mx-auto max-w-2xl text-balance text-center font-[family-name:var(--font-display)] text-xl italic leading-relaxed text-lp-800 md:text-2xl">
         &ldquo;{LANDING_QUOTE}&rdquo;
       </blockquote>
-      <div className="mt-12 text-center">
+      <Features />
+      <div className="mt-16 text-center">
         <span className="text-xs font-semibold uppercase tracking-[0.2em] text-lp-700">
           {LANDING_SHOWCASE.label}
         </span>
+        <p className="mx-auto mt-3 max-w-xl text-pretty text-sm leading-relaxed md:text-base">
+          {LANDING_SHOWCASE.tagline}
+        </p>
       </div>
       <div className="mx-auto mt-8 grid max-w-4xl gap-5 md:grid-cols-3">
         <InsightCard />
