@@ -30,7 +30,7 @@ export const LANDING_QUOTE =
   "No one should navigate chronic illness alone. We build the intelligence layer that reveals what's working, what's not, and what to try next.";
 
 export const LANDING_FEATURES = {
-  headline: "The Protocol Management & Healing Platform",
+  headline: "Your Protocol Management Platform",
   items: [
     {
       title: "Your foods' biochemical profiles",
