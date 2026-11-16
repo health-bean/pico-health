@@ -36,7 +36,8 @@ import { EntryEditor, type EntryEditorMode, type EntryPatch } from "./EntryEdito
 import { useState } from "react";
 import { ANSWER_LABELS } from "@/lib/clarifiers/rules";
 import type { FoodTriggerProperties, TriggerLevel } from "@/types";
-import { fitLine, type FoodFit, type FitTone } from "@/lib/protocols/fit-line";
+import { fitLine, type FoodFit, type FitTone, type PersonalRating } from "@/lib/protocols/fit-line";
+import { PersonalRatingPicker } from "@/components/foods/PersonalRatingPicker";
 
 const FIT_TONE_CLASS: Record<FitTone, string> = {
   allowed: "text-teal-700",
@@ -76,8 +77,10 @@ interface FoodTimelineCardProps {
     isCustom: boolean;
   };
   protocolViolations?: string[];
-  /** How the food sits with the person's diet; null when they have none. */
+  /** How the food sits with the person's diet and their own rating; null when neither. */
   fit?: FoodFit | null;
+  /** Catalog food id; when set (and not a custom food) the person can rate it. */
+  foodId?: string | null;
   /** Entry's structured content — clarifier answers are shown from it. */
   structuredContent?: Record<string, unknown> | null;
   /** When provided, renders a trailing actions menu with Delete. */
@@ -115,6 +118,7 @@ export function FoodTimelineCard({
   food,
   protocolViolations = [],
   fit = null,
+  foodId = null,
   structuredContent,
   onDelete,
   onPatch,
@@ -131,7 +135,9 @@ export function FoodTimelineCard({
   // repeat it; the protocol line carries the property instead.
   // On a diet, the card says how the food sits with it; without one, it shows
   // the property worth knowing. Everything else is behind "Show food properties".
-  const line = fit ? fitLine(fit) : null;
+  const [personal, setPersonal] = useState<PersonalRating | null>(fit?.personal ?? null);
+  const canRate = !!foodId && !!food && !food.isCustom;
+  const line = fitLine({ ...(fit ?? { diet: null, status: "allowed", reasons: [] }), personal });
   const notable = line || hasViolations ? [] : notableProperties(food?.properties as Record<string, unknown> | undefined);
 
   return (
@@ -208,14 +214,14 @@ export function FoodTimelineCard({
           )}
 
           {/* Show properties button */}
-          {hasProperties && (
+          {(hasProperties || canRate) && (
             <button
               type="button"
               onClick={() => setShowProperties(!showProperties)}
               aria-expanded={showProperties}
               className="-my-1 inline-flex min-h-11 items-center text-sm font-medium text-teal-700 hover:text-teal-800"
             >
-              {showProperties ? "Hide" : "Show"} food properties
+              {showProperties ? "Hide" : "Show"} food details
             </button>
           )}
         </div>
@@ -256,9 +262,14 @@ export function FoodTimelineCard({
       )}
 
       {/* Expandable properties section */}
-      {showProperties && hasProperties && food?.properties && (
-        <div className="border-t border-warm-200 px-4 py-3">
-          <FoodPropertyCard properties={food.properties as unknown as FoodTriggerProperties} />
+      {showProperties && (hasProperties || canRate) && (
+        <div className="flex flex-col gap-4 border-t border-warm-200 px-4 py-3">
+          {canRate && foodId && (
+            <PersonalRatingPicker foodId={foodId} value={personal} onChange={setPersonal} />
+          )}
+          {hasProperties && food?.properties && (
+            <FoodPropertyCard properties={food.properties as unknown as FoodTriggerProperties} />
+          )}
         </div>
       )}
     </div>

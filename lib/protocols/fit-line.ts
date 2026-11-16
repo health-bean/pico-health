@@ -1,7 +1,9 @@
 /**
- * The one line a food card shows about the person's diet: "Allowed on Low
- * FODMAP", "Avoid on AIP: nightshade", "Limit on Low Histamine: …", or
- * "Not rated yet for Low Histamine". Names the diet, not the ingredient.
+ * The one line a food card shows about the person: "Allowed on Low FODMAP",
+ * "Avoid on AIP: nightshade", "Not rated yet for Low Histamine" — or, when
+ * the person has rated the food themselves, "Fine for you · passed
+ * reintroduction". A personal rating outranks the diet's rule. Names the
+ * diet, not the ingredient.
  */
 
 export type FitTone = "allowed" | "limit" | "avoid" | "unknown";
@@ -11,11 +13,21 @@ export interface FitLine {
   text: string;
 }
 
+/** safe = fine for me, sensitive = small amounts, unsafe = not for me. */
+export type PersonalStatus = "safe" | "sensitive" | "unsafe";
+export type PersonalSource = "self" | "trial" | "insight";
+
+export interface PersonalRating {
+  status: PersonalStatus;
+  source: PersonalSource;
+}
+
 export interface FoodFit {
-  /** Short diet name, e.g. "AIP". */
-  diet: string;
+  /** Short diet name, e.g. "AIP"; null when the person has no diet set. */
+  diet: string | null;
   status: string;
   reasons: string[];
+  personal?: PersonalRating | null;
 }
 
 /** "AIP (Autoimmune Protocol)" → "AIP". */
@@ -23,7 +35,7 @@ export function shortDietName(name: string): string {
   return name.replace(/\s*\(.*\)\s*$/, "").trim() || name;
 }
 
-/** "Nightshade not allowed" → "nightshade"; "Histamine High should be limited" → "high histamine". */
+/** "Nightshade not allowed" → "nightshade"; "Histamine (high) not allowed" → "high histamine". */
 function reasonText(v: string): string {
   const s = v
     .replace(/\s+not allowed$/i, "")
@@ -36,7 +48,21 @@ function reasonText(v: string): string {
   return out.replace(/\bfodmap/g, "FODMAP");
 }
 
-export function fitLine(fit: FoodFit): FitLine {
+function personalLine(p: PersonalRating): FitLine {
+  switch (p.status) {
+    case "safe":
+      return { tone: "allowed", text: p.source === "trial" ? "Fine for you · passed reintroduction" : "Fine for you" };
+    case "sensitive":
+      return { tone: "limit", text: "Small amounts for you" };
+    case "unsafe":
+      return { tone: "avoid", text: p.source === "trial" ? "Not for you · reacted in reintroduction" : "Not for you" };
+  }
+}
+
+/** The card's line, or null when there's neither a diet nor a personal rating. */
+export function fitLine(fit: FoodFit): FitLine | null {
+  if (fit.personal) return personalLine(fit.personal);
+  if (!fit.diet) return null;
   const reasons = fit.reasons.filter((r) => !/not rated yet$/i.test(r)).map(reasonText);
   const why = reasons.length ? `: ${reasons.join(", ")}` : "";
   switch (fit.status) {
@@ -50,4 +76,14 @@ export function fitLine(fit: FoodFit): FitLine {
     default:
       return { tone: "unknown", text: `Not rated yet for ${fit.diet}` };
   }
+}
+
+/**
+ * The status that counts for this person: their own rating if they have one,
+ * otherwise the diet's. Used wherever compliance feeds a decision (insights'
+ * off-protocol factor), so a passed food stops counting as off-protocol.
+ */
+export function personalStatus(dietStatus: string, personal?: PersonalRating | null): string {
+  if (!personal) return dietStatus;
+  return personal.status === "safe" ? "allowed" : personal.status === "sensitive" ? "moderation" : "avoid";
 }

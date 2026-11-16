@@ -9,6 +9,7 @@ import {
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { z } from "zod";
 import { log } from "@/lib/logger";
+import { recordTrialResult } from "@/lib/personal/ratings";
 import { isUuid, readJson } from "@/lib/api/validation";
 
 // ── Validation ─────────────────────────────────────────────────────────
@@ -310,6 +311,12 @@ export async function PATCH(
       .set(updateData)
       .where(eq(reintroductionLog.id, reintroductionId))
       .returning();
+
+    if (updated) {
+      await recordTrialResult(updated).catch((error) =>
+        log.warn("Could not save trial result as a personal rating", { error: error as Error })
+      );
+    }
 
     return NextResponse.json({
       success: true,

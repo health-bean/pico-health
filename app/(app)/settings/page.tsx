@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { Button, Card, Select, Spinner, Progress, PageTitle } from "@/components/ui";
 import { useSession } from "@/hooks/use-session";
 import Link from "next/link";
-import { ChevronRight, CreditCard, Download, FlaskConical } from "lucide-react";
+import { ChevronRight, CreditCard, Download, FlaskConical, ListChecks } from "lucide-react";
 import { DeleteAccount } from "@/components/settings/DeleteAccount";
 import { CheckinReminders } from "@/components/settings/CheckinReminders";
 import { turnRemindersOff } from "@/lib/native/push";
@@ -332,6 +332,23 @@ export default function SettingsPage() {
       </Card>
 
       <CheckinReminders />
+
+      {/* My food list */}
+      <Card className="mb-4">
+        <Link
+          href="/my-list"
+          className="flex min-h-11 items-center justify-between gap-3 -m-1 p-1 rounded-md transition-colors hover:bg-[var(--color-surface)]"
+        >
+          <span className="flex items-center gap-3">
+            <ListChecks className="h-5 w-5 text-teal-600" />
+            <span>
+              <span className="block text-sm font-medium text-warm-900">My food list</span>
+              <span className="block text-xs text-warm-500">What fits your diet, with your own results on top</span>
+            </span>
+          </span>
+          <ChevronRight className="h-4 w-4 text-warm-500" />
+        </Link>
+      </Card>
 
       {/* Reintroductions */}
       <Card className="mb-4">

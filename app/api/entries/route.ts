@@ -16,6 +16,7 @@ import {
   userProtocolState,
 } from "@/lib/db/schema";
 import { shortDietName, type FoodFit } from "@/lib/protocols/fit-line";
+import { loadPersonalRatings } from "@/lib/personal/ratings";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { loadProtocolContext, checkComplianceSync } from "@/lib/protocols/compliance";
 import { trackReintroductionEntry } from "@/lib/reintroductions/tracking";
@@ -173,6 +174,9 @@ export async function GET(request: Request) {
         ? await loadProtocolContext(currentProtocolId, user?.phaseId ?? null, foodEntryIds)
         : null;
 
+    // The person's own verdicts outrank the diet's rule on the card.
+    const personal = await loadPersonalRatings(session.userId, [...new Set(foodEntryIds)]);
+
     // Transform entries — compliance is now pure in-memory, no DB calls
     const transformedEntries = entries.map((entry) => {
       const baseEntry = {
@@ -216,6 +220,9 @@ export async function GET(request: Request) {
             log.warn("Error checking compliance", { error: error as Error });
           }
         }
+
+        const mine = personal.get(entry.foodId) ?? null;
+        if (mine) fit = { diet, status: fit?.status ?? "allowed", reasons: fit?.reasons ?? [], personal: mine };
 
         return {
           ...baseEntry,

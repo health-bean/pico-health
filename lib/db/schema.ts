@@ -14,6 +14,7 @@ import {
   index,
   numeric,
 } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
 
 // ─── Domain Data Tables (seeded from existing DB) ───────────────────────
 
@@ -588,11 +589,21 @@ export const userFoodReactions = pgTable(
     reintroductionId: uuid("reintroduction_id").references(() => reintroductionLog.id, { onDelete: "set null" }),
     confirmedDate: date("confirmed_date").notNull(),
     notes: text("notes"),
+    /** Where the rating came from: self (the person), trial (reintroduction), insight (confirmed pattern). */
+    source: varchar("source", { length: 20 }).notNull().default("self"),
+    /** What backs it up, e.g. trial dates and outcome, or times eaten. */
+    evidence: jsonb("evidence").$type<Record<string, unknown>>().notNull().default({}),
+    /** e.g. "fine in small amounts". */
+    amountNote: text("amount_note"),
     createdAt: timestamp("created_at").defaultNow(),
+    updatedAt: timestamp("updated_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (table) => [
     index("user_food_reactions_user_id_idx").on(table.userId),
     uniqueIndex("user_food_reactions_user_food_idx").on(table.userId, table.foodName),
+    uniqueIndex("user_food_reactions_user_food_id_idx")
+      .on(table.userId, table.foodId)
+      .where(sql`${table.foodId} is not null`),
   ]
 );
 

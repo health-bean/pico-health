@@ -8,6 +8,7 @@ import {
 } from "@/lib/protocols/reintroduction";
 import { z } from "zod";
 import { log } from "@/lib/logger";
+import { recordTrialResult } from "@/lib/personal/ratings";
 import { isUuid, boundedJsonObject, parseBody, uuidString } from "@/lib/api/validation";
 
 const startTrialSchema = z.object({
@@ -114,6 +115,11 @@ export async function PATCH(request: Request) {
         { status: 404 }
       );
     }
+
+    // Don't fail the trial update if the personal rating can't be saved.
+    await recordTrialResult(trial).catch((error) =>
+      log.warn("Could not save trial result as a personal rating", { error: error as Error })
+    );
 
     return NextResponse.json({ trial });
   } catch (error) {

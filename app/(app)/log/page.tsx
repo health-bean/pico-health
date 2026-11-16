@@ -490,6 +490,7 @@ export default function TimelinePage() {
                   food={entry.food}
                   protocolViolations={entry.protocolViolations}
                   fit={entry.fit}
+                  foodId={entry.foodId}
                   structuredContent={entry.structuredContent}
                   onDelete={() => deleteEntry(entry)}
                   onPatch={(patch) => patchTimelineEntry(entry, patch)}

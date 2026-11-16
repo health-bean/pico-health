@@ -106,7 +106,7 @@ export interface TimelineEntry {
   };
   protocolViolations?: string[];
   /** How the food sits with the person's diet; absent when they have none. */
-  fit?: { diet: string; status: string; reasons: string[] } | null;
+  fit?: import("@/lib/protocols/fit-line").FoodFit | null;
 }
 
 export interface ExerciseEntry extends TimelineEntry {

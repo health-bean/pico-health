@@ -6,6 +6,8 @@ import { getSessionFromCookies } from "@/lib/auth/session";
 import { searchFoods } from "@/lib/db/queries/foods";
 import { loadProtocolContext, checkComplianceSync } from "@/lib/protocols/compliance";
 import { log } from "@/lib/logger";
+import { loadPersonalRatings } from "@/lib/personal/ratings";
+import { personalStatus } from "@/lib/protocols/fit-line";
 
 // Note: Using Node.js runtime (not edge) due to postgres package requirements
 // Edge runtime doesn't support Node.js APIs (stream, perf_hooks) needed by postgres
@@ -65,7 +67,10 @@ export async function GET(request: Request) {
 
       // Load protocol context once, then check all foods in-memory
       const foodIds = results.map((f) => f.id).filter(Boolean);
-      const protocolCtx = await loadProtocolContext(protocolId, phaseId, foodIds);
+      const [protocolCtx, personal] = await Promise.all([
+        loadProtocolContext(protocolId, phaseId, foodIds),
+        loadPersonalRatings(session.userId, foodIds),
+      ]);
 
       const resultsWithStatus = results.map((food) => {
         // Skip compliance check for foods without trigger data (e.g. USDA-sourced)
@@ -80,6 +85,12 @@ export async function GET(request: Request) {
           );
           protocolStatus = complianceResult.status;
           protocolViolations = complianceResult.violations;
+        }
+        // The person's own rating wins: a food they passed isn't flagged.
+        const mine = personal.get(food.id);
+        if (mine) {
+          protocolStatus = personalStatus(protocolStatus ?? "allowed", mine);
+          protocolViolations = mine.status === "safe" ? [] : [mine.status === "sensitive" ? "You marked: small amounts" : "You marked: not for you"];
         }
 
         return {

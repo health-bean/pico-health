@@ -24,6 +24,8 @@ interface InsightRowProps {
   outcome?: string;
   /** What the count counts. Meal-timing rows count times eaten, not days. */
   unit?: 'days' | 'times';
+  /** An optional quiet action under the row, e.g. "Add to your list?". */
+  action?: React.ReactNode;
 }
 
 /**
@@ -31,7 +33,7 @@ interface InsightRowProps {
  * "14 of 26 days", so it reads as a count and never as a score, and five
  * days can never look like certainty.
  */
-export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note, outcome, unit = 'days' }: InsightRowProps) {
+export function InsightRow({ icon: Icon, title, description, days, total, foods, isCompound, confidence, isNew, tone = 'symptom', note, outcome, unit = 'days', action }: InsightRowProps) {
   const iconColor = tone === 'better' ? 'text-teal-600' : 'text-warm-600';
 
   // No tinted box: the row sat in a rounded fill, inside a section card, inside
@@ -56,6 +58,7 @@ export function InsightRow({ icon: Icon, title, description, days, total, foods,
           </div>
           <p className="max-w-[65ch] text-sm text-warm-600 leading-snug">{description}</p>
           {note && <p className="mt-1 max-w-[65ch] text-sm text-warm-500">{note}</p>}
+          {action}
           {foods && foods.length > 0 && (
             <div className="flex flex-wrap gap-1 mt-2">
               {foods.map((food, i) => (

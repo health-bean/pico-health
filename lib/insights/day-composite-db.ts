@@ -7,6 +7,8 @@ import {
 import { eq, and, gte, lte, inArray, sql } from 'drizzle-orm';
 import { buildDayComposite } from './day-composite';
 import { loadProtocolContext, checkComplianceSync } from '@/lib/protocols/compliance';
+import { loadPersonalRatings } from '@/lib/personal/ratings';
+import { personalStatus } from '@/lib/protocols/fit-line';
 import type { DayComposite, FoodProperty } from './types';
 import type { FoodProperties } from '@/lib/protocols/compliance';
 
@@ -47,18 +49,25 @@ export async function computeAndStoreDayComposite(userId: string, date: string):
       .from(userProtocolState)
       .where(and(eq(userProtocolState.userId, userId), eq(userProtocolState.protocolId, protocolId)))
       .limit(1);
-    const ctx = await loadProtocolContext(protocolId, state?.phaseId ?? null, foodIds);
+    const [ctx, personal] = await Promise.all([
+      loadProtocolContext(protocolId, state?.phaseId ?? null, foodIds),
+      loadPersonalRatings(userId, [...new Set(foodIds)]),
+    ]);
     protocolCtx = {
       protocolId,
       // Check against the food's stored ratings and category, the same
       // inputs the Log and food search use, so insights agree with them.
-      checkCompliance: (foodId: string | null) =>
-        checkComplianceSync(
+      // The person's own rating wins: a food they passed isn't off-protocol.
+      checkCompliance: (foodId: string | null) => {
+        const result = checkComplianceSync(
           ctx,
           foodId ? (rawProps.get(foodId) ?? {}) : {},
           foodId,
           foodId ? (category.get(foodId) ?? null) : null,
-        ),
+        );
+        const mine = foodId ? personal.get(foodId) : undefined;
+        return mine ? { ...result, status: personalStatus(result.status, mine) as typeof result.status } : result;
+      },
     };
   }
 

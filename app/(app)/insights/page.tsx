@@ -15,6 +15,7 @@ import {
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
 import { insightKey } from '@/lib/insights/types';
 import { StandoutPlot } from '@/components/insights/StandoutPlot';
+import { SuggestRating } from '@/components/insights/SuggestRating';
 
 const FACTOR_ICONS: Record<string, LucideIcon> = {
   food: Utensils, food_property: FlaskConical, supplement: Pill, medication: Pill,
@@ -51,6 +52,12 @@ function getTotalDays(result: SingleFactorResult | MultiFactorResult): number {
   return 'factors' in result ? (result as MultiFactorResult).coOccurrences : (result as SingleFactorResult).totalOpportunities;
 }
 
+/** The food a single-food pattern is about, or null for anything else. */
+function singleFood(result: SingleFactorResult | MultiFactorResult): string | null {
+  const factors = 'factors' in result ? (result as MultiFactorResult).factors : [(result as SingleFactorResult).factor];
+  return factors.length === 1 && factors[0].category === 'food' ? factors[0].label : null;
+}
+
 function isMultiFactor(result: SingleFactorResult | MultiFactorResult): boolean {
   return 'factors' in result && (result as MultiFactorResult).factorCount >= 2;
 }
@@ -67,6 +74,14 @@ export default function InsightsPage() {
   const [composite, setComposite] = useState<DayComposite | null>(null);
   const [patterns, setPatterns] = useState<InsightsOutput | null>(null);
   const [alerts, setAlerts] = useState<InsightAlert[]>([]);
+  // Foods already on the person's own list: no "add to your list?" for them.
+  const [rated, setRated] = useState<Set<string>>(new Set());
+  useEffect(() => {
+    fetch('/api/foods/personal-rating')
+      .then(r => (r.ok ? r.json() : { ratings: [] }))
+      .then((d: { ratings: { foodName: string }[] }) => setRated(new Set(d.ratings.map(x => x.foodName.toLowerCase()))))
+      .catch(() => {});
+  }, []);
   // The chosen window is remembered per viewer, so someone who needs 180 days
   // does not wait through the default analysis first on every visit.
   const [timeRange, setTimeRangeState] = useState<TimeRange | null>(null);
@@ -472,6 +487,16 @@ export default function InsightsPage() {
                   isNew={alertKeys.has(resultKey(r))}
                   note={crossNote(r, helperOutcomes, 'on better days')}
                   outcome={r.outcome.label}
+                  action={(() => {
+                    const food = singleFood(r);
+                    return food && !isTimed(r) && !rated.has(food.toLowerCase()) ? (
+                      <SuggestRating
+                        foodName={food}
+                        suggestion="unsafe"
+                        evidence={{ pattern: r.outcome.label, days: r.frequency, of: getTotalDays(r), confidence: r.confidence }}
+                      />
+                    ) : null;
+                  })()}
                 />
               ))}
             </InsightSection>
@@ -486,7 +511,7 @@ export default function InsightsPage() {
               // These rows join your log against the food list, so part of
               // the claim is the list's. The list is cited but not yet
               // practitioner-reviewed, and the row should say so.
-              subtitle="Foods are grouped using Pico's food list, drawn from SIGHI and published FODMAP and oxalate lists. A practitioner hasn't reviewed it yet, so these rows rest on the list as well as your log."
+              subtitle="Foods are grouped using Pico's food ratings, which come from published lab studies and public health data. A practitioner hasn't reviewed them yet, so these rows rest on the ratings as well as your log."
               totalCount={propertyPatterns.length}
               defaultVisible={2}
               expandSignal={expandSignal}
@@ -527,6 +552,16 @@ export default function InsightsPage() {
                   isNew={alertKeys.has(resultKey(r))}
                   tone="better"
                   note={crossNote(r, triggerOutcomes, 'with symptoms')}
+                  action={(() => {
+                    const food = singleFood(r);
+                    return food && !isTimed(r) && !rated.has(food.toLowerCase()) && !triggerOutcomes.has(singleKey(r) ?? '') ? (
+                      <SuggestRating
+                        foodName={food}
+                        suggestion="safe"
+                        evidence={{ pattern: `less ${r.outcome.label.toLowerCase()}`, days: r.frequency, of: getTotalDays(r), confidence: r.confidence }}
+                      />
+                    ) : null;
+                  })()}
                   outcome={`Less ${r.outcome.label.toLowerCase()}`}
                 />
               ))}
