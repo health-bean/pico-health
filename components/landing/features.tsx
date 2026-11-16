@@ -1,29 +1,28 @@
 import { FlaskConical, ClipboardCheck, TrendingUp, LayoutList } from "lucide-react";
 import { LANDING_FEATURES } from "@/lib/landing-content";
 
-const ICONS = [FlaskConical, ClipboardCheck, TrendingUp, LayoutList];
+// One tint per feature, as in the print piece: clay, gold, teal, ochre.
+const ICONS = [
+  { Icon: FlaskConical, tile: "bg-clay-50 text-clay-600" },
+  { Icon: ClipboardCheck, tile: "bg-gold-50 text-ochre-700" },
+  { Icon: TrendingUp, tile: "bg-teal-50 text-teal-700" },
+  { Icon: LayoutList, tile: "bg-ochre-500/15 text-ochre-700" },
+];
 
 export function Features() {
   return (
-    <div className="mx-auto mt-12 max-w-3xl">
-      <div className="text-center">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-lp-700">
-          {LANDING_FEATURES.label}
-        </span>
-        <h2 className="mt-3 text-balance text-2xl font-bold leading-snug md:text-3xl">
-          {LANDING_FEATURES.headline}
-        </h2>
-      </div>
-      <ul className="mt-8 grid gap-6 md:grid-cols-2 md:gap-x-10">
+    <div className="mx-auto mt-16 max-w-5xl">
+      <h2 className="text-balance text-3xl font-bold leading-tight md:text-4xl">{LANDING_FEATURES.headline}</h2>
+      <ul className="mt-8 grid gap-4 md:grid-cols-2">
         {LANDING_FEATURES.items.map((item, i) => {
-          const Icon = ICONS[i];
+          const { Icon, tile } = ICONS[i];
           return (
-            <li key={item.title} className="flex gap-4">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-lp-accent-bg text-lp-accent">
+            <li key={item.title} className="flex gap-4 rounded-2xl border border-lp-cream-dark bg-surface-card p-5">
+              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl ${tile}`}>
                 <Icon className="h-5 w-5" aria-hidden="true" />
               </div>
               <div>
-                <h3 className="text-sm font-semibold">{item.title}</h3>
+                <h3 className="text-base font-semibold">{item.title}</h3>
                 <p className="mt-1 text-sm leading-relaxed text-lp-muted">{item.body}</p>
               </div>
             </li>

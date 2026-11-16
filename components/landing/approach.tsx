@@ -107,22 +107,23 @@ function FoodListCard() {
 export function Approach() {
   return (
     <section id="approach" className="px-6 py-lp-section md:px-12">
-      <blockquote className="mx-auto max-w-2xl text-balance text-center font-[family-name:var(--font-display)] text-xl italic leading-relaxed text-lp-800 md:text-2xl">
-        &ldquo;{LANDING_QUOTE}&rdquo;
-      </blockquote>
+      <figure className="mx-auto max-w-5xl">
+        <div className="h-1 w-12 rounded-full bg-gold-400" aria-hidden="true" />
+        <blockquote className="mt-5 max-w-3xl text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-lp-900 md:text-3xl">
+          &ldquo;{LANDING_QUOTE}&rdquo;
+        </blockquote>
+      </figure>
       <Features />
-      <div className="mt-16 text-center">
-        <span className="text-xs font-semibold uppercase tracking-[0.2em] text-lp-700">
-          {LANDING_SHOWCASE.label}
-        </span>
-        <p className="mx-auto mt-3 max-w-xl text-pretty text-sm leading-relaxed md:text-base">
+      <div className="mx-auto mt-20 max-w-5xl">
+        <h2 className="text-balance text-3xl font-bold leading-tight md:text-4xl">{LANDING_SHOWCASE.headline}</h2>
+        <div className="mt-8 grid gap-5 md:grid-cols-3">
+          <InsightCard />
+          <TimelineCard />
+          <FoodListCard />
+        </div>
+        <p className="mt-10 max-w-3xl text-balance font-[family-name:var(--font-display)] text-xl italic leading-snug text-lp-900 md:text-2xl">
           {LANDING_SHOWCASE.tagline}
         </p>
-      </div>
-      <div className="mx-auto mt-8 grid max-w-4xl gap-5 md:grid-cols-3">
-        <InsightCard />
-        <TimelineCard />
-        <FoodListCard />
       </div>
     </section>
   );

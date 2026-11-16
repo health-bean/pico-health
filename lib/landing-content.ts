@@ -7,19 +7,18 @@
 export const LANDING_SITE = { name: "Pico Health" } as const;
 
 export const LANDING_HERO = {
-  badge: "Pattern Detected",
+  badge: "Pattern detected",
   insight:
     "3 foods you eat regularly share a hidden property: they're very high in oxalate. Joint pain showed up on 5 of the 7 days you ate them.",
   percent: 71,
   percentLabel: "of those days had joint pain",
   foodsLabel: "Very high in oxalate:",
   foods: ["Spinach", "Almonds", "Quinoa"],
-  headline: "This is what intelligent health looks like.",
+  headline: "This is what intelligent health looks like",
   subtitle: "Real insights. Real tracking. Real patterns your doctors may not see.",
 } as const;
 
 export const LANDING_PROBLEM = {
-  label: "The Problem",
   headline: "You're doing everything right and still don't feel better?",
   body: "Navigating chronic infections, mold and mycotoxin exposure, autoimmune conditions, uncontrolled inflammation, and complex healing protocols — often alone. Tracking dozens of moving parts when you already feel terrible is nearly impossible. We're putting an end to the overwhelm. Now, you can track what's in your control — from food and supplements to toxin exposures and at-home therapies — so you can clearly see what may be helping you heal.",
   stats: [
@@ -31,7 +30,6 @@ export const LANDING_QUOTE =
   "No one should navigate chronic illness alone. We build the intelligence layer that reveals what's working, what's not, and what to try next.";
 
 export const LANDING_FEATURES = {
-  label: "Pico Health",
   headline: "The Protocol Management & Healing Platform",
   items: [
     {
@@ -57,7 +55,7 @@ export const LANDING_FEATURES = {
 // `foodList` are the real Low Histamine results from the food database
 // (checked 2026-11-16); re-check them if the ratings or rules change.
 export const LANDING_SHOWCASE = {
-  label: "See It In Action",
+  headline: "Real insights. Real tracking.",
   tagline: "Recognizing personal patterns is a powerful key to symptom relief and healing.",
   insight: {
     section: "Patterns worth keeping an eye on",
@@ -112,7 +110,6 @@ export const LANDING_SHOWCASE = {
 } as const;
 
 export const LANDING_TEAM = {
-  label: "Who We Are",
   headline: "Built by people who live it.",
   members: [
     {

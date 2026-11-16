@@ -1,18 +1,20 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Eye } from "lucide-react";
 import { LANDING_HERO } from "@/lib/landing-content";
-import { EarlyAccessForm } from "./early-access-form";
 
-// The healthbean.io hero: an insight types itself out, the share of days counts up,
-// the contributing foods pop in, then the headline and form take over.
-// Plain CSS animation (no motion library); reduced-motion users get the end state.
+// The hero's one authored moment: a pattern types itself out, the share of
+// days counts up, and the foods behind it appear. It plays beside the
+// headline and form, which are visible from the first frame.
+// Plain CSS animation; reduced-motion users get the finished card.
 
-const POP_DELAYS = ["", "[animation-delay:150ms]", "[animation-delay:300ms]"];
+const POP_DELAYS = ["", "[animation-delay:120ms]", "[animation-delay:240ms]"];
 
-type Phase = "badge" | "typing" | "stats" | "foods" | "reveal";
+type Phase = "waiting" | "typing" | "stats" | "foods";
+const ORDER: Phase[] = ["waiting", "typing", "stats", "foods"];
 
-function useTypingEffect(text: string, start: boolean, speed = 35) {
+function useTypingEffect(text: string, start: boolean, speed = 24) {
   const [count, setCount] = useState(0);
   useEffect(() => {
     if (!start || count >= text.length) return;
@@ -22,7 +24,7 @@ function useTypingEffect(text: string, start: boolean, speed = 35) {
   return text.slice(0, count);
 }
 
-function useCountUp(target: number, start: boolean, duration = 1500) {
+function useCountUp(target: number, start: boolean, duration = 1200) {
   const [value, setValue] = useState(0);
   useEffect(() => {
     if (!start) return;
@@ -39,94 +41,71 @@ function useCountUp(target: number, start: boolean, duration = 1500) {
   return value;
 }
 
-export function InsightAnimation({ refCode }: { refCode?: string }) {
-  const [phase, setPhase] = useState<Phase>("badge");
-  const [leaving, setLeaving] = useState(false);
+export function InsightAnimation() {
+  const [phase, setPhase] = useState<Phase>("waiting");
+  const [still, setStill] = useState(false);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-time read of a media query after mount
-      setPhase("reveal");
-      return;
+      const t = setTimeout(() => setStill(true), 0);
+      return () => clearTimeout(t);
     }
+    const typingMs = LANDING_HERO.insight.length * 24;
     const timers = [
-      setTimeout(() => setPhase("typing"), 1500),
-      setTimeout(() => setPhase("stats"), 7000),
-      setTimeout(() => setPhase("foods"), 9000),
-      setTimeout(() => setLeaving(true), 11000),
-      setTimeout(() => setPhase("reveal"), 11800),
+      setTimeout(() => setPhase("typing"), 500),
+      setTimeout(() => setPhase("stats"), 700 + typingMs),
+      setTimeout(() => setPhase("foods"), 1700 + typingMs),
     ];
     return () => timers.forEach(clearTimeout);
   }, []);
 
-  const at = (p: Phase) => {
-    const order: Phase[] = ["badge", "typing", "stats", "foods", "reveal"];
-    return order.indexOf(phase) >= order.indexOf(p);
-  };
-  const typed = useTypingEffect(LANDING_HERO.insight, at("typing"));
-  const percent = useCountUp(LANDING_HERO.percent, at("stats"));
+  const at = (p: Phase) => still || ORDER.indexOf(phase) >= ORDER.indexOf(p);
+  const typed = useTypingEffect(LANDING_HERO.insight, at("typing") && !still);
+  const counted = useCountUp(LANDING_HERO.percent, at("stats") && !still);
+  const text = still ? LANDING_HERO.insight : typed;
+  const percent = still ? LANDING_HERO.percent : counted;
 
   return (
-    <div className="flex min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)] flex-col items-center justify-center px-6">
-      {phase !== "reveal" ? (
-        <div
-          className={`w-full max-w-2xl text-center transition-all duration-700 ${
-            leaving ? "-translate-y-5 opacity-0" : "opacity-100"
-          }`}
-        >
-          <div className="lp-pop mb-8 inline-flex items-center gap-2 rounded-full bg-white/10 px-5 py-2.5 ring-1 ring-inset ring-white/20 backdrop-blur-sm">
-            <span className="text-sm text-amber-200" aria-hidden="true">⚠</span>
-            <span className="text-sm font-semibold text-white/85">{LANDING_HERO.badge}</span>
-          </div>
+    <figure className="rounded-2xl bg-lp-900/55 p-6 shadow-[0_24px_48px_-24px_rgb(10_40_44/0.6)] ring-1 ring-inset ring-white/12 md:p-8">
+      <figcaption className="inline-flex items-center gap-2 rounded-full bg-gold-400/15 px-3 py-1.5 text-xs font-semibold text-gold-400">
+        <Eye className="h-3.5 w-3.5" aria-hidden="true" />
+        {LANDING_HERO.badge}
+      </figcaption>
 
-          {at("typing") && (
-            <div className="mx-auto min-h-[5rem] max-w-xl md:min-h-[6rem]">
-              <p className="font-[family-name:var(--font-display)] text-xl font-semibold leading-snug text-white md:text-2xl lg:text-3xl">
-                {typed}
-                {typed.length < LANDING_HERO.insight.length && (
-                  <span className="ml-1 inline-block h-6 w-0.5 animate-pulse bg-white/60 md:h-7" />
-                )}
-              </p>
-            </div>
-          )}
+      <p className="sr-only">
+        {LANDING_HERO.insight} {LANDING_HERO.percent}% {LANDING_HERO.percentLabel}. {LANDING_HERO.foodsLabel}{" "}
+        {LANDING_HERO.foods.join(", ")}.
+      </p>
 
-          {at("stats") && (
-            <div className="lp-fade-up mt-8">
-              <div className="text-5xl font-bold text-white md:text-6xl">
-                {percent}
-                <span className="text-white/50">%</span>
-              </div>
-              <div className="mt-2 text-sm text-white/60">{LANDING_HERO.percentLabel}</div>
-            </div>
+      <div aria-hidden="true">
+        <p className="mt-5 min-h-[7.5rem] font-[family-name:var(--font-display)] text-xl font-semibold leading-snug text-surface md:min-h-[8.5rem] md:text-2xl">
+          {text}
+          {!still && text.length < LANDING_HERO.insight.length && at("typing") && (
+            <span className="ml-1 inline-block h-5 w-0.5 animate-pulse bg-surface/60 align-middle md:h-6" />
           )}
+        </p>
 
-          {at("foods") && (
-            <div className="lp-fade-up mt-6 flex flex-wrap items-center justify-center gap-2">
-              <span className="text-xs text-white/55">{LANDING_HERO.foodsLabel}</span>
-              {LANDING_HERO.foods.map((food, i) => (
-                <span
-                  key={food}
-                  className={`lp-pop ${POP_DELAYS[i] ?? ""} rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white/80 ring-1 ring-inset ring-white/15`}
-                >
-                  {food}
-                </span>
-              ))}
-            </div>
-          )}
+        <div className={`mt-4 flex items-end gap-3 transition-opacity duration-500 ${at("stats") ? "opacity-100" : "opacity-0"}`}>
+          <span className="font-[family-name:var(--font-display)] text-5xl font-bold leading-none tabular-nums text-gold-400 md:text-6xl">
+            {percent}
+            <span className="text-gold-400/60">%</span>
+          </span>
+          <span className="pb-1 text-sm text-surface/75">{LANDING_HERO.percentLabel}</span>
         </div>
-      ) : (
-        <div className="lp-fade-up w-full max-w-2xl text-center">
-          <h1 className="text-balance text-3xl font-bold leading-snug tracking-tight text-white md:text-4xl lg:text-5xl">
-            {LANDING_HERO.headline}
-          </h1>
-          <p className="mx-auto mt-5 max-w-lg text-pretty text-base leading-relaxed text-white/75 md:text-lg">
-            {LANDING_HERO.subtitle}
-          </p>
-          <div className="mx-auto mt-8 w-full max-w-md">
-            <EarlyAccessForm refCode={refCode} />
-          </div>
+
+        <div className={`mt-6 flex min-h-8 flex-wrap items-center gap-2 ${at("foods") ? "" : "invisible"}`}>
+          <span className="text-xs text-surface/70">{LANDING_HERO.foodsLabel}</span>
+          {at("foods") &&
+            LANDING_HERO.foods.map((food, i) => (
+              <span
+                key={food}
+                className={`lp-pop ${POP_DELAYS[i] ?? ""} rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-surface ring-1 ring-inset ring-white/15`}
+              >
+                {food}
+              </span>
+            ))}
         </div>
-      )}
-    </div>
+      </div>
+    </figure>
   );
 }

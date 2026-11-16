@@ -17,7 +17,7 @@ export function Nav() {
         <div className="flex items-center">
           <a
             href="#early-access"
-            className="inline-flex min-h-11 items-center whitespace-nowrap rounded-[0.625rem] bg-lp-800 px-3.5 text-sm font-semibold text-lp-cream transition-colors hover:bg-lp-900 md:px-4"
+            className="inline-flex min-h-11 items-center whitespace-nowrap rounded-[0.625rem] bg-clay-500 px-3.5 text-sm font-semibold text-white transition-colors hover:bg-clay-600 md:px-4"
           >
             <span className="md:hidden">Early access</span>
             <span className="hidden md:inline">{LANDING_FORM.button}</span>

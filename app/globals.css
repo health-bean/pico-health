@@ -29,8 +29,8 @@ html {
   --color-lp-800: #1c6b72;
   --color-lp-700: #2f817f;
   --color-lp-600: #499f99;
-  --color-lp-cream: #fdf8f0;
-  --color-lp-cream-dark: #f3ede3;
+  --color-lp-cream: #fcf2d1; /* = --color-surface: one cream, as in the print piece */
+  --color-lp-cream-dark: #efe3bd;
   --color-lp-text: #5a5040;
   --color-lp-muted: #736354;
   --color-lp-accent: #2f6466;
