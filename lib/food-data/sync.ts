@@ -93,6 +93,7 @@ export function citationFor(
     studyYear: number | null;
     excluded: boolean;
     reportedLevel?: string | null;
+    sampleDescription?: string | null;
   }[]
 ): Citation | null {
   if (result.level === null) return null;
@@ -104,7 +105,12 @@ export function citationFor(
   const listSources = [...new Set(counted.filter((r) => r.reportedLevel).map((r) => r.sourceName))].join(", ");
   const refs = [...new Set(counted.map((r) => (r.studyYear ? `${r.citation.split(".")[0]} (${r.studyYear})` : r.citation.split(".")[0])))];
   const ref = refs.length > 3 ? `${refs.slice(0, 3).join("; ")}; +${refs.length - 3} more` : refs.join("; ");
-  const note = result.flags.includes("admin_override")
+  // A rating that follows from a basic fact (e.g. no carbohydrate, so no
+  // FODMAPs) explains itself instead of saying "as rated by".
+  const definitional = counted.find((r) => r.sampleDescription?.startsWith("By definition"));
+  const note = definitional && result.method === "reported"
+    ? definitional.sampleDescription!
+    : result.flags.includes("admin_override")
     ? `Results vary widely across ${result.counted} lab test${result.counted === 1 ? "" : "s"}${
         result.range ? ` (${rangeNote(result)})` : ""
       }; rated on the higher results${result.fodmap ? ". Cutoffs: Monash University (Varney 2017)" : ""}`
