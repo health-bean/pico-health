@@ -5,6 +5,8 @@ import Link from "next/link";
 import { ArrowLeft, ListChecks } from "lucide-react";
 import { Card, EmptyState, Input, PageTitle, Spinner } from "@/components/ui";
 import type { ListGroup, ListItem, MyList } from "@/lib/personal/my-list";
+import { FIT_TONE_CLASS } from "@/lib/protocols/fit-line";
+import { cn } from "@/lib/utils";
 
 const GROUPS: { key: ListGroup; title: (diet: string | null) => string; open: boolean }[] = [
   { key: "avoid", title: (d) => (d ? `Avoid on ${d}` : "Not for you"), open: true },
@@ -13,13 +15,13 @@ const GROUPS: { key: ListGroup; title: (diet: string | null) => string; open: bo
   { key: "unknown", title: (d) => `Not rated yet for ${d ?? "your diet"}`, open: false },
 ];
 
-/** "passed reintroduction" / "your rating" mark a personal verdict; show it as such. */
-function Row({ item }: { item: ListItem }) {
+/** "passed reintroduction" / "your rating" mark a personal verdict; show it in the group's tone. */
+function Row({ item, group }: { item: ListItem; group: ListGroup }) {
   return (
     <li className="flex items-baseline justify-between gap-3 py-2">
       <span className="text-sm text-warm-900">{item.name}</span>
       {item.reason && (
-        <span className={`text-right text-xs ${item.personal ? "font-medium text-teal-700" : "text-warm-500"}`}>
+        <span className={cn("text-right text-xs", item.personal ? cn("font-medium", FIT_TONE_CLASS[group].text) : "text-warm-500")}>
           {item.personal && item.reason === "your rating" ? "You marked this" : item.reason}
         </span>
       )}
@@ -102,13 +104,13 @@ export default function MyListPage() {
                 {GROUPS.filter((g) => filtered[g.key].length > 0).map((g) => (
                   <Card key={g.key}>
                     <details open={g.open || query.length > 0}>
-                      <summary className="flex min-h-11 cursor-pointer items-center justify-between text-sm font-semibold text-warm-900">
+                      <summary className={cn("flex min-h-11 cursor-pointer items-center justify-between text-sm font-semibold", FIT_TONE_CLASS[g.key].text)}>
                         {g.title(data.diet)}
                         <span className="text-xs font-normal text-warm-500">{filtered[g.key].length}</span>
                       </summary>
                       <ul className="divide-y divide-warm-100">
                         {filtered[g.key].map((i) => (
-                          <Row key={i.foodId} item={i} />
+                          <Row key={i.foodId} item={i} group={g.key} />
                         ))}
                       </ul>
                     </details>

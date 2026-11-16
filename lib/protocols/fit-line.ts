@@ -8,6 +8,34 @@
 
 export type FitTone = "allowed" | "limit" | "avoid" | "unknown";
 
+/**
+ * One colour per tone, app-wide (Log, My food list, food search, the rating
+ * picker): Avoid = brick, Limit = ochre, Allowed = teal. Not a traffic light,
+ * and never olive, which Insights keeps for "seems to help". The words always
+ * carry the meaning too.
+ */
+export const FIT_TONE_CLASS: Record<FitTone, { text: string; chip: string }> = {
+  allowed: { text: "text-teal-700", chip: "border-teal-300 bg-teal-50 text-teal-800" },
+  limit: { text: "text-ochre-700", chip: "border-ochre-500/50 bg-ochre-500/10 text-ochre-700" },
+  avoid: { text: "text-brick-600", chip: "border-brick-600/40 bg-brick-600/10 text-brick-600" },
+  unknown: { text: "text-warm-500", chip: "border-warm-200 bg-warm-100 text-warm-700" },
+};
+
+/** A diet's food status ("avoid", "moderation", "caution", "allowed", …) as a tone. */
+export function statusTone(status: string | null | undefined): FitTone {
+  switch (status) {
+    case "avoid":
+      return "avoid";
+    case "moderation":
+    case "caution":
+      return "limit";
+    case "allowed":
+      return "allowed";
+    default:
+      return "unknown";
+  }
+}
+
 export interface FitLine {
   tone: FitTone;
   text: string;
@@ -65,11 +93,10 @@ export function fitLine(fit: FoodFit): FitLine | null {
   if (!fit.diet) return null;
   const reasons = fit.reasons.filter((r) => !/not rated yet$/i.test(r)).map(reasonText);
   const why = reasons.length ? `: ${reasons.join(", ")}` : "";
-  switch (fit.status) {
+  switch (statusTone(fit.status)) {
     case "avoid":
       return { tone: "avoid", text: `Avoid on ${fit.diet}${why}` };
-    case "moderation":
-    case "caution":
+    case "limit":
       return { tone: "limit", text: `Limit on ${fit.diet}${why}` };
     case "allowed":
       return { tone: "allowed", text: `Allowed on ${fit.diet}` };

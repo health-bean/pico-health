@@ -1,6 +1,7 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState, type ButtonHTMLAttributes } from "react";
+import { Plus } from "lucide-react";
 import { useToast } from "@/components/ui";
 import { cn } from "@/lib/utils";
 import {
@@ -16,8 +17,12 @@ import {
 interface SymptomNowProps {
   /** Today's entries, as the Log shows them. */
   entries: LoggedEntry[];
-  /** YYYY-MM-DD for today. */
+  /** YYYY-MM-DD of the day shown. */
   date: string;
+  /** Today offers meal check-ins and "started" times; a past day logs without a time. */
+  isToday: boolean;
+  /** "Yesterday", "Mon, Nov 10": used in the heading on past days. */
+  dayLabel: string;
   /** Refetch the day after anything is logged, changed or undone. */
   onChanged: () => void;
   /** "Something else": hand over to the capture field. */
@@ -63,12 +68,30 @@ function markAnswered(date: string, time: string, answer: "fine" | "symptom") {
   }).catch(() => null);
 }
 
-const chip =
-  "inline-flex min-h-11 items-center rounded-full border px-3.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-teal-500";
+/**
+ * Compact chips: a 36px face inside a 44px tap target. The button is the
+ * target (transparent, full height); the inner span is what you see.
+ */
+const chipButton = "group inline-flex min-h-11 items-center focus-visible:outline-none disabled:opacity-60";
+const chipFace =
+  "inline-flex h-9 items-center gap-1 rounded-sm border px-2.5 text-sm font-medium transition-colors group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-teal-500";
 const chipIdle =
-  "border-[var(--color-border-light)] bg-[var(--color-surface-card)] text-warm-900 shadow-[var(--shadow-card)] hover:border-teal-300 hover:text-teal-700";
+  "border-[var(--color-border)] bg-[var(--color-surface-card)] text-warm-900 group-hover:border-teal-300 group-hover:text-teal-700";
 const chipOn = "border-teal-700 bg-teal-700 text-white";
-const chipGhost = "border-transparent bg-transparent text-teal-700 hover:bg-teal-50";
+const chipAdd = "border-dashed border-teal-400 bg-transparent font-semibold text-teal-700 group-hover:bg-teal-50";
+
+function Chip({
+  children,
+  tone = "idle",
+  className,
+  ...props
+}: ButtonHTMLAttributes<HTMLButtonElement> & { tone?: "idle" | "on" | "add" }) {
+  return (
+    <button type="button" className={cn(chipButton, className)} {...props}>
+      <span className={cn(chipFace, tone === "on" ? chipOn : tone === "add" ? chipAdd : chipIdle)}>{children}</span>
+    </button>
+  );
+}
 
 /**
  * In-the-moment symptom logging, at the top of today. Timing is what lets a
@@ -80,7 +103,7 @@ const chipGhost = "border-transparent bg-transparent text-teal-700 hover:bg-teal
  * becomes a check-in about that meal instead. A tap saves at once with Undo;
  * the panel that follows offers when it started and how bad, both optional.
  */
-export function SymptomNow({ entries, date, onChanged, onSomethingElse }: SymptomNowProps) {
+export function SymptomNow({ entries, date, isToday, dayLabel, onChanged, onSomethingElse }: SymptomNowProps) {
   const { toast } = useToast();
   const [symptoms, setSymptoms] = useState<string[]>([]);
   const [logged, setLogged] = useState<Logged | null>(null);
@@ -101,11 +124,13 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
 
   // Re-evaluate the check-in as entries change and as time passes.
   useEffect(() => {
+    // Check-ins are about the last few hours; the Log remounts this per day.
+    if (!isToday) return;
     const evaluate = () => setCheckin(pickCheckinMeal(entries, new Date(), (t) => isAnswered(date, t)));
     evaluate();
     const id = setInterval(evaluate, 60_000);
     return () => clearInterval(id);
-  }, [entries, date]);
+  }, [entries, date, isToday]);
 
   const close = useCallback(() => {
     if (idle.current) clearTimeout(idle.current);
@@ -130,7 +155,11 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
         const res = await fetch("/api/entries/batch", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ entries: [{ entryType: "symptom", name, entryDate: date, entryTime: nowHHMMSS() }] }),
+          // A past day has no "now": log it without a time rather than invent one.
+          // The ••• menu on the row sets a time if the person knows it.
+          body: JSON.stringify({
+            entries: [{ entryType: "symptom", name, entryDate: date, ...(isToday ? { entryTime: nowHHMMSS() } : {}) }],
+          }),
         });
         if (!res.ok) throw new Error(String(res.status));
         const created: { id: string }[] = (await res.json().catch(() => ({})))?.entries ?? [];
@@ -145,7 +174,7 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
         setBusy(false);
       }
     },
-    [busy, checkin, date, onChanged, toast, touch]
+    [busy, checkin, date, isToday, onChanged, toast, touch]
   );
 
   const patch = useCallback(
@@ -193,33 +222,36 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
           </div>
         </div>
 
-        <p className="mt-1 text-xs font-semibold text-warm-500" id="started-label">Started</p>
-        <div className="mt-1 flex flex-wrap gap-1.5" role="group" aria-labelledby="started-label">
-          {STARTED_OPTIONS.map((o) => (
-            <button
-              key={o.minutes}
-              type="button"
-              aria-pressed={logged.started === o.minutes}
-              onClick={() => void patch({ entryTime: startedAt(new Date(), o.minutes) }, { started: o.minutes })}
-              className={cn(chip, logged.started === o.minutes ? chipOn : chipIdle)}
-            >
-              {o.label}
-            </button>
-          ))}
-        </div>
+        {isToday && (
+          <>
+            <p className="mt-1 text-xs font-semibold text-warm-500" id="started-label">Started</p>
+            <div className="flex flex-wrap gap-x-1.5" role="group" aria-labelledby="started-label">
+              {STARTED_OPTIONS.map((o) => (
+                <Chip
+                  key={o.minutes}
+                  aria-pressed={logged.started === o.minutes}
+                  onClick={() => void patch({ entryTime: startedAt(new Date(), o.minutes) }, { started: o.minutes })}
+                  tone={logged.started === o.minutes ? "on" : "idle"}
+                >
+                  {o.label}
+                </Chip>
+              ))}
+            </div>
+          </>
+        )}
 
-        <p className="mt-3 text-xs font-semibold text-warm-500" id="severity-label">How bad</p>
-        <div className="mt-1 flex flex-wrap gap-1.5" role="group" aria-labelledby="severity-label">
+        <p className={cn("text-xs font-semibold text-warm-500", isToday ? "mt-2" : "mt-1")} id="severity-label">How bad</p>
+        <div className="flex flex-wrap gap-x-1.5" role="group" aria-labelledby="severity-label">
           {(Object.keys(SEVERITY) as Array<keyof typeof SEVERITY>).map((k) => (
-            <button
+            <Chip
               key={k}
-              type="button"
               aria-pressed={logged.severity === k}
               onClick={() => void patch({ severity: SEVERITY[k] }, { severity: k })}
-              className={cn(chip, "capitalize", logged.severity === k ? chipOn : chipIdle)}
+              tone={logged.severity === k ? "on" : "idle"}
+              className="capitalize"
             >
               {k}
-            </button>
+            </Chip>
           ))}
         </div>
       </section>
@@ -228,7 +260,13 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
 
   if (symptoms.length === 0) return null;
 
-  const heading = checkin ? `How are you since ${checkin.mealType ?? "your meal"}?` : "How are you feeling?";
+  const heading = checkin
+    ? `How are you since ${checkin.mealType ?? "your meal"}?`
+    : isToday
+      ? "How are you feeling?"
+      : dayLabel === "Yesterday"
+        ? "Any symptoms yesterday?"
+        : `Any symptoms on ${dayLabel}?`;
 
   return (
     <section
@@ -244,20 +282,17 @@ export function SymptomNow({ entries, date, onChanged, onSomethingElse }: Sympto
           {checkin.names.length > 3 ? "…" : ""} · {checkin.time.slice(0, 5)}
         </p>
       )}
-      <div className="mt-2 flex flex-wrap gap-1.5">
-        {checkin && (
-          <button type="button" onClick={fine} className={cn(chip, chipIdle)}>
-            Fine
-          </button>
-        )}
+      <div className="mt-0.5 flex flex-wrap gap-x-1.5">
+        {checkin && <Chip onClick={fine}>Fine</Chip>}
         {symptoms.map((s) => (
-          <button key={s} type="button" disabled={busy} onClick={() => void log(s)} className={cn(chip, chipIdle)}>
+          <Chip key={s} disabled={busy} onClick={() => void log(s)}>
             {s}
-          </button>
+          </Chip>
         ))}
-        <button type="button" onClick={onSomethingElse} className={cn(chip, chipGhost)}>
-          Something else
-        </button>
+        <Chip tone="add" onClick={onSomethingElse}>
+          <Plus className="h-3.5 w-3.5" aria-hidden="true" />
+          Add symptom
+        </Chip>
       </div>
     </section>
   );
