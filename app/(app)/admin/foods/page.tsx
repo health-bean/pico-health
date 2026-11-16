@@ -156,6 +156,12 @@ export default function AdminFoodsPage() {
   const [queue, setQueue] = useState<CurationQueue | null>(null);
   const [queueLoading, setQueueLoading] = useState(false);
   const [queueError, setQueueError] = useState(false);
+  // Foods people have logged that we have no ratings for, plus logged names
+  // that matched nothing: the queue for growing the catalog. Shown on the tab
+  // so it's visible without opening it.
+  const newToReview = queue
+    ? queue.missingProperties.filter((r) => r.logCount > 0).length + queue.unmatchedNames.length
+    : 0;
 
   const [reviewTarget, setReviewTarget] = useState<FoodRow | null>(null);
   const [reviewerName, setReviewerName] = useState("");
@@ -229,7 +235,7 @@ export default function AdminFoodsPage() {
   }, []);
 
   useEffect(() => {
-    if (view === "curation" && !queue && !queueLoading && !queueError) {
+    if (!queue && !queueLoading && !queueError) {
       fetchQueue();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -316,7 +322,11 @@ export default function AdminFoodsPage() {
         <Tabs
           tabs={[
             { value: "foods", label: "Foods" },
-            { value: "curation", label: "Needs curation", icon: Inbox },
+            {
+              value: "curation",
+              label: newToReview > 0 ? `Needs curation (${newToReview} new)` : "Needs curation",
+              icon: Inbox,
+            },
           ]}
           value={view}
           onChange={(v) => setView(v as "foods" | "curation")}

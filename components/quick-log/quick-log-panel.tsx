@@ -12,7 +12,6 @@ import { FoodSearchInput } from "./FoodSearchInput";
 import { MealTypeChips, WhenChips } from "./log-context-chips";
 import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
 import { ProtocolComplianceWarning } from "@/components/foods/ProtocolComplianceWarning";
-import { CustomFoodForm } from "@/components/foods/CustomFoodForm";
 import type { EntryType, Food, Protocol } from "@/types";
 
 type TabType = "food" | "symptom" | "exercise";
@@ -58,7 +57,6 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
   const [activeTab, setActiveTab] = useState<TabType>("food");
   const [selectedFood, setSelectedFood] = useState<Food | null>(null);
   const [showComplianceWarning, setShowComplianceWarning] = useState(false);
-  const [showCustomFoodForm, setShowCustomFoodForm] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
 
   // Let the parent (sheet) know whether there is unsaved work
@@ -176,14 +174,6 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
     setSelectedFood(null);
   }
 
-  // Handle custom food creation
-  async function handleCustomFoodCreate(customFood: { id: string; displayName: string }) {
-    addItem("food", customFood.displayName, { customFoodId: customFood.id });
-    setShowCustomFoodForm(false);
-    setSubmitted(false);
-    setSaveError(false);
-  }
-
   async function handleSubmit() {
     setSaveError(false);
     const ok = await submitAll();
@@ -274,14 +264,13 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
                   placeholder="Search for a food..."
                 />
 
-                {/* Show custom food form option when no results */}
+                {/* No custom foods: type anything in the capture bar and it is
+                    matched for you; foods we don't have yet go to the review queue. */}
                 {searchQuery.length >= 2 && (
-                  <button
-                    onClick={() => setShowCustomFoodForm(true)}
-                    className="mt-2 text-sm text-teal-600 hover:text-teal-800"
-                  >
-                    Can&apos;t find your food? Create a custom food
-                  </button>
+                  <p className="mt-2 text-sm text-warm-500">
+                    Can&apos;t find it? Type it in the capture bar on Log and Pico will match it.
+                    Foods we don&apos;t have yet are added after review.
+                  </p>
                 )}
               </div>
 
@@ -308,18 +297,6 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
                   onProceed={handleProceedWithFood}
                   onCancel={handleCancelFood}
                 />
-              )}
-
-              {/* Custom Food Form Modal */}
-              {showCustomFoodForm && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-scrim p-4">
-                  <div className="w-full max-w-md">
-                    <CustomFoodForm
-                      onSuccess={handleCustomFoodCreate}
-                      onCancel={() => setShowCustomFoodForm(false)}
-                    />
-                  </div>
-                </div>
               )}
 
               <RecentItems
