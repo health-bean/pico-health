@@ -21,6 +21,7 @@ import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard
 import { FoodTimelineCard } from "@/components/timeline/FoodTimelineCard";
 import { GenericTimelineCard } from "@/components/timeline/GenericTimelineCard";
 import { DayStrip } from "@/components/timeline/DayStrip";
+import { DayReflectLine } from "@/components/timeline/DayReflectLine";
 import type { EntryPatch } from "@/components/timeline/EntryEditor";
 import { CaptureBar } from "@/components/capture/CaptureBar";
 import { PendingCaptureCard } from "@/components/capture/PendingCaptureCard";
@@ -374,6 +375,8 @@ export default function TimelinePage() {
       <div id="log-day-strip">
         {stripOpen && <DayStrip selected={date} today={today} onSelect={setDate} />}
       </div>
+
+      <DayReflectLine date={date} isToday={isToday} />
 
       {/* How you feel, first: one tap logs a symptom at the time it happens,
           which is what lets a reaction show in weeks rather than months. */}

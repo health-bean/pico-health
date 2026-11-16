@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { LANDING_HERO } from "@/lib/landing-content";
 import { EarlyAccessForm } from "./early-access-form";
 
-// The healthbean.io hero: an insight types itself out, the confidence counts up,
+// The healthbean.io hero: an insight types itself out, the share of days counts up,
 // the contributing foods pop in, then the headline and form take over.
 // Plain CSS animation (no motion library); reduced-motion users get the end state.
 
@@ -64,7 +64,7 @@ export function InsightAnimation({ refCode }: { refCode?: string }) {
     return order.indexOf(phase) >= order.indexOf(p);
   };
   const typed = useTypingEffect(LANDING_HERO.insight, at("typing"));
-  const confidence = useCountUp(LANDING_HERO.confidence, at("stats"));
+  const percent = useCountUp(LANDING_HERO.percent, at("stats"));
 
   return (
     <div className="flex min-h-[calc(100svh-5rem)] md:min-h-[calc(100svh-6rem)] flex-col items-center justify-center px-6">
@@ -93,16 +93,16 @@ export function InsightAnimation({ refCode }: { refCode?: string }) {
           {at("stats") && (
             <div className="lp-fade-up mt-8">
               <div className="text-5xl font-bold text-white md:text-6xl">
-                {confidence}
+                {percent}
                 <span className="text-white/50">%</span>
               </div>
-              <div className="mt-2 text-sm text-white/60">correlation confidence</div>
+              <div className="mt-2 text-sm text-white/60">{LANDING_HERO.percentLabel}</div>
             </div>
           )}
 
           {at("foods") && (
             <div className="lp-fade-up mt-6 flex flex-wrap items-center justify-center gap-2">
-              <span className="text-xs text-white/55">Contributing foods:</span>
+              <span className="text-xs text-white/55">{LANDING_HERO.foodsLabel}</span>
               {LANDING_HERO.foods.map((food, i) => (
                 <span
                   key={food}

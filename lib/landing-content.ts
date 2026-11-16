@@ -9,8 +9,10 @@ export const LANDING_SITE = { name: "Pico Health" } as const;
 export const LANDING_HERO = {
   badge: "Pattern Detected",
   insight:
-    "3 foods you eat regularly share a hidden property: high oxalate. Your joint and muscle pain appeared within 8 hours of eating them 71% of the time.",
-  confidence: 71,
+    "3 foods you eat regularly share a hidden property: they're very high in oxalate. Joint pain showed up on 5 of the 7 days you ate them.",
+  percent: 71,
+  percentLabel: "of those days had joint pain",
+  foodsLabel: "Very high in oxalate:",
   foods: ["Spinach", "Almonds", "Quinoa"],
   headline: "This is what intelligent health looks like.",
   subtitle: "Real insights. Real tracking. Real patterns your doctors may not see.",
@@ -51,43 +53,61 @@ export const LANDING_FEATURES = {
   ],
 } as const;
 
+// Every line below must read exactly as the app shows it today. Verdicts in
+// `foodList` are the real Low Histamine results from the food database
+// (checked 2026-11-16); re-check them if the ratings or rules change.
 export const LANDING_SHOWCASE = {
   label: "See It In Action",
   tagline: "Recognizing personal patterns is a powerful key to symptom relief and healing.",
   insight: {
-    badge: "Property Pattern",
-    title:
-      "3 foods you eat regularly share a hidden property: high oxalate. Joint and muscle pain appeared within 8 hours 71% of the time.",
-    confidence: "71%",
+    section: "Patterns worth keeping an eye on",
+    title: "Foods very high in oxalate",
+    lines: ["Joint pain on 5 of 7 days", "Fatigue on 4 of 7 days"],
+    foodsLabel: "Very high in oxalate:",
     foods: ["Spinach", "Almonds", "Quinoa"],
-    correlations: [
-      { property: "Oxalate", level: "high" as const, percent: 71 },
-      { property: "Histamine", level: "moderate" as const, percent: 34 },
-      { property: "Salicylate", level: "low" as const, percent: 12 },
-    ],
+    note: "Patterns in your own log, not a diagnosis.",
   },
   timeline: {
-    date: "Tuesday, March 12",
+    date: "Tuesday, March 10",
+    reflect: "Sleep 6/10 · Energy 4/10 · Cycle day 22",
     entries: [
-      { time: "7:00a", type: "Cycle" as const, description: "Cycle day 22 — luteal phase" },
-      { time: "8:30a", type: "Meal" as const, description: "Salmon, avocado, sauerkraut", note: "AIP compliant" },
-      { time: "9:00a", type: "Supplement" as const, description: "Vitamin D, Omega-3, Probiotics" },
-      { time: "2:15p", type: "Symptom" as const, description: "Joint pain — severity 6/10" },
-      { time: "4:00p", type: "Exposure" as const, description: "Mold — office building HVAC" },
+      { time: "8:30a", type: "Food" as const, description: "Salmon, avocado, sauerkraut", note: "Allowed on AIP" },
+      { time: "9:00a", type: "Supplement" as const, description: "Vitamin D, omega-3, probiotic" },
+      { time: "2:15p", type: "Symptom" as const, description: "Joint pain, 6/10" },
+      { time: "4:00p", type: "Exposure" as const, description: "Mold, office building HVAC" },
     ],
   },
-  protocolCheck: {
-    title: "Protocol check",
-    meal: "Lunch: chicken, spinach, zucchini, olive oil",
-    protocol: "Low Histamine protocol",
-    foods: [
-      { name: "Chicken (fresh)", detail: "Low histamine", fits: true },
-      { name: "Spinach", detail: "High histamine · high oxalate", fits: false },
-      { name: "Zucchini", detail: "Low histamine", fits: true },
-      { name: "Olive oil", detail: "Low histamine", fits: true },
+  foodList: {
+    title: "My food list",
+    diet: "Low Histamine",
+    groups: [
+      {
+        tone: "avoid" as const,
+        title: "Avoid on Low Histamine",
+        foods: [
+          { name: "Salami", reason: "moderate histamine, very high tyramine" },
+          { name: "Blue Cheese", reason: "moderate histamine, very high tyramine" },
+        ],
+      },
+      {
+        tone: "limit" as const,
+        title: "Limit on Low Histamine",
+        foods: [
+          { name: "Spinach", reason: "moderate histamine, may release histamine" },
+          { name: "Strawberries", reason: "may release histamine" },
+          { name: "Tomato", reason: "may release histamine" },
+        ],
+      },
+      {
+        tone: "allowed" as const,
+        title: "Allowed on Low Histamine",
+        foods: [
+          { name: "Chicken Breast", reason: "" },
+          { name: "Zucchini", reason: "" },
+          { name: "Cucumber", reason: "" },
+        ],
+      },
     ],
-    summaryLabel: "This meal",
-    summary: "3 of 4 foods fit",
   },
 } as const;
 
