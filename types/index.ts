@@ -105,6 +105,8 @@ export interface TimelineEntry {
     isCustom: boolean;
   };
   protocolViolations?: string[];
+  /** How the food sits with the person's diet; absent when they have none. */
+  fit?: { diet: string; status: string; reasons: string[] } | null;
 }
 
 export interface ExerciseEntry extends TimelineEntry {

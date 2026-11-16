@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getLevelColor, getBooleanColor, formatLevel } from "./FoodPropertyCard";
+import { getLevelColor, getBooleanColor, formatLevel, noneLabel } from "./FoodPropertyCard";
 
 describe("FoodPropertyCard level colors", () => {
   it("climbs one ramp from low to very high", () => {
@@ -39,5 +39,13 @@ describe("FoodPropertyCard level colors", () => {
     expect(formatLevel("high")).toBe("High");
     expect(formatLevel("very_high")).toBe("Very High");
     expect(formatLevel("unknown")).toBe("Unknown");
+  });
+});
+
+describe("noneLabel", () => {
+  it("says what a none rating means", () => {
+    expect(noneLabel("FODMAP")).toBe("No FODMAPs");
+    expect(noneLabel("Histamine")).toBe("Histamine: not detected");
+    expect(noneLabel("Oxalate")).toBe("Oxalate: none");
   });
 });

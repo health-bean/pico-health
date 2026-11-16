@@ -1,6 +1,6 @@
 "use client";
 
-import { Apple, Replace, Clock } from "lucide-react";
+import { Apple, Replace, Clock, Check } from "lucide-react";
 import { Badge } from "@/components/ui";
 import { FoodPropertyCard, getLevelColor, getBooleanColor } from "@/components/foods/FoodPropertyCard";
 import { PROPERTY_LABELS } from "@/components/foods/FoodPropertyTag";
@@ -36,6 +36,14 @@ import { EntryEditor, type EntryEditorMode, type EntryPatch } from "./EntryEdito
 import { useState } from "react";
 import { ANSWER_LABELS } from "@/lib/clarifiers/rules";
 import type { FoodTriggerProperties, TriggerLevel } from "@/types";
+import { fitLine, type FoodFit, type FitTone } from "@/lib/protocols/fit-line";
+
+const FIT_TONE_CLASS: Record<FitTone, string> = {
+  allowed: "text-teal-700",
+  limit: "text-[var(--color-warning-strong)]",
+  avoid: "text-[var(--color-warning-strong)]",
+  unknown: "text-warm-500",
+};
 
 /** Human-readable clarifier answers stored on the entry, for the detail line. */
 function clarifierLabels(sc: Record<string, unknown> | null | undefined): string[] {
@@ -68,6 +76,8 @@ interface FoodTimelineCardProps {
     isCustom: boolean;
   };
   protocolViolations?: string[];
+  /** How the food sits with the person's diet; null when they have none. */
+  fit?: FoodFit | null;
   /** Entry's structured content — clarifier answers are shown from it. */
   structuredContent?: Record<string, unknown> | null;
   /** When provided, renders a trailing actions menu with Delete. */
@@ -104,6 +114,7 @@ export function FoodTimelineCard({
   entryTime,
   food,
   protocolViolations = [],
+  fit = null,
   structuredContent,
   onDelete,
   onPatch,
@@ -118,7 +129,10 @@ export function FoodTimelineCard({
   const hasProperties = food?.properties && Object.keys(food.properties).length > 0;
   // When the card already says why it is outside the protocol, a pill would
   // repeat it; the protocol line carries the property instead.
-  const notable = hasViolations ? [] : notableProperties(food?.properties as Record<string, unknown> | undefined);
+  // On a diet, the card says how the food sits with it; without one, it shows
+  // the property worth knowing. Everything else is behind "Show food properties".
+  const line = fit ? fitLine(fit) : null;
+  const notable = line || hasViolations ? [] : notableProperties(food?.properties as Record<string, unknown> | undefined);
 
   return (
     <div className="flex flex-col rounded-xl border border-warm-200 bg-[var(--color-surface-card)]">
@@ -168,7 +182,12 @@ export function FoodTimelineCard({
           </div>
 
           {/* Off-protocol: a fact about the day, not a warning on the plate */}
-          {hasViolations && (
+          {line ? (
+            <p className={`mt-1 inline-flex items-center gap-1 text-xs ${FIT_TONE_CLASS[line.tone]}`}>
+              {line.tone === "allowed" && <Check className="h-3 w-3" aria-hidden="true" />}
+              {line.text}
+            </p>
+          ) : hasViolations && (
             <p className="mt-1 text-xs text-[var(--color-warning-strong)]">
               Outside your protocol · {protocolViolations.map((v) => v.replace(/\s+not allowed$/i, "")).join(", ")}
             </p>

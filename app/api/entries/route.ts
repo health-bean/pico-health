@@ -12,7 +12,10 @@ import {
   customFoods,
   customFoodProperties,
   profiles,
+  protocols,
+  userProtocolState,
 } from "@/lib/db/schema";
+import { shortDietName, type FoodFit } from "@/lib/protocols/fit-line";
 import { getSessionFromCookies } from "@/lib/auth/session";
 import { loadProtocolContext, checkComplianceSync } from "@/lib/protocols/compliance";
 import { trackReintroductionEntry } from "@/lib/reintroductions/tracking";
@@ -36,12 +39,22 @@ export async function GET(request: Request) {
 
     // Get user's current protocol for compliance checking
     const [user] = await db
-      .select({ currentProtocolId: profiles.currentProtocolId })
+      .select({
+        currentProtocolId: profiles.currentProtocolId,
+        protocolName: protocols.name,
+        phaseId: userProtocolState.currentPhaseId,
+      })
       .from(profiles)
+      .leftJoin(protocols, eq(protocols.id, profiles.currentProtocolId))
+      .leftJoin(
+        userProtocolState,
+        and(eq(userProtocolState.userId, profiles.id), eq(userProtocolState.protocolId, profiles.currentProtocolId))
+      )
       .where(eq(profiles.id, session.userId))
       .limit(1);
 
     const currentProtocolId = user?.currentProtocolId;
+    const diet = user?.protocolName ? shortDietName(user.protocolName) : null;
 
     // Build conditions
     const conditions = [eq(timelineEntries.userId, session.userId)];
@@ -157,7 +170,7 @@ export async function GET(request: Request) {
 
     const protocolCtx =
       currentProtocolId && foodEntryIds.length > 0
-        ? await loadProtocolContext(currentProtocolId, null, foodEntryIds)
+        ? await loadProtocolContext(currentProtocolId, user?.phaseId ?? null, foodEntryIds)
         : null;
 
     // Transform entries — compliance is now pure in-memory, no DB calls
@@ -186,17 +199,19 @@ export async function GET(request: Request) {
         const category = isCustomFood ? entry.customFoodCategory : entry.foodCategory;
 
         let protocolViolations: string[] = [];
-        if (protocolCtx && properties) {
+        let fit: FoodFit | null = null;
+        if (protocolCtx) {
           try {
             const compliance = checkComplianceSync(
               protocolCtx,
-              properties as Record<string, string | boolean | null | undefined>,
+              (properties ?? {}) as Record<string, string | boolean | null | undefined>,
               entry.foodId,
               category
             );
             if (compliance.status === "avoid" || compliance.status === "moderation") {
               protocolViolations = compliance.violations;
             }
+            if (diet) fit = { diet, status: compliance.status, reasons: compliance.violations };
           } catch (error) {
             log.warn("Error checking compliance", { error: error as Error });
           }
@@ -212,6 +227,7 @@ export async function GET(request: Request) {
             isCustom: isCustomFood,
           },
           protocolViolations,
+          fit,
         };
       }
 

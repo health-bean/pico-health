@@ -136,6 +136,13 @@ export function formatLevel(level: TriggerLevel): string {
   }
 }
 
+/** How a "none" rating reads: "No FODMAPs", "Histamine: not detected". */
+export function noneLabel(label: string): string {
+  if (label === "FODMAP") return "No FODMAPs";
+  if (label === "Histamine" || label === "Tyramine") return `${label}: not detected`;
+  return `${label}: none`;
+}
+
 /** Explanation on hover, focus, or tap; the trigger is a button so a keyboard reaches it. */
 function Tooltip({
   content,
@@ -198,14 +205,22 @@ function PropertyBadge({ property }: { property: PropertyInfo }) {
         ? "Yes"
         : "No"
       : formatLevel(value as TriggerLevel);
+  // "FODMAP: None" reads like "no information"; say what it means instead.
+  const noneText = type === "level" && value === "none" ? noneLabel(label) : null;
 
   return (
     <Tooltip content={description} label={label}>
       <span
         className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ring-1 ring-inset ${colors.bg} ${colors.text} ${colors.ring} transition-shadow hover:shadow-[var(--shadow-card)]`}
       >
-        <span className="font-semibold">{label}:</span>
-        <span>{displayValue}</span>
+        {noneText ? (
+          <span className="font-semibold">{noneText}</span>
+        ) : (
+          <>
+            <span className="font-semibold">{label}:</span>
+            <span>{displayValue}</span>
+          </>
+        )}
         <Info className="h-3 w-3 opacity-60" aria-hidden="true" />
       </span>
     </Tooltip>
@@ -294,9 +309,9 @@ export function FoodPropertyCard({
         ))}
       </div>
       <p className="mt-3 text-sm text-warm-500">
-        Tap a property to read what it means. Levels come from published food lists (SIGHI,
-        RPAH, Monash, Harvard) and have not been reviewed by a clinician. They describe the
-        food, not a diagnosis.
+        Tap a property to read what it means. Ratings come from published lab studies and
+        public health data, and a food with no data shows nothing rather than a guess. They
+        describe the food, not a diagnosis, and have not been reviewed by a clinician yet.
       </p>
     </div>
   );
