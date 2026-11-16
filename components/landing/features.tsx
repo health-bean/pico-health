@@ -11,9 +11,9 @@ const ICONS = [
 
 export function Features() {
   return (
-    <div className="mx-auto mt-16 max-w-5xl">
-      <h2 className="text-balance text-3xl font-bold leading-tight md:text-4xl">{LANDING_FEATURES.headline}</h2>
-      <ul className="mt-8 grid gap-4 md:grid-cols-2">
+    <div className="mx-auto max-w-5xl">
+      <h2 className="text-balance text-center text-3xl font-bold leading-tight md:text-4xl">{LANDING_FEATURES.headline}</h2>
+      <ul className="mt-10 grid gap-4 md:grid-cols-2">
         {LANDING_FEATURES.items.map((item, i) => {
           const { Icon, tile } = ICONS[i];
           return (

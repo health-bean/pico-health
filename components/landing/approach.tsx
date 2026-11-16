@@ -104,27 +104,39 @@ function FoodListCard() {
   );
 }
 
+// Sections alternate between the page cream and a deeper cream band, so the
+// page has rhythm without boxing every section.
+const BAND = "bg-surface-overlay";
+
 export function Approach() {
   return (
-    <section id="approach" className="px-6 py-lp-section md:px-12">
-      <figure className="mx-auto max-w-5xl">
-        <div className="h-1 w-12 rounded-full bg-gold-400" aria-hidden="true" />
-        <blockquote className="mt-5 max-w-3xl text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-lp-900 md:text-3xl">
-          &ldquo;{LANDING_QUOTE}&rdquo;
-        </blockquote>
-      </figure>
-      <Features />
-      <div className="mx-auto mt-20 max-w-5xl">
-        <h2 className="text-balance text-3xl font-bold leading-tight md:text-4xl">{LANDING_SHOWCASE.headline}</h2>
-        <div className="mt-8 grid gap-5 md:grid-cols-3">
-          <InsightCard />
-          <TimelineCard />
-          <FoodListCard />
+    <>
+      <section className={`${BAND} mt-lp-section px-6 py-16 md:px-12 md:py-20`}>
+        <figure className="mx-auto max-w-3xl text-center">
+          <div className="mx-auto h-1 w-12 rounded-full bg-gold-400" aria-hidden="true" />
+          <blockquote className="mt-6 text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-lp-900 md:text-3xl">
+            &ldquo;{LANDING_QUOTE}&rdquo;
+          </blockquote>
+        </figure>
+      </section>
+
+      <section className="px-6 py-lp-section md:px-12">
+        <Features />
+      </section>
+
+      <section id="approach" className={`${BAND} px-6 py-lp-section md:px-12`}>
+        <div className="mx-auto max-w-5xl">
+          <h2 className="text-balance text-center text-3xl font-bold leading-tight md:text-4xl">{LANDING_SHOWCASE.headline}</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            <InsightCard />
+            <TimelineCard />
+            <FoodListCard />
+          </div>
+          <p className="mx-auto mt-12 max-w-2xl text-balance text-center font-[family-name:var(--font-display)] text-xl italic leading-snug text-lp-900 md:text-2xl">
+            {LANDING_SHOWCASE.tagline}
+          </p>
         </div>
-        <p className="mt-10 max-w-3xl text-balance font-[family-name:var(--font-display)] text-xl italic leading-snug text-lp-900 md:text-2xl">
-          {LANDING_SHOWCASE.tagline}
-        </p>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }

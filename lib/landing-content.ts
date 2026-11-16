@@ -11,7 +11,7 @@ export const LANDING_HERO = {
   insight:
     "3 foods you eat regularly share a hidden property: they're very high in oxalate. Joint pain showed up on 5 of the 7 days you ate them.",
   percent: 71,
-  percentLabel: "of those days had joint pain",
+  percentLabel: "joint pain on 5 of 7 days",
   foodsLabel: "Very high in oxalate:",
   foods: ["Spinach", "Almonds", "Quinoa"],
   headline: "This is what intelligent health looks like",
