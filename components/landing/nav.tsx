@@ -12,7 +12,7 @@ export function Nav() {
         aria-label="Main navigation"
       >
         <a href="#" className="-mx-1 rounded-md px-1 py-2">
-          <Wordmark title={LANDING_SITE.name} className="h-6 w-auto sm:h-8 md:h-10" />
+          <Wordmark title={LANDING_SITE.name} className="h-5 w-auto sm:h-7 md:h-8" />
         </a>
         <div className="flex items-center">
           <a
