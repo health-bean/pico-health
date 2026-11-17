@@ -467,16 +467,20 @@ export default function TimelinePage() {
           {/* The day as a timeline, morning to night: the time in its own
               column on one thin line, nothing boxed. Clay marks symptoms, so
               "what came before it" reads straight down the page. */}
-          <ol className="relative before:absolute before:top-3 before:bottom-3 before:left-[4.25rem] before:w-px before:bg-[var(--color-border)]">
+          <ol aria-label={`${displayDate(date)}, timeline`} className="relative before:absolute before:top-3 before:bottom-3 before:left-[4.25rem] before:w-px before:bg-[var(--color-border)]">
             {groupMeals(chronological(filteredEntries)).map((item) => {
               const first = item.kind === "meal" ? item.entries[0] : item.entry;
               const time = item.kind === "meal" ? item.time : item.entry.entryTime;
               const isSymptom = item.kind === "entry" && item.entry.entryType === "symptom";
               return (
                 <li key={item.kind === "meal" ? `meal-${first.id}` : first.id} className="grid grid-cols-[3.5rem_1rem_minmax(0,1fr)] gap-x-1 py-1.5">
-                  <span className="pt-0.5 text-right text-xs tabular-nums text-[var(--color-text-muted)]">
-                    {time ? formatClock(time) : "No time"}
-                  </span>
+                  {time ? (
+                    <time dateTime={`${date}T${time}`} className="pt-0.5 text-right text-xs tabular-nums text-[var(--color-text-muted)]">
+                      {formatClock(time)}
+                    </time>
+                  ) : (
+                    <span className="pt-0.5 text-right text-xs text-[var(--color-text-muted)]">No time</span>
+                  )}
                   <span
                     className={cn(
                       "relative z-10 mt-1.5 justify-self-center rounded-full ring-4 ring-[var(--color-surface)]",
