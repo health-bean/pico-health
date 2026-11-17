@@ -16,14 +16,14 @@ export const LANDING_HERO = {
   foodsLabel: "Very high in oxalate:",
   foods: ["Spinach", "Almonds", "Quinoa"],
   headline: "This is what intelligent health looks like",
-  subtitle: "Real insights. Real tracking. Real patterns your doctors may not see.",
+  subtitle: "Real insights. Real tracking. Real patterns that are easy to miss between appointments.",
 } as const;
 
 export const LANDING_PROBLEM = {
   headline: "You're doing everything right and still don't feel better?",
-  body: "Navigating chronic infections, mold and mycotoxin exposure, autoimmune conditions, uncontrolled inflammation, and complex healing protocols — often alone. Tracking dozens of moving parts when you already feel terrible is nearly impossible. We're putting an end to the overwhelm. Now, you can track what's in your control — from food and supplements to toxin exposures and at-home therapies — so you can clearly see what may be helping you heal.",
+  body: "Navigating autoimmune conditions, uncontrolled inflammation, chronic infections, mold exposure, and complex dietary protocols — often alone. Tracking dozens of moving parts when you already feel terrible is nearly impossible. We're putting an end to the overwhelm. Now, you can track what's in your control — from food and supplements to toxin exposures and at-home therapies — so you can clearly see what may be helping.",
   stats: [
-    { value: "50M+", description: "Americans with\nchronic illness" },
+    { value: "3 in 4", description: "US adults live with a\nchronic condition", source: "CDC, 2025" },
   ],
 } as const;
 
@@ -35,7 +35,7 @@ export const LANDING_FEATURES = {
   items: [
     {
       title: "Your foods' biochemical profiles",
-      body: "See histamine, oxalate, lectin, FODMAP, salicylate and more in the foods you eat.",
+      body: "See histamine, oxalate, FODMAP, tyramine and more in the foods you eat.",
     },
     {
       title: "Checked against your protocol",
@@ -43,11 +43,11 @@ export const LANDING_FEATURES = {
     },
     {
       title: "See patterns you may miss",
-      body: "Our correlation engine helps you identify your unique triggers.",
+      body: "Our correlation engine helps you spot patterns worth testing with your practitioner.",
     },
     {
       title: "Track everything in one place",
-      body: "Symptoms, food, supplements and environmental exposures (mold, chemicals, EMFs).",
+      body: "Symptoms, food, supplements and environmental exposures (mold, chemicals, air quality).",
     },
   ],
 } as const;
@@ -57,7 +57,7 @@ export const LANDING_FEATURES = {
 // (checked 2026-11-16); re-check them if the ratings or rules change.
 export const LANDING_SHOWCASE = {
   headline: "Real insights. Real tracking.",
-  tagline: "Recognizing personal patterns is a powerful key to symptom relief and healing.",
+  tagline: "Recognizing personal patterns is a powerful key to understanding your symptoms.",
   insight: {
     section: "Patterns worth keeping an eye on",
     title: "Foods very high in oxalate",
@@ -117,13 +117,13 @@ export const LANDING_TEAM = {
       name: "Amy Mandell",
       initials: "AM",
       role: "Co-Founder",
-      bio: "Certified Health Coach who has navigated her own chronic illness journey. Her lived experience and deep roots in the functional and alternative medicine community drive everything we build.",
+      bio: "Certified Health Coach who has navigated her own chronic illness journey. Her lived experience and deep roots in the chronic illness community drive everything we build.",
     },
     {
       name: "Dee Byrne",
       initials: "DB",
       role: "Founder & CEO",
-      bio: "Leads product and engineering, and built Pico Health from the ground up. Witnessing chronic illness in her own family drives Dee to create an easier path to healing and recovery.",
+      bio: "Leads product and engineering, and built Pico Health from the ground up. Witnessing chronic illness in her own family drives Dee to make that path easier for others.",
     },
   ],
 } as const;
