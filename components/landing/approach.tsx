@@ -108,14 +108,14 @@ function FoodListCard() {
 }
 
 // Sections alternate cream / teal so the page breaks into clear chapters:
-// teal hero, cream problem, deep-teal quote, cream features, warm off-white
-// examples, cream team, deep-teal sign-up.
-
+// One continuous cream page. Separation comes from space, not stripes; the
+// only dark surfaces are inset rounded panels (these examples, and the
+// sign-up block), so they read as showpieces rather than slices.
 export function Approach() {
   return (
     <>
-      <section className="mt-lp-section bg-lp-900 px-6 py-16 md:px-12 md:py-20">
-        <figure className="mx-auto max-w-3xl text-center">
+      <section className="px-4 pt-lp-section md:px-12">
+        <figure className="mx-auto max-w-4xl rounded-3xl bg-lp-800 px-6 py-12 text-center md:px-16 md:py-14">
           <div className="mx-auto h-1 w-12 rounded-full bg-gold-400" aria-hidden="true" />
           <blockquote className="mt-6 text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-surface md:text-3xl">
             &ldquo;{LANDING_QUOTE}&rdquo;
@@ -123,19 +123,19 @@ export function Approach() {
         </figure>
       </section>
 
-      <section className="px-6 py-lp-section md:px-12">
+      <section className="px-6 pt-lp-section md:px-12">
         <Features />
       </section>
 
-      <section id="approach" className="border-y border-lp-cream-dark bg-lp-paper px-6 py-lp-section md:px-12">
-        <div className="mx-auto max-w-5xl">
-          <h2 className="text-balance text-center text-3xl font-bold leading-tight md:text-4xl">{LANDING_SHOWCASE.headline}</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+      <section id="approach" className="px-4 pt-lp-section md:px-12">
+        <div className="mx-auto max-w-6xl rounded-3xl bg-lp-900 px-5 py-12 shadow-[0_24px_48px_-28px_rgb(10_40_44/0.55)] md:px-12 md:py-16">
+          <h2 className="text-balance text-center text-3xl font-bold leading-tight text-surface md:text-4xl">{LANDING_SHOWCASE.headline}</h2>
+          <div className="mx-auto mt-10 grid max-w-5xl gap-5 md:grid-cols-3">
             <InsightCard />
             <TimelineCard />
             <FoodListCard />
           </div>
-          <p className="mx-auto mt-12 max-w-2xl text-balance text-center font-[family-name:var(--font-display)] text-xl italic leading-snug text-lp-900 md:text-2xl">
+          <p className="mx-auto mt-12 max-w-2xl text-balance text-center font-[family-name:var(--font-display)] text-xl italic leading-snug text-gold-400 md:text-2xl">
             {LANDING_SHOWCASE.tagline}
           </p>
         </div>
