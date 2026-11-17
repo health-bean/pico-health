@@ -2,8 +2,8 @@
  * How the Log lays out a day: foods eaten together become one meal card,
  * everything else stays a row of its own. Pure, so it can be tested.
  *
- * Entries arrive newest first (the API orders by time, descending). A food
- * joins the meal above it when nothing else was logged in between, the meal
+ * Entries are grouped in the order given (the Log passes them oldest first,
+ * via chronological()). A food joins the meal above it when nothing else was logged in between, the meal
  * type matches, and it is within MEAL_WINDOW_MIN of that meal. A symptom
  * logged mid-meal therefore splits it, which keeps "what came before the
  * symptom" readable on the page.
@@ -41,6 +41,20 @@ function sameMeal(meal: OpenMeal, e: Groupable): boolean {
   return Math.abs(a - b) <= MEAL_WINDOW_MIN;
 }
 
+/**
+ * A day reads morning to night (foods first at the same minute). Entries with no time (a symptom backfilled on
+ * a past day) go last, in their original order, rather than pretending to a
+ * time. HH:MM:SS compares as text.
+ */
+export function chronological<T extends { entryTime: string | null; entryType?: string }>(entries: T[]): T[] {
+  // At the same minute a meal comes first: a vitamin taken with breakfast reads after it.
+  const rank = (e: T) => (e.entryType === "food" ? 0 : 1);
+  const timed = entries
+    .filter((e) => e.entryTime)
+    .sort((a, b) => (a.entryTime! < b.entryTime! ? -1 : a.entryTime! > b.entryTime! ? 1 : rank(a) - rank(b)));
+  return [...timed, ...entries.filter((e) => !e.entryTime)];
+}
+
 export function groupMeals<T extends Groupable>(entries: T[]): DayItem<T>[] {
   const out: DayItem<T>[] = [];
   let open: OpenMeal | null = null;
@@ -69,6 +83,12 @@ const LEVEL_WORD: Record<string, { word: string; rank: number }> = {
   high: { word: "High", rank: 2 },
   moderate: { word: "Moderate", rank: 1 },
 };
+
+/** The plain noun for a property key, as a fit line names it: "histamine", "FODMAP". */
+export function propertyNoun(key: string): string {
+  const base = PROPERTY_LABELS[key] ?? key.replace(/_/g, " ");
+  return (base === "FODMAP" ? base : base.toLowerCase()).toLowerCase();
+}
 
 export interface NotableProperty {
   key: string;

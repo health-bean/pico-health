@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { groupMeals, notableProperties, MEAL_WINDOW_MIN } from "./group-meals";
+import { chronological, groupMeals, notableProperties, propertyNoun, MEAL_WINDOW_MIN } from "./group-meals";
 
 type E = { id: string; entryType: string; mealType?: string | null; entryTime: string | null };
 const food = (id: string, entryTime: string | null, mealType: string | null = "lunch"): E => ({
@@ -84,5 +84,37 @@ describe("notableProperties", () => {
   it("caps at the limit given", () => {
     const out = notableProperties({ histamine: "high", oxalate: "high", fodmap: "high", amines: "moderate" }, 2);
     expect(out).toHaveLength(2);
+  });
+});
+
+describe("chronological", () => {
+  it("reads morning to night, untimed entries last in their original order", () => {
+    const out = chronological([
+      { id: "dinner", entryTime: "18:54:00" },
+      { id: "late", entryTime: null },
+      { id: "bfast", entryTime: "08:02:00" },
+      { id: "lunch", entryTime: "12:10:00" },
+      { id: "late2", entryTime: null },
+    ]);
+    expect(out.map((e) => e.id)).toEqual(["bfast", "lunch", "dinner", "late", "late2"]);
+  });
+
+  it("puts the meal before a supplement logged at the same minute", () => {
+    const out = chronological([other("d3", "supplement", "08:02:00"), food("oats", "08:02:00")]);
+    expect(out.map((e) => e.id)).toEqual(["oats", "d3"]);
+  });
+
+  it("still groups a meal when its foods arrive oldest first", () => {
+    const out = groupMeals(chronological([food("b", "12:20:00"), food("a", "12:10:00")]));
+    expect(out).toHaveLength(1);
+    expect(out[0]).toMatchObject({ kind: "meal", time: "12:10:00" });
+  });
+});
+
+describe("propertyNoun", () => {
+  it("matches the word a fit line uses", () => {
+    expect(propertyNoun("histamine")).toBe("histamine");
+    expect(propertyNoun("fodmap")).toBe("fodmap");
+    expect(propertyNoun("some_new")).toBe("some new");
   });
 });

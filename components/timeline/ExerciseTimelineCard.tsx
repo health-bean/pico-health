@@ -54,25 +54,11 @@ const EXERCISE_LABELS: Record<ExerciseType, string> = {
   other: "Exercise",
 };
 
-const INTENSITY_CONFIG: Record<
-  IntensityLevel,
-  { color: string; bgColor: string; label: string }
-> = {
-  light: {
-    color: "text-teal-700",
-    bgColor: "bg-teal-50",
-    label: "Light",
-  },
-  moderate: {
-    color: "text-ochre-700",
-    bgColor: "bg-ochre-500/10",
-    label: "Moderate",
-  },
-  vigorous: {
-    color: "text-brick-600",
-    bgColor: "bg-brick-600/10",
-    label: "Vigorous",
-  },
+/** Intensity is a fact, not a verdict: words in ink, never coloured. */
+const INTENSITY_LABEL: Record<IntensityLevel, string> = {
+  light: "Light",
+  moderate: "Moderate",
+  vigorous: "Vigorous",
 };
 
 function formatTime(time: string | null | undefined): string {
@@ -102,7 +88,7 @@ export function ExerciseTimelineCard({
   const [editing, setEditing] = useState(false);
   const Icon = EXERCISE_ICONS[exerciseType] || Activity;
   const exerciseLabel = EXERCISE_LABELS[exerciseType] || "Exercise";
-  const intensityConfig = INTENSITY_CONFIG[intensityLevel];
+  const intensity = INTENSITY_LABEL[intensityLevel] ?? "";
 
   const hasEnergyData = energyBefore != null || energyAfter != null;
   const energyChange =
@@ -111,49 +97,28 @@ export function ExerciseTimelineCard({
       : null;
 
   return (
-    <div className="flex flex-col rounded-xl border border-warm-200 bg-[var(--color-surface-card)]">
-    <div className="flex items-start gap-3 px-4 py-3">
-      {/* Icon */}
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-600">
-        <Icon className="h-4 w-4" />
-      </div>
+    <div className="flex flex-col">
+    <div className="flex min-h-11 items-start gap-2">
+      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-warm-500" aria-hidden="true" />
 
       {/* Content */}
       <div className="flex-1 min-w-0">
         {/* Header */}
         <div className="flex items-center gap-2 flex-wrap">
-          <span className="text-sm font-medium text-warm-900">
+          <span className="text-[15px] font-semibold text-warm-900">
             {exerciseLabel}
           </span>
         </div>
 
-        {/* Duration and Intensity */}
-        <div className="mt-1 flex items-center gap-2 flex-wrap text-xs text-warm-600">
-          <span>Exercise</span>
-          <span className="text-warm-300">•</span>
-          <span className="font-medium">{durationMinutes} min</span>
-          <span className="text-warm-300">•</span>
-          <span
-            className={cn(
-              "inline-flex items-center rounded-full px-2 py-0.5 font-medium",
-              intensityConfig.bgColor,
-              intensityConfig.color
-            )}
-          >
-            {intensityConfig.label}
-          </span>
-          {entryTime && (
-            <>
-              <span className="text-warm-300">•</span>
-              <span className="text-warm-500">{formatTime(entryTime)}</span>
-            </>
-          )}
+        {/* Duration and intensity; the time is in the timeline's own column. */}
+        <div className="mt-0.5 text-xs text-[var(--color-text-muted)]">
+          Exercise · {durationMinutes} min{intensity ? ` · ${intensity}` : ""}
         </div>
 
         {/* Energy Levels */}
         {hasEnergyData && (
           <div className="mt-2 flex items-center gap-2 text-xs">
-            <Zap className="h-3.5 w-3.5 text-ochre-700" />
+            <Zap className="h-3.5 w-3.5 text-warm-500" aria-hidden="true" />
             <div className="flex items-center gap-1.5">
               {energyBefore != null && (
                 <span className="font-medium text-warm-700">
@@ -170,11 +135,7 @@ export function ExerciseTimelineCard({
                     <span
                       className={cn(
                         "ml-1 font-medium",
-                        energyChange > 0
-                          ? "text-teal-600"
-                          : energyChange < 0
-                            ? "text-brick-600"
-                            : "text-warm-500"
+                        "text-warm-600"
                       )}
                     >
                       ({energyChange > 0 ? "+" : ""}

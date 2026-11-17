@@ -7,8 +7,8 @@ import { Badge } from "@/components/ui";
 import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
 import { PersonalRatingPicker } from "@/components/foods/PersonalRatingPicker";
 import { ANSWER_LABELS } from "@/lib/clarifiers/rules";
-import { notableProperties } from "@/lib/timeline/group-meals";
-import { FIT_TONE_CLASS, fitLine, type FoodFit, type PersonalRating } from "@/lib/protocols/fit-line";
+import { notableProperties, propertyNoun } from "@/lib/timeline/group-meals";
+import { FIT_TONE_CLASS, fitLine, showOnLog, type FoodFit, type PersonalRating } from "@/lib/protocols/fit-line";
 import { cn } from "@/lib/utils";
 import type { FoodTriggerProperties } from "@/types";
 import { EntryActions } from "./EntryActions";
@@ -92,11 +92,11 @@ export function FoodRow({
   const expandable = hasProperties || canRate;
 
   const fullLine = fitLine({ ...(fit ?? { diet: null, status: "allowed", reasons: [] }), personal });
-  // "Not rated yet for <diet>" on a third of rows is noise with nothing to act on; it stays out of the Log.
-  const line = fullLine?.tone === "unknown" ? null : fullLine;
-  const lineText = line?.text.toLowerCase() ?? "";
-  // A chip that only repeats the line's reason ("Avoid on Low Histamine: high histamine") is dropped.
-  const chips = notableProperties(food?.properties).filter((p) => !lineText.includes(p.label.toLowerCase()));
+  // Only what needs attention is marked; a food with no mark is allowed (lib/protocols/fit-line showOnLog).
+  const line = showOnLog(fullLine, personal != null) ? fullLine : null;
+  // A chip that only repeats the line's reason ("Limit · histamine" + "Moderate histamine") is dropped.
+  const reasonWords = new Set((line?.reasons ?? []).map((r) => r.toLowerCase()));
+  const chips = notableProperties(food?.properties).filter((p) => !reasonWords.has(propertyNoun(p.key)));
   const violations = !line && protocolViolations.length > 0
     ? protocolViolations.map((v) => v.replace(/\s+not allowed$/i, "")).join(", ")
     : null;
@@ -140,15 +140,15 @@ export function FoodRow({
   );
 
   return (
-    <li className="border-t border-[var(--color-border-light)] first:border-t-0">
-      <div className="flex items-start gap-1 pl-4 pr-1">
+    <li>
+      <div className="flex items-start gap-1">
         {expandable ? (
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
             aria-controls={panelId}
-            className="group flex min-h-12 min-w-0 flex-1 items-start gap-2 py-2.5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+            className="group flex min-h-11 min-w-0 flex-1 items-start gap-2 py-1.5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
           >
             <span className="min-w-0 flex-1">{body}</span>
             <ChevronDown
@@ -161,7 +161,7 @@ export function FoodRow({
             <span className="sr-only">{open ? "Hide" : "Show"} food details</span>
           </button>
         ) : (
-          <div className="min-h-12 min-w-0 flex-1 py-2.5">{body}</div>
+          <div className="min-h-11 min-w-0 flex-1 py-1.5">{body}</div>
         )}
 
         {onDelete && (
@@ -195,7 +195,7 @@ export function FoodRow({
       )}
 
       {open && expandable && (
-        <div id={panelId} className="flex flex-col gap-4 border-t border-[var(--color-border-light)] px-4 py-3">
+        <div id={panelId} className="mb-2 flex flex-col gap-4 border-l-2 border-[var(--color-border-light)] py-2 pl-3">
           {canRate && foodId && <PersonalRatingPicker foodId={foodId} value={personal} onChange={setPersonal} />}
           {hasProperties && food?.properties && (
             <FoodPropertyCard bare properties={food.properties as unknown as FoodTriggerProperties} />

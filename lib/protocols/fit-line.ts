@@ -1,9 +1,10 @@
 /**
- * The one line a food card shows about the person: "Allowed on Low FODMAP",
- * "Avoid on AIP: nightshade", "Not rated yet for Low Histamine" — or, when
- * the person has rated the food themselves, "Fine for you · passed
- * reintroduction". A personal rating outranks the diet's rule. Names the
- * diet, not the ingredient.
+ * The one line a food shows about the person: "Allowed", "Limit · histamine",
+ * "Avoid · tyramine, histamine", or, when they've rated the food themselves,
+ * "Fine for you · passed reintroduction". A personal rating outranks the
+ * diet's rule. The diet is named once for the whole day, not on every food,
+ * and a reason is the property or food group in one plain word (levels and
+ * "may release" variants collapse into it), at most two.
  */
 
 export type FitTone = "allowed" | "limit" | "avoid" | "unknown";
@@ -21,13 +22,24 @@ export const FIT_TONE_CLASS: Record<FitTone, { text: string; chip: string }> = {
   unknown: { text: "text-warm-500", chip: "border-warm-200 bg-warm-100 text-warm-700" },
 };
 
-/** ✓ Allowed, − Limit, ✕ Avoid; nothing for "not rated yet". Rendered by components/foods/FitSymbol. */
-export const FIT_TONE_SYMBOL: Record<FitTone, "check" | "minus" | "x" | null> = {
+/** ✓ Allowed, − Limit, ✕ Avoid, ? Not rated yet. Rendered by components/foods/FitSymbol. */
+export const FIT_TONE_SYMBOL: Record<FitTone, "check" | "minus" | "x" | "question"> = {
   allowed: "check",
   limit: "minus",
   avoid: "x",
-  unknown: null,
+  unknown: "question",
 };
+
+/**
+ * Whether the Log marks a food. Only what needs attention: Limit, Avoid,
+ * not rated yet, and the person's own rating. "Allowed" is the normal case
+ * on a protocol, so a food with no mark means allowed; search and My food
+ * list still say "Allowed", because there every answer matters.
+ */
+export function showOnLog(line: FitLine | null, hasPersonalRating: boolean): boolean {
+  if (!line) return false;
+  return hasPersonalRating || line.tone !== "allowed";
+}
 
 /** A diet's food status ("avoid", "moderation", "caution", "allowed", …) as a tone. */
 export function statusTone(status: string | null | undefined): FitTone {
@@ -47,6 +59,8 @@ export function statusTone(status: string | null | undefined): FitTone {
 export interface FitLine {
   tone: FitTone;
   text: string;
+  /** What causes a Limit / Avoid, one plain word each ("histamine", "nightshade"); empty otherwise. */
+  reasons: string[];
 }
 
 /** safe = fine for me, sensitive = small amounts, unsafe = not for me. */
@@ -66,50 +80,65 @@ export interface FoodFit {
   personal?: PersonalRating | null;
 }
 
+/** "Low Histamine" → "your Low Histamine protocol"; never "protocol protocol". */
+export function protocolPhrase(diet: string): string {
+  const name = shortDietName(diet);
+  return /\bprotocol$/i.test(name) ? `your ${name}` : `your ${name} protocol`;
+}
+
 /** "AIP (Autoimmune Protocol)" → "AIP". */
 export function shortDietName(name: string): string {
   return name.replace(/\s*\(.*\)\s*$/, "").trim() || name;
 }
 
-/** "Nightshade not allowed" → "nightshade"; "Histamine (high) not allowed" → "high histamine". */
-function reasonText(v: string): string {
+/** Most reasons a line names; the rest are one tap away in the food's details. */
+const MAX_REASONS = 2;
+
+/**
+ * "Histamine (moderate) should be limited" → "histamine";
+ * "May release histamine: limit and test your tolerance" → "histamine";
+ * "Nightshade not allowed" → "nightshade".
+ */
+function reasonWord(v: string): string {
   const s = v
     .replace(/\s+not allowed$/i, "")
     .replace(/\s+should be limited$/i, "")
     .replace(/:\s*limit and test your tolerance$/i, "")
-    .trim();
-  // "Histamine (high)" / "Tyramine (very_high)" read better level-first.
-  const m = s.match(/^(.+?)\s+\(?(very[ _]high|high|moderate)\)?$/i);
-  const out = (m ? `${m[2].replace("_", " ")} ${m[1]}` : s).toLowerCase();
-  return out.replace(/\bfodmap/g, "FODMAP");
+    .replace(/^may release\s+/i, "")
+    .replace(/\s*\((very[ _]high|high|moderate|low)\)\s*$/i, "")
+    .replace(/^(very[ _]high|high|moderate)\s+/i, "")
+    .trim()
+    .toLowerCase();
+  return s.replace(/\bfodmaps?\b/g, "FODMAP");
 }
 
 function personalLine(p: PersonalRating): FitLine {
   switch (p.status) {
     case "safe":
-      return { tone: "allowed", text: p.source === "trial" ? "Fine for you · passed reintroduction" : "Fine for you" };
+      return { tone: "allowed", text: p.source === "trial" ? "Fine for you · passed reintroduction" : "Fine for you", reasons: [] };
     case "sensitive":
-      return { tone: "limit", text: "Small amounts for you" };
+      return { tone: "limit", text: "Small amounts for you", reasons: [] };
     case "unsafe":
-      return { tone: "avoid", text: p.source === "trial" ? "Not for you · reacted in reintroduction" : "Not for you" };
+      return { tone: "avoid", text: p.source === "trial" ? "Not for you · reacted in reintroduction" : "Not for you", reasons: [] };
   }
 }
 
-/** The card's line, or null when there's neither a diet nor a personal rating. */
+/** The food's line, or null when there's neither a diet nor a personal rating. */
 export function fitLine(fit: FoodFit): FitLine | null {
   if (fit.personal) return personalLine(fit.personal);
   if (!fit.diet) return null;
-  const reasons = fit.reasons.filter((r) => !/not rated yet$/i.test(r)).map(reasonText);
-  const why = reasons.length ? `: ${reasons.join(", ")}` : "";
+  const words = [...new Set(fit.reasons.filter((r) => !/not rated yet$/i.test(r)).map(reasonWord))].filter(Boolean);
+  const reasons = words.slice(0, MAX_REASONS);
+  const why = reasons.length ? ` · ${reasons.join(", ")}` : "";
   switch (statusTone(fit.status)) {
     case "avoid":
-      return { tone: "avoid", text: `Avoid on ${fit.diet}${why}` };
+      return { tone: "avoid", text: `Avoid${why}`, reasons };
     case "limit":
-      return { tone: "limit", text: `Limit on ${fit.diet}${why}` };
+      return { tone: "limit", text: `Limit${why}`, reasons };
     case "allowed":
-      return { tone: "allowed", text: `Allowed on ${fit.diet}` };
+      return { tone: "allowed", text: "Allowed", reasons: [] };
     default:
-      return { tone: "unknown", text: `Not rated yet for ${fit.diet}` };
+      return { tone: "unknown", text: "Not rated yet", reasons: [] };
   }
 }
 

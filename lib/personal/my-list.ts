@@ -45,13 +45,11 @@ export function groupFoods(
     const mine = personal.get(it.foodId) ?? null;
     const line = fitLine({ diet, status: it.status ?? "unknown", reasons: it.reasons, personal: mine });
     if (!line) continue; // no diet and no rating: nothing to list
-    const reason = line.text.includes(": ")
-      ? line.text.split(": ").slice(1).join(": ")
-      : line.text.includes(" · ")
+    const reason = mine
+      ? line.text.includes(" · ")
         ? line.text.split(" · ")[1]
-        : mine
-          ? "your rating"
-          : "";
+        : "your rating"
+      : line.reasons.join(", ");
     groups[TONE_TO_GROUP[line.tone]].push({ foodId: it.foodId, name: it.name, category: it.category, reason, personal: mine });
   }
   for (const g of Object.values(groups)) g.sort((a, b) => a.name.localeCompare(b.name));

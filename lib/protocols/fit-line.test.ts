@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { FIT_TONE_CLASS, FIT_TONE_SYMBOL, fitLine, personalStatus, shortDietName, statusTone } from "./fit-line";
+import { FIT_TONE_CLASS, FIT_TONE_SYMBOL, fitLine, personalStatus, protocolPhrase, shortDietName, showOnLog, statusTone } from "./fit-line";
 
 describe("shortDietName", () => {
   it("drops the long form in brackets", () => {
@@ -9,41 +9,55 @@ describe("shortDietName", () => {
 });
 
 describe("fitLine", () => {
-  it("names the diet when a food is allowed", () => {
+  it("says the verdict alone when a food is allowed (the day names the diet once)", () => {
     expect(fitLine({ diet: "Low FODMAP", status: "allowed", reasons: [] })).toEqual({
       tone: "allowed",
-      text: "Allowed on Low FODMAP",
+      text: "Allowed",
+      reasons: [],
     });
   });
 
-  it("leads with the reason when a food is out", () => {
-    expect(fitLine({ diet: "AIP", status: "avoid", reasons: ["Nightshade not allowed"] }).text).toBe(
-      "Avoid on AIP: nightshade"
-    );
-    expect(fitLine({ diet: "AIP", status: "avoid", reasons: ["Grains not allowed"] }).text).toBe(
-      "Avoid on AIP: grains"
-    );
+  it("adds the property or group that causes it, in one plain word", () => {
+    expect(fitLine({ diet: "AIP", status: "avoid", reasons: ["Nightshade not allowed"] })?.text).toBe("Avoid · nightshade");
+    expect(fitLine({ diet: "AIP", status: "avoid", reasons: ["Grains not allowed"] })?.text).toBe("Avoid · grains");
   });
 
-  it("reads level-first for limits", () => {
+  it("collapses levels and 'may release' into the property name", () => {
     expect(
-      fitLine({ diet: "Low Histamine", status: "moderation", reasons: ["Histamine (moderate) should be limited"] }).text
-    ).toBe("Limit on Low Histamine: moderate histamine");
+      fitLine({
+        diet: "Low Histamine",
+        status: "moderation",
+        reasons: ["Histamine (moderate) should be limited", "May release histamine: limit and test your tolerance"],
+      })?.text
+    ).toBe("Limit · histamine");
+  });
+
+  it("names at most two reasons", () => {
     expect(
-      fitLine({ diet: "Low Histamine", status: "moderation", reasons: ["May release histamine: limit and test your tolerance"] }).text
-    ).toBe("Limit on Low Histamine: may release histamine");
+      fitLine({
+        diet: "Low Histamine",
+        status: "avoid",
+        reasons: ["Tyramine (very_high) not allowed", "Histamine (moderate) should be limited", "Sulfites (high) not allowed"],
+      })?.text
+    ).toBe("Avoid · tyramine, histamine");
+  });
+
+  it("keeps FODMAP's capitals", () => {
+    expect(fitLine({ diet: "Low FODMAP", status: "avoid", reasons: ["FODMAP (high) not allowed"] })?.text).toBe("Avoid · FODMAP");
   });
 
   it("says not rated yet instead of guessing", () => {
-    expect(
-      fitLine({ diet: "Low Histamine", status: "unknown", reasons: ["Histamine not rated yet"] })
-    ).toEqual({ tone: "unknown", text: "Not rated yet for Low Histamine" });
+    expect(fitLine({ diet: "Low Histamine", status: "unknown", reasons: ["Histamine not rated yet"] })).toEqual({
+      tone: "unknown",
+      text: "Not rated yet",
+      reasons: [],
+    });
   });
 
-  it("leaves 'not rated yet' notes out of an avoid reason", () => {
+  it("leaves 'not rated yet' notes out of a reason", () => {
     expect(
-      fitLine({ diet: "Low Histamine", status: "avoid", reasons: ["Tyramine (very_high) not allowed", "Histamine not rated yet"] }).text
-    ).toBe("Avoid on Low Histamine: very high tyramine");
+      fitLine({ diet: "Low Histamine", status: "avoid", reasons: ["Tyramine (very_high) not allowed", "Histamine not rated yet"] })?.text
+    ).toBe("Avoid · tyramine");
   });
 });
 
@@ -51,16 +65,17 @@ describe("personal ratings", () => {
   it("outrank the diet rule", () => {
     expect(
       fitLine({ diet: "AIP", status: "avoid", reasons: ["Eggs not allowed"], personal: { status: "safe", source: "trial" } })
-    ).toEqual({ tone: "allowed", text: "Fine for you · passed reintroduction" });
+    ).toEqual({ tone: "allowed", text: "Fine for you · passed reintroduction", reasons: [] });
     expect(
       fitLine({ diet: "Low FODMAP", status: "allowed", reasons: [], personal: { status: "unsafe", source: "self" } })
-    ).toEqual({ tone: "avoid", text: "Not for you" });
+    ).toEqual({ tone: "avoid", text: "Not for you", reasons: [] });
   });
 
   it("show for people with no diet", () => {
     expect(fitLine({ diet: null, status: "allowed", reasons: [], personal: { status: "sensitive", source: "self" } })).toEqual({
       tone: "limit",
       text: "Small amounts for you",
+      reasons: [],
     });
   });
 
@@ -100,7 +115,7 @@ describe("fit tones", () => {
   });
 
   it("give Allowed, Limit and Avoid three different symbols, so colour isn't the only signal", () => {
-    expect(FIT_TONE_SYMBOL).toMatchObject({ allowed: "check", limit: "minus", avoid: "x", unknown: null });
+    expect(FIT_TONE_SYMBOL).toMatchObject({ allowed: "check", limit: "minus", avoid: "x", unknown: "question" });
     expect(new Set([FIT_TONE_SYMBOL.allowed, FIT_TONE_SYMBOL.limit, FIT_TONE_SYMBOL.avoid]).size).toBe(3);
   });
 
@@ -108,5 +123,30 @@ describe("fit tones", () => {
     for (const t of Object.values(FIT_TONE_CLASS)) {
       expect(`${t.text} ${t.chip}`).not.toMatch(/danger|red-|olive|success|green/);
     }
+  });
+});
+
+describe("protocolPhrase", () => {
+  it("names the person's protocol once, for the whole day", () => {
+    expect(protocolPhrase("Low Histamine")).toBe("your Low Histamine protocol");
+    expect(protocolPhrase("AIP (Autoimmune Protocol)")).toBe("your AIP protocol");
+    expect(protocolPhrase("Specific Carbohydrate Protocol")).toBe("your Specific Carbohydrate Protocol");
+  });
+});
+
+describe("showOnLog", () => {
+  it("marks only what needs attention: limit, avoid, not rated yet", () => {
+    expect(showOnLog(fitLine({ diet: "AIP", status: "allowed", reasons: [] }), false)).toBe(false);
+    expect(showOnLog(fitLine({ diet: "AIP", status: "moderation", reasons: [] }), false)).toBe(true);
+    expect(showOnLog(fitLine({ diet: "AIP", status: "avoid", reasons: [] }), false)).toBe(true);
+    expect(showOnLog(fitLine({ diet: "AIP", status: "unknown", reasons: [] }), false)).toBe(true);
+  });
+
+  it("always shows the person's own rating, even a good one", () => {
+    expect(showOnLog(fitLine({ diet: "AIP", status: "avoid", reasons: [], personal: { status: "safe", source: "self" } }), true)).toBe(true);
+  });
+
+  it("shows nothing without a protocol or a rating", () => {
+    expect(showOnLog(fitLine({ diet: null, status: "allowed", reasons: [] }), false)).toBe(false);
   });
 });

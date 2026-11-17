@@ -6,7 +6,7 @@ import { Spinner, useToast } from "@/components/ui";
 import { QuickAddSheet } from "@/components/quick-log/quick-add-sheet";
 import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard";
 import { FoodRow, clarifierLabels } from "@/components/timeline/FoodRow";
-import { MealCard } from "@/components/timeline/MealCard";
+import { MealCard, formatClock } from "@/components/timeline/MealCard";
 import { GenericTimelineCard } from "@/components/timeline/GenericTimelineCard";
 import { DayStrip } from "@/components/timeline/DayStrip";
 import { DayReflectLine } from "@/components/timeline/DayReflectLine";
@@ -17,7 +17,8 @@ import { ProgressStrip } from "@/components/capture/ProgressStrip";
 import { SymptomNow } from "@/components/capture/SymptomNow";
 import { useCapture } from "@/hooks/use-capture";
 import { cn } from "@/lib/utils";
-import { groupMeals } from "@/lib/timeline/group-meals";
+import { chronological, groupMeals, type DayItem } from "@/lib/timeline/group-meals";
+import { protocolPhrase } from "@/lib/protocols/fit-line";
 import type { TimelineEntry, ExerciseType, IntensityLevel } from "@/types";
 
 function formatDate(date: Date): string {
@@ -297,6 +298,62 @@ export default function TimelinePage() {
     : entries;
 
   const hasPending = sessions.length > 0;
+  // The day's protocol, named once above the timeline instead of on every food.
+  const diet = entries.find((e) => e.fit?.diet)?.fit?.diet ?? null;
+
+  const renderItem = (item: DayItem<TimelineEntry>) => {
+    if (item.kind === "meal") {
+      const tagSets = item.entries.map((e) => clarifierLabels(e.structuredContent));
+      const shared = item.entries.length > 1 ? tagSets[0].filter((t) => tagSets.every((ts) => ts.includes(t))) : [];
+      return (
+        <MealCard mealType={item.mealType} time={item.time} tags={shared}>
+          {item.entries.map((entry) => (
+            <FoodRow
+              key={entry.id}
+              name={entry.name}
+              portion={entry.portion}
+              mealType={entry.mealType}
+              entryTime={entry.entryTime}
+              food={entry.food}
+              protocolViolations={entry.protocolViolations}
+              fit={entry.fit}
+              foodId={entry.foodId}
+              structuredContent={entry.structuredContent}
+              sharedTags={shared}
+              onDelete={() => deleteEntry(entry)}
+              onPatch={(patch) => patchTimelineEntry(entry, patch)}
+            />
+          ))}
+        </MealCard>
+      );
+    }
+    const entry = item.entry;
+    if (entry.entryType === "exercise") {
+      return (
+        <ExerciseTimelineCard
+          exerciseType={entry.exerciseType as ExerciseType}
+          durationMinutes={entry.durationMinutes ?? 0}
+          intensityLevel={entry.intensityLevel as IntensityLevel}
+          energyBefore={entry.energyLevel}
+          energyAfter={null}
+          notes={entry.structuredContent?.notes ? String(entry.structuredContent.notes) : null}
+          entryTime={entry.entryTime}
+          onDelete={() => deleteEntry(entry)}
+          onPatch={(patch) => patchTimelineEntry(entry, patch)}
+        />
+      );
+    }
+    return (
+      <GenericTimelineCard
+        entryType={entry.entryType}
+        name={entry.name}
+        entryTime={entry.entryTime}
+        severity={entry.severity}
+        onDelete={() => deleteEntry(entry)}
+        onPatch={(patch) => patchTimelineEntry(entry, patch)}
+      />
+    );
+  };
 
   return (
     // Opacity-only entrance: a transform on this root would break `position:
@@ -384,9 +441,59 @@ export default function TimelinePage() {
         </div>
       )}
 
-      {/* In-flight captures land at the top of the day */}
+      {/* Entries */}
+      {loading ? (
+        <div className="flex items-center justify-center py-20">
+          <Spinner />
+        </div>
+      ) : filteredEntries.length === 0 && !hasPending ? (
+        // One left-aligned line, pointing at the capture bar right below.
+        <p className="mt-1 max-w-[65ch] text-sm text-warm-600">
+          {showEnergyOnly
+            ? "No entries with energy levels for this day."
+            : isToday
+              ? "Nothing logged yet today. Type it below (“salmon and rice for lunch” is enough) or snap your plate."
+              : "Nothing logged this day. Type it below or snap your plate to add it."}
+        </p>
+      ) : (
+        <>
+          {diet && (
+            <p className="mb-2 text-xs text-[var(--color-text-muted)]">
+              Foods checked against <span className="font-medium text-warm-800">{protocolPhrase(diet)}</span>. Only
+              foods to limit, avoid or not rated yet are marked.
+            </p>
+          )}
+          {/* The day as a timeline, morning to night: the time in its own
+              column on one thin line, nothing boxed. Clay marks symptoms, so
+              "what came before it" reads straight down the page. */}
+          <ol className="relative before:absolute before:top-3 before:bottom-3 before:left-[4.25rem] before:w-px before:bg-[var(--color-border)]">
+            {groupMeals(chronological(filteredEntries)).map((item) => {
+              const first = item.kind === "meal" ? item.entries[0] : item.entry;
+              const time = item.kind === "meal" ? item.time : item.entry.entryTime;
+              const isSymptom = item.kind === "entry" && item.entry.entryType === "symptom";
+              return (
+                <li key={item.kind === "meal" ? `meal-${first.id}` : first.id} className="grid grid-cols-[3.5rem_1rem_minmax(0,1fr)] gap-x-1 py-1.5">
+                  <span className="pt-0.5 text-right text-xs tabular-nums text-[var(--color-text-muted)]">
+                    {time ? formatClock(time) : "No time"}
+                  </span>
+                  <span
+                    className={cn(
+                      "relative z-10 mt-1.5 justify-self-center rounded-full ring-4 ring-[var(--color-surface)]",
+                      isSymptom ? "h-2.5 w-2.5 bg-clay-500" : "h-2 w-2 bg-warm-400"
+                    )}
+                    aria-hidden="true"
+                  />
+                  <div className="min-w-0">{renderItem(item)}</div>
+                </li>
+              );
+            })}
+          </ol>
+        </>
+      )}
+
+      {/* In-flight captures land at the end of the day, right above the bar they were typed into */}
       {hasPending && (
-        <div className="mb-4 flex flex-col gap-3">
+        <div className="mt-3 flex flex-col gap-3">
           {sessions.map((session) => (
             <PendingCaptureCard
               key={session.id}
@@ -410,86 +517,6 @@ export default function TimelinePage() {
         </div>
       )}
 
-      {/* Entries */}
-      {loading ? (
-        <div className="flex items-center justify-center py-20">
-          <Spinner />
-        </div>
-      ) : filteredEntries.length === 0 && !hasPending ? (
-        // One left-aligned line, pointing at the capture bar right below.
-        <p className="mt-1 max-w-[65ch] text-sm text-warm-600">
-          {showEnergyOnly
-            ? "No entries with energy levels for this day."
-            : isToday
-              ? "Nothing logged yet today. Type it below (“salmon and rice for lunch” is enough) or snap your plate."
-              : "Nothing logged this day. Type it below or snap your plate to add it."}
-        </p>
-      ) : (
-        <div className="flex flex-col gap-2 stagger-children">
-          {/* Untimed entries (e.g. a symptom backfilled on a past day) go last:
-              the API sorts NULL times first, which would read as the day's latest event. */}
-          {groupMeals([
-            ...filteredEntries.filter((e) => e.entryTime),
-            ...filteredEntries.filter((e) => !e.entryTime),
-          ]).map((item) => {
-            if (item.kind === "meal") {
-              const tagSets = item.entries.map((e) => clarifierLabels(e.structuredContent));
-              const shared = item.entries.length > 1 ? tagSets[0].filter((t) => tagSets.every((ts) => ts.includes(t))) : [];
-              return (
-                <MealCard key={`meal-${item.entries[item.entries.length - 1].id}`} mealType={item.mealType} time={item.time} tags={shared}>
-                  {item.entries.map((entry) => (
-                    <FoodRow
-                      key={entry.id}
-                      name={entry.name}
-                      portion={entry.portion}
-                      mealType={entry.mealType}
-                      entryTime={entry.entryTime}
-                      food={entry.food}
-                      protocolViolations={entry.protocolViolations}
-                      fit={entry.fit}
-                      foodId={entry.foodId}
-                      structuredContent={entry.structuredContent}
-                      sharedTags={shared}
-                      onDelete={() => deleteEntry(entry)}
-                      onPatch={(patch) => patchTimelineEntry(entry, patch)}
-                    />
-                  ))}
-                </MealCard>
-              );
-            }
-
-            const entry = item.entry;
-            if (entry.entryType === "exercise") {
-              return (
-                <ExerciseTimelineCard
-                  key={entry.id}
-                  exerciseType={entry.exerciseType as ExerciseType}
-                  durationMinutes={entry.durationMinutes ?? 0}
-                  intensityLevel={entry.intensityLevel as IntensityLevel}
-                  energyBefore={entry.energyLevel}
-                  energyAfter={null}
-                  notes={entry.structuredContent?.notes ? String(entry.structuredContent.notes) : null}
-                  entryTime={entry.entryTime}
-                  onDelete={() => deleteEntry(entry)}
-                  onPatch={(patch) => patchTimelineEntry(entry, patch)}
-                />
-              );
-            }
-
-            return (
-              <GenericTimelineCard
-                key={entry.id}
-                entryType={entry.entryType}
-                name={entry.name}
-                entryTime={entry.entryTime}
-                severity={entry.severity}
-                onDelete={() => deleteEntry(entry)}
-                onPatch={(patch) => patchTimelineEntry(entry, patch)}
-              />
-            );
-          })}
-        </div>
-      )}
 
       {/* "Day N of 30" while a tracking goal runs; nothing otherwise. */}
       <ProgressStrip part="progress" />

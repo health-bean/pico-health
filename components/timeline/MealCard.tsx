@@ -19,8 +19,10 @@ export function formatClock(time: string | null | undefined): string {
 }
 
 /**
- * One card per meal: the meal and its time on top, each food a row below
- * with its own menu. Foods are grouped by lib/timeline/group-meals.
+ * A meal on the day's timeline: its name as a heading and the foods indented
+ * under it, each with its own menu. Not a box: nothing on the timeline is,
+ * so a meal and a vitamin sit in the same system. Foods are grouped by
+ * lib/timeline/group-meals.
  */
 export function MealCard({
   mealType,
@@ -37,17 +39,13 @@ export function MealCard({
   const label = (mealType && MEAL_LABELS[mealType]) || "Food";
   const clock = formatClock(time);
   return (
-    <section
-      aria-label={clock ? `${label}, ${clock}` : label}
-      className="rounded-xl border border-warm-200 bg-[var(--color-surface-card)]"
-    >
-      <header className="flex items-center gap-2 px-4 pt-3 pb-0.5">
-        <Utensils className="h-4 w-4 text-teal-600" aria-hidden="true" />
-        <h3 className="text-base font-semibold text-warm-900">{label}</h3>
-        {clock && <span className="text-xs text-[var(--color-text-muted)]">{clock}</span>}
-        {tags.length > 0 && <span className="text-xs text-teal-700">· {tags.join(" · ")}</span>}
+    <section aria-label={clock ? `${label}, ${clock}` : label}>
+      <header className="flex min-h-6 items-center gap-2">
+        <Utensils className="h-4 w-4 shrink-0 text-warm-500" aria-hidden="true" />
+        <h3 className="text-[15px] font-semibold text-warm-900">{label}</h3>
+        {tags.length > 0 && <span className="text-xs text-[var(--color-text-muted)]">· {tags.join(" · ")}</span>}
       </header>
-      <ul>{children}</ul>
+      <ul className="pl-6">{children}</ul>
     </section>
   );
 }

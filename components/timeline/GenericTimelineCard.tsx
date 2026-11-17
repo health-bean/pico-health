@@ -16,7 +16,6 @@ import {
 import { cn } from "@/lib/utils";
 import { EntryActions } from "./EntryActions";
 import { EntryEditor, type EntryPatch } from "./EntryEditor";
-import { formatClock } from "./MealCard";
 import type { EntryType } from "@/types";
 
 interface GenericTimelineCardProps {
@@ -33,17 +32,18 @@ interface GenericTimelineCardProps {
  * one row with a tinted ground: "what happened after that meal?" is the
  * question the Log exists to answer.
  */
-const KIND: Record<Exclude<EntryType, "food" | "exercise">, { icon: LucideIcon; label: string; tile: string }> = {
-  symptom: { icon: Frown, label: "Symptom", tile: "bg-clay-500/15 text-clay-700" },
-  supplement: { icon: Pill, label: "Supplement", tile: "bg-warm-100 text-warm-600" },
-  medication: { icon: Pill, label: "Medication", tile: "bg-warm-100 text-warm-600" },
-  exposure: { icon: ShieldAlert, label: "Exposure", tile: "bg-ochre-500/10 text-ochre-700" },
-  detox: { icon: Droplets, label: "Detox", tile: "bg-teal-50 text-teal-600" },
-  energy: { icon: Zap, label: "Energy", tile: "bg-teal-50 text-teal-600" },
-  off_protocol: { icon: AlertTriangle, label: "Off-protocol", tile: "bg-ochre-500/10 text-ochre-700" },
+/** Icons are grey; symptoms are the one kind that carries colour (clay). */
+const KIND: Record<Exclude<EntryType, "food" | "exercise">, { icon: LucideIcon; label: string }> = {
+  symptom: { icon: Frown, label: "Symptom" },
+  supplement: { icon: Pill, label: "Supplement" },
+  medication: { icon: Pill, label: "Medication" },
+  exposure: { icon: ShieldAlert, label: "Exposure" },
+  detox: { icon: Droplets, label: "Detox" },
+  energy: { icon: Zap, label: "Energy" },
+  off_protocol: { icon: AlertTriangle, label: "Off-protocol" },
 };
 
-const FALLBACK = { icon: Activity, label: "Entry", tile: "bg-warm-100 text-warm-600" };
+const FALLBACK = { icon: Activity, label: "Entry" };
 
 /**
  * A slim row for every entry type without a dedicated card (symptom,
@@ -63,29 +63,22 @@ export function GenericTimelineCard({
   const Icon = kind.icon;
 
   return (
-    <div
-      className={cn(
-        "flex flex-col rounded-xl border",
-        isSymptom ? "border-clay-500/25 bg-clay-50/60" : "border-warm-200 bg-[var(--color-surface-card)]"
-      )}
-    >
-      <div className="flex min-h-12 items-center gap-3 py-1 pl-3 pr-1">
-        <span className={cn("flex h-7 w-7 shrink-0 items-center justify-center rounded-lg", kind.tile)}>
-          <Icon className="h-4 w-4" aria-hidden="true" />
-        </span>
+    <div className="flex flex-col">
+      <div className="flex min-h-11 items-start gap-2">
+        <Icon className={cn("mt-0.5 h-4 w-4 shrink-0", isSymptom ? "text-clay-600" : "text-warm-500")} aria-hidden="true" />
 
-        <div className="min-w-0 flex-1">
-          <span className="line-clamp-2 block break-words text-[15px] font-medium leading-snug text-[var(--color-text-primary)]">{name}</span>
-          <span className={cn("block text-xs", isSymptom ? "text-clay-700" : "text-[var(--color-text-muted)]")}>
+        {/* The time sits in the timeline's own column, so the row says only what and how bad. */}
+        <div className="flex min-w-0 flex-1 flex-wrap items-baseline gap-x-2">
+          <span className="line-clamp-2 break-words text-[15px] font-semibold leading-snug text-[var(--color-text-primary)]">{name}</span>
+          <span className={cn("text-xs", isSymptom ? "text-clay-700" : "text-[var(--color-text-muted)]")}>
             {kind.label}
-            {entryTime ? <> · {formatClock(entryTime)}</> : " · time not set"}
           </span>
         </div>
 
         {severity != null && (
           <span
             className={cn(
-              "shrink-0 text-sm font-semibold tabular-nums",
+              "shrink-0 pt-0.5 text-sm font-semibold tabular-nums",
               isSymptom ? "text-clay-700" : "text-[var(--color-text-secondary)]"
             )}
           >
@@ -94,21 +87,23 @@ export function GenericTimelineCard({
         )}
 
         {onDelete && (
-          <EntryActions
-            name={name}
-            onDelete={onDelete}
-            actions={
-              onPatch
-                ? [
-                    {
-                      label: isSymptom ? "Severity or time" : "Change time",
-                      icon: isSymptom ? SlidersHorizontal : Clock,
-                      onSelect: () => setEditing(true),
-                    },
-                  ]
-                : []
-            }
-          />
+          <div className="-my-2.5">
+            <EntryActions
+              name={name}
+              onDelete={onDelete}
+              actions={
+                onPatch
+                  ? [
+                      {
+                        label: isSymptom ? "Severity or time" : "Change time",
+                        icon: isSymptom ? SlidersHorizontal : Clock,
+                        onSelect: () => setEditing(true),
+                      },
+                    ]
+                  : []
+              }
+            />
+          </div>
         )}
       </div>
 
