@@ -69,4 +69,4 @@ The only tracker that correlates at the **food-property level** (histamine, oxal
 
 ## Accessibility & Inclusion
 
-Audience-specific needs: brain fog and fatigue (low cognitive load, large targets, forgiving flows), possible tremor/pain (44px minimum targets already in the system). Restore pinch-zoom (still disabled via `maximumScale: 1` in `app/layout.tsx` as of 2026-09-16 — known defect). Forced light mode is a known limitation.
+Audience-specific needs: brain fog and fatigue (low cognitive load, large targets, forgiving flows), possible tremor/pain (44px minimum targets already in the system). Pinch-zoom is allowed (no `maximumScale` in `app/layout.tsx`; checked 2026-11-16). Log passes axe WCAG 2.2 AA with 0 violations (2026-11-16). Forced light mode is a known limitation.
