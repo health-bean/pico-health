@@ -86,11 +86,11 @@ export function InsightAnimation() {
         </p>
 
         <div className={`mt-4 flex items-end gap-3 transition-opacity duration-500 ${at("stats") ? "opacity-100" : "opacity-0"}`}>
-          <span className="font-[family-name:var(--font-display)] text-5xl font-bold leading-none tabular-nums text-lp-gold md:text-6xl">
+          <span className="shrink-0 whitespace-nowrap font-[family-name:var(--font-display)] text-5xl font-bold leading-none tabular-nums text-lp-gold md:text-6xl">
             {days}
             <span className="text-lp-gold/70"> of {LANDING_HERO.ofDays}</span>
           </span>
-          <span className="pb-1 text-sm text-surface/75">{LANDING_HERO.daysLabel}</span>
+          <span className="min-w-0 pb-1 text-sm text-surface/75">{LANDING_HERO.daysLabel}</span>
         </div>
 
         <div className={`mt-6 flex min-h-8 flex-wrap items-center gap-2 ${at("foods") ? "" : "invisible"}`}>
