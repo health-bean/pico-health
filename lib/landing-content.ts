@@ -23,7 +23,7 @@ export const LANDING_PROBLEM = {
   headline: "You're doing everything right and still don't feel better?",
   body: "Navigating autoimmune conditions, uncontrolled inflammation, chronic infections, mold exposure, and complex dietary protocols — often alone. Tracking dozens of moving parts when you already feel terrible is nearly impossible. We're putting an end to the overwhelm. Now, you can track what's in your control — from food and supplements to toxin exposures and at-home therapies — so you can clearly see what may be helping.",
   stats: [
-    { value: "3 in 4", description: "US adults live with a\nchronic condition", source: "CDC, 2025" },
+    { value: "3 in 4", description: "US adults live with a\nchronic condition", source: "CDC, Preventing Chronic Disease (2025)" },
   ],
 } as const;
 
