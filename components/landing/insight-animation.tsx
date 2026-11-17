@@ -61,9 +61,9 @@ export function InsightAnimation() {
 
   const at = (p: Phase) => still || ORDER.indexOf(phase) >= ORDER.indexOf(p);
   const typed = useTypingEffect(LANDING_HERO.insight, at("typing") && !still);
-  const counted = useCountUp(LANDING_HERO.percent, at("stats") && !still);
+  const counted = useCountUp(LANDING_HERO.days, at("stats") && !still, 900);
   const text = still ? LANDING_HERO.insight : typed;
-  const percent = still ? LANDING_HERO.percent : counted;
+  const days = still ? LANDING_HERO.days : counted;
 
   return (
     <figure className="rounded-2xl bg-lp-900/55 p-6 shadow-[0_24px_48px_-24px_rgb(10_40_44/0.6)] ring-1 ring-inset ring-white/12 md:p-8">
@@ -73,7 +73,7 @@ export function InsightAnimation() {
       </figcaption>
 
       <p className="sr-only">
-        {LANDING_HERO.insight} {LANDING_HERO.percent}% {LANDING_HERO.percentLabel}. {LANDING_HERO.foodsLabel}{" "}
+        {LANDING_HERO.insight} {LANDING_HERO.days} of {LANDING_HERO.ofDays} {LANDING_HERO.daysLabel}. {LANDING_HERO.foodsLabel}{" "}
         {LANDING_HERO.foods.join(", ")}.
       </p>
 
@@ -87,10 +87,10 @@ export function InsightAnimation() {
 
         <div className={`mt-4 flex items-end gap-3 transition-opacity duration-500 ${at("stats") ? "opacity-100" : "opacity-0"}`}>
           <span className="font-[family-name:var(--font-display)] text-5xl font-bold leading-none tabular-nums text-gold-400 md:text-6xl">
-            {percent}
-            <span className="text-gold-400/60">%</span>
+            {days}
+            <span className="text-gold-400/70"> of {LANDING_HERO.ofDays}</span>
           </span>
-          <span className="pb-1 text-sm text-surface/75">{LANDING_HERO.percentLabel}</span>
+          <span className="pb-1 text-sm text-surface/75">{LANDING_HERO.daysLabel}</span>
         </div>
 
         <div className={`mt-6 flex min-h-8 flex-wrap items-center gap-2 ${at("foods") ? "" : "invisible"}`}>

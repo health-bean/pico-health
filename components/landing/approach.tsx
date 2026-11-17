@@ -114,10 +114,10 @@ function FoodListCard() {
 export function Approach() {
   return (
     <>
-      <section className="px-6 pt-lp-section md:px-12">
-        <figure className="mx-auto max-w-3xl text-center">
+      <section className="px-4 pt-lp-section md:px-12">
+        <figure className="mx-auto max-w-4xl rounded-3xl bg-lp-800 px-6 py-12 text-center md:px-16 md:py-14">
           <div className="mx-auto h-1 w-12 rounded-full bg-gold-400" aria-hidden="true" />
-          <blockquote className="mt-6 text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-lp-900 md:text-3xl">
+          <blockquote className="mt-6 text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-surface md:text-3xl">
             &ldquo;{LANDING_QUOTE}&rdquo;
           </blockquote>
         </figure>
