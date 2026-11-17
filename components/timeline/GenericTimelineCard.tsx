@@ -14,6 +14,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { severityWord } from "@/lib/capture/symptom-now";
 import { EntryActions } from "./EntryActions";
 import { EntryEditor, type EntryPatch } from "./EntryEditor";
 import type { EntryType } from "@/types";
@@ -78,11 +79,12 @@ export function GenericTimelineCard({
         {severity != null && (
           <span
             className={cn(
-              "shrink-0 pt-0.5 text-sm font-semibold tabular-nums",
+              "shrink-0 pt-0.5 text-sm font-semibold",
               isSymptom ? "text-clay-700" : "text-[var(--color-text-secondary)]"
             )}
           >
-            {severity}/10
+            {severityWord(severity)}
+            <span className="sr-only"> ({severity} out of 10)</span>
           </span>
         )}
 

@@ -26,6 +26,15 @@ export interface CheckinMeal {
 export const CHECKIN_FROM_MIN = 90;
 export const CHECKIN_UNTIL_MIN = 240;
 
+/**
+ * The word for a 1–10 severity, matching the "How bad" buttons (mild 3,
+ * moderate 5, severe 8): 1–3 mild, 4–6 moderate, 7–10 severe. The Log shows
+ * the word; the number stays in the editor.
+ */
+export function severityWord(n: number): "Mild" | "Moderate" | "Severe" {
+  return n >= 7 ? "Severe" : n >= 4 ? "Moderate" : "Mild";
+}
+
 /** Mild / moderate / severe on the existing 1–10 scale. Severe lands at 8, so it counts toward a flare day (≥7). */
 export const SEVERITY = { mild: 3, moderate: 5, severe: 8 } as const;
 

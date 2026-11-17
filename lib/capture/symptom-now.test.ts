@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { pickCheckinMeal, startedAt, topSymptoms, type LoggedEntry } from './symptom-now';
+import { severityWord, SEVERITY } from './symptom-now';
 
 const at = (h: number, m = 0) => { const d = new Date(2026, 9, 12, h, m); return d; };
 const food = (name: string, time: string, mealType = 'lunch'): LoggedEntry => ({ entryType: 'food', name, entryTime: time, mealType });
@@ -51,5 +52,14 @@ describe('symptoms offered', () => {
       { entryType: 'symptom', name: 'Bloating', count: 5 },
     ])).toEqual(['Bloating', 'Brain fog', 'Headache']);
     expect(topSymptoms([])).toEqual(['Headache', 'Bloating', 'Fatigue']);
+  });
+});
+
+describe('severityWord', () => {
+  it('matches the How bad buttons', () => {
+    expect([1, 3, 4, 5, 6, 7, 8, 10].map(severityWord)).toEqual(['Mild', 'Mild', 'Moderate', 'Moderate', 'Moderate', 'Severe', 'Severe', 'Severe']);
+    expect(severityWord(SEVERITY.mild)).toBe('Mild');
+    expect(severityWord(SEVERITY.moderate)).toBe('Moderate');
+    expect(severityWord(SEVERITY.severe)).toBe('Severe');
   });
 });
