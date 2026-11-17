@@ -8,6 +8,7 @@ import Link from "next/link";
 import { ChevronRight, CreditCard, Download, FlaskConical, ListChecks } from "lucide-react";
 import { DeleteAccount } from "@/components/settings/DeleteAccount";
 import { CheckinReminders } from "@/components/settings/CheckinReminders";
+import { ProgressStrip } from "@/components/capture/ProgressStrip";
 import { turnRemindersOff } from "@/lib/native/push";
 import type { Protocol } from "@/types";
 
@@ -370,7 +371,8 @@ export default function SettingsPage() {
       {/* Your data */}
       <Card header="Your data" className="mb-4">
         <div className="flex flex-col gap-2">
-          <p className="text-sm text-warm-600">
+          <ProgressStrip part="settings" />
+          <p className="mt-2 border-t border-[var(--color-border-light)] pt-4 text-sm text-warm-600">
             Download everything you have logged, to keep or to bring to an appointment.
           </p>
           <div>

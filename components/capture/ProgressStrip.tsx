@@ -1,7 +1,8 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { Download, Target } from "lucide-react";
+import { Target } from "lucide-react";
+import { dayOf, goalStatus } from "@/lib/capture/tracking-goal";
 import { Dialog } from "@/components/ui";
 import { cn } from "@/lib/utils";
 
@@ -15,31 +16,24 @@ interface Stats {
 
 const GOAL_OPTIONS = [30, 60, 90] as const;
 
-function daysSince(dateStr: string): number {
-  const start = new Date(dateStr + "T12:00:00");
-  const now = new Date();
-  return Math.max(1, Math.floor((now.getTime() - start.getTime()) / 86_400_000) + 1);
-}
 
 /**
- * The mandate layer: one slim strip, two framings.
- * Default: a plain day count. It used to promise patterns "around day 14"
- * over a bar that filled by then; measured, most patterns take two to three
- * months, so the strip no longer forecasts anything.
- * With a tracking goal set (e.g. a practitioner's "30 days"): day N of goal + export.
+ * The mandate layer. A tracking goal (e.g. a practitioner's "30 days") is
+ * counted on the Log while it runs, and set or changed in Settings. Nothing
+ * shows on the Log without one: a bare day count helped nobody log.
  */
 interface ProgressStripProps {
   /** Jump the Log to a given day (YYYY-MM-DD). */
   onJumpToDay?: (date: string) => void;
   /**
-   * "welcome" renders only the back-after-a-break notice (top of the Log);
-   * "progress" only the day count, goal and Export (end of the day's list,
-   * so the day itself starts near the top of the screen).
+   * "welcome": the back-after-a-break notice (top of the Log).
+   * "progress": "Day N of 30" below the day's list, only while a goal runs.
+   * "settings": set, change or clear the goal (Settings › Your data).
    */
-  part?: "welcome" | "progress";
+  part: "welcome" | "progress" | "settings";
 }
 
-export function ProgressStrip({ onJumpToDay, part }: ProgressStripProps = {}) {
+export function ProgressStrip({ onJumpToDay, part }: ProgressStripProps) {
   const [stats, setStats] = useState<Stats | null>(null);
   const [goalOpen, setGoalOpen] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -79,39 +73,20 @@ export function ProgressStrip({ onJumpToDay, part }: ProgressStripProps = {}) {
 
   if (!stats) return null;
 
-  const hasGoal = stats.trackingGoalDays != null && stats.trackingGoalStartDate != null;
-  const goalDay = hasGoal ? Math.min(daysSince(stats.trackingGoalStartDate!), stats.trackingGoalDays!) : 0;
-  const pct = hasGoal ? Math.min(100, (goalDay / stats.trackingGoalDays!) * 100) : 0;
-
-  let line: string;
-  if (hasGoal) {
-    line =
-      goalDay >= stats.trackingGoalDays!
-        ? `${stats.trackingGoalDays} days tracked, ready to share`
-        : `Day ${goalDay} of ${stats.trackingGoalDays}`;
-  } else if (stats.daysTracked === 0) {
-    line = "Your first day of logging";
-  } else {
-    line = `Day ${stats.daysTracked} of logging`;
-  }
+  const goal = goalStatus(stats, new Date());
 
   // Coming back after a break (flares make breaks normal): say when the last
-  // entry was and offer a one-tap bridge to it, instead of a full bar over an
-  // empty today.
-  const gapDays = stats.lastEntryDate ? daysSince(stats.lastEntryDate) - 1 : 0;
+  // entry was and offer a one-tap bridge to it.
+  const gapDays = stats.lastEntryDate ? dayOf(stats.lastEntryDate, new Date()) - 1 : 0;
   const returning = gapDays > 2 && stats.lastEntryDate != null;
   const lastLabel = stats.lastEntryDate
     ? new Date(stats.lastEntryDate + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" })
     : "";
-  // A full bar beside "ready to share" says nothing new; it shows only while counting.
-  const showBar = hasGoal && goalDay < stats.trackingGoalDays!;
-  const showWelcome = part !== "progress";
-  const showProgress = part !== "welcome";
 
   return (
     <>
       {/* The ground's own darker step: a quiet notice in the palette, not a grey slab. */}
-      {showWelcome && returning && (
+      {part === "welcome" && returning && (
         <div className="mb-3 flex items-center justify-between gap-2 rounded-xl bg-[var(--color-surface-overlay)] px-3 text-sm text-warm-700">
           <span className="py-2">
             Welcome back. You last logged on <span className="font-medium text-warm-900">{lastLabel}</span>.
@@ -127,42 +102,46 @@ export function ProgressStrip({ onJumpToDay, part }: ProgressStripProps = {}) {
           )}
         </div>
       )}
-      {showProgress && (
-      <div className="flex items-center gap-3">
+
+      {/* On the Log only while a goal is being counted: "Day 12 of 30" keeps
+          a practitioner's "track for 30 days" going. Otherwise it's in Settings. */}
+      {part === "progress" && goal.showOnLog && (
         <button
           type="button"
           onClick={() => setGoalOpen(true)}
-          className="group -mx-1 flex min-h-11 min-w-0 flex-1 items-center gap-3 rounded-xl px-1 text-left focus-visible:outline-2 focus-visible:outline-teal-500"
-          aria-label={`${line}. ${hasGoal ? "Change" : "Set"} a tracking goal.`}
+          className="group -mx-1 mt-6 flex min-h-11 w-full items-center gap-3 rounded-xl px-1 text-left focus-visible:outline-2 focus-visible:outline-teal-500"
+          aria-label={`Day ${goal.day} of your ${goal.total}-day tracking goal. Change the goal.`}
         >
-          <span className="min-w-0 truncate text-sm text-warm-600 transition-colors group-hover:text-warm-800">
-            {line}
+          <span className="shrink-0 text-sm text-warm-600 transition-colors group-hover:text-warm-800">
+            Day {goal.day} of {goal.total}
           </span>
-          {showBar && (
-          <span
-            className="h-1 max-w-24 flex-1 overflow-hidden rounded-full bg-warm-200"
-            aria-hidden
-          >
+          <span className="h-1 max-w-24 flex-1 overflow-hidden rounded-full bg-warm-200" aria-hidden>
             <span
               className="block h-full rounded-full bg-teal-400 transition-[width] duration-500"
-              style={{ width: `${pct}%` }}
+              style={{ width: `${goal.pct}%` }}
             />
           </span>
-          )}
-          {!hasGoal && (
-            <span className="shrink-0 text-sm font-medium text-teal-700 group-hover:text-teal-800">Set a goal</span>
-          )}
         </button>
-        {hasGoal && (
-          <a
-            href="/api/export?type=all"
-            className="flex min-h-11 items-center gap-1 rounded-lg px-2 text-sm font-medium text-teal-700 transition-colors hover:bg-teal-50 hover:text-teal-700 focus-visible:outline-2 focus-visible:outline-teal-500"
+      )}
+
+      {part === "settings" && (
+        <div className="flex flex-wrap items-center justify-between gap-2">
+          <p className="text-sm text-warm-600">
+            {!goal.hasGoal
+              ? "Tracking for a practitioner, or for yourself? Set a length and the Log counts the days."
+              : goal.done
+                ? `Your ${goal.total}-day goal is done. Export your data below to share it.`
+                : `Day ${goal.day} of ${goal.total}. The count shows on your Log until the goal is done.`}
+          </p>
+          <button
+            type="button"
+            onClick={() => setGoalOpen(true)}
+            className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-teal-300 px-4 text-sm font-medium text-teal-700 hover:bg-teal-50"
           >
-            <Download className="h-3.5 w-3.5" aria-hidden />
-            Export
-          </a>
-        )}
-      </div>
+            <Target className="h-4 w-4" aria-hidden="true" />
+            {goal.hasGoal ? "Change goal" : "Set a goal"}
+          </button>
+        </div>
       )}
 
       <Dialog open={goalOpen} onClose={() => setGoalOpen(false)} title="Tracking goal">

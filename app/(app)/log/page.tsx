@@ -491,10 +491,8 @@ export default function TimelinePage() {
         </div>
       )}
 
-      {/* Day count, tracking goal and Export: after the day, not above it. */}
-      <div className="mt-6">
-        <ProgressStrip part="progress" />
-      </div>
+      {/* "Day N of 30" while a tracking goal runs; nothing otherwise. */}
+      <ProgressStrip part="progress" />
 
       {/* The pen is always out */}
       <CaptureBar
