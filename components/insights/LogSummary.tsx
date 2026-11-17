@@ -3,7 +3,8 @@
 import type { DayComposite } from '@/lib/insights/types';
 import { FoodPropertyTag } from '@/components/foods/FoodPropertyTag';
 import { formatClock } from '@/components/timeline/MealCard';
-import { Utensils, Pill, Activity, AlertTriangle, Beaker, Wind } from 'lucide-react';
+import { severityWord } from '@/lib/capture/symptom-now';
+import { Utensils, Pill, Activity, Frown, Beaker, Wind } from 'lucide-react';
 
 /** A property chip earns its place at moderate and up (or a plain flag with no level). */
 function notable(p: { severity?: string | null }): boolean {
@@ -51,9 +52,9 @@ export function LogSummary({ composite }: LogSummaryProps) {
 
       {composite.symptoms.map((s, i) => (
         <div key={`symptom-${i}`} className="flex items-center gap-2 py-1.5">
-          <AlertTriangle className="w-4 h-4 text-warm-500 shrink-0" />
+          <Frown className="w-4 h-4 text-clay-600 shrink-0" aria-hidden="true" />
           <span className="text-sm text-warm-900">{s.name}</span>
-          <span className="text-xs text-warm-500">severity {s.severity}/10</span>
+          <span className="text-xs font-semibold text-clay-700">{severityWord(s.severity)}</span>
           {s.time && <span className="text-xs text-warm-500">{formatClock(s.time)}</span>}
         </div>
       ))}
@@ -85,7 +86,7 @@ export function LogSummary({ composite }: LogSummaryProps) {
         <div key={`exp-${i}`} className="flex items-center gap-2 py-1.5">
           <Wind className="w-4 h-4 text-warm-500 shrink-0" />
           <span className="text-sm text-warm-900">{e.type}</span>
-          {e.severity && <span className="text-xs text-warm-500">severity {e.severity}/10</span>}
+          {e.severity && <span className="text-xs text-warm-500">{severityWord(e.severity)}</span>}
         </div>
       ))}
     </div>

@@ -1,0 +1,161 @@
+<title>Insights Heading Options</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: three phone-width columns, same content, only the first section's heading changes. Forced light, like the app. */
+:root{
+  color-scheme:light;
+  --surface:#FCF2D1; --card:#FFFDF7; --line:#EAE4D4; --border:#E1D9C3;
+  --ink:#271F15; --ink2:#5D5244; --muted:#73675B;
+  --teal:#175451; --brick:#922C2E; --clay:#BE5D0E;
+  --lvl4-bg:#FBC77C; --lvl4-fg:#522600; --lvl3-bg:#FFDEA9; --lvl3-fg:#693C00;
+  --warm:#DDD7CD;
+  --display:"Fraunces",Georgia,serif; --body:"Source Sans 3",system-ui,sans-serif;
+}
+body{background:#EFE8D8;color:var(--ink);font-family:var(--body);font-size:15px}
+.wrap{max-width:1240px;margin:0 auto;padding-block:32px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1{font-family:var(--display);font-size:28px;color:var(--teal);text-wrap:balance;margin:0}
+.lead{color:var(--ink2);max-width:62ch;line-height:1.5;margin:8px 0 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:28px;margin-top:28px;align-items:start}
+.opt-label{font-weight:700;font-size:14px;color:var(--ink2);margin:0 0 8px}
+.phone{background:var(--surface);border:1px solid var(--border);border-radius:24px;padding:20px 16px 18px;min-width:0}
+.note{font-size:13.5px;color:var(--muted);line-height:1.45;margin:0 0 18px}
+.sec-h{display:flex;align-items:center;gap:8px;border-bottom:1px solid color-mix(in oklab,var(--clay) 35%,transparent);padding-bottom:8px}
+.sec-h svg{width:17px;height:17px;color:var(--clay);flex:none}
+.sec-h h2{font-size:17px;font-weight:700;color:var(--brick);margin:0;text-wrap:balance}
+.sub{font-size:14px;color:var(--ink2);margin:8px 0 0;line-height:1.4}
+.ins{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-top:10px}
+.top{display:flex;gap:10px;align-items:flex-start}
+.t{flex:1;min-width:0;font-weight:700;font-size:16px;line-height:1.3}
+.t span{color:var(--muted);font-weight:500;margin:0 4px}
+.str{display:inline-flex;align-items:center;gap:6px;border-radius:8px;padding:3px 8px;font-size:12px;font-weight:700;white-space:nowrap}
+.str svg{width:22px;height:6px}
+.s4{background:var(--lvl4-bg);color:var(--lvl4-fg)} .s3{background:var(--lvl3-bg);color:var(--lvl3-fg)}
+.ins p{margin:6px 0 0;font-size:14.5px;line-height:1.45;color:var(--ink2)}
+.h1b{margin-top:56px}
+.status{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:20px 20px 8px}
+.stamp{margin:4px 0 0;font-size:13px;color:var(--muted)}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:8px 32px;margin-top:14px}
+.cols>div{min-width:0}
+.st-h{font-size:16px;font-weight:700;margin:0 0 6px}
+.st-h.done{color:var(--teal)} .st-h.now{color:var(--brick)}
+.status ul{margin:0 0 14px;padding-left:18px;color:var(--ink2);line-height:1.5;font-size:14.5px}
+.status li{margin-bottom:5px}
+.status li b{color:var(--ink)}
+.nstr{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--ink2);white-space:nowrap}
+.nstr svg{width:22px;height:6px}
+.big{font-size:22px;font-weight:700;color:var(--brick);font-variant-numeric:tabular-nums}
+.ins p.pct{font-size:13px;color:var(--muted);margin-top:4px;font-variant-numeric:tabular-nums}
+.verdict{margin-top:16px;font-size:13.5px;color:var(--ink2);line-height:1.45}
+.verdict b{color:var(--ink)}
+</style>
+
+<div class="wrap">
+  <section class="status" aria-labelledby="status-h">
+    <h1 id="status-h">Where things stand</h1>
+    <p class="stamp">Updated Nov 16, evening</p>
+    <div class="cols">
+      <div>
+        <h2 class="st-h done">Log: live on picohealth.app</h2>
+        <ul>
+          <li>One card per meal; each food a row with its own ••• menu. Tap a food for its details.</li>
+          <li>Slim rows for supplements, exposures and symptoms. Symptoms sit on a clay tint.</li>
+          <li>Smaller, squarer symptom buttons, now on past days too. "+ Add symptom".</li>
+          <li>Avoid is brick, Limit is ochre, Allowed is teal, on the Log, My food list, food search and the rating buttons.</li>
+          <li>Property chips (e.g. "Very high oxalate") are neutral, so they don't read as a second verdict.</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="st-h now">Insights: building now</h2>
+        <ul>
+          <li><b>Heading:</b> "Possible triggers" and "These often came right before a symptom in your log." (your pick)</li>
+          <li><b>Strength:</b> ●●● Strong / ●●○ Moderate / ●○○ Early in plain ink, no colour (your pick, option 2 below).</li>
+          <li><b>One card per finding,</b> e.g. "Almonds → joint pain". The sentence leads with the count ("16 of 16 times"), and the % sits beside it ("100% vs 2% after other meals"). Today the engine's sentence leads with the %, so I'm rewriting it from the same numbers, with tests.</li>
+          <li><b>Removing</b> the dot chart at the top.</li>
+          <li><b>Early signals:</b> "Include N early signals" becomes "+N early signals" at the end of each section. Still 3 per section, then "Show more".</li>
+          <li><b>Reintroductions:</b> a slim link at the top.</li>
+          <li><b>Your day:</b> hiding "low" property chips.</li>
+          <li><b>Fixing a bug:</b> when the patterns fail to load, the page wrongly says "Nothing logged". It will say it couldn't load, with a retry.</li>
+          <li><b>Also fixed along the way:</b> property names that leaked raw database keys ("histamine_liberator", "very_high oxalate") now read "May release histamine" and "Very high oxalate"; "Your day" times read 8:02 AM, not 08:02:00; the 30-day comparison is no longer a box inside a box.</li>
+          <li><b>Status:</b> built and checked at phone width on Sarah's data. An independent design review is running now; after that I push and send you what to check.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <h1 class="h1b">First Insights heading: three options</h1>
+  <p class="lead">Same data in each (Sarah's demo log), in the agreed card layout. Only the heading and its one line change. Pick one, or tell me what to change.</p>
+
+  <div class="grid">
+    <section aria-label="Option A">
+      <p class="opt-label">A · Possible triggers</p>
+      <div class="phone">
+        <p class="note">Patterns in your own log, not a diagnosis. Worth raising with your practitioner.</p>
+        <div class="sec-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg><h2>Possible triggers</h2></div>
+        <p class="sub">These often came right before a symptom in your log.</p>
+        <div class="ins"><div class="top"><span class="t">Almonds<span>→</span>joint pain</span><span class="str s4"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>Joint pain came within 4 hours of almonds 16 of 16 times.</p></div>
+        <div class="ins"><div class="top"><span class="t">Mold<span>→</span>brain fog</span><span class="str s4"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>On days with mold, brain fog showed up on 14 of 15 days.</p></div>
+      </div>
+      <p class="verdict"><b>Reads as:</b> the word people already use. "Possible" carries the hedge, so the line below can just say what the rows are.</p>
+    </section>
+
+    <section aria-label="Option B">
+      <p class="opt-label">B · What came before your symptoms</p>
+      <div class="phone">
+        <p class="note">Patterns in your own log, not a diagnosis. Worth raising with your practitioner.</p>
+        <div class="sec-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg><h2>What came before your symptoms</h2></div>
+        <p class="sub">Things that often showed up first, on the same day or within hours.</p>
+        <div class="ins"><div class="top"><span class="t">Almonds<span>→</span>joint pain</span><span class="str s4"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>Joint pain came within 4 hours of almonds 16 of 16 times.</p></div>
+        <div class="ins"><div class="top"><span class="t">Mold<span>→</span>brain fog</span><span class="str s4"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>On days with mold, brain fog showed up on 14 of 15 days.</p></div>
+      </div>
+      <p class="verdict"><b>Reads as:</b> pure observation, the most literal of the three. Longest heading; wraps to two lines on small phones.</p>
+    </section>
+
+    <section aria-label="Option C">
+      <p class="opt-label">C · Linked to your symptoms</p>
+      <div class="phone">
+        <p class="note">Patterns in your own log, not a diagnosis. Worth raising with your practitioner.</p>
+        <div class="sec-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg><h2>Linked to your symptoms</h2></div>
+        <p class="sub">Your symptoms showed up more often with these than without them.</p>
+        <div class="ins"><div class="top"><span class="t">Almonds<span>→</span>joint pain</span><span class="str s4"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>Joint pain came within 4 hours of almonds 16 of 16 times.</p></div>
+        <div class="ins"><div class="top"><span class="t">Mold<span>→</span>brain fog</span><span class="str s4"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>On days with mold, brain fog showed up on 14 of 15 days.</p></div>
+      </div>
+      <p class="verdict"><b>Reads as:</b> accurate about what the engine measures (with vs without). "Linked" is softer than "trigger" but a little abstract.</p>
+    </section>
+  </div>
+
+  <h1 class="h1b">Strength: three ways to show it</h1>
+  <p class="lead">Chosen: <b>A · Possible triggers</b>. Below, the same three findings from Sarah's log in each treatment. The counts are real. "Strong" and "Moderate" are the engine's own ratings, which weigh how many days there are and how big the gap is against other days. A percentage alone can't do that: 3 of 3 is also 100%.</p>
+
+  <div class="grid">
+    <section aria-label="Badge A">
+      <p class="opt-label">1 · Amber badge (the October mockup)</p>
+      <div class="phone">
+        <div class="sec-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg><h2>Possible triggers</h2></div>
+        <div class="ins"><div class="top"><span class="t">Almonds<span>→</span>joint pain</span><span class="str s4"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>Joint pain came within 4 hours of almonds 16 of 16 times.</p></div>
+        <div class="ins"><div class="top"><span class="t">Leftover food<span>→</span>hives</span><span class="str s3"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2" fill="none" stroke="currentColor" stroke-width="1"/></svg>Moderate</span></div><p>On days with leftovers, hives showed up on 11 of 12 days.</p></div>
+      </div>
+      <p class="verdict"><b>Problem:</b> this amber is now the Log's "Limit" colour, so a strong finding reads as a warning about the food, not as "lots of evidence".</p>
+    </section>
+
+    <section aria-label="Badge B">
+      <p class="opt-label">2 · Same dots and word, no colour (recommended)</p>
+      <div class="phone">
+        <div class="sec-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg><h2>Possible triggers</h2></div>
+        <div class="ins"><div class="top"><span class="t">Almonds<span>→</span>joint pain</span><span class="nstr"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2.4" fill="currentColor"/></svg>Strong</span></div><p>Joint pain came within 4 hours of almonds 16 of 16 times.</p><p class="pct">100% of the time, vs 2% after other meals</p></div>
+        <div class="ins"><div class="top"><span class="t">Leftover food<span>→</span>hives</span><span class="nstr"><svg viewBox="0 0 22 6"><circle cx="3" cy="3" r="2.4" fill="currentColor"/><circle cx="11" cy="3" r="2.4" fill="currentColor"/><circle cx="19" cy="3" r="2" fill="none" stroke="currentColor" stroke-width="1"/></svg>Moderate</span></div><p>On days with leftovers, hives showed up on 11 of 12 days.</p><p class="pct">92% of those days, vs 0% of other days</p></div>
+      </div>
+      <p class="verdict"><b>Reads as:</b> how sure, without saying good or bad. The section heading carries the meaning; the count leads and the % sits beside it.</p>
+    </section>
+
+    <section aria-label="Badge C">
+      <p class="opt-label">3 · Percent only, no badge</p>
+      <div class="phone">
+        <div class="sec-h"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 7 13.5 15.5 8.5 10.5 2 17"/><path d="M16 7h6v6"/></svg><h2>Possible triggers</h2></div>
+        <div class="ins"><div class="top"><span class="t">Almonds<span>→</span>joint pain</span><span class="big">100%</span></div><p>Joint pain came within 4 hours of almonds 16 of 16 times. After other meals, 2%.</p></div>
+        <div class="ins"><div class="top"><span class="t">Leftover food<span>→</span>hives</span><span class="big">92%</span></div><p>On days with leftovers, hives showed up on 11 of 12 days. On other days, 0%.</p></div>
+      </div>
+      <p class="verdict"><b>Problem:</b> a 3-of-3 early signal would show the same big "100%" as the 16-of-16 finding. A lone % also breaks your rule that a % only ever goes with a count.</p>
+    </section>
+  </div>
+</div>

@@ -38,6 +38,21 @@ function joinAnd(words: string[]): string {
   return words.length <= 1 ? words.join('') : `${words.slice(0, -1).join(', ')} and ${words[words.length - 1]}`;
 }
 
+const SEVERITIES = ['very_high', 'high', 'moderate', 'low'];
+
+/**
+ * The plain name for a factor. A food property ("food_property:oxalate_high",
+ * labelled "High oxalate" or "May release histamine food" by the engine)
+ * reads the same as its Insights card: "Foods high in oxalate".
+ */
+export function factorName(f: Pick<Factor, 'key' | 'label' | 'category'>): string {
+  if (f.category !== 'food_property') return f.label;
+  const body = f.key.replace('food_property:', '');
+  const sev = SEVERITIES.find((s) => body.endsWith(`_${s}`)) ?? 'high';
+  const property = body.endsWith(`_${sev}`) ? body.slice(0, -(sev.length + 1)) : body;
+  return propertyGroupTitle(property, sev);
+}
+
 export function findingText(r: SingleFactorResult | MultiFactorResult): FindingText {
   const isFlare = r.outcome.type === 'flare_day';
   const symptom = r.outcome.label.toLowerCase();
@@ -45,27 +60,28 @@ export function findingText(r: SingleFactorResult | MultiFactorResult): FindingT
   const outcome = isFlare ? (helps ? 'fewer flare days' : 'flare days') : helps ? `less ${symptom}` : symptom;
 
   if ('factors' in r && r.factorCount >= 2) {
-    const labels = r.factors.map((x) => x.label.toLowerCase());
+    const labels = r.factors.map((x) => factorName(x).toLowerCase());
     const when = r.factorCount === 2 ? `On days with both ${joinAnd(labels)}` : `On days with ${joinAnd(labels)} together`;
     const n = r.frequency;
     const total = r.coOccurrences;
     return {
-      title: { factor: r.factors.map((x) => x.label).join(' + '), outcome },
+      title: { factor: r.factors.map((x) => factorName(x)).join(' + '), outcome },
       sentence: isFlare ? `${when}, ${n} of ${total} were flare days.` : `${when}, ${symptom} showed up on ${n} of ${total} days.`,
       compare: `${pct(r.conditionalRate)} of those days, vs ${pct(r.bestSubRate)} with ${r.factorCount === 2 ? 'either one alone' : 'fewer of them'}`,
     };
   }
 
   const s = r as SingleFactorResult;
-  const title = { factor: s.factor.label, outcome };
+  const name = factorName(s.factor);
+  const title = { factor: name, outcome };
   if (s.basis === 'meals') {
     return {
       title,
-      sentence: `${r.outcome.label} came within ${TIMING_HOURS} hours of ${s.factor.label.toLowerCase()} ${s.frequency} of ${s.totalOpportunities} times.`,
+      sentence: `${r.outcome.label} came within ${TIMING_HOURS} hours of ${name.toLowerCase()} ${s.frequency} of ${s.totalOpportunities} times.`,
       compare: `${pct(s.conditionalRate)} of the time, vs ${pct(s.baseRate)} after other meals`,
     };
   }
-  const when = whenClause(s.factor);
+  const when = whenClause({ ...s.factor, label: name });
   return {
     title,
     sentence: isFlare
@@ -100,12 +116,11 @@ export function propertyLine(outcome: string, days: number, total: number): stri
   return `${what} on ${days} of ${total} days`;
 }
 
-/** "high in oxalate", "with moderate histamine", "that can release histamine". */
-function propertyPhrase(property: string, severity: string): string {
-  if (property === 'histamine_liberator') return 'that can release histamine';
-  if (property === 'nightshade') return 'that are nightshades';
-  const title = propertyGroupTitle(property, severity);
-  return title.replace(/^Foods /, '');
+/** The one plain word for a property, as a fit line says it: histamine_liberator → "histamine". */
+function propertyNoun(property: string): string {
+  if (property === 'histamine_liberator') return 'histamine';
+  const label = PROPERTY_LABELS[property] ?? property.replace(/_/g, ' ');
+  return label === label.toUpperCase() ? label : label.toLowerCase();
 }
 
 export interface PropertyPatternInput {
@@ -174,9 +189,14 @@ export function propertyCards(patterns: PropertyPatternInput[]): PropertyCard[] 
   return merged
     .map((g) => {
       const lines = [...g.lines].sort((a, b) => b.days / b.total - a.days / a.total).slice(0, 3);
+      // Same collapse rule as a food's fit line: a property's levels and its
+      // "can release" variant are one plain word ("Foods with histamine").
+      const nouns = [...new Set(g.props.map((p) => propertyNoun(p.property)))];
       const title = g.props.length === 1
         ? propertyGroupTitle(g.props[0].property, g.props[0].severity)
-        : `Foods ${joinOr(g.props.map((p) => propertyPhrase(p.property, p.severity)))}`;
+        : nouns.length === 1
+          ? `Foods with ${nouns[0]}`
+          : `Foods with ${joinOr(nouns).replace(/ or /, " and ")}`;
       const sameTotal = lines.every((l) => l.total === lines[0].total);
       const foods = [...g.foods];
       let sentence: string;

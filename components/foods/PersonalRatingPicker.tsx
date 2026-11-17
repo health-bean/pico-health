@@ -11,8 +11,11 @@ const OPTIONS: { value: PersonalStatus; label: string; tone: FitTone }[] = [
   { value: "unsafe", label: "Not for me", tone: "avoid" },
 ];
 
-const chip = "min-h-11 rounded-full border px-3.5 text-sm font-medium transition-colors disabled:opacity-60";
-const chipOff = "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50";
+/** Same compact chip as the Log's symptom buttons: a 36px face inside a 44px target. */
+const chipButton = "group inline-flex min-h-11 items-center focus-visible:outline-none disabled:opacity-60";
+const chip =
+  "inline-flex h-9 items-center rounded-sm border px-2.5 text-sm font-medium transition-colors group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-teal-500";
+const chipOff = "border-[var(--color-border)] bg-[var(--color-surface-card)] text-warm-900 group-hover:border-teal-300";
 
 /**
  * The person's own verdict on a food, kept apart from what the food contains.
@@ -53,9 +56,9 @@ export function PersonalRatingPicker({
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      <span className="text-sm font-medium text-warm-700">How is this food for you?</span>
-      <div role="group" aria-label="How is this food for you?" className="flex flex-wrap gap-2">
+    <div className="flex flex-col">
+      <span className="text-sm font-semibold text-warm-900">How is this food for you?</span>
+      <div role="group" aria-label="How is this food for you?" className="flex flex-wrap gap-x-1.5">
         {OPTIONS.map((o) => (
           <button
             key={o.value}
@@ -63,9 +66,9 @@ export function PersonalRatingPicker({
             disabled={saving}
             aria-pressed={value?.status === o.value}
             onClick={() => choose(o.value)}
-            className={cn(chip, value?.status === o.value ? FIT_TONE_CLASS[o.tone].chip : chipOff)}
+            className={chipButton}
           >
-            {o.label}
+            <span className={cn(chip, value?.status === o.value ? FIT_TONE_CLASS[o.tone].chip : chipOff)}>{o.label}</span>
           </button>
         ))}
       </div>

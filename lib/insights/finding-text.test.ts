@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { findingText, pct, propertyCards, propertyGroupTitle, propertyLine } from './finding-text';
+import { factorName, findingText, pct, propertyCards, propertyGroupTitle, propertyLine } from './finding-text';
 import type { Factor, MultiFactorResult, Outcome, SingleFactorResult } from './types';
 
 const joint: Outcome = { type: 'symptom', key: 'joint_pain', label: 'Joint pain' } as Outcome;
@@ -144,7 +144,7 @@ describe('propertyCards', () => {
       row('histamine_liberator', 'high', 'Joint pain', 10, 1),
     ]);
     expect(cards).toHaveLength(1);
-    expect(cards[0].title).toBe('Foods with moderate histamine or that can release histamine');
+    expect(cards[0].title).toBe('Foods with histamine');
   });
 
   it('keeps properties apart when their counts differ', () => {
@@ -159,5 +159,26 @@ describe('propertyCards', () => {
   it('shortens a long food list', () => {
     const [c] = propertyCards([{ ...row('oxalate', 'high', 'Hives', 4), foods: ['A', 'B', 'C', 'D', 'E'] }]);
     expect(c.sentence).toContain('a, b, c and 2 more');
+  });
+});
+
+describe('factorName', () => {
+  it('names a food property the way its Insights card does', () => {
+    expect(factorName({ key: 'food_property:oxalate_high', label: 'High oxalate', category: 'food_property' } as never)).toBe('Foods high in oxalate');
+    expect(factorName({ key: 'food_property:histamine_liberator_high', label: 'May release histamine food', category: 'food_property' } as never)).toBe('Foods that can release histamine');
+    expect(factorName({ key: 'food_property:histamine_moderate', label: 'Moderate histamine', category: 'food_property' } as never)).toBe('Foods with moderate histamine');
+  });
+
+  it('leaves other factors as they are', () => {
+    expect(factorName({ key: 'food:almonds', label: 'Almonds', category: 'food' } as never)).toBe('Almonds');
+  });
+
+  it('reads naturally in a sentence', () => {
+    const t = findingText({
+      factor: { key: 'food_property:oxalate_high', label: 'High oxalate', category: 'food_property' } as Factor,
+      outcome: joint, frequency: 6, totalOpportunities: 9, baseRate: 0.1, conditionalRate: 6 / 9, rateMultiplier: 3,
+      recencyDays: 1, impactScore: 1, direction: 'increases', confidence: 'moderate', description: '',
+    });
+    expect(t.sentence).toBe('On days with foods high in oxalate, joint pain showed up on 6 of 9 days.');
   });
 });

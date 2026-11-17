@@ -196,7 +196,7 @@ export function FoodSearchInput({
 
     // Same tones and words as the Log's fit line: Allowed / Limit / Avoid.
     const tone = statusTone(status);
-    const label = { allowed: "Allowed", limit: "Limit", avoid: "Avoid", unknown: "Not rated" }[tone];
+    const label = { allowed: "Allowed", limit: "Limit", avoid: "Avoid", unknown: "Not rated yet" }[tone];
     return (
       <span className={cn("inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-xs font-medium", FIT_TONE_CLASS[tone].chip)}>
         <FitSymbol tone={tone} />
@@ -286,13 +286,7 @@ export function FoodSearchInput({
                 {protocolId && getProtocolBadge(food.protocolStatus)}
               </div>
 
-              {/* Protocol Violations Warning */}
-              {food.protocolStatus === "avoid" && (
-                <div className={cn("mt-2 flex items-start gap-1.5 text-xs", FIT_TONE_CLASS.avoid.text)}>
-                  <FitSymbol tone="avoid" className="mt-0.5" />
-                  <span>Not allowed on your protocol</span>
-                </div>
-              )}
+              {/* The badge already says ✕ Avoid; no second line repeating it. */}
             </button>
           ))}
         </div>

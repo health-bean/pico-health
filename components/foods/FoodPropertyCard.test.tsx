@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { getLevelColor, getBooleanColor, formatLevel, noneLabel } from "./FoodPropertyCard";
+import { arrangeProperties, getLevelColor, getBooleanColor, formatLevel, noneLabel } from "./FoodPropertyCard";
 
 describe("FoodPropertyCard level colors", () => {
   it("climbs one ramp from low to very high", () => {
@@ -37,7 +37,7 @@ describe("FoodPropertyCard level colors", () => {
     expect(formatLevel("low")).toBe("Low");
     expect(formatLevel("moderate")).toBe("Moderate");
     expect(formatLevel("high")).toBe("High");
-    expect(formatLevel("very_high")).toBe("Very High");
+    expect(formatLevel("very_high")).toBe("Very high");
     expect(formatLevel("unknown")).toBe("Unknown");
   });
 });
@@ -47,5 +47,21 @@ describe("noneLabel", () => {
     expect(noneLabel("FODMAP")).toBe("No FODMAPs");
     expect(noneLabel("Histamine")).toBe("Histamine: not detected");
     expect(noneLabel("Oxalate")).toBe("Oxalate: none");
+  });
+});
+
+describe("arrangeProperties", () => {
+  const p = (label: string, value: boolean | string, type: "boolean" | "level" = "level") => ({ label, value: value as never, type });
+  it("puts what matters first and folds low, none and 'no' into one line", () => {
+    const { notable, quiet } = arrangeProperties([
+      p("Nightshade", false, "boolean"),
+      p("Histamine", "moderate"),
+      p("May release histamine", true, "boolean"),
+      p("Oxalate", "very_high"),
+      p("Tyramine", "low"),
+      p("FODMAP", "none"),
+    ]);
+    expect(notable.map((x) => x.label)).toEqual(["Oxalate", "May release histamine", "Histamine"]);
+    expect(quiet).toEqual(["nightshade", "tyramine", "FODMAP"]);
   });
 });

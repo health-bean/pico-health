@@ -18,6 +18,22 @@ interface PropertyInfo {
   type: "boolean" | "level";
 }
 
+const LEVEL_ORDER: Record<string, number> = { very_high: 4, high: 3, moderate: 1 };
+
+/**
+ * What matters first: very high, high, a "yes" (nightshade, releases
+ * histamine), then moderate. Low, none and "no" fold into one quiet line,
+ * so "Nightshade: No" never sits at the same size as "Oxalate: very high".
+ */
+export function arrangeProperties<T extends { label: string; value: boolean | TriggerLevel; type: "boolean" | "level" }>(
+  list: T[]
+): { notable: T[]; quiet: string[] } {
+  const rank = (p: T) => (p.type === "boolean" ? (p.value ? 2 : 0) : (LEVEL_ORDER[p.value as string] ?? 0));
+  const notable = list.filter((p) => rank(p) > 0).sort((a, b) => rank(b) - rank(a));
+  const quiet = list.filter((p) => rank(p) === 0).map((p) => (p.label === "FODMAP" ? p.label : p.label.toLowerCase()));
+  return { notable, quiet };
+}
+
 /**
  * What each property is, and which eating approach limits it. These describe
  * the food and report what a protocol or published food list says: they do not
@@ -131,7 +147,7 @@ export function formatLevel(level: TriggerLevel): string {
     case "high":
       return "High";
     case "very_high":
-      return "Very High";
+      return "Very high";
     case "unknown":
     default:
       return "Unknown";
@@ -170,7 +186,7 @@ function Tooltip({
         onFocus={() => setIsVisible(true)}
         onBlur={() => setIsVisible(false)}
         onClick={() => setIsVisible((v) => !v)}
-        className="min-h-9 rounded-full"
+        className="group inline-flex min-h-11 items-center focus-visible:outline-none"
       >
         {children}
       </button>
@@ -213,14 +229,14 @@ function PropertyBadge({ property }: { property: PropertyInfo }) {
   return (
     <Tooltip content={description} label={label}>
       <span
-        className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs font-medium ring-1 ring-inset ${colors.bg} ${colors.text} ${colors.ring} transition-shadow hover:shadow-[var(--shadow-card)]`}
+        className={`inline-flex h-8 items-center gap-1.5 rounded-sm px-2.5 text-xs font-medium ring-1 ring-inset ${colors.bg} ${colors.text} ${colors.ring} group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-teal-500`}
       >
         {noneText ? (
           <span className="font-semibold">{noneText}</span>
         ) : (
           <>
             <span className="font-semibold">{label}:</span>
-            <span>{displayValue}</span>
+            <span>{displayValue.toLowerCase()}</span>
           </>
         )}
         <Info className="h-3 w-3 opacity-60" aria-hidden="true" />
@@ -304,18 +320,26 @@ export function FoodPropertyCard({
     <div
       className={`${box} ${bare ? "" : "bg-[var(--color-surface-card)]"} ${className}`}
     >
-      <h3 className="mb-3 text-sm font-semibold text-warm-900">
-        Trigger properties
-      </h3>
-      <div className="flex flex-wrap gap-2">
-        {propertyList.map((property, index) => (
-          <PropertyBadge key={index} property={property} />
-        ))}
-      </div>
-      <p className="mt-3 text-sm text-warm-500">
-        Tap a property to read what it means. Ratings come from published lab studies and
-        public health data, and a food with no data shows nothing rather than a guess. They
-        describe the food, not a diagnosis, and have not been reviewed by a clinician yet.
+      <h3 className="text-sm font-semibold text-warm-900">What&rsquo;s in it</h3>
+      {(() => {
+        const { notable, quiet } = arrangeProperties(propertyList);
+        return (
+          <>
+            {notable.length > 0 && (
+              <div className="flex flex-wrap gap-x-1.5">
+                {notable.map((property) => (
+                  <PropertyBadge key={property.label} property={property} />
+                ))}
+              </div>
+            )}
+            {quiet.length > 0 && (
+              <p className="mt-1 text-xs text-[var(--color-text-muted)]">Low or none: {quiet.join(", ")}</p>
+            )}
+          </>
+        );
+      })()}
+      <p className="mt-2 text-xs text-[var(--color-text-muted)]">
+        From published lab studies and public health data. Not yet reviewed by a clinician.
       </p>
     </div>
   );
