@@ -111,7 +111,7 @@ function EntryChip({
       </div>
 
       {offProtocol && (
-        <p className="mt-1 pl-3 text-xs text-[var(--color-warning-strong)]">
+        <p className="mt-1 pl-3 text-xs text-brick-600">
           Outside your protocol · {entry.protocolViolations.join(", ")}
         </p>
       )}

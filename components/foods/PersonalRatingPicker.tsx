@@ -72,7 +72,7 @@ export function PersonalRatingPicker({
       {value?.source === "trial" && (
         <p className="text-sm text-warm-500">Set by your reintroduction trial. Tap another option to change it.</p>
       )}
-      {error && <p className="text-sm text-[var(--color-warning-strong)]">Couldn&apos;t save that. Try again.</p>}
+      {error && <p className="text-sm text-brick-600">Couldn&apos;t save that. Try again.</p>}
     </div>
   );
 }

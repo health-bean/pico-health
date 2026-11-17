@@ -83,7 +83,7 @@ export function SuggestRating({
           Add {foodName.toLowerCase()} to your list as {LABEL[suggestion]}?
         </button>
       )}
-      {state === 'error' && <span className="ml-2 text-[var(--color-warning-strong)]">Couldn&apos;t save. Try again.</span>}
+      {state === 'error' && <span className="ml-2 text-brick-600">Couldn&apos;t save. Try again.</span>}
     </p>
   );
 }

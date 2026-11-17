@@ -72,7 +72,7 @@ export default function MyListPage() {
         {mine > 0 && `${mine} ${mine === 1 ? "food has" : "foods have"} your own rating.`}
       </p>
 
-      {failed && <p className="mt-6 text-sm text-[var(--color-warning-strong)]">Couldn&apos;t load your list. Try again.</p>}
+      {failed && <p className="mt-6 text-sm text-brick-600">Couldn&apos;t load your list. Try again.</p>}
       {!data && !failed && (
         <div className="mt-10 flex justify-center">
           <Spinner />

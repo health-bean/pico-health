@@ -194,7 +194,7 @@ export function FoodRow({
         <div id={panelId} className="flex flex-col gap-4 border-t border-[var(--color-border-light)] px-4 py-3">
           {canRate && foodId && <PersonalRatingPicker foodId={foodId} value={personal} onChange={setPersonal} />}
           {hasProperties && food?.properties && (
-            <FoodPropertyCard properties={food.properties as unknown as FoodTriggerProperties} />
+            <FoodPropertyCard bare properties={food.properties as unknown as FoodTriggerProperties} />
           )}
         </div>
       )}

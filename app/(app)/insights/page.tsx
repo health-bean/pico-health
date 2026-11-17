@@ -2,19 +2,19 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { InsightSection } from '@/components/insights/InsightSection';
-import { InsightRow } from '@/components/insights/InsightRow';
+import { InsightCard } from '@/components/insights/InsightCard';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
 import Link from 'next/link';
 import { Spinner, PageTitle } from '@/components/ui';
 import {
-  Activity, CalendarDays, ChevronRight, CalendarRange, Clock, ClipboardList, Eye, FlaskConical,
+  Activity, CalendarDays, ChevronRight, CalendarRange, RotateCcw, Clock, ClipboardList, Eye, FlaskConical,
   Droplets, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, Sparkles, TrendingDown, TrendingUp, Utensils, Zap,
   type LucideIcon,
 } from 'lucide-react';
 import type { DayComposite, InsightsOutput, InsightAlert, SingleFactorResult, MultiFactorResult } from '@/lib/insights/types';
 import { insightKey } from '@/lib/insights/types';
-import { StandoutPlot } from '@/components/insights/StandoutPlot';
+import { findingText, propertyCards } from '@/lib/insights/finding-text';
 import { SuggestRating } from '@/components/insights/SuggestRating';
 
 const FACTOR_ICONS: Record<string, LucideIcon> = {
@@ -29,20 +29,6 @@ function getIcon(result: SingleFactorResult | MultiFactorResult): LucideIcon {
   return FACTOR_ICONS[f.category] ?? Search;
 }
 
-function getTitle(result: SingleFactorResult | MultiFactorResult): string {
-  if ('factors' in result && (result as MultiFactorResult).factorCount >= 2) {
-    return (result as MultiFactorResult).factors.map(f => f.label).join(' + ');
-  }
-  return (result as SingleFactorResult).factor.label;
-}
-
-function getFoods(_result: SingleFactorResult | MultiFactorResult): string[] {
-  // For food property patterns, we could list contributing foods
-  // For now, return empty — the engine would need to track this
-  return [];
-}
-
-/** Days the factor was present: the denominator behind every row. */
 /** A meal-timing row (lib/insights/timing.ts): counts meals, not days. */
 function isTimed(result: SingleFactorResult | MultiFactorResult): boolean {
   return 'basis' in result && result.basis === 'meals';
@@ -72,6 +58,7 @@ type TimeRange = 30 | 90 | 180;
 export default function InsightsPage() {
   const [loading, setLoading] = useState(true);
   const [composite, setComposite] = useState<DayComposite | null>(null);
+  const [dayDate, setDayDate] = useState<string | null>(null);
   const [patterns, setPatterns] = useState<InsightsOutput | null>(null);
   const [alerts, setAlerts] = useState<InsightAlert[]>([]);
   // Foods already on the person's own list: no "add to your list?" for them.
@@ -106,19 +93,13 @@ export default function InsightsPage() {
 
   const now = new Date();
   const today = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}`;
-  // Early signals (a handful of days) stay out of the default view so the
-  // page leads with what has real evidence behind it. One tap brings them in.
+  // Early signals live at the end of each section ("+N early signals"). When
+  // nothing else has cleared the bar, the empty state offers them instead,
+  // and this opens them in place.
   const [showEarly, setShowEarly] = useState(false);
-  // Including early signals adds rows inside sections that are collapsed by
-  // default, so the toggle used to change nothing a person could see. Bumping
-  // this opens those sections, and the status line says what changed.
-  const [expandSignal, setExpandSignal] = useState(0);
-  const toggleEarly = useCallback(() => {
-    setShowEarly(v => {
-      if (!v) setExpandSignal(n => n + 1);
-      return !v;
-    });
-  }, []);
+  // A failed load used to fall through to "Nothing logged in the last N
+  // days", which is false. It now says it couldn't load.
+  const [loadFailed, setLoadFailed] = useState(false);
 
   const loadData = useCallback(async (days: number) => {
     setLoading(true);
@@ -129,12 +110,32 @@ export default function InsightsPage() {
         fetch(`/api/insights/patterns?days=${days}`),
       ]);
 
-      if (dayRes.ok) {
-        const data = await dayRes.json();
-        if (data) setComposite(data);
+      // "Your day" opens on the most recent day with entries: an empty Today
+      // shows nothing for anyone who logs in the evening or took a break.
+      let day: DayComposite | null = dayRes.ok ? await dayRes.json() : null;
+      let date = today;
+      if (!day || day.entryCount === 0) {
+        const stats = await fetch('/api/entries/stats').then(r => (r.ok ? r.json() : null)).catch(() => null);
+        const last: string | null = stats?.lastEntryDate ?? null;
+        if (last && last !== today) {
+          const lastRes = await fetch(`/api/insights/day?date=${last}`);
+          if (lastRes.ok) {
+            day = await lastRes.json();
+            date = last;
+          }
+        }
       }
+      if (day) setComposite(day);
+      setDayDate(date);
       if (alertsRes.ok) setAlerts(await alertsRes.json());
-      if (patternsRes.ok) setPatterns(await patternsRes.json());
+      if (patternsRes.ok) {
+        setPatterns(await patternsRes.json());
+        setLoadFailed(false);
+      } else {
+        setLoadFailed(true);
+      }
+    } catch {
+      setLoadFailed(true);
     } finally {
       setLoading(false);
     }
@@ -165,36 +166,19 @@ export default function InsightsPage() {
     );
   }
 
-  // Separate and curate
-  const withEvidence = <T extends { confidence?: string }>(rows: T[]) =>
-    showEarly ? rows : rows.filter(r => r.confidence !== 'early');
-  const earlyCount = [...(patterns?.triggers ?? []), ...(patterns?.helpers ?? [])].filter(r => r.confidence === 'early').length;
-  const allTriggers = withEvidence(patterns?.triggers ?? []);
-  const multiTriggers = allTriggers.filter(r => isMultiFactor(r));
-  const singleTriggers = allTriggers.filter(r => !isMultiFactor(r));
-  const triggers = [...multiTriggers, ...singleTriggers]; // compounds first
+  // Evidence first; early signals wait at the end of their own section.
+  const isEarly = (r: { confidence?: string }) => r.confidence === 'early';
+  const allTriggers = patterns?.triggers ?? [];
+  const orderedTriggers = [...allTriggers.filter(r => isMultiFactor(r)), ...allTriggers.filter(r => !isMultiFactor(r))]; // compounds first
+  const triggers = orderedTriggers.filter(r => !isEarly(r));
+  const earlyTriggers = orderedTriggers.filter(isEarly);
+  const allHelpers = patterns?.helpers ?? [];
+  const helpers = allHelpers.filter(r => !isEarly(r));
+  const earlyHelpers = allHelpers.filter(isEarly);
+  const earlyCount = earlyTriggers.length + earlyHelpers.length;
 
-  // One row per property, not one per property × symptom: the symptoms it
-  // lined up with become the row's sentence.
-  const propertyGroups = (() => {
-    const groups = new Map<string, { title: string; lines: { outcome: string; days: number; total: number }[]; impact: number }>();
-    for (const p of patterns?.propertyPatterns ?? []) {
-      const key = `${p.severity}|${p.property}`;
-      const sev = p.severity.replace('_', ' ');
-      const title = p.severity === 'high' || p.severity === 'very_high'
-        ? `Foods ${sev} in ${p.property}`
-        : `Foods with ${sev} ${p.property}`;
-      const g = groups.get(key) ?? { title, lines: [], impact: 0 };
-      g.lines.push({ outcome: p.outcome.label, days: p.frequency, total: p.totalOpportunities ?? p.frequency });
-      g.impact = Math.max(g.impact, p.impactScore);
-      groups.set(key, g);
-    }
-    return [...groups.values()]
-      .map(g => ({ ...g, lines: g.lines.sort((a, b) => b.days / b.total - a.days / a.total) }))
-      .sort((a, b) => b.impact - a.impact);
-  })();
-  const propertyPatterns = propertyGroups;
-  const helpers = withEvidence(patterns?.helpers ?? []);
+  // One card per property (merged when two cover the same foods and counts).
+  const propertyPatterns = propertyCards(patterns?.propertyPatterns ?? []);
 
   // The same food can raise one symptom and lower another. Say so on both
   // rows so a person does not read the two lists as a contradiction.
@@ -203,7 +187,7 @@ export default function InsightsPage() {
   const triggerOutcomes = new Map<string, string[]>();
   for (const r of allTriggers) { const k = singleKey(r); if (k) triggerOutcomes.set(k, [...(triggerOutcomes.get(k) ?? []), r.outcome.label]); }
   const helperOutcomes = new Map<string, string[]>();
-  for (const r of helpers) { const k = singleKey(r); if (k) helperOutcomes.set(k, [...(helperOutcomes.get(k) ?? []), r.outcome.label]); }
+  for (const r of allHelpers) { const k = singleKey(r); if (k) helperOutcomes.set(k, [...(helperOutcomes.get(k) ?? []), r.outcome.label]); }
   const crossNote = (r: SingleFactorResult | MultiFactorResult, other: Map<string, string[]>, where: string) => {
     const k = singleKey(r);
     if (k) {
@@ -218,40 +202,29 @@ export default function InsightsPage() {
     return `Separately, ${parts.join(' and ')} also showed up ${where}.`;
   };
 
-  // The three observations with the most evidence behind them, across both
-  // lists, so the page opens with an answer before the full lists.
-  // Symptom-linked observations come first (they are what a person came to
-  // understand); one better-day observation rounds it out when there is one.
-  const byImpact = <T extends { impactScore: number; confidence?: string }>(rows: T[]) =>
-    rows.filter(r => r.confidence !== 'early').sort((a, b) => b.impactScore - a.impactScore);
-  const topTriggers = byImpact(triggers).map(r => ({ r, dir: 'more' as const }));
-  const topHelpers = byImpact(helpers).map(r => ({ r, dir: 'less' as const }));
-  const standouts = [...topTriggers.slice(0, topHelpers.length > 0 ? 2 : 3), ...topHelpers.slice(0, 1)]
-    .concat(topTriggers.length < 2 ? topHelpers.slice(1, 3 - topTriggers.length) : [])
-    .slice(0, 3);
   const progress = patterns?.progress ?? [];
 
-  const hasInsights = triggers.length > 0 || propertyPatterns.length > 0 || helpers.length > 0;
+  // After a failed load, `patterns` still holds the previous window: never show it as this one.
+  const hasInsights = !loadFailed && (
+    triggers.length > 0 || propertyPatterns.length > 0 || helpers.length > 0 || (showEarly && earlyCount > 0));
 
   // Symptom counts month over month. Independent of the patterns, so it shows
   // on an empty page too.
   const progressSection = progress.length > 0 && (
-            <section className="bg-[var(--color-surface-card)] rounded-xl overflow-hidden shadow-[var(--shadow-card)] border border-warm-200 p-4">
-              <div className="flex items-center gap-2 mb-3">
-                <CalendarRange className="h-4 w-4 text-warm-600" aria-hidden="true" />
-                <h2 className="text-base font-semibold text-warm-900">The last 30 days vs. the 30 before</h2>
-              </div>
-              <p className="mb-3 text-sm text-warm-600">
-                Symptom days, side by side. Chronic conditions move in waves — this is a comparison, not a scorecard.
-              </p>
-              <div className="space-y-2">
-                {progress.map((o, i) => (
-                  <div key={i} className="p-2.5 bg-warm-50 rounded-lg">
-                    <p className="text-sm text-warm-700">{o.observation}</p>
-                  </div>
-                ))}
-              </div>
-            </section>
+    <section aria-labelledby="progress-heading">
+      <div className="flex items-center gap-2 border-b border-warm-300 pb-2">
+        <CalendarRange className="h-4 w-4 shrink-0 text-warm-600" aria-hidden="true" />
+        <h2 id="progress-heading" className="text-lg font-semibold text-warm-900">The last 30 days vs. the 30 before</h2>
+      </div>
+      <p className="mt-2 max-w-[65ch] text-sm text-warm-600">
+        Symptom days, side by side. Chronic conditions move in waves, so this is a comparison, not a scorecard.
+      </p>
+      <ul className="mt-2 divide-y divide-warm-200/70">
+        {progress.map((o, i) => (
+          <li key={i} className="py-2.5 text-sm text-warm-700">{o.observation}</li>
+        ))}
+      </ul>
+    </section>
   );
   const daysTracked = patterns?.dataStatus?.daysTracked ?? 0;
   const watching = patterns?.watching;
@@ -273,6 +246,61 @@ export default function InsightsPage() {
   // an early signal waits for its row instead of appearing out of context.
   const shownKeys = new Set([...(patterns?.triggers ?? []), ...(patterns?.helpers ?? [])].map(resultKey));
   const orphanAlerts = alerts.filter(a => !shownKeys.has(a.insightKey));
+
+  const triggerCard = (r: SingleFactorResult | MultiFactorResult) => {
+    const t = findingText(r);
+    const food = singleFood(r);
+    return (
+      <InsightCard
+        key={resultKey(r)}
+        icon={getIcon(r)}
+        factor={t.title.factor}
+        outcome={t.title.outcome}
+        sentence={t.sentence}
+        compare={t.compare}
+        strength={r.confidence}
+        isNew={alertKeys.has(resultKey(r))}
+        note={crossNote(r, helperOutcomes, 'on better days')}
+        action={
+          food && !isTimed(r) && !rated.has(food.toLowerCase()) ? (
+            <SuggestRating
+              foodName={food}
+              suggestion="unsafe"
+              evidence={{ pattern: r.outcome.label, days: r.frequency, of: getTotalDays(r), confidence: r.confidence }}
+            />
+          ) : null
+        }
+      />
+    );
+  };
+
+  const helperCard = (r: SingleFactorResult | MultiFactorResult) => {
+    const t = findingText(r);
+    const food = singleFood(r);
+    return (
+      <InsightCard
+        key={resultKey(r)}
+        icon={getIcon(r)}
+        factor={t.title.factor}
+        outcome={t.title.outcome}
+        sentence={t.sentence}
+        compare={t.compare}
+        strength={r.confidence}
+        isNew={alertKeys.has(resultKey(r))}
+        relation="with"
+        note={crossNote(r, triggerOutcomes, 'with symptoms')}
+        action={
+          food && !isTimed(r) && !rated.has(food.toLowerCase()) && !triggerOutcomes.has(singleKey(r) ?? '') ? (
+            <SuggestRating
+              foodName={food}
+              suggestion="safe"
+              evidence={{ pattern: `less ${r.outcome.label.toLowerCase()}`, days: r.frequency, of: getTotalDays(r), confidence: r.confidence }}
+            />
+          ) : null
+        }
+      />
+    );
+  };
 
   return (
     <div className="mx-auto max-w-2xl px-4 pb-24" aria-busy={loading}>
@@ -298,42 +326,41 @@ export default function InsightsPage() {
         </div>
       </div>
 
-      {hasInsights && (
-        <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
-          <details className="group text-sm text-warm-600">
-            <summary className="inline-flex min-h-11 cursor-pointer list-none items-center font-medium text-teal-700 hover:text-teal-800">
-              How to read this
-            </summary>
-            <div className="mt-1 max-w-[65ch] space-y-2 rounded-xl bg-warm-50 p-3 leading-relaxed">
-              <p>Each row is something that happened alongside a symptom, counted in days. It is a pattern in your own log, not a cause or a diagnosis. Worth raising with your practitioner.</p>
-              <p>Rows counted in <span className="font-medium text-warm-800">times</span> are about timing: a symptom logged within four hours after you ate something. They need symptoms logged as they happen; entries logged together all at once are not counted.</p>
-              <p><span className="font-medium text-warm-800">Early signal</span> means it could still be chance: too few days so far, or a difference small enough to happen by coincidence. <span className="font-medium text-warm-800">Moderate</span> and <span className="font-medium text-warm-800">strong evidence</span> mean more days and a bigger difference from your other days.</p>
-              <p>A <span className="font-medium text-warm-800">flare day</span> is a day with two or more different symptoms, or any symptom rated 7 or higher.</p>
-            </div>
-          </details>
-          {earlyCount > 0 && (
-            <>
-            <button
-              type="button"
-              onClick={toggleEarly}
-              aria-pressed={showEarly}
-              className="min-h-11 rounded-lg px-2 text-sm font-medium text-teal-700 hover:bg-teal-50"
-            >
-              {showEarly ? 'Hide early signals' : `Include ${earlyCount} early signals`}
-            </button>
-            <p role="status" className="w-full text-sm text-warm-600">
-              {showEarly
-                ? `Showing ${earlyCount} early ${earlyCount === 1 ? 'signal' : 'signals'}: patterns that could still be chance.`
-                : ''}
-            </p>
-            </>
-          )}
-        </div>
+      {/* Reintroductions: always one tap away, before anything else. */}
+      <Link
+        href="/reintroductions"
+        className="mb-4 flex min-h-12 items-center gap-3 rounded-xl border border-warm-200 bg-[var(--color-surface-card)] py-2 pl-3 pr-2 hover:bg-warm-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+      >
+        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-teal-50 text-teal-600">
+          <FlaskConical className="h-4 w-4" aria-hidden="true" />
+        </span>
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-semibold text-warm-900">Reintroductions</span>
+          <span className="block text-xs text-[var(--color-text-muted)]">Test a food you&rsquo;ve cut out</span>
+        </span>
+        <ChevronRight className="h-4 w-4 shrink-0 text-warm-500" aria-hidden="true" />
+      </Link>
+
+      {loadFailed && (
+        <section role="alert" className="mb-6 max-w-[65ch] space-y-2">
+          <h2 className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">Couldn&rsquo;t load your patterns</h2>
+          <p className="text-sm text-warm-600">Your log is safe. This is a problem on our side or with the connection.</p>
+          <button
+            type="button"
+            onClick={() => timeRange !== null && loadData(timeRange)}
+            className="inline-flex min-h-11 items-center gap-1.5 text-sm font-semibold text-teal-700 underline-offset-4 hover:text-teal-800 hover:underline"
+          >
+            <RotateCcw className="h-4 w-4" aria-hidden="true" />
+            Try again
+          </button>
+        </section>
       )}
+
+
 
       {/* Nothing in this window, but recent alerts point at an older one.
           Same unboxed shape as the empty state below. */}
-      {!hasInsights && orphanAlerts.length > 0 && timeRange < 180 && (
+      {!loadFailed && !hasInsights && orphanAlerts.length > 0 && timeRange < 180 && (
         <div className="space-y-9">
           <section aria-labelledby="earlier-heading" className="max-w-[65ch] space-y-3">
             <h2 id="earlier-heading" className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
@@ -358,7 +385,7 @@ export default function InsightsPage() {
           two or three months, so it says how hard the engine looked rather
           than promising a date: a progress bar here once promised patterns at
           14 days and sat full on an empty page. */}
-      {!hasInsights && (orphanAlerts.length === 0 || timeRange >= 180) && (
+      {!loadFailed && !hasInsights && (orphanAlerts.length === 0 || timeRange >= 180) && (
         <div className="space-y-9">
           <section aria-labelledby="empty-heading" className="max-w-[65ch] space-y-3">
             <h2 id="empty-heading" className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
@@ -418,7 +445,7 @@ export default function InsightsPage() {
             <div>
               <button
                 type="button"
-                onClick={toggleEarly}
+                onClick={() => setShowEarly(true)}
                 className="inline-flex min-h-11 items-center text-sm font-semibold text-teal-700 underline-offset-4 hover:text-teal-800 hover:underline"
               >
                 See {earlyCount} early {earlyCount === 1 ? 'signal' : 'signals'}
@@ -431,75 +458,34 @@ export default function InsightsPage() {
 
       {hasInsights && (
         <div className="space-y-9">
-          <p className="max-w-[65ch] text-sm text-warm-600">
-            These are patterns in your own log, not causes or a diagnosis. Worth raising with your practitioner before changing what you eat.
-          </p>
+          <div>
+            <p className="max-w-[65ch] text-sm text-warm-600">
+              Patterns in your own log, not a diagnosis. Worth raising with your practitioner before changing what you eat.
+            </p>
+          <details className="group text-sm text-warm-600">
+            <summary className="inline-flex min-h-11 cursor-pointer list-none items-center font-medium text-teal-700 hover:text-teal-800">
+              How to read this
+            </summary>
+            <div className="mt-1 max-w-[65ch] space-y-2 rounded-xl bg-warm-50 p-3 leading-relaxed">
+              <p>Each card is something that happened alongside a symptom, counted in days. It is a pattern in your own log, not proof of a cause and not a diagnosis. Worth raising with your practitioner.</p>
+              <p>Cards counted in <span className="font-medium text-warm-800">times</span> are about timing: a symptom logged within four hours after you ate something. They need symptoms logged as they happen; entries logged together all at once are not counted.</p>
+              <p>The dots show how much evidence is behind a card. <span className="font-medium text-warm-800">Early</span> (one dot) means it could still be chance: too few days so far, or a difference small enough to happen by coincidence. <span className="font-medium text-warm-800">Moderate</span> and <span className="font-medium text-warm-800">Strong</span> mean more days and a bigger difference from your other days. Early signals sit at the end of each section.</p>
+              <p>&ldquo;Patterns worth keeping an eye on&rdquo; group foods by Pico&rsquo;s food ratings, which come from published lab studies and public health data. A practitioner hasn&rsquo;t reviewed them yet, so those cards rest on the ratings as well as your log.</p>
+              <p>A <span className="font-medium text-warm-800">flare day</span> is a day with two or more different symptoms, or any symptom rated 7 or higher.</p>
+            </div>
+          </details>
+          </div>
 
-          {standouts.length > 0 && (
-            <section aria-labelledby="standouts-heading" className="border-b border-warm-200 pb-7">
-              {/* Names the scale of the read rather than labelling the box.
-                  Scales honestly in both directions: modest at 12 days,
-                  substantial at 300. */}
-              <h2 id="standouts-heading" className="font-[family-name:var(--font-display)] text-2xl font-semibold text-warm-900">
-                What {daysTracked} logged {daysTracked === 1 ? 'day' : 'days'} show
-              </h2>
-              <div className="mt-3">
-                <StandoutPlot
-                  items={standouts.map(({ r }) => {
-                    const multi = 'factors' in r;
-                    return {
-                      factor: getTitle(r),
-                      outcome: r.outcome.label,
-                      withRate: r.conditionalRate,
-                      otherRate: multi ? (r as MultiFactorResult).bestSubRate : (r as SingleFactorResult).baseRate,
-                      otherLabel: multi ? 'with either alone' : isTimed(r) ? 'after other meals' : 'on other days',
-                      days: r.frequency,
-                      total: getTotalDays(r),
-                      unit: isTimed(r) ? 'times' as const : 'days' as const,
-                    };
-                  })}
-                />
-              </div>
-            </section>
-          )}
-          {/* Things that may be causing symptoms */}
-          {triggers.length > 0 && (
+          {(triggers.length > 0 || earlyTriggers.length > 0) && (
             <InsightSection
               variant="trigger"
               icon={TrendingUp}
-              title="Things that may be causing symptoms"
-              totalCount={triggers.length}
-              defaultVisible={3}
-              expandSignal={expandSignal}
-            >
-              {triggers.map((r, i) => (
-                <InsightRow
-                  key={`t-${i}`}
-                  icon={getIcon(r)}
-                  title={getTitle(r)}
-                  description={r.description}
-                  days={r.frequency}
-                  total={getTotalDays(r)}
-                  unit={isTimed(r) ? 'times' : 'days'}
-                  foods={getFoods(r)}
-                  isCompound={isMultiFactor(r)}
-                  confidence={r.confidence}
-                  isNew={alertKeys.has(resultKey(r))}
-                  note={crossNote(r, helperOutcomes, 'on better days')}
-                  outcome={r.outcome.label}
-                  action={(() => {
-                    const food = singleFood(r);
-                    return food && !isTimed(r) && !rated.has(food.toLowerCase()) ? (
-                      <SuggestRating
-                        foodName={food}
-                        suggestion="unsafe"
-                        evidence={{ pattern: r.outcome.label, days: r.frequency, of: getTotalDays(r), confidence: r.confidence }}
-                      />
-                    ) : null;
-                  })()}
-                />
-              ))}
-            </InsightSection>
+              title="Possible triggers"
+              subtitle="These often came right before a symptom in your log."
+              items={triggers.map(triggerCard)}
+              earlyItems={earlyTriggers.map(triggerCard)}
+              earlyOpen={showEarly}
+            />
           )}
 
           {/* Patterns worth keeping an eye on */}
@@ -510,62 +496,24 @@ export default function InsightsPage() {
               title="Patterns worth keeping an eye on"
               // These rows join your log against the food list, so part of
               // the claim is the list's. The list is cited but not yet
-              // practitioner-reviewed, and the row should say so.
-              subtitle="Foods are grouped using Pico's food ratings, which come from published lab studies and public health data. A practitioner hasn't reviewed them yet, so these rows rest on the ratings as well as your log."
-              totalCount={propertyPatterns.length}
-              defaultVisible={2}
-              expandSignal={expandSignal}
-            >
-              {propertyPatterns.map((g, i) => (
-                <InsightRow
-                  key={`p-${i}`}
-                  icon={FlaskConical}
-                  title={g.title}
-                  description={g.lines.slice(0, 3).map(l => `${l.outcome} on ${l.days} of ${l.total} days`).join(' · ')}
-                  days={g.lines[0].days}
-                  total={g.lines[0].total}
-                  outcome={g.lines[0].outcome}
-                />
+              // practitioner-reviewed, and the section should say so.
+              subtitle="Based on Pico's food ratings, which a practitioner hasn't reviewed yet."
+              items={propertyPatterns.map(g => (
+                <InsightCard key={g.key} icon={FlaskConical} factor={g.title} sentence={g.sentence} />
               ))}
-            </InsightSection>
+            />
           )}
 
           {/* Things that seem to help */}
-          {helpers.length > 0 && (
+          {(helpers.length > 0 || earlyHelpers.length > 0) && (
             <InsightSection
               variant="helper"
               icon={TrendingDown}
               title="Things that seem to help"
-              totalCount={helpers.length}
-              defaultVisible={3}
-              expandSignal={expandSignal}
-            >
-              {helpers.map((r, i) => (
-                <InsightRow
-                  key={`h-${i}`}
-                  icon={getIcon(r)}
-                  title={getTitle(r)}
-                  description={r.description}
-                  days={r.frequency}
-                  total={getTotalDays(r)}
-                  confidence={r.confidence}
-                  isNew={alertKeys.has(resultKey(r))}
-                  tone="better"
-                  note={crossNote(r, triggerOutcomes, 'with symptoms')}
-                  action={(() => {
-                    const food = singleFood(r);
-                    return food && !isTimed(r) && !rated.has(food.toLowerCase()) && !triggerOutcomes.has(singleKey(r) ?? '') ? (
-                      <SuggestRating
-                        foodName={food}
-                        suggestion="safe"
-                        evidence={{ pattern: `less ${r.outcome.label.toLowerCase()}`, days: r.frequency, of: getTotalDays(r), confidence: r.confidence }}
-                      />
-                    ) : null;
-                  })()}
-                  outcome={`Less ${r.outcome.label.toLowerCase()}`}
-                />
-              ))}
-            </InsightSection>
+              items={helpers.map(helperCard)}
+              earlyItems={earlyHelpers.map(helperCard)}
+              earlyOpen={showEarly}
+            />
           )}
 
           {progressSection}
@@ -578,26 +526,13 @@ export default function InsightsPage() {
         </div>
       )}
 
-      {hasInsights && (
-        <Link
-          href="/reintroductions"
-          className="mt-6 flex min-h-11 items-center justify-between gap-3 rounded-xl border border-warm-200 bg-[var(--color-surface-card)] px-4 py-3 text-sm hover:bg-warm-50"
-        >
-          <span>
-            <span className="block font-medium text-warm-900">Want to test one of these?</span>
-            <span className="block text-warm-600">A reintroduction adds a food back over a few days and records how you react.</span>
-          </span>
-          <ChevronRight className="h-4 w-4 shrink-0 text-warm-500" aria-hidden="true" />
-        </Link>
-      )}
-
       {/* Your Day */}
       <div className="mt-8 pt-6 border-t border-warm-200">
         <div className="flex items-center gap-2 mb-2">
           <CalendarDays className="h-4 w-4 text-warm-600" aria-hidden="true" />
           <h2 className="text-base font-semibold text-warm-900">Your day</h2>
         </div>
-        <DayView initialDate={today} initialComposite={composite} />
+        <DayView initialDate={dayDate ?? today} initialComposite={composite} />
       </div>
     </div>
   );

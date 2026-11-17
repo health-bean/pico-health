@@ -41,7 +41,10 @@ export function computeProgress(days: DayComposite[], today: string): ProgressOb
       label: `${name} frequency`,
       currentPeriod: { count: current, days: currentDays.length, label: currentLabel },
       previousPeriod: { count: previous, days: previousDays.length, label: previousLabel },
-      observation: `${name}: ${previous} of ${previousDays.length} logged days in ${previousLabel} → ${current} of ${currentDays.length} logged days in ${currentLabel}.`,
+      // The windows rarely have the same number of logged days, so a count
+      // alone misleads ("4 of 30 → 3 of 12" looks better but is 13% → 25%).
+      // Each count carries its own rate.
+      observation: `${name}: ${previous} of ${previousDays.length} logged days (${rate(previous, previousDays.length)}) in ${previousLabel} → ${current} of ${currentDays.length} (${rate(current, currentDays.length)}) in ${currentLabel}.`,
     });
   }
 
@@ -64,6 +67,10 @@ function countSymptoms(days: DayComposite[]): Map<string, number> {
     }
   }
   return counts;
+}
+
+function rate(n: number, of: number): string {
+  return `${Math.round((n / of) * 100)}%`;
 }
 
 function fmt(d: Date): string {

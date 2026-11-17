@@ -7,6 +7,8 @@ import type { FoodTriggerProperties, TriggerLevel } from "@/types";
 interface FoodPropertyCardProps {
   properties: FoodTriggerProperties;
   className?: string;
+  /** Inside another card (a Log meal): no border, fill or padding of its own. */
+  bare?: boolean;
 }
 
 interface PropertyInfo {
@@ -230,7 +232,9 @@ function PropertyBadge({ property }: { property: PropertyInfo }) {
 export function FoodPropertyCard({
   properties,
   className = "",
+  bare = false,
 }: FoodPropertyCardProps) {
+  const box = bare ? "" : "rounded-lg border border-warm-200 p-4";
   // Build array of properties to display
   const propertyList: PropertyInfo[] = [];
 
@@ -287,7 +291,7 @@ export function FoodPropertyCard({
   if (propertyList.length === 0) {
     return (
       <div
-        className={`rounded-lg border border-warm-200 bg-warm-50 p-4 text-center ${className}`}
+        className={`${box} ${bare ? "" : "bg-warm-50 text-center"} ${className}`}
       >
         <p className="text-sm text-warm-500">
           No trigger property information available for this food.
@@ -298,7 +302,7 @@ export function FoodPropertyCard({
 
   return (
     <div
-      className={`rounded-lg border border-warm-200 bg-[var(--color-surface-card)] p-4 ${className}`}
+      className={`${box} ${bare ? "" : "bg-[var(--color-surface-card)]"} ${className}`}
     >
       <h3 className="mb-3 text-sm font-semibold text-warm-900">
         Trigger properties

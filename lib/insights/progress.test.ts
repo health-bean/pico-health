@@ -54,7 +54,7 @@ describe('computeProgress', () => {
     for (let i = 0; i < 30; i++) add(new Date(Date.UTC(2026, 7, 14 + i)).toISOString().slice(0, 10), i < 8);
     for (let i = 0; i < 10; i++) add(new Date(Date.UTC(2026, 8, 13 + i * 3)).toISOString().slice(0, 10), i < 5);
     const [h] = computeProgress(days, '2026-10-12');
-    expect(h.observation).toBe('Headache: 8 of 30 logged days in the 30 before → 5 of 10 logged days in the last 30.');
+    expect(h.observation).toBe('Headache: 8 of 30 logged days (27%) in the 30 before → 5 of 10 (50%) in the last 30.');
   });
 
   it('does not compare when the recent window has too few logged days to say anything', () => {

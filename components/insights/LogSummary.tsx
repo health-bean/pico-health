@@ -2,7 +2,13 @@
 
 import type { DayComposite } from '@/lib/insights/types';
 import { FoodPropertyTag } from '@/components/foods/FoodPropertyTag';
-import { UtensilsCrossed, Pill, Activity, AlertTriangle, Beaker, Wind } from 'lucide-react';
+import { formatClock } from '@/components/timeline/MealCard';
+import { Utensils, Pill, Activity, AlertTriangle, Beaker, Wind } from 'lucide-react';
+
+/** A property chip earns its place at moderate and up (or a plain flag with no level). */
+function notable(p: { severity?: string | null }): boolean {
+  return p.severity !== 'low' && p.severity !== 'none' && p.severity !== 'unknown';
+}
 
 interface LogSummaryProps {
   composite: DayComposite;
@@ -21,22 +27,23 @@ export function LogSummary({ composite }: LogSummaryProps) {
     <div className="space-y-1.5">
       {composite.foods.map((food, i) => (
         <div key={`food-${i}`} className="flex items-start gap-2 py-1.5">
-          <UtensilsCrossed className="w-4 h-4 text-warm-500 mt-0.5 shrink-0" />
+          <Utensils className="w-4 h-4 text-warm-500 mt-0.5 shrink-0" />
           <div className="flex-1 min-w-0">
             <div className="flex items-baseline gap-1.5 flex-wrap">
               <span className="text-sm font-medium text-warm-900">{food.name}</span>
-              {food.time && <span className="text-xs text-warm-500">{food.time}</span>}
+              {food.time && <span className="text-xs text-warm-500">{formatClock(food.time)}</span>}
               {food.mealType && <span className="text-xs text-warm-500 capitalize">{food.mealType}</span>}
             </div>
-            {food.properties.length > 0 && (
+            {/* Same bar as the Log: low and none say nothing worth a chip. */}
+            {food.properties.some(notable) && (
               <div className="flex flex-wrap gap-1 mt-0.5">
-                {food.properties.map((p, j) => (
+                {food.properties.filter(notable).map((p, j) => (
                   <FoodPropertyTag key={j} property={p.property} severity={p.severity} />
                 ))}
               </div>
             )}
             {food.protocolStatus === 'avoid' && (
-              <span className="inline-block mt-0.5 text-[11px] text-danger-strong font-medium">Off-protocol</span>
+              <span className="inline-block mt-0.5 text-xs text-brick-600 font-medium">Off-protocol</span>
             )}
           </div>
         </div>
@@ -47,7 +54,7 @@ export function LogSummary({ composite }: LogSummaryProps) {
           <AlertTriangle className="w-4 h-4 text-warm-500 shrink-0" />
           <span className="text-sm text-warm-900">{s.name}</span>
           <span className="text-xs text-warm-500">severity {s.severity}/10</span>
-          {s.time && <span className="text-xs text-warm-500">{s.time}</span>}
+          {s.time && <span className="text-xs text-warm-500">{formatClock(s.time)}</span>}
         </div>
       ))}
 
@@ -55,7 +62,7 @@ export function LogSummary({ composite }: LogSummaryProps) {
         <div key={`supp-${i}`} className="flex items-center gap-2 py-1.5">
           <Pill className="w-4 h-4 text-warm-500 shrink-0" />
           <span className="text-sm text-warm-900">{s.name}</span>
-          {s.time && <span className="text-xs text-warm-500">{s.time}</span>}
+          {s.time && <span className="text-xs text-warm-500">{formatClock(s.time)}</span>}
         </div>
       ))}
 

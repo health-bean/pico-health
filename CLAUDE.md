@@ -54,6 +54,15 @@ To compare models/providers on real data before changing a default, use `npm run
 - 14 UI components in `components/ui/`
 - Forced light mode (no dark mode yet)
 - Zero off-system colors, zero inline styles
+- **Colour rules** (signed off on Log, 2026-11-16; each colour has one job):
+  - Cream `surface` is the ground; cards lift to `surface-card`; quiet notices use `surface-overlay` (the cream's own step, never a near-neutral grey).
+  - **Teal**: brand, actions, links, selected states, and "Allowed / fine for you". Not decoration elsewhere.
+  - **Food fit** (`FIT_TONE_CLASS` in `lib/protocols/fit-line.ts`): Avoid = `brick-600`, Limit = `ochre-700`, Allowed = `teal-700`. No traffic-light red.
+  - **Insights sections**: brick/clay "Possible triggers", ochre "worth keeping an eye on", olive "seems to help". **Olive means "seems to help" and nothing else.**
+  - **Clay**: symptoms (tinted row, icon tiles). **Ochre** also: exposure / off-protocol icons.
+  - **Errors** ("Couldn't save") = `brick-600`, not ochre, so an error never reads as "Limit".
+  - **Never colour evidence or intensity.** Strength = ●●● + word in ink; property levels use the `level-*` ramp, which is the cream's hue getting darker (not amber).
+  - Every number that matters is a count first ("14 of 15 days"); a % only sits beside its count.
 
 ## Data: food trigger properties
 `food_trigger_properties` carries provenance: `sources` (per-property citations), `reviewStatus` (`unreviewed` | `ai_proposed` | `founder_set` | `practitioner_reviewed`), `reviewedBy`, `reviewedAt`. 320 curated foods (all currently `ai_proposed`, cited against SIGHI/RPAH/Harvard-TLO/published FODMAP lists), awaiting practitioner review. AI-agent property writes require a citation or are rejected; manual console edits are `founder_set`. Curation queue at `/admin/foods` (Needs curation tab) ranks missing-property foods by real log volume. See `docs/pico-health-admin-handbook` (also in Notion) for the review workflow.

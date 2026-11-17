@@ -92,19 +92,19 @@ html {
   --color-ochre-500: oklch(0.60 0.13 80);
   --color-ochre-700: oklch(0.50 0.105 75);
 
-  /* ── Level ramp (one hue, rising weight) ─────────────────────── */
-  /* Trigger-property intensity, protocol status, and pattern strength all
-     read on this ramp: warm neutral for low, deepening through the warning
-     hue for high. Not a traffic light. The label always carries the level
-     in words as well. */
-  --color-level-1-bg: oklch(0.97 0.008 80);
-  --color-level-1-fg: oklch(0.45 0.02 80);
-  --color-level-2-bg: oklch(0.95 0.045 75);
-  --color-level-2-fg: oklch(0.46 0.09 75);
-  --color-level-3-bg: oklch(0.92 0.08 75);
-  --color-level-3-fg: oklch(0.40 0.11 75);
-  --color-level-4-bg: oklch(0.86 0.11 75);
-  --color-level-4-fg: oklch(0.32 0.11 75);
+  /* ── Level ramp (the cream's own hue, rising darkness) ───────── */
+  /* How much of a property a food has. Intensity reads by darkness, not by
+     hue: this used to deepen through amber, which is Limit's ochre, so
+     "Oxalate: very high" read as a verdict. Low chroma, tinted toward the
+     ground so it never looks grey. The label always says the level in words. */
+  --color-level-1-bg: oklch(0.970 0.010 88);
+  --color-level-1-fg: oklch(0.470 0.020 80);
+  --color-level-2-bg: oklch(0.935 0.022 88);
+  --color-level-2-fg: oklch(0.400 0.025 75);
+  --color-level-3-bg: oklch(0.895 0.030 86);
+  --color-level-3-fg: oklch(0.330 0.030 70);
+  --color-level-4-bg: oklch(0.840 0.038 84);
+  --color-level-4-fg: oklch(0.250 0.030 70);
 
   /* ── Surfaces ────────────────────────────────────────────────── */
   /* Ground is FCF2D1 exactly. Cards lift off it toward white; sitting
