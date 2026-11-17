@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback, useRef } from "react";
 import { Search, Loader2, AlertCircle, X } from "lucide-react";
 import type { Food } from "@/types";
+import { FIT_TONE_CLASS, statusTone } from "@/lib/protocols/fit-line";
+import { cn } from "@/lib/utils";
 
 interface FoodSearchInputProps {
   onSelect: (food: Food) => void;
@@ -191,30 +193,12 @@ export function FoodSearchInput({
   const getProtocolBadge = (status?: string) => {
     if (!status) return null;
 
-    const badges = {
-      allowed: (
-        <span className="rounded bg-teal-50 px-1.5 py-0.5 text-xs font-medium text-teal-700">
-          Allowed
-        </span>
-      ),
-      avoid: (
-        <span className="rounded bg-danger/10 px-1.5 py-0.5 text-xs font-medium text-danger-strong">
-          Avoid
-        </span>
-      ),
-      moderation: (
-        <span className="rounded bg-warning/10 px-1.5 py-0.5 text-xs font-medium text-warning-strong">
-          Moderation
-        </span>
-      ),
-      unknown: (
-        <span className="rounded bg-warm-100 px-1.5 py-0.5 text-xs font-medium text-warm-700">
-          Unknown
-        </span>
-      ),
-    };
-
-    return badges[status as keyof typeof badges] || null;
+    // Same tones and words as the Log's fit line: Allowed / Limit / Avoid.
+    const tone = statusTone(status);
+    const label = { allowed: "Allowed", limit: "Limit", avoid: "Avoid", unknown: "Not rated" }[tone];
+    return (
+      <span className={cn("rounded border px-1.5 py-0.5 text-xs font-medium", FIT_TONE_CLASS[tone].chip)}>{label}</span>
+    );
   };
 
   return (
@@ -300,7 +284,7 @@ export function FoodSearchInput({
 
               {/* Protocol Violations Warning */}
               {food.protocolStatus === "avoid" && (
-                <div className="mt-2 flex items-start gap-1.5 text-xs text-danger-strong">
+                <div className={cn("mt-2 flex items-start gap-1.5 text-xs", FIT_TONE_CLASS.avoid.text)}>
                   <AlertCircle className="h-3 w-3 shrink-0 mt-0.5" />
                   <span>Not allowed on your protocol</span>
                 </div>

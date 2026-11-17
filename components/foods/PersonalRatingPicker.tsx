@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
-import type { PersonalRating, PersonalStatus } from "@/lib/protocols/fit-line";
+import { FIT_TONE_CLASS, type FitTone, type PersonalRating, type PersonalStatus } from "@/lib/protocols/fit-line";
 
-const OPTIONS: { value: PersonalStatus; label: string }[] = [
-  { value: "safe", label: "Fine for me" },
-  { value: "sensitive", label: "Small amounts" },
-  { value: "unsafe", label: "Not for me" },
+/** Each choice, once chosen, wears its tone: the same teal / ochre / brick as the Log and My food list. */
+const OPTIONS: { value: PersonalStatus; label: string; tone: FitTone }[] = [
+  { value: "safe", label: "Fine for me", tone: "allowed" },
+  { value: "sensitive", label: "Small amounts", tone: "limit" },
+  { value: "unsafe", label: "Not for me", tone: "avoid" },
 ];
 
 const chip = "min-h-11 rounded-full border px-3.5 text-sm font-medium transition-colors disabled:opacity-60";
 const chipOff = "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50";
-const chipOn = "border-teal-300 bg-teal-50 text-teal-800";
 
 /**
  * The person's own verdict on a food, kept apart from what the food contains.
@@ -63,7 +63,7 @@ export function PersonalRatingPicker({
             disabled={saving}
             aria-pressed={value?.status === o.value}
             onClick={() => choose(o.value)}
-            className={cn(chip, value?.status === o.value ? chipOn : chipOff)}
+            className={cn(chip, value?.status === o.value ? FIT_TONE_CLASS[o.tone].chip : chipOff)}
           >
             {o.label}
           </button>

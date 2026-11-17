@@ -1,24 +1,12 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import {
-  ChevronDown,
-  ChevronLeft,
-  ChevronRight,
-  Apple,
-  Frown,
-  Pill,
-  Droplets,
-  Zap,
-  ShieldAlert,
-  Activity,
-  AlertTriangle,
-  NotebookPen,
-} from "lucide-react";
+import { ChevronDown, ChevronLeft, ChevronRight, Zap, NotebookPen } from "lucide-react";
 import { Spinner, EmptyState, useToast } from "@/components/ui";
 import { QuickAddSheet } from "@/components/quick-log/quick-add-sheet";
 import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard";
-import { FoodTimelineCard } from "@/components/timeline/FoodTimelineCard";
+import { FoodRow, clarifierLabels } from "@/components/timeline/FoodRow";
+import { MealCard } from "@/components/timeline/MealCard";
 import { GenericTimelineCard } from "@/components/timeline/GenericTimelineCard";
 import { DayStrip } from "@/components/timeline/DayStrip";
 import { DayReflectLine } from "@/components/timeline/DayReflectLine";
@@ -29,22 +17,8 @@ import { ProgressStrip } from "@/components/capture/ProgressStrip";
 import { SymptomNow } from "@/components/capture/SymptomNow";
 import { useCapture } from "@/hooks/use-capture";
 import { cn } from "@/lib/utils";
-import type { TimelineEntry, EntryType, ExerciseType, IntensityLevel } from "@/types";
-
-const entryConfig: Record<
-  EntryType,
-  { icon: typeof Apple; label: string; variant: "allowed" | "avoid" | "moderation" | "info" | "default" }
-> = {
-  food: { icon: Apple, label: "Food", variant: "allowed" },
-  symptom: { icon: Frown, label: "Symptom", variant: "avoid" },
-  supplement: { icon: Pill, label: "Supplement", variant: "info" },
-  medication: { icon: Pill, label: "Medication", variant: "moderation" },
-  exposure: { icon: ShieldAlert, label: "Exposure", variant: "moderation" },
-  detox: { icon: Droplets, label: "Detox", variant: "default" },
-  exercise: { icon: Activity, label: "Exercise", variant: "info" },
-  energy: { icon: Zap, label: "Energy", variant: "default" },
-  off_protocol: { icon: AlertTriangle, label: "Off-Protocol", variant: "moderation" },
-};
+import { groupMeals } from "@/lib/timeline/group-meals";
+import type { TimelineEntry, ExerciseType, IntensityLevel } from "@/types";
 
 function formatDate(date: Date): string {
   const y = date.getFullYear();
@@ -379,15 +353,17 @@ export default function TimelinePage() {
       <DayReflectLine date={date} isToday={isToday} />
 
       {/* How you feel, first: one tap logs a symptom at the time it happens,
-          which is what lets a reaction show in weeks rather than months. */}
-      {isToday && (
-        <SymptomNow
-          entries={entries}
-          date={date}
-          onChanged={() => fetchEntries(dateRef.current)}
-          onSomethingElse={() => document.getElementById("capture-input")?.focus()}
-        />
-      )}
+          which is what lets a reaction show in weeks rather than months.
+          Past days get the same buttons, for backfilling at night. */}
+      <SymptomNow
+        key={date}
+        entries={entries}
+        date={date}
+        isToday={isToday}
+        dayLabel={displayDate(date)}
+        onChanged={() => fetchEntries(dateRef.current)}
+        onSomethingElse={() => document.getElementById("capture-input")?.focus()}
+      />
 
       {/* Energy filter — only offered when the day actually has energy data */}
       {hasEnergyEntries && (
@@ -458,8 +434,39 @@ export default function TimelinePage() {
         />
       ) : (
         <div className="flex flex-col gap-2 stagger-children">
-          {filteredEntries.map((entry) => {
-            // Render exercise entries with dedicated component
+          {/* Untimed entries (e.g. a symptom backfilled on a past day) go last:
+              the API sorts NULL times first, which would read as the day's latest event. */}
+          {groupMeals([
+            ...filteredEntries.filter((e) => e.entryTime),
+            ...filteredEntries.filter((e) => !e.entryTime),
+          ]).map((item) => {
+            if (item.kind === "meal") {
+              const tagSets = item.entries.map((e) => clarifierLabels(e.structuredContent));
+              const shared = item.entries.length > 1 ? tagSets[0].filter((t) => tagSets.every((ts) => ts.includes(t))) : [];
+              return (
+                <MealCard key={`meal-${item.entries[item.entries.length - 1].id}`} mealType={item.mealType} time={item.time} tags={shared}>
+                  {item.entries.map((entry) => (
+                    <FoodRow
+                      key={entry.id}
+                      name={entry.name}
+                      portion={entry.portion}
+                      mealType={entry.mealType}
+                      entryTime={entry.entryTime}
+                      food={entry.food}
+                      protocolViolations={entry.protocolViolations}
+                      fit={entry.fit}
+                      foodId={entry.foodId}
+                      structuredContent={entry.structuredContent}
+                      sharedTags={shared}
+                      onDelete={() => deleteEntry(entry)}
+                      onPatch={(patch) => patchTimelineEntry(entry, patch)}
+                    />
+                  ))}
+                </MealCard>
+              );
+            }
+
+            const entry = item.entry;
             if (entry.entryType === "exercise") {
               return (
                 <ExerciseTimelineCard
@@ -469,49 +476,19 @@ export default function TimelinePage() {
                   intensityLevel={entry.intensityLevel as IntensityLevel}
                   energyBefore={entry.energyLevel}
                   energyAfter={null}
-                  notes={
-                    entry.structuredContent?.notes
-                      ? String(entry.structuredContent.notes)
-                      : null
-                  }
+                  notes={entry.structuredContent?.notes ? String(entry.structuredContent.notes) : null}
                   entryTime={entry.entryTime}
                   onDelete={() => deleteEntry(entry)}
                   onPatch={(patch) => patchTimelineEntry(entry, patch)}
                 />
               );
             }
-
-            // Render food entries with dedicated component
-            if (entry.entryType === "food") {
-              return (
-                <FoodTimelineCard
-                  key={entry.id}
-                  name={entry.name}
-                  portion={entry.portion}
-                  mealType={entry.mealType}
-                  entryTime={entry.entryTime}
-                  food={entry.food}
-                  protocolViolations={entry.protocolViolations}
-                  fit={entry.fit}
-                  foodId={entry.foodId}
-                  structuredContent={entry.structuredContent}
-                  onDelete={() => deleteEntry(entry)}
-                  onPatch={(patch) => patchTimelineEntry(entry, patch)}
-                />
-              );
-            }
-
-            // Render other entry types with default card
-            const config = entryConfig[entry.entryType] ?? entryConfig.food;
 
             return (
               <GenericTimelineCard
                 key={entry.id}
                 entryType={entry.entryType}
                 name={entry.name}
-                icon={config.icon}
-                label={config.label}
-                variant={config.variant}
                 entryTime={entry.entryTime}
                 severity={entry.severity}
                 onDelete={() => deleteEntry(entry)}

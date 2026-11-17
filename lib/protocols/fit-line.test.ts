@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { fitLine, personalStatus, shortDietName } from "./fit-line";
+import { FIT_TONE_CLASS, fitLine, personalStatus, shortDietName, statusTone } from "./fit-line";
 
 describe("shortDietName", () => {
   it("drops the long form in brackets", () => {
@@ -72,5 +72,36 @@ describe("personal ratings", () => {
     expect(personalStatus("avoid", { status: "safe", source: "trial" })).toBe("allowed");
     expect(personalStatus("allowed", { status: "unsafe", source: "self" })).toBe("avoid");
     expect(personalStatus("moderation", null)).toBe("moderation");
+  });
+});
+
+describe("fit tones", () => {
+  it("map each diet status to one tone", () => {
+    expect(statusTone("allowed")).toBe("allowed");
+    expect(statusTone("moderation")).toBe("limit");
+    expect(statusTone("caution")).toBe("limit");
+    expect(statusTone("avoid")).toBe("avoid");
+    expect(statusTone("unknown")).toBe("unknown");
+    expect(statusTone(undefined)).toBe("unknown");
+  });
+
+  it("agree with the card line", () => {
+    for (const status of ["allowed", "moderation", "caution", "avoid", "unknown"]) {
+      expect(fitLine({ diet: "AIP", status, reasons: [] })?.tone).toBe(statusTone(status));
+    }
+  });
+
+  it("give Avoid, Limit and Allowed three distinct colours: brick, ochre, teal", () => {
+    expect(FIT_TONE_CLASS.avoid.text).toContain("brick-600");
+    expect(FIT_TONE_CLASS.limit.text).toContain("ochre-700");
+    expect(FIT_TONE_CLASS.allowed.text).toContain("teal-700");
+    const texts = new Set([FIT_TONE_CLASS.avoid.text, FIT_TONE_CLASS.limit.text, FIT_TONE_CLASS.allowed.text]);
+    expect(texts.size).toBe(3);
+  });
+
+  it("never use traffic-light red or the olive kept for 'seems to help'", () => {
+    for (const t of Object.values(FIT_TONE_CLASS)) {
+      expect(`${t.text} ${t.chip}`).not.toMatch(/danger|red-|olive|success|green/);
+    }
   });
 });

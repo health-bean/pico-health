@@ -1,5 +1,6 @@
 export { ExerciseTimelineCard } from "./ExerciseTimelineCard";
-export { FoodTimelineCard } from "./FoodTimelineCard";
+export { FoodRow } from "./FoodRow";
+export { MealCard } from "./MealCard";
 export { GenericTimelineCard } from "./GenericTimelineCard";
 export { EntryActions } from "./EntryActions";
 export type { EntryAction } from "./EntryActions";
