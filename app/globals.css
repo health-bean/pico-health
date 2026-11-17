@@ -39,13 +39,6 @@ html {
   --color-lp-gold: oklch(0.839 0.135 91.8);   /* EAC757, deep-teal panels only (1.47:1 on cream) */
   --color-lp-gold-50: oklch(0.952 0.050 92);
   --spacing-lp-section: 5rem;
-  /* TEMPORARY, marketing site only: components/landing still uses these old
-     names. Delete this block once the site moves to lp-gold / lp-gold-50
-     (added by the marketing-site change) and brick-600. Nothing in the app
-     may use them. */
-  --color-gold-400: oklch(0.839 0.135 91.8);
-  --color-gold-50: oklch(0.952 0.050 92);
-  --color-danger-strong: oklch(0.449 0.137 23.5);
 
   /* ── Brand: Teal (hue 189°, the deck's own) ──────────────────── */
   /* 499F99 lands exactly on the 400 step. The darker steps carry white
