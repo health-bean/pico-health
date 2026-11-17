@@ -266,7 +266,7 @@ export function SymptomNow({ entries, date, isToday, dayLabel, onChanged, onSome
       ? "How are you feeling?"
       : dayLabel === "Yesterday"
         ? "Any symptoms yesterday?"
-        : `Any symptoms on ${dayLabel}?`;
+        : "Any symptoms this day?";
 
   return (
     <section

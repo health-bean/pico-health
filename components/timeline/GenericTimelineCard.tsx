@@ -75,10 +75,10 @@ export function GenericTimelineCard({
         </span>
 
         <div className="min-w-0 flex-1">
-          <span className="block truncate text-[15px] font-medium leading-snug text-[var(--color-text-primary)]">{name}</span>
+          <span className="line-clamp-2 block break-words text-[15px] font-medium leading-snug text-[var(--color-text-primary)]">{name}</span>
           <span className={cn("block text-xs", isSymptom ? "text-clay-700" : "text-[var(--color-text-muted)]")}>
             {kind.label}
-            {entryTime && <> · {formatClock(entryTime)}</>}
+            {entryTime ? <> · {formatClock(entryTime)}</> : " · time not set"}
           </span>
         </div>
 

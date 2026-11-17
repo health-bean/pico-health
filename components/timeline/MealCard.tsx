@@ -43,7 +43,7 @@ export function MealCard({
     >
       <header className="flex items-center gap-2 px-4 pt-3 pb-0.5">
         <Utensils className="h-4 w-4 text-teal-600" aria-hidden="true" />
-        <h3 className="text-sm font-semibold text-warm-900">{label}</h3>
+        <h3 className="text-base font-semibold text-warm-900">{label}</h3>
         {clock && <span className="text-xs text-[var(--color-text-muted)]">{clock}</span>}
         {tags.length > 0 && <span className="text-xs text-teal-700">· {tags.join(" · ")}</span>}
       </header>

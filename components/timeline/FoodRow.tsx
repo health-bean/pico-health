@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Replace, Clock, Check, ChevronDown } from "lucide-react";
 import { Badge } from "@/components/ui";
-import { FoodPropertyCard, getLevelColor, getBooleanColor } from "@/components/foods/FoodPropertyCard";
+import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
 import { PersonalRatingPicker } from "@/components/foods/PersonalRatingPicker";
 import { ANSWER_LABELS } from "@/lib/clarifiers/rules";
 import { notableProperties } from "@/lib/timeline/group-meals";
@@ -78,6 +78,7 @@ export function FoodRow({
   onPatch,
 }: FoodRowProps) {
   const [open, setOpen] = useState(false);
+  const panelId = useId();
   const [editing, setEditing] = useState<EntryEditorMode | null>(null);
   const [personal, setPersonal] = useState<PersonalRating | null>(fit?.personal ?? null);
 
@@ -89,7 +90,9 @@ export function FoodRow({
   const canRate = !!foodId && !!food && !food.isCustom;
   const expandable = hasProperties || canRate;
 
-  const line = fitLine({ ...(fit ?? { diet: null, status: "allowed", reasons: [] }), personal });
+  const fullLine = fitLine({ ...(fit ?? { diet: null, status: "allowed", reasons: [] }), personal });
+  // "Not rated yet for <diet>" on a third of rows is noise with nothing to act on; it stays out of the Log.
+  const line = fullLine?.tone === "unknown" ? null : fullLine;
   const lineText = line?.text.toLowerCase() ?? "";
   // A chip that only repeats the line's reason ("Avoid on Low Histamine: high histamine") is dropped.
   const chips = notableProperties(food?.properties).filter((p) => !lineText.includes(p.label.toLowerCase()));
@@ -100,7 +103,7 @@ export function FoodRow({
   const body = (
     <>
       <span className="flex flex-wrap items-center gap-2">
-        <span className="text-[15px] font-medium leading-snug text-warm-900">{displayName}</span>
+        <span className="text-[15px] leading-snug text-warm-900">{displayName}</span>
         {portionText && <span className="text-xs text-[var(--color-text-muted)]">{portionText}</span>}
         {food?.isCustom && <Badge variant="default">Custom</Badge>}
       </span>
@@ -115,19 +118,18 @@ export function FoodRow({
       ) : violations ? (
         <span className={cn("mt-0.5 block text-xs", FIT_TONE_CLASS.avoid.text)}>Outside your protocol · {violations}</span>
       ) : null}
+      {/* Neutral on purpose: the level ramp shares ochre's hue, and an amber
+          "Very high oxalate" under a teal "Allowed" read as a second verdict. */}
       {chips.length > 0 && (
         <span className="mt-1 flex flex-wrap gap-1">
-          {chips.map((c) => {
-            const colors = c.level === "flag" ? getBooleanColor(true) : getLevelColor(c.level);
-            return (
-              <span
-                key={c.key}
-                className={cn("inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-medium ring-1 ring-inset", colors.bg, colors.text, colors.ring)}
-              >
-                {c.label}
-              </span>
-            );
-          })}
+          {chips.map((c) => (
+            <span
+              key={c.key}
+              className="inline-flex items-center rounded-md bg-warm-100 px-1.5 py-0.5 text-xs font-medium text-warm-700 ring-1 ring-inset ring-warm-200"
+            >
+              {c.label}
+            </span>
+          ))}
         </span>
       )}
     </>
@@ -141,12 +143,13 @@ export function FoodRow({
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
+            aria-controls={panelId}
             className="group flex min-h-12 min-w-0 flex-1 items-start gap-2 py-2.5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
           >
             <span className="min-w-0 flex-1">{body}</span>
             <ChevronDown
               className={cn(
-                "mt-1 h-4 w-4 shrink-0 text-warm-400 transition-transform duration-200 group-hover:text-teal-600",
+                "mt-1 h-4 w-4 shrink-0 text-warm-500 transition-transform duration-200 group-hover:text-teal-600",
                 open && "rotate-180"
               )}
               aria-hidden="true"
@@ -188,7 +191,7 @@ export function FoodRow({
       )}
 
       {open && expandable && (
-        <div className="flex flex-col gap-4 border-t border-[var(--color-border-light)] px-4 py-3">
+        <div id={panelId} className="flex flex-col gap-4 border-t border-[var(--color-border-light)] px-4 py-3">
           {canRate && foodId && <PersonalRatingPicker foodId={foodId} value={personal} onChange={setPersonal} />}
           {hasProperties && food?.properties && (
             <FoodPropertyCard properties={food.properties as unknown as FoodTriggerProperties} />

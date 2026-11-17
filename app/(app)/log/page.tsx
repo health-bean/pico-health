@@ -434,12 +434,17 @@ export default function TimelinePage() {
         />
       ) : (
         <div className="flex flex-col gap-2 stagger-children">
-          {groupMeals(filteredEntries).map((item) => {
+          {/* Untimed entries (e.g. a symptom backfilled on a past day) go last:
+              the API sorts NULL times first, which would read as the day's latest event. */}
+          {groupMeals([
+            ...filteredEntries.filter((e) => e.entryTime),
+            ...filteredEntries.filter((e) => !e.entryTime),
+          ]).map((item) => {
             if (item.kind === "meal") {
               const tagSets = item.entries.map((e) => clarifierLabels(e.structuredContent));
               const shared = item.entries.length > 1 ? tagSets[0].filter((t) => tagSets.every((ts) => ts.includes(t))) : [];
               return (
-                <MealCard key={`meal-${item.entries[0].id}`} mealType={item.mealType} time={item.time} tags={shared}>
+                <MealCard key={`meal-${item.entries[item.entries.length - 1].id}`} mealType={item.mealType} time={item.time} tags={shared}>
                   {item.entries.map((entry) => (
                     <FoodRow
                       key={entry.id}
