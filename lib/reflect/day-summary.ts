@@ -10,24 +10,48 @@ export interface JournalSummaryInput {
   activityLevel?: string | null;
 }
 
+/** The 1–10 steps every word uses, matching symptom severity: 1–3, 4–6, 7–10. */
+function step(v: number): 0 | 1 | 2 {
+  return v >= 7 ? 2 : v >= 4 ? 1 : 0;
+}
+
 /**
- * Short parts like "Sleep 6/10" or "Cycle day 22", in a fixed order, only
- * for what the person filled in. Stress and pain use Reflect's own scale,
- * where 10 is the good end ("Calm", "None"), so they're labelled that way.
+ * Reflect's scales all have 10 at the good end (stress is "Calm", pain is
+ * "None"), so each word reads from bad to good.
  */
-export function daySummaryParts(j: JournalSummaryInput | null | undefined): string[] {
-  if (!j) return [];
-  const parts: string[] = [];
-  const score = (label: string, v: number | null | undefined) => {
-    if (typeof v === "number") parts.push(`${label} ${v}/10`);
+const WORDS: Record<"sleep" | "energy" | "mood" | "stress" | "pain", [string, string, string]> = {
+  sleep: ["Poor sleep", "OK sleep", "Good sleep"],
+  energy: ["Low energy", "Some energy", "Good energy"],
+  mood: ["Low mood", "OK mood", "Good mood"],
+  stress: ["Stressed", "A bit stressed", "Calm"],
+  pain: ["A lot of pain", "Some pain", "Little or no pain"],
+};
+
+export interface DaySummary {
+  /** How the day felt, in words: "Poor sleep", "Low energy"… */
+  felt: string[];
+  /** What happened: "Cycle day 10", "Meditated 15 min", "Light activity". */
+  did: string[];
+}
+
+/**
+ * The Log's summary of a day from Reflect, in words rather than "3/10",
+ * in a fixed order, only for what the person filled in.
+ */
+export function daySummary(j: JournalSummaryInput | null | undefined): DaySummary {
+  const felt: string[] = [];
+  const did: string[] = [];
+  if (!j) return { felt, did };
+  const word = (key: keyof typeof WORDS, v: number | null | undefined) => {
+    if (typeof v === "number") felt.push(WORDS[key][step(v)]);
   };
-  score("Sleep", j.sleepScore);
-  score("Energy", j.energyScore);
-  score("Mood", j.moodScore);
-  score("Calm", j.stressScore);
-  score("Pain-free", j.painScore);
-  if (typeof j.cycleDay === "number") parts.push(`Cycle day ${j.cycleDay}`);
-  if (typeof j.meditationMinutes === "number" && j.meditationMinutes > 0) parts.push(`Meditated ${j.meditationMinutes} min`);
-  if (j.activityLevel && j.activityLevel !== "none") parts.push(`${j.activityLevel[0].toUpperCase()}${j.activityLevel.slice(1)} activity`);
-  return parts;
+  word("sleep", j.sleepScore);
+  word("energy", j.energyScore);
+  word("mood", j.moodScore);
+  word("stress", j.stressScore);
+  word("pain", j.painScore);
+  if (typeof j.cycleDay === "number") did.push(`Cycle day ${j.cycleDay}`);
+  if (typeof j.meditationMinutes === "number" && j.meditationMinutes > 0) did.push(`Meditated ${j.meditationMinutes} min`);
+  if (j.activityLevel && j.activityLevel !== "none") did.push(`${j.activityLevel[0].toUpperCase()}${j.activityLevel.slice(1)} activity`);
+  return { felt, did };
 }
