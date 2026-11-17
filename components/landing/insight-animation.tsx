@@ -67,7 +67,7 @@ export function InsightAnimation() {
 
   return (
     <figure className="rounded-2xl bg-lp-900/55 p-6 shadow-[0_24px_48px_-24px_rgb(10_40_44/0.6)] ring-1 ring-inset ring-white/12 md:p-8">
-      <figcaption className="inline-flex items-center gap-2 rounded-full bg-gold-400/15 px-3 py-1.5 text-xs font-semibold text-gold-400">
+      <figcaption className="inline-flex items-center gap-2 rounded-full bg-lp-gold/15 px-3 py-1.5 text-xs font-semibold text-lp-gold">
         <Eye className="h-3.5 w-3.5" aria-hidden="true" />
         {LANDING_HERO.badge}
       </figcaption>
@@ -86,9 +86,9 @@ export function InsightAnimation() {
         </p>
 
         <div className={`mt-4 flex items-end gap-3 transition-opacity duration-500 ${at("stats") ? "opacity-100" : "opacity-0"}`}>
-          <span className="font-[family-name:var(--font-display)] text-5xl font-bold leading-none tabular-nums text-gold-400 md:text-6xl">
+          <span className="font-[family-name:var(--font-display)] text-5xl font-bold leading-none tabular-nums text-lp-gold md:text-6xl">
             {days}
-            <span className="text-gold-400/70"> of {LANDING_HERO.ofDays}</span>
+            <span className="text-lp-gold/70"> of {LANDING_HERO.ofDays}</span>
           </span>
           <span className="pb-1 text-sm text-surface/75">{LANDING_HERO.daysLabel}</span>
         </div>

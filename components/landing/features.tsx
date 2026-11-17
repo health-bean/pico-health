@@ -1,10 +1,10 @@
 import { FlaskConical, ClipboardCheck, TrendingUp, LayoutList } from "lucide-react";
 import { LANDING_FEATURES } from "@/lib/landing-content";
 
-// One tint per feature, as in the print piece: clay, gold, teal, ochre.
+// One tint per feature: clay, cream (the surface's own darker step), teal, ochre.
 const ICONS = [
   { Icon: FlaskConical, tile: "bg-clay-50 text-clay-600" },
-  { Icon: ClipboardCheck, tile: "bg-gold-50 text-ochre-700" },
+  { Icon: ClipboardCheck, tile: "bg-surface-overlay text-warm-800" },
   { Icon: TrendingUp, tile: "bg-teal-50 text-teal-700" },
   { Icon: LayoutList, tile: "bg-ochre-500/15 text-ochre-700" },
 ];

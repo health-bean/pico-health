@@ -36,6 +36,8 @@ html {
   --color-lp-muted: #736354;
   --color-lp-accent: #2f6466;
   --color-lp-accent-bg: #e6f2f0;
+  --color-lp-gold: oklch(0.839 0.135 91.8);   /* EAC757, deep-teal panels only (1.47:1 on cream) */
+  --color-lp-gold-50: oklch(0.952 0.050 92);
   --spacing-lp-section: 5rem;
 
   /* ── Brand: Teal (hue 189°, the deck's own) ──────────────────── */

@@ -1,9 +1,9 @@
 import { LANDING_SHOWCASE, LANDING_QUOTE } from "@/lib/landing-content";
-import { BookHeart, Calendar, Check, Eye, FlaskConical, ListChecks, Search } from "lucide-react";
+import { BookHeart, Calendar, Check, Eye, FlaskConical, ListChecks, Minus, Search, X } from "lucide-react";
 import { Features } from "./features";
 
-// Example screens. Colors and wording follow the app itself: teal for
-// allowed, ochre (warning) for limit/avoid, "on 5 of 7 days" for patterns.
+// Example screens. Colors and wording follow the app itself: teal ✓ for
+// allowed, ochre − for limit, brick ✕ for avoid, "on 5 of 7 days" for patterns.
 const ENTRY_LABEL_STYLE = "rounded-full bg-teal-50 px-2 py-0.5 text-[11px] font-medium text-teal-700";
 
 function Card({ children }: { children: React.ReactNode }) {
@@ -76,8 +76,14 @@ function TimelineCard() {
   );
 }
 
-// Three tones, as the app will show them: avoid brick, limit ochre, allowed teal.
+// Three tones, as the app shows them: avoid brick ✕, limit ochre −, allowed teal ✓.
 const TONE_TEXT = { avoid: "text-brick-600", limit: "text-ochre-700", allowed: "text-teal-700" } as const;
+const TONE_ICON = { avoid: X, limit: Minus, allowed: Check } as const;
+
+function ToneIcon({ tone }: { tone: keyof typeof TONE_ICON }) {
+  const Icon = TONE_ICON[tone];
+  return <Icon className="h-3.5 w-3.5 shrink-0" strokeWidth={2.5} aria-hidden="true" />;
+}
 
 function FoodListCard() {
   const { foodList } = LANDING_SHOWCASE;
@@ -91,7 +97,10 @@ function FoodListCard() {
       <div className="flex flex-col gap-3">
         {foodList.groups.map((g) => (
           <div key={g.tone}>
-            <p className={`text-xs font-semibold ${TONE_TEXT[g.tone]}`}>{g.title}</p>
+            <p className={`flex items-center gap-1 text-xs font-semibold ${TONE_TEXT[g.tone]}`}>
+              <ToneIcon tone={g.tone} />
+              {g.title}
+            </p>
             <ul className="mt-1 divide-y divide-warm-100">
               {g.foods.map((f) => (
                 <li key={f.name} className="flex items-baseline justify-between gap-3 py-1.5">
@@ -116,7 +125,7 @@ export function Approach() {
     <>
       <section className="px-4 pt-lp-section md:px-12">
         <figure className="mx-auto max-w-4xl rounded-3xl bg-lp-800 px-6 py-12 text-center md:px-16 md:py-14">
-          <div className="mx-auto h-1 w-12 rounded-full bg-gold-400" aria-hidden="true" />
+          <div className="mx-auto h-1 w-12 rounded-full bg-lp-gold" aria-hidden="true" />
           <blockquote className="mt-6 text-balance font-[family-name:var(--font-display)] text-2xl italic leading-snug text-surface md:text-3xl">
             &ldquo;{LANDING_QUOTE}&rdquo;
           </blockquote>
@@ -135,7 +144,7 @@ export function Approach() {
             <TimelineCard />
             <FoodListCard />
           </div>
-          <p className="mx-auto mt-12 max-w-2xl text-balance text-center font-[family-name:var(--font-display)] text-xl italic leading-snug text-gold-400 md:text-2xl">
+          <p className="mx-auto mt-12 max-w-2xl text-balance text-center font-[family-name:var(--font-display)] text-xl italic leading-snug text-lp-gold md:text-2xl">
             {LANDING_SHOWCASE.tagline}
           </p>
         </div>

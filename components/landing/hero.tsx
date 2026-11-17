@@ -19,7 +19,7 @@ export function Hero({ refCode }: { refCode?: string }) {
           <h1 className="text-balance text-4xl font-bold leading-[1.1] tracking-tight text-surface md:text-5xl lg:text-6xl">
             {LANDING_HERO.headline}
           </h1>
-          <p className="mt-5 max-w-md text-pretty text-lg font-semibold leading-snug text-gold-400 md:text-xl">
+          <p className="mt-5 max-w-md text-pretty text-lg font-semibold leading-snug text-lp-gold md:text-xl">
             {LANDING_HERO.subtitle}
           </p>
           <div className="mt-8 max-w-md">

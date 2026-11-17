@@ -79,7 +79,7 @@ export function EarlyAccessForm({
         </button>
       </form>
       {status === "error" && (
-        <p role="alert" className={`mt-2 text-left text-sm ${dark ? "text-gold-50" : "text-danger-strong"}`}>
+        <p role="alert" className={`mt-2 text-left text-sm ${dark ? "text-lp-gold-50" : "text-brick-600"}`}>
           {message}
         </p>
       )}
