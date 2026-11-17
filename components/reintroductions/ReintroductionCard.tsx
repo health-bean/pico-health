@@ -41,7 +41,7 @@ export function ReintroductionCard({
       return {
         title: "Observation Phase",
         description: "Avoid this food and continue monitoring symptoms",
-        icon: <AlertCircle className="h-5 w-5 text-warning-strong" />,
+        icon: <AlertCircle className="h-5 w-5 text-ochre-700" />,
         color: "amber",
       };
     } else {
@@ -119,7 +119,7 @@ export function ReintroductionCard({
         )}
 
         {reintroduction.missedDays && reintroduction.missedDays > 0 && (
-          <div className="flex items-center gap-2 text-sm text-warning-strong">
+          <div className="flex items-center gap-2 text-sm text-ochre-700">
             <AlertCircle className="h-4 w-4" />
             <span>{reintroduction.missedDays} missed day{reintroduction.missedDays > 1 ? 's' : ''}</span>
           </div>
@@ -139,7 +139,7 @@ export function ReintroductionCard({
         {onStop && (
           <Button
             onClick={onStop}
-            className="border-danger/30 text-danger-strong hover:bg-danger/10"
+            className="border-brick-600/30 text-brick-600 hover:bg-brick-600/10"
           >
             <XCircle className="mr-2 h-4 w-4" />
             Stop

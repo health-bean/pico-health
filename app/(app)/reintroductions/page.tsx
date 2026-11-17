@@ -236,7 +236,7 @@ export default function ReintroductionsPage() {
 
       {/* Error message */}
       {errorMessage && (
-        <div role="alert" className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-[var(--color-danger)]/30 bg-[var(--color-surface-overlay)] px-4 py-3 text-sm text-[var(--color-danger)]">
+        <div role="alert" className="mb-4 flex items-center justify-between gap-3 rounded-xl border border-[var(--color-brick-600)]/30 bg-[var(--color-surface-overlay)] px-4 py-3 text-sm text-[var(--color-brick-600)]">
           <span>{errorMessage}</span>
           <button
             type="button"

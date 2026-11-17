@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback, useRef } from "react";
 import { Search, Loader2, AlertCircle, X } from "lucide-react";
 import type { Food } from "@/types";
 import { FIT_TONE_CLASS, statusTone } from "@/lib/protocols/fit-line";
+import { FitSymbol } from "@/components/foods/FitSymbol";
 import { cn } from "@/lib/utils";
 
 interface FoodSearchInputProps {
@@ -197,7 +198,10 @@ export function FoodSearchInput({
     const tone = statusTone(status);
     const label = { allowed: "Allowed", limit: "Limit", avoid: "Avoid", unknown: "Not rated" }[tone];
     return (
-      <span className={cn("rounded border px-1.5 py-0.5 text-xs font-medium", FIT_TONE_CLASS[tone].chip)}>{label}</span>
+      <span className={cn("inline-flex items-center gap-1 rounded border px-1.5 py-0.5 text-xs font-medium", FIT_TONE_CLASS[tone].chip)}>
+        <FitSymbol tone={tone} />
+        {label}
+      </span>
     );
   };
 
@@ -246,7 +250,7 @@ export function FoodSearchInput({
 
       {/* Error Message */}
       {error && (
-        <div className="mt-2 flex items-center gap-2 rounded-lg border border-danger/30 bg-danger/10 p-2 text-xs text-danger-strong">
+        <div className="mt-2 flex items-center gap-2 rounded-lg border border-brick-600/30 bg-brick-600/10 p-2 text-xs text-brick-600">
           <AlertCircle className="h-4 w-4 shrink-0" />
           <span>{error}</span>
         </div>
@@ -285,7 +289,7 @@ export function FoodSearchInput({
               {/* Protocol Violations Warning */}
               {food.protocolStatus === "avoid" && (
                 <div className={cn("mt-2 flex items-start gap-1.5 text-xs", FIT_TONE_CLASS.avoid.text)}>
-                  <AlertCircle className="h-3 w-3 shrink-0 mt-0.5" />
+                  <FitSymbol tone="avoid" className="mt-0.5" />
                   <span>Not allowed on your protocol</span>
                 </div>
               )}

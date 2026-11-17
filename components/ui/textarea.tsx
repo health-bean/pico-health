@@ -38,7 +38,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
             "disabled:cursor-not-allowed disabled:opacity-50 disabled:bg-[var(--color-surface-overlay)]",
             resizable ? "resize-y" : "resize-none",
             error
-              ? "border-danger/30 focus:border-danger focus:ring-danger/30"
+              ? "border-brick-600/30 focus:border-brick-600 focus:ring-brick-600/30"
               : "border-[var(--color-border)] focus:border-teal-500 focus:ring-teal-500",
             className
           )}
@@ -50,7 +50,7 @@ const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(
         {error && (
           <p
             id={textareaId ? `${textareaId}-error` : undefined}
-            className="text-xs text-danger-strong"
+            className="text-xs text-brick-600"
             role="alert"
           >
             {error}

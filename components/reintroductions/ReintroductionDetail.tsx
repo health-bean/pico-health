@@ -90,12 +90,12 @@ export function ReintroductionDetail({
         </span>
       ),
       failed: (
-        <span className="inline-flex items-center rounded-full bg-danger/10 px-3 py-1 text-sm font-medium text-danger-strong">
+        <span className="inline-flex items-center rounded-full bg-brick-600/10 px-3 py-1 text-sm font-medium text-brick-600">
           Failed
         </span>
       ),
       inconclusive: (
-        <span className="inline-flex items-center rounded-full bg-warning/10 px-3 py-1 text-sm font-medium text-warning-strong">
+        <span className="inline-flex items-center rounded-full bg-ochre-500/10 px-3 py-1 text-sm font-medium text-ochre-700">
           Inconclusive
         </span>
       ),
@@ -120,12 +120,12 @@ export function ReintroductionDetail({
 
   if (error || !data) {
     return (
-      <div className="rounded-xl border border-danger/30 bg-danger/10 p-6">
+      <div className="rounded-xl border border-brick-600/30 bg-brick-600/10 p-6">
         <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 shrink-0 text-danger-strong" />
+          <AlertCircle className="h-5 w-5 shrink-0 text-brick-600" />
           <div>
-            <h3 className="text-sm font-semibold text-danger-strong">Error Loading Details</h3>
-            <p className="mt-1 text-sm text-danger-strong">{error || "Failed to load reintroduction details"}</p>
+            <h3 className="text-sm font-semibold text-brick-600">Error Loading Details</h3>
+            <p className="mt-1 text-sm text-brick-600">{error || "Failed to load reintroduction details"}</p>
           </div>
         </div>
       </div>
@@ -218,7 +218,7 @@ export function ReintroductionDetail({
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-24 overflow-hidden rounded-full bg-warm-200">
                     <div
-                      className="h-full rounded-full bg-danger"
+                      className="h-full rounded-full bg-brick-600"
                       style={{ width: `${(symptom.severity / 10) * 100}%` }}
                     />
                   </div>
@@ -234,23 +234,23 @@ export function ReintroductionDetail({
       {data.analysis && (
         <div className={`rounded-xl border p-6 ${
           data.analysis.symptomIncrease
-            ? "border-danger/30 bg-danger/10"
+            ? "border-brick-600/30 bg-brick-600/10"
             : "border-teal-200 bg-teal-50"
         }`}>
           <div className="flex items-start gap-3">
             {data.analysis.symptomIncrease ? (
-              <TrendingUp className="h-5 w-5 shrink-0 text-danger-strong" />
+              <TrendingUp className="h-5 w-5 shrink-0 text-brick-600" />
             ) : (
               <TrendingDown className="h-5 w-5 shrink-0 text-teal-600" />
             )}
             <div className="flex-1">
               <h3 className={`text-base font-semibold ${
-                data.analysis.symptomIncrease ? "text-danger-strong" : "text-teal-900"
+                data.analysis.symptomIncrease ? "text-brick-600" : "text-teal-900"
               }`}>
                 Analysis Results
               </h3>
               <p className={`mt-2 text-sm ${
-                data.analysis.symptomIncrease ? "text-danger-strong" : "text-teal-700"
+                data.analysis.symptomIncrease ? "text-brick-600" : "text-teal-700"
               }`}>
                 {data.analysis.recommendation}
               </p>
@@ -290,7 +290,7 @@ export function ReintroductionDetail({
             </Button>
           )}
           {onMarkFailed && (
-            <Button variant="outline-danger" onClick={() => setVerdict("failed")} className="flex-1">
+            <Button variant="outline-brick-600" onClick={() => setVerdict("failed")} className="flex-1">
               Record as failed
             </Button>
           )}
@@ -313,7 +313,7 @@ export function ReintroductionDetail({
             Not yet
           </Button>
           <Button
-            variant={verdict === "failed" ? "outline-danger" : "primary"}
+            variant={verdict === "failed" ? "outline-brick-600" : "primary"}
             onClick={() => {
               const fn = verdict === "passed" ? onMarkPassed : onMarkFailed;
               setVerdict(null);

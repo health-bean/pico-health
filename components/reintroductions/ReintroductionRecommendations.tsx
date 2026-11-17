@@ -83,12 +83,12 @@ export function ReintroductionRecommendations({
 
   if (error) {
     return (
-      <div className="rounded-xl border border-danger/30 bg-danger/10 p-6">
+      <div className="rounded-xl border border-brick-600/30 bg-brick-600/10 p-6">
         <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 shrink-0 text-danger-strong" />
+          <AlertCircle className="h-5 w-5 shrink-0 text-brick-600" />
           <div>
-            <h3 className="text-sm font-semibold text-danger-strong">Error Loading Recommendations</h3>
-            <p className="mt-1 text-sm text-danger-strong">{error}</p>
+            <h3 className="text-sm font-semibold text-brick-600">Error Loading Recommendations</h3>
+            <p className="mt-1 text-sm text-brick-600">{error}</p>
           </div>
         </div>
       </div>

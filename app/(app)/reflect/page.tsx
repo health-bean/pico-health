@@ -342,7 +342,7 @@ export default function ReflectPage() {
                 </span>
               )}
               {hasChanges && !saving && (
-                <span className="text-xs text-warning-strong">Unsaved</span>
+                <span className="text-xs text-ochre-700">Unsaved</span>
               )}
             </div>
           </div>

@@ -10,15 +10,23 @@ export type FitTone = "allowed" | "limit" | "avoid" | "unknown";
 
 /**
  * One colour per tone, app-wide (Log, My food list, food search, the rating
- * picker): Avoid = brick, Limit = ochre, Allowed = teal. Not a traffic light,
- * and never olive, which Insights keeps for "seems to help". The words always
- * carry the meaning too.
+ * picker): Avoid = brick, Limit = ochre, Allowed = teal. Not a traffic light:
+ * each tone also has a symbol (FIT_TONE_SYMBOL), so the meaning survives
+ * without colour, and the words always carry it too.
  */
 export const FIT_TONE_CLASS: Record<FitTone, { text: string; chip: string }> = {
   allowed: { text: "text-teal-700", chip: "border-teal-300 bg-teal-50 text-teal-800" },
   limit: { text: "text-ochre-700", chip: "border-ochre-500/50 bg-ochre-500/10 text-ochre-700" },
   avoid: { text: "text-brick-600", chip: "border-brick-600/40 bg-brick-600/10 text-brick-600" },
   unknown: { text: "text-warm-500", chip: "border-warm-200 bg-warm-100 text-warm-700" },
+};
+
+/** ✓ Allowed, − Limit, ✕ Avoid; nothing for "not rated yet". Rendered by components/foods/FitSymbol. */
+export const FIT_TONE_SYMBOL: Record<FitTone, "check" | "minus" | "x" | null> = {
+  allowed: "check",
+  limit: "minus",
+  avoid: "x",
+  unknown: null,
 };
 
 /** A diet's food status ("avoid", "moderation", "caution", "allowed", …) as a tone. */

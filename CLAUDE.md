@@ -54,11 +54,11 @@ To compare models/providers on real data before changing a default, use `npm run
 - 14 UI components in `components/ui/`
 - Forced light mode (no dark mode yet)
 - Zero off-system colors, zero inline styles
-- **Colour rules** (signed off on Log, 2026-11-16; each colour has one job):
+- **Colour rules** (signed off by Dee 2026-11-16: teal = good for you, ochre = in between, brick = watch out, clay = symptoms; each colour has one job):
   - Cream `surface` is the ground; cards lift to `surface-card`; quiet notices use `surface-overlay` (the cream's own step, never a near-neutral grey).
   - **Teal**: brand, actions, links, selected states, and "Allowed / fine for you". Not decoration elsewhere.
-  - **Food fit** (`FIT_TONE_CLASS` in `lib/protocols/fit-line.ts`): Avoid = `brick-600`, Limit = `ochre-700`, Allowed = `teal-700`. No traffic-light red.
-  - **Insights sections**: brick/clay "Possible triggers", ochre "worth keeping an eye on", olive "seems to help". **Olive means "seems to help" and nothing else.**
+  - **Food fit** (`FIT_TONE_CLASS` in `lib/protocols/fit-line.ts`): Avoid = `brick-600` ✕, Limit = `ochre-700` −, Allowed = `teal-700` ✓. Always with the symbol (`FitSymbol`), so it reads without colour. No traffic-light red or green.
+  - **Insights sections**: brick/clay "Possible triggers", ochre "worth keeping an eye on", teal "seems to help" (same "good for you" as Allowed). Olive is retired: it read as a muddy teal.
   - **Clay**: symptoms (tinted row, icon tiles). **Ochre** also: exposure / off-protocol icons.
   - **Errors** ("Couldn't save") = `brick-600`, not ochre, so an error never reads as "Limit".
   - **Never colour evidence or intensity.** Strength = ●●● + word in ink; property levels use the `level-*` ramp, which is the cream's hue getting darker (not amber).

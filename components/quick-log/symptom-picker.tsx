@@ -88,7 +88,7 @@ export function SymptomPicker({
                 onClick={() => onSelect("symptom", s.name)}
                 className={`flex min-h-11 items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition-colors ${
                   isSelected
-                    ? "border-danger/30 bg-danger/10 text-danger-strong"
+                    ? "border-brick-600/30 bg-brick-600/10 text-brick-600"
                     : "border-warm-200 bg-[var(--color-surface-card)] text-warm-700 hover:bg-warm-50"
                 }`}
               >

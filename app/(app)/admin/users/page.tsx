@@ -102,7 +102,7 @@ export default function AdminUsersPage() {
                       "inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium",
                       user.onboardingCompleted
                         ? "bg-teal-50 text-teal-700"
-                        : "bg-warning/10 text-warning-strong"
+                        : "bg-ochre-500/10 text-ochre-700"
                     )}
                   >
                     {user.onboardingCompleted ? "Active" : "Onboarding"}
@@ -138,7 +138,7 @@ export default function AdminUsersPage() {
                     className={cn(
                       "inline-flex items-center gap-1 rounded-md px-2.5 py-1.5 text-xs font-medium transition-colors",
                       user.isAdmin
-                        ? "text-danger-strong hover:bg-danger/10"
+                        ? "text-brick-600 hover:bg-brick-600/10"
                         : "text-teal-600 hover:bg-teal-50",
                       updating === user.id && "opacity-50"
                     )}

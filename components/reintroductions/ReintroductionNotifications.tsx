@@ -106,9 +106,9 @@ export function ReintroductionNotifications() {
       case "analysis_ready":
         return "bg-teal-50 border-teal-200";
       case "missed_days_warning":
-        return "bg-warning/10 border-warning/30";
+        return "bg-ochre-500/10 border-ochre-500/30";
       case "missed_days_action":
-        return "bg-danger/10 border-danger/30";
+        return "bg-brick-600/10 border-brick-600/30";
       default:
         return "bg-warm-50 border-warm-200";
     }
@@ -124,7 +124,7 @@ export function ReintroductionNotifications() {
 
   if (error) {
     return (
-      <div className="p-4 text-center text-danger-strong">
+      <div className="p-4 text-center text-brick-600">
         Error: {error}
       </div>
     );
@@ -180,7 +180,7 @@ export function ReintroductionNotifications() {
                   <button className="px-4 py-2 bg-teal-600 text-white rounded-md hover:bg-teal-700 text-sm font-medium">
                     Extend Trial
                   </button>
-                  <button className="px-4 py-2 bg-danger text-white rounded-md hover:bg-danger text-sm font-medium">
+                  <button className="px-4 py-2 bg-brick-600 text-white rounded-md hover:bg-brick-600 text-sm font-medium">
                     Cancel Trial
                   </button>
                 </>

@@ -144,7 +144,7 @@ export default function LoginPage() {
               />
 
               {error && (
-                <p className="text-sm text-danger-strong" role="alert">
+                <p className="text-sm text-brick-600" role="alert">
                   {error}
                 </p>
               )}

@@ -119,7 +119,7 @@ export function ClarifierRow({ clarifier, onDone, compact }: ClarifierRowProps) 
         </button>
       </div>
       {error && (
-        <p className="mt-1 text-xs text-[var(--color-danger)]" role="alert">
+        <p className="mt-1 text-xs text-[var(--color-brick-600)]" role="alert">
           Couldn&rsquo;t save that — tap again.
         </p>
       )}

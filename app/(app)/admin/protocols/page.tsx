@@ -34,8 +34,8 @@ interface Protocol {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  avoid: "bg-danger/10 text-danger-strong",
-  moderation: "bg-warning/10 text-warning-strong",
+  avoid: "bg-brick-600/10 text-brick-600",
+  moderation: "bg-ochre-500/10 text-ochre-700",
   allowed: "bg-teal-100 text-teal-800",
 };
 
@@ -280,7 +280,7 @@ export default function AdminProtocolsPage() {
                     </button>
                     <button
                       onClick={() => handleDeleteProtocol(protocol.id, protocol.name)}
-                      className="rounded p-1 text-warm-500 hover:bg-danger/10 hover:text-danger-strong"
+                      className="rounded p-1 text-warm-500 hover:bg-brick-600/10 hover:text-brick-600"
                     >
                       <Trash2 className="h-3.5 w-3.5" />
                     </button>
@@ -390,7 +390,7 @@ export default function AdminProtocolsPage() {
                                   </button>
                                   <button
                                     onClick={() => handleDeleteRule(rule.id)}
-                                    className="rounded p-1 text-warm-500 hover:bg-danger/10 hover:text-danger-strong"
+                                    className="rounded p-1 text-warm-500 hover:bg-brick-600/10 hover:text-brick-600"
                                   >
                                     <Trash2 className="h-3 w-3" />
                                   </button>

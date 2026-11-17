@@ -1,7 +1,8 @@
 "use client";
 
 import { useId, useState } from "react";
-import { Replace, Clock, Check, ChevronDown } from "lucide-react";
+import { Replace, Clock, ChevronDown } from "lucide-react";
+import { FitSymbol } from "@/components/foods/FitSymbol";
 import { Badge } from "@/components/ui";
 import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
 import { PersonalRatingPicker } from "@/components/foods/PersonalRatingPicker";
@@ -111,12 +112,15 @@ export function FoodRow({
         <span className="mt-0.5 block text-xs text-teal-700">{details.join(" · ")}</span>
       )}
       {line ? (
-        <span className={cn("mt-0.5 flex items-center gap-1 text-xs", FIT_TONE_CLASS[line.tone].text)}>
-          {line.tone === "allowed" && <Check className="h-3 w-3 shrink-0" aria-hidden="true" />}
+        <span className={cn("mt-0.5 flex items-start gap-1 text-xs", FIT_TONE_CLASS[line.tone].text)}>
+          <FitSymbol tone={line.tone} className="mt-0.5" />
           {line.text}
         </span>
       ) : violations ? (
-        <span className={cn("mt-0.5 block text-xs", FIT_TONE_CLASS.avoid.text)}>Outside your protocol · {violations}</span>
+        <span className={cn("mt-0.5 flex items-start gap-1 text-xs", FIT_TONE_CLASS.avoid.text)}>
+          <FitSymbol tone="avoid" className="mt-0.5" />
+          Outside your protocol · {violations}
+        </span>
       ) : null}
       {/* Neutral on purpose: the level ramp shares ochre's hue, and an amber
           "Very high oxalate" under a teal "Allowed" read as a second verdict. */}

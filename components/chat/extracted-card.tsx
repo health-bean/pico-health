@@ -11,14 +11,14 @@ const typeConfig: Record<
   { label: string; variant: "allowed" | "avoid" | "moderation" | "info" | "default"; bg: string }
 > = {
   food: { label: "Food", variant: "allowed", bg: "bg-teal-50 border-teal-200" },
-  symptom: { label: "Symptom", variant: "avoid", bg: "bg-danger/10 border-danger/30" },
+  symptom: { label: "Symptom", variant: "avoid", bg: "bg-brick-600/10 border-brick-600/30" },
   supplement: { label: "Supplement", variant: "info", bg: "bg-teal-50 border-teal-200" },
   medication: { label: "Medication", variant: "moderation", bg: "bg-teal-50 border-teal-200" },
-  exposure: { label: "Exposure", variant: "moderation", bg: "bg-warning/10 border-warning/30" },
+  exposure: { label: "Exposure", variant: "moderation", bg: "bg-ochre-500/10 border-ochre-500/30" },
   detox: { label: "Detox", variant: "default", bg: "bg-teal-50 border-teal-200" },
   exercise: { label: "Exercise", variant: "info", bg: "bg-teal-50 border-teal-200" },
-  energy: { label: "Energy", variant: "default", bg: "bg-warning/10 border-warning/30" },
-  off_protocol: { label: "Off-Protocol", variant: "moderation", bg: "bg-warning/10 border-warning/30" },
+  energy: { label: "Energy", variant: "default", bg: "bg-ochre-500/10 border-ochre-500/30" },
+  off_protocol: { label: "Off-Protocol", variant: "moderation", bg: "bg-ochre-500/10 border-ochre-500/30" },
 };
 
 export function ExtractedCard({ entry }: ExtractedCardProps) {

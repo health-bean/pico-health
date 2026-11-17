@@ -3,7 +3,7 @@
 /*
  * Pico Health Design System — "Botanical Clinical"
  *
- * The FILO deck's palette (cream ground, teal, clay/olive/gold accents)
+ * The FILO deck's palette (cream ground, teal, clay/brick/ochre accents)
  * with Fraunces display and Source Sans body.
  * Zero inline styles. Everything through tokens.
  * Force light mode — no dark mode support yet.
@@ -39,6 +39,13 @@ html {
   --color-lp-gold: oklch(0.839 0.135 91.8);   /* EAC757, deep-teal panels only (1.47:1 on cream) */
   --color-lp-gold-50: oklch(0.952 0.050 92);
   --spacing-lp-section: 5rem;
+  /* TEMPORARY, marketing site only: components/landing still uses these old
+     names. Delete this block once the site moves to lp-gold / lp-gold-50
+     (added by the marketing-site change) and brick-600. Nothing in the app
+     may use them. */
+  --color-gold-400: oklch(0.839 0.135 91.8);
+  --color-gold-50: oklch(0.952 0.050 92);
+  --color-danger-strong: oklch(0.449 0.137 23.5);
 
   /* ── Brand: Teal (hue 189°, the deck's own) ──────────────────── */
   /* 499F99 lands exactly on the 400 step. The darker steps carry white
@@ -66,31 +73,20 @@ html {
   --color-warm-800: oklch(0.27 0.02 80);
   --color-warm-900: oklch(0.20 0.015 80);
 
-  /* ── Semantic (data-driven, not brand) ───────────────────────── */
-  --color-success: oklch(0.55 0.14 152);
-  --color-warning: oklch(0.68 0.14 75);
-  --color-danger: oklch(0.55 0.18 27);
-  --color-info: oklch(0.52 0.09 270);
-  /* Text-weight versions: the base tokens are fine for icons and fills,
-     these clear 4.5:1 as small text on the surfaces. */
-  --color-warning-strong: oklch(0.46 0.11 75);
-  --color-danger-strong: oklch(0.47 0.16 27);
-
-  /* ── Deck accents (FILO pitch deck, July 2025) ───────────────── */
-  /* The brand's own warm range at their true converted values. Used for
-     meaning on Insights, never as decoration. */
+  /* ── Meaning colours: one job each (see "Colour rules" in CLAUDE.md) ── */
+  /* Teal (above) = good for you: Allowed, fine for you, seems to help, plus
+     actions. Ochre = in between: Limit, worth keeping an eye on. Brick =
+     watch out: Avoid, possible triggers, errors, destructive actions. Clay =
+     symptoms (and the logo's orange). Nothing else carries meaning: the old
+     success / warning / danger / info set, gold and olive are retired. */
   --color-clay-500: oklch(0.586 0.147 51.3);  /* BE5D0E burnt orange */
   --color-clay-600: oklch(0.520 0.135 51);    /* text weight on clay-50 */
   --color-clay-700: oklch(0.455 0.115 51);    /* heading weight on clay-50 */
   --color-clay-50: oklch(0.935 0.042 55);
   --color-brick-600: oklch(0.449 0.137 23.5); /* 922C2E */
-  --color-olive-600: oklch(0.468 0.089 134.5);/* 44652F */
-  --color-olive-50: oklch(0.935 0.038 134);
-  --color-gold-400: oklch(0.839 0.135 91.8);  /* EAC757 */
-  --color-gold-50: oklch(0.952 0.050 92);
-  /* EAC757 is 1.47:1 on the cream: fine as a fill, invisible as a line or
-     text. Ochre is that mustard darkened until it reads: 500 for icons and
-     rules (3.6:1), 700 for text (5.5:1). */
+  --color-brick-700: oklch(0.390 0.120 23.5); /* hover / pressed on brick buttons */
+  /* Ochre is the deck's mustard darkened until it reads on the cream:
+     500 for icons, rules and tints (3.6:1), 700 for text (5.5:1). */
   --color-ochre-500: oklch(0.60 0.13 80);
   --color-ochre-700: oklch(0.50 0.105 75);
 

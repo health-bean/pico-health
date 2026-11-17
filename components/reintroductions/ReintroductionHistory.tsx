@@ -74,12 +74,12 @@ export function ReintroductionHistory({
         </span>
       ),
       failed: (
-        <span className="inline-flex items-center rounded-full bg-danger/10 px-2.5 py-0.5 text-xs font-medium text-danger-strong">
+        <span className="inline-flex items-center rounded-full bg-brick-600/10 px-2.5 py-0.5 text-xs font-medium text-brick-600">
           Failed
         </span>
       ),
       inconclusive: (
-        <span className="inline-flex items-center rounded-full bg-warning/10 px-2.5 py-0.5 text-xs font-medium text-warning-strong">
+        <span className="inline-flex items-center rounded-full bg-ochre-500/10 px-2.5 py-0.5 text-xs font-medium text-ochre-700">
           Inconclusive
         </span>
       ),
@@ -148,12 +148,12 @@ export function ReintroductionHistory({
   // Error state
   if (error) {
     return (
-      <div className="rounded-xl border border-danger/30 bg-danger/10 p-6">
+      <div className="rounded-xl border border-brick-600/30 bg-brick-600/10 p-6">
         <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 shrink-0 text-danger-strong" />
+          <AlertCircle className="h-5 w-5 shrink-0 text-brick-600" />
           <div>
-            <h3 className="text-sm font-semibold text-danger-strong">Error Loading Reintroductions</h3>
-            <p className="mt-1 text-sm text-danger-strong">{error}</p>
+            <h3 className="text-sm font-semibold text-brick-600">Error Loading Reintroductions</h3>
+            <p className="mt-1 text-sm text-brick-600">{error}</p>
           </div>
         </div>
       </div>

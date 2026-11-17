@@ -61,7 +61,7 @@ export function DeleteAccount() {
 
   return (
     <>
-      <Button variant="outline-danger" onClick={() => setStage("confirm")}>
+      <Button variant="outline-brick-600" onClick={() => setStage("confirm")}>
         <Trash2 className="mr-2 h-4 w-4" aria-hidden="true" />
         Delete my account
       </Button>
@@ -91,7 +91,7 @@ export function DeleteAccount() {
             placeholder="DELETE"
           />
           {error && (
-            <p role="alert" className="text-sm text-danger-strong">
+            <p role="alert" className="text-sm text-brick-600">
               {error}
             </p>
           )}
@@ -101,7 +101,7 @@ export function DeleteAccount() {
             Keep my account
           </Button>
           <Button
-            variant="outline-danger"
+            variant="outline-brick-600"
             onClick={schedule}
             loading={working}
             disabled={!canConfirm}
@@ -125,7 +125,7 @@ export function DeleteAccount() {
           </p>
           <p>If you would rather not wait, you can delete it for good right now.</p>
           {error && (
-            <p role="alert" className="text-sm text-danger-strong">
+            <p role="alert" className="text-sm text-brick-600">
               {error}
             </p>
           )}
@@ -134,7 +134,7 @@ export function DeleteAccount() {
           <Button variant="ghost" onClick={() => router.push("/login")} className="w-full sm:w-auto">
             Done
           </Button>
-          <Button variant="outline-danger" onClick={() => setPurgeOpen(true)} className="w-full sm:w-auto">
+          <Button variant="outline-brick-600" onClick={() => setPurgeOpen(true)} className="w-full sm:w-auto">
             Delete permanently now
           </Button>
         </div>

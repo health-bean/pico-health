@@ -6,13 +6,14 @@ import { Plus, type LucideIcon } from 'lucide-react';
 type SectionVariant = 'trigger' | 'watch' | 'helper';
 
 // Each section carries its own colour, drawn from the brand's warm range:
-// clay/brick for what goes with symptoms, ochre for what to watch, olive for
-// what helps. The colour lives in the heading's icon, title and rule; the
+// clay/brick for what goes with symptoms, ochre for what to watch, teal for
+// what helps (the same "good for you" as Allowed; olive was retired because
+// it read as a muddy teal and not as "good"). The colour lives in the heading's icon, title and rule; the
 // cards under it stay neutral, so a section is never a card around cards.
 const variants = {
   trigger: { rule: 'border-clay-500/35', titleColor: 'text-brick-600', iconColor: 'text-clay-500' },
   watch: { rule: 'border-ochre-500/45', titleColor: 'text-ochre-700', iconColor: 'text-ochre-500' },
-  helper: { rule: 'border-olive-600/35', titleColor: 'text-olive-600', iconColor: 'text-olive-600' },
+  helper: { rule: 'border-teal-600/35', titleColor: 'text-teal-700', iconColor: 'text-teal-600' },
 };
 
 interface InsightSectionProps {

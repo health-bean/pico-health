@@ -6,6 +6,7 @@ import { ArrowLeft, ListChecks } from "lucide-react";
 import { Card, EmptyState, Input, PageTitle, Spinner } from "@/components/ui";
 import type { ListGroup, ListItem, MyList } from "@/lib/personal/my-list";
 import { FIT_TONE_CLASS } from "@/lib/protocols/fit-line";
+import { FitSymbol } from "@/components/foods/FitSymbol";
 import { cn } from "@/lib/utils";
 
 const GROUPS: { key: ListGroup; title: (diet: string | null) => string; open: boolean }[] = [
@@ -105,7 +106,10 @@ export default function MyListPage() {
                   <Card key={g.key}>
                     <details open={g.open || query.length > 0}>
                       <summary className={cn("flex min-h-11 cursor-pointer items-center justify-between text-sm font-semibold", FIT_TONE_CLASS[g.key].text)}>
-                        {g.title(data.diet)}
+                        <span className="inline-flex items-center gap-1.5">
+                          <FitSymbol tone={g.key} className="h-3.5 w-3.5" />
+                          {g.title(data.diet)}
+                        </span>
                         <span className="text-xs font-normal text-warm-500">{filtered[g.key].length}</span>
                       </summary>
                       <ul className="divide-y divide-warm-100">

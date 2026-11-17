@@ -2,7 +2,7 @@ import { twMerge } from "tailwind-merge";
 
 /**
  * Join class names and resolve Tailwind conflicts, so a caller's override
- * (say, text-danger-strong) replaces a component default (text-white)
+ * (say, text-brick-600) replaces a component default (text-white)
  * instead of both applying.
  */
 export function cn(...classes: (string | boolean | undefined | null)[]) {

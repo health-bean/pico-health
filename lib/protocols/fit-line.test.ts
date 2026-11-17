@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { FIT_TONE_CLASS, fitLine, personalStatus, shortDietName, statusTone } from "./fit-line";
+import { FIT_TONE_CLASS, FIT_TONE_SYMBOL, fitLine, personalStatus, shortDietName, statusTone } from "./fit-line";
 
 describe("shortDietName", () => {
   it("drops the long form in brackets", () => {
@@ -99,7 +99,12 @@ describe("fit tones", () => {
     expect(texts.size).toBe(3);
   });
 
-  it("never use traffic-light red or the olive kept for 'seems to help'", () => {
+  it("give Allowed, Limit and Avoid three different symbols, so colour isn't the only signal", () => {
+    expect(FIT_TONE_SYMBOL).toMatchObject({ allowed: "check", limit: "minus", avoid: "x", unknown: null });
+    expect(new Set([FIT_TONE_SYMBOL.allowed, FIT_TONE_SYMBOL.limit, FIT_TONE_SYMBOL.avoid]).size).toBe(3);
+  });
+
+  it("never use traffic-light red or green", () => {
     for (const t of Object.values(FIT_TONE_CLASS)) {
       expect(`${t.text} ${t.chip}`).not.toMatch(/danger|red-|olive|success|green/);
     }

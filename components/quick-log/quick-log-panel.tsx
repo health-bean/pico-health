@@ -225,7 +225,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
                 >
                   {item.name}
                   {item.severity && (
-                    <span className="text-danger-strong">{item.severity}/10</span>
+                    <span className="text-brick-600">{item.severity}/10</span>
                   )}
                   <button
                     onClick={() => removeItem(item.id)}
@@ -336,7 +336,7 @@ export function QuickLogPanel({ onSaved, onItemsChange, entryDate, dayLabel }: Q
             {saveError && (
               <div
                 role="alert"
-                className="mb-2 flex items-center gap-2 rounded-lg border border-danger/30 bg-danger/10 px-3 py-2 text-sm text-danger-strong"
+                className="mb-2 flex items-center gap-2 rounded-lg border border-brick-600/30 bg-brick-600/10 px-3 py-2 text-sm text-brick-600"
               >
                 <AlertCircle className="h-4 w-4 shrink-0" />
                 Couldn&apos;t save. Try again.

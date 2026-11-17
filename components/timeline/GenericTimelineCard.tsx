@@ -37,7 +37,7 @@ const KIND: Record<Exclude<EntryType, "food" | "exercise">, { icon: LucideIcon; 
   symptom: { icon: Frown, label: "Symptom", tile: "bg-clay-500/15 text-clay-700" },
   supplement: { icon: Pill, label: "Supplement", tile: "bg-warm-100 text-warm-600" },
   medication: { icon: Pill, label: "Medication", tile: "bg-warm-100 text-warm-600" },
-  exposure: { icon: ShieldAlert, label: "Exposure", tile: "bg-gold-50 text-ochre-700" },
+  exposure: { icon: ShieldAlert, label: "Exposure", tile: "bg-ochre-500/10 text-ochre-700" },
   detox: { icon: Droplets, label: "Detox", tile: "bg-teal-50 text-teal-600" },
   energy: { icon: Zap, label: "Energy", tile: "bg-teal-50 text-teal-600" },
   off_protocol: { icon: AlertTriangle, label: "Off-protocol", tile: "bg-ochre-500/10 text-ochre-700" },
