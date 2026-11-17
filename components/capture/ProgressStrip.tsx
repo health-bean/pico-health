@@ -31,9 +31,15 @@ function daysSince(dateStr: string): number {
 interface ProgressStripProps {
   /** Jump the Log to a given day (YYYY-MM-DD). */
   onJumpToDay?: (date: string) => void;
+  /**
+   * "welcome" renders only the back-after-a-break notice (top of the Log);
+   * "progress" only the day count, goal and Export (end of the day's list,
+   * so the day itself starts near the top of the screen).
+   */
+  part?: "welcome" | "progress";
 }
 
-export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
+export function ProgressStrip({ onJumpToDay, part }: ProgressStripProps = {}) {
   const [stats, setStats] = useState<Stats | null>(null);
   const [goalOpen, setGoalOpen] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -81,7 +87,7 @@ export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
   if (hasGoal) {
     line =
       goalDay >= stats.trackingGoalDays!
-        ? `${stats.trackingGoalDays} days tracked — ready to share`
+        ? `${stats.trackingGoalDays} days tracked, ready to share`
         : `Day ${goalDay} of ${stats.trackingGoalDays}`;
   } else if (stats.daysTracked === 0) {
     line = "Your first day of logging";
@@ -97,12 +103,16 @@ export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
   const lastLabel = stats.lastEntryDate
     ? new Date(stats.lastEntryDate + "T12:00:00").toLocaleDateString(undefined, { weekday: "short", month: "short", day: "numeric" })
     : "";
-  const showBar = hasGoal;
+  // A full bar beside "ready to share" says nothing new; it shows only while counting.
+  const showBar = hasGoal && goalDay < stats.trackingGoalDays!;
+  const showWelcome = part !== "progress";
+  const showProgress = part !== "welcome";
 
   return (
     <>
-      {returning && (
-        <div className="mb-3 flex items-center justify-between gap-2 rounded-xl bg-warm-100 px-3 text-sm text-warm-700">
+      {/* The ground's own darker step: a quiet notice in the palette, not a grey slab. */}
+      {showWelcome && returning && (
+        <div className="mb-3 flex items-center justify-between gap-2 rounded-xl bg-[var(--color-surface-overlay)] px-3 text-sm text-warm-700">
           <span className="py-2">
             Welcome back. You last logged on <span className="font-medium text-warm-900">{lastLabel}</span>.
           </span>
@@ -110,18 +120,19 @@ export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
             <button
               type="button"
               onClick={() => onJumpToDay(stats.lastEntryDate!)}
-              className="-mr-2 min-h-11 shrink-0 rounded-lg px-2 font-medium text-teal-700 hover:bg-warm-200"
+              className="-mr-2 min-h-11 shrink-0 rounded-lg px-2 font-medium text-teal-700 hover:bg-teal-50"
             >
               See that day
             </button>
           )}
         </div>
       )}
-      <div className="mb-4 flex items-center gap-3">
+      {showProgress && (
+      <div className="flex items-center gap-3">
         <button
           type="button"
           onClick={() => setGoalOpen(true)}
-          className="group flex min-h-11 min-w-0 flex-1 items-center gap-3 rounded-xl px-1 text-left focus-visible:outline-2 focus-visible:outline-teal-500"
+          className="group -mx-1 flex min-h-11 min-w-0 flex-1 items-center gap-3 rounded-xl px-1 text-left focus-visible:outline-2 focus-visible:outline-teal-500"
           aria-label={`${line}. ${hasGoal ? "Change" : "Set"} a tracking goal.`}
         >
           <span className="min-w-0 truncate text-sm text-warm-600 transition-colors group-hover:text-warm-800">
@@ -152,6 +163,7 @@ export function ProgressStrip({ onJumpToDay }: ProgressStripProps = {}) {
           </a>
         )}
       </div>
+      )}
 
       <Dialog open={goalOpen} onClose={() => setGoalOpen(false)} title="Tracking goal">
         <p className="mb-3 text-sm text-[var(--color-text-secondary)]">

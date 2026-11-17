@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { ChevronDown, ChevronLeft, ChevronRight, Zap, NotebookPen } from "lucide-react";
-import { Spinner, EmptyState, useToast } from "@/components/ui";
+import { ChevronDown, ChevronLeft, ChevronRight, Zap } from "lucide-react";
+import { Spinner, useToast } from "@/components/ui";
 import { QuickAddSheet } from "@/components/quick-log/quick-add-sheet";
 import { ExerciseTimelineCard } from "@/components/timeline/ExerciseTimelineCard";
 import { FoodRow, clarifierLabels } from "@/components/timeline/FoodRow";
@@ -302,7 +302,7 @@ export default function TimelinePage() {
     // Opacity-only entrance: a transform on this root would break `position:
     // fixed` for the capture bar, the Quick Add sheet, and entry menus inside.
     <div className={cn("mx-auto max-w-2xl px-4 py-6 animate-fade-in", isToday ? "pb-36 md:pb-28" : "pb-52 md:pb-44")}>
-      <ProgressStrip onJumpToDay={setDate} />
+      <ProgressStrip part="welcome" onJumpToDay={setDate} />
 
       {/* Date nav: the heading opens a week strip for jumping straight to a day */}
       <div className="mb-2 flex items-center justify-between">
@@ -332,18 +332,19 @@ export default function TimelinePage() {
           </button>
         </h2>
 
-        <button
-          type="button"
-          onClick={() => shiftDate(1)}
-          disabled={isToday}
-          className={cn(
-            "flex h-11 w-11 items-center justify-center rounded-lg text-[var(--color-text-muted)] transition-colors duration-200",
-            isToday ? "opacity-30" : "hover:bg-teal-50 hover:text-teal-600"
-          )}
-          aria-label="Next day"
-        >
-          <ChevronRight className="h-5 w-5" />
-        </button>
+        {/* No "next" from today: a blank of the same size keeps the date centred. */}
+        {isToday ? (
+          <span className="h-11 w-11" aria-hidden="true" />
+        ) : (
+          <button
+            type="button"
+            onClick={() => shiftDate(1)}
+            className="flex h-11 w-11 items-center justify-center rounded-lg text-[var(--color-text-muted)] transition-colors duration-200 hover:bg-teal-50 hover:text-teal-600"
+            aria-label="Next day"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        )}
       </div>
 
       <div id="log-day-strip">
@@ -415,23 +416,14 @@ export default function TimelinePage() {
           <Spinner />
         </div>
       ) : filteredEntries.length === 0 && !hasPending ? (
-        <EmptyState
-          icon={<NotebookPen className="h-6 w-6" />}
-          title={
-            showEnergyOnly
-              ? "No entries with energy levels for this day."
-              : isToday
-                ? "Nothing logged yet today."
-                : "Nothing logged this day."
-          }
-          description={
-            showEnergyOnly
-              ? undefined
-              : "Type it below: “salmon and rice for lunch” is enough. Or snap a photo of your plate, or tap Add to pick from a list."
-          }
-
-          className="py-20"
-        />
+        // One left-aligned line, pointing at the capture bar right below.
+        <p className="mt-1 max-w-[65ch] text-sm text-warm-600">
+          {showEnergyOnly
+            ? "No entries with energy levels for this day."
+            : isToday
+              ? "Nothing logged yet today. Type it below (“salmon and rice for lunch” is enough) or snap your plate."
+              : "Nothing logged this day. Type it below or snap your plate to add it."}
+        </p>
       ) : (
         <div className="flex flex-col gap-2 stagger-children">
           {/* Untimed entries (e.g. a symptom backfilled on a past day) go last:
@@ -498,6 +490,11 @@ export default function TimelinePage() {
           })}
         </div>
       )}
+
+      {/* Day count, tracking goal and Export: after the day, not above it. */}
+      <div className="mt-6">
+        <ProgressStrip part="progress" />
+      </div>
 
       {/* The pen is always out */}
       <CaptureBar

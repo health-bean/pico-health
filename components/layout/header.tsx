@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "@/hooks/use-session";
 import { cn } from "@/lib/utils";
+import { Wordmark } from "@/components/brand/wordmark";
 
 const navItems = [
   { label: "Log", href: "/log" },
@@ -21,10 +22,12 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b border-[var(--color-border-light)] bg-[var(--color-surface)]/95 backdrop-blur-md">
       <div className="flex h-14 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/log" className="flex items-center group">
-          <span className="font-[family-name:var(--font-display)] text-xl font-bold tracking-tight text-teal-800 group-hover:text-teal-900 transition-colors">
-            Pico Health
-          </span>
+        {/* The brand wordmark, the same artwork as picohealth.app and the login page. */}
+        <Link
+          href="/log"
+          className="-ml-1 flex min-h-11 items-center rounded-lg px-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+        >
+          <Wordmark className="h-5 w-auto" />
         </Link>
 
         {/* Desktop nav */}

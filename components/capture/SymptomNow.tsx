@@ -78,7 +78,8 @@ const chipFace =
 const chipIdle =
   "border-[var(--color-border)] bg-[var(--color-surface-card)] text-warm-900 group-hover:border-teal-300 group-hover:text-teal-700";
 const chipOn = "border-teal-700 bg-teal-700 text-white";
-const chipAdd = "border-dashed border-teal-400 bg-transparent font-semibold text-teal-700 group-hover:bg-teal-50";
+// Borderless: an action, not a symptom, so it shouldn't weigh the same as one.
+const chipAdd = "border-transparent bg-transparent px-1.5 font-semibold text-teal-700 group-hover:bg-teal-50";
 
 function Chip({
   children,
