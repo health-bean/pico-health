@@ -108,7 +108,7 @@ function FoodListCard() {
 }
 
 // Sections alternate cream / teal so the page breaks into clear chapters:
-// teal hero, cream problem, deep-teal quote, cream features, pale-teal
+// teal hero, cream problem, deep-teal quote, cream features, warm off-white
 // examples, cream team, deep-teal sign-up.
 
 export function Approach() {
@@ -127,7 +127,7 @@ export function Approach() {
         <Features />
       </section>
 
-      <section id="approach" className="bg-teal-50 px-6 py-lp-section md:px-12">
+      <section id="approach" className="border-y border-lp-cream-dark bg-lp-paper px-6 py-lp-section md:px-12">
         <div className="mx-auto max-w-5xl">
           <h2 className="text-balance text-center text-3xl font-bold leading-tight md:text-4xl">{LANDING_SHOWCASE.headline}</h2>
           <div className="mt-10 grid gap-5 md:grid-cols-3">
