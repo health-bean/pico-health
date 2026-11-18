@@ -16,7 +16,7 @@ export const LANDING_HERO = {
   foodsLabel: "Very high in oxalate:",
   foods: ["Spinach", "Almonds", "Quinoa"],
   headline: "This is what intelligent health looks like",
-  subtitle: "Real insights. Real tracking. Real patterns that are easy to miss between appointments.",
+  subtitle: "Real insights. Real tracking. Real patterns a food journal can't detect.",
 } as const;
 
 export const LANDING_PROBLEM = {
@@ -35,7 +35,7 @@ export const LANDING_FEATURES = {
   items: [
     {
       title: "Your foods' biochemical profiles",
-      body: "See histamine, oxalate, FODMAP, tyramine and more in the foods you eat.",
+      body: "See histamine, oxalate, FODMAP, gluten and more in the foods you eat.",
     },
     {
       title: "Checked against your protocol",
@@ -52,62 +52,31 @@ export const LANDING_FEATURES = {
   ],
 } as const;
 
-// Every line below must read exactly as the app shows it today. Verdicts in
-// `foodList` are the real Low Histamine results from the food database
-// (checked 2026-11-16); re-check them if the ratings or rules change.
+// The three example screens, the same ones as the community PDF (page 2).
+// Every food fact on them was checked against the food database and protocol
+// rules on 2026-11-18 (spinach, almonds, quinoa: high oxalate; sauerkraut
+// contains histamine and tomato releases it; spinach is Limit on Low
+// Histamine; chicken, zucchini, white rice fit). The percentages are one
+// illustrative person's results. Re-check if ratings or rules change.
 export const LANDING_SHOWCASE = {
   headline: "Real insights. Real tracking.",
   tagline: "Recognizing personal patterns is a powerful key to understanding your symptoms.",
-  insight: {
-    section: "Patterns worth keeping an eye on",
-    title: "Foods very high in oxalate",
-    lines: ["Joint pain on 5 of 7 days", "Fatigue on 4 of 7 days"],
-    foodsLabel: "Very high in oxalate:",
-    foods: ["Spinach", "Almonds", "Quinoa"],
-    note: "Patterns in your own log, not a diagnosis.",
-  },
-  timeline: {
-    date: "Tuesday, March 10",
-    reflect: "Sleep 6/10 · Energy 4/10 · Cycle day 22",
-    entries: [
-      { time: "8:30a", type: "Food" as const, description: "Salmon, avocado, sauerkraut", note: "Allowed on AIP" },
-      { time: "9:00a", type: "Supplement" as const, description: "Vitamin D, omega-3, probiotic" },
-      { time: "2:15p", type: "Symptom" as const, description: "Joint pain, 6/10" },
-      { time: "4:00p", type: "Exposure" as const, description: "Mold, office building HVAC" },
-    ],
-  },
-  foodList: {
-    title: "My food list",
-    diet: "Low Histamine",
-    groups: [
-      {
-        tone: "avoid" as const,
-        title: "Avoid on Low Histamine",
-        foods: [
-          { name: "Salami", reason: "moderate histamine, very high tyramine" },
-          { name: "Blue Cheese", reason: "moderate histamine, very high tyramine" },
-        ],
-      },
-      {
-        tone: "limit" as const,
-        title: "Limit on Low Histamine",
-        foods: [
-          { name: "Spinach", reason: "moderate histamine, may release histamine" },
-          { name: "Strawberries", reason: "may release histamine" },
-          { name: "Tomato", reason: "may release histamine" },
-        ],
-      },
-      {
-        tone: "allowed" as const,
-        title: "Allowed on Low Histamine",
-        foods: [
-          { name: "Chicken Breast", reason: "" },
-          { name: "Zucchini", reason: "" },
-          { name: "Cucumber", reason: "" },
-        ],
-      },
-    ],
-  },
+  screens: [
+    {
+      src: "/landing/insights.png",
+      alt: "Insights. Possible trigger, oxalate 71%: these 3 foods are high in oxalate; joint and muscle pain followed within 8 hours, 71% of the time (spinach, almonds, quinoa). Worth watching, histamine 34%: both of these foods raise histamine; flushing and brain fog followed within 2 hours, 34% of the time (sauerkraut, tomato).",
+    },
+    {
+      src: "/landing/day.png",
+      alt: "A day as a timeline, Thursday, March 12: 7:00a cycle day 22, luteal phase; 8:30a food, salmon, avocado, sauerkraut, AIP compliant; 9:00a supplement, vitamin D, omega-3, probiotics; 2:15p symptom, joint pain, severity 6/10; 4:00p exposure, mold, office building HVAC.",
+    },
+    {
+      src: "/landing/protocol-check.png",
+      alt: "Protocol check on the Low Histamine protocol, with a Find a food search. Lunch of chicken, spinach, zucchini, rice: chicken (fresh) fits; spinach, moderate histamine and very high oxalate, limit; zucchini fits; white rice fits. 3 of 4 foods fit.",
+    },
+  ],
+  width: 1002,
+  height: 1455,
 } as const;
 
 export const LANDING_TEAM = {
