@@ -116,7 +116,7 @@ try {
       // leftovers at lunch, hives after. Random draws still happen so the rest is unchanged.
       const showcase = i === DAYS - 2;
       const leftoverLunch = (!isToday && chance(earlyHalf ? 0.3 : 0.15)) || showcase;
-      const oxalateDay = !isToday && chance(earlyHalf ? 0.4 : 0.2);
+      const oxalateDay = (!isToday && chance(earlyHalf ? 0.4 : 0.2)) || showcase;
       const mold = moldDays.has(i) || showcase;
       // She started magnesium regularly in the second month.
       const magnesium = chance(earlyHalf ? 0.3 : 0.75) || showcase;
@@ -165,13 +165,16 @@ try {
       const sTime = int(15 * 60, 16 * 60);
       if (oxalateDay) food(date, "Almonds", sTime, "snack");
       else if (chance(0.5)) food(date, pick(SNACKS), sTime, "snack");
-      const jointPain = oxalateDay ? chance(0.62) : chance(0.1);
+      const jointPain = (oxalateDay ? chance(0.62) : chance(0.1)) || showcase;
       if (jointPain) other(date, "symptom", "Joint pain", sTime + int(45, 110), { severity: int(4, 7) });
 
       // Dinner; some nights it's leftovers
       const dTime = int(18 * 60, 19 * 60 + 30);
       const dinnerExtra = chance(0.6) ? checkin("fine") : {};
-      for (const f of pick(DINNERS)) food(date, f, dTime, "dinner", dinnerExtra);
+      const dinner = [...pick(DINNERS)]; // a copy: the showcase edit must not change the menu
+      // Showcase dinner: foods the protocol rates, so the day reads cleanly.
+      if (showcase) dinner.splice(0, dinner.length, "Chicken Breast", "Zucchini", "White Rice");
+      for (const f of dinner) food(date, f, dTime, "dinner", dinnerExtra);
       food(date, "Olive Oil", dTime, "dinner", dinnerExtra);
 
       other(date, "medication", "Low-dose naltrexone", 22 * 60);
