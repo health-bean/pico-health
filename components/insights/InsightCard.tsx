@@ -32,50 +32,51 @@ interface InsightCardProps {
 }
 
 /**
- * One finding, one card. The section around it carries the colour and the
- * meaning; the card carries the count.
+ * One finding, one row in its section's tinted panel. The section carries the
+ * colour and the meaning; the row carries the count.
  */
 export function InsightCard({ id, highlight = false, icon: Icon, factor, outcome, relation = 'then', sentence, compare, strength, isNew, also, note, action }: InsightCardProps) {
   return (
     <article
       id={id}
       className={cn(
-        "scroll-mt-24 rounded-xl border border-warm-200 bg-[var(--color-surface-card)] px-4 py-3.5 transition-shadow duration-700",
-        highlight && "shadow-[0_0_0_3px_var(--color-ochre-500)]"
+        "scroll-mt-24 px-4 py-3 transition-shadow duration-700",
+        highlight && "shadow-[inset_0_0_0_3px_var(--color-ochre-500)]"
       )}
     >
-      {/* Phones: the meter sits under the title so long titles keep the full width. */}
-      <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-3">
-        <div className="flex min-w-0 flex-1 items-start gap-3">
-          <Icon className="mt-0.5 h-4 w-4 shrink-0 text-warm-500" aria-hidden="true" />
-          <div className="min-w-0 flex-1">
-            <h3 className="inline text-base font-semibold leading-snug text-warm-900">
-              {factor}
-              {outcome && (
-                <>
-                  <ArrowRight className="mx-1 inline h-3.5 w-3.5 align-[-0.1em] text-warm-500" aria-hidden="true" />
-                  <span className="sr-only"> {relation} </span>
-                  {outcome}
-                </>
-              )}
-            </h3>
-            {isNew && (
-              <span className="ml-2 align-[0.1em]">
-                <NewTag />
-              </span>
+      {/* Title and strength share one line; a long title wraps beside the meter. */}
+      <div className="flex items-start gap-3">
+        <Icon className="mt-1 h-4 w-4 shrink-0 text-warm-500" aria-hidden="true" />
+        <div className="min-w-0 flex-1">
+          <h3 className="inline text-base font-semibold leading-snug text-warm-900">
+            {factor}
+            {outcome && (
+              <>
+                <ArrowRight className="mx-1 inline h-3.5 w-3.5 align-[-0.1em] text-warm-500" aria-hidden="true" />
+                <span className="sr-only"> {relation} </span>
+                {outcome}
+              </>
             )}
-          </div>
+          </h3>
+          {isNew && (
+            <span className="ml-2 align-[0.1em]">
+              <NewTag />
+            </span>
+          )}
         </div>
         {strength && (
-          <div className="pl-7 sm:pl-0">
+          <div className="mt-1 shrink-0">
             <StrengthMeter strength={strength} />
           </div>
         )}
       </div>
-      <p className="mt-1.5 max-w-[65ch] pl-7 text-sm leading-snug text-warm-700">{sentence}</p>
-      {compare && <p className="mt-1 pl-7 text-xs tabular-nums text-[var(--color-text-muted)]">{compare}</p>}
-      {also && <p className="mt-1.5 max-w-[65ch] pl-7 text-sm leading-snug text-warm-700">{also}</p>}
-      {note && <p className="mt-2 max-w-[65ch] pl-7 text-sm text-warm-600">{note}</p>}
+      {/* The count, then its rates in the same breath, quieter. */}
+      <p className="mt-1 max-w-[65ch] pl-7 text-sm leading-snug text-warm-700">
+        {sentence}
+        {compare && <span className="tabular-nums text-[var(--color-text-muted)]"> {compare.charAt(0).toUpperCase() + compare.slice(1)}.</span>}
+      </p>
+      {also && <p className="mt-1 max-w-[65ch] pl-7 text-sm leading-snug text-warm-700">{also}</p>}
+      {note && <p className="mt-1 max-w-[65ch] pl-7 text-sm text-warm-600">{note}</p>}
       {action && <div className="pl-7">{action}</div>}
     </article>
   );

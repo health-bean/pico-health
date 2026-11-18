@@ -153,7 +153,7 @@ describe('propertyCards', () => {
 
   it('falls back to "these foods" when the engine names none', () => {
     const [c] = propertyCards([{ ...row('oxalate', 'high', 'Hives', 4), foods: [] }]);
-    expect(c.sentence).toBe('On the 10 days you had these foods: Hives on 4.');
+    expect(c.sentence).toBe('On the 10 days you had these foods, hives showed up on 4 of them.');
   });
 
   it('shortens a long food list', () => {
@@ -180,5 +180,12 @@ describe('factorName', () => {
       recencyDays: 1, impactScore: 1, direction: 'increases', confidence: 'moderate', description: '',
     });
     expect(t.sentence).toBe('On days you ate foods high in oxalate, joint pain showed up on 6 of 9 days.');
+  });
+});
+
+describe('propertyCards, one symptom', () => {
+  it('reads as a sentence, not a one-item list', () => {
+    const [c] = propertyCards([{ property: 'histamine', severity: 'moderate', foods: [], outcome: { label: 'Joint pain' }, frequency: 8, totalOpportunities: 10, impactScore: 1 }]);
+    expect(c.sentence).toBe('On the 10 days you had these foods, joint pain showed up on 8 of them.');
   });
 });

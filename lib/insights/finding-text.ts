@@ -228,7 +228,11 @@ export function propertyCards(patterns: PropertyPatternInput[]): PropertyCard[] 
         const first = parts[0].charAt(0).toUpperCase() + parts[0].slice(1);
         // The engine doesn't always name the foods; the title already does by property.
         const which = foods.length > 0 ? listFoods(foods).toLowerCase() : 'these foods';
-        sentence = `On the ${lines[0].total} days you had ${which}: ${[first, ...parts.slice(1)].join(', ')}.`;
+        // One symptom reads as a sentence ("…, joint pain showed up on 8 of them"); several as a list.
+        const only = lines.length === 1 ? lines[0] : null;
+        sentence = only
+          ? `On the ${only.total} days you had ${which}, ${/^flare day$/i.test(only.outcome) ? `${only.days === only.total ? 'all' : `${only.days} of them`} were flare days` : `${only.outcome.toLowerCase()} showed up on ${only.days === only.total ? 'all of them' : `${only.days} of them`}`}.`
+          : `On the ${lines[0].total} days you had ${which}: ${[first, ...parts.slice(1)].join(', ')}.`;
       } else {
         sentence = lines.map((l) => propertyLine(l.outcome, l.days, l.total)).join('. ') + '.';
       }
