@@ -18,6 +18,7 @@ import { SymptomNow } from "@/components/capture/SymptomNow";
 import { useCapture } from "@/hooks/use-capture";
 import { usePropertyPatterns } from "@/hooks/use-property-patterns";
 import { cn } from "@/lib/utils";
+import { useScrolled } from "@/hooks/use-scrolled";
 import { chronological, groupMeals, type DayItem } from "@/lib/timeline/group-meals";
 import { protocolPhrase } from "@/lib/protocols/fit-line";
 import type { TimelineEntry, ExerciseType, IntensityLevel } from "@/types";
@@ -83,6 +84,8 @@ function toCreatePayload(entry: TimelineEntry): Record<string, unknown> {
 export default function TimelinePage() {
   const { toast } = useToast();
   const [date, setDate] = useState(() => formatDate(new Date()));
+  // The date bar turns solid once the day scrolls under it (see useScrolled).
+  const scrolled = useScrolled(24);
   const [entries, setEntries] = useState<TimelineEntry[]>([]);
   const [loading, setLoading] = useState(true);
   const [sheetOpen, setSheetOpen] = useState(false);
@@ -368,7 +371,7 @@ export default function TimelinePage() {
 
       {/* Date nav: the heading opens a week strip for jumping straight to a day.
           Pinned under the app header, so a long day never loses which day it is. */}
-      <div className="sticky top-14 z-30 -mx-4 mb-2 flex items-center justify-between bg-[var(--color-surface)] px-4 py-1">
+      <div className={cn("sticky top-14 z-30 -mx-4 mb-2 flex items-center justify-between px-4 py-1 transition-colors duration-200", scrolled ? "bg-[var(--color-surface-card)]/95 backdrop-blur-md" : "bg-transparent")}>
         <button
           type="button"
           onClick={() => shiftDate(-1)}
@@ -465,8 +468,8 @@ export default function TimelinePage() {
         <>
           {diet && (
             <p className="mb-2 text-xs text-[var(--color-text-muted)]">
-              Foods checked against <span className="font-medium text-warm-800">{protocolPhrase(diet)}</span>. Only
-              foods to limit, avoid or not rated yet are marked.
+              Checked against <span className="font-medium text-warm-800">{protocolPhrase(diet)}</span>. No mark means
+              allowed.
             </p>
           )}
           {/* The day as a timeline, morning to night: the time in its own
@@ -488,7 +491,7 @@ export default function TimelinePage() {
                   )}
                   <span
                     className={cn(
-                      "relative z-10 mt-1.5 justify-self-center rounded-full ring-4 ring-[var(--color-surface)]",
+                      "relative z-10 mt-1.5 justify-self-center rounded-full ring-4 ring-[var(--color-surface-card)]",
                       isSymptom ? "h-2.5 w-2.5 bg-clay-500" : "h-2 w-2 bg-warm-400"
                     )}
                     aria-hidden="true"

@@ -19,7 +19,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           // Onboarding gets a clean, full-screen layout — no nav chrome
           <>{children}</>
         ) : (
-          <div className="flex min-h-dvh flex-col bg-[var(--color-surface)]">
+          <div className="flex min-h-dvh flex-col bg-app">
             <Header />
             <main className="flex-1 pb-20 md:pb-0">{children}</main>
             <MobileNav />

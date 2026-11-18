@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useSession } from "@/hooks/use-session";
 import { cn } from "@/lib/utils";
 import { Wordmark } from "@/components/brand/wordmark";
+import { useScrolled } from "@/hooks/use-scrolled";
 
 const navItems = [
   { label: "Log", href: "/log" },
@@ -17,9 +18,11 @@ const navItems = [
 export function Header() {
   const pathname = usePathname();
   const { user, loading } = useSession();
+  // Clear over the cream at the top; a solid light bar once content scrolls under it.
+  const scrolled = useScrolled();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--color-border-light)] bg-[var(--color-surface)]/95 backdrop-blur-md">
+    <header className={cn("sticky top-0 z-40 transition-colors duration-200", scrolled ? "border-b border-[var(--color-border-light)] bg-[var(--color-surface-card)]/95 backdrop-blur-md" : "border-b border-transparent bg-transparent")}>
       <div className="flex h-14 items-center justify-between px-4">
         {/* Logo */}
         {/* The brand wordmark, the same artwork as picohealth.app and the login page. */}

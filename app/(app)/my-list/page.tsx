@@ -97,6 +97,7 @@ export default function MyListPage() {
                 <Input
                   type="search"
                   aria-label="Find a food"
+                  className="shadow-[var(--shadow-card)]"
                   placeholder="Find a food"
                   value={query}
                   onChange={(e) => setQuery(e.target.value)}
