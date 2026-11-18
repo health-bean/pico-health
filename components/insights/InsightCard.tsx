@@ -23,6 +23,8 @@ interface InsightCardProps {
   compare?: string;
   strength?: Strength;
   isNew?: boolean;
+  /** The same cause's other symptoms, in one line ("Also: a flare on 13 of 15 days."). */
+  also?: string;
   /** Shown when the same thing is on the other list, so the two cards don't read as a contradiction. */
   note?: string;
   /** A quiet action under the card, e.g. "Add to your list?". */
@@ -33,7 +35,7 @@ interface InsightCardProps {
  * One finding, one card. The section around it carries the colour and the
  * meaning; the card carries the count.
  */
-export function InsightCard({ id, highlight = false, icon: Icon, factor, outcome, relation = 'then', sentence, compare, strength, isNew, note, action }: InsightCardProps) {
+export function InsightCard({ id, highlight = false, icon: Icon, factor, outcome, relation = 'then', sentence, compare, strength, isNew, also, note, action }: InsightCardProps) {
   return (
     <article
       id={id}
@@ -72,6 +74,7 @@ export function InsightCard({ id, highlight = false, icon: Icon, factor, outcome
       </div>
       <p className="mt-1.5 max-w-[65ch] pl-7 text-sm leading-snug text-warm-700">{sentence}</p>
       {compare && <p className="mt-1 pl-7 text-xs tabular-nums text-[var(--color-text-muted)]">{compare}</p>}
+      {also && <p className="mt-1.5 max-w-[65ch] pl-7 text-sm leading-snug text-warm-700">{also}</p>}
       {note && <p className="mt-2 max-w-[65ch] pl-7 text-sm text-warm-600">{note}</p>}
       {action && <div className="pl-7">{action}</div>}
     </article>

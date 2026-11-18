@@ -2,13 +2,14 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { InsightSection } from '@/components/insights/InsightSection';
+import { alsoLine, groupByCause, type CauseGroup } from '@/lib/insights/group-by-cause';
 import { InsightCard } from '@/components/insights/InsightCard';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { Spinner, PageTitle } from '@/components/ui';
-import {
+import { Refrigerator,
   Activity, CalendarDays, ChevronRight, CalendarRange, RotateCcw, Clock, ClipboardList, Eye, FlaskConical,
   Droplets, Frown, Gauge, Moon, Pill, Search, ShieldAlert, Smile, Sparkles, TrendingDown, TrendingUp, Utensils, Zap,
   type LucideIcon,
@@ -22,7 +23,7 @@ const FACTOR_ICONS: Record<string, LucideIcon> = {
   food: Utensils, food_property: FlaskConical, supplement: Pill, medication: Pill,
   exposure: ShieldAlert, exercise: Activity, sleep: Moon, stress: Gauge,
   energy: Zap, mood: Smile, pain: Frown, timing: Clock, compliance: ClipboardList,
-  practice: Sparkles, cycle: Droplets,
+  practice: Sparkles, cycle: Droplets, preparation: Refrigerator,
 };
 
 function getIcon(result: SingleFactorResult | MultiFactorResult): LucideIcon {
@@ -193,7 +194,7 @@ export default function InsightsPage() {
   const allHelpers = patterns?.helpers ?? [];
   const helpers = allHelpers.filter(r => !isEarly(r));
   const earlyHelpers = allHelpers.filter(isEarly);
-  const earlyCount = earlyTriggers.length + earlyHelpers.length;
+  const earlyCount = groupByCause(earlyTriggers).length + groupByCause(earlyHelpers).length; // cards, not rows
 
   // One card per property (merged when two cover the same foods and counts).
   const propertyPatterns = propertyCards(patterns?.propertyPatterns ?? []);
@@ -265,7 +266,7 @@ export default function InsightsPage() {
   const shownKeys = new Set([...(patterns?.triggers ?? []), ...(patterns?.helpers ?? [])].map(resultKey));
   const orphanAlerts = alerts.filter(a => !shownKeys.has(a.insightKey));
 
-  const triggerCard = (r: SingleFactorResult | MultiFactorResult) => {
+  const triggerCard = ({ lead: r, others }: CauseGroup) => {
     const t = findingText(r);
     const food = singleFood(r);
     return (
@@ -277,7 +278,8 @@ export default function InsightsPage() {
         sentence={t.sentence}
         compare={t.compare}
         strength={r.confidence}
-        isNew={alertKeys.has(resultKey(r))}
+        isNew={[r, ...others].some(x => alertKeys.has(resultKey(x)))}
+        also={alsoLine(r, others)}
         note={crossNote(r, helperOutcomes, 'on better days')}
         action={
           food && !isTimed(r) && !rated.has(food.toLowerCase()) ? (
@@ -292,7 +294,7 @@ export default function InsightsPage() {
     );
   };
 
-  const helperCard = (r: SingleFactorResult | MultiFactorResult) => {
+  const helperCard = ({ lead: r, others }: CauseGroup) => {
     const t = findingText(r);
     const food = singleFood(r);
     return (
@@ -304,8 +306,9 @@ export default function InsightsPage() {
         sentence={t.sentence}
         compare={t.compare}
         strength={r.confidence}
-        isNew={alertKeys.has(resultKey(r))}
+        isNew={[r, ...others].some(x => alertKeys.has(resultKey(x)))}
         relation="with"
+        also={alsoLine(r, others)}
         note={crossNote(r, triggerOutcomes, 'with symptoms')}
         action={
           food && !isTimed(r) && !rated.has(food.toLowerCase()) && !triggerOutcomes.has(singleKey(r) ?? '') ? (
@@ -500,8 +503,8 @@ export default function InsightsPage() {
               icon={TrendingUp}
               title="Possible triggers"
               subtitle="These often came right before a symptom in your log."
-              items={triggers.map(triggerCard)}
-              earlyItems={earlyTriggers.map(triggerCard)}
+              items={groupByCause(triggers).map(triggerCard)}
+              earlyItems={groupByCause(earlyTriggers).map(triggerCard)}
               earlyOpen={showEarly}
             />
           )}
@@ -537,8 +540,8 @@ export default function InsightsPage() {
               variant="helper"
               icon={TrendingDown}
               title="Things that seem to help"
-              items={helpers.map(helperCard)}
-              earlyItems={earlyHelpers.map(helperCard)}
+              items={groupByCause(helpers).map(helperCard)}
+              earlyItems={groupByCause(earlyHelpers).map(helperCard)}
               earlyOpen={showEarly}
             />
           )}
