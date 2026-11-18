@@ -25,10 +25,28 @@ export function pct(rate: number): string {
   return `${Math.round(rate * 100)}%`;
 }
 
-/** "On days with mold" / "In the week before your period" / "Around ovulation". */
+/**
+ * When the count applies, said the way a person would say it: "On days you
+ * ate almonds", "On days you took magnesium", "On days you were exposed to
+ * mold", "After poor sleep", "In the week before your period".
+ */
 export function whenClause(factor: Pick<Factor, 'label' | 'category'>): string {
   const label = factor.label;
-  if (factor.category !== 'cycle') return `On days with ${label.toLowerCase()}`;
+  const l = label.toLowerCase();
+  switch (factor.category) {
+    case 'food':
+    case 'food_property':
+    case 'preparation':
+      return `On days you ate ${l}`;
+    case 'supplement':
+    case 'medication':
+      return `On days you took ${l}`;
+    case 'exposure':
+      return `On days you were exposed to ${l}`;
+    case 'sleep':
+      return `After ${l}`;
+  }
+  if (factor.category !== 'cycle') return `On days with ${l}`;
   if (/^the week/i.test(label)) return `In ${label.toLowerCase()}`;
   if (/^around/i.test(label)) return label;
   return `On ${label.toLowerCase()}`;

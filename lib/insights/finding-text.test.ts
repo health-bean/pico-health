@@ -38,7 +38,7 @@ describe('findingText', () => {
   it('leads a day pattern with the count, % beside it', () => {
     const t = findingText(single({ factor: f('Mold', 'exposure'), outcome: { ...joint, label: 'Brain fog' } }));
     expect(t.title).toEqual({ factor: 'Mold', outcome: 'brain fog' });
-    expect(t.sentence).toBe('On days with mold, brain fog showed up on 14 of 15 days.');
+    expect(t.sentence).toBe('On days you were exposed to mold, brain fog showed up on 14 of 15 days.');
     expect(t.compare).toBe('93% of those days, vs 4% of other days');
   });
 
@@ -51,7 +51,7 @@ describe('findingText', () => {
   it('says what a flare day is about', () => {
     const t = findingText(single({ factor: f('Mold', 'exposure'), outcome: flare, frequency: 13, conditionalRate: 13 / 15, baseRate: 0.18 }));
     expect(t.title.outcome).toBe('flare days');
-    expect(t.sentence).toBe('On days with mold, 13 of 15 were flare days.');
+    expect(t.sentence).toBe('On days you were exposed to mold, 13 of 15 were flare days.');
   });
 
   it('frames a helper as less of the symptom, still count first', () => {
@@ -59,7 +59,7 @@ describe('findingText', () => {
       single({ factor: f('Magnesium glycinate', 'supplement'), outcome: fatigue, frequency: 0, totalOpportunities: 29, conditionalRate: 0, baseRate: 0.42, direction: 'decreases' })
     );
     expect(t.title).toEqual({ factor: 'Magnesium glycinate', outcome: 'less fatigue' });
-    expect(t.sentence).toBe('On days with magnesium glycinate, fatigue showed up on 0 of 29 days.');
+    expect(t.sentence).toBe('On days you took magnesium glycinate, fatigue showed up on 0 of 29 days.');
     expect(t.compare).toBe('0% of those days, vs 42% of other days');
     expect(findingText(single({ outcome: flare, direction: 'decreases' })).title.outcome).toBe('fewer flare days');
   });
@@ -179,6 +179,6 @@ describe('factorName', () => {
       outcome: joint, frequency: 6, totalOpportunities: 9, baseRate: 0.1, conditionalRate: 6 / 9, rateMultiplier: 3,
       recencyDays: 1, impactScore: 1, direction: 'increases', confidence: 'moderate', description: '',
     });
-    expect(t.sentence).toBe('On days with foods high in oxalate, joint pain showed up on 6 of 9 days.');
+    expect(t.sentence).toBe('On days you ate foods high in oxalate, joint pain showed up on 6 of 9 days.');
   });
 });
