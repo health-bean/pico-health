@@ -104,7 +104,7 @@ export default function MyListPage() {
               </div>
               <div className="mt-4 flex flex-col gap-3">
                 {GROUPS.filter((g) => filtered[g.key].length > 0).map((g) => (
-                  <Card key={g.key}>
+                  <Card key={g.key} className={FIT_TONE_CLASS[g.key].edge}>
                     <details open={g.open || query.length > 0}>
                       <summary className={cn("flex min-h-11 cursor-pointer items-center justify-between text-sm font-semibold", FIT_TONE_CLASS[g.key].text)}>
                         <span className="inline-flex items-center gap-1.5">

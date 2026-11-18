@@ -8,13 +8,13 @@ type SectionVariant = 'trigger' | 'watch' | 'helper';
 // Each section carries its own colour, drawn from the brand's warm range:
 // clay/brick for what goes with symptoms, ochre for what to watch, teal for
 // what helps (the same "good for you" as Allowed; olive was retired because
-// it read as a muddy teal and not as "good"). The colour lives in the heading
-// and in one faintly tinted panel per section; findings are rows inside it,
-// split by hairlines, so a phone screen shows more than one section at once.
+// it read as a muddy teal and not as "good"). App-wide rule: a group sits in a
+// white card; colour lives in the heading and a thin left edge (as on My food
+// list). Findings are rows inside it, split by hairlines.
 const variants = {
-  trigger: { titleColor: 'text-brick-600', iconColor: 'text-clay-500', panel: 'border-brick-600/15 bg-brick-600/[0.045] divide-brick-600/12' },
-  watch: { titleColor: 'text-ochre-700', iconColor: 'text-ochre-500', panel: 'border-ochre-500/30 bg-ochre-500/[0.08] divide-ochre-500/25' },
-  helper: { titleColor: 'text-teal-700', iconColor: 'text-teal-600', panel: 'border-teal-600/20 bg-teal-600/[0.055] divide-teal-600/15' },
+  trigger: { titleColor: 'text-brick-600', iconColor: 'text-clay-500', panel: 'shadow-[inset_3px_0_0_var(--color-brick-600),var(--shadow-card)]' },
+  watch: { titleColor: 'text-ochre-700', iconColor: 'text-ochre-500', panel: 'shadow-[inset_3px_0_0_var(--color-ochre-500),var(--shadow-card)]' },
+  helper: { titleColor: 'text-teal-700', iconColor: 'text-teal-600', panel: 'shadow-[inset_3px_0_0_var(--color-teal-600),var(--shadow-card)]' },
 };
 
 interface InsightSectionProps {
@@ -59,7 +59,7 @@ export function InsightSection({ variant, icon: Icon, title, subtitle, items, ea
         subtitle && <p className="mt-0.5 max-w-[65ch] text-sm text-warm-600">{subtitle}</p>
       )}
 
-      {visible.length > 0 && <div className={`mt-2.5 divide-y overflow-hidden rounded-xl border ${v.panel}`}>{visible}</div>}
+      {visible.length > 0 && <div className={`mt-2.5 divide-y divide-[var(--color-border-light)] overflow-hidden rounded-2xl border border-[var(--color-border)]/20 bg-[var(--color-surface-card)] ${v.panel}`}>{visible}</div>}
 
       {/* Before early signals open: "Show N more" and "+N early signals" share a row. */}
       {(!evidenceOpen && hidden > 0) || (!showEarly && earlyItems.length > 0) ? (
