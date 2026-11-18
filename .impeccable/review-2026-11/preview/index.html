@@ -77,6 +77,10 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
 .key{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px;max-width:78ch}
 .key li{color:var(--ink2);line-height:1.45}.key b{color:var(--ink)}
 
+.fd{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:10px}
+.fd figure{margin:0}.fd img{display:block;width:100%;height:auto;border-radius:18px;border:5px solid #1d1a14}
+.fd figcaption{font-size:13.5px;color:var(--ink2);margin-top:6px;text-align:center}
+.fdh{font-size:16px;margin:22px 0 0}
 /* Past-day timeline mockup */
 .tlx{margin-top:28px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px 20px 20px;max-width:1100px}
 .tlx h2{margin:0 0 4px;font-size:22px}
@@ -362,6 +366,14 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
 
 
 
+  <section class="tlx" id="fade" aria-labelledby="fade-h">
+    <h2 id="fade-h">Background: flat cream vs a fade <span class="pill review">Mockup on the real app, not built</span></h2>
+    <p class="intro">Real screens from the branch build with only the background changed. Each fade starts with our cream at the top and fades to a lighter warm white: gentle (to a pale cream, over the top ~380px) and stronger (to nearly the card white, over ~300px). In both fades the header blends into the background instead of sitting on a solid strip, and the Log's sentence reads "Checked against your Low Histamine protocol. No mark means allowed."</p>
+<h3 class="fdh">Log, yesterday</h3><div class="fd"><figure><img src="img/fade-log-flat.png" alt="Log, yesterday, Today: flat cream"><figcaption>Today: flat cream</figcaption></figure><figure><img src="img/fade-log-gentle.png" alt="Log, yesterday, Gentle fade"><figcaption>Gentle fade</figcaption></figure><figure><img src="img/fade-log-apple.png" alt="Log, yesterday, Stronger fade"><figcaption>Stronger fade</figcaption></figure></div>
+<h3 class="fdh">Insights</h3><div class="fd"><figure><img src="img/fade-insights-flat.png" alt="Insights, Today: flat cream"><figcaption>Today: flat cream</figcaption></figure><figure><img src="img/fade-insights-gentle.png" alt="Insights, Gentle fade"><figcaption>Gentle fade</figcaption></figure><figure><img src="img/fade-insights-apple.png" alt="Insights, Stronger fade"><figcaption>Stronger fade</figcaption></figure></div>
+<h3 class="fdh">My food list</h3><div class="fd"><figure><img src="img/fade-list-flat.png" alt="My food list, Today: flat cream"><figcaption>Today: flat cream</figcaption></figure><figure><img src="img/fade-list-gentle.png" alt="My food list, Gentle fade"><figcaption>Gentle fade</figcaption></figure><figure><img src="img/fade-list-apple.png" alt="My food list, Stronger fade"><figcaption>Stronger fade</figcaption></figure></div>
+    <p class="verdict2"><b>What to look for:</b> on the stronger fade, the white cards start to melt into the background lower down (look at Insights and My food list), so cards would need a touch more shadow. The gentle fade keeps the cream feeling and still lifts the page. Small thing either way: the timeline dots carry a cream ring drawn for today's flat cream; in a real build it would follow the new background.</p>
+  </section>
   <section class="tlx" id="lv" aria-labelledby="lv-h">
     <h2 id="lv-h">Your idea: the food takes its protocol colour <span class="pill review">Mockup, not built</span></h2>
     <p class="intro">Sarah's leftover lunch, as the Log shows it. On the right, a food your protocol flags turns the same colour as its call-out; everything else stays as it is. Allowed and not-rated foods stay plain, so colour only ever means "your protocol says".</p>
