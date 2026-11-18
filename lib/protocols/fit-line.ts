@@ -151,3 +151,14 @@ export function personalStatus(dietStatus: string, personal?: PersonalRating | n
   if (!personal) return dietStatus;
   return personal.status === "safe" ? "allowed" : personal.status === "sensitive" ? "moderation" : "avoid";
 }
+
+/**
+ * The protocols a list is checked against, by name: "Low Histamine protocol",
+ * "Low Histamine and AIP protocols". Null when there are none.
+ */
+export function protocolsLabel(diets: string[]): string | null {
+  const names = diets.filter(Boolean);
+  if (names.length === 0) return null;
+  const joined = names.length === 1 ? names[0] : `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}`;
+  return `${joined} ${names.length === 1 ? "protocol" : "protocols"}`;
+}

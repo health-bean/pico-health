@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowLeft, ListChecks } from "lucide-react";
 import { Card, EmptyState, Input, PageTitle, Spinner } from "@/components/ui";
 import type { ListGroup, ListItem, MyList } from "@/lib/personal/my-list";
-import { FIT_TONE_CLASS } from "@/lib/protocols/fit-line";
+import { protocolsLabel, FIT_TONE_CLASS } from "@/lib/protocols/fit-line";
 import { FitSymbol } from "@/components/foods/FitSymbol";
 import { cn } from "@/lib/utils";
 
@@ -66,12 +66,13 @@ export default function MyListPage() {
         Settings
       </Link>
       <PageTitle>My food list</PageTitle>
-      <p className="mt-1 text-sm text-warm-600">
-        {data?.diet
-          ? `What ${data.diet} says about each food, with your own results on top.`
-          : "Foods you've rated for yourself."}{" "}
-        {mine > 0 && `${mine} ${mine === 1 ? "food has" : "foods have"} your own rating.`}
-      </p>
+      {/* Which protocol(s) the list is checked against, by name; without one, it's the person's own ratings. */}
+      {data && (
+        <p className="mt-1 text-[15px]">
+          <span className="font-semibold text-warm-800">{protocolsLabel(data.diet ? [data.diet] : []) ?? "Your own ratings"}</span>
+          {mine > 0 && <span className="text-warm-600"> · {mine} rated by you</span>}
+        </p>
+      )}
 
       {failed && <p className="mt-6 text-sm text-brick-600">Couldn&apos;t load your list. Try again.</p>}
       {!data && !failed && (

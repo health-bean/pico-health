@@ -150,3 +150,13 @@ describe("showOnLog", () => {
     expect(showOnLog(fitLine({ diet: null, status: "allowed", reasons: [] }), false)).toBe(false);
   });
 });
+
+describe("protocolsLabel", () => {
+  it("names one or several protocols, and nothing when there are none", async () => {
+    const { protocolsLabel } = await import("./fit-line");
+    expect(protocolsLabel(["Low Histamine"])).toBe("Low Histamine protocol");
+    expect(protocolsLabel(["Low Histamine", "AIP"])).toBe("Low Histamine and AIP protocols");
+    expect(protocolsLabel(["Low Histamine", "AIP", "Low FODMAP"])).toBe("Low Histamine, AIP and Low FODMAP protocols");
+    expect(protocolsLabel([])).toBeNull();
+  });
+});

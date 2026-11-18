@@ -112,12 +112,14 @@ try {
       const earlyHalf = i < 30;
       // Stories: leftovers -> hives (histamine builds as food sits), spinach/almonds -> joint pain
       // (oxalate), mold -> brain fog, magnesium -> less fatigue. Slips get rarer in month two.
-      // Yesterday is a hand-picked showcase day for the Log screenshot: mold at work,
+      // Yesterday is a hand-picked showcase day for the Log screenshot: eggs then bloating,
       // leftovers at lunch, hives after. Random draws still happen so the rest is unchanged.
       const showcase = i === DAYS - 2;
       const leftoverLunch = (!isToday && chance(earlyHalf ? 0.3 : 0.15)) || showcase;
       const oxalateDay = (!isToday && chance(earlyHalf ? 0.4 : 0.2)) || showcase;
-      const mold = moldDays.has(i) || showcase;
+      // Showcase morning: no mold; eggs at breakfast, then bloating (a common egg-intolerance
+      // symptom; our data rates eggs low histamine, so it is not framed as histamine).
+      const mold = moldDays.has(i) && !showcase;
       // She started magnesium regularly in the second month.
       const magnesium = chance(earlyHalf ? 0.3 : 0.75) || showcase;
       const poorSleep = mold ? chance(0.5) : chance(0.12);
@@ -125,7 +127,10 @@ try {
 
       // Breakfast
       const bTime = int(7 * 60 + 15, 8 * 60 + 15);
-      for (const f of pick(BREAKFASTS)) food(date, f, bTime, "breakfast");
+      const breakfast = [...pick(BREAKFASTS)];
+      if (showcase) breakfast.splice(0, breakfast.length, "Eggs", "Zucchini");
+      for (const f of breakfast) food(date, f, bTime, "breakfast");
+      if (showcase) other(date, "symptom", "Bloating", bTime + 50, { severity: 5 });
       other(date, "supplement", "Vitamin D3", bTime);
 
       // Lunch: some days it's last night's leftovers

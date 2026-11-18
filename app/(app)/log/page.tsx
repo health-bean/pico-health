@@ -366,8 +366,9 @@ export default function TimelinePage() {
       {/* Only on Today: it's for the moment you come back, not for browsing past days. */}
       {isToday && <ProgressStrip part="welcome" onJumpToDay={setDate} />}
 
-      {/* Date nav: the heading opens a week strip for jumping straight to a day */}
-      <div className="mb-2 flex items-center justify-between">
+      {/* Date nav: the heading opens a week strip for jumping straight to a day.
+          Pinned under the app header, so a long day never loses which day it is. */}
+      <div className="sticky top-14 z-30 -mx-4 mb-2 flex items-center justify-between bg-[var(--color-surface)] px-4 py-1">
         <button
           type="button"
           onClick={() => shiftDate(-1)}
