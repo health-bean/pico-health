@@ -1,0 +1,146 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=block">
+<style>
+/* The three "See it in action" boxes from the approved PDF, rebuilt 1:1 with facts corrected
+   against Pico's database (2026-11-18). Each box is 334 x 485 css, rendered at 3x. */
+*{box-sizing:border-box}
+body{margin:0;background:transparent;font-family:"Source Sans 3",sans-serif;color:#4A3F33;-webkit-font-smoothing:antialiased}
+.box{width:334px;height:485px;background:#FFFFFF;border:1px solid #ECE8E0;border-radius:17px;padding:20px 20px 18px;margin:0 0 20px;overflow:hidden}
+.hd{display:flex;align-items:center;gap:10px}
+.tile{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex:none}
+.tile svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pill{display:inline-flex;align-items:center;gap:4px;border:1px solid;border-radius:999px;padding:2px 9px;font-size:11.5px;font-weight:500;white-space:nowrap}
+.pill svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+/* box 1 */
+.b1 .tile.t-red{background:#FBEDEC;color:#A12623}
+.pp-red{background:#FBEDEC;border-color:#E9B8B5;color:#A12623}
+.pp-amb{background:#FEF8E4;border-color:#F1DEA4;color:#9E5407}
+.pill.big{font-size:11.5px;font-weight:600;padding:2px 9px}.pill.big span{font-weight:500;margin-left:4px}
+.hd2{margin-top:16px}
+.lbl{font-size:13px;font-weight:700}.lbl-red{color:#A12623}.lbl-amb{color:#9E5407}
+.lead2{margin-top:12px}
+.pp{background:#FEF7E6;border-color:#F3D7A2;color:#C05A07}
+.conf{background:#F3F2EF;border-color:#F3F2EF;color:#4D4840}
+.lead{margin:18px 0 0;font-size:15.2px;line-height:22px;color:#4A3F33}
+.contrib{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin-top:14px;font-size:11.5px;color:#6E6457}
+.fchip{background:#F2F1EE;border-radius:7px;padding:3px 8px;font-size:12px;color:#3F3A33}
+.rule{height:1px;background:#EEEAE2;margin:14px 0 0}
+.cap{margin:20px 0 0;font-size:10.2px;font-weight:600;letter-spacing:.08em;color:#6A5D4E;text-transform:uppercase}
+.sens{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.sens .pill{font-size:11px;font-weight:600;padding:2px 8px}
+div.sens{flex-wrap:nowrap;gap:6px}
+.sens .pill span{font-weight:500;margin-left:3px}
+.ox{background:#FBEDEC;border-color:#E9B8B5;color:#A12623}.ox span{color:#A12623}
+.gr{background:#EAFBF3;border-color:#A9E2C9;color:#0A7C55}.gr span{color:#3E9E78}
+.hi{background:#FEF8E4;border-color:#F1DEA4;color:#9E5407}.hi span{color:#9E5407}
+/* box 2 */
+.b2 .tile,.b3 .tile{background:#E6F1EF;color:#2B5E5B}
+.date{font-size:12.8px;color:#6B5E50}
+.ent{display:flex;gap:14px;align-items:center;border:1px solid #EDEAE4;border-radius:13px;padding:11px 14px;margin-top:9px}
+.ent:first-of-type{margin-top:15px}
+.let{width:33px;height:33px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:8.5px;font-weight:700;flex:none}
+.when{display:flex;align-items:center;gap:8px;font-size:10.7px;color:#6E6457}
+.when .pill{font-size:10px;padding:1px 8px}
+.what{margin:3px 0 0;font-size:13.3px;color:#4A3F33}
+.ok{margin:7px 0 0;font-size:10px;color:#0E7C55}
+.c-cyc .let{background:#FDF0F4;color:#C4145A}.c-cyc .pill{background:#FDF0F4;border-color:#F5BED3;color:#C4145A}
+.c-food .let{background:#F2EFEA;color:#6E6457}.c-food .pill{background:#F2EFEA;border-color:#DCD5CA;color:#6E6457}
+.c-sup .let{background:#F7F0FE;color:#7A1FD6}.c-sup .pill{background:#F7F0FE;border-color:#DAC2F8;color:#7A1FD6}
+.c-sym .let{background:#FBEDEC;color:#A12623}.c-sym .pill{background:#FBEDEC;border-color:#E9B8B5;color:#A12623}
+.c-exp .let{background:#FEF8E4;color:#9E5407}.c-exp .pill{background:#FEF8E4;border-color:#F1DEA4;color:#9E5407}
+/* box 3 */
+.pc{font-size:13.5px;color:#7A7066}
+.meal{margin:16px 0 0;font-size:15.2px;font-weight:500;color:#1F1A14}
+.proto{margin-top:9px;background:#E6F1EF;border-color:#BBD8D4;color:#1F6B66;font-size:11.2px;padding:2px 11px}
+.fr{display:flex;align-items:center;justify-content:space-between;gap:10px;border:1px solid #EDEAE4;border-radius:13px;padding:10px 15px;margin-top:9px}
+.fr:first-of-type{margin-top:15px}
+.fn{margin:0;font-size:13.5px;color:#1F1A14}
+.fs{margin:3px 0 0;font-size:11px;color:#857B70}
+.badge{border:1px solid;border-radius:999px;padding:2px 10px;font-size:11px;font-weight:700;white-space:nowrap}
+.fits{background:#EAFBF3;border-color:#A9E2C9;color:#0E7C55}
+.limit{background:#FEF8E4;border-color:#F1DEA4;color:#9E5407}
+.foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #EEEAE2;margin-top:14px;padding-top:15px;font-size:11.5px;color:#7A7066}
+.foot b{color:#0E7C55;font-weight:700}
+
+/* v2: screen 2 as a running timeline, screen 3 with search; no boxes inside the boxes */
+.tl{position:relative;margin-top:16px}
+.tl::before{content:"";position:absolute;left:47px;top:8px;bottom:8px;width:1px;background:#E7E1D6}
+.ev{display:grid;grid-template-columns:38px 18px 1fr;column-gap:6px;padding:8px 0}
+.ev .tm{font-size:10.5px;color:#7A6E61;text-align:right;padding-top:3px;white-space:nowrap}
+.ev .dot{width:9px;height:9px;border-radius:50%;margin:5px auto 0;position:relative;z-index:1;box-shadow:0 0 0 3px #FFFFFF}
+.ev .bd .pill{font-size:10px;padding:1px 8px}
+.ev .what{margin:4px 0 0}
+.d-cyc .dot{background:#C4145A}.d-cyc .pill{background:#FDF0F4;border-color:#F5BED3;color:#C4145A}
+.d-food .dot{background:#8C8276}.d-food .pill{background:#F2EFEA;border-color:#DCD5CA;color:#6E6457}
+.d-sup .dot{background:#7A1FD6}.d-sup .pill{background:#F7F0FE;border-color:#DAC2F8;color:#7A1FD6}
+.d-sym .dot{background:#A12623}.d-sym .pill{background:#FBEDEC;border-color:#E9B8B5;color:#A12623}
+.d-exp .dot{background:#C77A12}.d-exp .pill{background:#FEF8E4;border-color:#F1DEA4;color:#9E5407}
+.search{display:flex;align-items:center;gap:8px;margin-top:14px;border:1px solid #E4DED3;border-radius:999px;padding:8px 14px;font-size:13px;color:#8A8076;background:#FFFFFF}
+.search svg{width:14px;height:14px;fill:none;stroke:#8A8076;stroke-width:2;stroke-linecap:round}
+.rows{margin-top:6px}
+.rw{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 2px;border-top:1px solid #EEEAE2}
+.rw:first-child{border-top:0}
+.badge svg{width:10px;height:10px;fill:none;stroke:currentColor;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;margin-right:3px;vertical-align:-1px}
+.proto-top{margin-top:0;font-size:12px;padding:3px 12px}
+.sep{display:inline-block;margin:0 6px;font-size:15px;line-height:0;color:#9A9085;transform:translateY(1px)}
+.why-amb{color:#9E5407;font-weight:600}
+.meal2{margin:14px 0 0;font-size:14px;font-weight:600;color:#1F1A14}
+</style>
+
+<div class="box b1" id="b1">
+  <div class="hd">
+    <span class="lbl lbl-red">Possible trigger</span>
+    <span class="pill ox big">Oxalate<span>71%</span></span>
+  </div>
+  <p class="lead">3 foods you eat regularly share a hidden property: high oxalate. Joint and muscle pain appeared within 8 hours 71% of the time.</p>
+  <div class="contrib">Contributing foods: <span class="fchip">Spinach</span><span class="fchip">Almonds</span><span class="fchip">Quinoa</span></div>
+  <div class="rule"></div>
+  <div class="hd hd2">
+    <span class="lbl lbl-amb">Worth watching</span>
+    <span class="pill hi big">Histamine<span>34%</span></span>
+  </div>
+  <p class="lead lead2">2 foods you eat can make your body release histamine. Hives appeared within 2 hours 34% of the time.</p>
+  <div class="contrib">Contributing foods: <span class="fchip">Strawberries</span><span class="fchip">Tomato</span></div>
+</div>
+
+<div class="box b2" id="b2">
+  <div class="hd"><div class="tile"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></div><span class="date">Thursday, March 12</span></div>
+  <div class="ent c-cyc"><div class="let">C</div><div><div class="when">7:00a<span class="pill">Cycle</span></div><p class="what">Cycle day 22 — luteal phase</p></div></div>
+  <div class="ent c-food"><div class="let">F</div><div><div class="when">8:30a<span class="pill">Food</span></div><p class="what">Salmon, avocado, sauerkraut</p><p class="ok">✓ AIP compliant</p></div></div>
+  <div class="ent c-sup"><div class="let">S</div><div><div class="when">9:00a<span class="pill">Supplement</span></div><p class="what">Vitamin D, Omega-3, Probiotics</p></div></div>
+  <div class="ent c-sym"><div class="let">S</div><div><div class="when">2:15p<span class="pill">Symptom</span></div><p class="what">Joint pain — severity 6/10</p></div></div>
+  <div class="ent c-exp"><div class="let">E</div><div><div class="when">4:00p<span class="pill">Exposure</span></div><p class="what">Mold — office building HVAC</p></div></div>
+</div>
+
+<div class="box b3" id="b3">
+  <div class="hd"><div class="tile"><svg viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div><span class="pc">Protocol check</span></div>
+  <p class="meal">Lunch: chicken, spinach, zucchini, rice</p>
+  <span class="pill proto">Low Histamine protocol</span>
+  <div class="fr"><div><p class="fn">Chicken (fresh)</p><p class="fs">Low histamine</p></div><span class="badge fits">Fits</span></div>
+  <div class="fr"><div><p class="fn">Spinach</p><p class="fs">Moderate histamine<span class="sep">•</span>very high oxalate</p></div><span class="badge limit">Limit</span></div>
+  <div class="fr"><div><p class="fn">Zucchini</p><p class="fs">Low histamine</p></div><span class="badge fits">Fits</span></div>
+  <div class="fr"><div><p class="fn">White rice</p><p class="fs">Low histamine</p></div><span class="badge fits">Fits</span></div>
+  <div class="foot"><span>This meal</span><b>3 of 4 foods fit</b></div>
+</div>
+<div class="box b2" id="b2n">
+  <div class="hd"><div class="tile"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4"/><path d="M8 2v4"/><path d="M3 10h18"/></svg></div><span class="date">Thursday, March 12</span></div>
+  <div class="tl">
+    <div class="ev d-cyc"><span class="tm">7:00a</span><span class="dot"></span><div class="bd"><span class="pill">Cycle</span><p class="what">Cycle day 22 — luteal phase</p></div></div>
+    <div class="ev d-food"><span class="tm">8:30a</span><span class="dot"></span><div class="bd"><span class="pill">Food</span><p class="what">Salmon, avocado, sauerkraut</p><p class="ok">✓ AIP compliant</p></div></div>
+    <div class="ev d-sup"><span class="tm">9:00a</span><span class="dot"></span><div class="bd"><span class="pill">Supplement</span><p class="what">Vitamin D, Omega-3, Probiotics</p></div></div>
+    <div class="ev d-sym"><span class="tm">2:15p</span><span class="dot"></span><div class="bd"><span class="pill">Symptom</span><p class="what">Joint pain — severity 6/10</p></div></div>
+    <div class="ev d-exp"><span class="tm">4:00p</span><span class="dot"></span><div class="bd"><span class="pill">Exposure</span><p class="what">Mold — office building HVAC</p></div></div>
+  </div>
+</div>
+<div class="box b3" id="b3n">
+  <div class="hd"><div class="tile"><svg viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div><span class="pill proto proto-top">Low Histamine protocol</span></div>
+  <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>Find a food</div>
+  <p class="meal2">Lunch: chicken, spinach, zucchini, rice</p>
+  <div class="rows">
+    <div class="rw"><div><p class="fn">Chicken (fresh)</p><p class="fs">Low histamine</p></div><span class="badge fits"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Fits</span></div>
+    <div class="rw"><div><p class="fn">Spinach</p><p class="fs"><span class="why-amb">Moderate histamine</span><span class="sep">•</span>very high oxalate</p></div><span class="badge limit"><svg viewBox="0 0 24 24"><path d="M5 12h14"/></svg>Limit</span></div>
+    <div class="rw"><div><p class="fn">Zucchini</p><p class="fs">Low histamine</p></div><span class="badge fits"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Fits</span></div>
+    <div class="rw"><div><p class="fn">White rice</p><p class="fs">Low histamine</p></div><span class="badge fits"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg>Fits</span></div>
+  </div>
+  <div class="foot"><span>This meal</span><b>3 of 4 foods fit</b></div>
+</div>

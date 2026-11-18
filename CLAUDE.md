@@ -49,20 +49,18 @@ Per-user AI limits (UTC days): `lib/billing/quota.ts` (pure) + `lib/billing/enfo
 To compare models/providers on real data before changing a default, use `npm run eval:capture` (`evals/README.md`) — 55 fixtures, drives the real capture pipeline with tool calls intercepted, no DB writes.
 
 ## Design System — "Botanical Clinical"
-- "pico" palette (from the pitch deck): cream surface (#FCF2D1), teal ramp (hue 189), warm neutrals, ochre for "watch" patterns — tokens in `@theme` in `app/globals.css`
+- Cream surface (#FCF2D1) fading to card white, deep teal headlines, teal actions; full palette and rules in `DESIGN.md`, tokens in `@theme` in `app/globals.css`
 - Source Sans 3 (body), Fraunces (display headings)
 - 14 UI components in `components/ui/`
 - Forced light mode (no dark mode yet)
 - Zero off-system colors, zero inline styles
-- **Colour rules** (signed off by Dee 2026-11-16: teal = good for you, ochre = in between, brick = watch out, clay = symptoms; each colour has one job):
-  - Cream `surface` is the ground; cards lift to `surface-card`; quiet notices use `surface-overlay` (the cream's own step, never a near-neutral grey).
-  - **Teal**: brand, actions, links, selected states, and "Allowed / fine for you". Not decoration elsewhere.
-  - **Food fit** (`FIT_TONE_CLASS` in `lib/protocols/fit-line.ts`): Avoid = `brick-600` ✕, Limit = `ochre-700` −, Allowed = `teal-700` ✓. Always with the symbol (`FitSymbol`), so it reads without colour. No traffic-light red or green.
-  - **Insights sections**: brick/clay "Possible triggers", ochre "worth keeping an eye on", teal "seems to help" (same "good for you" as Allowed). Olive is retired: it read as a muddy teal.
-  - **Clay**: symptoms (tinted row, icon tiles). **Ochre** also: exposure / off-protocol icons.
-  - **Errors** ("Couldn't save") = `brick-600`, not ochre, so an error never reads as "Limit".
-  - **Never colour evidence or intensity.** Strength = ●●● + word in ink; property levels use the `level-*` ramp, which is the cream's hue getting darker (not amber).
-  - Every number that matters is a count first ("14 of 15 days"); a % only sits beside its count.
+- **DESIGN.md is the design system** (signed off by Dee 2026-11-18). Read it before any UI work. In short:
+  - Meaning colours, each with its symbol and a word: **red** possible trigger / Avoid / symptom ✕, **amber** worth watching / Limit / exposure −, **green** fits / seems to help ✓. Colour by meaning, never by strength.
+  - **Verdict Rule:** colour on a food only when there's a verdict for this person (their protocol or their own rating). **Reason Rule:** the attribute that caused the verdict takes its colour; other attributes stay grey. No protocol: attributes in grey, no colour.
+  - Entry types: cycle pink, supplement purple, food warm grey, symptom red, exposure amber. Teal = actions, links and the brand only, never "good for you".
+  - Structure: no box inside a box; rows split by hairlines; a day is a running timeline; cards have no border (cream-tinted shadow) and share 20px corners with inputs; no coloured side stripes, no tinted sections.
+  - Plain words (no jargon like "Property Pattern"); counts first, a % only beside its count; never prescriptive.
+  - Every food fact must match the food database and protocol rules; cause→symptom pairings must be factual (oxalate→joint pain, histamine→hives).
 
 ## Data: food trigger properties
 `food_trigger_properties` carries provenance: `sources` (per-property citations), `reviewStatus` (`unreviewed` | `ai_proposed` | `founder_set` | `practitioner_reviewed`), `reviewedBy`, `reviewedAt`. 320 curated foods (all currently `ai_proposed`, cited against SIGHI/RPAH/Harvard-TLO/published FODMAP lists), awaiting practitioner review. AI-agent property writes require a citation or are rejected; manual console edits are `founder_set`. Curation queue at `/admin/foods` (Needs curation tab) ranks missing-property foods by real log volume. See `docs/pico-health-admin-handbook` (also in Notion) for the review workflow.
