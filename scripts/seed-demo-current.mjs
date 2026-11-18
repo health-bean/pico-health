@@ -179,7 +179,7 @@ try {
       const dinnerExtra = chance(0.6) ? checkin("fine") : {};
       const dinner = [...pick(DINNERS)]; // a copy: the showcase edit must not change the menu
       // Showcase dinner: foods the protocol rates, so the day reads cleanly.
-      if (showcase) dinner.splice(0, dinner.length, "Chicken Breast", "Zucchini", "White Rice");
+      if (showcase) dinner.splice(0, dinner.length, "Ground Turkey", "Zucchini", "White Rice");
       for (const f of dinner) food(date, f, dTime, "dinner", dinnerExtra);
       food(date, "Olive Oil", dTime, "dinner", dinnerExtra);
 
