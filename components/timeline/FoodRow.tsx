@@ -108,10 +108,14 @@ export function FoodRow({
     ? protocolViolations.map((v) => v.replace(/\s+not allowed$/i, "")).join(", ")
     : null;
 
+  // A food your protocol flags (Limit / Avoid) takes the same colour as its line, so it
+  // stands out in a long day; allowed and not-rated foods stay plain.
+  const flagTone = line && (line.tone === "limit" || line.tone === "avoid") ? line.tone : violations ? "avoid" : null;
+
   const body = (
     <>
       <span className="flex flex-wrap items-center gap-2">
-        <span className="text-[15px] leading-snug text-warm-900">{displayName}</span>
+        <span className={cn("text-[15px] leading-snug", flagTone ? cn("font-semibold", FIT_TONE_CLASS[flagTone].text) : "text-warm-900")}>{displayName}</span>
         {portionText && <span className="text-xs text-[var(--color-text-muted)]">{portionText}</span>}
         {food?.isCustom && <Badge variant="default">Custom</Badge>}
       </span>
