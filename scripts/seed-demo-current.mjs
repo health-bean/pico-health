@@ -133,6 +133,9 @@ try {
       const hives = (leftoverLunch ? chance(0.8) : chance(0.06)) || showcase;
       const lunch = leftoverLunch ? [...pick(DINNERS)] : [...pick(LUNCH_BASE)];
       if (oxalateDay && chance(0.75)) lunch.push("Spinach");
+      // The showcase lunch is fixed (after the draws, so every other day is unchanged):
+      // last night's lamb, with spinach the protocol says to limit.
+      if (showcase) lunch.splice(0, lunch.length, "Kale", "Lamb", "White Rice", "Spinach");
       const lunchExtra = {
         ...(leftoverLunch ? { preparation: ["leftover"] } : {}),
         ...(!isToday && chance(0.7) ? checkin(hives ? "symptom" : "fine") : {}),
