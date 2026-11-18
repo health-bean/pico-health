@@ -12,16 +12,14 @@ export type FitTone = "allowed" | "limit" | "avoid" | "unknown";
 /**
  * One colour per tone, app-wide (Log, My food list, food search, the rating
  * picker): Avoid = brick, Limit = ochre, Allowed = teal. Not a traffic light:
- * `edge` is the thin left edge on a white card that holds a group of that tone
- * (the app-wide rule: groups sit on white; colour lives in the heading and edge).
  * each tone also has a symbol (FIT_TONE_SYMBOL), so the meaning survives
  * without colour, and the words always carry it too.
  */
-export const FIT_TONE_CLASS: Record<FitTone, { text: string; chip: string; edge: string }> = {
-  allowed: { text: "text-teal-700", chip: "border-teal-300 bg-teal-50 text-teal-800", edge: "shadow-[inset_3px_0_0_var(--color-teal-600),var(--shadow-card)]!" },
-  limit: { text: "text-ochre-700", chip: "border-ochre-500/50 bg-ochre-500/10 text-ochre-700", edge: "shadow-[inset_3px_0_0_var(--color-ochre-500),var(--shadow-card)]!" },
-  avoid: { text: "text-brick-600", chip: "border-brick-600/40 bg-brick-600/10 text-brick-600", edge: "shadow-[inset_3px_0_0_var(--color-brick-600),var(--shadow-card)]!" },
-  unknown: { text: "text-warm-500", chip: "border-warm-200 bg-warm-100 text-warm-700", edge: "shadow-[inset_3px_0_0_var(--color-warm-300),var(--shadow-card)]!" },
+export const FIT_TONE_CLASS: Record<FitTone, { text: string; chip: string }> = {
+  allowed: { text: "text-teal-700", chip: "border-teal-300 bg-teal-50 text-teal-800" },
+  limit: { text: "text-ochre-700", chip: "border-ochre-500/50 bg-ochre-500/10 text-ochre-700" },
+  avoid: { text: "text-brick-600", chip: "border-brick-600/40 bg-brick-600/10 text-brick-600" },
+  unknown: { text: "text-warm-500", chip: "border-warm-200 bg-warm-100 text-warm-700" },
 };
 
 /** ✓ Allowed, − Limit, ✕ Avoid, ? Not rated yet. Rendered by components/foods/FitSymbol. */
