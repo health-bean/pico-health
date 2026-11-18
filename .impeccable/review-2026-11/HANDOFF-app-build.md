@@ -41,8 +41,9 @@ Rebuild the app's screens so they follow `DESIGN.md`, which Dee signed off on 20
 3. **Food search + My food list** (`components/quick-log/FoodSearchInput.tsx`, `app/(app)/my-list/page.tsx`): one shared search; protocol pill(s) on top; every attribute in grey for everyone; colour only with a verdict, the reason in the verdict colour; rows not boxes where possible (box 3).
 4. **Insights** (`app/(app)/insights/page.tsx`, `components/insights/*`): section labels "Possible trigger(s)" red, "Worth watching" amber, "Seems to help" green; findings as rows; no jargon (box 1).
 5. **Food panel** (`FoodSheet.tsx`, `PersonalRatingPicker`): same colours and rules.
-6. **Clean-up** after each screen: delete unused components, exports, styles and tokens (check with `npx knip` or a grep for each export); `npx tsc --noEmit`, `npx eslint`, `npx vitest run` all green; add tests for changed logic.
-7. **Ship** after Dee signs off every screen. Then retake real screenshots for the PDF and website (now fine in iPhone frames, since the app will match), and write the website brief.
+6. **Gluten ratings (must ship before launch).** The community PDF promises "See histamine, oxalate, FODMAP, gluten and more". Add a gluten property to `food_trigger_properties` with three states: contains gluten (wheat, barley, rye and anything made from them, incl. soy sauce, malt), gluten-free, and often contaminated (oats unless certified). Fill it for every curated food with a citation (celiac-organisation lists / labelling law; AI writes without a citation are rejected), show it like the other properties (grey attribute; coloured only when a protocol rules on it), and wire it into protocols that exclude gluten. `npm run db:push` runs the RLS check.
+7. **Clean-up** after each screen: delete unused components, exports, styles and tokens (check with `npx knip` or a grep for each export); `npx tsc --noEmit`, `npx eslint`, `npx vitest run` all green; add tests for changed logic.
+8. **Ship** after Dee signs off every screen. Then retake real screenshots for the PDF and website (now fine in iPhone frames, since the app will match), and write the website brief.
 
 ## Tools
 
@@ -58,7 +59,7 @@ Rebuild the app's screens so they follow `DESIGN.md`, which Dee signed off on 20
 ## Known gaps to fix or flag
 
 - Demo: after the last reseed, "Things that seem to help" is empty (magnesium dropped out). Tune `scripts/seed-demo-current.mjs` so magnesium → less fatigue returns, without inventing noise findings; recheck with `dump.js`.
-- Food data: common foods unrated for histamine on Low Histamine (kale, cod, olive oil, salmon (fresh), sweet potato, quinoa); no lectin or salicylate ratings exist at all; "Cheddar Cheese" shows Allowed on Low Histamine (looks wrong). Flag for `/admin/foods`; don't invent ratings.
+- Food data: gluten is not rated yet (step 6; the PDF already names it). Common foods unrated for histamine on Low Histamine (kale, cod, olive oil, salmon (fresh), sweet potato, quinoa); no lectin or salicylate ratings exist at all; "Cheddar Cheese" shows Allowed on Low Histamine (looks wrong). Flag for `/admin/foods`; don't invent ratings.
 - Insights wording: "Also showed up on better days for severe hives" (the cross-note) confuses; rewrite in plain words.
 - Ideas Dee likes, not built: saved/reusable meals; photo-a-meal benchmark. Don't show unbuilt features in marketing.
 
