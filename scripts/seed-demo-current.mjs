@@ -3,7 +3,8 @@
 // Persona: Sarah, on a Low Histamine protocol after mold exposure. 60 days ending
 // today (UTC). Planted stories the insights engine should surface:
 //   - leftover lunches -> hives within ~2h (histamine builds as food sits)
-//   - spinach / almonds -> joint pain that evening (oxalate)
+//   - very-high-oxalate days (spinach, almonds, quinoa, sweet potato, green beans) -> joint pain
+//   - histamine: leftovers and the odd strawberry slip -> hives (never joint pain)
 //   - "Mold" exposure -> brain fog the same afternoon
 //   - Magnesium glycinate -> less fatigue (helper)
 //   - poor sleep on mold nights; slips get rarer in the second month
@@ -48,11 +49,14 @@ const addDays = (iso, n) => {
 };
 const startDate = addDays(todayUtc, -(DAYS - 1));
 
-const BREAKFASTS = [["Oats", "Blueberries"], ["Eggs", "Sweet Potato"], ["Eggs", "Zucchini"], ["Oats", "Pear"]];
-const LUNCH_BASE = [["Chicken Breast", "White Rice", "Cucumber"], ["Chicken Breast", "Quinoa", "Arugula"], ["Ground Turkey", "White Rice", "Zucchini"], ["Cod", "Quinoa", "Green Beans"]];
-const DINNERS = [["Salmon", "Sweet Potato", "Broccoli"], ["Lamb", "White Rice", "Kale"], ["Chicken Breast", "Butternut Squash", "Green Beans"], ["Cod", "White Rice", "Asparagus"], ["Ground Turkey", "Quinoa", "Zucchini"], ["Chicken Breast", "White Rice", "Arugula"]];
+// Everyday meals are low in oxalate; very-high-oxalate foods (spinach, almonds, quinoa,
+// sweet potato, green beans) come together on her high-oxalate days, as a load.
+const BREAKFASTS = [["Oats", "Blueberries"], ["Eggs", "Avocado"], ["Eggs", "Zucchini"], ["Oats", "Pear"]];
+const LUNCH_BASE = [["Chicken Breast", "White Rice", "Cucumber"], ["Chicken Breast", "Cucumber", "Arugula"], ["Ground Turkey", "White Rice", "Zucchini"], ["Cod", "White Rice", "Asparagus"]];
+const DINNERS = [["Salmon", "White Rice", "Broccoli"], ["Lamb", "White Rice", "Kale"], ["Chicken Breast", "Butternut Squash", "Asparagus"], ["Cod", "White Rice", "Asparagus"], ["Ground Turkey", "Zucchini", "Kale"], ["Chicken Breast", "White Rice", "Arugula"]];
+const OXALATE_SIDES = ["Sweet Potato", "Quinoa", "Green Beans"];
 const SNACKS = ["Apple", "Cucumber", "Blueberries", "Mango"];
-const ALL_FOODS = [...new Set([...BREAKFASTS.flat(), ...LUNCH_BASE.flat(), ...DINNERS.flat(), ...SNACKS, "Olive Oil", "Spinach", "Almonds"])];
+const ALL_FOODS = [...new Set([...BREAKFASTS.flat(), ...LUNCH_BASE.flat(), ...DINNERS.flat(), ...SNACKS, ...OXALATE_SIDES, "Olive Oil", "Spinach", "Almonds", "Strawberries"])];
 
 // What she types → the curated food it links to (the Nov 16 merge renamed some).
 const ALIAS = { salmon: "salmon (fresh)" };
@@ -138,7 +142,7 @@ try {
       const lTime = int(12 * 60, 13 * 60);
       const hives = (leftoverLunch ? chance(0.8) : chance(0.06)) || showcase;
       const lunch = leftoverLunch ? [...pick(DINNERS)] : [...pick(LUNCH_BASE)];
-      if (oxalateDay && chance(0.75)) lunch.push("Spinach");
+      if (oxalateDay && chance(0.3)) lunch.push("Spinach");
       // The showcase lunch is fixed (after the draws, so every other day is unchanged):
       // last night's lamb.
       if (showcase) lunch.splice(0, lunch.length, "Lamb", "White Rice", "Kale");
@@ -169,9 +173,14 @@ try {
 
       // Snack; almonds on oxalate days
       const sTime = int(15 * 60, 16 * 60);
+      // A histamine slip now and then: strawberries can make the body release histamine,
+      // and for her that means hives (histamine shows up as hives and itching, not joint pain).
+      const histamineSlip = !oxalateDay && !showcase && chance(earlyHalf ? 0.2 : 0.12);
       if (oxalateDay) food(date, "Almonds", sTime, "snack");
+      else if (histamineSlip) food(date, "Strawberries", sTime, "snack");
       else if (chance(0.5)) food(date, pick(SNACKS), sTime, "snack");
-      const jointPain = (oxalateDay ? chance(0.62) : chance(0.1)) || showcase;
+      if (histamineSlip && chance(0.65)) other(date, "symptom", "Hives", sTime + int(30, 90), { severity: int(3, 6) });
+      const jointPain = (oxalateDay ? chance(0.72) : chance(0.08)) || showcase;
       if (jointPain) other(date, "symptom", "Joint pain", sTime + int(45, 110), { severity: int(4, 7) });
 
       // Dinner; some nights it's leftovers
@@ -180,6 +189,7 @@ try {
       const dinner = [...pick(DINNERS)]; // a copy: the showcase edit must not change the menu
       // Showcase dinner: foods the protocol rates, so the day reads cleanly.
       if (showcase) dinner.splice(0, dinner.length, "Ground Turkey", "Zucchini", "White Rice");
+      else if (oxalateDay && chance(0.7)) dinner[1] = pick(OXALATE_SIDES); // the oxalate load continues at dinner
       for (const f of dinner) food(date, f, dTime, "dinner", dinnerExtra);
       food(date, "Olive Oil", dTime, "dinner", dinnerExtra);
 
