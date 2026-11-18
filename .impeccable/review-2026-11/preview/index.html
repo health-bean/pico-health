@@ -66,6 +66,16 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
 .verdict2{margin-top:16px;color:var(--ink2);line-height:1.5;max-width:75ch}
 .verdict2 b{color:var(--ink)}
 
+
+/* Three levels on a food row */
+.lv{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:22px;margin-top:16px}
+.lv h3{font-size:15px;margin:0 0 8px}.lv h3 small{font-weight:400;color:var(--muted)}
+.mine{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;margin-top:3px;color:#9A4A0B;text-decoration:none;min-height:24px}
+.mine i{width:7px;height:7px;border-radius:50%;background:#BE5D0E;flex:none}
+.mine svg{width:12px;height:12px}
+.key{margin:16px 0 0;padding:0;list-style:none;display:grid;gap:8px;max-width:78ch}
+.key li{color:var(--ink2);line-height:1.45}.key b{color:var(--ink)}
+
 /* Past-day timeline mockup */
 .tlx{margin-top:28px;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:18px 20px 20px;max-width:1100px}
 .tlx h2{margin:0 0 4px;font-size:22px}
@@ -350,6 +360,22 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
 
 
 
+
+  <section class="tlx" id="lv" aria-labelledby="lv-h">
+    <h2 id="lv-h">Proposal: what matters to you, on a food <span class="pill review">Mockup, not built</span></h2>
+    <p class="intro">Three levels, each with its own look, ranked by how much it's about you. Spinach and sweet potato from Sarah's real data.</p>
+    <div class="lv">
+      <div><h3>Today <small>(two looks, no ranking by you)</small></h3><div class="ph"><ul class="o-foods" style="padding-left:0"><li class="o-food"><div><span class="o-fn">Spinach</span><span class="fl t-ochre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M5 12h14"/></svg>Limit · histamine</span><span class="pc">Very high oxalate</span></div><i class="dots"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></i></li></ul></div></div>
+      <div><h3>Proposed: your log has a link</h3><div class="ph"><ul class="o-foods" style="padding-left:0"><li class="o-food"><div><span class="o-fn">Spinach</span><span class="fl t-ochre"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M5 12h14"/></svg>Limit · histamine</span><a class="mine" href="#lv"><i></i><span>Joint pain on 9 of 11 days you had it</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="m9 18 6-6-6-6"/></svg></a><span class="pc">Very high oxalate</span></div><i class="dots"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></i></li></ul></div></div>
+      <div><h3>Proposed: no link in your log</h3><div class="ph"><ul class="o-foods" style="padding-left:0"><li class="o-food"><div><span class="o-fn">Sweet Potato</span><span class="pc">Very high oxalate</span></div><i class="dots"><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg></i></li></ul></div></div>
+    </div>
+    <ul class="key">
+      <li><b>1 · Your protocol says</b> (ochre or brick, − or ✕): unchanged.</li>
+      <li><b>2 · Your log shows</b> (clay, the symptom colour, with a dot): only when Insights found this food goes with one of your symptoms, with real evidence, never an early signal. A count, not a warning. Tap it to open that finding in Insights.</li>
+      <li><b>3 · Also in this food</b> (grey box): notable, not urgent. Unchanged.</li>
+    </ul>
+    <p class="verdict2"><b>One honest limit:</b> the app knows Sarah's joint pain goes with spinach (9 of 11 days) and with almonds, both very high in oxalate, but Insights doesn't yet name oxalate itself as the link. So the clay line speaks about the food, not about oxalate. Making Insights say "foods very high in oxalate" is a separate engine check.</p>
+  </section>
   <section class="tlx" aria-labelledby="built-sheet-h">
     <h2 id="built-sheet-h">A food, opened: built <span class="pill review">Built, not shipped: awaiting your sign-off</span></h2>
     <p class="intro">The real app on Sarah's Oct 28, at phone width. Tap Spinach on the Log: the panel stops just under it (Spinach stays highlighted), scroll for the rest, and "See it in Insights" opens Insights at the matching card, outlined for a moment.</p>
