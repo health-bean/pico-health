@@ -112,13 +112,13 @@ try {
       const earlyHalf = i < 30;
       // Stories: leftovers -> hives (histamine builds as food sits), spinach/almonds -> joint pain
       // (oxalate), mold -> brain fog, magnesium -> less fatigue. Slips get rarer in month two.
-      // Yesterday is a hand-picked showcase day for the Log screenshot: eggs then bloating,
+      // Yesterday is a hand-picked showcase day for the Log screenshot: spinach omelet then joint pain,
       // leftovers at lunch, hives after. Random draws still happen so the rest is unchanged.
       const showcase = i === DAYS - 2;
       const leftoverLunch = (!isToday && chance(earlyHalf ? 0.3 : 0.15)) || showcase;
       const oxalateDay = (!isToday && chance(earlyHalf ? 0.4 : 0.2)) || showcase;
-      // Showcase morning: no mold; eggs at breakfast, then bloating (a common egg-intolerance
-      // symptom; our data rates eggs low histamine, so it is not framed as histamine).
+      // Showcase morning: no mold; a spinach omelet, then joint pain mid-morning (spinach is
+      // very high in oxalate; joint pain is the symptom most tied to oxalate).
       const mold = moldDays.has(i) && !showcase;
       // She started magnesium regularly in the second month.
       const magnesium = chance(earlyHalf ? 0.3 : 0.75) || showcase;
@@ -128,9 +128,10 @@ try {
       // Breakfast
       const bTime = int(7 * 60 + 15, 8 * 60 + 15);
       const breakfast = [...pick(BREAKFASTS)];
-      if (showcase) breakfast.splice(0, breakfast.length, "Eggs", "Zucchini");
+      if (showcase) breakfast.splice(0, breakfast.length, "Eggs", "Spinach"); // a spinach omelet
       for (const f of breakfast) food(date, f, bTime, "breakfast");
-      if (showcase) other(date, "symptom", "Bloating", bTime + 50, { severity: 5 });
+      // Oxalate reactions tend to come hours later, not minutes.
+      if (showcase) other(date, "symptom", "Joint pain", bTime + 150, { severity: 5 });
       other(date, "supplement", "Vitamin D3", bTime);
 
       // Lunch: some days it's last night's leftovers
@@ -139,8 +140,8 @@ try {
       const lunch = leftoverLunch ? [...pick(DINNERS)] : [...pick(LUNCH_BASE)];
       if (oxalateDay && chance(0.75)) lunch.push("Spinach");
       // The showcase lunch is fixed (after the draws, so every other day is unchanged):
-      // last night's lamb, with spinach the protocol says to limit.
-      if (showcase) lunch.splice(0, lunch.length, "Kale", "Lamb", "White Rice", "Spinach");
+      // last night's lamb.
+      if (showcase) lunch.splice(0, lunch.length, "Lamb", "White Rice", "Kale");
       const lunchExtra = {
         ...(leftoverLunch ? { preparation: ["leftover"] } : {}),
         ...(!isToday && chance(0.7) ? checkin(hives ? "symptom" : "fine") : {}),
