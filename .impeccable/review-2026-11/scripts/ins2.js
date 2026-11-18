@@ -1,0 +1,24 @@
+const { chromium } = require("playwright-core");
+(async () => {
+  const b = await chromium.launch({ executablePath: require("os").homedir() + "/Library/Caches/ms-playwright/chromium-1140/chrome-mac/Chromium.app/Contents/MacOS/Chromium" });
+  const ctx = await b.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true });
+  const page = await ctx.newPage();
+  const errs = []; page.on("pageerror", (e) => errs.push(e.message));
+  const base = "http://localhost:3100";
+  const link = require("child_process").execSync("node " + __dirname + "/link.js").toString().trim();
+  await page.goto(base + link, { waitUntil: "load", timeout: 120000 });
+  await page.evaluate(() => localStorage.setItem("pico:insights-range", "90"));
+  await page.goto(base + "/insights", { waitUntil: "load" });
+  await page.getByText("Possible triggers").waitFor({ timeout: 90000 });
+  await page.waitForTimeout(1500);
+  await page.screenshot({ path: "../final/ins-full.png", fullPage: true, scale: "css" });
+  await page.evaluate(() => window.scrollTo(0, 0));
+  await page.screenshot({ path: "../final/2-insights-new.png" });
+  const h = await page.getByRole("heading", { name: "Possible triggers" }).boundingBox();
+  await page.evaluate((y) => window.scrollTo(0, y), h.y - 78);
+  await page.waitForTimeout(400);
+  await page.screenshot({ path: "../final/2-insights-triggers.png" });
+  console.log(await page.locator("article").allInnerTexts());
+  console.log("errors", errs);
+  await b.close();
+})();
