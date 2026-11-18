@@ -65,4 +65,4 @@ Rebuild the app's screens so they follow `DESIGN.md`, which Dee signed off on 20
 
 ## Website brief (for the marketing window, after the app ships)
 
-Swap the three "See it in action" cards in `components/landing/approach.tsx` for the PDF's three boxes (images: `~/Desktop/Pico-screens/website-cards-2026-11-18/`, CSS: `pdf-final/boxes.html`), and move the site's red/amber/green to the DESIGN.md values. The site's stat already reads "3 in 4 US adults live with a chronic condition" (CDC 2025); the PDF now matches it.
+Swap the three "See it in action" cards in `components/landing/approach.tsx` for the PDF's three boxes (images: `~/Desktop/Pico-screens/website-cards-2026-11-18/`, CSS: `pdf-final/boxes.html`), and move the site's red/amber/green to the DESIGN.md values. The site's stat already reads "3 in 4 US adults live with a chronic condition" (CDC 2025); the PDF now matches it. Also change the hero subtitle to match the PDF: "Real insights. Real tracking. Real patterns a food journal can't detect." (Dee dropped "your doctors may not see": it reads as a dig at practitioners.)
