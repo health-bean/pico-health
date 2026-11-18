@@ -13,8 +13,8 @@ export function Card({ children, header, className, noPadding }: CardProps) {
   return (
     <div
       className={cn(
-        "rounded-2xl bg-[var(--color-surface-card)]",
-        "border border-[var(--color-border)]/20 shadow-[var(--shadow-card)]",
+        "rounded-xl bg-[var(--color-surface-card)]",
+        "shadow-[var(--shadow-card)]",
         "transition-shadow duration-200 ease-[var(--ease-out-expo)]",
         className
       )}

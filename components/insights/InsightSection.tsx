@@ -59,7 +59,7 @@ export function InsightSection({ variant, icon: Icon, title, subtitle, items, ea
         subtitle && <p className="mt-0.5 max-w-[65ch] text-sm text-warm-600">{subtitle}</p>
       )}
 
-      {visible.length > 0 && <div className={`mt-2.5 divide-y divide-[var(--color-border-light)] overflow-hidden rounded-2xl border border-[var(--color-border)]/20 bg-[var(--color-surface-card)] shadow-[var(--shadow-card)]`}>{visible}</div>}
+      {visible.length > 0 && <div className={`mt-2.5 divide-y divide-[var(--color-border-light)] overflow-hidden rounded-xl bg-[var(--color-surface-card)] shadow-[var(--shadow-card)]`}>{visible}</div>}
 
       {/* Before early signals open: "Show N more" and "+N early signals" share a row. */}
       {(!evidenceOpen && hidden > 0) || (!showEarly && earlyItems.length > 0) ? (
