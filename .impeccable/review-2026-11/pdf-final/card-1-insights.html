@@ -1,0 +1,54 @@
+<!doctype html><meta charset="utf-8">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=block">
+<style>
+/* Card 1: the website showcase's card shell (header tile + label), with the app's Insights
+   inside: section heading in its colour, findings as rows in a faintly tinted panel, ●●● strength. */
+:root{--warm-100:oklch(0.97 0.008 80);--warm-200:oklch(0.93 0.01 80);--warm-500:oklch(0.55 0.02 80);--warm-600:oklch(0.45 0.02 80);--warm-700:oklch(0.35 0.02 80);--warm-900:oklch(0.20 0.015 80);
+--card:oklch(0.993 0.008 93);--teal-50:oklch(0.965 0.018 189);--teal-700:oklch(0.408 0.061 189);
+--brick-600:oklch(0.449 0.137 23.5);--clay-500:oklch(0.586 0.147 51.3);--ochre-500:oklch(0.60 0.13 80);--ochre-700:oklch(0.50 0.105 75)}
+*{box-sizing:border-box}
+body{margin:0;background:transparent;font-family:"Source Sans 3",sans-serif}
+.card{width:307px;height:448px;border:1px solid var(--warm-200);border-radius:16px;background:var(--card);padding:16px;box-shadow:0 1px 2px rgb(0 0 0/.05);display:flex;flex-direction:column}
+.hd{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.tile{width:36px;height:36px;border-radius:8px;background:var(--teal-50);color:var(--teal-700);display:flex;align-items:center;justify-content:center}
+.hd p{margin:0;font-size:12px;font-weight:500;color:var(--warm-600)}
+svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.tile svg{width:16px;height:16px}
+.sec{display:flex;align-items:center;gap:6px;margin:0 0 6px;font-size:13px;font-weight:600}
+.sec.red{color:var(--brick-600)}.sec.red svg{color:var(--clay-500)}
+.sec.och{color:var(--ochre-700)}.sec.och svg{color:var(--ochre-500)}
+.panel{border-radius:10px;border:1px solid;overflow:hidden}
+.panel.red{border-color:color-mix(in oklch,var(--brick-600) 15%,transparent);background:color-mix(in oklch,var(--brick-600) 4.5%,transparent)}
+.panel.och{border-color:color-mix(in oklch,var(--ochre-500) 30%,transparent);background:color-mix(in oklch,var(--ochre-500) 8%,transparent)}
+.row{padding:8px 10px}
+.panel.red .row+.row{border-top:1px solid color-mix(in oklch,var(--brick-600) 12%,transparent)}
+.top{display:flex;align-items:baseline;justify-content:space-between;gap:6px}
+.t{margin:0;font-size:12.5px;font-weight:600;color:var(--warm-900)}
+.arrow{color:var(--warm-500);font-weight:400}
+.str{font-size:10px;font-weight:600;color:var(--warm-700);white-space:nowrap}
+.dots{letter-spacing:1px;margin-right:3px}
+.l{margin:2px 0 0;font-size:11px;color:var(--warm-700);line-height:1.35}
+.l span{color:var(--warm-600)}
+.gap{height:14px}
+.note{margin-top:auto;border-top:1px solid var(--warm-100);padding-top:10px;font-size:11px;color:var(--warm-600)}
+</style>
+<div class="card" id="c1">
+  <div class="hd"><div class="tile"><svg viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="m19 9-5 5-4-4-3 3"/></svg></div><p>Insights</p></div>
+
+  <p class="sec red"><svg viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></svg>Possible triggers</p>
+  <div class="panel red">
+    <div class="row"><div class="top"><p class="t">Leftover food <span class="arrow">→</span> hives</p><span class="str"><span class="dots">●●●</span>Strong</span></div>
+      <p class="l">Hives on 13 of 14 days <span>· 7% on other days</span></p></div>
+    <div class="row"><div class="top"><p class="t">Almonds <span class="arrow">→</span> joint pain</p><span class="str"><span class="dots">●●○</span>Moderate</span></div>
+      <p class="l">Within 4 hours, 11 of 14 times <span>· 5% after other meals</span></p></div>
+  </div>
+
+  <div class="gap"></div>
+  <p class="sec och"><svg viewBox="0 0 24 24"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>Worth keeping an eye on</p>
+  <div class="panel och">
+    <div class="row"><p class="t">Foods with histamine</p>
+      <p class="l">Joint pain on 9 of 11 days</p></div>
+  </div>
+
+  <p class="note">Patterns in your own log, not a diagnosis.</p>
+</div>
