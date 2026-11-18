@@ -4,8 +4,13 @@ import type { ReactNode } from 'react';
 import { ArrowRight, type LucideIcon } from 'lucide-react';
 import { StrengthMeter, type Strength } from './StrengthMeter';
 import { NewTag } from './NewTag';
+import { cn } from '@/lib/utils';
 
 interface InsightCardProps {
+  /** Anchor for links from the Log ("See it in Insights"). */
+  id?: string;
+  /** Briefly outlined when a link from the Log lands on it. */
+  highlight?: boolean;
   icon: LucideIcon;
   /** Rendered "<factor> → <outcome>"; without an outcome the factor stands alone. */
   factor: string;
@@ -28,9 +33,15 @@ interface InsightCardProps {
  * One finding, one card. The section around it carries the colour and the
  * meaning; the card carries the count.
  */
-export function InsightCard({ icon: Icon, factor, outcome, relation = 'then', sentence, compare, strength, isNew, note, action }: InsightCardProps) {
+export function InsightCard({ id, highlight = false, icon: Icon, factor, outcome, relation = 'then', sentence, compare, strength, isNew, note, action }: InsightCardProps) {
   return (
-    <article className="rounded-xl border border-warm-200 bg-[var(--color-surface-card)] px-4 py-3.5">
+    <article
+      id={id}
+      className={cn(
+        "scroll-mt-24 rounded-xl border border-warm-200 bg-[var(--color-surface-card)] px-4 py-3.5 transition-shadow duration-700",
+        highlight && "shadow-[0_0_0_3px_var(--color-ochre-500)]"
+      )}
+    >
       {/* Phones: the meter sits under the title so long titles keep the full width. */}
       <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:gap-3">
         <div className="flex min-w-0 flex-1 items-start gap-3">

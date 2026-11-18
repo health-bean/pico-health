@@ -1,17 +1,20 @@
 "use client";
 
-import { useId, useState } from "react";
-import { Replace, Clock, ChevronDown } from "lucide-react";
+import { useRef, useState } from "react";
+import { Replace, Clock, ChevronRight } from "lucide-react";
 import { FitSymbol } from "@/components/foods/FitSymbol";
 import { Badge } from "@/components/ui";
-import { FoodPropertyCard } from "@/components/foods/FoodPropertyCard";
-import { PersonalRatingPicker } from "@/components/foods/PersonalRatingPicker";
 import { ANSWER_LABELS } from "@/lib/clarifiers/rules";
 import { notableProperties, propertyNoun } from "@/lib/timeline/group-meals";
 import { FIT_TONE_CLASS, fitLine, showOnLog, type FoodFit, type PersonalRating } from "@/lib/protocols/fit-line";
 import { cn } from "@/lib/utils";
-import type { FoodTriggerProperties } from "@/types";
 import { EntryActions } from "./EntryActions";
+import { FoodSheet } from "./FoodSheet";
+import { formatClock } from "./MealCard";
+import type { PropertyPatternLike } from "@/lib/foods/food-sheet";
+
+const MEAL_LABEL: Record<string, string> = { breakfast: "Breakfast", lunch: "Lunch", dinner: "Dinner", snack: "Snack" };
+const mealLabel = (m: string | null | undefined) => (m ? MEAL_LABEL[m] ?? "" : "");
 import { EntryEditor, type EntryEditorMode, type EntryPatch } from "./EntryEditor";
 
 /** Human-readable clarifier answers stored on the entry, for the detail line. */
@@ -51,6 +54,8 @@ export interface FoodRowProps {
   foodId?: string | null;
   /** Entry's structured content — clarifier answers are shown from it. */
   structuredContent?: Record<string, unknown> | null;
+  /** Insights' "worth keeping an eye on" patterns, for the panel's "Your log" voice. */
+  patterns?: PropertyPatternLike[];
   /** Tags the meal header already shows (every food in the meal has them); not repeated on the row. */
   sharedTags?: string[];
   onDelete?: () => void;
@@ -59,10 +64,10 @@ export interface FoodRowProps {
 }
 
 /**
- * One food inside a meal card. The row shows how the food fits the person's
- * diet and the properties worth knowing (moderate and up); tapping it opens
- * the full property list and "How is this food for you?". Its own ••• menu
- * edits or deletes just this food.
+ * One food inside a meal. The row shows what needs attention (Limit, Avoid,
+ * not rated yet, your own rating) and notable properties; tapping it opens
+ * the food's panel (FoodSheet): your protocol, your log, you, what's in it.
+ * Its own ••• menu edits or deletes just this food.
  */
 export function FoodRow({
   name,
@@ -75,11 +80,13 @@ export function FoodRow({
   foodId = null,
   structuredContent,
   sharedTags = [],
+  patterns = [],
   onDelete,
   onPatch,
 }: FoodRowProps) {
-  const [open, setOpen] = useState(false);
-  const panelId = useId();
+  // The tapped row's bottom edge while its panel is open (null when closed).
+  const [sheetAt, setSheetAt] = useState<number | null>(null);
+  const rowButton = useRef<HTMLButtonElement>(null);
   const [editing, setEditing] = useState<EntryEditorMode | null>(null);
   const [personal, setPersonal] = useState<PersonalRating | null>(fit?.personal ?? null);
 
@@ -144,21 +151,19 @@ export function FoodRow({
       <div className="flex items-start gap-1">
         {expandable ? (
           <button
+            ref={rowButton}
             type="button"
-            onClick={() => setOpen((v) => !v)}
-            aria-expanded={open}
-            aria-controls={panelId}
-            className="group flex min-h-11 min-w-0 flex-1 items-start gap-2 py-1.5 text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500"
+            onClick={(e) => setSheetAt(e.currentTarget.getBoundingClientRect().bottom)}
+            aria-haspopup="dialog"
+            className={cn(
+              "group -ml-2 flex min-h-11 min-w-0 flex-1 items-start gap-2 rounded-lg py-1.5 pl-2 text-left transition-colors hover:bg-teal-50/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500",
+              // Stays marked behind the panel, so you know which food you opened.
+              sheetAt !== null && "bg-teal-50 shadow-[inset_3px_0_0_var(--color-teal-600)]"
+            )}
           >
             <span className="min-w-0 flex-1">{body}</span>
-            <ChevronDown
-              className={cn(
-                "mt-1 h-4 w-4 shrink-0 text-warm-500 transition-transform duration-200 group-hover:text-teal-600",
-                open && "rotate-180"
-              )}
-              aria-hidden="true"
-            />
-            <span className="sr-only">{open ? "Hide" : "Show"} food details</span>
+            <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-warm-400 group-hover:text-teal-600" aria-hidden="true" />
+            <span className="sr-only">Open {displayName}</span>
           </button>
         ) : (
           <div className="min-h-11 min-w-0 flex-1 py-1.5">{body}</div>
@@ -194,13 +199,23 @@ export function FoodRow({
         />
       )}
 
-      {open && expandable && (
-        <div id={panelId} className="mb-2 flex flex-col gap-4 border-l-2 border-[var(--color-border-light)] py-2 pl-3">
-          {canRate && foodId && <PersonalRatingPicker foodId={foodId} value={personal} onChange={setPersonal} />}
-          {hasProperties && food?.properties && (
-            <FoodPropertyCard bare properties={food.properties as unknown as FoodTriggerProperties} />
-          )}
-        </div>
+      {sheetAt !== null && (
+        <FoodSheet
+          anchorBottom={sheetAt}
+          name={displayName}
+          meta={[mealLabel(mealType), formatClock(entryTime), ...clarifierLabels(structuredContent)].filter(Boolean).join(" · ")}
+          properties={food?.properties ?? null}
+          fit={fit}
+          foodId={foodId}
+          canRate={canRate}
+          personal={personal}
+          onPersonalChange={setPersonal}
+          patterns={patterns}
+          onClose={() => {
+            setSheetAt(null);
+            rowButton.current?.focus({ preventScroll: true });
+          }}
+        />
       )}
     </li>
   );

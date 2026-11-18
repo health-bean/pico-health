@@ -6,6 +6,7 @@ import { InsightCard } from '@/components/insights/InsightCard';
 import { AlertStack } from '@/components/insights/AlertStack';
 import { DayView } from '@/components/insights/DayView';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { Spinner, PageTitle } from '@/components/ui';
 import {
   Activity, CalendarDays, ChevronRight, CalendarRange, RotateCcw, Clock, ClipboardList, Eye, FlaskConical,
@@ -97,6 +98,23 @@ export default function InsightsPage() {
   // nothing else has cleared the bar, the empty state offers them instead,
   // and this opens them in place.
   const [showEarly, setShowEarly] = useState(false);
+  // "See it in Insights" from a food on the Log: ?focus=histamine opens at that card.
+  // From Next's router, not window.location: on an in-app navigation the new
+  // page renders before the address bar changes. Cleared once it has been shown.
+  const focusParam = useSearchParams().get('focus');
+  const [focusDone, setFocusDone] = useState<string | null>(null);
+  const focus = focusParam && focusParam !== focusDone ? focusParam : null;
+  // Once the cards are on screen, bring the focused one into view; the outline fades after a moment.
+  const hasPatterns = patterns !== null;
+  useEffect(() => {
+    if (!focus || !hasPatterns) return;
+    const el = document.getElementById(`watch-${focus}`);
+    if (!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    el.scrollIntoView({ block: 'center', behavior: reduce ? 'auto' : 'smooth' });
+    const t = window.setTimeout(() => setFocusDone(focus), 2500);
+    return () => window.clearTimeout(t);
+  }, [focus, hasPatterns]);
   // A failed load used to fall through to "Nothing logged in the last N
   // days", which is false. It now says it couldn't load.
   const [loadFailed, setLoadFailed] = useState(false);
@@ -498,8 +516,17 @@ export default function InsightsPage() {
               // the claim is the list's. The list is cited but not yet
               // practitioner-reviewed, and the section should say so.
               subtitle="Based on Pico's food ratings, which a practitioner hasn't reviewed yet."
+              // A link from the Log may point at a card past the first three: show them all.
+              cap={focus ? 99 : undefined}
               items={propertyPatterns.map(g => (
-                <InsightCard key={g.key} icon={FlaskConical} factor={g.title} sentence={g.sentence} />
+                <InsightCard
+                  key={g.key}
+                  id={`watch-${g.noun}`}
+                  highlight={focus === g.noun}
+                  icon={FlaskConical}
+                  factor={g.title}
+                  sentence={g.sentence}
+                />
               ))}
             />
           )}

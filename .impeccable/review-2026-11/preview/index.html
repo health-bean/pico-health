@@ -257,7 +257,7 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
 
     <section class="dec" aria-labelledby="dec-h">
     <h2 id="dec-h">Everything we've decided</h2>
-    <p class="stamp2">As of Nov 17, 2026. Picking up tomorrow.</p>
+    <p class="stamp2">As of Nov 18, 2026.</p>
     <div class="dgrid">
       <div>
         <h3>Colour (signed off, live)</h3>
@@ -312,7 +312,7 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
         </ul>
       </div>
       <div>
-        <h3>A food, opened (agreed in principle, not built)</h3>
+        <h3>A food, opened (built, awaiting sign-off)</h3>
         <ul>
           <li>Purpose: answer "is this food a problem for me?" in three voices: <b>Your protocol</b>, <b>Your log</b>, <b>You</b>. Then "What's in it" as small tan meters.</li>
           <li>Tapping a food slides up a panel that stops just under the food you tapped (it stays highlighted). Scroll or drag up for the rest; tap the day above it or Close to dismiss.</li>
@@ -334,7 +334,7 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
       <h3>Waiting for you tomorrow</h3>
       <ol>
         <li><b>Review the screens below,</b> where the decided rules are already carried over (built on my machine, <em>not shipped</em>): an opened food ("What's in it", squarer rating buttons), food search, My food list, and Insights (plain names, "Your day" in words).</li>
-        <li><b>A food, opened:</b> agreed. Stops just under the tapped food. Sign off on the mockup, then I build it.</li>
+        <li><b>A food, opened:</b> built (not shipped). Look at the three real screenshots at the top and sign off, then it ships.</li>
         <li><b>Then:</b> food search, My food list, Insights, one at a time.</li>
         <li><b>Later ideas, noted:</b> compare photo-of-your-plate logging with the app you heard about; Amy's features (symptom / exposure / treatment buttons, your own buttons, several protocols).</li>
       </ol>
@@ -349,8 +349,20 @@ figcaption span{display:block;color:var(--ink2);font-size:14px;line-height:1.45;
   
 
 
+
+  <section class="tlx" aria-labelledby="built-sheet-h">
+    <h2 id="built-sheet-h">A food, opened: built <span class="pill review">Built, not shipped: awaiting your sign-off</span></h2>
+    <p class="intro">The real app on Sarah's Oct 28, at phone width. Tap Spinach on the Log: the panel stops just under it (Spinach stays highlighted), scroll for the rest, and "See it in Insights" opens Insights at the matching card, outlined for a moment.</p>
+    <div class="grid">
+      <figure><img class="shot" src="img/09-sheet-half.jpg" alt="Food panel stopped just under the tapped Spinach row"><figcaption><b>1 · Tap Spinach</b><span>Stops just under the food you tapped. "Your protocol": − Limit, with why in one sentence. "Your log": ten clay dots, joint pain on all 10 days.</span></figcaption></figure>
+      <figure><img class="shot" src="img/10-sheet-full.jpg" alt="Food panel at full height with choices and what's in it"><figcaption><b>2 · Scroll for more</b><span>"You": three equal choices with ✓ − ✕, and what your answer does. "What's in it": meters, oxalate very high, releases histamine, histamine moderate; the rest folded into one line.</span></figcaption></figure>
+      <figure><img class="shot" src="img/11-insights-focus.jpg" alt="Insights scrolled to Foods with histamine, outlined"><figcaption><b>3 · See it in Insights</b><span>Opens Insights at "Foods with histamine", outlined in ochre for a moment.</span></figcaption></figure>
+    </div>
+    <p class="verdict2"><b>Checked:</b> the accessibility scan (axe, WCAG 2.2 AA) found 0 issues with the panel open; every tap target is 44px+; the day behind the panel can't be reached while it's open; Close, tapping the day and Escape all close it; reduced-motion settings are respected. "Your log" only appears when Insights found a pattern with real evidence (never an early signal). With no protocol, "Your protocol" isn't shown.</p>
+  </section>
+
   <section class="tlx" aria-labelledby="sh-h">
-    <h2 id="sh-h">Proposal: a food, opened <span class="pill review">Mockup, not built</span></h2>
+    <h2 id="sh-h">The mockup it was built from <span class="pill review">Mockup</span></h2>
     <p class="intro">Purpose: answer "is this food a problem for me?" in three voices: what your protocol says, what your log says, what you say. <b>Try it: tap Spinach on the phone.</b> The panel rises to just under the food you tapped, so Spinach (highlighted) stays in view. Scroll inside it or tap the handle to bring it all the way up. Tap the day above, or Close, to slide it down. Spinach, from Sarah's real Oct 28 lunch.</p>
     <div class="cmp2">
       <div>

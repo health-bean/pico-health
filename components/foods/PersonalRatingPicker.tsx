@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { FitSymbol } from "@/components/foods/FitSymbol";
 import { FIT_TONE_CLASS, type FitTone, type PersonalRating, type PersonalStatus } from "@/lib/protocols/fit-line";
 
 /** Each choice, once chosen, wears its tone: the same teal / ochre / brick as the Log and My food list. */
@@ -25,10 +26,15 @@ export function PersonalRatingPicker({
   foodId,
   value,
   onChange,
+  layout = "chips",
+  foodName,
 }: {
   foodId: string;
   value: PersonalRating | null;
   onChange: (next: PersonalRating | null) => void;
+  /** "segmented": three equal buttons with ✓ − ✕ and a line saying what the answer does (the food panel). */
+  layout?: "chips" | "segmented";
+  foodName?: string;
 }) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState(false);
@@ -53,6 +59,40 @@ export function PersonalRatingPicker({
     } finally {
       setSaving(false);
     }
+  }
+
+  if (layout === "segmented") {
+    return (
+      <div className="flex flex-col">
+        <div role="group" aria-label="How is this food for you?" className="grid grid-cols-3 gap-1.5">
+          {OPTIONS.map((o) => {
+            const on = value?.status === o.value;
+            return (
+              <button
+                key={o.value}
+                type="button"
+                disabled={saving}
+                aria-pressed={on}
+                onClick={() => choose(o.value)}
+                className={cn(
+                  "flex min-h-14 flex-col items-center justify-center gap-1 rounded-md border px-1 py-1.5 text-[13px] font-semibold leading-tight transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-500 disabled:opacity-60",
+                  on ? FIT_TONE_CLASS[o.tone].chip : "border-[var(--color-border)] bg-[var(--color-surface-card)] text-warm-900 hover:border-teal-300"
+                )}
+              >
+                <FitSymbol tone={o.tone} className="h-3.5 w-3.5" />
+                <span className="whitespace-nowrap">{o.label}</span>
+              </button>
+            );
+          })}
+        </div>
+        <p className="mt-2 text-xs leading-snug text-[var(--color-text-muted)]">
+          {value?.source === "trial"
+            ? "Set by your reintroduction trial. Tap another option to change it."
+            : `Your answer replaces the protocol's for ${foodName ? foodName.toLowerCase() : "this food"}, here and in My food list.`}
+        </p>
+        {error && <p className="mt-1 text-sm text-brick-600">Couldn&apos;t save that. Try again.</p>}
+      </div>
+    );
   }
 
   return (

@@ -16,6 +16,7 @@ import { PendingCaptureCard } from "@/components/capture/PendingCaptureCard";
 import { ProgressStrip } from "@/components/capture/ProgressStrip";
 import { SymptomNow } from "@/components/capture/SymptomNow";
 import { useCapture } from "@/hooks/use-capture";
+import { usePropertyPatterns } from "@/hooks/use-property-patterns";
 import { cn } from "@/lib/utils";
 import { chronological, groupMeals, type DayItem } from "@/lib/timeline/group-meals";
 import { protocolPhrase } from "@/lib/protocols/fit-line";
@@ -298,6 +299,8 @@ export default function TimelinePage() {
     : entries;
 
   const hasPending = sessions.length > 0;
+  // Insights' patterns, fetched in the background for the food panel's "Your log".
+  const patterns = usePropertyPatterns(entries.some((e) => e.entryType === "food"));
   // The day's protocol, named once above the timeline instead of on every food.
   const diet = entries.find((e) => e.fit?.diet)?.fit?.diet ?? null;
 
@@ -320,6 +323,7 @@ export default function TimelinePage() {
               foodId={entry.foodId}
               structuredContent={entry.structuredContent}
               sharedTags={shared}
+              patterns={patterns}
               onDelete={() => deleteEntry(entry)}
               onPatch={(patch) => patchTimelineEntry(entry, patch)}
             />

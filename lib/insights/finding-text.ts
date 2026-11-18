@@ -135,6 +135,8 @@ export interface PropertyPatternInput {
 
 export interface PropertyCard {
   key: string;
+  /** The property in one plain word ("histamine"): the Log's food panel links here by it. */
+  noun: string;
   title: string;
   sentence: string;
   impact: number;
@@ -212,7 +214,7 @@ export function propertyCards(patterns: PropertyPatternInput[]): PropertyCard[] 
       } else {
         sentence = lines.map((l) => propertyLine(l.outcome, l.days, l.total)).join('. ') + '.';
       }
-      return { key: g.props.map((p) => `${p.severity}|${p.property}`).join('+'), title, sentence, impact: g.impact };
+      return { key: g.props.map((p) => `${p.severity}|${p.property}`).join('+'), noun: nouns[0], title, sentence, impact: g.impact };
     })
     .sort((a, b) => b.impact - a.impact);
 }
