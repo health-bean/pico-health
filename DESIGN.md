@@ -203,7 +203,7 @@ One corner radius for anything that holds content: 20px for cards and the search
 
 ## Do's and Don'ts
 
-- **Do** keep every food fact true to Pico's food database and protocol rules; every cause-and-symptom pairing must be factual (oxalate goes with joint pain; histamine with hives).
+- **Do** keep every food fact true to Pico's food database and protocol rules; every cause-and-symptom pairing must be factual (oxalate goes with joint pain; histamine with hives, flushing and brain fog).
 - **Do** use the meaning colours only for their meanings, with their symbols and words.
 - **Do** show attributes to everyone; colour them only when a verdict applies.
 - **Don't** put a box inside a box, outline a card, or add a coloured stripe down a card's side.

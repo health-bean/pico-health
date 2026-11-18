@@ -60,7 +60,7 @@ To compare models/providers on real data before changing a default, use `npm run
   - Entry types: cycle pink, supplement purple, food warm grey, symptom red, exposure amber. Teal = actions, links and the brand only, never "good for you".
   - Structure: no box inside a box; rows split by hairlines; a day is a running timeline; cards have no border (cream-tinted shadow) and share 20px corners with inputs; no coloured side stripes, no tinted sections.
   - Plain words (no jargon like "Property Pattern"); counts first, a % only beside its count; never prescriptive.
-  - Every food fact must match the food database and protocol rules; cause→symptom pairings must be factual (oxalate→joint pain, histamine→hives).
+  - Every food fact must match the food database and protocol rules; cause→symptom pairings must be factual (oxalate→joint pain; histamine→hives, flushing, brain fog).
 
 ## Data: food trigger properties
 `food_trigger_properties` carries provenance: `sources` (per-property citations), `reviewStatus` (`unreviewed` | `ai_proposed` | `founder_set` | `practitioner_reviewed`), `reviewedBy`, `reviewedAt`. 320 curated foods (all currently `ai_proposed`, cited against SIGHI/RPAH/Harvard-TLO/published FODMAP lists), awaiting practitioner review. AI-agent property writes require a citation or are rejected; manual console edits are `founder_set`. Curation queue at `/admin/foods` (Needs curation tab) ranks missing-property foods by real log volume. See `docs/pico-health-admin-handbook` (also in Notion) for the review workflow.
